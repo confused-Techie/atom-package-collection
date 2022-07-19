@@ -1,0 +1,57 @@
+{
+  "name": "js-patterns-atom-snippets",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/borisrorsvort/js-patterns-atom-snippets"
+  },
+  "downloads": 1784,
+  "stargazers_count": 8,
+  "releases": {
+    "latest": "0.2.1"
+  },
+  "versions": {
+    "0.2.1": {
+      "name": "js-patterns-atom-snippets",
+      "main": "./lib/js-patterns-atom-snippets",
+      "version": "0.2.1",
+      "description": "JavaScript Patterns snippets for Atom",
+      "repository": "https://github.com/borisrorsvort/js-patterns-atom-snippets.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/js-patterns-atom-snippets/versions/0.2.1/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "js-patterns-atom-snippets",
+      "main": "./lib/js-patterns-atom-snippets",
+      "version": "0.2.0",
+      "description": "JavaScript Patterns snippets for Atom",
+      "repository": "https://github.com/borisrorsvort/js-patterns-atom-snippets.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/js-patterns-atom-snippets/versions/0.2.0/tarball"
+      }
+    }
+  },
+  "readme": "# Still testing - WIP\n\n# Forewords\n\nThis package is just a shameless port from the awesome [js-patterns-sublime-snippets](https://github.com/caiogondim/js-patterns-sublime-snippets)\n\nBug thanks to all contributors of that project:\n\n* 59  Caio Gondim\n* 01  Arne Schlüter\n* 01  Breno Calazans\n* 01  Philip Blyth\n* 01  gaboesquivel\n\n# JavaScript Patterns snippets\n\nSnippets for [Atom](https://atom.io/) with **good solutions\nfor regular problems** in JavaScript.\n\n> In software engineering, a design pattern is a general reusable\n> solution to a commonly occurring problem within a given context in software\n> design.\n>\n> – Wikipedia\n\n## Install\n\nGo to ```Atom > Preferences...``` then search for **JavaScript Patterns Snippets** in Packages tab.\n\n## Development\n\n```\n$ cd ~/.atom/packages\n$ git clone https://github.com/borisrorsvort/js-patterns-atom-snippets.git\n$ cd js-patterns-atom-snippets\n$ apm install\n$ apm link\n```\n\n## Snippets\n\nSome JS Patterns snippets in the wild.\n\n<img src=\"https://i.imgur.com/QnefW73.gif\" alt=\"Preview\" />\n\n\n## Immediate function\n\n**trigger**: ifun⇥\n\nTo keep the global scope clean and to use strict mode in a controlled\nenviroment, without triggering it in the global scope.\n\n```javascript\n;(function() {\n    'use strict';\n    // closure scope\n}());\n```\n\nReference:\n- [StackOverflow: Immediate functions JavaScript](http://stackoverflow.com/questions/13364312/immediate-functions-javascript)\n\n\n## For in\n\n**trigger**: forin⇥\n\nFor-in loops in JavaScript will iterate over new properties added to the\nprototype chain of the object we are iterating.\nTo loop through only in the object's properties, we have to use\n`.hasOwnProperty('propertyName')`. Like below.\n\n```javascript\nfor (var prop in obj) {\n  if (obj.hasOwnProperty(prop)) {\n    obj[prop];\n  }\n}\n```\n\nReference:\n- [JavaScript Patterns, by Stoyan Stefanov](http://shop.oreilly.com/product/9780596806767.do)\n- [The Essentials of Writing High Quality JavaScript](http://net.tutsplus.com/tutorials/javascript-ajax/the-essentials-of-writing-high-quality-javascript/)\n\n\n## Object.keys loop\n\n**trigger**: okl⇥\n\nIf your enviroment supports that method, prefer this over `for in`.\n\n```javascript\nObjects.keys(obj).forEach(function(key) {\n  // inside loop\n});\n```\n\n\n## Improved for loop\n\n**trigger:** ifor⇥\n\nA faster way to write a `for` loop. It caches the array size, so we don't need\nto recalculate the size at every iteration.\n\n```javascript\nfor (i = 0, len = arr.length; i < len; i++) {\n  // array length is calculated only 1 time and then stored\n}\n```\n\nReference:\n- [Browser Diet](http://browserdiet.com/#cache-array-lengths)\n\n\n## Constructor pattern\n\n**trigger**: constructor⇥\n\nThat constructor pattern enforces the use of `new`, even if you call the\nconstructor like a function. In JavaScript, if the `new` keyword is forgotten,\n`this` will reference the global object inside the constructor, and that's never\na desirable situation.\n\nThat approach is like `$()` and `$.Deferred()` in jQuery, where you can call\nit in the same way with `new $()` and `new $.Deferred`.\n\n```javascript\nvar ConstructorName = (function() {\n  'use strict';\n\n  function ConstructorName(arg1, arg2) {\n    // enforces new\n    if (!(this instanceof ConstructorName)) {\n        return new ConstructorName();\n    }\n\n    // constructor body\n  }\n\n  ConstructorName.prototype.someMethod = function(arg) {\n    // method body\n  }\n\n  return ConstructorName;\n}());\n```\n\nReference:\n- [Object Creation patterns](http://www.jspatterns.com/category/patterns/object-creation/)\n\n\n## Singleton pattern\n\n**trigger**: singleton⇥\n\nWith the Singleton pattern there will be only one instance of a constructor\nfunction. If you try to instantiate another one, the first instance that was\ncreated at first will be returned.\n\n```javascript\nvar singletonName = (function() {\n  'use strict';\n\n  var instance;\n\n  singletonName = function() {\n    if (instance) {\n      return instance;\n    }\n\n    instance = this;\n\n    // your code goes here\n  };\n\n  return singletonName;\n}());\n\n```\n\nReference:\n- [Singleton Pattern - Simples Ideias](http://simplesideias.com.br/design-patterns-no-javascript-singleton)\n\n\n## Module\n\n**trigger**: module⇥\n\nA simple module pattern. Uses strict mode and suggest the use of a `init`\nfunction for kickoff. Also possible to define some \"private\" methods and\nvariables. Only the variable with the module's name is returned and therefore\nmade public outside the closure.\n\n```javascript\nvar moduleName = (function() {\n  'use strict';\n\n  var privateVar = '';\n\n  var moduleName = {\n    init: {\n      // kickoff\n    }\n  }\n\n  return moduleName;\n}());\n```\n\nReference:\n- [JavaScript Module Pattern: In-Depth](http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html)\n\n\n## Revealing module\n\n**trigger**: rmodule⇥\n\nSome might say it's a less verbose and more organized way to define a module.\nIt declares all the variables and functions in the private scope and returns\nan object with references to what is going to be public.\n\n```javascript\nvar revealingModule = (function() {\n  'use strict';\n\n  var privateVar = 'foo';\n  var publicVar = 'bar';\n\n  function privateFunction() {\n\n  }\n\n  function publicFunction() {\n\n  }\n\n  return {\n    publicVar: publicVar,\n    publicFunction: publicFunction\n  };\n}());\n```\n\n## Memoization\n\nCaches the return value of function. Useful for repetitive calls for a\ncomputationally expensive function.\n\n```javascript\nvar expensiveFunction = (function() {\n  'use strict';\n\n  var funcMemoized = function() {\n    var cacheKey = JSON.stringify(Array.prototype.slice.call(arguments));\n    var result;\n\n    if (!funcMemoized.cache[cacheKey]) {\n        // your expensive computation goes here\n\n        funcMemoized.cache[cacheKey] = result;\n    }\n\n    return funcMemoized.cache[cacheKey];\n  }\n\n  funcMemoized.cache = {};\n\n  return funcMemoized;\n}());\n```\n\n## Throttle\n\nThe function will be called no more than one time every X seconds, even if you\ncall it repeatedly. Useful for some DOM events like the resize event on the\nwindow.\n\n```javascript\nvar onResize = (function() {\n  'use strict';\n\n  var timeWindow = 200; // time in ms\n  var lastExecution = new Date((new Date()).getTime() - timeWindow);\n\n  var onResize = function(args) {\n    // your code goes here\n  };\n\n  return function() {\n    if ((lastExecution.getTime() + timeWindow) <= (new Date()).getTime()) {\n      lastExecution = new Date();\n      return onResize.apply(this, arguments);\n    }\n  };\n}());\n```\n\nReference:\n- [Underscore.js](http://underscorejs.org/docs/underscore.html#section-64)\n\n\n## Debounce\n\nThe function will postpone its execution until X miliseconds have elapsed since\nthe last call. Useful for some events that you want to happen after some time\nafter the last interaction, like an autocomplete or a double-click in a submit\nbutton.\n\n```javascript\nvar autocomplete = (function() {\n  'use strict';\n\n  var timeWindow = 500; // time in ms\n  var timeout;\n\n  var autocomplete = function(arg1, arg2) {\n    // your code goes here\n  };\n\n  return function() {\n    var context = this;\n    var args = arguments;\n    clearTimeout(timeout);\n    timeout = setTimeout(function() {\n      autocomplete.apply(context, args);\n    }, timeWindow);\n  };\n}());\n```\n\nReference:\n- [Underscore.js](http://davidwalsh.name/function-debounce)\n- [David Walsh](http://davidwalsh.name/function-debounce)\n\n## Namespace\n**trigger**: namespace⇥\n\nNamespacing is a technique employed to avoid collisions with other objects or\nvariables in the global namespace. They're also extremely useful for helping\norganize blocks of functionality in your application into easily manageable\ngroups that can be uniquely identified. Extensibility is of course key to any\nscalable namespacing pattern and IIFEs can be used to achieve this quite easily.\n\n\n```javascript\n;(function(namespace) {\n  'use strict';\n\n  // your code goes here\n  // namespace.method = function(){};\n})(window.namespace = window.namespace || {});\n```\n\nReference:\n- [Addy Osmani - Essential JS Namespacing](http://addyosmani.com/blog/essential-js-namespacing/)\n",
+  "metadata": {
+    "name": "js-patterns-atom-snippets",
+    "main": "./lib/js-patterns-atom-snippets",
+    "version": "0.2.1",
+    "description": "JavaScript Patterns snippets for Atom",
+    "repository": "https://github.com/borisrorsvort/js-patterns-atom-snippets.git",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=0.174.0 <2.0.0"
+    },
+    "dependencies": {}
+  }
+}

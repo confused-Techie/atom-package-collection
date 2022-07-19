@@ -1,0 +1,84 @@
+{
+  "name": "scss-media-queries",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Corjen/atom-media-queries"
+  },
+  "downloads": 2305,
+  "stargazers_count": 2,
+  "releases": {
+    "latest": "0.4.0"
+  },
+  "versions": {
+    "0.4.0": {
+      "name": "scss-media-queries",
+      "version": "0.4.0",
+      "license": "MIT",
+      "keywords": [
+        "sass",
+        "scss",
+        "media queries"
+      ],
+      "description": "A set of media queries for scss",
+      "repository": "https://github.com/Corjen/atom-media-queries.git",
+      "engines": {
+        "atom": ">=1.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/scss-media-queries/versions/0.4.0/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "scss-media-queries",
+      "version": "0.2.0",
+      "license": "MIT",
+      "keywords": [
+        "sass",
+        "scss",
+        "media queries"
+      ],
+      "description": "A set of media queries for scss",
+      "repository": "https://github.com/Corjen/atom-media-queries.git",
+      "engines": {
+        "atom": ">=1.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/scss-media-queries/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "scss-media-queries",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "sass",
+        "scss",
+        "media queries"
+      ],
+      "description": "A set of media queries for scss",
+      "repository": "https://github.com/Corjen/atom-media-queries.git",
+      "engines": {
+        "atom": ">=1.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/scss-media-queries/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "#SCSS media queries snippets#\n\nThis small package installs a couple of snippets that I use often in my scss files. The breakpoints are inspired by Zurb's Foundation and can, of course, be tweaked to your liking. I usually put the media queries in a seperate file like `_media-queries.scss` which looks like this:\n\n```\n@function lower-bound($range) {\n  @if length($range) <= 0 {\n    @return 0;\n  }\n  @return nth($range, 1);\n}\n\n@function upper-bound($range) {\n  @if length($range) < 2 {\n    @return 999999999999;\n  }\n  @return nth($range, 2);\n}\n\n@function em-calc($px-value, $rem-base: 16) {\n  $value: $px-value / $rem-base;\n  @return $value * 1em;\n}\n\n$small-range: (0, em-calc(640)); /* between 0 & 640px */\n$medium-range: (em-calc(641), em-calc(1000)); /* between 640px & 1000px */\n$large-range: (em-calc(1001), em-calc(1025)); /* between 1001px & 1025px */\n$xlarge-range: (em-calc(1026), em-calc(1920)); /* between 1026px & 1920px */\n$xxlarge-range: (em-calc(1921), 99999999px); /* between 1920px & infinity */\n\n$screen: 'only screen';\n$landscape: '#{$screen} and (orientation: landscape)';\n$portrait: '#{$screen} and (orientation: portrait)';\n$small-up: $screen;\n\n$small-only: '#{$screen} and (max-width: #{upper-bound($small-range)})';\n$medium-up: '#{$screen} and (min-width:#{lower-bound($medium-range)})';\n$medium-only: '#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max-width:#{upper-bound($medium-range)})';\n\n$large-up: '#{$screen} and (min-width:#{lower-bound($large-range)})';\n$large-only: '#{$screen} and (min-width:#{lower-bound($large-range)}) and (max-width:#{upper-bound($large-range)})';\n\n$xlarge-up: '#{$screen} and (min-width:#{lower-bound($xlarge-range)})';\n$xlarge-only: '#{$screen} and (min-width:#{lower-bound($xlarge-range)}) and (max-width:#{upper-bound($xlarge-range)})';\n\n$xxlarge-up: '#{$screen} and (min-width:#{lower-bound($xxlarge-range)})';\n$xxlarge-only: '#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})';\n\n```\n\nThis package will install these snippets:\n\n```\nsm-up > @media #{$small-up} {}\nsm-only > @media #{$small-only} {}\nmed-up > @media #{$medium-up} {}\nmed-only > @media #{$medium-only} {}\nlarge-up > @media #{$large-up} {}\nlarge-only > @media #{$large-only} {}\nxlarge-up > @media #{$xlarge-up} {}\nxlarge-only > @media #{$xlarge-only} {}\nxxlarge-up > @media #{$xxlarge-up} {}\nxxlarge-only > @media #{$xxlarge-only} {}\nportrait > @media #{$portrait} {}\nlandscape > @media #{$landscape} {}\n```\n",
+  "metadata": {
+    "name": "scss-media-queries",
+    "version": "0.4.0",
+    "license": "MIT",
+    "keywords": [
+      "sass",
+      "scss",
+      "media queries"
+    ],
+    "description": "A set of media queries for scss",
+    "repository": "https://github.com/Corjen/atom-media-queries.git",
+    "engines": {
+      "atom": ">=1.0 <2.0.0"
+    }
+  }
+}

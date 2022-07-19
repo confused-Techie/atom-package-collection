@@ -1,0 +1,137 @@
+{
+  "name": "particle-offline-compiler",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chuank/particle-offline-compiler"
+  },
+  "downloads": 1576,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.1.3"
+  },
+  "versions": {
+    "0.1.3": {
+      "name": "particle-offline-compiler",
+      "main": "./lib/particle-offline-compiler",
+      "version": "0.1.3",
+      "description": "100% offline compiling + upload workflow for Particle devices. Please see readme for prerequisites.",
+      "keywords": [
+        "particle",
+        "cloud",
+        "local",
+        "offline",
+        "build"
+      ],
+      "homepage": "http://www.chuank.com",
+      "bugs": "https://github.com/chuank/particle-offline-compiler/issues",
+      "author": "Chuan Khoo",
+      "repository": "https://github.com/chuank/particle-offline-compiler",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=0.0.25 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/particle-offline-compiler/versions/0.1.3/tarball"
+      }
+    },
+    "0.1.2": {
+      "name": "particle-offline-compiler",
+      "main": "./lib/particle-offline-compiler",
+      "version": "0.1.2",
+      "description": "100% offline compiling + upload workflow for Particle devices. Please see readme for prerequisites.",
+      "keywords": [
+        "particle",
+        "cloud",
+        "local",
+        "offline",
+        "build"
+      ],
+      "homepage": "http://www.chuank.com",
+      "bugs": "https://github.com/chuank/particle-offline-compiler/issues",
+      "author": "Chuan Khoo",
+      "repository": "https://github.com/chuank/particle-offline-compiler",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=0.0.25 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/particle-offline-compiler/versions/0.1.2/tarball"
+      }
+    },
+    "0.1.1": {
+      "name": "particle-offline-compiler",
+      "main": "./lib/particle-offline-compiler",
+      "version": "0.1.1",
+      "description": "100% offline compiling + upload workflow for Particle devices. Please see readme for prerequisites.",
+      "keywords": [
+        "particle",
+        "cloud",
+        "local",
+        "offline",
+        "build"
+      ],
+      "homepage": "http://www.chuank.com",
+      "bugs": "https://github.com/chuank/particle-offline-compiler/issues",
+      "author": "Chuan Khoo",
+      "repository": "https://github.com/chuank/particle-offline-compiler",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/particle-offline-compiler/versions/0.1.1/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "particle-offline-compiler",
+      "main": "./lib/particle-offline-compiler",
+      "version": "0.1.0",
+      "description": "100% offline compiling for Particle devices. Please see readme below for prerequisites.",
+      "keywords": [
+        "particle",
+        "cloud",
+        "local",
+        "offline",
+        "build"
+      ],
+      "homepage": "http://www.chuank.com",
+      "bugs": "https://github.com/chuank/particle-offline-compiler/issues",
+      "author": "Chuan Khoo",
+      "repository": "https://github.com/chuank/particle-offline-compiler",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/particle-offline-compiler/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# particle-offline-compiler\n\nAn Atom / Particle Dev package for 100% offline code compilation for Particle Devices.\n\nFor situations where you *need* to compile and test Particle projects locally, and keep to a streamlined workflow.\n\nThis should be compatible with projects that connect to Particle.io, or if you're deploying your own local cloud.\n\n\n## Requirements\n\n1. __particle local compiler__  \n   Install the Particle local compiler ([full instructions here](https://github.com/spark/firmware/tree/latest)), including dependencies.  \n\n   This package also assumes that you have the latest `particle-cli` installed on your system – this will be required for OTA updates (coming soon)\n\n2. __particle-cli__  \n   To install particle-cli:  \n   ```\n   $ npm install -g particle-cli\n   $ particle cloud login\n   ```\n\n\n## Installation\nIn `atom / Particle Dev > Preferences > Install`, search for `particle-offline-compiler` and install it.\n\nBefore using it, open up the settings on the package, and enter the Particle Compiler Path – this should point to the location where you downloaded and compiled the __particle local compiler__ (see instructions above). The __Device Type__ and __Serial Port__ can be left empty, as they can be set easily in the __Particle.offline__ user menu.\n\nOnce installed, you should see a __Particle.offline__ menubar with self-explanatory options listed.\n\n\n## Usage Instructions\n* If you're using the package in atom, ensure the following:\n  * use `.cpp` file extensions, not `.ino`\n  * declare `#include \"application.h\"` at the top of your main `.cpp` file\n  * `*.cpp/*.h` libraries should be in the same folder as your main `.cpp` file\n  * declare your C prototypes manually, either in a `.h` file of the same name as the main `.cpp` file, or alternatively at the beginning of your main `.cpp` file.\n* The `[refresh DFU serial device list]` menu item under `Particle.offline > DFU serial port` needs to be manually refreshed to get the latest list of serial devices connected to your computer.\n* If you are connecting multiple Particle devices to your computer at any one time, be sure to double-check the serial port that you are uploading to!\n* Choose `Compile locally + DFU upload` to compile and upload your code. You might want to toggle the Console first to see the progress of the compilation and spot errors.\n\n\n## OSX – Important note on environment variables:\n\nIn order for all of your PATH environment variables to be picked up, **launch Atom from the terminal**:\n\n    $ open -a \"/Applications/Atom.app\"\n\nor, if you have already installed the Atom Shell commands:\n\n    $ atom\n\nIf you're using Particle Dev, launch the application similarly from Terminal:\n\n    open -a \"/Applications/Particle Dev.app\"\n\nIf you skip this step, the compile will _not_ be able to find `arm-none-eabi-gcc` in your PATH environment variable, as the standard PATH launched from a Finder instance of Atom most likely excludes the gcc compiler location (default: /usr/local/bin).\n\n\n## Work in progress!\n\nThis is a work in progress.\n\nAt this point the package is only tested on OSX Yosemite, Atom 1.0.3+ and Particle Dev 0.0.25. YMMV.\n\nCompiler output is currently dumped out the Javascript console – sorry to those who prefer spiffier GUIs, but the console is good enough for now to figure out what's going on during the compile process. Perhaps a proper view with syntax coloring can be considered in the future.\n\n`Dfu-util` has a bug where the conclusion of every firmware upload presents `STDERR: dfu-util: Error during download get_status`, despite the firmware uploading OK. This can be safely ignored.\n\nKey features:\n* Automatic DFU (Core/Photon) upload of firmware works – no need to put your device manually into DFU mode\n* _(to implement)_ Core OTA updates\n* _(to implement)_ Photon OTA updates, currently not supported in the 0.4.3rc2 firmware of the Photon devices for local clouds, so we'll have to wait until Particle releases a major update to `particle-server`\n\n\n## Wait, isn't there Particle Dev that does the same thing?\n\nYes and no. [Particle Dev](https://www.particle.io/dev), which was built on top of Atom Shell a.k.a. Electron, is a fantastic project that addresses a specific need – quick, easy local __development__ (and storage) of code, with firmware builds/uploads still routed through Particle.io for ease of use. This same ease of use presents workflow obstacles when it comes to local cloud development, and slows down development massively.\n\nThis package was developed to improve workflow bottlenecks of the existing official Particle IDEs (Build Web IDE and Particle Dev).\n\nIf you encounter any of these scenarios, I hope this package will be of help:\n\n* You are developing a local cloud. Your current means of uploading new firmware is a combination of a) writing code in the Build Web IDE / Particle Dev, b) downloading the .bin files manually, before c) using `particle-cli` to send OTA updates to your Core(s), or perhaps, via DFU to your Photons. It's a slow process switching through these tasks just to get firmware uploaded.\n\n* You want to try out the latest firmware releases from Particle.io and/or custom code libraries, but the Build Web IDE is still pegged to earlier, stable builds (for good reason), leaving you to build your own local compiler, but without a streamlined way to upload your binaries to your devices.\n\nIt's worth noting that Particle Dev (and the Particle platform at large) goes through continuous development, and will *eventually* implement much better development workflows. This tiny Atom package might be helpful for those who want an immediate, interim solution to a faster workflow for local-cloud and/or offline Particle projects.\n",
+  "metadata": {
+    "name": "particle-offline-compiler",
+    "main": "./lib/particle-offline-compiler",
+    "version": "0.1.3",
+    "description": "100% offline compiling + upload workflow for Particle devices. Please see readme for prerequisites.",
+    "keywords": [
+      "particle",
+      "cloud",
+      "local",
+      "offline",
+      "build"
+    ],
+    "homepage": "http://www.chuank.com",
+    "bugs": "https://github.com/chuank/particle-offline-compiler/issues",
+    "author": "Chuan Khoo",
+    "repository": "https://github.com/chuank/particle-offline-compiler",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=0.0.25 <2.0.0"
+    },
+    "dependencies": {}
+  }
+}

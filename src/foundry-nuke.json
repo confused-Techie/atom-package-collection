@@ -1,0 +1,133 @@
+{
+  "name": "foundry-nuke",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tokejepsen/atom-foundry-nuke"
+  },
+  "downloads": 844,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "0.3.0"
+  },
+  "versions": {
+    "0.3.0": {
+      "name": "Foundry-Nuke",
+      "main": "./lib/nuke",
+      "version": "0.3.0",
+      "private": true,
+      "description": "Run python scripts from Atom to Nuke.",
+      "activationCommands": {
+        "atom-text-editor": [
+          "nuke:run",
+          "nuke:closeMessage"
+        ]
+      },
+      "repository": "https://github.com/tokejepsen/atom-foundry-nuke",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "temp": "~0.7.0",
+        "atom-message-panel": "1.2.4"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/foundry-nuke/versions/0.3.0/tarball"
+      }
+    },
+    "0.2.1": {
+      "name": "Foundry-Nuke",
+      "main": "./lib/nuke",
+      "version": "0.2.1",
+      "private": true,
+      "description": "Run python scripts from Atom to Nuke.",
+      "activationCommands": {
+        "atom-text-editor": [
+          "nuke:run"
+        ]
+      },
+      "repository": "https://github.com/tokejepsen/atom-foundry-nuke",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "temp": "~0.7.0",
+        "atom-message-panel": "1.2.4"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/foundry-nuke/versions/0.2.1/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "Foundry-Nuke",
+      "main": "./lib/nuke",
+      "version": "0.2.0",
+      "private": true,
+      "description": "Run python scripts from Atom to Nuke.",
+      "activationCommands": {
+        "atom-text-editor": [
+          "nuke:run"
+        ]
+      },
+      "repository": "https://github.com/tokejepsen/atom-foundry-nuke",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "temp": "~0.7.0",
+        "atom-message-panel": "1.2.4"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/foundry-nuke/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "Foundry-Nuke",
+      "main": "./lib/nuke",
+      "version": "0.1.0",
+      "private": true,
+      "description": "Run python scripts from Atom to Nuke.",
+      "activationCommands": {
+        "atom-text-editor": [
+          "nuke:run"
+        ]
+      },
+      "repository": "https://github.com/tokejepsen/atom-foundry-nuke",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "temp": "~0.7.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/foundry-nuke/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# atom-foundry-nuke\n\nRun python scripts from Atom to Nuke.\n\n## Features:\n\n* Send an entire file to Nuke\n\n## Installation:\n\nCopy atom_server.py from the setup folder to [USER]\\.nuke\n\nAlternatively make atom_server.py from the following code;\n\n```python\nimport socket\nimport sys\nimport threading\nimport StringIO\nimport contextlib\n\nimport nuke\n\nHOST = ''\nPORT = 8888\n\n\n@contextlib.contextmanager\ndef stdoutIO(stdout=None):\n  old = sys.stdout\n  if stdout is None:\n    stdout = StringIO.StringIO()\n  sys.stdout = stdout\n  yield stdout\n  sys.stdout = old\n\n\ndef _exec(data):\n  with stdoutIO() as s:\n    exec(data)\n  return s.getvalue()\n\n\ndef server_start():\n  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n  s.bind((HOST, PORT))\n  s.listen(5)\n\n  while 1:\n    client, address = s.accept()\n    try:\n      data = client.recv(4096)\n      if data:\n        result = nuke.executeInMainThreadWithResult(_exec, args=(data))\n        client.send(result)\n      except SystemExit:\n        result = self.encode('SERVER: Shutting down...')\n        client.send(result)\n        raise\n      finally:\n        client.close()\n\nt = threading.Thread(None, server_start)\nt.setDaemon(True)\nt.start()\n```\n\nCopy menu.py from the setup folder to [USER]\\.nuke\n\nAlternatively paste in the following into an existing menu.py;\n\n```python\nimport atom_server\n```\n\n## Usage:\n\nOpen up a python script and press ```ctrl-alt-r``` on the file.\n\n## Thanks to:\n\nDavid Paul Rosser for the original work; https://github.com/davidpaulrosser/atom-maya\n\nHugh MacDonald for a guiding repo; https://github.com/Nvizible/NukeExternalControl\n",
+  "metadata": {
+    "name": "Foundry-Nuke",
+    "main": "./lib/nuke",
+    "version": "0.3.0",
+    "private": true,
+    "description": "Run python scripts from Atom to Nuke.",
+    "activationCommands": {
+      "atom-text-editor": [
+        "nuke:run",
+        "nuke:closeMessage"
+      ]
+    },
+    "repository": "https://github.com/tokejepsen/atom-foundry-nuke",
+    "license": "MIT",
+    "engines": {
+      "atom": ">0.50.0"
+    },
+    "dependencies": {
+      "temp": "~0.7.0",
+      "atom-message-panel": "1.2.4"
+    }
+  }
+}

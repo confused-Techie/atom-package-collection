@@ -1,0 +1,2412 @@
+{
+  "name": "minsky-link",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robobenklein/team-minsky"
+  },
+  "downloads": 626,
+  "stargazers_count": 2,
+  "releases": {
+    "latest": "0.0.16"
+  },
+  "versions": {
+    "0.0.16": {
+      "name": "minsky-link",
+      "version": "0.0.16",
+      "description": "An Atom Plugin to bring Github/Gitlab Issues to the Atom UI.",
+      "main": "./dist/main/minskylink",
+      "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+      "engines": {
+        "atom": ">=1.32.0 <2.0.0"
+      },
+      "scripts": {
+        "build": "tsc -p ./lib/",
+        "prettier": "ts-node scripts/prettier.ts write",
+        "prettier-check": "ts-node scripts/prettier.ts check",
+        "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts",
+        "lint": "tslint --project ./lib",
+        "test": "npm run typecheck && npm run lint && npm run prettier-check"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "intentions:list": {
+          "versions": {
+            "1.0.0": "provideIntentions"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-cs/team-minsky.git"
+      },
+      "keywords": [
+        "atom",
+        "plugin",
+        "issues",
+        "github",
+        "gitlab",
+        "projects",
+        "productivity",
+        "tool"
+      ],
+      "author": "Ben Klein, Brian Lundell, Ian Lumsden, Jonathan Bueckman",
+      "license": "MPL-2.0",
+      "bugs": {
+        "url": "https://github.com/utk-cs/team-minsky/issues"
+      },
+      "homepage": "https://github.com/utk-cs/team-minsky#readme",
+      "dependencies": {
+        "@octokit/rest": "=15.15.1",
+        "etch": "^0.14.0",
+        "typescript": "^3.5.3"
+      },
+      "devDependencies": {
+        "@types/atom": "~1.28",
+        "@types/node": "^10.14.16",
+        "prettier": "^1.18.2",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.19.0"
+      },
+      "configSchema": {
+        "issue_tag_regex": {
+          "title": "Issue Regex Tag",
+          "description": "Allows changing the regex used to locate issue tags, use (?:...) for non-capturing groups, and capture the number in group 1.",
+          "type": "string",
+          "default": "(?:(?:GH|#)([0-9]+))",
+          "order": 11
+        },
+        "pane_options": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "enable_viewmode_panes": {
+              "title": "Enable Panes",
+              "description": "Enables issue pages to be expanded to full panes.",
+              "type": "boolean",
+              "default": true,
+              "order": 31
+            },
+            "viewmode_panes_direction": {
+              "title": "Direction to open the pane in, relative to current active editor.",
+              "type": "string",
+              "default": "down",
+              "enum": [
+                {
+                  "value": "down",
+                  "description": "Open the new pane BELOW the active pane."
+                },
+                {
+                  "value": "right",
+                  "description": "Open the new pane RIGHT OF the active pane."
+                },
+                {
+                  "value": "left",
+                  "description": "Open the new pane LEFT OF the active pane."
+                },
+                {
+                  "value": "up",
+                  "description": "Open the new pane ABOVE the active pane."
+                }
+              ],
+              "order": 32
+            }
+          }
+        },
+        "drawer_options_NYI": {
+          "type": "object",
+          "order": 40,
+          "description": "Not yet implemented.",
+          "properties": {
+            "enable_viewmode_drawers": {
+              "title": "Enable Drawers",
+              "description": "Enables inline, resizable and collapsible drawers.",
+              "type": "boolean",
+              "default": true,
+              "order": 41
+            },
+            "default_drawer_height": {
+              "title": "Drawer Height",
+              "description": "Change the drawer height, number of lines shown. This is resizeable in use as well",
+              "type": "integer",
+              "default": 12,
+              "order": 42
+            }
+          }
+        },
+        "default_git_remote": {
+          "title": "Default Git Remote",
+          "description": "Changes the Git remote used to scan for the remote API.",
+          "type": "string",
+          "default": "origin",
+          "order": 21
+        },
+        "hover_popup_options_NYI": {
+          "type": "object",
+          "order": 50,
+          "description": "Not yet implemented.",
+          "properties": {
+            "enable_viewmode_hoverover": {
+              "title": "Show snippets on hover",
+              "description": "Enables snippets to be shown when you hover over a issue tag.",
+              "type": "boolean",
+              "default": true,
+              "order": 51
+            },
+            "extended_popup_description": {
+              "title": "Extend Popup Description",
+              "description": "Shows the issue description box in popup",
+              "type": "boolean",
+              "default": true,
+              "order": 52
+            },
+            "extended_popup_milestone": {
+              "title": "Extend Popup Milestone",
+              "description": "Show the issue milestone box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 53
+            },
+            "extended_popup_project": {
+              "title": "Extend Popup Project",
+              "description": "Show the issue project box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 54
+            },
+            "extended_popup_assignee": {
+              "title": "Extend Popup Assignee",
+              "description": "Show the users assigned box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 55
+            },
+            "extended_popup_label": {
+              "title": "Extend Popup Label",
+              "description": "Show the issue labels box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 56
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minsky-link/versions/0.0.16/tarball"
+      }
+    },
+    "0.0.15": {
+      "name": "minsky-link",
+      "version": "0.0.15",
+      "description": "An Atom Plugin to bring Github/Gitlab Issues to the Atom UI.",
+      "main": "./dist/main/minskylink",
+      "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+      "engines": {
+        "atom": ">=1.32.0 <2.0.0"
+      },
+      "scripts": {
+        "build": "tsc -p ./lib/",
+        "prettier": "ts-node scripts/prettier.ts write",
+        "prettier-check": "ts-node scripts/prettier.ts check",
+        "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts",
+        "lint": "tslint --project ./lib",
+        "test": "npm run typecheck && npm run lint && npm run prettier-check"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "intentions:list": {
+          "versions": {
+            "1.0.0": "provideIntentions"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-cs/team-minsky.git"
+      },
+      "keywords": [
+        "atom",
+        "plugin",
+        "issues",
+        "github",
+        "gitlab",
+        "projects",
+        "productivity",
+        "tool"
+      ],
+      "author": "Ben Klein, Brian Lundell, Ian Lumsden, Jonathan Bueckman",
+      "license": "MPL-2.0",
+      "bugs": {
+        "url": "https://github.com/utk-cs/team-minsky/issues"
+      },
+      "homepage": "https://github.com/utk-cs/team-minsky#readme",
+      "dependencies": {
+        "@octokit/rest": "=15.15.1",
+        "etch": "^0.14.0",
+        "typescript": "^3.5.3"
+      },
+      "devDependencies": {
+        "@types/atom": "~1.28",
+        "@types/node": "^10.14.12",
+        "prettier": "^1.18.2",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.18.0"
+      },
+      "configSchema": {
+        "issue_tag_regex": {
+          "title": "Issue Regex Tag",
+          "description": "Allows changing the regex used to locate issue tags, use (?:...) for non-capturing groups, and capture the number in group 1.",
+          "type": "string",
+          "default": "(?:(?:GH|#)([0-9]+))",
+          "order": 11
+        },
+        "pane_options": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "enable_viewmode_panes": {
+              "title": "Enable Panes",
+              "description": "Enables issue pages to be expanded to full panes.",
+              "type": "boolean",
+              "default": true,
+              "order": 31
+            },
+            "viewmode_panes_direction": {
+              "title": "Direction to open the pane in, relative to current active editor.",
+              "type": "string",
+              "default": "down",
+              "enum": [
+                {
+                  "value": "down",
+                  "description": "Open the new pane BELOW the active pane."
+                },
+                {
+                  "value": "right",
+                  "description": "Open the new pane RIGHT OF the active pane."
+                },
+                {
+                  "value": "left",
+                  "description": "Open the new pane LEFT OF the active pane."
+                },
+                {
+                  "value": "up",
+                  "description": "Open the new pane ABOVE the active pane."
+                }
+              ],
+              "order": 32
+            }
+          }
+        },
+        "drawer_options_NYI": {
+          "type": "object",
+          "order": 40,
+          "description": "Not yet implemented.",
+          "properties": {
+            "enable_viewmode_drawers": {
+              "title": "Enable Drawers",
+              "description": "Enables inline, resizable and collapsible drawers.",
+              "type": "boolean",
+              "default": true,
+              "order": 41
+            },
+            "default_drawer_height": {
+              "title": "Drawer Height",
+              "description": "Change the drawer height, number of lines shown. This is resizeable in use as well",
+              "type": "integer",
+              "default": 12,
+              "order": 42
+            }
+          }
+        },
+        "default_git_remote": {
+          "title": "Default Git Remote",
+          "description": "Changes the Git remote used to scan for the remote API.",
+          "type": "string",
+          "default": "origin",
+          "order": 21
+        },
+        "hover_popup_options_NYI": {
+          "type": "object",
+          "order": 50,
+          "description": "Not yet implemented.",
+          "properties": {
+            "enable_viewmode_hoverover": {
+              "title": "Show snippets on hover",
+              "description": "Enables snippets to be shown when you hover over a issue tag.",
+              "type": "boolean",
+              "default": true,
+              "order": 51
+            },
+            "extended_popup_description": {
+              "title": "Extend Popup Description",
+              "description": "Shows the issue description box in popup",
+              "type": "boolean",
+              "default": true,
+              "order": 52
+            },
+            "extended_popup_milestone": {
+              "title": "Extend Popup Milestone",
+              "description": "Show the issue milestone box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 53
+            },
+            "extended_popup_project": {
+              "title": "Extend Popup Project",
+              "description": "Show the issue project box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 54
+            },
+            "extended_popup_assignee": {
+              "title": "Extend Popup Assignee",
+              "description": "Show the users assigned box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 55
+            },
+            "extended_popup_label": {
+              "title": "Extend Popup Label",
+              "description": "Show the issue labels box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 56
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minsky-link/versions/0.0.15/tarball"
+      }
+    },
+    "0.0.14": {
+      "name": "minsky-link",
+      "version": "0.0.14",
+      "description": "An Atom Plugin to bring Github/Gitlab Issues to the Atom UI.",
+      "main": "./dist/main/minskylink",
+      "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+      "engines": {
+        "atom": ">=1.32.0 <2.0.0"
+      },
+      "scripts": {
+        "build": "tsc -p ./lib/",
+        "prettier": "ts-node scripts/prettier.ts write",
+        "prettier-check": "ts-node scripts/prettier.ts check",
+        "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts",
+        "lint": "tslint --project ./lib",
+        "test": "npm run typecheck && npm run lint && npm run prettier-check"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "intentions:list": {
+          "versions": {
+            "1.0.0": "provideIntentions"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-cs/team-minsky.git"
+      },
+      "keywords": [
+        "atom",
+        "plugin",
+        "issues",
+        "github",
+        "gitlab",
+        "projects",
+        "productivity",
+        "tool"
+      ],
+      "author": "Ben Klein, Brian Lundell, Ian Lumsden, Jonathan Bueckman",
+      "license": "MPL-2.0",
+      "bugs": {
+        "url": "https://github.com/utk-cs/team-minsky/issues"
+      },
+      "homepage": "https://github.com/utk-cs/team-minsky#readme",
+      "dependencies": {
+        "@octokit/rest": "=15.15.1",
+        "etch": "^0.14.0",
+        "typescript": "^3.5.3"
+      },
+      "devDependencies": {
+        "@types/atom": "~1.28",
+        "@types/node": "^10.14.12",
+        "prettier": "^1.18.2",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.18.0"
+      },
+      "configSchema": {
+        "issue_tag_regex": {
+          "title": "Issue Regex Tag",
+          "description": "Allows changing the regex used to locate issue tags, use (?:...) for non-capturing groups, and capture the number in group 1.",
+          "type": "string",
+          "default": "(?:(?:GH|#)([0-9]+))",
+          "order": 11
+        },
+        "pane_options": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "enable_viewmode_panes": {
+              "title": "Enable Panes",
+              "description": "Enables issue pages to be expanded to full panes.",
+              "type": "boolean",
+              "default": true,
+              "order": 31
+            },
+            "viewmode_panes_direction": {
+              "title": "Direction to open the pane in, relative to current active editor.",
+              "type": "string",
+              "default": "down",
+              "enum": [
+                {
+                  "value": "down",
+                  "description": "Open the new pane BELOW the active pane."
+                },
+                {
+                  "value": "right",
+                  "description": "Open the new pane RIGHT OF the active pane."
+                },
+                {
+                  "value": "left",
+                  "description": "Open the new pane LEFT OF the active pane."
+                },
+                {
+                  "value": "up",
+                  "description": "Open the new pane ABOVE the active pane."
+                }
+              ],
+              "order": 32
+            }
+          }
+        },
+        "drawer_options_NYI": {
+          "type": "object",
+          "order": 40,
+          "description": "Not yet implemented.",
+          "properties": {
+            "enable_viewmode_drawers": {
+              "title": "Enable Drawers",
+              "description": "Enables inline, resizable and collapsible drawers.",
+              "type": "boolean",
+              "default": true,
+              "order": 41
+            },
+            "default_drawer_height": {
+              "title": "Drawer Height",
+              "description": "Change the drawer height, number of lines shown. This is resizeable in use as well",
+              "type": "integer",
+              "default": 12,
+              "order": 42
+            }
+          }
+        },
+        "default_git_remote": {
+          "title": "Default Git Remote",
+          "description": "Changes the Git remote used to scan for the remote API.",
+          "type": "string",
+          "default": "origin",
+          "order": 21
+        },
+        "hover_popup_options_NYI": {
+          "type": "object",
+          "order": 50,
+          "description": "Not yet implemented.",
+          "properties": {
+            "enable_viewmode_hoverover": {
+              "title": "Show snippets on hover",
+              "description": "Enables snippets to be shown when you hover over a issue tag.",
+              "type": "boolean",
+              "default": true,
+              "order": 51
+            },
+            "extended_popup_description": {
+              "title": "Extend Popup Description",
+              "description": "Shows the issue description box in popup",
+              "type": "boolean",
+              "default": true,
+              "order": 52
+            },
+            "extended_popup_milestone": {
+              "title": "Extend Popup Milestone",
+              "description": "Show the issue milestone box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 53
+            },
+            "extended_popup_project": {
+              "title": "Extend Popup Project",
+              "description": "Show the issue project box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 54
+            },
+            "extended_popup_assignee": {
+              "title": "Extend Popup Assignee",
+              "description": "Show the users assigned box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 55
+            },
+            "extended_popup_label": {
+              "title": "Extend Popup Label",
+              "description": "Show the issue labels box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 56
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minsky-link/versions/0.0.14/tarball"
+      }
+    },
+    "0.0.13": {
+      "name": "minsky-link",
+      "version": "0.0.13",
+      "description": "An Atom Plugin to bring Github/Gitlab Issues to the Atom UI.",
+      "main": "./dist/main/minskylink",
+      "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+      "engines": {
+        "atom": ">=1.32.0 <2.0.0"
+      },
+      "scripts": {
+        "build": "tsc -p ./lib/",
+        "prettier": "ts-node scripts/prettier.ts write",
+        "prettier-check": "ts-node scripts/prettier.ts check",
+        "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts",
+        "lint": "tslint --project ./lib",
+        "test": "npm run typecheck && npm run lint && npm run prettier-check"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "intentions:list": {
+          "versions": {
+            "1.0.0": "provideIntentions"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-cs/team-minsky.git"
+      },
+      "keywords": [
+        "atom",
+        "plugin",
+        "issues",
+        "github",
+        "gitlab",
+        "projects",
+        "productivity",
+        "tool"
+      ],
+      "author": "Ben Klein, Brian Lundell, Ian Lumsden, Jonathan Bueckman",
+      "license": "MPL-2.0",
+      "bugs": {
+        "url": "https://github.com/utk-cs/team-minsky/issues"
+      },
+      "homepage": "https://github.com/utk-cs/team-minsky#readme",
+      "dependencies": {
+        "@octokit/rest": "=15.15.1",
+        "etch": "^0.14.0",
+        "typescript": "^3.1.6"
+      },
+      "devDependencies": {
+        "@types/atom": "~1.28",
+        "@types/node": "^10.14.8",
+        "prettier": "^1.18.0",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.17.0"
+      },
+      "configSchema": {
+        "issue_tag_regex": {
+          "title": "Issue Regex Tag",
+          "description": "Allows changing the regex used to locate issue tags, use (?:...) for non-capturing groups, and capture the number in group 1.",
+          "type": "string",
+          "default": "(?:(?:GH|#)([0-9]+))",
+          "order": 11
+        },
+        "pane_options": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "enable_viewmode_panes": {
+              "title": "Enable Panes",
+              "description": "Enables issue pages to be expanded to full panes.",
+              "type": "boolean",
+              "default": true,
+              "order": 31
+            },
+            "viewmode_panes_direction": {
+              "title": "Direction to open the pane in, relative to current active editor.",
+              "type": "string",
+              "default": "down",
+              "enum": [
+                {
+                  "value": "down",
+                  "description": "Open the new pane BELOW the active pane."
+                },
+                {
+                  "value": "right",
+                  "description": "Open the new pane RIGHT OF the active pane."
+                },
+                {
+                  "value": "left",
+                  "description": "Open the new pane LEFT OF the active pane."
+                },
+                {
+                  "value": "up",
+                  "description": "Open the new pane ABOVE the active pane."
+                }
+              ],
+              "order": 32
+            }
+          }
+        },
+        "drawer_options_NYI": {
+          "type": "object",
+          "order": 40,
+          "description": "Not yet implemented.",
+          "properties": {
+            "enable_viewmode_drawers": {
+              "title": "Enable Drawers",
+              "description": "Enables inline, resizable and collapsible drawers.",
+              "type": "boolean",
+              "default": true,
+              "order": 41
+            },
+            "default_drawer_height": {
+              "title": "Drawer Height",
+              "description": "Change the drawer height, number of lines shown. This is resizeable in use as well",
+              "type": "integer",
+              "default": 12,
+              "order": 42
+            }
+          }
+        },
+        "default_git_remote": {
+          "title": "Default Git Remote",
+          "description": "Changes the Git remote used to scan for the remote API.",
+          "type": "string",
+          "default": "origin",
+          "order": 21
+        },
+        "hover_popup_options_NYI": {
+          "type": "object",
+          "order": 50,
+          "description": "Not yet implemented.",
+          "properties": {
+            "enable_viewmode_hoverover": {
+              "title": "Show snippets on hover",
+              "description": "Enables snippets to be shown when you hover over a issue tag.",
+              "type": "boolean",
+              "default": true,
+              "order": 51
+            },
+            "extended_popup_description": {
+              "title": "Extend Popup Description",
+              "description": "Shows the issue description box in popup",
+              "type": "boolean",
+              "default": true,
+              "order": 52
+            },
+            "extended_popup_milestone": {
+              "title": "Extend Popup Milestone",
+              "description": "Show the issue milestone box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 53
+            },
+            "extended_popup_project": {
+              "title": "Extend Popup Project",
+              "description": "Show the issue project box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 54
+            },
+            "extended_popup_assignee": {
+              "title": "Extend Popup Assignee",
+              "description": "Show the users assigned box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 55
+            },
+            "extended_popup_label": {
+              "title": "Extend Popup Label",
+              "description": "Show the issue labels box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 56
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minsky-link/versions/0.0.13/tarball"
+      }
+    },
+    "0.0.12": {
+      "name": "minsky-link",
+      "version": "0.0.12",
+      "description": "An Atom Plugin to bring Github/Gitlab Issues to the Atom UI.",
+      "main": "./dist/main/minskylink",
+      "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+      "engines": {
+        "atom": ">=1.32.0 <2.0.0"
+      },
+      "scripts": {
+        "build": "tsc -p ./lib/",
+        "prettier": "ts-node scripts/prettier.ts write",
+        "prettier-check": "ts-node scripts/prettier.ts check",
+        "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts",
+        "lint": "tslint --project ./lib",
+        "test": "npm run typecheck && npm run lint && npm run prettier-check"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "intentions:list": {
+          "versions": {
+            "1.0.0": "provideIntentions"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-cs/team-minsky.git"
+      },
+      "keywords": [
+        "atom",
+        "plugin",
+        "issues",
+        "github",
+        "gitlab",
+        "projects",
+        "productivity",
+        "tool"
+      ],
+      "author": "Ben Klein, Brian Lundell, Ian Lumsden, Jonathan Bueckman",
+      "license": "MPL-2.0",
+      "bugs": {
+        "url": "https://github.com/utk-cs/team-minsky/issues"
+      },
+      "homepage": "https://github.com/utk-cs/team-minsky#readme",
+      "dependencies": {
+        "@octokit/rest": "=15.15.1",
+        "etch": "^0.14.0",
+        "typescript": "^3.1.6"
+      },
+      "devDependencies": {
+        "@types/atom": "~1.28",
+        "@types/node": "^10.12.10",
+        "prettier": "^1.15.2",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.11.0"
+      },
+      "configSchema": {
+        "issue_tag_regex": {
+          "title": "Issue Regex Tag",
+          "description": "Allows changing the regex used to locate issue tags, use (?:...) for non-capturing groups, and capture the number in group 1.",
+          "type": "string",
+          "default": "(?:(?:GH|#)([0-9]+))",
+          "order": 11
+        },
+        "pane_options": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "enable_viewmode_panes": {
+              "title": "Enable Panes",
+              "description": "Enables issue pages to be expanded to full panes.",
+              "type": "boolean",
+              "default": true,
+              "order": 31
+            },
+            "viewmode_panes_direction": {
+              "title": "Direction to open the pane in, relative to current active editor.",
+              "type": "string",
+              "default": "down",
+              "enum": [
+                {
+                  "value": "down",
+                  "description": "Open the new pane BELOW the active pane."
+                },
+                {
+                  "value": "right",
+                  "description": "Open the new pane RIGHT OF the active pane."
+                },
+                {
+                  "value": "left",
+                  "description": "Open the new pane LEFT OF the active pane."
+                },
+                {
+                  "value": "up",
+                  "description": "Open the new pane ABOVE the active pane."
+                }
+              ],
+              "order": 32
+            }
+          }
+        },
+        "drawer_options_NYI": {
+          "type": "object",
+          "order": 40,
+          "description": "Not yet implemented.",
+          "properties": {
+            "enable_viewmode_drawers": {
+              "title": "Enable Drawers",
+              "description": "Enables inline, resizable and collapsible drawers.",
+              "type": "boolean",
+              "default": true,
+              "order": 41
+            },
+            "default_drawer_height": {
+              "title": "Drawer Height",
+              "description": "Change the drawer height, number of lines shown. This is resizeable in use as well",
+              "type": "integer",
+              "default": 12,
+              "order": 42
+            }
+          }
+        },
+        "default_git_remote": {
+          "title": "Default Git Remote",
+          "description": "Changes the Git remote used to scan for the remote API.",
+          "type": "string",
+          "default": "origin",
+          "order": 21
+        },
+        "hover_popup_options_NYI": {
+          "type": "object",
+          "order": 50,
+          "description": "Not yet implemented.",
+          "properties": {
+            "enable_viewmode_hoverover": {
+              "title": "Show snippets on hover",
+              "description": "Enables snippets to be shown when you hover over a issue tag.",
+              "type": "boolean",
+              "default": true,
+              "order": 51
+            },
+            "extended_popup_description": {
+              "title": "Extend Popup Description",
+              "description": "Shows the issue description box in popup",
+              "type": "boolean",
+              "default": true,
+              "order": 52
+            },
+            "extended_popup_milestone": {
+              "title": "Extend Popup Milestone",
+              "description": "Show the issue milestone box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 53
+            },
+            "extended_popup_project": {
+              "title": "Extend Popup Project",
+              "description": "Show the issue project box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 54
+            },
+            "extended_popup_assignee": {
+              "title": "Extend Popup Assignee",
+              "description": "Show the users assigned box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 55
+            },
+            "extended_popup_label": {
+              "title": "Extend Popup Label",
+              "description": "Show the issue labels box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 56
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minsky-link/versions/0.0.12/tarball"
+      }
+    },
+    "0.0.11": {
+      "name": "minsky-link",
+      "version": "0.0.11",
+      "description": "An Atom Plugin to bring Github/Gitlab Issues to the Atom UI.",
+      "main": "./dist/main/minskylink",
+      "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+      "engines": {
+        "atom": ">=1.32.0 <2.0.0"
+      },
+      "scripts": {
+        "build": "tsc -p ./lib/",
+        "prettier": "ts-node scripts/prettier.ts write",
+        "prettier-check": "ts-node scripts/prettier.ts check",
+        "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts",
+        "lint": "tslint --project ./lib",
+        "test": "npm run typecheck && npm run lint && npm run prettier-check"
+      },
+      "atomTranspilers": [
+        {
+          "glob": "{dist,lib}/**/*.js",
+          "transpiler": "atom-babel6-transpiler",
+          "options": {
+            "cacheKeyFiles": [
+              "package.json"
+            ],
+            "setBabelEnv": "ATOM_MINSKYLINK_BABEL_ENV"
+          }
+        }
+      ],
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "intentions:list": {
+          "versions": {
+            "1.0.0": "provideIntentions"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-cs/team-minsky.git"
+      },
+      "keywords": [
+        "atom",
+        "plugin",
+        "issues",
+        "github",
+        "gitlab",
+        "projects",
+        "productivity",
+        "tool"
+      ],
+      "author": "Ben Klein, Brian Lundell, Ian Lumsden, Jonathan Bueckman",
+      "license": "MPL-2.0",
+      "bugs": {
+        "url": "https://github.com/utk-cs/team-minsky/issues"
+      },
+      "homepage": "https://github.com/utk-cs/team-minsky#readme",
+      "dependencies": {
+        "@octokit/rest": "=15.15.1",
+        "etch": "^0.14.0",
+        "typescript": "^3.1.6"
+      },
+      "devDependencies": {
+        "@types/atom": "~1.28",
+        "@types/node": "^10.12.10",
+        "prettier": "^1.15.2",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.11.0"
+      },
+      "configSchema": {
+        "issue_tag_regex": {
+          "title": "Issue Regex Tag",
+          "description": "Allows changing the regex used to locate issue tags, use (?:...) for non-capturing groups, and capture the number in group 1.",
+          "type": "string",
+          "default": "(?:(?:GH|#)([0-9]+))",
+          "order": 11
+        },
+        "pane_options": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "enable_viewmode_panes": {
+              "title": "Enable Panes",
+              "description": "Enables issue pages to be expanded to full panes.",
+              "type": "boolean",
+              "default": true,
+              "order": 31
+            },
+            "viewmode_panes_direction": {
+              "title": "Direction to open the pane in, relative to current active editor.",
+              "type": "string",
+              "default": "down",
+              "enum": [
+                {
+                  "value": "down",
+                  "description": "Open the new pane BELOW the active pane."
+                },
+                {
+                  "value": "right",
+                  "description": "Open the new pane RIGHT OF the active pane."
+                },
+                {
+                  "value": "left",
+                  "description": "Open the new pane LEFT OF the active pane."
+                },
+                {
+                  "value": "up",
+                  "description": "Open the new pane ABOVE the active pane."
+                }
+              ],
+              "order": 32
+            }
+          }
+        },
+        "drawer_options_NYI": {
+          "type": "object",
+          "order": 40,
+          "description": "Not yet implemented.",
+          "properties": {
+            "enable_viewmode_drawers": {
+              "title": "Enable Drawers",
+              "description": "Enables inline, resizable and collapsible drawers.",
+              "type": "boolean",
+              "default": true,
+              "order": 41
+            },
+            "default_drawer_height": {
+              "title": "Drawer Height",
+              "description": "Change the drawer height, number of lines shown. This is resizeable in use as well",
+              "type": "integer",
+              "default": 12,
+              "order": 42
+            }
+          }
+        },
+        "default_git_remote": {
+          "title": "Default Git Remote",
+          "description": "Changes the Git remote used to scan for the remote API.",
+          "type": "string",
+          "default": "origin",
+          "order": 21
+        },
+        "hover_popup_options_NYI": {
+          "type": "object",
+          "order": 50,
+          "description": "Not yet implemented.",
+          "properties": {
+            "enable_viewmode_hoverover": {
+              "title": "Show snippets on hover",
+              "description": "Enables snippets to be shown when you hover over a issue tag.",
+              "type": "boolean",
+              "default": true,
+              "order": 51
+            },
+            "extended_popup_description": {
+              "title": "Extend Popup Description",
+              "description": "Shows the issue description box in popup",
+              "type": "boolean",
+              "default": true,
+              "order": 52
+            },
+            "extended_popup_milestone": {
+              "title": "Extend Popup Milestone",
+              "description": "Show the issue milestone box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 53
+            },
+            "extended_popup_project": {
+              "title": "Extend Popup Project",
+              "description": "Show the issue project box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 54
+            },
+            "extended_popup_assignee": {
+              "title": "Extend Popup Assignee",
+              "description": "Show the users assigned box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 55
+            },
+            "extended_popup_label": {
+              "title": "Extend Popup Label",
+              "description": "Show the issue labels box in popup",
+              "type": "boolean",
+              "default": false,
+              "order": 56
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minsky-link/versions/0.0.11/tarball"
+      }
+    },
+    "0.0.10": {
+      "name": "minsky-link",
+      "version": "0.0.10",
+      "description": "An Atom Plugin to bring Github/Gitlab Issues to the Atom UI.",
+      "main": "./dist/main/minskylink",
+      "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+      "engines": {
+        "atom": ">=1.32.0 <2.0.0"
+      },
+      "scripts": {
+        "build": "tsc -p ./lib/",
+        "prettier": "ts-node scripts/prettier.ts write",
+        "prettier-check": "ts-node scripts/prettier.ts check",
+        "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts",
+        "lint": "tslint --project ./lib",
+        "test": "npm run typecheck && npm run lint && npm run prettier-check"
+      },
+      "atomTranspilers": [
+        {
+          "glob": "{dist,lib}/**/*.js",
+          "transpiler": "atom-babel6-transpiler",
+          "options": {
+            "cacheKeyFiles": [
+              "package.json"
+            ],
+            "setBabelEnv": "ATOM_MINSKYLINK_BABEL_ENV"
+          }
+        }
+      ],
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "intentions:list": {
+          "versions": {
+            "1.0.0": "provideIntentions"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-cs/team-minsky.git"
+      },
+      "keywords": [
+        "atom",
+        "plugin",
+        "issues",
+        "github",
+        "gitlab",
+        "projects",
+        "productivity",
+        "tool"
+      ],
+      "author": "Ben Klein, Brian Lundell, Ian Lumsden, Jonathan Bueckman",
+      "license": "MPL-2.0",
+      "bugs": {
+        "url": "https://github.com/utk-cs/team-minsky/issues"
+      },
+      "homepage": "https://github.com/utk-cs/team-minsky#readme",
+      "dependencies": {
+        "@octokit/rest": "=15.15.1",
+        "etch": "^0.14.0",
+        "typescript": "^3.1.6"
+      },
+      "devDependencies": {
+        "@types/atom": "~1.28",
+        "@types/node": "^10.12.10",
+        "prettier": "^1.15.2",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.11.0"
+      },
+      "configSchema": {
+        "enable_viewmode_drawers": {
+          "title": "Enable Drawers",
+          "description": "Enables inline, resizable and collapsible drawers.",
+          "type": "boolean",
+          "default": true,
+          "order": 42
+        },
+        "enable_viewmode_hoverover": {
+          "title": "Show snippets on hover",
+          "description": "Enables snippets to be shown when you hover over a issue tag.",
+          "type": "boolean",
+          "default": true,
+          "order": 41
+        },
+        "enable_viewmode_panes": {
+          "title": "Enable Panes",
+          "description": "Enables issue pages to be expanded to full panes.",
+          "type": "boolean",
+          "default": true,
+          "order": 43
+        },
+        "issue_tag_regex": {
+          "title": "Issue Regex Tag",
+          "description": "Allows changing the regex used to locate issue tags",
+          "type": "string",
+          "default": "(GH([0-9]+))",
+          "order": 44
+        },
+        "default_git_remote": {
+          "title": "Default Git Remote",
+          "description": "Changes the Git remote",
+          "type": "string",
+          "default": "origin",
+          "order": 45
+        },
+        "default_drawer_height": {
+          "title": "Drawer Height",
+          "description": "Change the drawer height, number of lines shown. This is resizeable in use as well",
+          "type": "integer",
+          "default": 12,
+          "order": 46
+        },
+        "extended_popup_description": {
+          "title": "Extend Popup Description",
+          "description": "Shows the issue description box in popup",
+          "type": "boolean",
+          "default": true,
+          "order": 47
+        },
+        "extended_popup_milestone": {
+          "title": "Extend Popup Milestone",
+          "description": "Show the issue milestone box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 48
+        },
+        "extended_popup_project": {
+          "title": "Extend Popup Project",
+          "description": "Show the issue project box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 49
+        },
+        "extended_popup_assignee": {
+          "title": "Extend Popup Assignee",
+          "description": "Show the users assigned box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 50
+        },
+        "extended_popup_label": {
+          "title": "Extend Popup Label",
+          "description": "Show the issue labels box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 51
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minsky-link/versions/0.0.10/tarball"
+      }
+    },
+    "0.0.9": {
+      "name": "minsky-link",
+      "version": "0.0.9",
+      "description": "An Atom Plugin to bring Github/Gitlab Issues to the Atom UI.",
+      "main": "./dist/main/minskylink",
+      "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+      "engines": {
+        "atom": ">=1.32.0 <2.0.0"
+      },
+      "scripts": {
+        "build": "tsc -p ./lib/",
+        "prettier": "ts-node scripts/prettier.ts write",
+        "prettier-check": "ts-node scripts/prettier.ts check",
+        "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts",
+        "lint": "tslint --project ./lib",
+        "test": "npm run typecheck && npm run lint && npm run prettier-check"
+      },
+      "atomTranspilers": [
+        {
+          "glob": "{dist,lib}/**/*.js",
+          "transpiler": "atom-babel6-transpiler",
+          "options": {
+            "cacheKeyFiles": [
+              "package.json"
+            ],
+            "setBabelEnv": "ATOM_MINSKYLINK_BABEL_ENV"
+          }
+        }
+      ],
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "intentions:list": {
+          "versions": {
+            "1.0.0": "provideIntentions"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-cs/team-minsky.git"
+      },
+      "keywords": [
+        "atom",
+        "plugin",
+        "issues",
+        "github",
+        "gitlab",
+        "projects",
+        "productivity",
+        "tool"
+      ],
+      "author": "Ben Klein, Brian Lundell, Ian Lumsden, Jonathan Bueckman",
+      "license": "MPL-2.0",
+      "bugs": {
+        "url": "https://github.com/utk-cs/team-minsky/issues"
+      },
+      "homepage": "https://github.com/utk-cs/team-minsky#readme",
+      "dependencies": {
+        "@octokit/rest": "=15.15.1",
+        "etch": "^0.14.0",
+        "typescript": "^3.1.6"
+      },
+      "devDependencies": {
+        "@types/atom": "~1.28",
+        "@types/node": "^10.12.10",
+        "prettier": "^1.15.2",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.11.0"
+      },
+      "configSchema": {
+        "enable_viewmode_drawers": {
+          "title": "Enable Drawers",
+          "description": "Enables inline, resizable and collapsible drawers.",
+          "type": "boolean",
+          "default": true,
+          "order": 42
+        },
+        "enable_viewmode_hoverover": {
+          "title": "Show snippets on hover",
+          "description": "Enables snippets to be shown when you hover over a issue tag.",
+          "type": "boolean",
+          "default": true,
+          "order": 41
+        },
+        "enable_viewmode_panes": {
+          "title": "Enable Panes",
+          "description": "Enables issue pages to be expanded to full panes.",
+          "type": "boolean",
+          "default": true,
+          "order": 43
+        },
+        "issue_tag_regex": {
+          "title": "Issue Regex Tag",
+          "description": "Allows changing the regex used to locate issue tags",
+          "type": "string",
+          "default": "(GH([0-9]+))",
+          "order": 44
+        },
+        "default_git_remote": {
+          "title": "Default Git Remote",
+          "description": "Changes the Git remote",
+          "type": "string",
+          "default": "origin",
+          "order": 45
+        },
+        "default_drawer_height": {
+          "title": "Drawer Height",
+          "description": "Change the drawer height, number of lines shown. This is resizeable in use as well",
+          "type": "integer",
+          "default": 12,
+          "order": 46
+        },
+        "extended_popup_description": {
+          "title": "Extend Popup Description",
+          "description": "Shows the issue description box in popup",
+          "type": "boolean",
+          "default": true,
+          "order": 47
+        },
+        "extended_popup_milestone": {
+          "title": "Extend Popup Milestone",
+          "description": "Show the issue milestone box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 48
+        },
+        "extended_popup_project": {
+          "title": "Extend Popup Project",
+          "description": "Show the issue project box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 49
+        },
+        "extended_popup_assignee": {
+          "title": "Extend Popup Assignee",
+          "description": "Show the users assigned box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 50
+        },
+        "extended_popup_label": {
+          "title": "Extend Popup Label",
+          "description": "Show the issue labels box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 51
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minsky-link/versions/0.0.9/tarball"
+      }
+    },
+    "0.0.8": {
+      "name": "minsky-link",
+      "version": "0.0.8",
+      "description": "An Atom Plugin to bring Github/Gitlab Issues to the Atom UI.",
+      "main": "./dist/main/minskylink",
+      "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+      "engines": {
+        "atom": ">=1.18.0 <2.0.0"
+      },
+      "scripts": {
+        "build": "tsc -p ./lib/",
+        "prettier": "ts-node scripts/prettier.ts write",
+        "prettier-check": "ts-node scripts/prettier.ts check",
+        "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts",
+        "lint": "tslint --project ./lib",
+        "test": "npm run typecheck && npm run lint && npm run prettier-check"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "intentions:list": {
+          "versions": {
+            "1.0.0": "provideIntentions"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-cs/team-minsky.git"
+      },
+      "keywords": [
+        "atom",
+        "plugin",
+        "issues",
+        "github",
+        "gitlab",
+        "projects",
+        "productivity",
+        "tool"
+      ],
+      "author": "Ben Klein, Brian Lundell, Ian Lumsden, Jonathan Bueckman",
+      "license": "MPL-2.0",
+      "bugs": {
+        "url": "https://github.com/utk-cs/team-minsky/issues"
+      },
+      "homepage": "https://github.com/utk-cs/team-minsky#readme",
+      "dependencies": {
+        "etch": "^0.14.0",
+        "@octokit/rest": ">=15.15.1",
+        "typescript": "^3.0.3"
+      },
+      "devDependencies": {
+        "@types/atom": "~1.28",
+        "@types/node": "^10.11.7",
+        "prettier": "^1.14.3",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.11.0"
+      },
+      "configSchema": {
+        "enable_viewmode_drawers": {
+          "title": "Enable Drawers",
+          "description": "Enables inline, resizable and collapsible drawers.",
+          "type": "boolean",
+          "default": true,
+          "order": 42
+        },
+        "enable_viewmode_hoverover": {
+          "title": "Show snippets on hover",
+          "description": "Enables snippets to be shown when you hover over a issue tag.",
+          "type": "boolean",
+          "default": true,
+          "order": 41
+        },
+        "enable_viewmode_panes": {
+          "title": "Enable Panes",
+          "description": "Enables issue pages to be expanded to full panes.",
+          "type": "boolean",
+          "default": true,
+          "order": 43
+        },
+        "issue_tag_regex": {
+          "title": "Issue Regex Tag",
+          "description": "Allows changing the regex used to locate issue tags",
+          "type": "string",
+          "default": "(GH([0-9]+))",
+          "order": 44
+        },
+        "default_git_remote": {
+          "title": "Default Git Remote",
+          "description": "Changes the Git remote",
+          "type": "string",
+          "default": "origin",
+          "order": 45
+        },
+        "default_drawer_height": {
+          "title": "Drawer Height",
+          "description": "Change the drawer height, number of lines shown. This is resizeable in use as well",
+          "type": "integer",
+          "default": 12,
+          "order": 46
+        },
+        "extended_popup_description": {
+          "title": "Extend Popup Description",
+          "description": "Shows the issue description box in popup",
+          "type": "boolean",
+          "default": true,
+          "order": 47
+        },
+        "extended_popup_milestone": {
+          "title": "Extend Popup Milestone",
+          "description": "Show the issue milestone box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 48
+        },
+        "extended_popup_project": {
+          "title": "Extend Popup Project",
+          "description": "Show the issue project box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 49
+        },
+        "extended_popup_assignee": {
+          "title": "Extend Popup Assignee",
+          "description": "Show the users assigned box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 50
+        },
+        "extended_popup_label": {
+          "title": "Extend Popup Label",
+          "description": "Show the issue labels box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 51
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minsky-link/versions/0.0.8/tarball"
+      }
+    },
+    "0.0.7": {
+      "name": "minsky-link",
+      "version": "0.0.7",
+      "description": "An Atom Plugin to bring Github/Gitlab Issues to the Atom UI.",
+      "main": "./dist/main/minskylink",
+      "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+      "engines": {
+        "atom": ">=1.18.0 <2.0.0"
+      },
+      "scripts": {
+        "build": "tsc -p ./lib/",
+        "prettier": "ts-node scripts/prettier.ts write",
+        "prettier-check": "ts-node scripts/prettier.ts check",
+        "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts",
+        "lint": "tslint --project ./lib",
+        "test": "npm run typecheck && npm run lint && npm run prettier-check"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "intentions:list": {
+          "versions": {
+            "1.0.0": "provideIntentions"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-cs/team-minsky.git"
+      },
+      "keywords": [
+        "atom",
+        "plugin",
+        "issues",
+        "github",
+        "gitlab",
+        "projects",
+        "productivity",
+        "tool"
+      ],
+      "author": "Ben Klein, Brian Lundell, Ian Lumsden, Jonathan Bueckman",
+      "license": "MPL-2.0",
+      "bugs": {
+        "url": "https://github.com/utk-cs/team-minsky/issues"
+      },
+      "homepage": "https://github.com/utk-cs/team-minsky#readme",
+      "dependencies": {
+        "@octokit/rest": "^15.11.1",
+        "typescript": "^3.0.3"
+      },
+      "devDependencies": {
+        "@types/atom": "~1.28",
+        "@types/node": "^10.11.7",
+        "prettier": "^1.14.3",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.11.0"
+      },
+      "configSchema": {
+        "enable_viewmode_drawers": {
+          "title": "Enable Drawers",
+          "description": "Enables inline, resizable and collapsible drawers.",
+          "type": "boolean",
+          "default": true,
+          "order": 42
+        },
+        "enable_viewmode_hoverover": {
+          "title": "Show snippets on hover",
+          "description": "Enables snippets to be shown when you hover over a issue tag.",
+          "type": "boolean",
+          "default": true,
+          "order": 41
+        },
+        "enable_viewmode_panes": {
+          "title": "Enable Panes",
+          "description": "Enables issue pages to be expanded to full panes.",
+          "type": "boolean",
+          "default": true,
+          "order": 43
+        },
+        "issue_tag_regex": {
+          "title": "Issue Regex Tag",
+          "description": "Allows changing the regex used to locate issue tags",
+          "type": "string",
+          "default": "(GH([0-9]+))",
+          "order": 44
+        },
+        "default_git_remote": {
+          "title": "Default Git Remote",
+          "description": "Changes the Git remote",
+          "type": "string",
+          "default": "origin",
+          "order": 45
+        },
+        "default_drawer_height": {
+          "title": "Drawer Height",
+          "description": "Change the drawer height, number of lines shown. This is resizeable in use as well",
+          "type": "integer",
+          "default": 12,
+          "order": 46
+        },
+        "extended_popup_description": {
+          "title": "Extend Popup Description",
+          "description": "Shows the issue description box in popup",
+          "type": "boolean",
+          "default": true,
+          "order": 47
+        },
+        "extended_popup_milestone": {
+          "title": "Extend Popup Milestone",
+          "description": "Show the issue milestone box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 48
+        },
+        "extended_popup_project": {
+          "title": "Extend Popup Project",
+          "description": "Show the issue project box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 49
+        },
+        "extended_popup_assignee": {
+          "title": "Extend Popup Assignee",
+          "description": "Show the users assigned box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 50
+        },
+        "extended_popup_label": {
+          "title": "Extend Popup Label",
+          "description": "Show the issue labels box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 51
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minsky-link/versions/0.0.7/tarball"
+      }
+    },
+    "0.0.6": {
+      "name": "minsky-link",
+      "version": "0.0.6",
+      "description": "An Atom Plugin to bring Github/Gitlab Issues to the Atom UI.",
+      "main": "./dist/main/minskylink",
+      "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "build": "tsc -p ./lib/",
+        "prettier": "ts-node scripts/prettier.ts write",
+        "prettier-check": "ts-node scripts/prettier.ts check",
+        "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts",
+        "lint": "tslint --project ./lib",
+        "test": "npm run typecheck && npm run lint && npm run prettier-check"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "intentions:list": {
+          "versions": {
+            "1.0.0": "provideIntentions"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-cs/team-minsky.git"
+      },
+      "keywords": [
+        "atom",
+        "plugin",
+        "issues",
+        "github",
+        "gitlab",
+        "projects",
+        "productivity",
+        "tool"
+      ],
+      "author": "Ben Klein, Brian Lundell, Ian Lumsden, Jonathan Bueckman",
+      "license": "MPL-2.0",
+      "bugs": {
+        "url": "https://github.com/utk-cs/team-minsky/issues"
+      },
+      "homepage": "https://github.com/utk-cs/team-minsky#readme",
+      "dependencies": {
+        "@octokit/rest": "^15.11.1",
+        "typescript": "^3.0.3"
+      },
+      "devDependencies": {
+        "@types/atom": "~1.28",
+        "@types/node": "^10.11.7",
+        "prettier": "^1.14.3",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.11.0"
+      },
+      "configSchema": {
+        "enable_viewmode_drawers": {
+          "title": "Enable Drawers",
+          "description": "Enables inline, resizable and collapsible drawers.",
+          "type": "boolean",
+          "default": true,
+          "order": 42
+        },
+        "enable_viewmode_hoverover": {
+          "title": "Show snippets on hover",
+          "description": "Enables snippets to be shown when you hover over a issue tag.",
+          "type": "boolean",
+          "default": true,
+          "order": 41
+        },
+        "enable_viewmode_panes": {
+          "title": "Enable Panes",
+          "description": "Enables issue pages to be expanded to full panes.",
+          "type": "boolean",
+          "default": true,
+          "order": 43
+        },
+        "issue_tag_regex": {
+          "title": "Issue Regex Tag",
+          "description": "Allows changing the regex used to locate issue tags",
+          "type": "string",
+          "default": ".*( GH([0-9]+)).*",
+          "order": 44
+        },
+        "default_git_remote": {
+          "title": "Default Git Remote",
+          "description": "Changes the Git remote",
+          "type": "string",
+          "default": "origin",
+          "order": 45
+        },
+        "default_drawer_height": {
+          "title": "Drawer Height",
+          "description": "Change the drawer height, number of lines shown. This is resizeable in use as well",
+          "type": "integer",
+          "default": 12,
+          "order": 46
+        },
+        "extended_popup_description": {
+          "title": "Extend Popup Description",
+          "description": "Shows the issue description box in popup",
+          "type": "boolean",
+          "default": true,
+          "order": 47
+        },
+        "extended_popup_milestone": {
+          "title": "Extend Popup Milestone",
+          "description": "Show the issue milestone box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 48
+        },
+        "extended_popup_project": {
+          "title": "Extend Popup Project",
+          "description": "Show the issue project box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 49
+        },
+        "extended_popup_assignee": {
+          "title": "Extend Popup Assignee",
+          "description": "Show the users assigned box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 50
+        },
+        "extended_popup_label": {
+          "title": "Extend Popup Label",
+          "description": "Show the issue labels box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 51
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minsky-link/versions/0.0.6/tarball"
+      }
+    },
+    "0.0.5": {
+      "name": "minsky-link",
+      "version": "0.0.5",
+      "description": "An Atom Plugin to bring Github/Gitlab Issues to the Atom UI.",
+      "main": "index.js",
+      "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "build": "tsc -p ./lib",
+        "prettier": "ts-node scripts/prettier.ts write",
+        "prettier-check": "ts-node scripts/prettier.ts check",
+        "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts && tsc --noEmit -p ./spec",
+        "lint": "tslint --project ./lib && tslint --project ./spec",
+        "test": "npm run typecheck && npm run lint && npm run prettier-check"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "intentions:list": {
+          "versions": {
+            "1.0.0": "provideIntentions"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-cs/team-minsky.git"
+      },
+      "keywords": [
+        "atom",
+        "plugin",
+        "issues",
+        "github",
+        "gitlab",
+        "projects",
+        "productivity",
+        "tool"
+      ],
+      "author": "Ben Klein, Brian Lundell, Ian Lumsden, Jonathan Bueckman",
+      "license": "MPL-2.0",
+      "bugs": {
+        "url": "https://github.com/utk-cs/team-minsky/issues"
+      },
+      "homepage": "https://github.com/utk-cs/team-minsky#readme",
+      "dependencies": {
+        "@octokit/rest": "^15.11.1",
+        "typescript": "^3.0.3"
+      },
+      "devDependencies": {
+        "@types/atom": "~1.28",
+        "prettier": "^1.14.3",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.11.0"
+      },
+      "configSchema": {
+        "enable_viewmode_drawers": {
+          "title": "Enable Drawers",
+          "description": "Enables inline, resizable and collapsible drawers.",
+          "type": "boolean",
+          "default": true,
+          "order": 42
+        },
+        "enable_viewmode_hoverover": {
+          "title": "Show snippets on hover",
+          "description": "Enables snippets to be shown when you hover over a issue tag.",
+          "type": "boolean",
+          "default": true,
+          "order": 41
+        },
+        "enable_viewmode_panes": {
+          "title": "Enable Panes",
+          "description": "Enables issue pages to be expanded to full panes.",
+          "type": "boolean",
+          "default": true,
+          "order": 43
+        },
+        "issue_tag_regex": {
+          "title": "Issue Regex Tag",
+          "description": "Allows changing the regex used to locate issue tags",
+          "type": "string",
+          "default": ".*( GH([0-9]+)).*",
+          "order": 44
+        },
+        "default_git_remote": {
+          "title": "Default Git Remote",
+          "description": "Changes the Git remote",
+          "type": "string",
+          "default": "origin",
+          "order": 45
+        },
+        "default_drawer_height": {
+          "title": "Drawer Height",
+          "description": "Change the drawer height, number of lines shown. This is resizeable in use as well",
+          "type": "integer",
+          "default": 12,
+          "order": 46
+        },
+        "extended_popup_description": {
+          "title": "Extend Popup Description",
+          "description": "Shows the issue description box in popup",
+          "type": "boolean",
+          "default": true,
+          "order": 47
+        },
+        "extended_popup_milestone": {
+          "title": "Extend Popup Milestone",
+          "description": "Show the issue milestone box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 48
+        },
+        "extended_popup_project": {
+          "title": "Extend Popup Project",
+          "description": "Show the issue project box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 49
+        },
+        "extended_popup_assignee": {
+          "title": "Extend Popup Assignee",
+          "description": "Show the users assigned box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 50
+        },
+        "extended_popup_label": {
+          "title": "Extend Popup Label",
+          "description": "Show the issue labels box in popup",
+          "type": "boolean",
+          "default": false,
+          "order": 51
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minsky-link/versions/0.0.5/tarball"
+      }
+    },
+    "0.0.4": {
+      "name": "minsky-link",
+      "version": "0.0.4",
+      "description": "An Atom Plugin to bring Github/Gitlab Issues to the Atom UI.",
+      "main": "index.js",
+      "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "build": "tsc -p ./lib",
+        "prettier": "ts-node scripts/prettier.ts write",
+        "prettier-check": "ts-node scripts/prettier.ts check",
+        "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts && tsc --noEmit -p ./spec",
+        "lint": "tslint --project ./lib && tslint --project ./spec",
+        "test": "npm run typecheck && npm run lint && npm run prettier-check"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "intentions:list": {
+          "versions": {
+            "1.0.0": "provideIntentions"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-cs/team-minsky.git"
+      },
+      "keywords": [
+        "atom",
+        "plugin",
+        "typescript",
+        "github",
+        "gitlab"
+      ],
+      "author": "Ben Klein, Brian Lundell, Ian Lumsden, Jonathan Bueckman",
+      "license": "MPL-2.0",
+      "bugs": {
+        "url": "https://github.com/utk-cs/team-minsky/issues"
+      },
+      "homepage": "https://github.com/utk-cs/team-minsky#readme",
+      "dependencies": {
+        "@octokit/rest": "^15.11.1",
+        "typescript": "^3.0.3"
+      },
+      "devDependencies": {
+        "@types/atom": "~1.28",
+        "prettier": "^1.14.3",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.11.0"
+      },
+      "configSchema": {
+        "enable_viewmode_drawers": {
+          "title": "Enable Drawers",
+          "description": "Enables inline, resizable and collapsible drawers.",
+          "type": "boolean",
+          "default": true,
+          "order": 42
+        },
+        "enable_viewmode_hoverover": {
+          "title": "Show snippets on hover",
+          "description": "Enables snippets to be shown when you hover over a issue tag.",
+          "type": "boolean",
+          "default": true,
+          "order": 41
+        },
+        "enable_viewmode_panes": {
+          "title": "Enable Panes",
+          "description": "Enables issue pages to be expanded to full panes.",
+          "type": "boolean",
+          "default": true,
+          "order": 43
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minsky-link/versions/0.0.4/tarball"
+      }
+    },
+    "0.0.3": {
+      "name": "minsky-link",
+      "version": "0.0.3",
+      "description": "An Atom Plugin to bring Github/Gitlab Issues to the Atom UI.",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "main": "index.js",
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-cs/team-minsky.git"
+      },
+      "keywords": [
+        "atom",
+        "plugin",
+        "typescript",
+        "github",
+        "gitlab"
+      ],
+      "author": "Ben Klein, Brian Lundell, Ian Lumsden, Jonathan Bueckman",
+      "license": "MPL-2.0",
+      "bugs": {
+        "url": "https://github.com/utk-cs/team-minsky/issues"
+      },
+      "homepage": "https://github.com/utk-cs/team-minsky#readme",
+      "dependencies": {
+        "@octokit/rest": "^15.11.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minsky-link/versions/0.0.3/tarball"
+      }
+    }
+  },
+  "readme": "# team-minsky\n[![Waffle.io - Issues in progress](https://badge.waffle.io/utk-cs/team-minsky.png?label=in%20progress&title=In%20Progress)](http://waffle.io/utk-cs/team-minsky)\n![GitHub package version](https://img.shields.io/github/package-json/v/utk-cs/team-minsky.svg)\n[![GitHub commit activity](https://img.shields.io/github/commit-activity/4w/utk-cs/team-minsky.svg)](https://github.com/utk-cs/team-minsky)\n![GitHub contributors](https://img.shields.io/github/contributors/utk-cs/team-minsky.svg)\n[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)\n![GitHub stars](https://img.shields.io/github/stars/utk-cs/team-minsky.svg?style=social&label=Stars)\n[![Get the Atom plugin!](https://img.shields.io/badge/Atom-minsky--link-green.svg?logo=Atom&logoColor=fff)](https://atom.io/packages/minsky-link)\n![npm type definitions](https://img.shields.io/npm/types/typescript.svg)\n\nAn Atom Plugin to integrate Github and Gitlab issues inline with your code. No need to leave the editor!\n\n# Project\n[![Throughput Graph](https://graphs.waffle.io/utk-cs/team-minsky/throughput.svg)](https://waffle.io/utk-cs/team-minsky/metrics/throughput)\n\nUse our waffle board to see the issues we're working on!\n\n## Dependencies\n\nRun `npm install` to get started.\n",
+  "metadata": {
+    "name": "minsky-link",
+    "version": "0.0.16",
+    "description": "An Atom Plugin to bring Github/Gitlab Issues to the Atom UI.",
+    "main": "./dist/main/minskylink",
+    "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+    "engines": {
+      "atom": ">=1.32.0 <2.0.0"
+    },
+    "scripts": {
+      "build": "tsc -p ./lib/",
+      "prettier": "ts-node scripts/prettier.ts write",
+      "prettier-check": "ts-node scripts/prettier.ts check",
+      "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts",
+      "lint": "tslint --project ./lib",
+      "test": "npm run typecheck && npm run lint && npm run prettier-check"
+    },
+    "providedServices": {
+      "autocomplete.provider": {
+        "versions": {
+          "2.0.0": "provideAutocomplete"
+        }
+      },
+      "intentions:list": {
+        "versions": {
+          "1.0.0": "provideIntentions"
+        }
+      },
+      "code-actions": {
+        "versions": {
+          "0.1.0": "provideCodeActions"
+        }
+      }
+    },
+    "repository": {
+      "type": "git",
+      "url": "ssh://git@github.com/utk-cs/team-minsky.git"
+    },
+    "keywords": [
+      "atom",
+      "plugin",
+      "issues",
+      "github",
+      "gitlab",
+      "projects",
+      "productivity",
+      "tool"
+    ],
+    "author": "Ben Klein, Brian Lundell, Ian Lumsden, Jonathan Bueckman",
+    "license": "MPL-2.0",
+    "bugs": {
+      "url": "https://github.com/utk-cs/team-minsky/issues"
+    },
+    "homepage": "https://github.com/utk-cs/team-minsky#readme",
+    "dependencies": {
+      "@octokit/rest": "=15.15.1",
+      "etch": "^0.14.0",
+      "typescript": "^3.5.3"
+    },
+    "devDependencies": {
+      "@types/atom": "~1.28",
+      "@types/node": "^10.14.16",
+      "prettier": "^1.18.2",
+      "ts-node": "^7.0.1",
+      "tslint": "^5.19.0"
+    },
+    "configSchema": {
+      "issue_tag_regex": {
+        "title": "Issue Regex Tag",
+        "description": "Allows changing the regex used to locate issue tags, use (?:...) for non-capturing groups, and capture the number in group 1.",
+        "type": "string",
+        "default": "(?:(?:GH|#)([0-9]+))",
+        "order": 11
+      },
+      "pane_options": {
+        "type": "object",
+        "order": 30,
+        "properties": {
+          "enable_viewmode_panes": {
+            "title": "Enable Panes",
+            "description": "Enables issue pages to be expanded to full panes.",
+            "type": "boolean",
+            "default": true,
+            "order": 31
+          },
+          "viewmode_panes_direction": {
+            "title": "Direction to open the pane in, relative to current active editor.",
+            "type": "string",
+            "default": "down",
+            "enum": [
+              {
+                "value": "down",
+                "description": "Open the new pane BELOW the active pane."
+              },
+              {
+                "value": "right",
+                "description": "Open the new pane RIGHT OF the active pane."
+              },
+              {
+                "value": "left",
+                "description": "Open the new pane LEFT OF the active pane."
+              },
+              {
+                "value": "up",
+                "description": "Open the new pane ABOVE the active pane."
+              }
+            ],
+            "order": 32
+          }
+        }
+      },
+      "drawer_options_NYI": {
+        "type": "object",
+        "order": 40,
+        "description": "Not yet implemented.",
+        "properties": {
+          "enable_viewmode_drawers": {
+            "title": "Enable Drawers",
+            "description": "Enables inline, resizable and collapsible drawers.",
+            "type": "boolean",
+            "default": true,
+            "order": 41
+          },
+          "default_drawer_height": {
+            "title": "Drawer Height",
+            "description": "Change the drawer height, number of lines shown. This is resizeable in use as well",
+            "type": "integer",
+            "default": 12,
+            "order": 42
+          }
+        }
+      },
+      "default_git_remote": {
+        "title": "Default Git Remote",
+        "description": "Changes the Git remote used to scan for the remote API.",
+        "type": "string",
+        "default": "origin",
+        "order": 21
+      },
+      "hover_popup_options_NYI": {
+        "type": "object",
+        "order": 50,
+        "description": "Not yet implemented.",
+        "properties": {
+          "enable_viewmode_hoverover": {
+            "title": "Show snippets on hover",
+            "description": "Enables snippets to be shown when you hover over a issue tag.",
+            "type": "boolean",
+            "default": true,
+            "order": 51
+          },
+          "extended_popup_description": {
+            "title": "Extend Popup Description",
+            "description": "Shows the issue description box in popup",
+            "type": "boolean",
+            "default": true,
+            "order": 52
+          },
+          "extended_popup_milestone": {
+            "title": "Extend Popup Milestone",
+            "description": "Show the issue milestone box in popup",
+            "type": "boolean",
+            "default": false,
+            "order": 53
+          },
+          "extended_popup_project": {
+            "title": "Extend Popup Project",
+            "description": "Show the issue project box in popup",
+            "type": "boolean",
+            "default": false,
+            "order": 54
+          },
+          "extended_popup_assignee": {
+            "title": "Extend Popup Assignee",
+            "description": "Show the users assigned box in popup",
+            "type": "boolean",
+            "default": false,
+            "order": 55
+          },
+          "extended_popup_label": {
+            "title": "Extend Popup Label",
+            "description": "Show the issue labels box in popup",
+            "type": "boolean",
+            "default": false,
+            "order": 56
+          }
+        }
+      }
+    }
+  }
+}

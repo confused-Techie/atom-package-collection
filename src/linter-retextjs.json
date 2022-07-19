@@ -1,0 +1,302 @@
+{
+  "name": "linter-retextjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benmarwick/linter-retextjs"
+  },
+  "downloads": 524,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.31.0"
+  },
+  "versions": {
+    "0.31.0": {
+      "name": "linter-retextjs",
+      "version": "0.31.0",
+      "description": "Linter plugin using retext",
+      "license": "MIT",
+      "keywords": [
+        "markdown",
+        "text",
+        "professional",
+        "writing",
+        "language",
+        "english",
+        "hedge",
+        "linter"
+      ],
+      "author": {
+        "name": "Cameron Chamberlain & Ben Marwick",
+        "email": "benmarwick@gmail.com",
+        "url": "https://github.com/benmarwick/"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/benmarwick/linter-retextjs.git"
+      },
+      "bugs": "https://github.com/benmarwick/linter-retextjs/issues",
+      "main": "index.js",
+      "files": [
+        "index.js"
+      ],
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "^4.0.0",
+        "minimatch": "^3.0.0",
+        "remark-frontmatter": "^1.3.1",
+        "remark-message-control": "^4.0.0",
+        "remark-parse": "^6.0.0",
+        "remark-retext": "^3.0.0",
+        "retext-english": "^3.0.0",
+        "no-cliches": "git+https://github.com/dunckr/no-cliches.git#6f8f2169a703af9fc97721cb1038c26bc028f118",
+        "retext": "^2.0.0",
+        "retext-cliches": "^1.0.0",
+        "retext-equality": "^3.8.0",
+        "retext-intensify": "^1.1.0",
+        "retext-overuse": "^1.0.2",
+        "retext-profanities": "^4.1.0",
+        "retext-readability": "^1.3.0",
+        "retext-simplify": "^1.2.0",
+        "retext-passive": "^1.3.2",
+        "retext-repeated-words": "^1.2.2",
+        "retext-contractions": "^2.1.3",
+        "retext-usage": "git+https://github.com/kostasx/retext-usage.git",
+        "retext-indefinite-article": "^1.1.5",
+        "retext-diacritics": "^1.2.2",
+        "unified": "^7.0.0",
+        "unified-engine-atom": "^7.0.0"
+      },
+      "atomTestRunner": "atom-tap-test-runner",
+      "package-deps": [
+        "linter"
+      ],
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        }
+      },
+      "devDependencies": {
+        "atom-tap-test-runner": "^5.0.0",
+        "prettier": "^1.12.1",
+        "rehype-parse": "^6.0.0",
+        "remark-cli": "^6.0.0",
+        "remark-preset-wooorm": "^4.0.0",
+        "tape": "^4.6.0",
+        "xo": "^0.23.0"
+      },
+      "scripts": {
+        "format": "remark . -qfo && prettier --write '**/*.js' && xo --fix",
+        "test-api": "atom --test test/index.js",
+        "test": "npm run format && npm run test-api"
+      },
+      "prettier": {
+        "tabWidth": 2,
+        "useTabs": false,
+        "singleQuote": true,
+        "bracketSpacing": false,
+        "semi": false,
+        "trailingComma": "none"
+      },
+      "xo": {
+        "prettier": true,
+        "esnext": false,
+        "rules": {
+          "no-var": "off",
+          "object-shorthand": "off",
+          "prefer-arrow-callback": "off"
+        }
+      },
+      "remarkConfig": {
+        "plugins": [
+          "preset-wooorm"
+        ]
+      },
+      "configSchema": {
+        "detectConfig": {
+          "title": "Config files",
+          "description": "Use `.retextjsrc` files and `retextjs` in `package.json` files.",
+          "type": "boolean",
+          "default": true
+        },
+        "detectIgnore": {
+          "title": "Ignore files",
+          "description": "Use `.retextjsignore` files.",
+          "type": "boolean",
+          "default": true
+        },
+        "ignoreFiles": {
+          "description": "Disable files matching (minimatch) glob",
+          "type": "string",
+          "default": ""
+        },
+        "scopes": {
+          "title": "Scopes",
+          "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "source.asciidoc",
+            "source.gfm",
+            "source.pfm",
+            "text.git-commit",
+            "text.plain",
+            "text.plain.null-grammar",
+            "text.md"
+          ]
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-retextjs/versions/0.31.0/tarball"
+      }
+    }
+  },
+  "readme": "# linter-retextjs [![Build Status](https://travis-ci.org/benmarwick/linter-retextjs.svg?branch=master)](https://travis-ci.org/benmarwick/linter-retextjs) [![apm](https://img.shields.io/apm/v/linter-retextjs.svg)](https://atom.io/packages/linter-retextjs)\n\nA plugin for [Atom's][atom] [Linter][linter] providing an interface to [retext][retext]. Retext is a natural language processor that includes plugins to check for bad prose. The full list of retext plugins is [here](https://github.com/retextjs/retext/blob/master/doc/plugins.md#list-of-plugins). The code is hosted at https://github.com/benmarwick/linter-retextjs\n\n![](retextjs-demo.gif)\n\nThis package is like a super-set of linters that combines the checks provided by linter-alex, write-good, linter-just-say-no, and [others](https://hackernoon.com/lint-lint-and-away-linters-for-the-english-language-70f4b22cc73c). It was inspired by the discussion on the [Using Atom for academic writing](https://discuss.atom.io/t/using-atom-for-academic-writing/19222/64?u=benmarwick)\n\nThis package provides these [retext][retext] checkers:\n\n- [cliches](https://github.com/dunckr/retext-cliches): Checks phrases for cliches\n- [equality](https://github.com/retextjs/retext-equality): checks for possible insensitive, inconsiderate language, equivalent to [linter-alex](https://github.com/get-alex/atom-linter-alex)\n- [intensify](https://github.com/retextjs/retext-intensify): check for weak and mitigating wording, similar to [linter-just-say-no](https://atom.io/packages/linter-just-say-no)\n- [profanities](https://github.com/retextjs/retext-profanities): check for profane and vulgar wording\n- [passive](https://github.com/retextjs/retext-passive): check for passive voice, similar to [linter-write-good](https://atom.io/packages/linter-write-good)\n- [repeated words](https://github.com/retextjs/retext-repeated-words): check for repeated words\n- [simplify](https://github.com/retextjs/retext-simplify): check phrases for simpler alternatives\n- [contractions](https://github.com/retextjs/retext-contractions): check apostrophe use in contractions\n- [usage](https://github.com/kostasx/retext-usage): warn about incorrect English usage, similar to [linter-proselint](https://atom.io/packages/linter-proselint).\n- [indefinite article](https://github.com/retextjs/retext-indefinite-article): check if indefinite articles (`a`, `an`) are used correctly\n- [diacritics](https://github.com/retextjs/retext-diacritics): check for proper use of diacritics\n\nIt does not include [readability](https://github.com/retextjs/retext-readability), because that works at sentence-level while the others work at word- or short-phrase-level. The absence of this checker, and the addition of several others, are the main differences with [camjc/atom-linter-retext](https://github.com/camjc/atom-linter-retext)\n\n## Installation\n\n### Command Line\n\n1. Install [Atom](https://atom.io)\n2. In the terminal, install the package via apm:\n\n```sh\napm install linter-retextjs\n```\n\n### GUI\n\n1. Install [Atom](https://atom.io)\n1. Launch Atom\n1. Open Settings View using <kbd>Cmd+,</kbd> on macOS or <kbd>Ctrl+,</kbd> on other platforms\n1. Click the Install tab on the left side\n1. Enter `linter-retextjs` in the search box and press <kbd>Enter</kbd>\n1. Click the \"Install\" button that appears\n\n### Running locally\n\nClone and install from your disc to experiment with modifications:\n\n```\ngit clone https://github.com/benmarwick/linter-retextjs.git\ncd linter-retextjs\napm install\n```\n\n## Contributing\n\nIssues regarding **linter-retextjs** should be opened in this\n[repository][linter-issues].\nPlease raise issues with **retext** on its [repository][retext-issues].\n\n## License\n\n[MIT][license] © [Cameron Chamberlain][author1] & [Ben Marwick][author2]\n\nBased on atom-linter-alex:\n[MIT][license] © [Titus Wormer][author3]\n\n<!-- Definitions. -->\n\n[atom]: https://atom.io\n\n[linter]: https://github.com/AtomLinter/Linter\n\n[retext]: https://github.com/wooorm/retext\n\n[apm]: https://github.com/atom/apm\n\n[license]: LICENSE\n\n[author1]: http://camjc.com\n[author2]: https://github.com/benmarwick\n[author3]: https://wooorm.com/\n\n[linter-issues]: https://github.com/benmarwick/linter-retextjs/issues\n\n[retext-issues]: https://github.com/wooorm/retext/issues\n",
+  "metadata": {
+    "name": "linter-retextjs",
+    "version": "0.31.0",
+    "description": "Linter plugin using retext",
+    "license": "MIT",
+    "keywords": [
+      "markdown",
+      "text",
+      "professional",
+      "writing",
+      "language",
+      "english",
+      "hedge",
+      "linter"
+    ],
+    "author": {
+      "name": "Cameron Chamberlain & Ben Marwick",
+      "email": "benmarwick@gmail.com",
+      "url": "https://github.com/benmarwick/"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/benmarwick/linter-retextjs.git"
+    },
+    "bugs": "https://github.com/benmarwick/linter-retextjs/issues",
+    "main": "index.js",
+    "files": [
+      "index.js"
+    ],
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "atom-package-deps": "^4.0.0",
+      "minimatch": "^3.0.0",
+      "remark-frontmatter": "^1.3.1",
+      "remark-message-control": "^4.0.0",
+      "remark-parse": "^6.0.0",
+      "remark-retext": "^3.0.0",
+      "retext-english": "^3.0.0",
+      "no-cliches": "git+https://github.com/dunckr/no-cliches.git#6f8f2169a703af9fc97721cb1038c26bc028f118",
+      "retext": "^2.0.0",
+      "retext-cliches": "^1.0.0",
+      "retext-equality": "^3.8.0",
+      "retext-intensify": "^1.1.0",
+      "retext-overuse": "^1.0.2",
+      "retext-profanities": "^4.1.0",
+      "retext-readability": "^1.3.0",
+      "retext-simplify": "^1.2.0",
+      "retext-passive": "^1.3.2",
+      "retext-repeated-words": "^1.2.2",
+      "retext-contractions": "^2.1.3",
+      "retext-usage": "git+https://github.com/kostasx/retext-usage.git",
+      "retext-indefinite-article": "^1.1.5",
+      "retext-diacritics": "^1.2.2",
+      "unified": "^7.0.0",
+      "unified-engine-atom": "^7.0.0"
+    },
+    "atomTestRunner": "atom-tap-test-runner",
+    "package-deps": [
+      "linter"
+    ],
+    "providedServices": {
+      "linter": {
+        "versions": {
+          "2.0.0": "provideLinter"
+        }
+      }
+    },
+    "devDependencies": {
+      "atom-tap-test-runner": "^5.0.0",
+      "prettier": "^1.12.1",
+      "rehype-parse": "^6.0.0",
+      "remark-cli": "^6.0.0",
+      "remark-preset-wooorm": "^4.0.0",
+      "tape": "^4.6.0",
+      "xo": "^0.23.0"
+    },
+    "scripts": {
+      "format": "remark . -qfo && prettier --write '**/*.js' && xo --fix",
+      "test-api": "atom --test test/index.js",
+      "test": "npm run format && npm run test-api"
+    },
+    "prettier": {
+      "tabWidth": 2,
+      "useTabs": false,
+      "singleQuote": true,
+      "bracketSpacing": false,
+      "semi": false,
+      "trailingComma": "none"
+    },
+    "xo": {
+      "prettier": true,
+      "esnext": false,
+      "rules": {
+        "no-var": "off",
+        "object-shorthand": "off",
+        "prefer-arrow-callback": "off"
+      }
+    },
+    "remarkConfig": {
+      "plugins": [
+        "preset-wooorm"
+      ]
+    },
+    "configSchema": {
+      "detectConfig": {
+        "title": "Config files",
+        "description": "Use `.retextjsrc` files and `retextjs` in `package.json` files.",
+        "type": "boolean",
+        "default": true
+      },
+      "detectIgnore": {
+        "title": "Ignore files",
+        "description": "Use `.retextjsignore` files.",
+        "type": "boolean",
+        "default": true
+      },
+      "ignoreFiles": {
+        "description": "Disable files matching (minimatch) glob",
+        "type": "string",
+        "default": ""
+      },
+      "scopes": {
+        "title": "Scopes",
+        "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "default": [
+          "source.asciidoc",
+          "source.gfm",
+          "source.pfm",
+          "text.git-commit",
+          "text.plain",
+          "text.plain.null-grammar",
+          "text.md"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "name": "hack-getters-setters",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nsdiv/atom-hack-getters-setters"
+  },
+  "downloads": 898,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "1.4.0"
+  },
+  "versions": {
+    "1.4.0": {
+      "name": "hack-getters-setters",
+      "main": "./lib/hack-getters-setters",
+      "version": "1.4.0",
+      "description": "generate getters and setters for your Hack class",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/nsdiv/atom-hack-getters-setters"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.100.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/hack-getters-setters/versions/1.4.0/tarball"
+      }
+    },
+    "1.3.0": {
+      "name": "hack-getters-setters",
+      "main": "./lib/hack-getters-setters",
+      "version": "1.3.0",
+      "description": "generate getters and setters for your Hack class",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/nsdiv/atom-hack-getters-setters"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.100.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/hack-getters-setters/versions/1.3.0/tarball"
+      }
+    },
+    "1.2.0": {
+      "name": "hack-getters-setters",
+      "main": "./lib/hack-getters-setters",
+      "version": "1.2.0",
+      "description": "generate getters and setters for your Hack class",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/nsdiv/atom-hack-getters-setters"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.100.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/hack-getters-setters/versions/1.2.0/tarball"
+      }
+    },
+    "1.0.0": {
+      "name": "hack-getters-setters",
+      "main": "./lib/hack-getters-setters",
+      "version": "1.0.0",
+      "description": "generate getters and setters for your Hack class",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/nsdiv/atom-hack-getters-setters"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.100.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/hack-getters-setters/versions/1.0.0/tarball"
+      }
+    }
+  },
+  "readme": "Hack Getters and Setters\n=======================\n\nWith Hack Getters and Setters you can automatically generate _Getters_ and _Setters_ for your Hack classes.\n\nThe code produced is PSR compatible\n\nFeatures:\n---------\n\n* Generate Getters, Setters or Both\n* Select all variables or just some via UI\n* Control method scope via a DocBlock tag\n* intelligent guessing of variable names, if you use descriptive variable names you do not need to provide a description, the method comment will set accordingly\n* supports _ in property names\n\n\n\n**Example Hack Code**\n\n\n```Hack\nclass Job extends AbstractEntity\n{\n    /**\n     * @protected\n     * @ORM\\Column( type=\"integer\")\n     * @ORM\\Id\n     * @ORM\\GeneratedValue(strategy=\"AUTO\")\n     */\n    private int $id;\n\n    /**\n     * the job id\n     * @read-only\n     * @var string\n     *\n     * @ORM\\Column(type=\"string\", length=255)\n     */\n    private string $code;\n\n    /**\n     * snake cased var\n     *\n     * @var string\n     */\n    private string $snaked_case_var;\n\n    /**\n     * private underscore variable\n     *\n     * @var string\n     */\n    private string $_underscored;\n\n    /**\n     * @var Job\n     */\n    private Job $smartVariableName;\n\n    private array<string> $string_array;\n\n    private dict<string, mixed> $dict;\n\n\n    public function __construct(\n      private int $constructInt,\n      private Entity $constructObj,\n    )\n    {\n        $this->started = new \\DateTime;\n        $this->conversionDone = false;\n    }\n    \n}\n```\n\n**Example class after generating Getters and Setters**\n\n```Hack\nclass Job extends AbstractEntity\n{\n    /**\n     * @protected\n     * @ORM\\Column( type=\"integer\")\n     * @ORM\\Id\n     * @ORM\\GeneratedValue(strategy=\"AUTO\")\n     */\n    private int $id;\n\n    /**\n     * the job id\n     * @read-only\n     * @var string\n     *\n     * @ORM\\Column(type=\"string\", length=255)\n     */\n    private string $code;\n\n    /**\n     * snake cased var\n     *\n     * @var string\n     */\n    private string $snaked_case_var;\n\n    /**\n     * private underscore variable\n     *\n     * @var string\n     */\n    private string $_underscored;\n\n    /**\n     * @var Job\n     */\n    private Job $smartVariableName;\n\n    private array<string> $string_array;\n\n    private dict<string, mixed> $dict;\n\n\n    public function __construct(\n      private int $constructInt,\n      private Entity $constructObj,\n    )\n    {\n        $this->started = new \\DateTime;\n        $this->conversionDone = false;\n    }\n\n\n    /**\n     * Get the value of Id\n     *\n     * @return int\n     */\n    protected function getId(): int\n    {\n        return $this->id;\n    }\n\n    /**\n     * Set the value of Id\n     *\n     * @param int id\n     *\n     * @return self\n     */\n    protected function setId($id): void\n    {\n        $this->id = $id;\n\n        return;\n    }\n\n    /**\n     * Get the value of the job id\n     *\n     * @return string\n     */\n    public function getCode(): string\n    {\n        return $this->code;\n    }\n\n    /**\n     * Set the value of the job id\n     *\n     * @param string code\n     *\n     * @return self\n     */\n    private function setCode($code): void\n    {\n        $this->code = $code;\n\n        return;\n    }\n\n    /**\n     * Get the value of snake cased var\n     *\n     * @return string\n     */\n    public function getSnakedCaseVar(): string\n    {\n        return $this->snaked_case_var;\n    }\n\n    /**\n     * Set the value of snake cased var\n     *\n     * @param string snaked_case_var\n     *\n     * @return self\n     */\n    public function setSnakedCaseVar($snaked_case_var): void\n    {\n        $this->snaked_case_var = $snaked_case_var;\n\n        return;\n    }\n\n    /**\n     * Get the value of private underscore variable\n     *\n     * @return string\n     */\n    public function getUnderscored(): string\n    {\n        return $this->_underscored;\n    }\n\n    /**\n     * Set the value of private underscore variable\n     *\n     * @param string _underscored\n     *\n     * @return self\n     */\n    public function setUnderscored($_underscored): void\n    {\n        $this->_underscored = $_underscored;\n\n        return;\n    }\n\n    /**\n     * Get the value of Smart Variable Name\n     *\n     * @return Job\n     */\n    public function getSmartVariableName(): Job\n    {\n        return $this->smartVariableName;\n    }\n\n    /**\n     * Set the value of Smart Variable Name\n     *\n     * @param Job smartVariableName\n     *\n     * @return self\n     */\n    public function setSmartVariableName(Job $smartVariableName): void\n    {\n        $this->smartVariableName = $smartVariableName;\n\n        return;\n    }\n\n    /**\n     * Get the value of String Array\n     *\n     * @return array<string>\n     */\n    public function getStringArray(): array<string>\n    {\n        return $this->string_array;\n    }\n\n    /**\n     * Set the value of String Array\n     *\n     * @param array<string> string_array\n     *\n     * @return self\n     */\n    public function setStringArray(array<string> $string_array): void\n    {\n        $this->string_array = $string_array;\n\n        return;\n    }\n\n    /**\n     * Get the value of Dict\n     *\n     * @return dict<string, mixed>\n     */\n    public function getDict(): dict<string, mixed>\n    {\n        return $this->dict;\n    }\n\n    /**\n     * Set the value of Dict\n     *\n     * @param dict<string, mixed> dict\n     *\n     * @return self\n     */\n    public function setDict(dict<string, mixed> $dict): void\n    {\n        $this->dict = $dict;\n\n        return;\n    }\n\n    /**\n     * Get the value of Construct Int\n     *\n     * @return int\n     */\n    public function getConstructInt(): int\n    {\n        return $this->constructInt;\n    }\n\n    /**\n     * Set the value of Construct Int\n     *\n     * @param int constructInt\n     *\n     * @return self\n     */\n    public function setConstructInt($constructInt): void\n    {\n        $this->constructInt = $constructInt;\n\n        return;\n    }\n\n    /**\n     * Get the value of Construct Obj\n     *\n     * @return Entity\n     */\n    public function getConstructObj(): Entity\n    {\n        return $this->constructObj;\n    }\n\n    /**\n     * Set the value of Construct Obj\n     *\n     * @param Entity constructObj\n     *\n     * @return self\n     */\n    public function setConstructObj(Entity $constructObj): void\n    {\n        $this->constructObj = $constructObj;\n\n        return;\n    }\n\n}\n```\n\nAs you can see if get to trouble of commenting your variables, the generated functions can be used without modification.\n\nThis is an huge time saver!\n\nSpecial DocBlock tags\n---------------------\n__@internal__: getter and setter will be private\n\n__@private__: getter and setter will be private\n\n__@protected__: getter and setter will be protected\n\n__@read-only private|protected__: getter will be public, setter will be private or protected (defaults to private)\n\nSettings:\n-----------\n__doNotTypeHint__: an array of items that when present in *@type* or *@var* declarations are ignored and not used as type hint\n\n__camelCasedMethodNames__: method names will follow PSR rules\nPSR states that all method names must be camel cased, if set to false method names won't be Camel Cased\n\n__getterTemplate__: the template for the getter\n\n__setterTemplate__: the template for the setter\n\n## Default templates\n\nA rudimentary template editor is available at ```Packages -> Hack Getters and Setters -> Template Editor```\n\n### Getter\n```Hack\n\\ \\ \\ \\ /**\\n\n\\ \\ \\ \\ * Get the value of %description% \\n\n\\ \\ \\ \\ * \\n\n\\ \\ \\ \\ * @return %type%\\n\n\\ \\ \\ \\ */\\n\n\\ \\ \\ %scope% function %methodName%(): %type%\\n\n\\ \\ \\ {\\n\n\\ \\ \\ \\ \\ \\ \\ return $this->%variable%;\\n\n\\ \\ \\ }\\n\n\\n\n```\n\n### Setter\n```Hack\n\\ \\ \\ \\ /** \\n\n\\ \\ \\ \\ * Set the value of %description% \\n\n\\ \\ \\ \\ * \\n\n\\ \\ \\ \\ * @param %type% %variable%\\n\n\\ \\ \\ \\ * \\n\n\\ \\ \\ \\ * @return self\\n\n\\ \\ \\ \\ */\\n\n\\ \\ \\ %scope% function %methodName%(%typeHint%$%variable%): void\\n\n\\ \\ \\ {\\n\n\\ \\ \\ \\ \\ \\ \\ $this->%variable% = $%variable%;\\n\n\\n\n\\ \\ \\ \\ \\ \\ \\ return;\\n\n\\ \\ \\ }\\n\n\\n\n```\n",
+  "metadata": {
+    "name": "hack-getters-setters",
+    "main": "./lib/hack-getters-setters",
+    "version": "1.4.0",
+    "description": "generate getters and setters for your Hack class",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/nsdiv/atom-hack-getters-setters"
+    },
+    "license": "MIT",
+    "engines": {
+      "atom": ">0.100.0"
+    },
+    "dependencies": {
+      "atom-space-pen-views": "^2.0.3"
+    }
+  }
+}

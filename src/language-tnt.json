@@ -1,0 +1,63 @@
+{
+  "name": "language-tnt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kenny2github/language-tnt"
+  },
+  "downloads": 42,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.1.1"
+  },
+  "versions": {
+    "0.1.1": {
+      "name": "language-tnt",
+      "version": "0.1.1",
+      "description": "Typographic Number Theory support in Atom",
+      "keywords": [
+        "language",
+        "grammar"
+      ],
+      "repository": "https://github.com/Kenny2github/language-tnt",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/language-tnt/versions/0.1.1/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "language-tnt",
+      "version": "0.1.0",
+      "description": "Typographic Number Theory support in Atom",
+      "keywords": [
+        "language",
+        "grammar"
+      ],
+      "repository": "https://github.com/Kenny2github/language-tnt",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/language-tnt/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "\n# language-tnt\n\nTypographic Number Theory support in Atom.\n\n## Summary of TNT\n### Rules of Well-Formedness\n**Numerals**\n> 0 is a numeral.<br/>\n> A numeral preceded by S is also a numeral.<br/>\n> *Examples*: `0` `S0` `SS0` `SSS0` `SSSS0` `SSSSS0`\n\n**Variables**\n> `a` is a variable. If we're not being austere, so are `b`, `c`, `d`, and `e`.<br/>\n> A variable followed by a prime is also a variable.<br/>\n> *Examples*: `a` `b′` `c′′` `d′′′` `e′′′′`<br/>\n> *Other symbols permitted instead of `′`*: `'`\n\n**Terms**\n> All numerals and variables are terms.<br/>\n> A term preceded by `S` is also a term.<br/>\n> If `s` and `t` are terms, then so are `(s+t)` and `(s⋅t)`.<br/>\n> *Examples*: `0` `b` `(S0⋅(SS0+c))` `S(Sa⋅(Sb⋅Sc))`<br/>\n> *Other symbols permitted instead of `⋅`*: `*`, `.`\n\nThe above rules tell how to make *parts* of well-formed formulas; the remaining rules tell how to make *complete* well-formed formulas.\n\n**Atoms**\n> If `s` and `t` are terms, then `s=t` is an atom.<br/>\n> *Examples*: `S0=0` `(SS0+SS0)=SSSS0` `S(b+c)=((c⋅d)⋅e)`<br/>\n> If an atom contains a variable `u`, then `u` is *free* in it. Thus there are four free variables in the last example.\n\n**Negations**\n> A well-formed formula preceded by a tilde is well-formed.<br/>\n> *Examples*: `~S0=0` `~∃b:(b+b)=S0` `~<0=0⊃S0=0>` `~b=S0`<br/>\n> *Other symbols permitted instead of `~`*: `!`\n\n**Compounds**\n> If `x` and `y` are well-formed formulas, and provided that no variable which is free in one is quantified in the other, then the following are all well-formed formulas:<br/>\n> `<x∧y>`, `<x∨y>`, `<x⊃y>`<br/>\n> *Examples*: `<0=0∧~0=0>` `<b=b∨~∃c:c=b>` `<S0=0⊃∀c:~∃b:(b+b)=c>`<br/>\n> *Other symbols permitted instead of `∧`*: `&`, `^`<br/>\n> *Other symbols permitted instead of `∨`*: `|`, `V`, `v`<br/>\n> *Other symbols permitted instead of `⊃`*: `→` (Alt+26 on Windows), `]` (less obvious as \"implies\")\n\n**Quantifications**\n> If `u` is a variable, and `x` is a well-formed formula in which `u` is free, then the following strings are well-formed formulas:<br/>\n> `∃u:x` and `∀u:x`<br/>\n> *Examples*: `∀b:<b=b∨~∃c:c=b>` `∀c:~∃b:(b+b)=c` `~∃c:Sc=d`<br/>\n> *Other symbols permitted instead of `∀`*: `A`<br/>\n> *Other symbols permitted instead of `∃`*: `E`\n\n### Rules of Propositional Calculus\n**Joining Rule**: `joining`\n> If `x` and `y` are theorems, then `<x∧y>` is a theorem.\n\n**Separation Rule**: `separation`\n> If `<x∧y>` is a theorem, then both `x` and `y` are theorems.\n\n**Double-Tilde Rule**: `double-tilde`\n> The string `~~` can be deleted from any theorem. It can also be inserted into any theorem, provided that the resulting string is itself well-formed\n\n**Fantasy Rule**: `fantasy rule`\n> If `y` can be derived when `x` is assumed to be a theorem, then `<x⊃y>` is a theorem.\n\n**Carry-Over Rule**: `carry over line`*`n`*\n> Inside a fantasy, any theorem from the \"reality\" one level higher can be brought in and used.\n\n**Rule of Detachment**: `detachment`\n> If `x` and `<x⊃y>` are both theorems, then `y` is a theorem.\n\n**Contrapositive Rule**: `contrapositive`\n> `<x⊃y>` and `<~y⊃~x>` are interchangeable.\n\n**De Morgan's Rule**: `De Morgan`\n> `<~x∧~y>` and `~<x∨y>` are interchangeable.\n\n**Switcheroo Rule**: `switcheroo`\n> `<x∨y>` and `<~x⊃y>` are interchangeable.\n\n### Rules of TNT\n**Rule of Specification**: `specification`\n> Suppose `u` is a variable which occurs inside the string `x`. If the string `∀u:x` is a theorem, then so is `x`, and so are any strings made from `x` by replacing `u`, wherever it occurs, by one and the same term.<br/>\n> (*Restriction*: The term which replaces `u` must not contain any variable that is quantified in `x`.)\n\n**Rule of Generalization**: `generalization`\n> Suppose `x` is a theorem in which `u`, a variable, occurs free. Then `∀u:x` is a theorem.<br/>\n> (*Restriction*: No generalization is allowed in a fantasy on any variable which appeared free in the fantasy's premise.)\n\n**Rule of Interchange**: `interchange`\n> Suppose `u` is a variable. Then the strings `∀u:~` and `~∃u:` are interchangeable anywhere inside any theorem.\n\n**Rule of Existence**: `existence`\n> Suppose a term (which may contain variables as long as they are free) appears once, or multiply, in a theorem. Then any (or several, or all) of the appearances of the term may be replaced by a variable which otherwise does not occur in the theorem, and the corresponding existential quantifier must be placed in front.\n\n**Rule of Symmetry** (in Equality); `symmetry`\n> If `r=s` is a theorem, then so is `s=r`\n\n**Rule of Transitivity** (in Equality): `transitivity`\n> If `r=s` and `s=t` are theorems, then so is `r=t`\n\n**Add S** (a Rule of Successorship): `add S`\n> If `r=t` is a theorem, then `Sr=St` is a theorem.\n\n**Drop S** (a Rule of Successorship): `drop S`\n> If `Sr=St` is theorem, then `r=t` is a theorem.\n\n**Rule of Induction**: `induction`\n> Let `X{u}` represent a well-formed formula in which the variable `u` is free, and `X{x/u}` represent the same string, with each appearance of `u` replaced by `x`.<br/>\n> If both `∀u:<X{u}⊃X{Su/u}>` and `X{0/u}` are theorems, then `∀u:X{u}` is also a theorem.\n\n### Examples\nCheck the [examples folder](https://github.com/Kenny2github/language-tnt/tree/master/examples) - `ascii` contains examples using only ASCII-compatible symbols, `unicode` contains the same examples using the proper (intended) symbols.\n",
+  "metadata": {
+    "name": "language-tnt",
+    "version": "0.1.1",
+    "description": "Typographic Number Theory support in Atom",
+    "keywords": [
+      "language",
+      "grammar"
+    ],
+    "repository": "https://github.com/Kenny2github/language-tnt",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    }
+  }
+}

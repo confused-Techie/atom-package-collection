@@ -1,0 +1,99 @@
+{
+  "name": "commentator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twifty/atom-commentator"
+  },
+  "downloads": 104,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.0.2"
+  },
+  "versions": {
+    "0.0.2": {
+      "name": "Commentator",
+      "main": "./lib/commentator",
+      "version": "0.0.2",
+      "description": "Code comment generator",
+      "keywords": [
+        "comment",
+        "docblock"
+      ],
+      "activationCommands": {
+        "atom-text-editor": [
+          "commentator:parse-enter",
+          "commentator:parse-inline",
+          "commentator:parse-tab"
+        ]
+      },
+      "repository": "https://github.com/twifty/atom-commentator",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "devDependencies": {
+        "eslint": "^6.6.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/commentator/versions/0.0.2/tarball"
+      }
+    },
+    "0.0.1": {
+      "name": "Commentator",
+      "main": "./lib/commentator",
+      "version": "0.0.1",
+      "description": "Code comment generator",
+      "keywords": [
+        "comment",
+        "docblock"
+      ],
+      "activationCommands": {
+        "atom-text-editor": [
+          "commentator:parse-enter",
+          "commentator:parse-inline",
+          "commentator:parse-tab"
+        ]
+      },
+      "repository": "https://github.com/twifty/atom-commentator",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "devDependencies": {
+        "eslint": "^6.6.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/commentator/versions/0.0.1/tarball"
+      }
+    }
+  },
+  "readme": "# commentator package\n\nA source code comment plug-in for the atom editor.\n\n## Installing\n\nRun `apm install commentator` or search for the `commentator` plug-in from within Atom's settings.\n\n## Supported Languages\n\nCurrently only the C language is supported with default docBlocks tailored for Linux kernel development.\n\n## Usage\n\nIn the editor type `/**` then press `Enter`. If the string is immediately preceding a declaration or function, a docBlock style comment will be generated with tab-able content.\n\nEnter `/*` and `Enter` to generate a normal multi-line comment.\nPress `Shift + Enter` to quickly create a comment block.  \nHighlight text and press `Shift + Enter` to wrap.  \nPlace cursor anywhere inside a `/* */` block and press `Shift + Enter` to unwrap.  \nPressing `Enter` within an existing comment will continue that comment onto the next line.\n\n## Customize\n\nDon't like the style of of the generated docBlock? Then use your own template.\n\nFor the `c` language, create the file `~/.atom/commentator/c.js` (any file format importable by `require` is supported). OR, for project specific templates, add the following to `package.json` in the projects root directory:\n```json\n{\n  \"commentator\": {\n    \"c\": \"/path/to/template.js\"\n  }\n}\n```\nThe file must export a single function:\n```js\n/** @babel */\n\nexport default function (node, {Line, Tab, Align}) {\n    Line(\"A single line: \", node.name, Align(3), Tab('[tabbable selection]'))\n}\n```\nWhere:\n* variable `node`  \n  Parsed code object (see `lib/node.es6` for details)\n* function `Align`  \n  Creates a string of spaces. Use `node.maxNameLength` and `node.name.length` to calculate spaces required.\n* function `Tab`  \n  Converts given string into tabbable content (pressing tab while cursor is inside the docBlock will select the text).\n* function `Line`  \n  Takes any number of arguments and converts them into a string. Each call will add a new line to the rendered output.\n\nThe `Tab` and `Align` functions return strings making them safe to use in string interpolation. You **do not** need to wrap the template in `/**` and `*/`, or account for leading tab/space characters.\n\n## Limitations\n\nCurrently, the underlying parser for the 'c' grammar doesn't handle attributes very well. A workaround is to temporarily remove the attribute, generate the docBlock then replace. This is not something that can be fixed within this module.\n\n## Development\n\nThe backend uses atoms `tree-sitter` package to generate AST nodes, though you do not need to have Tree Sitter Parsers enabled. Adding support for new languages should be relatively simple provided said language has a TS grammar.\n",
+  "metadata": {
+    "name": "Commentator",
+    "main": "./lib/commentator",
+    "version": "0.0.2",
+    "description": "Code comment generator",
+    "keywords": [
+      "comment",
+      "docblock"
+    ],
+    "activationCommands": {
+      "atom-text-editor": [
+        "commentator:parse-enter",
+        "commentator:parse-inline",
+        "commentator:parse-tab"
+      ]
+    },
+    "repository": "https://github.com/twifty/atom-commentator",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {},
+    "devDependencies": {
+      "eslint": "^6.6.0"
+    }
+  }
+}

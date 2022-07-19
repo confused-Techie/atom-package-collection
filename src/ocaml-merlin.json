@@ -1,0 +1,3674 @@
+{
+  "name": "ocaml-merlin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atom-ocaml/ocaml-merlin"
+  },
+  "downloads": 26177,
+  "stargazers_count": 12,
+  "releases": {
+    "latest": "0.14.7"
+  },
+  "versions": {
+    "0.14.7": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.14.7",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/atom-ocaml/ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.14.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.14.7/tarball"
+      }
+    },
+    "0.14.6": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.14.6",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/atom-ocaml/ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.14.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.14.6/tarball"
+      }
+    },
+    "0.14.5": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.14.5",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.14.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.14.5/tarball"
+      }
+    },
+    "0.14.4": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.14.4",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.14.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.14.4/tarball"
+      }
+    },
+    "0.14.3": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.14.3",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.14.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.14.3/tarball"
+      }
+    },
+    "0.14.2": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.14.2",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.14.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.14.2/tarball"
+      }
+    },
+    "0.14.1": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.14.1",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.14.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.14.1/tarball"
+      }
+    },
+    "0.14.0": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.14.0",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.14.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.14.0/tarball"
+      }
+    },
+    "0.13.2": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.13.2",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.14.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.13.2/tarball"
+      }
+    },
+    "0.13.1": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.13.1",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.14.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.13.1/tarball"
+      }
+    },
+    "0.13.0": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.13.0",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.14.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.13.0/tarball"
+      }
+    },
+    "0.12.1": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.12.1",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <1.14.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.12.1/tarball"
+      }
+    },
+    "0.12.0": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.12.0",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <1.14.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.12.0/tarball"
+      }
+    },
+    "0.11.2": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.11.2",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.11.2/tarball"
+      }
+    },
+    "0.11.1": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.11.1",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.11.1/tarball"
+      }
+    },
+    "0.11.0": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.11.0",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.11.0/tarball"
+      }
+    },
+    "0.10.3": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.10.3",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.10.3/tarball"
+      }
+    },
+    "0.10.2": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.10.2",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "^0.9.5"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.10.2/tarball"
+      }
+    },
+    "0.10.1": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.10.1",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.2.0"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.10.1/tarball"
+      }
+    },
+    "0.10.0": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.10.0",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used",
+        "language-reason:grammar-used",
+        "nuclide-language-reason:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.2.0"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.10.0/tarball"
+      }
+    },
+    "0.9.7": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.9.7",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.2.0"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.9.7/tarball"
+      }
+    },
+    "0.9.6": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.9.6",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.2.0"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.9.6/tarball"
+      }
+    },
+    "0.9.5": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.9.5",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used",
+        "language-ocaml-fix:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.2.0"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.9.5/tarball"
+      }
+    },
+    "0.9.4": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.9.4",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.2.0"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.9.4/tarball"
+      }
+    },
+    "0.9.3": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.9.3",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.2.0"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.9.3/tarball"
+      }
+    },
+    "0.9.2": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.9.2",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.2.0"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.9.2/tarball"
+      }
+    },
+    "0.9.1": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.9.1",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.2.0"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.9.1/tarball"
+      }
+    },
+    "0.9.0": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.9.0",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.2.0"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.9.0/tarball"
+      }
+    },
+    "0.8.2": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.8.2",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.2.0"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.8.2/tarball"
+      }
+    },
+    "0.8.1": {
+      "name": "ocaml-merlin",
+      "main": "./lib/main",
+      "version": "0.8.1",
+      "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml with Merlin.",
+      "keywords": [
+        "linter",
+        "autocomplete",
+        "goto",
+        "ocaml",
+        "merlin"
+      ],
+      "activationHooks": [
+        "language-ocaml:grammar-used"
+      ],
+      "repository": "https://github.com/314eter/atom-ocaml-merlin",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.2.0"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "consumedServices": {
+        "ocamlIndent": {
+          "versions": {
+            "^0.3.0": "consumeIndent"
+          }
+        }
+      },
+      "configSchema": {
+        "merlinPath": {
+          "type": "string",
+          "default": "ocamlmerlin",
+          "order": 1
+        },
+        "lintAsYouType": {
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "completePartialPrefixes": {
+          "description": "For instance, `L.ma` can get expanded to `List.map`.",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "default": {
+          "title": "Default settings if no .merlin file is found",
+          "type": "object",
+          "order": 4,
+          "properties": {
+            "flags": {
+              "title": "Flags",
+              "type": "array",
+              "default": [],
+              "order": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "packages": {
+              "title": "Packages",
+              "type": "array",
+              "default": [],
+              "order": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "title": "Extensions",
+              "type": "array",
+              "default": [],
+              "order": 3,
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourcePaths": {
+              "title": "Source Paths",
+              "type": "array",
+              "default": [],
+              "order": 4,
+              "items": {
+                "type": "string"
+              }
+            },
+            "buildPaths": {
+              "title": "Build Paths",
+              "type": "array",
+              "default": [],
+              "order": 5,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ocaml-merlin/versions/0.8.1/tarball"
+      }
+    }
+  },
+  "readme": "# ocaml-merlin\n\n_Use [ocamlmerlin] to autocomplete, lint, refactor and navigate your OCaml/Reason code in Atom._\n\n**Note: Although this package is still working, [ide-reason] provides better OCaml support.**\n\n\n## Features\n\n* Context-sensitive autocompletion and linting\n* Show the type of expressions under the cursor\n* Find all occurrences of a variable\n* Jump to (type) declarations and back\n* Shrink and grow selections in a smart way\n* Rename all occurrences of a variable in a file\n* Destruct expressions in pattern matchings\n\n\n## Usage\n\nLinting is performed on save or while typing by [linter]. Autocompletion is performed on the fly by [autocomplete-plus].\n\nNo default keybindings are provided, except those compatible with the `symbols-view` package. Additional keybindings can be set in your keymap.\n\n| Command                                | Description                            | Keybinding (Linux, Windows) | Keybinding (OS X)       |\n| -------------------------------------- | -------------------------------------- | --------------------------- | ----------------------- |\n| `ocaml-merlin:toggle-type`             | Toggle type of expression under cursor |                             |                         |\n| `ocaml-merlin:shrink-type`             | Shrink the expression                  |                             |                         |\n| `ocaml-merlin:expand-type`             | Expand the expression                  |                             |                         |\n| `ocaml-merlin:destruct`                | Destruct expression under cursor       |                             |                         |\n| `ocaml-merlin:next-occurrence`         | Find next occurrence of expression     |                             |                         |\n| `ocaml-merlin:previous-occurrence`     | Find previous occurrence of expression |                             |                         |\n| `ocaml-merlin:go-to-declaration`       | Go to declaration of expression        | <kbd>ctrl-alt-down</kbd>    | <kbd>cmd-alt-down</kbd> |\n| `ocaml-merlin:go-to-type-declaration`  | Go to type declaration of expression   |                             |                         |\n| `ocaml-merlin:return-from-declaration` | Go back to expression                  | <kbd>ctrl-alt-up</kbd>      | <kbd>cmd-alt-up</kbd>   |\n| `ocaml-merlin:shrink-selection`        | Shrink the current selection           |                             |                         |\n| `ocaml-merlin:expand-selection`        | Expand the current selection           |                             |                         |\n| `ocaml-merlin:rename-variable`         | Rename all occurrences of variable     |                             |                         |\n\n\n## Installation\n\nThis package requires [language-ocaml], [linter] and [ocamlmerlin]. For auto-indenting destructed patterns, [ocaml-indent] is needed. For Reason support, [language-reason] is needed, and [reason-refmt] is recommended.\n\n```sh\napm install language-ocaml linter ocaml-indent\nopam install merlin\n```\n\n[ocamlmerlin]: https://github.com/the-lambda-church/merlin\n[linter]: https://atom.io/packages/linter\n[autocomplete-plus]: https://atom.io/packages/autocomplete-plus\n[language-ocaml]: https://atom.io/packages/language-ocaml\n[ocaml-indent]: https://atom.io/packages/ocaml-indent\n[language-reason]: https://atom.io/packages/language-reason\n[reason-refmt]: https://atom.io/packages/reason-refmt\n[ide-reason]: https://atom.io/packages/ide-reason\n",
+  "metadata": {
+    "name": "ocaml-merlin",
+    "main": "./lib/main",
+    "version": "0.14.7",
+    "description": "Linting, autocompletion, type checking, refactoring and code navigation for Ocaml/Reason with Merlin.",
+    "keywords": [
+      "linter",
+      "autocomplete",
+      "goto",
+      "ocaml",
+      "merlin"
+    ],
+    "activationHooks": [
+      "language-ocaml:grammar-used",
+      "language-ocaml-fix:grammar-used",
+      "language-reason:grammar-used",
+      "nuclide-language-reason:grammar-used"
+    ],
+    "repository": "https://github.com/atom-ocaml/ocaml-merlin",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.14.0 <2.0.0"
+    },
+    "dependencies": {
+      "etch": "^0.9.5"
+    },
+    "providedServices": {
+      "linter": {
+        "versions": {
+          "2.0.0": "provideLinter"
+        }
+      },
+      "autocomplete.provider": {
+        "versions": {
+          "2.0.0": "provideAutocomplete"
+        }
+      }
+    },
+    "consumedServices": {
+      "ocamlIndent": {
+        "versions": {
+          "^0.3.0": "consumeIndent"
+        }
+      }
+    },
+    "configSchema": {
+      "merlinPath": {
+        "type": "string",
+        "default": "ocamlmerlin",
+        "order": 1
+      },
+      "lintAsYouType": {
+        "type": "boolean",
+        "default": true,
+        "order": 2
+      },
+      "completePartialPrefixes": {
+        "description": "For instance, `L.ma` can get expanded to `List.map`.",
+        "type": "boolean",
+        "default": false,
+        "order": 3
+      },
+      "default": {
+        "title": "Default settings if no .merlin file is found",
+        "type": "object",
+        "order": 4,
+        "properties": {
+          "flags": {
+            "title": "Flags",
+            "type": "array",
+            "default": [],
+            "order": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "packages": {
+            "title": "Packages",
+            "type": "array",
+            "default": [],
+            "order": 2,
+            "items": {
+              "type": "string"
+            }
+          },
+          "extensions": {
+            "title": "Extensions",
+            "type": "array",
+            "default": [],
+            "order": 3,
+            "items": {
+              "type": "string"
+            }
+          },
+          "sourcePaths": {
+            "title": "Source Paths",
+            "type": "array",
+            "default": [],
+            "order": 4,
+            "items": {
+              "type": "string"
+            }
+          },
+          "buildPaths": {
+            "title": "Build Paths",
+            "type": "array",
+            "default": [],
+            "order": 5,
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

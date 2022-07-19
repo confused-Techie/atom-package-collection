@@ -1,0 +1,98 @@
+{
+  "name": "hydrogen-auth",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nikitakit/hydrogen-auth"
+  },
+  "downloads": 2778,
+  "stargazers_count": 2,
+  "releases": {
+    "latest": "0.0.2"
+  },
+  "versions": {
+    "0.0.2": {
+      "name": "hydrogen-auth",
+      "main": "./lib/main",
+      "version": "0.0.2",
+      "description": "A brute-force approach to remote gateway authentication",
+      "keywords": [
+        "hydrogen",
+        "jupyter",
+        "ipython"
+      ],
+      "consumedServices": {
+        "hydrogen.provider": {
+          "versions": {
+            "^1.0.0": "consumeHydrogen"
+          }
+        }
+      },
+      "repository": "https://github.com/nikitakit/hydrogen-auth",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "lint": "eslint ."
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.5",
+        "ws": "^1.1.1",
+        "xmlhttprequest": "^1.8.0"
+      },
+      "package-deps": [
+        "hydrogen"
+      ],
+      "devDependencies": {
+        "babel-eslint": "^7.1.0",
+        "eslint": "^3.9.1",
+        "eslint-config-airbnb-base": "^10.0.1",
+        "eslint-plugin-import": "^2.2.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/hydrogen-auth/versions/0.0.2/tarball"
+      }
+    }
+  },
+  "readme": "# Hydrogen Auth Plugin\n\nA brute-force approach to remote gateway authentication.\n\nThis package for [Atom](https://atom.io/), is a plugin for [Hydrogen](https://github.com/nteract/hydrogen).\n\nIt allows connecting to password-protected notebook servers and gateways. However, the approach taken to achieve this involves some heavy monkey-patching. There is no guarantee that it won't break other atom packages.\n\nPlease note that notebook servers with self-signed certificates are not supported, due to the default security policy in nodejs/Atom.\n\n## How to use\n\n1. Make sure the gateway or notebook server you are connected to is part of your hydrogen `gateways` config.\n2. Activate the `hydrogen` package (by running any command in that package).\n3. Run the **Hydrogen Auth: Login to Gateway** command and select your gateway.\n4. Double-check that the login URL specified is correct, and then input your password.\n5. Now run **Hydrogen: Connect to Remote Kernel**. If the password you entered was correct, you will be prompted to create or select a session. If your login did not succeed, you will instead be given an error message.\n\n## Troubleshooting\n\n* _\"Hydrogen v1.0.0+ has to be running\"_: this may signal that you don't have the right version of `hydrogen` installed. It may also mean that you have not yet activated the `hydrogen` package (to activate it, run any command belonging to the package)\n* _Connecting to the gateway fails, even after entering a login_: Please make sure that the notebook server is running, and that the login URL and password are correct.\n* Self-signed certificates are not supported. Consider using Let's Encrypt for public servers, and alternative authentication (e.g. SSH tunneling or http basic auth via nginx proxy) for private servers.\n\n## TODO\n\nThe following features are currently unsupported. (Though patches are welcome!)\n* Support for multi-user notebook servers\n* Figure out a user-configurable method of adding trusted certificates (or wait for node.js to support using the system certificate store)\n* Integrate code from this package into `@jupyterlab/services` and `hydrogen`, such that a separate package is not necessary.\n",
+  "metadata": {
+    "name": "hydrogen-auth",
+    "main": "./lib/main",
+    "version": "0.0.2",
+    "description": "A brute-force approach to remote gateway authentication",
+    "keywords": [
+      "hydrogen",
+      "jupyter",
+      "ipython"
+    ],
+    "consumedServices": {
+      "hydrogen.provider": {
+        "versions": {
+          "^1.0.0": "consumeHydrogen"
+        }
+      }
+    },
+    "repository": "https://github.com/nikitakit/hydrogen-auth",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "scripts": {
+      "lint": "eslint ."
+    },
+    "dependencies": {
+      "atom-space-pen-views": "^2.0.5",
+      "ws": "^1.1.1",
+      "xmlhttprequest": "^1.8.0"
+    },
+    "package-deps": [
+      "hydrogen"
+    ],
+    "devDependencies": {
+      "babel-eslint": "^7.1.0",
+      "eslint": "^3.9.1",
+      "eslint-config-airbnb-base": "^10.0.1",
+      "eslint-plugin-import": "^2.2.0"
+    }
+  }
+}

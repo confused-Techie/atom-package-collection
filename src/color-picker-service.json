@@ -1,0 +1,76 @@
+{
+  "name": "color-picker-service",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paulpflug/color-picker-service"
+  },
+  "downloads": 4748,
+  "stargazers_count": 2,
+  "releases": {
+    "latest": "0.0.1"
+  },
+  "versions": {
+    "0.0.1": {
+      "name": "color-picker-service",
+      "main": "./lib/color-picker-service",
+      "version": "0.0.1",
+      "description": "provides a color picker as a service for other package",
+      "keywords": [],
+      "repository": "https://github.com/paulpflug/color-picker-service",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-simple-logger": "~0.0.1",
+        "atom-vue-component-loader": "~0.0.6",
+        "simple-color-picker": "0.0.6"
+      },
+      "dev-dependencies": {
+        "atom-package-reloader": "~0.0.2",
+        "atom-vue-component-compiler": "~0.0.4"
+      },
+      "providedServices": {
+        "color-picker": {
+          "description": "Summons a color-picker",
+          "versions": {
+            "0.0.1": "provideColorPicker"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/color-picker-service/versions/0.0.1/tarball"
+      }
+    }
+  },
+  "readme": "# color-picker-service\n\nprovides a color picker as a service for other packages.\n\n![color-picker-service](https://cloud.githubusercontent.com/assets/1881921/8267498/a91276a2-1764-11e5-9c7e-07e237f83306.png)\n\nuses the [simple-color-picker](https://github.com/superguigui/simple-color-picker)\n\n## Usage\n\npackage.json\n```json\n{\n  \"otherStuff\": \"otherData\",\n  \"consumedServices\": {\n    \"color-picker\": {\n      \"versions\": {\n        \"^0.0.1\": \"consumeColorPicker\"\n      }\n    }\n  }\n}\n```\n\nyour package:\n```coffee\n  #in main module\n  consumeColorPicker: (colorPicker) =>\n    @colorPicker = colorPicker\n\n    #where you want to use it\n    @colorPicker {x:x,y:y, color: oldColor}, (newColor) ->\n      #do something with new color\n      #newColor will be undefined on cancel and false on \"uncolor\"\n      unless newColor? # not canceled\n        if newColor\n          #has a color\n        else\n          #uncolor was selected\n```\n",
+  "metadata": {
+    "name": "color-picker-service",
+    "main": "./lib/color-picker-service",
+    "version": "0.0.1",
+    "description": "provides a color picker as a service for other package",
+    "keywords": [],
+    "repository": "https://github.com/paulpflug/color-picker-service",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=0.174.0 <2.0.0"
+    },
+    "dependencies": {
+      "atom-simple-logger": "~0.0.1",
+      "atom-vue-component-loader": "~0.0.6",
+      "simple-color-picker": "0.0.6"
+    },
+    "dev-dependencies": {
+      "atom-package-reloader": "~0.0.2",
+      "atom-vue-component-compiler": "~0.0.4"
+    },
+    "providedServices": {
+      "color-picker": {
+        "description": "Summons a color-picker",
+        "versions": {
+          "0.0.1": "provideColorPicker"
+        }
+      }
+    }
+  }
+}

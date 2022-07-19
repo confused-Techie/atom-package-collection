@@ -1,0 +1,4926 @@
+{
+  "name": "tester",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yacut/tester"
+  },
+  "downloads": 9233,
+  "stargazers_count": 22,
+  "releases": {
+    "latest": "1.4.0"
+  },
+  "versions": {
+    "1.4.0": {
+      "name": "tester",
+      "main": "./lib/main",
+      "author": "yacut",
+      "version": "1.4.0",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "jest",
+        "phpunit",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "deserializers": {
+        "tester-result-view": "deserializeResultView",
+        "tester-console-output": "deserializeConsoleOutput"
+      },
+      "dependencies": {
+        "ansi-to-html": "0.6.2",
+        "atom-package-deps": "4.6.0",
+        "etch": "0.12.4",
+        "glob-to-regexp": "0.3.0",
+        "redux": "3.6.0",
+        "redux-observable": "0.14.1",
+        "rxjs": "5.4.0"
+      },
+      "devDependencies": {
+        "babel-cli": "6.24.1",
+        "babel-eslint": "7.2.3",
+        "babel-preset-es2015": "6.24.1",
+        "eslint": "3.19.0",
+        "eslint-config-airbnb-base": "11.2.0",
+        "eslint-plugin-flowtype": "2.34.0",
+        "eslint-plugin-import": "2.3.0",
+        "eslint-plugin-jsx-a11y": "4.0.0",
+        "eslint-plugin-react": "7.0.1",
+        "flow-bin": "0.47.0"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right"
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before",
+            "tail"
+          ],
+          "default": "tail"
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true
+        },
+        "scrollToBottom": {
+          "title": "Scroll console output to bottom after test run",
+          "description": "Should scroll console output to bottom after test run?",
+          "type": "boolean",
+          "default": true
+        },
+        "showStatusBar": {
+          "title": "Show status bar",
+          "description": "Should show status bar?",
+          "type": "boolean",
+          "default": true
+        },
+        "statusBarOnClick": {
+          "title": "Status Bar on click",
+          "description": "What should opens on status bar click?",
+          "type": "string",
+          "enum": [
+            "console",
+            "results",
+            "both"
+          ],
+          "default": "both"
+        },
+        "statusBarPosition": {
+          "title": "Status bar position",
+          "description": "Which position should be status bar: left or right?",
+          "type": "string",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "default": "Left"
+        },
+        "statusBarPriority": {
+          "title": "Status bar priority",
+          "description": "Lower priority tiles are placed further to the position side.",
+          "type": "integer",
+          "default": 0,
+          "minimum": -1000,
+          "maximum": 1000
+        },
+        "softWrapDefault": {
+          "title": "Soft Wrap default",
+          "description": "Should wrap the text in results view?",
+          "type": "boolean",
+          "default": true
+        },
+        "removeCurrentFileFilterIfProjectTest": {
+          "title": "Remove current file only filter if project test run",
+          "description": "Should remove current file filter if project test run?",
+          "type": "boolean",
+          "default": true
+        },
+        "testStateStyle": {
+          "title": "Test state style",
+          "description": "Show results state as text or icon?",
+          "type": "string",
+          "enum": [
+            "Text",
+            "Icon"
+          ],
+          "default": "Text"
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/1.4.0/tarball"
+      }
+    },
+    "1.3.2": {
+      "name": "tester",
+      "main": "./lib/main",
+      "author": "yacut",
+      "version": "1.3.2",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "deserializers": {
+        "tester-result-view": "deserializeResultView",
+        "tester-console-output": "deserializeConsoleOutput"
+      },
+      "dependencies": {
+        "ansi-to-html": "0.6.2",
+        "atom-package-deps": "4.6.0",
+        "etch": "0.12.4",
+        "glob-to-regexp": "0.3.0",
+        "redux": "3.6.0",
+        "redux-observable": "0.14.1",
+        "rxjs": "5.4.0"
+      },
+      "devDependencies": {
+        "babel-cli": "6.24.1",
+        "babel-eslint": "7.2.3",
+        "babel-preset-es2015": "6.24.1",
+        "eslint": "3.19.0",
+        "eslint-config-airbnb-base": "11.2.0",
+        "eslint-plugin-flowtype": "2.34.0",
+        "eslint-plugin-import": "2.3.0",
+        "eslint-plugin-jsx-a11y": "4.0.0",
+        "eslint-plugin-react": "7.0.1",
+        "flow-bin": "0.47.0"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right"
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before",
+            "tail"
+          ],
+          "default": "tail"
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true
+        },
+        "scrollToBottom": {
+          "title": "Scroll console output to bottom after test run",
+          "description": "Should scroll console output to bottom after test run?",
+          "type": "boolean",
+          "default": true
+        },
+        "showStatusBar": {
+          "title": "Show status bar",
+          "description": "Should show status bar?",
+          "type": "boolean",
+          "default": true
+        },
+        "statusBarOnClick": {
+          "title": "Status Bar on click",
+          "description": "What should opens on status bar click?",
+          "type": "string",
+          "enum": [
+            "console",
+            "results",
+            "both"
+          ],
+          "default": "both"
+        },
+        "statusBarPosition": {
+          "title": "Status bar position",
+          "description": "Which position should be status bar: left or right?",
+          "type": "string",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "default": "Left"
+        },
+        "statusBarPriority": {
+          "title": "Status bar priority",
+          "description": "Lower priority tiles are placed further to the position side.",
+          "type": "integer",
+          "default": 0,
+          "minimum": -1000,
+          "maximum": 1000
+        },
+        "softWrapDefault": {
+          "title": "Soft Wrap default",
+          "description": "Should wrap the text in results view?",
+          "type": "boolean",
+          "default": true
+        },
+        "removeCurrentFileFilterIfProjectTest": {
+          "title": "Remove current file only filter if project test run",
+          "description": "Should remove current file filter if project test run?",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/1.3.2/tarball"
+      }
+    },
+    "1.3.1": {
+      "name": "tester",
+      "main": "./lib/main",
+      "author": "yacut",
+      "version": "1.3.1",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "deserializers": {
+        "tester-result-view": "deserializeResultView",
+        "tester-console-output": "deserializeConsoleOutput"
+      },
+      "dependencies": {
+        "ansi-to-html": "0.6.2",
+        "atom-package-deps": "4.6.0",
+        "etch": "0.12.4",
+        "glob-to-regexp": "0.3.0",
+        "redux": "3.6.0",
+        "redux-observable": "0.14.1",
+        "rxjs": "5.4.0"
+      },
+      "devDependencies": {
+        "babel-cli": "6.24.1",
+        "babel-eslint": "7.2.3",
+        "babel-preset-es2015": "6.24.1",
+        "eslint": "3.19.0",
+        "eslint-config-airbnb-base": "11.2.0",
+        "eslint-plugin-flowtype": "2.34.0",
+        "eslint-plugin-import": "2.3.0",
+        "eslint-plugin-jsx-a11y": "4.0.0",
+        "eslint-plugin-react": "7.0.1",
+        "flow-bin": "0.47.0"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right"
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before",
+            "tail"
+          ],
+          "default": "tail"
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true
+        },
+        "scrollToBottom": {
+          "title": "Scroll console output to bottom after test run",
+          "description": "Should scroll console output to bottom after test run?",
+          "type": "boolean",
+          "default": true
+        },
+        "showStatusBar": {
+          "title": "Show status bar",
+          "description": "Should show status bar?",
+          "type": "boolean",
+          "default": true
+        },
+        "statusBarOnClick": {
+          "title": "Status Bar on click",
+          "description": "What should opens on status bar click?",
+          "type": "string",
+          "enum": [
+            "console",
+            "results",
+            "both"
+          ],
+          "default": "both"
+        },
+        "statusBarPosition": {
+          "title": "Status bar position",
+          "description": "Which position should be status bar: left or right?",
+          "type": "string",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "default": "Left"
+        },
+        "statusBarPriority": {
+          "title": "Status bar priority",
+          "description": "Lower priority tiles are placed further to the position side.",
+          "type": "integer",
+          "default": 0,
+          "minimum": -1000,
+          "maximum": 1000
+        },
+        "softWrapDefault": {
+          "title": "Soft Wrap default",
+          "description": "Should wrap the text in results view?",
+          "type": "boolean",
+          "default": true
+        },
+        "removeCurrentFileFilterIfProjectTest": {
+          "title": "Remove current file only filter if project test run",
+          "description": "Should remove current file filter if project test run?",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/1.3.1/tarball"
+      }
+    },
+    "1.3.0": {
+      "name": "tester",
+      "main": "./lib/main",
+      "author": "yacut",
+      "version": "1.3.0",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "deserializers": {
+        "tester-result-view": "deserializeResultView",
+        "tester-console-output": "deserializeConsoleOutput"
+      },
+      "dependencies": {
+        "ansi-to-html": "0.6.2",
+        "atom-package-deps": "4.6.0",
+        "etch": "0.12.4",
+        "glob-to-regexp": "0.3.0",
+        "redux": "3.6.0",
+        "redux-observable": "0.14.1",
+        "rxjs": "5.4.0"
+      },
+      "devDependencies": {
+        "babel-cli": "6.24.1",
+        "babel-eslint": "7.2.3",
+        "babel-preset-es2015": "6.24.1",
+        "eslint": "3.19.0",
+        "eslint-config-airbnb-base": "11.2.0",
+        "eslint-plugin-flowtype": "2.34.0",
+        "eslint-plugin-import": "2.3.0",
+        "eslint-plugin-jsx-a11y": "4.0.0",
+        "eslint-plugin-react": "7.0.1",
+        "flow-bin": "0.47.0"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right"
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before",
+            "tail"
+          ],
+          "default": "tail"
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true
+        },
+        "scrollToBottom": {
+          "title": "Scroll console output to bottom after test run",
+          "description": "Should scroll console output to bottom after test run?",
+          "type": "boolean",
+          "default": true
+        },
+        "showStatusBar": {
+          "title": "Show status bar",
+          "description": "Should show status bar?",
+          "type": "boolean",
+          "default": true
+        },
+        "statusBarOnClick": {
+          "title": "Status Bar on click",
+          "description": "What should opens on status bar click?",
+          "type": "string",
+          "enum": [
+            "console",
+            "results",
+            "both"
+          ],
+          "default": "both"
+        },
+        "statusBarPosition": {
+          "title": "Status bar position",
+          "description": "Which position should be status bar: left or right?",
+          "type": "string",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "default": "Left"
+        },
+        "statusBarPriority": {
+          "title": "Status bar priority",
+          "description": "Lower priority tiles are placed further to the position side.",
+          "type": "integer",
+          "default": 0,
+          "minimum": -1000,
+          "maximum": 1000
+        },
+        "softWrapDefault": {
+          "title": "Soft Wrap default",
+          "description": "Should wrap the text in results view?",
+          "type": "boolean",
+          "default": true
+        },
+        "removeCurrentFileFilterIfProjectTest": {
+          "title": "Remove current file only filter if project test run",
+          "description": "Should remove current file filter if project test run?",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/1.3.0/tarball"
+      }
+    },
+    "1.2.1": {
+      "name": "tester",
+      "main": "./lib/main",
+      "author": "yacut",
+      "version": "1.2.1",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "deserializers": {
+        "tester-result-view": "deserializeResultView",
+        "tester-console-output": "deserializeConsoleOutput"
+      },
+      "dependencies": {
+        "ansi-to-html": "0.6.2",
+        "atom-package-deps": "4.6.0",
+        "etch": "0.12.2",
+        "glob-to-regexp": "0.3.0"
+      },
+      "devDependencies": {
+        "babel-cli": "6.24.1",
+        "babel-eslint": "7.2.3",
+        "babel-preset-es2015": "6.24.1",
+        "eslint": "3.19.0",
+        "eslint-config-airbnb-base": "11.1.3",
+        "eslint-plugin-flowtype": "2.32.1",
+        "eslint-plugin-import": "2.2.0",
+        "eslint-plugin-jsx-a11y": "4.0.0",
+        "eslint-plugin-react": "6.10.3",
+        "flow-bin": "0.45.0"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 1
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 3
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Should show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 4
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 6
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 8
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before",
+            "tail"
+          ],
+          "default": "tail",
+          "order": 9
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "scrollToBottom": {
+          "title": "Scroll console output to bottom after test run",
+          "description": "Should scroll console output to bottom after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 11
+        },
+        "showStatusBar": {
+          "title": "Show status bar",
+          "description": "Should show status bar?",
+          "type": "boolean",
+          "default": true,
+          "order": 12
+        },
+        "statusBarOnClick": {
+          "title": "Status Bar on click",
+          "description": "What should opens on status bar click?",
+          "type": "string",
+          "enum": [
+            "console",
+            "results",
+            "both"
+          ],
+          "default": "both",
+          "order": 13
+        },
+        "softWrapDefault": {
+          "title": "Soft Wrap default",
+          "description": "Should wrap the text in results view?",
+          "type": "boolean",
+          "default": true,
+          "order": 14
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/1.2.1/tarball"
+      }
+    },
+    "1.2.0": {
+      "name": "tester",
+      "main": "./lib/main",
+      "author": "yacut",
+      "version": "1.2.0",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "deserializers": {
+        "tester-result-view": "deserializeResultView",
+        "tester-console-output": "deserializeConsoleOutput"
+      },
+      "dependencies": {
+        "ansi-to-html": "0.6.2",
+        "atom-package-deps": "4.6.0",
+        "etch": "0.12.2",
+        "glob-to-regexp": "0.3.0"
+      },
+      "devDependencies": {
+        "babel-cli": "6.24.1",
+        "babel-eslint": "7.2.3",
+        "babel-preset-es2015": "6.24.1",
+        "eslint": "3.19.0",
+        "eslint-config-airbnb-base": "11.1.3",
+        "eslint-plugin-flowtype": "2.32.1",
+        "eslint-plugin-import": "2.2.0",
+        "eslint-plugin-jsx-a11y": "4.0.0",
+        "eslint-plugin-react": "6.10.3",
+        "flow-bin": "0.45.0"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 1
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 3
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Should show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 4
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 6
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 8
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before",
+            "tail"
+          ],
+          "default": "tail",
+          "order": 9
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "scrollToBottom": {
+          "title": "Scroll console output to bottom after test run",
+          "description": "Should scroll console output to bottom after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 11
+        },
+        "showStatusBar": {
+          "title": "Show status bar",
+          "description": "Should show status bar?",
+          "type": "boolean",
+          "default": true,
+          "order": 12
+        },
+        "statusBarOnClick": {
+          "title": "Status Bar on click",
+          "description": "What should opens on status bar click?",
+          "type": "string",
+          "enum": [
+            "console",
+            "results",
+            "both"
+          ],
+          "default": "both",
+          "order": 13
+        },
+        "softWrapDefault": {
+          "title": "Soft Wrap default",
+          "description": "Should wrap the text in results view?",
+          "type": "boolean",
+          "default": true,
+          "order": 14
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/1.2.0/tarball"
+      }
+    },
+    "1.1.1": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "1.1.1",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "0.6.2",
+        "atom-package-deps": "4.6.0",
+        "etch": "0.12.2",
+        "glob-to-regexp": "0.3.0"
+      },
+      "devDependencies": {
+        "babel-cli": "6.24.1",
+        "babel-eslint": "7.2.3",
+        "babel-preset-es2015": "6.24.1",
+        "eslint": "3.19.0",
+        "eslint-config-airbnb-base": "11.1.3",
+        "eslint-plugin-flowtype": "2.32.1",
+        "eslint-plugin-import": "2.2.0",
+        "eslint-plugin-jsx-a11y": "4.0.0",
+        "eslint-plugin-react": "6.10.3",
+        "flow-bin": "0.45.0"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 1
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 3
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Should show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 4
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 6
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 8
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before",
+            "tail"
+          ],
+          "default": "tail",
+          "order": 9
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "scrollToBottom": {
+          "title": "Scroll console output to bottom after test run",
+          "description": "Should scroll console output to bottom after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 11
+        },
+        "showStatusBar": {
+          "title": "Show status bar",
+          "description": "Should show status bar?",
+          "type": "boolean",
+          "default": true,
+          "order": 12
+        },
+        "statusBarOnClick": {
+          "title": "Status Bar on click",
+          "description": "What should opens on status bar click?",
+          "type": "string",
+          "enum": [
+            "console",
+            "results",
+            "both"
+          ],
+          "default": "both",
+          "order": 13
+        },
+        "softWrapDefault": {
+          "title": "Soft Wrap default",
+          "description": "Should wrap the text in results view?",
+          "type": "boolean",
+          "default": true,
+          "order": 14
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/1.1.1/tarball"
+      }
+    },
+    "1.1.0": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "1.1.0",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "0.6.2",
+        "atom-package-deps": "4.6.0",
+        "etch": "0.12.2",
+        "glob-to-regexp": "0.3.0"
+      },
+      "devDependencies": {
+        "babel-cli": "6.24.1",
+        "babel-eslint": "7.2.3",
+        "babel-preset-es2015": "6.24.1",
+        "eslint": "3.19.0",
+        "eslint-config-airbnb-base": "11.1.3",
+        "eslint-plugin-flowtype": "2.32.1",
+        "eslint-plugin-import": "2.2.0",
+        "eslint-plugin-jsx-a11y": "4.0.0",
+        "eslint-plugin-react": "6.10.3",
+        "flow-bin": "0.45.0"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 1
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 3
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Should show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 4
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 6
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 8
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before",
+            "tail"
+          ],
+          "default": "tail",
+          "order": 9
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "scrollToBottom": {
+          "title": "Scroll console output to bottom after test run",
+          "description": "Should scroll console output to bottom after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 11
+        },
+        "showStatusBar": {
+          "title": "Show status bar",
+          "description": "Should show status bar?",
+          "type": "boolean",
+          "default": true,
+          "order": 12
+        },
+        "statusBarOnClick": {
+          "title": "Status Bar on click",
+          "description": "What should opens on status bar click?",
+          "type": "string",
+          "enum": [
+            "console",
+            "results",
+            "both"
+          ],
+          "default": "both",
+          "order": 13
+        },
+        "softWrapDefault": {
+          "title": "Soft Wrap default",
+          "description": "Should wrap the text in results view?",
+          "type": "boolean",
+          "default": true,
+          "order": 14
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/1.1.0/tarball"
+      }
+    },
+    "1.0.1": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "1.0.1",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "0.6.2",
+        "atom-package-deps": "4.6.0",
+        "etch": "0.12.2",
+        "glob-to-regexp": "0.3.0"
+      },
+      "devDependencies": {
+        "babel-cli": "6.24.1",
+        "babel-eslint": "7.2.3",
+        "babel-preset-es2015": "6.24.1",
+        "eslint": "3.19.0",
+        "eslint-config-airbnb-base": "11.1.3",
+        "eslint-plugin-flowtype": "2.32.1",
+        "eslint-plugin-import": "2.2.0",
+        "eslint-plugin-jsx-a11y": "4.0.0",
+        "eslint-plugin-react": "6.10.3",
+        "flow-bin": "0.45.0"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 1
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 3
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Should show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 4
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 6
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 8
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before",
+            "tail"
+          ],
+          "default": "tail",
+          "order": 9
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "scrollToBottom": {
+          "title": "Scroll console output to bottom after test run",
+          "description": "Should scroll console output to bottom after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 11
+        },
+        "showStatusBar": {
+          "title": "Show status bar",
+          "description": "Should show status bar?",
+          "type": "boolean",
+          "default": true,
+          "order": 12
+        },
+        "statusBarOnClick": {
+          "title": "Status Bar on click",
+          "description": "What should opens on status bar click?",
+          "type": "string",
+          "enum": [
+            "console",
+            "results",
+            "both"
+          ],
+          "default": "both",
+          "order": 13
+        },
+        "softWrapDefault": {
+          "title": "Soft Wrap default",
+          "description": "Should wrap the text in results view?",
+          "type": "boolean",
+          "default": true,
+          "order": 14
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/1.0.1/tarball"
+      }
+    },
+    "1.0.0": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "1.0.0",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "0.6.2",
+        "atom-package-deps": "4.6.0",
+        "etch": "0.12.2",
+        "glob-to-regexp": "0.3.0"
+      },
+      "devDependencies": {
+        "babel-cli": "6.24.1",
+        "babel-eslint": "7.2.3",
+        "babel-preset-es2015": "6.24.1",
+        "eslint": "3.19.0",
+        "eslint-config-airbnb-base": "11.1.3",
+        "eslint-plugin-flowtype": "2.32.1",
+        "eslint-plugin-import": "2.2.0",
+        "eslint-plugin-jsx-a11y": "4.0.0",
+        "eslint-plugin-react": "6.10.3",
+        "flow-bin": "0.45.0"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 1
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 3
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Should show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 4
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 6
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 8
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before",
+            "tail"
+          ],
+          "default": "tail",
+          "order": 9
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "scrollToBottom": {
+          "title": "Scroll console output to bottom after test run",
+          "description": "Should scroll console output to bottom after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 11
+        },
+        "showStatusBar": {
+          "title": "Show status bar",
+          "description": "Should show status bar?",
+          "type": "boolean",
+          "default": true,
+          "order": 12
+        },
+        "statusBarOnClick": {
+          "title": "Status Bar on click",
+          "description": "What should opens on status bar click?",
+          "type": "string",
+          "enum": [
+            "console",
+            "results",
+            "both"
+          ],
+          "default": "both",
+          "order": 13
+        },
+        "softWrapDefault": {
+          "title": "Soft Wrap default",
+          "description": "Should wrap the text in results view?",
+          "type": "boolean",
+          "default": true,
+          "order": 14
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/1.0.0/tarball"
+      }
+    },
+    "0.4.6": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.4.6",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 1
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 3
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Should show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 4
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 6
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 8
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before",
+            "tail"
+          ],
+          "default": "tail",
+          "order": 9
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "scrollToBottom": {
+          "title": "Scroll console output to bottom after test run",
+          "description": "Should scroll console output to bottom after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 11
+        },
+        "experimental": {
+          "order": 11,
+          "type": "object",
+          "properties": {
+            "testAllOpenedOnAnySave": {
+              "title": "Test all opened files on any save action.",
+              "description": "Should test `ALL` opened files if something was saved?",
+              "type": "boolean",
+              "default": false,
+              "order": 1
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.4.6/tarball"
+      }
+    },
+    "0.4.5": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.4.5",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 1
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 3
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Should show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 4
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 6
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 8
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before",
+            "tail"
+          ],
+          "default": "tail",
+          "order": 9
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "scrollToBottom": {
+          "title": "Scroll console output to bottom after test run",
+          "description": "Should scroll console output to bottom after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 11
+        },
+        "experimental": {
+          "order": 11,
+          "type": "object",
+          "properties": {
+            "testAllOpenedOnAnySave": {
+              "title": "Test all opened files on any save action.",
+              "description": "Should test `ALL` opened files if something was saved?",
+              "type": "boolean",
+              "default": false,
+              "order": 1
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.4.5/tarball"
+      }
+    },
+    "0.4.4": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.4.4",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 1
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 3
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Should show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 4
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 6
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 8
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before",
+            "tail"
+          ],
+          "default": "tail",
+          "order": 9
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "scrollToBottom": {
+          "title": "Scroll console output to bottom after test run",
+          "description": "Should scroll console output to bottom after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 11
+        },
+        "experimental": {
+          "order": 11,
+          "type": "object",
+          "properties": {
+            "testAllOpenedOnAnySave": {
+              "title": "Test all opened files on any save action.",
+              "description": "Should test `ALL` opened files if something was saved?",
+              "type": "boolean",
+              "default": false,
+              "order": 1
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.4.4/tarball"
+      }
+    },
+    "0.4.3": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.4.3",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 1
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 3
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Should show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 4
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 6
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 8
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before",
+            "tail"
+          ],
+          "default": "after",
+          "order": 9
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "scrollToBottom": {
+          "title": "Scroll console output to bottom after test run",
+          "description": "Should scroll console output to bottom after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 11
+        },
+        "experimental": {
+          "order": 11,
+          "type": "object",
+          "properties": {
+            "testAllOpenedOnAnySave": {
+              "title": "Test all opened files on any save action.",
+              "description": "Should test `ALL` opened files if something was saved?",
+              "type": "boolean",
+              "default": false,
+              "order": 1
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.4.3/tarball"
+      }
+    },
+    "0.4.2": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.4.2",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 1
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 3
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Should show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 4
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 6
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 8
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before"
+          ],
+          "default": "after",
+          "order": 9
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "scrollToBottom": {
+          "title": "Scroll console output to bottom after test run",
+          "description": "Should scroll console output to bottom after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 11
+        },
+        "experimental": {
+          "order": 11,
+          "type": "object",
+          "properties": {
+            "testAllOpenedOnAnySave": {
+              "title": "Test all opened files on any save action.",
+              "description": "Should test `ALL` opened files if something was saved?",
+              "type": "boolean",
+              "default": false,
+              "order": 1
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.4.2/tarball"
+      }
+    },
+    "0.4.1": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.4.1",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 1
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 3
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Should show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 4
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 6
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 8
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before"
+          ],
+          "default": "after",
+          "order": 9
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "experimental": {
+          "order": 11,
+          "type": "object",
+          "properties": {
+            "testAllOpenedOnAnySave": {
+              "title": "Test all opened files on any save action.",
+              "description": "Should test `ALL` opened files if something was saved?",
+              "type": "boolean",
+              "default": false,
+              "order": 1
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.4.1/tarball"
+      }
+    },
+    "0.4.0": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.4.0",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Should test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 1
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Should test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 2
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 3
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Should show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 4
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Should show test results in gutter highlights?",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Where should be the position of the gutter highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 6
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 8
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before"
+          ],
+          "default": "after",
+          "order": 9
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "experimental": {
+          "order": 11,
+          "type": "object",
+          "properties": {
+            "testAllOpenedOnAnySave": {
+              "title": "Test all opened files on any save action.",
+              "description": "Should test `ALL` opened files if something was saved?",
+              "type": "boolean",
+              "default": false,
+              "order": 1
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.4.0/tarball"
+      }
+    },
+    "0.3.5": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.3.5",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnChange": {
+          "title": "Test on Change (if test provider support it)",
+          "description": "Test files while typing, without the need to save? (restart required)",
+          "type": "boolean",
+          "default": false,
+          "order": 1
+        },
+        "testOnChangeInterval": {
+          "title": "Test on Change Interval",
+          "description": "For how many seconds should the tester wait?",
+          "type": "integer",
+          "default": 1,
+          "order": 2
+        },
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 3
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 5
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 6
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Position of Gutter Highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 7
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Highlight Error Lines in Gutter?",
+          "type": "boolean",
+          "default": true,
+          "order": 8
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 9
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 10
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before"
+          ],
+          "default": "after",
+          "order": 11
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 12
+        },
+        "experimental": {
+          "order": 13,
+          "type": "object",
+          "properties": {
+            "testAllOpenedOnAnySave": {
+              "title": "Test *all* opened files on *any* save action",
+              "description": "Should test all opened files if something was saved?",
+              "type": "boolean",
+              "default": false,
+              "order": 1
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.3.5/tarball"
+      }
+    },
+    "0.3.4": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.3.4",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnChange": {
+          "title": "Test on Change (if test provider support it)",
+          "description": "Test files while typing, without the need to save? (restart required)",
+          "type": "boolean",
+          "default": false,
+          "order": 1
+        },
+        "testOnChangeInterval": {
+          "title": "Test on Change Interval",
+          "description": "For how many seconds should the tester wait?",
+          "type": "integer",
+          "default": 1,
+          "order": 2
+        },
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 3
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 5
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 6
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Position of Gutter Highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 7
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Highlight Error Lines in Gutter?",
+          "type": "boolean",
+          "default": true,
+          "order": 8
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 9
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 10
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before"
+          ],
+          "default": "after",
+          "order": 11
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 12
+        },
+        "experimental": {
+          "order": 13,
+          "type": "object",
+          "properties": {
+            "testAllOpenedOnAnySave": {
+              "title": "Test *all* opened files on *any* save action",
+              "description": "Should test all opened files if something was saved?",
+              "type": "boolean",
+              "default": false,
+              "order": 1
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.3.4/tarball"
+      }
+    },
+    "0.3.3": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.3.3",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnChange": {
+          "title": "Test on Change (if test provider support it)",
+          "description": "Test files while typing, without the need to save? (restart required)",
+          "type": "boolean",
+          "default": false,
+          "order": 1
+        },
+        "testOnChangeInterval": {
+          "title": "Test on Change Interval",
+          "description": "For how many seconds should the tester wait?",
+          "type": "integer",
+          "default": 1,
+          "order": 2
+        },
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 3
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 5
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 6
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Position of Gutter Highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 7
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Highlight Error Lines in Gutter?",
+          "type": "boolean",
+          "default": true,
+          "order": 8
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 9
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 10
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before"
+          ],
+          "default": "after",
+          "order": 11
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 12
+        },
+        "experimental": {
+          "order": 13,
+          "type": "object",
+          "properties": {
+            "testAllOpenedOnAnySave": {
+              "title": "Test *all* opened files on *any* save action",
+              "description": "Should test all opened files if something was saved?",
+              "type": "boolean",
+              "default": false,
+              "order": 1
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.3.3/tarball"
+      }
+    },
+    "0.3.2": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.3.2",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnChange": {
+          "title": "Test on Change (if test provider support it)",
+          "description": "Test files while typing, without the need to save? (restart required)",
+          "type": "boolean",
+          "default": false,
+          "order": 1
+        },
+        "testOnChangeInterval": {
+          "title": "Test on Change Interval",
+          "description": "For how many seconds should the tester wait?",
+          "type": "integer",
+          "default": 1,
+          "order": 2
+        },
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 3
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 5
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Show output after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 6
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Position of Gutter Highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 7
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Highlight Error Lines in Gutter?",
+          "type": "boolean",
+          "default": true,
+          "order": 8
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 9
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": false,
+          "order": 10
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before"
+          ],
+          "default": "after",
+          "order": 11
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 12
+        },
+        "experimental": {
+          "order": 13,
+          "type": "object",
+          "properties": {
+            "testAllOpenedOnAnySave": {
+              "title": "Test *all* opened files on *any* save action",
+              "description": "Should test all opened files if something was saved?",
+              "type": "boolean",
+              "default": false,
+              "order": 1
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.3.2/tarball"
+      }
+    },
+    "0.3.1": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.3.1",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnChange": {
+          "title": "Test on Change (if test provider support it)",
+          "description": "Test files while typing, without the need to save? (restart required)",
+          "type": "boolean",
+          "default": false,
+          "order": 1
+        },
+        "testOnChangeInterval": {
+          "title": "Test on Change Interval",
+          "description": "For how many seconds should the tester wait?",
+          "type": "integer",
+          "default": 1,
+          "order": 2
+        },
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 3
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 5
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Show output after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 6
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Position of Gutter Highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 7
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Highlight Error Lines in Gutter?",
+          "type": "boolean",
+          "default": true,
+          "order": 8
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 9
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before"
+          ],
+          "default": "after",
+          "order": 11
+        },
+        "showNotifications": {
+          "title": "Show notifications after test run",
+          "description": "Should show notifications after test run if editor not active?",
+          "type": "boolean",
+          "default": true,
+          "order": 12
+        },
+        "experimental": {
+          "order": 13,
+          "type": "object",
+          "properties": {
+            "testAllOpenedOnAnySave": {
+              "title": "Test *all* opened files on *any* save action",
+              "description": "Should test all opened files if something was saved?",
+              "type": "boolean",
+              "default": false,
+              "order": 1
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.3.1/tarball"
+      }
+    },
+    "0.3.0": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.3.0",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnChange": {
+          "title": "Test on Change",
+          "description": "Test files while typing, without the need to save? (restart required)",
+          "type": "boolean",
+          "default": false,
+          "order": 1
+        },
+        "testOnChangeInterval": {
+          "title": "Test on Change Interval",
+          "description": "For how many seconds should the tester wait?",
+          "type": "integer",
+          "default": 1,
+          "order": 2
+        },
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 3
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 5
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Show output after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 6
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Position of Gutter Highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 7
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Highlight Error Lines in Gutter?",
+          "type": "boolean",
+          "default": true,
+          "order": 8
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 9
+        },
+        "showInlineError": {
+          "title": "Show errors inline after test run",
+          "description": "Should show errors in text editor after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "inlineErrorPosition": {
+          "title": "Inline error position",
+          "description": "Should show errors in text editor after or before test case?",
+          "type": "string",
+          "enum": [
+            "after",
+            "before"
+          ],
+          "default": "after",
+          "order": 11
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.3.0/tarball"
+      }
+    },
+    "0.2.14": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.2.14",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnChange": {
+          "title": "Test on Change",
+          "description": "Test files while typing, without the need to save? (restart required)",
+          "type": "boolean",
+          "default": false,
+          "order": 1
+        },
+        "testOnChangeInterval": {
+          "title": "Test on Change Interval",
+          "description": "For how many seconds should the tester wait?",
+          "type": "integer",
+          "default": 1,
+          "order": 2
+        },
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 3
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 5
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Show output after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 6
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Position of Gutter Highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 7
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Highlight Error Lines in Gutter?",
+          "type": "boolean",
+          "default": true,
+          "order": 8
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 9
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.2.14/tarball"
+      }
+    },
+    "0.2.13": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.2.13",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnChange": {
+          "title": "Test on Change",
+          "description": "Test files while typing, without the need to save? (restart required)",
+          "type": "boolean",
+          "default": false,
+          "order": 1
+        },
+        "testOnChangeInterval": {
+          "title": "Test on Change Interval",
+          "description": "For how many seconds should the tester wait?",
+          "type": "integer",
+          "default": 1,
+          "order": 2
+        },
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 3
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 5
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Show output after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 6
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Position of Gutter Highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 7
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Highlight Error Lines in Gutter?",
+          "type": "boolean",
+          "default": true,
+          "order": 8
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 9
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.2.13/tarball"
+      }
+    },
+    "0.2.12": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.2.12",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnChange": {
+          "title": "Test on Change",
+          "description": "Test files while typing, without the need to save? (restart required)",
+          "type": "boolean",
+          "default": false,
+          "order": 1
+        },
+        "testOnChangeInterval": {
+          "title": "Test on Change Interval",
+          "description": "For how many seconds should the tester wait?",
+          "type": "integer",
+          "default": 1,
+          "order": 2
+        },
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 3
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 5
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Show output after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 6
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Position of Gutter Highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 7
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Highlight Error Lines in Gutter?",
+          "type": "boolean",
+          "default": true,
+          "order": 8
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 9
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.2.12/tarball"
+      }
+    },
+    "0.2.11": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.2.11",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnChange": {
+          "title": "Test on Change",
+          "description": "Test files while typing, without the need to save? (restart required)",
+          "type": "boolean",
+          "default": false,
+          "order": 1
+        },
+        "testOnChangeInterval": {
+          "title": "Test on Change Interval",
+          "description": "For how many seconds should the tester wait?",
+          "type": "integer",
+          "default": 1,
+          "order": 2
+        },
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Test files on open?",
+          "type": "boolean",
+          "default": true,
+          "order": 3
+        },
+        "testOnSave": {
+          "title": "Test on Save",
+          "description": "Test files on save?",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 5
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Show output after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 6
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Position of Gutter Highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 7
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Highlight Error Lines in Gutter?",
+          "type": "boolean",
+          "default": true,
+          "order": 8
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 9
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.2.11/tarball"
+      }
+    },
+    "0.2.10": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.2.10",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnChange": {
+          "title": "Test on Change",
+          "description": "Test files while typing, without the need to save? (restart required)",
+          "type": "boolean",
+          "default": false,
+          "order": 1
+        },
+        "testOnChangeInterval": {
+          "title": "Test on Change Interval",
+          "description": "For how many seconds should the tester wait?",
+          "type": "integer",
+          "default": 1,
+          "order": 2
+        },
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Test files on open? (restart required)",
+          "type": "boolean",
+          "default": true,
+          "order": 3
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 4
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Show output after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Position of Gutter Highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 6
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Highlight Error Lines in Gutter?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 8
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.2.10/tarball"
+      }
+    },
+    "0.2.9": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.2.9",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnChange": {
+          "title": "Test on Change",
+          "description": "Test files while typing, without the need to save? (restart required)",
+          "type": "boolean",
+          "default": false,
+          "order": 1
+        },
+        "testOnChangeInterval": {
+          "title": "Test on Change Interval",
+          "description": "For how many seconds should the tester wait?",
+          "type": "integer",
+          "default": 1,
+          "order": 2
+        },
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Test files on open? (restart required)",
+          "type": "boolean",
+          "default": true,
+          "order": 3
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 4
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Show output after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Position of Gutter Highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 6
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Highlight Error Lines in Gutter?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 8
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.2.9/tarball"
+      }
+    },
+    "0.2.8": {
+      "name": "tester",
+      "main": "./lib/tester",
+      "author": "yacut",
+      "version": "0.2.8",
+      "description": "A interactive test runner with IDE based Feedback",
+      "keywords": [
+        "test",
+        "tester",
+        "testing",
+        "interactive",
+        "mocha",
+        "wallaby.js"
+      ],
+      "repository": "https://github.com/yacut/tester",
+      "bugs": {
+        "url": "https://github.com/yacut/tester/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "(apm test) && (flow check) && (eslint . )"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "tester": {
+          "versions": {
+            "^1.0.0": "consumeTester"
+          }
+        }
+      },
+      "dependencies": {
+        "ansi-to-html": "^0.6.0",
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "glob-to-regexp": "^0.3.0",
+        "lodash": "^4.17.4",
+        "sb-debounce": "^1.0.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.23.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.22.0",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "flow-bin": "^0.40.0",
+        "jasmine-fix": "^1.0.1"
+      },
+      "configSchema": {
+        "testOnChange": {
+          "title": "Test on Change",
+          "description": "Test files while typing, without the need to save? (restart required)",
+          "type": "boolean",
+          "default": false,
+          "order": 1
+        },
+        "testOnChangeInterval": {
+          "title": "Test on Change Interval",
+          "description": "For how many seconds should the tester wait?",
+          "type": "integer",
+          "default": 1,
+          "order": 2
+        },
+        "testOnOpen": {
+          "title": "Test on Open",
+          "description": "Test files on open? (restart required)",
+          "type": "boolean",
+          "default": true,
+          "order": 3
+        },
+        "messageTimeout": {
+          "title": "Output view timeout",
+          "description": "For how many seconds should the output view above the status-bar stay open?",
+          "type": "integer",
+          "default": 5,
+          "order": 4
+        },
+        "showOutputAfterTestRun": {
+          "title": "Show output after test run",
+          "description": "Show output after test run?",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "gutterPosition": {
+          "title": "Gutter Position",
+          "description": "Position of Gutter Highlights?",
+          "enum": [
+            "Left",
+            "Right"
+          ],
+          "type": "string",
+          "default": "Right",
+          "order": 6
+        },
+        "gutterEnabled": {
+          "title": "Gutter Enabled",
+          "description": "Highlight Error Lines in Gutter?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "ansiToHtml": {
+          "title": "Convert ansi console output to html",
+          "description": "If console output has ansi colors should it convert to html colors?",
+          "type": "boolean",
+          "default": true,
+          "order": 8
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/tester/versions/0.2.8/tarball"
+      }
+    }
+  },
+  "readme": "# Tester\n\n[![Build Status](https://travis-ci.org/yacut/tester.svg)](https://travis-ci.org/yacut/tester)\n[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/yacut/tester?svg=true)](https://ci.appveyor.com/api/projects/status/github/yacut/tester)\n[![APM Version](https://img.shields.io/apm/v/tester.svg)](https://atom.io/packages/tester)\n[![APM Downloads](https://img.shields.io/apm/dm/tester.svg)](https://atom.io/packages/tester)\n[![GitHub stars](https://img.shields.io/github/stars/yacut/tester.svg)](https://github.com/yacut/tester/stargazers)\n[![GitHub issues](https://img.shields.io/github/issues/yacut/tester.svg)](https://github.com/yacut/tester/issues)\n[![Dependency Status](https://david-dm.org/yacut/tester.svg)](https://david-dm.org/yacut/tester)\n\nTester is a test runner for the hackable [Atom Editor](http://atom.io). Additionally, you need to install a specific tester provider for your test framework. You will find a full list below in the [Known provider](#known-providers) section.\n\n![Preview](https://raw.githubusercontent.com/yacut/tester/master/resources/preview.gif)\n\n### Base Features\n- IDE based Feedback\n\n  - Gutter test result markers\n\n    ![gutter-markers](https://raw.githubusercontent.com/yacut/tester/master/resources/gutter-markers.png)\n\n  - In-line error messages\n\n    ![inline-error](https://raw.githubusercontent.com/yacut/tester/master/resources/inline-error.png)\n\n  - Console test output\n\n    ![console-output](https://raw.githubusercontent.com/yacut/tester/master/resources/console-output.png)\n\n  - Test result view\n\n    ![result-view](https://raw.githubusercontent.com/yacut/tester/master/resources/result-view.png)\n\n- Session based test watching\n  - Test file on open\n  - Test file after save\n  - Test project\n\n- Supported test frameworks (for now):\n  * [Mocha](https://mochajs.org/)\n  * [Jest](https://github.com/facebook/jest)\n  * [PHPUnit](https://phpunit.de/)\n\n#### How to / Installation\n\nYou can install through the CLI by doing:\n\n```\n$ apm install tester\n```\n\nOr you can install from Settings view by searching for `Tester`.\n\n### Known providers\n\n* [Mocha](https://atom.io/packages/tester-mocha) test runner.\n* [Jest](https://atom.io/packages/tester-jest) test runner.\n* [PHPUnit](https://atom.io/packages/tester-phpunit) test runner.\n\n### Tester API\n\n#### Example\n\nDeclare the provider callback in the `package.json`.\n\n```js\n\"providedServices\": {\n  \"tester\": {\n    \"versions\": {\n      \"1.0.0\": \"provideTester\"\n    }\n  }\n}\n```\n\nDefine the provider callback in `lib/main.js`.\n\n```js\nexport function provideTester() {\n  return {\n    name: 'tester-name',\n    options: {},\n    scopes: ['**/test/*.js', '**/*spec.js'],\n    test(textEditor/* or null to run project tests*/, additionalArgs/* from results views*/) {\n      // Note, a Promise may be returned as well!\n      return {\n        messages: [\n          {\n            duration: 1, // duration in ms\n            error: {\n              name: 'optional error object',\n              message: 'something went wrong',\n              actual: 'optional actual result', // can be an object\n              expected: 'optional expected result', // can be an object\n              operator: 'optional operator',\n            },\n            filePath: 'file path to highlight',\n            lineNumber: 1, // line number to highlight\n            state: 'failed', // 'passed' | 'failed' | 'skipped',\n            title: 'some test title',\n          }\n        ],\n        output: 'tester console output'\n      };\n    },\n    stop() {\n      // stop tester if needed\n    }\n  };\n}\n```\n\n### Inspiration\n\nI'd like to give a shout out to [Wallaby.js](https://wallabyjs.com/), which is a significantly more comprehensive and covers a lot more editors, if this extension interests you - check out that too.\n\n### Contribute\n\nStick to imposed code style:\n\n* `$ npm install`\n* `$ npm test`\n\n### Roadmap\n\n- [x] add unknown status for test which not ran\n- [x] replace all views with react components (etch)\n- [x] add table view with results similar to nuclide diagnostics\n  - [x] sort data by column head click\n  - [x] quick set additional args for test runner\n  - [x] merge results from each test runner\n  - [x] re-sizable columns\n  - [ ] side by side diff view for expectations\n  - [x] go to next/previous test commands\n- [x] add run all project tests command\n- [x] implement [Redux](https://github.com/reactjs/redux) and [redux-observable](https://github.com/redux-observable/redux-observable) for result view\n- [x] [serialization](http://flight-manual.atom.io/hacking-atom/sections/package-active-editor-info/#serialization)\n",
+  "metadata": {
+    "name": "tester",
+    "main": "./lib/main",
+    "author": "yacut",
+    "version": "1.4.0",
+    "description": "A interactive test runner with IDE based Feedback",
+    "keywords": [
+      "test",
+      "tester",
+      "testing",
+      "interactive",
+      "mocha",
+      "jest",
+      "phpunit",
+      "wallaby.js"
+    ],
+    "repository": "https://github.com/yacut/tester",
+    "bugs": {
+      "url": "https://github.com/yacut/tester/issues"
+    },
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.7.0 <2.0.0"
+    },
+    "scripts": {
+      "test": "(apm test) && (flow check) && (eslint . )"
+    },
+    "consumedServices": {
+      "status-bar": {
+        "versions": {
+          "^1.0.0": "consumeStatusBar"
+        }
+      },
+      "tester": {
+        "versions": {
+          "^1.0.0": "consumeTester"
+        }
+      }
+    },
+    "deserializers": {
+      "tester-result-view": "deserializeResultView",
+      "tester-console-output": "deserializeConsoleOutput"
+    },
+    "dependencies": {
+      "ansi-to-html": "0.6.2",
+      "atom-package-deps": "4.6.0",
+      "etch": "0.12.4",
+      "glob-to-regexp": "0.3.0",
+      "redux": "3.6.0",
+      "redux-observable": "0.14.1",
+      "rxjs": "5.4.0"
+    },
+    "devDependencies": {
+      "babel-cli": "6.24.1",
+      "babel-eslint": "7.2.3",
+      "babel-preset-es2015": "6.24.1",
+      "eslint": "3.19.0",
+      "eslint-config-airbnb-base": "11.2.0",
+      "eslint-plugin-flowtype": "2.34.0",
+      "eslint-plugin-import": "2.3.0",
+      "eslint-plugin-jsx-a11y": "4.0.0",
+      "eslint-plugin-react": "7.0.1",
+      "flow-bin": "0.47.0"
+    },
+    "configSchema": {
+      "testOnOpen": {
+        "title": "Test on Open",
+        "description": "Should test files on open?",
+        "type": "boolean",
+        "default": true
+      },
+      "testOnSave": {
+        "title": "Test on Save",
+        "description": "Should test files on save?",
+        "type": "boolean",
+        "default": true
+      },
+      "gutterEnabled": {
+        "title": "Gutter Enabled",
+        "description": "Should show test results in gutter highlights?",
+        "type": "boolean",
+        "default": true
+      },
+      "gutterPosition": {
+        "title": "Gutter Position",
+        "description": "Where should be the position of the gutter highlights?",
+        "enum": [
+          "Left",
+          "Right"
+        ],
+        "type": "string",
+        "default": "Right"
+      },
+      "ansiToHtml": {
+        "title": "Convert ansi console output to html",
+        "description": "If console output has ansi colors should it convert to html colors?",
+        "type": "boolean",
+        "default": true
+      },
+      "showInlineError": {
+        "title": "Show errors inline after test run",
+        "description": "Should show errors in text editor after test run?",
+        "type": "boolean",
+        "default": false
+      },
+      "inlineErrorPosition": {
+        "title": "Inline error position",
+        "description": "Should show errors in text editor after or before test case?",
+        "type": "string",
+        "enum": [
+          "after",
+          "before",
+          "tail"
+        ],
+        "default": "tail"
+      },
+      "showNotifications": {
+        "title": "Show notifications after test run",
+        "description": "Should show notifications after test run if editor not active?",
+        "type": "boolean",
+        "default": true
+      },
+      "scrollToBottom": {
+        "title": "Scroll console output to bottom after test run",
+        "description": "Should scroll console output to bottom after test run?",
+        "type": "boolean",
+        "default": true
+      },
+      "showStatusBar": {
+        "title": "Show status bar",
+        "description": "Should show status bar?",
+        "type": "boolean",
+        "default": true
+      },
+      "statusBarOnClick": {
+        "title": "Status Bar on click",
+        "description": "What should opens on status bar click?",
+        "type": "string",
+        "enum": [
+          "console",
+          "results",
+          "both"
+        ],
+        "default": "both"
+      },
+      "statusBarPosition": {
+        "title": "Status bar position",
+        "description": "Which position should be status bar: left or right?",
+        "type": "string",
+        "enum": [
+          "Left",
+          "Right"
+        ],
+        "default": "Left"
+      },
+      "statusBarPriority": {
+        "title": "Status bar priority",
+        "description": "Lower priority tiles are placed further to the position side.",
+        "type": "integer",
+        "default": 0,
+        "minimum": -1000,
+        "maximum": 1000
+      },
+      "softWrapDefault": {
+        "title": "Soft Wrap default",
+        "description": "Should wrap the text in results view?",
+        "type": "boolean",
+        "default": true
+      },
+      "removeCurrentFileFilterIfProjectTest": {
+        "title": "Remove current file only filter if project test run",
+        "description": "Should remove current file filter if project test run?",
+        "type": "boolean",
+        "default": true
+      },
+      "testStateStyle": {
+        "title": "Test state style",
+        "description": "Show results state as text or icon?",
+        "type": "string",
+        "enum": [
+          "Text",
+          "Icon"
+        ],
+        "default": "Text"
+      }
+    }
+  }
+}

@@ -1,0 +1,661 @@
+{
+  "name": "vocabuilder",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/t9md/atom-vocabuilder"
+  },
+  "downloads": 35,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "0.6.0"
+  },
+  "versions": {
+    "0.6.0": {
+      "name": "vocabuilder",
+      "main": "./lib/main",
+      "version": "0.6.0",
+      "description": "Let me vocabuild!",
+      "keywords": [
+        "translate"
+      ],
+      "repository": "https://github.com/t9md/atom-vocabuilder",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0"
+      },
+      "devDependencies": {
+        "prettier": "^1.10.2",
+        "standard": "^10.0.3"
+      },
+      "scripts": {
+        "test": "apm test",
+        "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+        "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+        "lint": "standard lib/*.js lib/**/*.js spec/*.js"
+      },
+      "activationCommands": {
+        "atom-text-editor": [
+          "vocabuilder:toggle-auto-search",
+          "vocabuilder:manual-search"
+        ]
+      },
+      "configSchema": {
+        "useDictLink": {
+          "order": 1,
+          "type": "boolean",
+          "default": "false"
+        },
+        "useSay": {
+          "order": 2,
+          "type": "boolean",
+          "default": "false"
+        },
+        "useGoogle": {
+          "order": 3,
+          "type": "boolean",
+          "default": "false"
+        },
+        "showCaption": {
+          "order": 4,
+          "type": "boolean",
+          "default": "true"
+        },
+        "userStyle": {
+          "order": 5,
+          "type": "string",
+          "default": "#vocabuilder-caption {\n  position: fixed;\n  top: 30%;\n  left: 5%;\n  z-index: 5;\n  width: 80%;\n  border-radius: 30px;\n  padding: 30px;\n  color: white;\n  background-color: black;\n  opacity: 0.6;\n  font-size: 120px;\n  text-align: center;\n}\n\n#vocabuilder-caption-item-2 {\n  font-size: 0.5em;\n}\n"
+        },
+        "fieldReplaceWithNewLineRegex": {
+          "order": 6,
+          "type": "string",
+          "default": "\\s*[\\/;]\\s*",
+          "description": "When fieald matched this regex, it replace with '\n'. By default `/` and `;` are replaced with '\n'"
+        }
+      },
+      "consumedServices": {
+        "vim-mode-plus": {
+          "versions": {
+            "^0.1.0": "consumeVimModePlus"
+          }
+        }
+      },
+      "standard": {
+        "env": {
+          "atomtest": true,
+          "browser": true,
+          "jasmine": true,
+          "node": true
+        },
+        "globals": [
+          "atom"
+        ],
+        "ignore": [
+          "spec/fixtures/*"
+        ]
+      },
+      "dependencies": {
+        "selenium-webdriver": "^4.0.0-alpha.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/vocabuilder/versions/0.6.0/tarball"
+      }
+    },
+    "0.5.0": {
+      "name": "vocabuilder",
+      "main": "./lib/main",
+      "version": "0.5.0",
+      "description": "Let me vocabuild!",
+      "keywords": [
+        "translate"
+      ],
+      "repository": "https://github.com/t9md/atom-vocabuilder",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0"
+      },
+      "devDependencies": {
+        "prettier": "^1.10.2",
+        "standard": "^10.0.3"
+      },
+      "scripts": {
+        "test": "apm test",
+        "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+        "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+        "lint": "standard lib/*.js lib/**/*.js spec/*.js"
+      },
+      "activationCommands": {
+        "atom-text-editor": [
+          "vocabuilder:toggle-auto-search",
+          "vocabuilder:manual-search"
+        ]
+      },
+      "configSchema": {
+        "useDictLink": {
+          "order": 1,
+          "type": "boolean",
+          "default": "false"
+        },
+        "useSay": {
+          "order": 2,
+          "type": "boolean",
+          "default": "false"
+        },
+        "useGoogle": {
+          "order": 3,
+          "type": "boolean",
+          "default": "false"
+        },
+        "showCaption": {
+          "order": 4,
+          "type": "boolean",
+          "default": "true"
+        },
+        "userStyle": {
+          "order": 5,
+          "type": "string",
+          "default": "#vocabuilder-caption {\n  position: fixed;\n  top: 30%;\n  left: 5%;\n  z-index: 5;\n  width: 80%;\n  border-radius: 30px;\n  padding: 30px;\n  color: white;\n  background-color: black;\n  opacity: 0.6;\n  font-size: 120px;\n  text-align: center;\n}\n\n#vocabuilder-caption-item-2 {\n  font-size: 0.5em;\n}\n"
+        }
+      },
+      "consumedServices": {
+        "vim-mode-plus": {
+          "versions": {
+            "^0.1.0": "consumeVimModePlus"
+          }
+        }
+      },
+      "standard": {
+        "env": {
+          "atomtest": true,
+          "browser": true,
+          "jasmine": true,
+          "node": true
+        },
+        "globals": [
+          "atom"
+        ],
+        "ignore": [
+          "spec/fixtures/*"
+        ]
+      },
+      "dependencies": {
+        "selenium-webdriver": "^4.0.0-alpha.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/vocabuilder/versions/0.5.0/tarball"
+      }
+    },
+    "0.4.0": {
+      "name": "vocabuilder",
+      "main": "./lib/main",
+      "version": "0.4.0",
+      "description": "Let me vocabuild!",
+      "keywords": [
+        "translate"
+      ],
+      "repository": "https://github.com/t9md/atom-vocabuilder",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0"
+      },
+      "devDependencies": {
+        "prettier": "^1.10.2",
+        "standard": "^10.0.3"
+      },
+      "scripts": {
+        "test": "apm test",
+        "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+        "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+        "lint": "standard lib/*.js lib/**/*.js spec/*.js"
+      },
+      "activationCommands": {
+        "atom-text-editor": [
+          "vocabuilder:toggle-auto-search",
+          "vocabuilder:manual-search"
+        ]
+      },
+      "configSchema": {
+        "useDictLink": {
+          "order": 1,
+          "type": "boolean",
+          "default": "false"
+        },
+        "useSay": {
+          "order": 2,
+          "type": "boolean",
+          "default": "false"
+        },
+        "useGoogle": {
+          "order": 3,
+          "type": "boolean",
+          "default": "false"
+        },
+        "showCaption": {
+          "order": 4,
+          "type": "boolean",
+          "default": "true"
+        }
+      },
+      "consumedServices": {
+        "vim-mode-plus": {
+          "versions": {
+            "^0.1.0": "consumeVimModePlus"
+          }
+        }
+      },
+      "standard": {
+        "env": {
+          "atomtest": true,
+          "browser": true,
+          "jasmine": true,
+          "node": true
+        },
+        "globals": [
+          "atom"
+        ],
+        "ignore": [
+          "spec/fixtures/*"
+        ]
+      },
+      "dependencies": {
+        "selenium-webdriver": "^4.0.0-alpha.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/vocabuilder/versions/0.4.0/tarball"
+      }
+    },
+    "0.3.0": {
+      "name": "vocabuilder",
+      "main": "./lib/main",
+      "version": "0.3.0",
+      "description": "Let me vocabuild!",
+      "keywords": [
+        "translate"
+      ],
+      "repository": "https://github.com/t9md/atom-vocabuilder",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0"
+      },
+      "devDependencies": {
+        "prettier": "^1.10.2",
+        "standard": "^10.0.3"
+      },
+      "scripts": {
+        "test": "apm test",
+        "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+        "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+        "lint": "standard lib/*.js lib/**/*.js spec/*.js"
+      },
+      "activationCommands": {
+        "atom-text-editor": [
+          "vocabuilder:toggle-auto-search",
+          "vocabuilder:manual-search"
+        ]
+      },
+      "configSchema": {
+        "useDictLink": {
+          "order": 1,
+          "type": "boolean",
+          "default": "false"
+        },
+        "useSay": {
+          "order": 2,
+          "type": "boolean",
+          "default": "false"
+        },
+        "useGoogle": {
+          "order": 3,
+          "type": "boolean",
+          "default": "false"
+        },
+        "showCaption": {
+          "order": 4,
+          "type": "boolean",
+          "default": "true"
+        }
+      },
+      "consumedServices": {
+        "vim-mode-plus": {
+          "versions": {
+            "^0.1.0": "consumeVimModePlus"
+          }
+        }
+      },
+      "standard": {
+        "env": {
+          "atomtest": true,
+          "browser": true,
+          "jasmine": true,
+          "node": true
+        },
+        "globals": [
+          "atom"
+        ],
+        "ignore": [
+          "spec/fixtures/*"
+        ]
+      },
+      "dependencies": {
+        "selenium-webdriver": "^4.0.0-alpha.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/vocabuilder/versions/0.3.0/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "vocabuilder",
+      "main": "./lib/main",
+      "version": "0.2.0",
+      "description": "Let me vocabuild!",
+      "keywords": [
+        "translate"
+      ],
+      "repository": "https://github.com/t9md/atom-vocabuilder",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0"
+      },
+      "devDependencies": {
+        "prettier": "^1.10.2",
+        "standard": "^10.0.3"
+      },
+      "scripts": {
+        "test": "apm test",
+        "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+        "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+        "lint": "standard lib/*.js lib/**/*.js spec/*.js"
+      },
+      "activationCommands": {
+        "atom-text-editor": [
+          "vocabuilder:toggle-auto-search",
+          "vocabuilder:manual-search"
+        ]
+      },
+      "configSchema": {
+        "useDictLink": {
+          "order": 1,
+          "type": "boolean",
+          "default": "false"
+        },
+        "useSay": {
+          "order": 2,
+          "type": "boolean",
+          "default": "false"
+        },
+        "useGoogle": {
+          "order": 3,
+          "type": "boolean",
+          "default": "false"
+        },
+        "showCaption": {
+          "order": 4,
+          "type": "boolean",
+          "default": "true"
+        }
+      },
+      "consumedServices": {
+        "vim-mode-plus": {
+          "versions": {
+            "^0.1.0": "consumeVimModePlus"
+          }
+        }
+      },
+      "standard": {
+        "env": {
+          "atomtest": true,
+          "browser": true,
+          "jasmine": true,
+          "node": true
+        },
+        "globals": [
+          "atom"
+        ],
+        "ignore": [
+          "spec/fixtures/*"
+        ]
+      },
+      "dependencies": {
+        "selenium-webdriver": "^4.0.0-alpha.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/vocabuilder/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.1": {
+      "name": "vocabuilder",
+      "main": "./lib/main",
+      "version": "0.1.1",
+      "description": "Let me vocabuild!",
+      "keywords": [
+        "translate"
+      ],
+      "repository": "https://github.com/t9md/atom-vocabuilder",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0"
+      },
+      "devDependencies": {
+        "prettier": "^1.10.2",
+        "standard": "^10.0.3"
+      },
+      "scripts": {
+        "test": "apm test",
+        "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+        "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+        "lint": "standard lib/*.js lib/**/*.js spec/*.js"
+      },
+      "activationCommands": {
+        "atom-text-editor": [
+          "vocabuilder:toggle-auto-search",
+          "vocabuilder:manual-search"
+        ]
+      },
+      "configSchema": {
+        "useDictLink": {
+          "order": 1,
+          "type": "boolean",
+          "default": "false"
+        },
+        "useSay": {
+          "order": 2,
+          "type": "boolean",
+          "default": "false"
+        },
+        "useGoogle": {
+          "order": 2,
+          "type": "boolean",
+          "default": "false"
+        }
+      },
+      "consumedServices": {
+        "vim-mode-plus": {
+          "versions": {
+            "^0.1.0": "consumeVimModePlus"
+          }
+        }
+      },
+      "standard": {
+        "env": {
+          "atomtest": true,
+          "browser": true,
+          "jasmine": true,
+          "node": true
+        },
+        "globals": [
+          "atom"
+        ],
+        "ignore": [
+          "spec/fixtures/*"
+        ]
+      },
+      "dependencies": {
+        "selenium-webdriver": "^4.0.0-alpha.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/vocabuilder/versions/0.1.1/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "vocabuilder",
+      "main": "./lib/main",
+      "version": "0.1.0",
+      "description": "Let me do vocabuild!",
+      "keywords": [
+        "translate"
+      ],
+      "repository": "https://github.com/t9md/atom-vocabuilder",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.7.0"
+      },
+      "devDependencies": {
+        "prettier": "^1.10.2",
+        "standard": "^10.0.3"
+      },
+      "scripts": {
+        "test": "apm test",
+        "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+        "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+        "lint": "standard lib/*.js lib/**/*.js spec/*.js"
+      },
+      "activationCommands": {
+        "atom-text-editor": [
+          "vocabuilder:toggle-auto-search",
+          "vocabuilder:manual-search"
+        ]
+      },
+      "configSchema": {
+        "useDictLink": {
+          "order": 1,
+          "type": "boolean",
+          "default": "false"
+        },
+        "useSay": {
+          "order": 2,
+          "type": "boolean",
+          "default": "false"
+        },
+        "useGoogle": {
+          "order": 2,
+          "type": "boolean",
+          "default": "false"
+        }
+      },
+      "consumedServices": {
+        "vim-mode-plus": {
+          "versions": {
+            "^0.1.0": "consumeVimModePlus"
+          }
+        }
+      },
+      "standard": {
+        "env": {
+          "atomtest": true,
+          "browser": true,
+          "jasmine": true,
+          "node": true
+        },
+        "globals": [
+          "atom"
+        ],
+        "ignore": [
+          "spec/fixtures/*"
+        ]
+      },
+      "dependencies": {
+        "selenium-webdriver": "^4.0.0-alpha.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/vocabuilder/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "## What's this?\n\nUse Atom editor as frontend to nourish your vocabularies.  \nAs you move cursor in buffer, it search on system's dictionary, Google Image, and pronounce it with `say` command.  \n\n![vocabuilder](https://raw.githubusercontent.com/t9md/t9md/488d41c8262ab120bfaaba41bd103234752e2023/img/atom-vocabuilder.gif)\n\n## Quick Tour\n\nAssume you open following text in Atom.\n\n```\nabate\t和らぐ、治まる\nabdicate\t放棄する\nabdominal\t腹部の\nabhor\tひどく嫌う\nabhorrent\t大嫌いな、憎むべき\nabject\t惨めな\n```\n\nThen you invoke `vocabuilder:toggle-auto-search`.  \nFrom now, each time you move cursor on this editor, vocabuilder automatically search `head-word` in different ap  \nWhat is `head-word`? It's very first word on current line.  \nSo, when your cursor is first line, `head-word` is `abate`.  \nBecause search is done for `head-word`, you can place cursor loosely.  \n\nLet me explain what actually happen when you click 3rd line, it's `head-word` is `abdominal`.\nVocabuilder searches `abdominal` in following apps.\n\n- open Dictionary.app open and search.\n- Launch Google Chrome and each word by \"Google Image\": Require manual install [WebDriver for Chrome](http://chromedriver.chromium.org/downloads).\n- Let mac speak word by `say` command.\n\nEach action can be disabled one by one on setting-view.\n\n### NOTE for Google Image search\n\nVocabuilder use selenium to programmatically control Chrome Web browser.  \nSo if you want use Google Image search by Chrome browser, you need to install  [WebDriver for Chrome](http://chromedriver.chromium.org/downloads) manually.  \nDownload and extract and copy it to in your PATH.  \n\n\n### Commands\n\n- `vocabuilder:toggle-auto-search`: Toggle Auto search mode.\n- `vocabuilder:manual-search`:  Manually search head word of current row.\n- `vocabuilder:caption-toggle`:  Show/hide caption on browser.\n- `vocabuilder:caption-show-all-fields`:  Show all fields if some fields are hidden.\n- `vocabuilder:caption-toggle-1st-field`:  Hide/show 1st field(=`headword`) on caption.\n- `vocabuilder:caption-toggle-2nd-field`:  Hide/show 2nd field(=`headword`) on caption.\n- `vocabuilder:caption-show-all-fields-or-move-down`:  Show all hidden field or move down. You can understand this command as simple `next` command which show answer first if answer was already shown, then move to next quiz.\n\n### Keymap Example\n\nNO keymap, you need to set it to `keymap.cson` if you want.\n\n- for normal user\n```\n'atom-text-editor.vocabuilder':\n  'ctrl-t': 'vocabuilder:caption-toggle'\n  'ctrl-0': 'vocabuilder:caption-show-all-fields'\n  'ctrl-1': 'vocabuilder:caption-toggle-1st-field'\n  'ctrl-2': 'vocabuilder:caption-toggle-2nd-field'\n  'enter': 'vocabuilder:caption-show-all-fields-or-move-down'\n```\n\n- for vim-mode-plus user\n```\n'atom-text-editor.vocabuilder.vim-mode-plus:not(.insert-mode)':\n  'm': 'vocabuilder:caption-toggle'\n  ';': 'vocabuilder:caption-show-all-fields'\n  '1': 'vocabuilder:caption-toggle-1st-field'\n  '2': 'vocabuilder:caption-toggle-2nd-field'\n  'j': 'vocabuilder:caption-show-all-fields-or-move-down'\n```\n\n### User style\n\nYou can edit and append your favorite style in `userStyle` setting.\n\n### Development status\n\nAlpha\n",
+  "metadata": {
+    "name": "vocabuilder",
+    "main": "./lib/main",
+    "version": "0.6.0",
+    "description": "Let me vocabuild!",
+    "keywords": [
+      "translate"
+    ],
+    "repository": "https://github.com/t9md/atom-vocabuilder",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.7.0"
+    },
+    "devDependencies": {
+      "prettier": "^1.10.2",
+      "standard": "^10.0.3"
+    },
+    "scripts": {
+      "test": "apm test",
+      "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+      "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+      "lint": "standard lib/*.js lib/**/*.js spec/*.js"
+    },
+    "activationCommands": {
+      "atom-text-editor": [
+        "vocabuilder:toggle-auto-search",
+        "vocabuilder:manual-search"
+      ]
+    },
+    "configSchema": {
+      "useDictLink": {
+        "order": 1,
+        "type": "boolean",
+        "default": "false"
+      },
+      "useSay": {
+        "order": 2,
+        "type": "boolean",
+        "default": "false"
+      },
+      "useGoogle": {
+        "order": 3,
+        "type": "boolean",
+        "default": "false"
+      },
+      "showCaption": {
+        "order": 4,
+        "type": "boolean",
+        "default": "true"
+      },
+      "userStyle": {
+        "order": 5,
+        "type": "string",
+        "default": "#vocabuilder-caption {\n  position: fixed;\n  top: 30%;\n  left: 5%;\n  z-index: 5;\n  width: 80%;\n  border-radius: 30px;\n  padding: 30px;\n  color: white;\n  background-color: black;\n  opacity: 0.6;\n  font-size: 120px;\n  text-align: center;\n}\n\n#vocabuilder-caption-item-2 {\n  font-size: 0.5em;\n}\n"
+      },
+      "fieldReplaceWithNewLineRegex": {
+        "order": 6,
+        "type": "string",
+        "default": "\\s*[\\/;]\\s*",
+        "description": "When fieald matched this regex, it replace with '\n'. By default `/` and `;` are replaced with '\n'"
+      }
+    },
+    "consumedServices": {
+      "vim-mode-plus": {
+        "versions": {
+          "^0.1.0": "consumeVimModePlus"
+        }
+      }
+    },
+    "standard": {
+      "env": {
+        "atomtest": true,
+        "browser": true,
+        "jasmine": true,
+        "node": true
+      },
+      "globals": [
+        "atom"
+      ],
+      "ignore": [
+        "spec/fixtures/*"
+      ]
+    },
+    "dependencies": {
+      "selenium-webdriver": "^4.0.0-alpha.1"
+    }
+  }
+}

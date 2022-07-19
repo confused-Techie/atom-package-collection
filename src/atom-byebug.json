@@ -1,0 +1,152 @@
+{
+  "name": "atom-byebug",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/izaera/atom-byebug"
+  },
+  "downloads": 668,
+  "stargazers_count": 2,
+  "releases": {
+    "latest": "0.1.4"
+  },
+  "versions": {
+    "0.1.4": {
+      "name": "atom-byebug",
+      "main": "./lib/main",
+      "version": "0.1.4",
+      "description": "Integration with Ruby's Byebug Debugger (work in progress)",
+      "keywords": [
+        "ruby",
+        "debugger",
+        "byebug"
+      ],
+      "activationCommands": {
+        "atom-workspace": [
+          "atom-byebug:toggle",
+          "atom-byebug:run"
+        ]
+      },
+      "repository": "https://github.com/izaera/atom-byebug",
+      "license": "GPL v3",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "pty.js": "0.3.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-byebug/versions/0.1.4/tarball"
+      }
+    },
+    "0.1.3": {
+      "name": "atom-byebug",
+      "main": "./lib/main",
+      "version": "0.1.3",
+      "description": "Integration with Ruby's Byebug Debugger (work in progress)",
+      "keywords": [
+        "ruby",
+        "debugger",
+        "byebug"
+      ],
+      "activationCommands": {
+        "atom-workspace": [
+          "atom-byebug:toggle",
+          "atom-byebug:run"
+        ]
+      },
+      "repository": "https://github.com/izaera/atom-byebug",
+      "license": "GPL v3",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "pty.js": "0.3.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-byebug/versions/0.1.3/tarball"
+      }
+    },
+    "0.1.2": {
+      "name": "atom-byebug",
+      "main": "./lib/main",
+      "version": "0.1.2",
+      "description": "Integration with Ruby's Byebug Debugger (work in progress)",
+      "keywords": [
+        "ruby",
+        "debugger",
+        "byebug"
+      ],
+      "activationCommands": {
+        "atom-workspace": [
+          "byebug-debugger:toggle",
+          "byebug-debugger:run"
+        ]
+      },
+      "repository": "https://github.com/izaera/atom-byebug",
+      "license": "GPL v3",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "pty.js": "0.3.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-byebug/versions/0.1.2/tarball"
+      }
+    },
+    "0.1.1": {
+      "name": "atom-byebug",
+      "main": "./lib/main",
+      "version": "0.1.1",
+      "description": "Integration with Ruby's Byebug Debugger (work in progress)",
+      "keywords": [
+        "ruby",
+        "debugger",
+        "byebug"
+      ],
+      "activationCommands": {
+        "atom-workspace": [
+          "byebug-debugger:toggle",
+          "byebug-debugger:run"
+        ]
+      },
+      "repository": "https://github.com/izaera/atom-byebug",
+      "license": "GPL v3",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "pty.js": "0.3.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-byebug/versions/0.1.1/tarball"
+      }
+    }
+  },
+  "readme": "# atom-byebug\n\nAn [Atom](https://atom.io/) package for integrating with Ruby's\n[byebug](https://github.com/deivid-rodriguez/byebug) debugger.\n\nThis is a work in progress and though it is usable it is far from implementing all features of a\nstandard debugger as a GUI. Nevertheless, it is possible to send commands to byebug and see their\nresponses as if they were used from the command line.\n\n## How to use\n\nUntil the configuration dialog is implemented, you need to create the configuration files by hand following these steps:\n\n1. Create a directory named `.atom-byebug` in your project's root folder.\n2. Create a `config.json` file inside that directory and add two entries named `executable` and `arguments` to specify the script to run and the arguments to pass.\n\nFor example:\n\n```\n{\n    \"executable\": \"./sample-ruby-program\",\n    \"arguments\": []\n}\n```\n\nThat's it. Keep in mind that the script you run must start byebug debugger in remote mode. For more details about that see [byebug's documentation](https://github.com/deivid-rodriguez/byebug/blob/master/GUIDE.md), but usually placing the following code at the very beginning of your Ruby program is enough:\n\n```\nrequire 'byebug'\nrequire 'byebug/core'\nByebug.wait_connection = true\nByebug.start_server('localhost')\n```\n\n## How to launch Rails in debug mode\n\nTo launch a Rails application within byebug debugger, you can create a launch script in your `.atom-byebug`, configure it as `executable` in `config.json` and set its content to:\n\n```\n#!/usr/bin/env ruby\nAPP_PATH = File.expand_path('../../config/application', __FILE__)\n\nrequire 'byebug'\nrequire 'byebug/core'\n\nByebug.wait_connection = true\nByebug.start_server('localhost')\n\nrequire_relative '../config/boot'\nrequire 'rails/commands'\n```\n\nMake it executable if you are not using Windows and have fun.\n\n## How to contribute\n\n* First of all have a look at the [issues](https://github.com/izaera/atom-byebug/issues) and see if you can think of more features or things to fix. In case you find any, please report it.\n* If you want to code or test the package do the following:\n  1. Clone the [repository](https://github.com/izaera/atom-byebug)\n  2. Register the Atom package for development into your Atom installation (add a symbolic link to your cloned repository in your `$HOME/atom/packages` folder.\n  3. Start Atom and look for `Byebug Debugger` in the Packages menu.\n  4. Find the sample configuration file `config.json` for the package in the `.atom-byebug` folder of the package's project. That file specifies the Ruby program to run and the arguments to pass. In the future, a dialog will be available to edit this file.\n  5. Find the sample Ruby program `sample-ruby-program` in the same folder. This program is executed when the debugger is launched.\n* To develop: choose an issue to develop or create a new one for your feature so that the community doesn't duplicate the work. Hack it, and send a pull request.\n* To test: use and test the package and report any issue you may find.\n\nThanks :-)\n",
+  "metadata": {
+    "name": "atom-byebug",
+    "main": "./lib/main",
+    "version": "0.1.4",
+    "description": "Integration with Ruby's Byebug Debugger (work in progress)",
+    "keywords": [
+      "ruby",
+      "debugger",
+      "byebug"
+    ],
+    "activationCommands": {
+      "atom-workspace": [
+        "atom-byebug:toggle",
+        "atom-byebug:run"
+      ]
+    },
+    "repository": "https://github.com/izaera/atom-byebug",
+    "license": "GPL v3",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "pty.js": "0.3.1"
+    }
+  }
+}

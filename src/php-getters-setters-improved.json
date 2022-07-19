@@ -1,0 +1,46 @@
+{
+  "name": "php-getters-setters-improved",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brunoczim/atom-php-getters-setters-improved"
+  },
+  "downloads": 2181,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.7.0"
+  },
+  "versions": {
+    "0.7.0": {
+      "name": "php-getters-setters-improved",
+      "main": "./lib/php-getters-setters-improved",
+      "version": "0.7.0",
+      "description": "generate getters and setters for your php class",
+      "repository": "https://github.com/brunoczim/atom-php-getters-setters-improved",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.100.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/php-getters-setters-improved/versions/0.7.0/tarball"
+      }
+    }
+  },
+  "readme": "PHP Getters/Setters Improved\n=======================\n\nWith PHP Getters and Setters you can automatically generate _Getters_ and _Setters_ for your php classes.\n\nA fork of PHP Getters and Setters with template in files instead of in config memory. Edit templates in their own files.\n\nThe code produced is PSR compatible\n\nFeatures:\n---------\n\n* Generate Getters, Setters or Both\n* Edit templates in template files for getters and setters\n* Select all variables or just some via UI\n* Control method scope via a DocBlock tag\n* intelligent guessing of variable names, if you use descriptive variable names you do not need to provide a description, the method comment will set accordingly\n* supports _ in property names\n\n\n\n**Example PHP Code**\n\n\n```php\n<?php\nclass test {\n\t/**\n\t * foo container\n\t *\n\t * @var AbcClass\n\t */\n\tprivate $foo;\n}\n```\n\n**Example class after generating Getters and Setters**\n\n```php\n<?php\nclass test {\n\n\t/**\n\t * foo container\n\t * @var AbcClass\n\t */\n\tprivate $foo;\n\n\t/**\n\t * Gets the foo container.\n\t * @return AbcClass\n\t */\n\tpublic function getFoo() {\n\t\treturn $this->foo;\n\t}\n\n\t/**\n\t * Sets the foo container.\n\t * @param AbcClass $foo the foo\n\t * @return self\n\t */\n\tpublic function setFoo(AbcClass $foo) {\n\t\t$this->foo = $foo;\n\n\t\treturn $this;\n\t}\n\n}\n```\n\nAs you can see if get to trouble of commenting your variables, the generated functions can be used without modification.\n\nThis is an huge time saver!\n\nSpecial DocBlock tags\n---------------------\n__@internal__: getter and setter will be private\n\n__@private__: getter and setter will be private\n\n__@protected__: getter and setter will be protected\n\n__@read-only private|protected__: getter will be public, setter will be private or protected (defaults to private)\n\nSettings:\n-----------\n__doNotTypeHint__: an array of items that when present in *@type* or *@var* declarations are ignored and not used as type hint\n\n__camelCasedMethodNames__: method names will follow PSR rules\nPSR states that all method names must be camel cased, if set to false method names won't be Camel Cased\n\n__getterTemplate__: the template for the getter\n\n__setterTemplate__: the template for the setter\n\n## Default templates\n\nA rudimentary template editor is available at ```Packages -> PHP Getters and Setters -> Template Editor```\n\n### Getter\n```php\n/**\n * Get the value of %description%\n * @return %type%\n */\n%scope% function %methodName%() {\n\treturn $this->%variable%;\n}\n\n\n```\n\n### Setter\n```php\n/**\n * Set the value of %description%\n * @param %type% $%variable%\n * @return self\n */\n%scope% function %methodName%(%typeHint%$%variable%) {\n\t$this->%variable% = $%variable%;\n\treturn $this;\n}\n\n\n```\n",
+  "metadata": {
+    "name": "php-getters-setters-improved",
+    "main": "./lib/php-getters-setters-improved",
+    "version": "0.7.0",
+    "description": "generate getters and setters for your php class",
+    "repository": "https://github.com/brunoczim/atom-php-getters-setters-improved",
+    "license": "MIT",
+    "engines": {
+      "atom": ">0.100.0"
+    },
+    "dependencies": {
+      "atom-space-pen-views": "^2.0.3"
+    }
+  }
+}

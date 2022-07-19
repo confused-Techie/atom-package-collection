@@ -1,0 +1,74 @@
+{
+  "name": "atom-recover",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gosukiwi/atom-recover"
+  },
+  "downloads": 1178,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.1.0"
+  },
+  "versions": {
+    "0.1.0": {
+      "name": "atom-recover",
+      "main": "./lib/atom-recover",
+      "version": "0.1.0",
+      "description": "Recover your files in case of catastrophic failure",
+      "keywords": [
+        "swapfile",
+        "recover",
+        "failsafe"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "repository": "https://github.com/gosukiwi/atom-recover",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "devDependencies": {
+        "eslint": "^7.8.1",
+        "eslint-config-standard": "^14.1.1",
+        "eslint-plugin-import": "^2.22.0",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.0.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-recover/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# Atom Recover\nRecover your unsaved files in case of catastrophic failure (power outage, blue\nscreen of death, etc).\n\nIt should \"just work\", nothing to do. It works like this:\n\n1. Whenever you edit a file, it will save a temporary copy (`swapfile`) in the\nbackground\n1. When you save a file, it will delete the related swapfile\n1. Whenever you open a file, if the swapfile is newer, and the contents of the\neditor are different, it will load up the swapfile for you and delete it\n1. If the swapfile doesn't look right, you can undo as you normally would,\nchanges are not persisted\n\n## A note on Atom's default behavior\nAtom does save the state of all your files while you are editing, so most of the\ntime your files will be recovered after a random failure.\n\nThere are some times though, that Atom just breaks. For this reason,\n`atom-recover` serves as an extra layer of safety. If Atom's save file is\ncorrupted, `atom-recover` will load up it's own version.\n",
+  "metadata": {
+    "name": "atom-recover",
+    "main": "./lib/atom-recover",
+    "version": "0.1.0",
+    "description": "Recover your files in case of catastrophic failure",
+    "keywords": [
+      "swapfile",
+      "recover",
+      "failsafe"
+    ],
+    "activationHooks": [
+      "core:loaded-shell-environment"
+    ],
+    "repository": "https://github.com/gosukiwi/atom-recover",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {},
+    "devDependencies": {
+      "eslint": "^7.8.1",
+      "eslint-config-standard": "^14.1.1",
+      "eslint-plugin-import": "^2.22.0",
+      "eslint-plugin-node": "^11.1.0",
+      "eslint-plugin-promise": "^4.2.1",
+      "eslint-plugin-standard": "^4.0.1"
+    }
+  }
+}

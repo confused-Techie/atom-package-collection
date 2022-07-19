@@ -1,0 +1,56 @@
+{
+  "name": "atom-to-codepen",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/labofoz/Atom-to-CodePen"
+  },
+  "downloads": 444,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "1.0.0"
+  },
+  "versions": {
+    "1.0.0": {
+      "name": "atom-to-codepen",
+      "main": "./lib/atom-to-codepen",
+      "version": "1.0.0",
+      "description": "An Atom.io package that takes the HTML file your working on and turns it into a CodePen!",
+      "keywords": [],
+      "activationCommands": {
+        "atom-workspace": "atom-to-codepen:to-codepen"
+      },
+      "repository": "https://github.com/labofoz/Atom-to-CodePen",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "cheerio": "^1.0.0-rc.2",
+        "gray-matter": "^4.0.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-to-codepen/versions/1.0.0/tarball"
+      }
+    }
+  },
+  "readme": "# Atom to CodePen\n\n![](https://media.giphy.com/media/tLvRIsrAlSmnS/giphy.gif)\n\n**Atom to CodePen** is an [Atom.io](https://atom.io) package that takes the HTML file your working on and turns it into a CodePen! I made this because I'm trying to create [100 CodePen demos](https://codepen.io/collection/nryEYd/'s) for my computer vision JS library, [SeeClarke.js](https://github.com/labofoz/SeeClarke.js), so that I could in turn use that to help people with disabilities use the web.\n\n## How it Works\n\n**Atom to CodePen** scans the active editor for three main components:\n\n- YAML Front Matter\n- `<span>` tags without a `src` attribute\n- `<style>` tags\n\nThe YAML Front Matter is used to set your CodePen's properties and sits at the very beginning of the file, here are all the properties you can pass:\n\n```yaml\n---\ntitle: \"New Pen!\",\ndescription: \"It's about stuff.\",\nprivate: false, # true || false - When the Pen is saved, it will save as Private if logged in user has that privledge, otherwise it will save as public\nparent: id # If supplied, the Pen will save as a fork of this id. Note it's not the slug, but ID. You can find the ID of a Pen with `window.CP.pen.id` in the browser console.\ntags: [\"tag1\", \"tag2\"], # an array of strings\neditors: \"101\", # Set which editors are open. In this example HTML open, CSS closed, JS open\nlayout: \"left\", # top | left | right\nhtml: \"<div>HTML here.</div>\",\nhtml_pre_processor: \"none\" || \"slim\" || \"haml\" || \"markdown\",\ncss: \"html { color: red; }\",\ncss_pre_processor: \"none\" || \"less\" || \"scss\" || \"sass\" || \"stylus\",\ncss_starter: \"normalize\" || \"reset\" || \"neither\",\ncss_prefix: \"autoprefixer\" || \"prefixfree\" || \"neither\",\njs: \"alert('test');\",\njs_pre_processor: \"none\" || \"coffeescript\" || \"babel\" || \"livescript\" || \"typescript\",\nhtml_classes: \"loading\",\nhead: \"<meta name='viewport' content='width=device-width'>\",\ncss_external: \"http://yoursite.com/style.css\", # semi-colon separate multiple files\njs_external: \"http://yoursite.com/script.js\" # semi-colon separate multiple files\n---\n```\n\nThe package will then scan the rest of the file for `<span>` without a `src` attribute and `<style>` tags, and populates the `css` and `js` properties above. All the rest of the content will go into the `html` property.\n\nHere's a simple example file:\n\n```html\n---\ntitle: Hello World\ndescription: This will be shown in the CodePen's description field\n---\n<ul>\n  <li>List Item A\n  <li>List Item B\n  <li>List Item C\n</ul>\n\n<span>\n  console.log(`There are ${document.getElementsByTagName('li').length} list items!`)\n</span>\n\n<style>\n  body {\n    background: #0f0;\n    color: #fff;\n  }\n</style>\n```\n\nWhich generates this CodePen:\n\n![](https://i.imgur.com/zdi3OdQ.jpg)\n\n## Installing\n\n- <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>P</kbd>\n\n- Type \"install package\" and hit <kbd>ENTER</kbd>\n\n- Type \"atom to codepen\" in the search  \n\nor\n\n- Open [Atom](https://atom.io)\n- Open the Install Packages/Themes by click Packages --> Settings View and select Install Packages/Themes\n- Select Install on the Settings menu\n- Type composer-atom-plugin or composer-* in the Packages search field and you should see the composer-atom-plugin on the list\n\n## Usage\n\n**Via Menu:** Packages > Atom to CodePen > Export to CodePen\n\n**Via Command Paletted:** <kbd>CTRL</kbd> + <kbd>P</kbd> + \"to codepen\"\n\n**Via Keyboard Shortcut:** <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>F12</kbd>\n\n## Notes\n- Uses lazy loading, so this doesn't slow down startup when you're not using it\n- Documented unit tests so it should...just...✨...work!\n\n## Roadmap\n\nhttps://github.com/labofoz/Atom-to-CodePen/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement\n\n## Donating\n\nPlease consider making a small donation to [https://cash.me/$heyozramos](https://cash.me/$heyozramos) to support this and future projects, see my end game here: https://twitter.com/LabOfOz/status/1021501116486438919\n",
+  "metadata": {
+    "name": "atom-to-codepen",
+    "main": "./lib/atom-to-codepen",
+    "version": "1.0.0",
+    "description": "An Atom.io package that takes the HTML file your working on and turns it into a CodePen!",
+    "keywords": [],
+    "activationCommands": {
+      "atom-workspace": "atom-to-codepen:to-codepen"
+    },
+    "repository": "https://github.com/labofoz/Atom-to-CodePen",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "cheerio": "^1.0.0-rc.2",
+      "gray-matter": "^4.0.1"
+    }
+  }
+}

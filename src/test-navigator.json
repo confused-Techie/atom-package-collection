@@ -1,0 +1,244 @@
+{
+  "name": "test-navigator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DFreds/test-navigator-atom"
+  },
+  "downloads": 405,
+  "stargazers_count": 2,
+  "releases": {
+    "latest": "1.0.2"
+  },
+  "versions": {
+    "1.0.2": {
+      "name": "test-navigator",
+      "main": "./lib/test-navigator",
+      "version": "1.0.2",
+      "description": "Navigate between implementation and test files easily.",
+      "keywords": [
+        "test",
+        "navigate",
+        "test-navigator"
+      ],
+      "activationCommands": {
+        "atom-text-editor": [
+          "test-navigator:navigate"
+        ]
+      },
+      "repository": "https://github.com/DFreds/test-navigator-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.2.0",
+        "fast-levenshtein": "^2.0.6",
+        "file-system": "^2.2.2",
+        "lodash": "^4.17.4"
+      },
+      "configSchema": {
+        "testFilePatterns": {
+          "type": "array",
+          "description": "Comma separated list of possible test patterns.",
+          "default": [
+            ".spec",
+            "-spec",
+            "_spec",
+            ".test",
+            "-test",
+            "_test",
+            "Test",
+            "Spec"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "location": {
+          "type": "string",
+          "description": "Location of new pane",
+          "default": "right",
+          "enum": [
+            "none",
+            "right",
+            "down"
+          ]
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/test-navigator/versions/1.0.2/tarball"
+      }
+    },
+    "1.0.1": {
+      "name": "test-navigator",
+      "main": "./lib/test-navigator",
+      "version": "1.0.1",
+      "description": "Navigate between implementation and test files easily.",
+      "keywords": [
+        "test",
+        "navigate",
+        "test-navigator"
+      ],
+      "activationCommands": {
+        "atom-text-editor": [
+          "test-navigator:navigate"
+        ]
+      },
+      "repository": "https://github.com/DFreds/test-navigator-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.2.0",
+        "fast-levenshtein": "^2.0.6",
+        "file-system": "^2.2.2",
+        "lodash": "^4.17.4"
+      },
+      "configSchema": {
+        "testFilePatterns": {
+          "type": "array",
+          "description": "Comma separated list of possible test patterns.",
+          "default": [
+            ".spec",
+            "-spec",
+            ".test",
+            "-test",
+            "Test",
+            "Spec"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "location": {
+          "type": "string",
+          "description": "Location of new pane",
+          "default": "right",
+          "enum": [
+            "none",
+            "right",
+            "down"
+          ]
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/test-navigator/versions/1.0.1/tarball"
+      }
+    },
+    "1.0.0": {
+      "name": "test-navigator",
+      "main": "./lib/test-navigator",
+      "version": "1.0.0",
+      "description": "Navigate between implementation and test files easily.",
+      "keywords": [
+        "test",
+        "navigate",
+        "test-navigator"
+      ],
+      "activationCommands": {
+        "atom-text-editor": [
+          "test-navigator:navigate"
+        ]
+      },
+      "repository": "https://github.com/DFreds/test-navigator-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.2.0",
+        "fast-levenshtein": "^2.0.6",
+        "file-system": "^2.2.2",
+        "lodash": "^4.17.4"
+      },
+      "configSchema": {
+        "testFilePatterns": {
+          "type": "array",
+          "description": "Comma separated list of possible test patterns.",
+          "default": [
+            ".spec",
+            "-spec",
+            ".test",
+            "-test",
+            "Test",
+            "Spec"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "location": {
+          "type": "string",
+          "description": "Location of new pane",
+          "default": "right",
+          "enum": [
+            "none",
+            "right",
+            "down"
+          ]
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/test-navigator/versions/1.0.0/tarball"
+      }
+    }
+  },
+  "readme": "# Test Navigator\n\nThis package allows you to quickly navigate between implementation and test files.\n\n![Test Navigator Demo](https://github.com/DFreds/test-navigator-atom/blob/master/test-navigator.gif?raw=true)\n\n# Installation\n```\napm install test-navigator\n```\nOr search for <code>test-navigator</code> in the Atom settings view.\n\n# Configuration\n\nBy default, Test Navigator will ignore anything contained in node_modules. This will likely be expanded on and configurable in the future.\n\n### Test File Patterns\nThis setting is a comma separated list of test patterns that determines the possible test or implementation flies. For instance, if Test Navigator is given the pattern Spec, toggling Test Navigator from index.js will cause it to look for indexSpec.js. Conversely, toggling Test Navigator from indexSpec.js will cause it to look for index.js.\n\n### Location\nThis setting dictates where the found file should appear. By default, it will appear to the right of the open file. Additional options include down and none.\n\n# Key Bindings\nThe default <code>cmd-alt-n</code> or <code>ctrl-alt-n</code> will toggle test-navigator for the currently open file.\n\nThis can be edited by defining key bindings as shown below.\n\n```coffee\n'.platform-darwin atom-text-editor':\n  'cmd-alt-n': 'test-navigator:navigate'\n\n'.platform-linux atom-text-editor, .platform-win32 atom-text-editor':\n  'ctrl-alt-n': 'test-navigator:navigate'\n```\n\n### Full change log [here](./CHANGELOG.md).\n",
+  "metadata": {
+    "name": "test-navigator",
+    "main": "./lib/test-navigator",
+    "version": "1.0.2",
+    "description": "Navigate between implementation and test files easily.",
+    "keywords": [
+      "test",
+      "navigate",
+      "test-navigator"
+    ],
+    "activationCommands": {
+      "atom-text-editor": [
+        "test-navigator:navigate"
+      ]
+    },
+    "repository": "https://github.com/DFreds/test-navigator-atom",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "atom-space-pen-views": "^2.2.0",
+      "fast-levenshtein": "^2.0.6",
+      "file-system": "^2.2.2",
+      "lodash": "^4.17.4"
+    },
+    "configSchema": {
+      "testFilePatterns": {
+        "type": "array",
+        "description": "Comma separated list of possible test patterns.",
+        "default": [
+          ".spec",
+          "-spec",
+          "_spec",
+          ".test",
+          "-test",
+          "_test",
+          "Test",
+          "Spec"
+        ],
+        "items": {
+          "type": "string"
+        }
+      },
+      "location": {
+        "type": "string",
+        "description": "Location of new pane",
+        "default": "right",
+        "enum": [
+          "none",
+          "right",
+          "down"
+        ]
+      }
+    }
+  }
+}

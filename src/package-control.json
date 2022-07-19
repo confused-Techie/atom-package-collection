@@ -1,0 +1,3905 @@
+{
+  "name": "package-control",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/idleberg/atom-package-control"
+  },
+  "downloads": 15387,
+  "stargazers_count": 2,
+  "releases": {
+    "latest": "0.12.6"
+  },
+  "versions": {
+    "0.12.6": {
+      "name": "package-control",
+      "version": "0.12.6",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "npm run clean && rollup --config",
+        "clean": "rimraf ./lib",
+        "dev": "npm run start",
+        "format": "prettier --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --config --watch",
+        "test": "npm run lint",
+        "prepare": "husky install"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.56.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        },
+        "service-fetch": {
+          "versions": {
+            "0.2.0": "consumeFetch"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        },
+        {
+          "name": "service-fetch",
+          "minimumVersion": "0.2.0"
+        }
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.15.5",
+        "@babel/eslint-parser": "^7.15.4",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+        "@babel/plugin-transform-modules-commonjs": "^7.15.4",
+        "@babel/preset-env": "^7.15.4",
+        "@types/atom": "^1.40.11",
+        "@types/node": "^16.9.0",
+        "@typescript-eslint/eslint-plugin": "^4.31.0",
+        "@typescript-eslint/parser": "^4.31.0",
+        "approximate-number": "^2.1.0",
+        "atom-package-deps": "^8.0.0",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.17.2",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "encoding": "^0.1.13",
+        "eslint": "^7.32.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.1.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "husky": "^7.0.2",
+        "idb-keyval": "^6.0.1",
+        "lint-staged": "^11.1.2",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettier": "^2.3.2",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.56.3",
+        "rollup-plugin-atomic": "^3.0.1",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.3.1",
+        "typescript": ">=4.3 <4.4"
+      },
+      "lint-staged": {
+        "*.(json|ts)": "eslint --cache --fix",
+        "*.{md,yml}": "prettier --write"
+      },
+      "volta": {
+        "node": "14.17.6",
+        "yarn": "1.22.11",
+        "npm": "6.14.15"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.12.6/tarball"
+      }
+    },
+    "0.12.5": {
+      "name": "package-control",
+      "version": "0.12.5",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "npm run clean && rollup --config",
+        "clean": "rimraf ./lib",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --config --watch",
+        "test": "npm run lint",
+        "prepare": "husky install"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.56.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        },
+        "service-fetch": {
+          "versions": {
+            "0.2.0": "consumeFetch"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        },
+        {
+          "name": "service-fetch",
+          "minimumVersion": "0.2.0"
+        }
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.15.0",
+        "@babel/eslint-parser": "^7.15.0",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+        "@babel/plugin-transform-modules-commonjs": "^7.15.0",
+        "@babel/preset-env": "^7.15.0",
+        "@types/atom": "^1.40.11",
+        "@types/node": "^16.7.2",
+        "@typescript-eslint/eslint-plugin": "^4.29.3",
+        "@typescript-eslint/parser": "^4.29.3",
+        "approximate-number": "^2.1.0",
+        "atom-package-deps": "^8.0.0",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.16.3",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "encoding": "^0.1.13",
+        "eslint": "^7.32.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.1.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "husky": "^7.0.2",
+        "idb-keyval": "^5.1.3",
+        "lint-staged": "^11.1.2",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettierx": "^0.19.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.56.3",
+        "rollup-plugin-atomic": "^3.0.1",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.3.1",
+        "typescript": "^4.2.4"
+      },
+      "lint-staged": {
+        "*.(json|ts)": "eslint --cache --fix",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.12.5/tarball"
+      }
+    },
+    "0.12.4": {
+      "name": "package-control",
+      "version": "0.12.4",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "npm run clean && rollup --config",
+        "clean": "rimraf ./lib",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --config --watch",
+        "test": "npm run lint",
+        "prepare": "husky install"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.56.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        },
+        "service-fetch": {
+          "versions": {
+            "0.2.0": "consumeFetch"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        },
+        {
+          "name": "service-fetch",
+          "minimumVersion": "0.2.0"
+        }
+      ],
+      "dependencies": {
+        "approximate-number": "^2.1.0"
+      },
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+        "@babel/plugin-transform-modules-commonjs": "^7.14.5",
+        "@babel/preset-env": "^7.14.2",
+        "@types/atom": "^1.40.11",
+        "@types/node": "^15.3.1",
+        "@typescript-eslint/eslint-plugin": "^4.28.3",
+        "@typescript-eslint/parser": "^4.28.3",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.12.1",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "encoding": "^0.1.13",
+        "eslint": "^7.31.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.0.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "husky": "^7.0.0",
+        "idb-keyval": "^5.0.5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettierx": "^0.19.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.53.1",
+        "rollup-plugin-atomic": "^2.3.3",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.12.4/tarball"
+      }
+    },
+    "0.12.3": {
+      "name": "package-control",
+      "version": "0.12.3",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "npm run clean && rollup --config",
+        "clean": "rimraf ./lib",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --config --watch",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        },
+        "service-fetch": {
+          "versions": {
+            "0.2.0": "consumeFetch"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        },
+        {
+          "name": "service-fetch",
+          "minimumVersion": "0.2.0"
+        }
+      ],
+      "dependencies": {
+        "approximate-number": "^2.1.0"
+      },
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+        "@babel/plugin-transform-modules-commonjs": "^7.14.5",
+        "@babel/preset-env": "^7.14.2",
+        "@types/atom": "^1.40.11",
+        "@types/node": "^15.3.1",
+        "@typescript-eslint/eslint-plugin": "^4.28.3",
+        "@typescript-eslint/parser": "^4.28.3",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.12.1",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "encoding": "^0.1.13",
+        "eslint": "^7.31.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.0.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "husky": ">=4.3 <5",
+        "idb-keyval": "^5.0.5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettierx": "^0.19.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.53.1",
+        "rollup-plugin-atomic": "^2.3.3",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.12.3/tarball"
+      }
+    },
+    "0.12.2": {
+      "name": "package-control",
+      "version": "0.12.2",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "npm run clean && rollup --config",
+        "clean": "rimraf ./lib",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --config --watch",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        },
+        "service-fetch": {
+          "versions": {
+            "0.2.0": "consumeFetch"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        },
+        {
+          "name": "service-fetch",
+          "minimumVersion": "0.2.0"
+        }
+      ],
+      "dependencies": {
+        "approximate-number": "^2.1.0"
+      },
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+        "@babel/plugin-transform-modules-commonjs": "^7.14.5",
+        "@babel/preset-env": "^7.14.2",
+        "@types/atom": "^1.40.11",
+        "@types/node": "^15.3.1",
+        "@typescript-eslint/eslint-plugin": "^4.28.3",
+        "@typescript-eslint/parser": "^4.28.3",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.12.1",
+        "cross-env": "^7.0.3",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "encoding": "^0.1.13",
+        "eslint": "^7.26.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.0.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "husky": ">=4.3 <5",
+        "idb-keyval": "^5.0.5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettierx": "^0.19.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.53.1",
+        "rollup-plugin-atomic": "^2.3.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.12.2/tarball"
+      }
+    },
+    "0.12.1": {
+      "name": "package-control",
+      "version": "0.12.1",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "npm run clean && rollup --config",
+        "clean": "rimraf ./lib",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --config --watch",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        },
+        "service-fetch": {
+          "versions": {
+            "0.2.0": "consumeFetch"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        },
+        {
+          "name": "service-fetch",
+          "minimumVersion": "0.2.0"
+        }
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+        "@babel/plugin-transform-modules-commonjs": "^7.14.5",
+        "@babel/preset-env": "^7.14.2",
+        "@types/atom": "^1.40.11",
+        "@types/node": "^15.3.1",
+        "@typescript-eslint/eslint-plugin": "^4.28.3",
+        "@typescript-eslint/parser": "^4.28.3",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.12.1",
+        "cross-env": "^7.0.3",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "encoding": "^0.1.13",
+        "eslint": "^7.26.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.0.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "husky": ">=4.3 <5",
+        "idb-keyval": "^5.0.5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "numbro": "^2.3.2",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettierx": "^0.19.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.53.1",
+        "rollup-plugin-atomic": "^2.3.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.12.1/tarball"
+      }
+    },
+    "0.12.0": {
+      "name": "package-control",
+      "version": "0.12.0",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "npm run clean && rollup --config",
+        "clean": "rimraf ./lib",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --config --watch",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        },
+        "service-fetch": {
+          "versions": {
+            "0.2.0": "consumeFetch"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        },
+        {
+          "name": "service-fetch",
+          "minimumVersion": "0.2.0"
+        }
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+        "@babel/plugin-transform-modules-commonjs": "^7.14.5",
+        "@babel/preset-env": "^7.14.2",
+        "@types/atom": "^1.40.11",
+        "@types/node": "^15.3.1",
+        "@typescript-eslint/eslint-plugin": "^4.28.3",
+        "@typescript-eslint/parser": "^4.28.3",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.12.1",
+        "cross-env": "^7.0.3",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "encoding": "^0.1.13",
+        "eslint": "^7.26.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.0.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "husky": ">=4.3 <5",
+        "idb-keyval": "^5.0.5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "numbro": "^2.3.2",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettierx": "^0.19.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.53.1",
+        "rollup-plugin-atomic": "^2.3.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.12.0/tarball"
+      }
+    },
+    "0.11.2": {
+      "name": "package-control",
+      "version": "0.11.2",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "npm run clean && rollup --config",
+        "clean": "rimraf ./lib",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --config --watch",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        },
+        "service-fetch": {
+          "versions": {
+            "0.2.0": "consumeFetch"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        },
+        {
+          "name": "service-fetch",
+          "minimumVersion": "0.2.0"
+        }
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+        "@babel/plugin-transform-modules-commonjs": "^7.14.5",
+        "@babel/preset-env": "^7.14.2",
+        "@types/atom": "^1.40.10",
+        "@types/node": "^15.3.1",
+        "@typescript-eslint/eslint-plugin": "^4.24.0",
+        "@typescript-eslint/parser": "^4.24.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.12.1",
+        "cross-env": "^7.0.3",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "encoding": "^0.1.13",
+        "eslint": "^7.26.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.0.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "husky": ">=4.3 <5",
+        "idb-keyval": "^5.0.5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "numbro": "^2.3.2",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettierx": "^0.18.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.52.8",
+        "rollup-plugin-atomic": "^2.3.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.11.2/tarball"
+      }
+    },
+    "0.11.1": {
+      "name": "package-control",
+      "version": "0.11.1",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "npm run clean && rollup --config",
+        "clean": "rimraf ./lib",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --config --watch",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        },
+        "service-fetch": {
+          "versions": {
+            "0.2.0": "consumeFetch"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        },
+        {
+          "name": "service-fetch",
+          "minimumVersion": "0.2.0"
+        }
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+        "@babel/plugin-transform-modules-commonjs": "^7.14.5",
+        "@babel/preset-env": "^7.14.2",
+        "@types/atom": "^1.40.10",
+        "@types/node": "^15.3.1",
+        "@typescript-eslint/eslint-plugin": "^4.24.0",
+        "@typescript-eslint/parser": "^4.24.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.12.1",
+        "cross-env": "^7.0.3",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "encoding": "^0.1.13",
+        "eslint": "^7.26.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.0.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "husky": ">=4.3 <5",
+        "idb-keyval": "^5.0.5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "numbro": "^2.3.2",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettierx": "^0.18.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.52.8",
+        "rollup-plugin-atomic": "^2.3.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.11.1/tarball"
+      }
+    },
+    "0.11.0": {
+      "name": "package-control",
+      "version": "0.11.0",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "npm run clean && rollup --config",
+        "clean": "rimraf ./lib",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --config --watch",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        },
+        "service-fetch": {
+          "versions": {
+            "0.2.0": "consumeFetch"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        },
+        {
+          "name": "service-fetch",
+          "minimumVersion": "0.2.0"
+        }
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+        "@babel/plugin-transform-modules-commonjs": "^7.14.5",
+        "@babel/preset-env": "^7.14.2",
+        "@types/atom": "^1.40.10",
+        "@types/node": "^15.3.1",
+        "@typescript-eslint/eslint-plugin": "^4.24.0",
+        "@typescript-eslint/parser": "^4.24.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.12.1",
+        "cross-env": "^7.0.3",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "encoding": "^0.1.13",
+        "eslint": "^7.26.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.0.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "husky": ">=4.3 <5",
+        "idb-keyval": "^5.0.5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "numbro": "^2.3.2",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettierx": "^0.18.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.52.8",
+        "rollup-plugin-atomic": "^2.3.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.11.0/tarball"
+      }
+    },
+    "0.10.1": {
+      "name": "package-control",
+      "version": "0.10.1",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "node ./tools/build.mjs",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        },
+        "service-fetch": {
+          "versions": {
+            "0.2.0": "consumeFetch"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        },
+        {
+          "name": "service-fetch",
+          "minimumVersion": "0.2.0"
+        }
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/preset-env": "^7.14.2",
+        "@types/atom": "^1.40.10",
+        "@types/node": "^15.3.1",
+        "@typescript-eslint/eslint-plugin": "^4.24.0",
+        "@typescript-eslint/parser": "^4.24.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.12.1",
+        "cross-env": "^7.0.3",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "esbuild": "^0.12.1",
+        "eslint": "^7.26.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.0.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "hash-wasm": "^4.8.0",
+        "husky": ">=4.3 <5",
+        "idb-keyval": "^5.0.5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "numbro": "^2.3.2",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettierx": "^0.18.0",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.10.1/tarball"
+      }
+    },
+    "0.10.0": {
+      "name": "package-control",
+      "version": "0.10.0",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "node ./tools/build.mjs",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        },
+        "service-fetch": {
+          "versions": {
+            "0.1.0": "consumeFetch"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        },
+        {
+          "name": "service-fetch",
+          "minimumVersion": "0.1.2"
+        }
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/preset-env": "^7.14.2",
+        "@types/atom": "^1.40.10",
+        "@types/node": "^15.3.1",
+        "@typescript-eslint/eslint-plugin": "^4.24.0",
+        "@typescript-eslint/parser": "^4.24.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.12.1",
+        "cross-env": "^7.0.3",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "esbuild": "^0.12.1",
+        "eslint": "^7.26.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.0.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "hash-wasm": "^4.8.0",
+        "husky": ">=4.3 <5",
+        "idb-keyval": "^5.0.5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "numbro": "^2.3.2",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettierx": "^0.18.0",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.10.0/tarball"
+      }
+    },
+    "0.9.4": {
+      "name": "package-control",
+      "version": "0.9.4",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "node ./tools/build.mjs",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        }
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/preset-env": "^7.14.2",
+        "@types/atom": "^1.40.10",
+        "@types/node": "^15.3.1",
+        "@typescript-eslint/eslint-plugin": "^4.24.0",
+        "@typescript-eslint/parser": "^4.24.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.12.1",
+        "cross-env": "^7.0.3",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "esbuild": "^0.12.1",
+        "eslint": "^7.26.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.0.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "hash-wasm": "^4.8.0",
+        "husky": ">=4.3 <5",
+        "idb-keyval": "^5.0.5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "numbro": "^2.3.2",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettierx": "^0.18.0",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.9.4/tarball"
+      }
+    },
+    "0.9.3": {
+      "name": "package-control",
+      "version": "0.9.3",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "node ./tools/build.mjs",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        }
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/preset-env": "^7.14.2",
+        "@types/atom": "^1.40.10",
+        "@types/node": "^15.3.1",
+        "@typescript-eslint/eslint-plugin": "^4.24.0",
+        "@typescript-eslint/parser": "^4.24.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.12.1",
+        "cross-env": "^7.0.3",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "esbuild": "^0.12.1",
+        "eslint": "^7.26.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.0.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "husky": ">=4.3 <5",
+        "idb-keyval": "^5.0.5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "numbro": "^2.3.2",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettierx": "^0.18.0",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.9.3/tarball"
+      }
+    },
+    "0.9.2": {
+      "name": "package-control",
+      "version": "0.9.2",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "node ./tools/build.mjs",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.56.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        }
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/preset-env": "^7.14.2",
+        "@types/atom": "^1.40.10",
+        "@types/node": "^15.3.1",
+        "@typescript-eslint/eslint-plugin": "^4.24.0",
+        "@typescript-eslint/parser": "^4.24.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.12.1",
+        "cross-env": "^7.0.3",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "esbuild": "^0.12.1",
+        "eslint": "^7.26.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.0.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "husky": ">=4.3 <5",
+        "idb-keyval": "^5.0.5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "numbro": "^2.3.2",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettierx": "^0.18.0",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.9.2/tarball"
+      }
+    },
+    "0.9.1": {
+      "name": "package-control",
+      "version": "0.9.1",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "node ./tools/build.mjs",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        }
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/preset-env": "^7.14.2",
+        "@types/atom": "^1.40.10",
+        "@types/node": "^15.3.1",
+        "@typescript-eslint/eslint-plugin": "^4.24.0",
+        "@typescript-eslint/parser": "^4.24.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.12.1",
+        "cross-env": "^7.0.3",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "esbuild": "^0.12.1",
+        "eslint": "^7.26.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.0.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "husky": ">=4.3 <5",
+        "idb-keyval": "^5.0.5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "numbro": "^2.3.2",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettierx": "^0.18.0",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.9.1/tarball"
+      }
+    },
+    "0.9.0": {
+      "name": "package-control",
+      "version": "0.9.0",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "node ./tools/build.mjs",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        }
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/preset-env": "^7.14.2",
+        "@types/atom": "^1.40.10",
+        "@types/node": "^15.3.0",
+        "@typescript-eslint/eslint-plugin": "^4.24.0",
+        "@typescript-eslint/parser": "^4.24.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "core-js": "^3.12.1",
+        "cross-env": "^7.0.3",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "esbuild": "^0.12.1",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.0.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "eslint": "^7.26.0",
+        "husky": ">=4.3 <5",
+        "idb-keyval": "^5.0.5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "numbro": "^2.3.2",
+        "open": "^8.0.9",
+        "pako": "^2.0.3",
+        "prettierx": "^0.18.0",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.9.0/tarball"
+      }
+    },
+    "0.8.3": {
+      "name": "package-control",
+      "version": "0.8.3",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        }
+      ],
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.21.3",
+        "idb-keyval": "^5.0.5",
+        "numbro": "^2.3.2",
+        "open": "^8.0.9",
+        "pako": "^2.0.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+        "@babel/preset-env": "^7.14.2",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^19.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^13.0.0",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/node": "^15.3.0",
+        "@typescript-eslint/eslint-plugin": "^4.24.0",
+        "@typescript-eslint/parser": "^4.24.0",
+        "core-js": "^3.12.1",
+        "eslint": "^7.26.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^3.0.0",
+        "eslint-plugin-prettierx": "^0.18.0",
+        "husky": ">=4.3 <5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^11.0.0",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "rollup": "^2.48.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.13.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.8.3/tarball"
+      }
+    },
+    "0.8.2": {
+      "name": "package-control",
+      "version": "0.8.2",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        }
+      ],
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.20.1",
+        "idb-keyval": "^5.0.4",
+        "log-symbols": "^4.1.0",
+        "numbro": "^2.3.2",
+        "open": "^8.0.5",
+        "pako": "^2.0.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "eslint-plugin-prettierx": "^0.17.1",
+        "husky": ">=4.3 <5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.8.2/tarball"
+      }
+    },
+    "0.8.1": {
+      "name": "package-control",
+      "version": "0.8.1",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        },
+        {
+          "name": "busy-signal"
+        }
+      ],
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.20.1",
+        "idb-keyval": "^5.0.4",
+        "log-symbols": "^4.1.0",
+        "numbro": "^2.3.2",
+        "open": "^8.0.5",
+        "pako": "^2.0.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "eslint-plugin-prettierx": "^0.17.1",
+        "husky": ">=4.3 <5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.8.1/tarball"
+      }
+    },
+    "0.8.0": {
+      "name": "package-control",
+      "version": "0.8.0",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        }
+      ],
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.20.1",
+        "idb-keyval": "^5.0.4",
+        "log-symbols": "^4.1.0",
+        "numbro": "^2.3.2",
+        "open": "^8.0.5",
+        "pako": "^2.0.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "eslint-plugin-prettierx": "^0.17.1",
+        "husky": ">=4.3 <5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.8.0/tarball"
+      }
+    },
+    "0.7.0": {
+      "name": "package-control",
+      "version": "0.7.0",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "format": "prettierx --write ./src",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:install-starred-package",
+          "package-control:install-all-starred-packages",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        }
+      ],
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.20.1",
+        "idb-keyval": "^5.0.4",
+        "log-symbols": "^4.1.0",
+        "numbro": "^2.3.2",
+        "open": "^8.0.5",
+        "pako": "^2.0.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "eslint-plugin-prettierx": "^0.17.1",
+        "husky": ">=4.3 <5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.7.0/tarball"
+      }
+    },
+    "0.6.0": {
+      "name": "package-control",
+      "version": "0.6.0",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        }
+      ],
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.20.1",
+        "idb-keyval": "^5.0.4",
+        "log-symbols": "^4.1.0",
+        "numbro": "^2.3.2",
+        "open": "^8.0.5",
+        "pako": "^2.0.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": ">=4.3 <5",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.6.0/tarball"
+      }
+    },
+    "0.5.0": {
+      "name": "package-control",
+      "version": "0.5.0",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        }
+      ],
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.20.1",
+        "idb-keyval": "^5.0.4",
+        "log-symbols": "^4.1.0",
+        "numbro": "^2.3.2",
+        "open": "^8.0.5",
+        "pako": "^2.0.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": ">=4.3 <5",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.5.0/tarball"
+      }
+    },
+    "0.4.1": {
+      "name": "package-control",
+      "version": "0.4.1",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        }
+      ],
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.20.1",
+        "idb-keyval": "^5.0.4",
+        "log-symbols": "^4.1.0",
+        "numbro": "^2.3.2",
+        "open": "^8.0.5",
+        "pako": "^2.0.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": ">=4.3 <5",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.4.1/tarball"
+      }
+    },
+    "0.4.0": {
+      "name": "package-control",
+      "version": "0.4.0",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:satisfy-dependencies",
+          "package-control:update-all-packages",
+          "package-control:update-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        }
+      ],
+      "dependencies": {
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.20.1",
+        "idb-keyval": "^5.0.4",
+        "log-symbols": "^4.1.0",
+        "numbro": "^2.3.2",
+        "open": "^8.0.5",
+        "pako": "^2.0.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": ">=4.3 <5",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.4.0/tarball"
+      }
+    },
+    "0.3.0": {
+      "name": "package-control",
+      "version": "0.3.0",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:discover-themes",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:list-packages",
+          "package-control:remove-package",
+          "package-control:update-package",
+          "package-control:update-all-packages"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.3.0"
+        }
+      ],
+      "dependencies": {
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.20.1",
+        "idb-keyval": "^5.0.4",
+        "numbro": "^2.3.2",
+        "open": "^8.0.5",
+        "pako": "^2.0.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": ">=4.3 <5",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.3.0/tarball"
+      }
+    },
+    "0.2.1": {
+      "name": "package-control",
+      "version": "0.2.1",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:list-packages",
+          "package-control:remove-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.1.0"
+        }
+      ],
+      "dependencies": {
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.20.1",
+        "idb-keyval": "^5.0.4",
+        "numbro": "^2.3.2",
+        "open": "^8.0.5",
+        "pako": "^2.0.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": ">=4.3 <5",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.2.1/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "package-control",
+      "version": "0.2.0",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "postinstall": "husky install",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:list-packages",
+          "package-control:remove-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.1.0"
+        }
+      ],
+      "dependencies": {
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.20.1",
+        "idb-keyval": "^5.0.4",
+        "numbro": "^2.3.2",
+        "open": "^8.0.5",
+        "pako": "^2.0.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": "^6.0.0",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "package-control",
+      "version": "0.1.0",
+      "description": "Manage Atom packages from the command palette",
+      "private": false,
+      "main": "./lib/index",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "postinstall": "husky install",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-package-control"
+      },
+      "homepage": "https://atom.io/packages/package-control",
+      "bugs": {
+        "url": "https://github.com/idleberg/atom-package-control/issues"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "package-control:disable-package",
+          "package-control:discover-packages",
+          "package-control:enable-package",
+          "package-control:install-package",
+          "package-control:list-packages",
+          "package-control:remove-package"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "browse": {
+          "versions": {
+            "1.0.0": "consumeBrowse"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "browse",
+          "minimumVersion": "3.1.0"
+        }
+      ],
+      "dependencies": {
+        "atom-package-deps": "^7.2.3",
+        "atom-select-list": "^0.8.0",
+        "cross-fetch": "^3.1.4",
+        "date-fns": "^2.20.1",
+        "idb-keyval": "^5.0.4",
+        "numbro": "^2.3.2",
+        "open": "^8.0.5",
+        "pako": "^2.0.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": "^6.0.0",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/package-control/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# package-control\n\n[![apm](https://flat.badgen.net/apm/license/package-control)](https://atom.io/packages/package-control)\n[![apm](https://flat.badgen.net/apm/v/package-control)](https://atom.io/packages/package-control)\n[![apm](https://flat.badgen.net/apm/dl/package-control)](https://atom.io/packages/package-control)\n[![CI](https://img.shields.io/github/workflow/status/idleberg/atom-package-control/CI?style=flat-square)](https://github.com/idleberg/atom-package-control/actions)\n[![David](https://flat.badgen.net/david/dev/idleberg/atom-package-control)](https://david-dm.org/idleberg/atom-package-control?type=dev)\n\nManage Atom packages from the command palette\n\n## Installation\n\n### apm\n\nInstall `package-control` from Atom [install view](atom://settings-view/show-package?package=package-control) or use the command-line equivalent:\n\n`$ apm install package-control`\n\n### Using Git\n\nChange to your Atom packages directory:\n\n**Windows**\n\n```powershell\n# Powershell\n$ cd $Env:USERPROFILE\\.atom\\packages\n```\n\n```cmd\n:: Command Prompt\n$ cd %USERPROFILE%\\.atom\\packages\n```\n\n**Linux & macOS**\n\n```bash\n$ cd ~/.atom/packages/\n```\n\nClone the repository as `package-control`:\n\n```bash\n$ git clone https://github.com/idleberg/atom-package-control package-control\n```\n\nInstall dependencies:\n\n```bash\n$ cd package-control && npm install\n```\n\nBuild source:\n\n```bash\n$ npm run build\n```\n\n## Usage\n\nThis packages exposes several commands to the [command palette](https://flight-manual.atom.io/getting-started/sections/atom-basics/#command-palette):\n\n- _Package Control: Install Package_\n- _Package Control: Remove Package_\n- _Package Control: Enable Package_\n- _Package Control: Disable Package_\n- _Package Control: List Packages_\n- _Package Control: Discover Packages_\n- _Package Control: Discover Themes_\n- _Package Control: Satisfy Dependencies_\n- _Package Control: Update Package_\n- _Package Control: Update All Packages_\n- _Package Control: Install Starred Package_\n- _Package Control: Install All Starred Packages_\n\nSome of the default behaviour of these commands can be tweaked in the [package settings](https://flight-manual.atom.io/using-atom/sections/atom-packages/#package-settings)!\n\n## License\n\nThis work is licensed under the [MIT License](LICENSE)\n",
+  "metadata": {
+    "name": "package-control",
+    "version": "0.12.6",
+    "description": "Manage Atom packages from the command palette",
+    "private": false,
+    "main": "./lib/index",
+    "scripts": {
+      "analyze": "source-map-explorer lib/**/*.js",
+      "build": "npm run clean && rollup --config",
+      "clean": "rimraf ./lib",
+      "dev": "npm run start",
+      "format": "prettier --write ./src",
+      "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+      "lint:styles": "echo \"Nothing to lint\"",
+      "lint": "npm-run-all --parallel lint:*",
+      "prepublishOnly": "npm run build",
+      "start": "rollup --config --watch",
+      "test": "npm run lint",
+      "prepare": "husky install"
+    },
+    "keywords": [],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/idleberg/atom-package-control"
+    },
+    "homepage": "https://atom.io/packages/package-control",
+    "bugs": {
+      "url": "https://github.com/idleberg/atom-package-control/issues"
+    },
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.56.0 <2.0.0"
+    },
+    "activationCommands": {
+      "atom-workspace": [
+        "package-control:disable-package",
+        "package-control:discover-packages",
+        "package-control:discover-themes",
+        "package-control:enable-package",
+        "package-control:install-package",
+        "package-control:install-starred-package",
+        "package-control:install-all-starred-packages",
+        "package-control:list-packages",
+        "package-control:remove-package",
+        "package-control:satisfy-dependencies",
+        "package-control:update-all-packages",
+        "package-control:update-package"
+      ]
+    },
+    "activationHooks": [
+      "core:loaded-shell-environment"
+    ],
+    "consumedServices": {
+      "browse": {
+        "versions": {
+          "1.0.0": "consumeBrowse"
+        }
+      },
+      "busy-signal": {
+        "versions": {
+          "1.0.0": "consumeSignal"
+        }
+      },
+      "service-fetch": {
+        "versions": {
+          "0.2.0": "consumeFetch"
+        }
+      }
+    },
+    "package-deps": [
+      {
+        "name": "browse",
+        "minimumVersion": "3.3.0"
+      },
+      {
+        "name": "busy-signal"
+      },
+      {
+        "name": "service-fetch",
+        "minimumVersion": "0.2.0"
+      }
+    ],
+    "dependencies": {},
+    "devDependencies": {
+      "@atxm/developer-console": "^0.5.0",
+      "@babel/core": "^7.15.5",
+      "@babel/eslint-parser": "^7.15.4",
+      "@babel/plugin-proposal-export-namespace-from": "^7.14.2",
+      "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+      "@babel/plugin-transform-modules-commonjs": "^7.15.4",
+      "@babel/preset-env": "^7.15.4",
+      "@types/atom": "^1.40.11",
+      "@types/node": "^16.9.0",
+      "@typescript-eslint/eslint-plugin": "^4.31.0",
+      "@typescript-eslint/parser": "^4.31.0",
+      "approximate-number": "^2.1.0",
+      "atom-package-deps": "^8.0.0",
+      "atom-select-list": "^0.8.0",
+      "core-js": "^3.17.2",
+      "cross-fetch": "^3.1.4",
+      "date-fns": "^2.21.3",
+      "encoding": "^0.1.13",
+      "eslint": "^7.32.0",
+      "eslint-config-eslint": "^7.0.0",
+      "eslint-plugin-json": "^3.1.0",
+      "eslint-plugin-prettier": "^4.0.0",
+      "husky": "^7.0.2",
+      "idb-keyval": "^6.0.1",
+      "lint-staged": "^11.1.2",
+      "log-symbols": "^5.0.0",
+      "npm-run-all": "^4.1.5",
+      "open": "^8.0.9",
+      "pako": "^2.0.3",
+      "prettier": "^2.3.2",
+      "rimraf": "^3.0.2",
+      "rollup": "^2.56.3",
+      "rollup-plugin-atomic": "^3.0.1",
+      "source-map-explorer": "^2.5.2",
+      "stylelint": "^13.13.1",
+      "tslib": "^2.3.1",
+      "typescript": ">=4.3 <4.4"
+    },
+    "lint-staged": {
+      "*.(json|ts)": "eslint --cache --fix",
+      "*.{md,yml}": "prettier --write"
+    },
+    "volta": {
+      "node": "14.17.6",
+      "yarn": "1.22.11",
+      "npm": "6.14.15"
+    }
+  }
+}

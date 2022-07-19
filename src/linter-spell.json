@@ -1,0 +1,793 @@
+{
+  "name": "linter-spell",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AtomLinter/linter-spell"
+  },
+  "downloads": 102321,
+  "stargazers_count": 39,
+  "releases": {
+    "latest": "0.15.0"
+  },
+  "versions": {
+    "0.15.0": {
+      "name": "linter-spell",
+      "main": "./lib/main",
+      "version": "0.15.0",
+      "description": "Multilingual grammar-specific spell checking using Ispell-interface such as Aspell or Hunspell.",
+      "author": "Tarn Burton <twburton@gmail.com>",
+      "keywords": [
+        "linter",
+        "spell-check",
+        "asciidoc",
+        "markdown"
+      ],
+      "repository": "https://github.com/AtomLinter/linter-spell",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0"
+      },
+      "bugs": {
+        "url": "https://github.com/AtomLinter/linter-spell/issues"
+      },
+      "dependencies": {
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "language-tags": "^1.0.5",
+        "linter-spell-word-list": "^0.5.0",
+        "lodash": "^4.17.4",
+        "jaro-winkler": "^0.2.8",
+        "os-locale": "^2.0.0"
+      },
+      "devDependencies": {
+        "xml2js": "^0.4.17",
+        "jsonfile": "^2.3.0",
+        "semver": "^5.3.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "configSchema": {
+        "spellPath": {
+          "title": "Spell Path",
+          "description": "The path to your copy of Ispell compatible program such as aspell, hunspell, etc.",
+          "type": "string",
+          "default": "hunspell",
+          "order": 1
+        },
+        "defaultLanguages": {
+          "title": "Default Languages",
+          "description": "Default languages used to check spelling. If not specified will default to the current locale.",
+          "type": "array",
+          "default": [],
+          "order": 2
+        },
+        "personalDictionaryPath": {
+          "title": "Personal Dictionary Path",
+          "description": "The path to your personal dictionary.",
+          "type": "string",
+          "default": "",
+          "order": 3
+        },
+        "spellingErrorSeverity": {
+          "title": "Spelling error severity",
+          "description": "Show spelling errors with a blue underline (info severity), orange underline (warning severity), or red underline (error severity).",
+          "type": "string",
+          "enum": [
+            "info",
+            "warning",
+            "error"
+          ],
+          "default": "warning",
+          "order": 4
+        },
+        "checkForSpellCheck": {
+          "title": "Check for spell-check package",
+          "description": "Check for an active spell-check package and warn user about incompatibility.",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "plainTextWords": {
+          "description": "Plain text specific word list. Precede word with '!' to make word case sensitive.",
+          "type": "array",
+          "default": [],
+          "order": 6
+        },
+        "gitCommitWords": {
+          "description": "GIT commit specific word list. Precede word with '!' to make word case sensitive.",
+          "type": "array",
+          "default": [],
+          "order": 7
+        },
+        "asciiDocWords": {
+          "title": "AsciiDoc Words",
+          "description": "AsciiDoc specific word list. Precede word with '!' to make word case sensitive.",
+          "type": "array",
+          "default": [],
+          "order": 8
+        },
+        "markdownWords": {
+          "description": "Markdown specific word list. Precede word with '!' to make word case sensitive.",
+          "type": "array",
+          "default": [],
+          "order": 9
+        }
+      },
+      "standard": {
+        "parser": "babel-eslint",
+        "globals": [
+          "HTMLDivElement",
+          "atom",
+          "latex",
+          "afterEach",
+          "beforeEach",
+          "describe",
+          "expect",
+          "it",
+          "jasmine",
+          "runs",
+          "spyOn",
+          "waitsFor",
+          "waitsForPromise",
+          "HTMLDivElement"
+        ]
+      },
+      "consumedServices": {
+        "linter-spell-grammar": {
+          "versions": {
+            "1.0.0": "consumeGrammar"
+          }
+        },
+        "linter-spell-dictionary": {
+          "versions": {
+            "1.0.0": "consumeDictionary"
+          }
+        },
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "providedServices": {
+        "linter-spell-grammar": {
+          "versions": {
+            "1.0.0": "provideGrammar"
+          }
+        },
+        "linter-spell-dictionary": {
+          "versions": {
+            "1.0.0": "provideDictionary"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-spell/versions/0.15.0/tarball"
+      }
+    },
+    "0.14.0": {
+      "name": "linter-spell",
+      "main": "./lib/main",
+      "version": "0.14.0",
+      "description": "Multilingual grammar-specific spell checking using Ispell-interface such as Aspell or Hunspell.",
+      "author": "Tarn Burton <twburton@gmail.com>",
+      "keywords": [
+        "linter",
+        "spell-check",
+        "asciidoc",
+        "markdown"
+      ],
+      "repository": "https://github.com/AtomLinter/linter-spell",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0"
+      },
+      "bugs": {
+        "url": "https://github.com/AtomLinter/linter-spell/issues"
+      },
+      "dependencies": {
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "language-tags": "^1.0.5",
+        "linter-spell-word-list": "^0.4.2",
+        "lodash": "^4.17.4",
+        "natural": "0.5.0",
+        "os-locale": "^2.0.0"
+      },
+      "devDependencies": {
+        "xml2js": "^0.4.17",
+        "jsonfile": "^2.3.0",
+        "semver": "^5.3.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "configSchema": {
+        "spellPath": {
+          "title": "Spell Path",
+          "description": "The path to your copy of Ispell compatible program such as aspell, hunspell, etc.",
+          "type": "string",
+          "default": "hunspell",
+          "order": 1
+        },
+        "defaultLanguages": {
+          "title": "Default Languages",
+          "description": "Default languages used to check spelling. If not specified will default to the current locale.",
+          "type": "array",
+          "default": [],
+          "order": 2
+        },
+        "personalDictionaryPath": {
+          "title": "Personal Dictionary Path",
+          "description": "The path to your personal dictionary.",
+          "type": "string",
+          "default": "",
+          "order": 3
+        },
+        "spellingErrorSeverity": {
+          "title": "Spelling error severity",
+          "description": "Show spelling errors with a blue underline (info severity), orange underline (warning severity), or red underline (error severity).",
+          "type": "string",
+          "enum": [
+            "info",
+            "warning",
+            "error"
+          ],
+          "default": "warning",
+          "order": 4
+        },
+        "checkForSpellCheck": {
+          "title": "Check for spell-check package",
+          "description": "Check for an active spell-check package and warn user about incompatibility.",
+          "type": "boolean",
+          "default": true,
+          "order": 5
+        },
+        "plainTextWords": {
+          "description": "Plain text specific word list. Precede word with '!' to make word case sensitive.",
+          "type": "array",
+          "default": [],
+          "order": 6
+        },
+        "gitCommitWords": {
+          "description": "GIT commit specific word list. Precede word with '!' to make word case sensitive.",
+          "type": "array",
+          "default": [],
+          "order": 7
+        },
+        "asciiDocWords": {
+          "title": "AsciiDoc Words",
+          "description": "AsciiDoc specific word list. Precede word with '!' to make word case sensitive.",
+          "type": "array",
+          "default": [],
+          "order": 8
+        },
+        "markdownWords": {
+          "description": "Markdown specific word list. Precede word with '!' to make word case sensitive.",
+          "type": "array",
+          "default": [],
+          "order": 9
+        }
+      },
+      "standard": {
+        "parser": "babel-eslint",
+        "globals": [
+          "HTMLDivElement",
+          "atom",
+          "latex",
+          "afterEach",
+          "beforeEach",
+          "describe",
+          "expect",
+          "it",
+          "jasmine",
+          "runs",
+          "spyOn",
+          "waitsFor",
+          "waitsForPromise",
+          "HTMLDivElement"
+        ]
+      },
+      "consumedServices": {
+        "linter-spell-grammar": {
+          "versions": {
+            "1.0.0": "consumeGrammar"
+          }
+        },
+        "linter-spell-dictionary": {
+          "versions": {
+            "1.0.0": "consumeDictionary"
+          }
+        },
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "providedServices": {
+        "linter-spell-grammar": {
+          "versions": {
+            "1.0.0": "provideGrammar"
+          }
+        },
+        "linter-spell-dictionary": {
+          "versions": {
+            "1.0.0": "provideDictionary"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-spell/versions/0.14.0/tarball"
+      }
+    },
+    "0.13.2": {
+      "name": "linter-spell",
+      "main": "./lib/main",
+      "version": "0.13.2",
+      "description": "Multilingual grammar-specific spell checking using Ispell-interface such as Aspell or Hunspell.",
+      "author": "Tarn Burton <twburton@gmail.com>",
+      "keywords": [
+        "linter",
+        "spell-check",
+        "asciidoc",
+        "markdown"
+      ],
+      "repository": "https://github.com/AtomLinter/linter-spell",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0"
+      },
+      "bugs": {
+        "url": "https://github.com/AtomLinter/linter-spell/issues"
+      },
+      "dependencies": {
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "language-tags": "^1.0.5",
+        "linter-spell-word-list": "^0.4.2",
+        "lodash": "^4.17.4",
+        "natural": "0.5.0",
+        "os-locale": "^2.0.0"
+      },
+      "devDependencies": {
+        "xml2js": "^0.4.17",
+        "jsonfile": "^2.3.0",
+        "semver": "^5.3.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "configSchema": {
+        "spellPath": {
+          "title": "Spell Path",
+          "description": "The path to your copy of Ispell compatible program such as aspell, hunspell, etc.",
+          "type": "string",
+          "default": "hunspell",
+          "order": 1
+        },
+        "defaultLanguages": {
+          "title": "Default Languages",
+          "description": "Default languages used to check spelling. If not specified will default to the current locale.",
+          "type": "array",
+          "default": [],
+          "order": 2
+        },
+        "personalDictionaryPath": {
+          "title": "Personal Dictionary Path",
+          "description": "The path to your personal dictionary.",
+          "type": "string",
+          "default": "",
+          "order": 3
+        },
+        "checkForSpellCheck": {
+          "title": "Check for spell-check package",
+          "description": "Check for an active spell-check package and warn user about incompatibility.",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        },
+        "plainTextWords": {
+          "description": "Plain text specific word list. Precede word with '!' to make word case sensitive.",
+          "type": "array",
+          "default": [],
+          "order": 5
+        },
+        "gitCommitWords": {
+          "description": "GIT commit specific word list. Precede word with '!' to make word case sensitive.",
+          "type": "array",
+          "default": [],
+          "order": 6
+        },
+        "asciiDocWords": {
+          "title": "AsciiDoc Words",
+          "description": "AsciiDoc specific word list. Precede word with '!' to make word case sensitive.",
+          "type": "array",
+          "default": [],
+          "order": 7
+        },
+        "markdownWords": {
+          "description": "Markdown specific word list. Precede word with '!' to make word case sensitive.",
+          "type": "array",
+          "default": [],
+          "order": 8
+        }
+      },
+      "standard": {
+        "parser": "babel-eslint",
+        "globals": [
+          "HTMLDivElement",
+          "atom",
+          "latex",
+          "afterEach",
+          "beforeEach",
+          "describe",
+          "expect",
+          "it",
+          "jasmine",
+          "runs",
+          "spyOn",
+          "waitsFor",
+          "waitsForPromise",
+          "HTMLDivElement"
+        ]
+      },
+      "consumedServices": {
+        "linter-spell-grammar": {
+          "versions": {
+            "1.0.0": "consumeGrammar"
+          }
+        },
+        "linter-spell-dictionary": {
+          "versions": {
+            "1.0.0": "consumeDictionary"
+          }
+        },
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "providedServices": {
+        "linter-spell-grammar": {
+          "versions": {
+            "1.0.0": "provideGrammar"
+          }
+        },
+        "linter-spell-dictionary": {
+          "versions": {
+            "1.0.0": "provideDictionary"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-spell/versions/0.13.2/tarball"
+      }
+    },
+    "0.13.1": {
+      "name": "linter-spell",
+      "main": "./lib/main",
+      "version": "0.13.1",
+      "description": "Multilingual grammar-specific spell checking using Ispell-interface such as Aspell or Hunspell.",
+      "author": "Tarn Burton <twburton@gmail.com>",
+      "keywords": [
+        "linter",
+        "spell-check",
+        "asciidoc",
+        "markdown"
+      ],
+      "repository": "https://github.com/AtomLinter/linter-spell",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0"
+      },
+      "bugs": {
+        "url": "https://github.com/AtomLinter/linter-spell/issues"
+      },
+      "dependencies": {
+        "atom-package-deps": "^4.4.1",
+        "atom-space-pen-views": "^2.2.0",
+        "language-tags": "^1.0.5",
+        "linter-spell-word-list": "^0.4.2",
+        "lodash": "^4.17.4",
+        "natural": "^0.5.0",
+        "os-locale": "^2.0.0"
+      },
+      "devDependencies": {
+        "xml2js": "^0.4.17",
+        "jsonfile": "^2.3.0",
+        "semver": "^5.3.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "configSchema": {
+        "spellPath": {
+          "title": "Spell Path",
+          "description": "The path to your copy of Ispell compatible program such as aspell, hunspell, etc.",
+          "type": "string",
+          "default": "hunspell",
+          "order": 1
+        },
+        "defaultLanguages": {
+          "title": "Default Languages",
+          "description": "Default languages used to check spelling. If not specified will default to the current locale.",
+          "type": "array",
+          "default": [],
+          "order": 2
+        },
+        "personalDictionaryPath": {
+          "title": "Personal Dictionary Path",
+          "description": "The path to your personal dictionary.",
+          "type": "string",
+          "default": "",
+          "order": 3
+        },
+        "checkForSpellCheck": {
+          "title": "Check for spell-check package",
+          "description": "Check for an active spell-check package and warn user about incompatibility.",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        },
+        "plainTextWords": {
+          "description": "Plain text specific word list. Precede word with '!' to make word case sensitive.",
+          "type": "array",
+          "default": [],
+          "order": 5
+        },
+        "gitCommitWords": {
+          "description": "GIT commit specific word list. Precede word with '!' to make word case sensitive.",
+          "type": "array",
+          "default": [],
+          "order": 6
+        },
+        "asciiDocWords": {
+          "title": "AsciiDoc Words",
+          "description": "AsciiDoc specific word list. Precede word with '!' to make word case sensitive.",
+          "type": "array",
+          "default": [],
+          "order": 7
+        },
+        "markdownWords": {
+          "description": "Markdown specific word list. Precede word with '!' to make word case sensitive.",
+          "type": "array",
+          "default": [],
+          "order": 8
+        }
+      },
+      "standard": {
+        "parser": "babel-eslint",
+        "globals": [
+          "HTMLDivElement",
+          "atom",
+          "latex",
+          "afterEach",
+          "beforeEach",
+          "describe",
+          "expect",
+          "it",
+          "jasmine",
+          "runs",
+          "spyOn",
+          "waitsFor",
+          "waitsForPromise",
+          "HTMLDivElement"
+        ]
+      },
+      "consumedServices": {
+        "linter-spell-grammar": {
+          "versions": {
+            "1.0.0": "consumeGrammar"
+          }
+        },
+        "linter-spell-dictionary": {
+          "versions": {
+            "1.0.0": "consumeDictionary"
+          }
+        },
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "providedServices": {
+        "linter-spell-grammar": {
+          "versions": {
+            "1.0.0": "provideGrammar"
+          }
+        },
+        "linter-spell-dictionary": {
+          "versions": {
+            "1.0.0": "provideDictionary"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-spell/versions/0.13.1/tarball"
+      }
+    }
+  },
+  "readme": "# linter-spell\n\n[![Travis&#x2011;CI Build Status](http://img.shields.io/travis/AtomLinter/linter-spell/master.svg?label=Linux/OSX%20build)](http://travis-ci.org/AtomLinter/linter-spell)\n[![AppVeyor Build Status](http://img.shields.io/appveyor/ci/yitzchak/linter-spell/master.svg?label=Windows%20build)](http://ci.appveyor.com/project/yitzchak/linter-spell)\n[![dependencies Status](http://img.shields.io/david/AtomLinter/linter-spell.svg)](http://david-dm.org/AtomLinter/linter-spell)\n[![devDependencies Status](https://david-dm.org/AtomLinter/linter-spell/dev-status.svg)](https://david-dm.org/AtomLinter/linter-spell?type=dev)\n\nMultilingual grammar-specific spell checking for [Atom](http://atom.io) and\n[linter](http://atom.io/packages/linter) using Ispell compatible interface such\nas [GNU Aspell](http://aspell.net/) or [Hunspell](http://hunspell.github.io/).\n\n## Installing\n\nUse the Atom package manager and search for \"linter-spell\", or from a shell run\n\n```bash\napm install linter-spell\n```\n\n## Prerequisites\n\nThis package relies on a Ispell compatible package such as\n[GNU Aspell](http://aspell.net/) or [Hunspell](http://hunspell.github.io/).\n\n## Usage\n\nSpell checking is done upon document save with misspellings displayed by\n[linter](http://atom.io/packages/linter). Misspellings can be corrected or added\nto personal dictionary using the\n[intentions](http://atom.io/packages/intentions) package via\n<kbd>ctrl</kbd>+<kbd>enter</kbd> on OSX and <kbd>alt</kbd>+<kbd>enter</kbd> on\nLinux and Windows.\n\nManual language selection can be done by clicking on the status bar language\nindicator or by using the default keybinding <kbd>alt</kbd>+<kbd>y</kbd> on\nLinux or <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>y</kbd> on other platforms.\n\n## Grammar and Dictionary Providers\n\nSpell checking plain text, Markdown, or AsciiDoc documents is included in the\npackage. To spell check other document types use a `linter-spell-grammar`\nprovider. To use additional dictionaries use `linter-spell-dictionary` provider.\nCurrent providers are listed in the table below (D=Dictionary, G=Grammar,\nD/G=Dictionary/Grammar).\n\n| Purpose                                 | Package                                                                                     | Type | Dependencies                                                                                                                                 |\n|:----------------------------------------|:--------------------------------------------------------------------------------------------|:----:|:---------------------------------------------------------------------------------------------------------------------------------------------|\n| Ignore CJK words                        | [linter&#x2011;spell&#x2011;cjk](https://atom.io/packages/linter-spell-cjk)                 | D    | None                                                                                                                                         |\n| Ispell compatible spell checking        | Included in linter&#x2011;spell                                                             | D    | None                                                                                                                                         |\n| Project specific dictionaries           | [linter&#x2011;spell&#x2011;project](http://atom.io/packages/linter-spell-project)          | D    | None                                                                                                                                         |\n| AsciiDoc spell checking                 | Included in linter&#x2011;spell                                                             | D/G  | [language&#x2011;asciidoc](http://atom.io/packages/language-asciidoc)                                                                        |\n| Git Commit Message spell checking       | Included in linter&#x2011;spell                                                             | D/G  | [language&#x2011;git](http://atom.io/packages/language-git)                                                                                  |\n| GitHub flavored Markdown spell checking | Included in linter&#x2011;spell                                                             | D/G  | [language&#x2011;gfm](http://atom.io/packages/language-gfm)                                                                                  |\n| HTML spell checking                     | [linter&#x2011;spell&#x2011;html](http://atom.io/packages/linter-spell-html)                | D/G  | [language&#x2011;html](http://atom.io/packages/language-html)                                                                                |\n| Javascript spell checking               | [linter&#x2011;spell&#x2011;javascript](http://atom.io/packages/linter-spell-javascript)    | D/G  | [language&#x2011;javascript](http://atom.io/packages/language-javascript) or [language&#x2011;babel](http://atom.io/packages/language-babel) |\n| JSON spell checking                     | [linter&#x2011;spell&#x2011;javascript](http://atom.io/packages/linter-spell-javascript)    | D/G  | [language&#x2011;json](http://atom.io/packages/language-json)                                                                                |\n| LaTeX, TeX &amp; BibTeX spell checking  | [linter&#x2011;spell&#x2011;latex](http://atom.io/packages/linter-spell-latex)              | D/G  | [language&#x2011;latex](http://atom.io/packages/language-latex)                                                                              |\n| LaTeX spell checking                    | [linter&#x2011;spell&#x2011;latexsimple](https://atom.io/packages/linter-spell-latexsimple) | G    | [language&#x2011;latexsimple](https://atom.io/packages/language-latexsimple)                                                                 |\n| Markdown spell checking                 | Included in linter&#x2011;spell                                                             | D/G  | [language&#x2011;markdown](http://atom.io/packages/language-markdown)                                                                        |\n| Plain Text spell checking               | Included in linter&#x2011;spell                                                             | D/G  | [language&#x2011;text](http://atom.io/packages/language-text)                                                                                |\n| Ruby spell checking                     | [linter&#x2011;spell&#x2011;ruby](http://atom.io/packages/linter-spell-ruby)                | D/G  | [language&#x2011;ruby](http://atom.io/packages/language-ruby)                                                                                |\n| Shell script spell checking             | [linter&#x2011;spell&#x2011;shellscript](https://atom.io/packages/linter-spell-shellscript) | D/G  | [language&#x2011;shellscript](http://atom.io/packages/language-shellscript)                                                                  |\n\n## Creating New Grammar Providers\n\nNew grammars can be added by implementing a `linter-spell-grammar` provider.\nThis can be done by adding the following to `package.json`\n\n```json\n\"providedServices\": {\n  \"linter-spell-grammar\": {\n    \"versions\": {\n      \"1.0.0\": \"provideGrammar\"\n    }\n  }\n}\n```\n\nThe provided service should be as follows\n\n```javascript\nfunction provideGrammar () {\n  return [{\n    grammarScopes: ['source.gfm'],\n    findLanguageTags: textEditor => { return ['en-US'] },\n    checkedScopes: {\n      'source.gfm': true,\n      'markup.code.c.gfm': false,\n      'markup.underline.link.gfm': () => atom.config.get('linter-spell.checkLinks')\n    },\n    filterRanges: (textEditor, ranges) => {\n      return {\n        ranges: ranges,\n        ignoredRanges: []\n      }\n    }\n  }]\n}\n```\n\nMultiple grammars can be provided by returning an array. `grammarScopes` is\nrequired, but all other properties and methods are optional.\n\nThe `findLanguageTags` method should scan `textEditor` for a file specific\noverride of the user's default language and return [RFC\n5646](http://www.rfc-editor.org/rfc/rfc5646.txt) compliant language codes or `[]`\nif no language references were found. See\n[linter&#x2011;spell&#x2011;latex](http://atom.io/packages/linter-spell-latex)\nfor an implementation using TeX magic comments.\n\nThe `checkedScopes` list the grammar scopes that either checked or ignored. To\nexplicitly check a scope use a value of `true`, while `false` will ignore that\nscope. To allow dynamic determination of scope spell checking a function may\nalso be supplied. The function should take no arguments and return a truthy\nvalue. If this property is not provided then all scopes in `grammarScopes` will\nbe checked. When it is provided all scopes default to ignored unless specified\nwith a `true` value.\n\nThe `filterRanges` method should check the `ranges` parameter for sub-ranges\nwithin each ranges which are valid to spell check. It should return a list\nof modified ranges in `ranges` and can also return `ignoredRanges` for\nranges that should not be checked. The interval difference between `ranges`\nand `ignoredRanges` will actually be checked.\n\n## Create New Dictionary Providers\n\nNew dictionaries can be added by implementing a `linter-spell-dictionary`\nprovider. This can be done by adding the following to `package.json`\n\n```json\n\"providedServices\": {\n  \"linter-spell-dictionary\": {\n    \"versions\": {\n      \"1.0.0\": \"provideDictionary\"\n    }\n  }\n}\n```\n\nThe provided service should be as follows\n\n```javascript\nfunction provideDictionary () {\n  return [{\n    name: 'Your dictionary name',\n    grammarScopes: ['source.gfm'],\n    languages: ['en-US'],\n    checkRange: (textEditor, languages, range) => {\n      return new Promise((resolve, reject) => resolve([{\n        range: new Range([0, 1], [0, 4]),\n        suggestions: ['bar'],\n        actions: [{\n          title: 'Add to my dictionary',\n          apply: () => { /* add word to your dictionary. */ }\n        }]\n      }])\n    },\n    checkWord: (textEditor, languages, range) => {\n      return new Promise((resolve, reject) => resolve({\n        isWord: false, // return true if word is found\n        suggestions: ['foo'],\n        actions: [{\n          title: 'Add to my dictionary',\n          apply: () => { /* add word to your dictionary. */ }\n        }]\n      })\n    }\n  }]\n}\n```\n\nMultiple grammars can be provided by returning an array. `name` and `checkWord`\nare required, but all other properties and methods are optional. If\n`grammarScopes` or `languages` are not provided then provider will be used for\nall grammar scopes or languages, respectively.\n\nIf `checkRange` is provided then it is assumed that the dictionary knows how\nfind line breaks for all of the languages listed in `languages`. `linter-spell`\nwill then move that provider to the front of the queue and allow it to perform\nword and breaks and return words that are potentially misspelled. Those\npotential misspellings are then passed to the dictionary providers that only\ndefine `checkWord` for an opportunity to check the word against their\ndictionary.\n\nIf a provider cannot find a word in its dictionary then it should at least\nreturn `{ isWord: false }`. It may also return a list of `suggestions` or a list\nof `actions` to take on the misspelled word. For example, adding the word to a\nlanguage specific dictionary.\n",
+  "metadata": {
+    "name": "linter-spell",
+    "main": "./lib/main",
+    "version": "0.15.0",
+    "description": "Multilingual grammar-specific spell checking using Ispell-interface such as Aspell or Hunspell.",
+    "author": "Tarn Burton <twburton@gmail.com>",
+    "keywords": [
+      "linter",
+      "spell-check",
+      "asciidoc",
+      "markdown"
+    ],
+    "repository": "https://github.com/AtomLinter/linter-spell",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0"
+    },
+    "bugs": {
+      "url": "https://github.com/AtomLinter/linter-spell/issues"
+    },
+    "dependencies": {
+      "atom-package-deps": "^4.4.1",
+      "atom-space-pen-views": "^2.2.0",
+      "language-tags": "^1.0.5",
+      "linter-spell-word-list": "^0.5.0",
+      "lodash": "^4.17.4",
+      "jaro-winkler": "^0.2.8",
+      "os-locale": "^2.0.0"
+    },
+    "devDependencies": {
+      "xml2js": "^0.4.17",
+      "jsonfile": "^2.3.0",
+      "semver": "^5.3.0"
+    },
+    "package-deps": [
+      "linter"
+    ],
+    "configSchema": {
+      "spellPath": {
+        "title": "Spell Path",
+        "description": "The path to your copy of Ispell compatible program such as aspell, hunspell, etc.",
+        "type": "string",
+        "default": "hunspell",
+        "order": 1
+      },
+      "defaultLanguages": {
+        "title": "Default Languages",
+        "description": "Default languages used to check spelling. If not specified will default to the current locale.",
+        "type": "array",
+        "default": [],
+        "order": 2
+      },
+      "personalDictionaryPath": {
+        "title": "Personal Dictionary Path",
+        "description": "The path to your personal dictionary.",
+        "type": "string",
+        "default": "",
+        "order": 3
+      },
+      "spellingErrorSeverity": {
+        "title": "Spelling error severity",
+        "description": "Show spelling errors with a blue underline (info severity), orange underline (warning severity), or red underline (error severity).",
+        "type": "string",
+        "enum": [
+          "info",
+          "warning",
+          "error"
+        ],
+        "default": "warning",
+        "order": 4
+      },
+      "checkForSpellCheck": {
+        "title": "Check for spell-check package",
+        "description": "Check for an active spell-check package and warn user about incompatibility.",
+        "type": "boolean",
+        "default": true,
+        "order": 5
+      },
+      "plainTextWords": {
+        "description": "Plain text specific word list. Precede word with '!' to make word case sensitive.",
+        "type": "array",
+        "default": [],
+        "order": 6
+      },
+      "gitCommitWords": {
+        "description": "GIT commit specific word list. Precede word with '!' to make word case sensitive.",
+        "type": "array",
+        "default": [],
+        "order": 7
+      },
+      "asciiDocWords": {
+        "title": "AsciiDoc Words",
+        "description": "AsciiDoc specific word list. Precede word with '!' to make word case sensitive.",
+        "type": "array",
+        "default": [],
+        "order": 8
+      },
+      "markdownWords": {
+        "description": "Markdown specific word list. Precede word with '!' to make word case sensitive.",
+        "type": "array",
+        "default": [],
+        "order": 9
+      }
+    },
+    "standard": {
+      "parser": "babel-eslint",
+      "globals": [
+        "HTMLDivElement",
+        "atom",
+        "latex",
+        "afterEach",
+        "beforeEach",
+        "describe",
+        "expect",
+        "it",
+        "jasmine",
+        "runs",
+        "spyOn",
+        "waitsFor",
+        "waitsForPromise",
+        "HTMLDivElement"
+      ]
+    },
+    "consumedServices": {
+      "linter-spell-grammar": {
+        "versions": {
+          "1.0.0": "consumeGrammar"
+        }
+      },
+      "linter-spell-dictionary": {
+        "versions": {
+          "1.0.0": "consumeDictionary"
+        }
+      },
+      "status-bar": {
+        "versions": {
+          "^1.0.0": "consumeStatusBar"
+        }
+      }
+    },
+    "providedServices": {
+      "linter-spell-grammar": {
+        "versions": {
+          "1.0.0": "provideGrammar"
+        }
+      },
+      "linter-spell-dictionary": {
+        "versions": {
+          "1.0.0": "provideDictionary"
+        }
+      },
+      "linter": {
+        "versions": {
+          "2.0.0": "provideLinter"
+        }
+      }
+    }
+  }
+}

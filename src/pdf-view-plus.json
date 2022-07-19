@@ -1,0 +1,1406 @@
+{
+  "name": "pdf-view-plus",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aerijo/atom-pdf-view-plus"
+  },
+  "downloads": 12898,
+  "stargazers_count": 4,
+  "releases": {
+    "latest": "1.11.0"
+  },
+  "versions": {
+    "1.11.0": {
+      "name": "pdf-view-plus",
+      "main": "./src/main.ts",
+      "version": "1.11.0",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "preversion": "node script/preversion.js",
+        "postversion": "node script/postversion.js"
+      },
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "providedServices": {
+        "pdfview": {
+          "description": "Subscribe to PDF actions such as opening files and clicks",
+          "versions": {
+            "0.0.0": "providePdfEvents"
+          }
+        }
+      },
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "enableSynctex": {
+          "type": "boolean",
+          "default": false,
+          "title": "Enable SyncTeX",
+          "description": "Allows double clicking a generated TeX PDF to open the corresponding source file location"
+        },
+        "autoreloadDebounce": {
+          "type": "number",
+          "default": 200,
+          "description": "The time in ms before reloading the PDF after the last detected change"
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dependencies": {
+        "atom-ts-transpiler": "1.5.2",
+        "typescript": "^3.5.3"
+      },
+      "atomTranspilers": [
+        {
+          "transpiler": "atom-ts-transpiler",
+          "glob": "{!(node_modules)/**/,}*.ts?(x)",
+          "options": {
+            "verbose": true
+          }
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.11.0/tarball"
+      }
+    },
+    "1.10.1": {
+      "name": "pdf-view-plus",
+      "main": "./src/main.ts",
+      "version": "1.10.1",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "preversion": "node script/preversion.js",
+        "postversion": "node script/postversion.js"
+      },
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "providedServices": {
+        "pdfview": {
+          "description": "Subscribe to PDF actions such as opening files and clicks",
+          "versions": {
+            "0.0.0": "providePdfEvents"
+          }
+        }
+      },
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "enableSynctex": {
+          "type": "boolean",
+          "default": false,
+          "title": "Enable SyncTeX",
+          "description": "Allows double clicking a generated TeX PDF to open the corresponding source file location"
+        },
+        "autoreloadDebounce": {
+          "type": "number",
+          "default": 200,
+          "description": "The time in ms before reloading the PDF after the last detected change"
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dependencies": {
+        "atom-ts-transpiler": "1.5.2",
+        "typescript": "^3.5.3"
+      },
+      "atomTranspilers": [
+        {
+          "transpiler": "atom-ts-transpiler",
+          "glob": "{!(node_modules)/**/,}*.ts?(x)",
+          "options": {
+            "verbose": true
+          }
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.10.1/tarball"
+      }
+    },
+    "1.10.0": {
+      "name": "pdf-view-plus",
+      "main": "./src/main.ts",
+      "version": "1.10.0",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "preversion": "node script/preversion.js",
+        "postversion": "node script/postversion.js"
+      },
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "providedServices": {
+        "pdfview": {
+          "description": "Subscribe to PDF actions such as opening files and clicks",
+          "versions": {
+            "0.0.0": "providePdfEvents"
+          }
+        }
+      },
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "enableSynctex": {
+          "type": "boolean",
+          "default": false,
+          "title": "Enable SyncTeX",
+          "description": "Allows double clicking a generated TeX PDF to open the corresponding source file location"
+        },
+        "autoreloadDebounce": {
+          "type": "number",
+          "default": 200,
+          "description": "The time in ms before reloading the PDF after the last detected change"
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dependencies": {
+        "atom-ts-transpiler": "1.5.2",
+        "typescript": "^3.5.3"
+      },
+      "atomTranspilers": [
+        {
+          "transpiler": "atom-ts-transpiler",
+          "glob": "{!(node_modules)/**/,}*.ts?(x)",
+          "options": {
+            "verbose": true
+          }
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.10.0/tarball"
+      }
+    },
+    "1.9.0": {
+      "name": "pdf-view-plus",
+      "main": "./src/main.ts",
+      "version": "1.9.0",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "preversion": "node script/preversion.js",
+        "postversion": "node script/postversion.js"
+      },
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "providedServices": {
+        "pdfview": {
+          "description": "Subscribe to PDF actions such as opening files and clicks",
+          "versions": {
+            "0.0.0": "providePdfEvents"
+          }
+        }
+      },
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "enableSynctex": {
+          "type": "boolean",
+          "default": false,
+          "title": "Enable SyncTeX",
+          "description": "Allows double clicking a generated TeX PDF to open the corresponding source file location"
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dependencies": {
+        "atom-ts-transpiler": "1.5.2",
+        "typescript": "^3.5.3"
+      },
+      "atomTranspilers": [
+        {
+          "transpiler": "atom-ts-transpiler",
+          "glob": "{!(node_modules)/**/,}*.ts?(x)",
+          "options": {
+            "verbose": true
+          }
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.9.0/tarball"
+      }
+    },
+    "1.8.0": {
+      "name": "pdf-view-plus",
+      "main": "./src/main.ts",
+      "version": "1.8.0",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "preversion": "node script/preversion.js",
+        "postversion": "node script/postversion.js"
+      },
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "providedServices": {
+        "pdfview": {
+          "description": "Subscribe to PDF actions such as opening files and clicks",
+          "versions": {
+            "0.0.0": "providePdfEvents"
+          }
+        }
+      },
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dependencies": {
+        "atom-ts-transpiler": "1.5.2",
+        "typescript": "^3.5.3"
+      },
+      "atomTranspilers": [
+        {
+          "transpiler": "atom-ts-transpiler",
+          "glob": "{!(node_modules)/**/,}*.ts?(x)",
+          "options": {
+            "verbose": true
+          }
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.8.0/tarball"
+      }
+    },
+    "1.7.3": {
+      "name": "pdf-view-plus",
+      "main": "./src/main.ts",
+      "version": "1.7.3",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "preversion": "node script/preversion.js",
+        "postversion": "node script/postversion.js"
+      },
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dependencies": {
+        "atom-ts-transpiler": "1.5.2",
+        "typescript": "^3.5.3"
+      },
+      "atomTranspilers": [
+        {
+          "transpiler": "atom-ts-transpiler",
+          "glob": "{!(node_modules)/**/,}*.ts?(x)",
+          "options": {
+            "verbose": true
+          }
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.7.3/tarball"
+      }
+    },
+    "1.7.2": {
+      "name": "pdf-view-plus",
+      "main": "./src/main.ts",
+      "version": "1.7.2",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "preversion": "node script/preversion.js",
+        "postversion": "node script/postversion.js"
+      },
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dependencies": {
+        "atom-ts-transpiler": "1.5.2",
+        "typescript": "^3.5.3"
+      },
+      "atomTranspilers": [
+        {
+          "transpiler": "atom-ts-transpiler",
+          "glob": "{!(node_modules)/**/,}*.ts?(x)",
+          "options": {
+            "verbose": true
+          }
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.7.2/tarball"
+      }
+    },
+    "1.7.1": {
+      "name": "pdf-view-plus",
+      "main": "./src/main.ts",
+      "version": "1.7.1",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "preversion": "node script/preversion.js",
+        "postversion": "node script/postversion.js"
+      },
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dependencies": {
+        "atom-ts-transpiler": "1.5.2",
+        "typescript": "^3.5.3"
+      },
+      "atomTranspilers": [
+        {
+          "transpiler": "atom-ts-transpiler",
+          "glob": "{!(node_modules)/**/,}*.ts?(x)",
+          "options": {
+            "verbose": true
+          }
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.7.1/tarball"
+      }
+    },
+    "1.7.0": {
+      "name": "pdf-view-plus",
+      "main": "./src/main.ts",
+      "version": "1.7.0",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "preversion": "node script/preversion.js",
+        "postversion": "node script/postversion.js"
+      },
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dependencies": {
+        "atom-ts-transpiler": "1.5.2",
+        "typescript": "^3.5.3"
+      },
+      "atomTranspilers": [
+        {
+          "transpiler": "atom-ts-transpiler",
+          "glob": "{!(node_modules)/**/,}*.ts?(x)",
+          "options": {
+            "verbose": true
+          }
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.7.0/tarball"
+      }
+    },
+    "1.6.2": {
+      "name": "pdf-view-plus",
+      "main": "./src/main.ts",
+      "version": "1.6.2",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "preversion": "node script/preversion.js",
+        "postversion": "node script/postversion.js"
+      },
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dependencies": {
+        "atom-ts-transpiler": "1.5.2",
+        "typescript": "^3.5.3"
+      },
+      "atomTranspilers": [
+        {
+          "transpiler": "atom-ts-transpiler",
+          "glob": "{!(node_modules)/**/,}*.ts?(x)",
+          "options": {
+            "verbose": true
+          }
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.6.2/tarball"
+      }
+    },
+    "1.6.1": {
+      "name": "pdf-view-plus",
+      "main": "./src/main.ts",
+      "version": "1.6.1",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "preversion": "node script/preversion.js",
+        "postversion": "node script/postversion.js"
+      },
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dependencies": {
+        "atom-ts-transpiler": "1.5.2",
+        "typescript": "^3.5.3"
+      },
+      "atomTranspilers": [
+        {
+          "transpiler": "atom-ts-transpiler",
+          "glob": "{!(node_modules)/**/,}*.ts?(x)",
+          "options": {
+            "verbose": true
+          }
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.6.1/tarball"
+      }
+    },
+    "1.0.7": {
+      "name": "pdf-view-plus",
+      "main": "./dist/main.js",
+      "version": "1.0.7",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "prepublishOnly": "npm run lint && npm shrinkwrap && git add . && git push && rm -rf ./dist && tsc --declarationMap false --inlineSourceMap false --inlineSources false",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "postversion": "git push --follow-tags"
+      },
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "atomTranspilers": [
+        {
+          "transpiler": "atom-ts-transpiler",
+          "glob": "{!(node_modules)/**/,}*.ts?(x)",
+          "options": {
+            "verbose": true
+          }
+        }
+      ],
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.0.7/tarball"
+      }
+    },
+    "1.0.5": {
+      "name": "pdf-view-plus",
+      "main": "./dist/main.js",
+      "version": "1.0.5",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "prepublishOnly": "npm run lint && npm shrinkwrap && git add . && git push && rm -rf ./dist && tsc --declarationMap false --inlineSourceMap false --inlineSources false",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "postversion": "git push --follow-tags"
+      },
+      "dependencies": {
+        "atom-ts-transpiler": "^1.5.2",
+        "typescript": "^3.5.3"
+      },
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "atomTranspilers": [
+        {
+          "transpiler": "atom-ts-transpiler",
+          "glob": "{!(node_modules)/**/,}*.ts?(x)",
+          "options": {
+            "verbose": true
+          }
+        }
+      ],
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.0.5/tarball"
+      }
+    },
+    "1.0.4": {
+      "name": "pdf-view-plus",
+      "main": "./dist/main.js",
+      "version": "1.0.4",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "prepublishOnly": "npm run lint && npm shrinkwrap && git add . && git push && rm -rf ./dist && tsc --declarationMap false --inlineSourceMap false --inlineSources false",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "postversion": "git push --follow-tags"
+      },
+      "dependencies": {
+        "atom-ts-transpiler": "^1.5.2",
+        "typescript": "^3.5.3"
+      },
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "atomTranspilers": [
+        {
+          "transpiler": "atom-ts-transpiler",
+          "glob": "{!(node_modules)/**/,}*.ts?(x)",
+          "options": {
+            "compilerOptions": {},
+            "cacheKeyFiles": [],
+            "verbose": false
+          }
+        }
+      ],
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.0.4/tarball"
+      }
+    },
+    "1.0.3": {
+      "name": "pdf-view-plus",
+      "main": "./dist/main.js",
+      "version": "1.0.3",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "prepublishOnly": "npm run lint && npm shrinkwrap && git add . && git push && rm -rf ./dist && tsc --declarationMap false --inlineSourceMap false --inlineSources false",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "postversion": "git push --follow-tags"
+      },
+      "dependencies": {
+        "atom-ts-transpiler": "^1.5.2",
+        "typescript": "^3.5.3"
+      },
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "atomTranspilers": [
+        {
+          "transpiler": "atom-ts-transpiler",
+          "glob": "{!(node_modules)/**/,}*.ts?(x)",
+          "options": {
+            "compilerOptions": {},
+            "cacheKeyFiles": [],
+            "verbose": false
+          }
+        }
+      ],
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.0.3/tarball"
+      }
+    },
+    "1.0.2": {
+      "name": "pdf-view-plus",
+      "main": "./dist/main.js",
+      "version": "1.0.2",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "prepublishOnly": "npm run lint && npm shrinkwrap && git add . && git push && rm -rf ./dist && tsc --declarationMap false --inlineSourceMap false --inlineSources false",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "postversion": "git push --follow-tags"
+      },
+      "dependencies": {},
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.0.2/tarball"
+      }
+    },
+    "1.0.1": {
+      "name": "pdf-view-plus",
+      "main": "./dist/main.js",
+      "version": "1.0.1",
+      "description": "Atom PDF viewer based on PDF.js",
+      "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.40.1 <2.0.0"
+      },
+      "files": [
+        "/dist",
+        "/vendor",
+        "/styles",
+        "!/**/*.js.map",
+        "!/vendor/pdfjs/web/debugger.js"
+      ],
+      "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "prepublishOnly": "npm run lint && npm shrinkwrap && git add . && git push && rm -rf ./dist && tsc --declarationMap false --inlineSourceMap false --inlineSources false",
+        "lint": "prettier --check --ignore-path .gitignore **/*",
+        "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+        "postversion": "git push --follow-tags"
+      },
+      "dependencies": {},
+      "deserializers": {
+        "PdfEditor": "deserialize"
+      },
+      "configSchema": {
+        "closeViewWhenFileDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+        },
+        "fileExtensions": {
+          "type": "array",
+          "default": [
+            "pdf",
+            "ai"
+          ],
+          "title": "PDF file extensions",
+          "description": "Files with these extensions will be opened as PDFs.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "devDependencies": {
+        "@types/atom": "^1.36.1",
+        "@types/node": "^12.7.2",
+        "prettier": "1.18.2",
+        "tslib": "^1.10.0",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "^3.5.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pdf-view-plus/versions/1.0.1/tarball"
+      }
+    }
+  },
+  "readme": "# pdf-view-plus\n\nThis package provides a PDF viewer for Atom. It is intended to replace [`pdf-view`](https://atom.io/packages/pdf-view).\n\n\n## Features\n\nThis package integrates Mozilla's PDF.js platform and viewer almost directly into an Atom pane. This gives you the same set of features you find in the Firefox PDF viewer (which also uses PDF.js), and means updates upstream can be easily incorporated.\n\nFor package developers, there is also a [`pdfview`](https://github.com/Aerijo/atom-pdf-view-plus/wiki/pdfview-API) service that allows for interacting with open PDFs. The reverse SyncTeX capability of this package works using this service.\n\n\n## Why not `pdf-view`\n\nThe `pdf-view` package uses the core of PDF.js but with a custom viewer. Among other issues, its viewer at the time of writing loads all pages in memory meaning large PDFs can cause severe performance issues. There is also an undiagnosed memory leak, causing RAM usage to rise with every reloaded PDF. This is not a problem for light use, but it can lead to a crash when frequently reloading PDFs, such as when recompiling LaTeX.\n\nIn comparison, the Mozilla viewer loads only visible pages, and has the PDF.js team behind it to patch any memory leaks. Loading only visible pages means they may take a moment to render when randomly accessed, but the overall performance is much better in large files.\n\n\n## Installing\n\nDo this through the Atom settings tab, or on the command line with\n```\napm install pdf-view-plus\n```\n\nAlternatively, you can use `apx` to install a reduced size version; the `apm` install is 70MB, while installing via `apx` is only 7MB.\n\nTo install `apx`, first install `npm` and then [apx](https://www.npmjs.com/package/@aerijo/apx) with the following command\n```\nnpm install -g @aerijo/apx\n```\nthen to install `pdf-view-plus` run\n```\napx install pdf-view-plus\n```\n\n\n## Developing\n\n1. Clone repo & navigate to repo root\n2. Run `npm install`\n4. Run `apm link --dev`\n3. Run `npm run watch` (keeps TS compiled)\n5. Open PDF in dev mode & reload window to test changes each time\n",
+  "metadata": {
+    "name": "pdf-view-plus",
+    "main": "./src/main.ts",
+    "version": "1.11.0",
+    "description": "Atom PDF viewer based on PDF.js",
+    "repository": "https://github.com/Aerijo/atom-pdf-view-plus",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.40.1 <2.0.0"
+    },
+    "files": [
+      "/dist",
+      "/vendor",
+      "/styles",
+      "!/**/*.js.map",
+      "!/vendor/pdfjs/web/debugger.js"
+    ],
+    "scripts": {
+      "build": "tsc",
+      "watch": "tsc --watch",
+      "lint": "prettier --check --ignore-path .gitignore **/*",
+      "fix-lint": "prettier --check --write --ignore-path .gitignore **/*",
+      "preversion": "node script/preversion.js",
+      "postversion": "node script/postversion.js"
+    },
+    "deserializers": {
+      "PdfEditor": "deserialize"
+    },
+    "providedServices": {
+      "pdfview": {
+        "description": "Subscribe to PDF actions such as opening files and clicks",
+        "versions": {
+          "0.0.0": "providePdfEvents"
+        }
+      }
+    },
+    "configSchema": {
+      "closeViewWhenFileDeleted": {
+        "type": "boolean",
+        "default": false,
+        "description": "Set to true to automatically close the PDF tab when the disk file is deleted"
+      },
+      "fileExtensions": {
+        "type": "array",
+        "default": [
+          "pdf",
+          "ai"
+        ],
+        "title": "PDF file extensions",
+        "description": "Files with these extensions will be opened as PDFs.",
+        "items": {
+          "type": "string"
+        }
+      },
+      "enableSynctex": {
+        "type": "boolean",
+        "default": false,
+        "title": "Enable SyncTeX",
+        "description": "Allows double clicking a generated TeX PDF to open the corresponding source file location"
+      },
+      "autoreloadDebounce": {
+        "type": "number",
+        "default": 200,
+        "description": "The time in ms before reloading the PDF after the last detected change"
+      }
+    },
+    "devDependencies": {
+      "@types/atom": "^1.36.1",
+      "@types/electron": "^1.6.10",
+      "@types/node": "^12.7.2",
+      "prettier": "1.18.2",
+      "tslib": "^1.10.0",
+      "tslint": "^5.18.0",
+      "tslint-config-prettier": "1.18.0",
+      "typescript": "^3.5.3"
+    },
+    "dependencies": {
+      "atom-ts-transpiler": "1.5.2",
+      "typescript": "^3.5.3"
+    },
+    "atomTranspilers": [
+      {
+        "transpiler": "atom-ts-transpiler",
+        "glob": "{!(node_modules)/**/,}*.ts?(x)",
+        "options": {
+          "verbose": true
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,268 @@
+{
+  "name": "ide-elixir-elixir-lsp-master",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jnmandal/ide-elixir-elixir-lsp-master"
+  },
+  "downloads": 300,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.0.1-rc1"
+  },
+  "versions": {
+    "0.0.1-rc1": {
+      "name": "ide-elixir-elixir-lsp-master",
+      "main": "./lib/ide-elixir",
+      "version": "0.0.1-rc1",
+      "description": "Atom IDE plugin for Elixir, tracking master of the elixir-lsp fork of ElixirLS",
+      "keywords": [],
+      "repository": "https://github.com/jnmandal/ide-elixir-elixir-lsp-master",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "configurationSchema": {
+        "title": "ElixirLS configuration",
+        "properties": {
+          "elixirLS.dialyzerEnabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Run ElixirLS's rapid Dialyzer when code is saved"
+          },
+          "elixirLS.dialyzerWarnOpts": {
+            "description": "Dialyzer options to enable or disable warnings. See Dialyzer's documentation for options. Note that the \"race_conditions\" option is unsupported",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "error_handling",
+                "no_behaviours",
+                "no_contracts",
+                "no_fail_call",
+                "no_fun_app",
+                "no_improper_lists",
+                "no_match",
+                "no_missing_calls",
+                "no_opaque",
+                "no_return",
+                "no_undefined_callbacks",
+                "no_unused",
+                "underspecs",
+                "unknown",
+                "unmatched_returns",
+                "overspecs",
+                "specdiffs"
+              ]
+            },
+            "default": []
+          },
+          "elixirLS.mixEnv": {
+            "type": "string",
+            "description": "Mix environment to use for compilation",
+            "default": "test",
+            "minLength": 1
+          },
+          "elixirLS.projectDir": {
+            "type": "string",
+            "description": "Subdirectory containing Mix project if not in the project root",
+            "minLength": 1
+          },
+          "elixirLS.fetchDeps": {
+            "type": "boolean",
+            "description": "Automatically fetch project dependencies when compiling",
+            "default": true
+          }
+        }
+      },
+      "dependencies": {
+        "atom-languageclient": "^0.9.5",
+        "shelljs": "^0.8.2"
+      },
+      "enhancedScopes": [
+        "source.elixir"
+      ],
+      "consumedServices": {
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "scripts": {
+        "prepare": "cd elixir-ls && mix deps.get && mix elixir_ls.release -o ../elixir-ls-release"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-elixir-elixir-lsp-master/versions/0.0.1-rc1/tarball"
+      }
+    }
+  },
+  "readme": "# Atom IDE plugin for Elixir, powered by ElixirLS\n\nProvides an [Atom IDE](https://ide.atom.io/) extension for Elixir, powered by [ElixirLS](https://github.com/JakeBecker/elixir-ls). To use it, you must first install one of [atom-ide-ui](https://atom.io/packages/atom-ide-ui) or [nuclide](https://atom.io/packages/nuclide).\n\n**This is an early release. For a more complete and stable Elixir IDE, try [vscode-elixir-ls](https://github.com/JakeBecker/vscode-elixir-ls)**\n\n![Screenshot](https://raw.githubusercontent.com/JakeBecker/ide-elixir/master/images/screenshot.png)\n\n## Installation\n\n- Install Elixir >= 1.6\n- Either `apm install atom-ide-ui` OR `apm install nuclide`\n- `apm install ide-elixir`\n\n## Features\n\nSupported ElixirLS features:\n\n- Automatic, incremental Dialyzer analysis (requires Erlang OTP 20)\n- Inline reporting of build warnings and errors (requires Elixir >= 1.6)\n- Documentation lookup on hover\n- Go-to-definition\n- Code completion\n- Code formatter (requires Elixir >= 1.6)\n- Signature help\n- Find references to functions and modules (Thanks to @mattbaker)\n- Quick symbol lookup in file (Thanks to @mattbaker)\n\nUnsupported features:\n\n- Debugger\n- Output log\n\n## Building and running\n\nTo develop, make sure you check out this repo recursively because it contains ElixirLS as a Git submodule. Run `npm run prepare` to compile ElixirLS into the `elixir-ls-release` folder where the extension will look for it.\n\nUnfortunately, Atom's package manager `apm` does not allow packaging of untracked files, which means that the compiled `.ez` archives from ElixirLS have to be committed. (See [issue #498](https://github.com/atom/apm/issues/498))\n",
+  "metadata": {
+    "name": "ide-elixir-elixir-lsp-master",
+    "main": "./lib/ide-elixir",
+    "version": "0.0.1-rc1",
+    "description": "Atom IDE plugin for Elixir, tracking master of the elixir-lsp fork of ElixirLS",
+    "keywords": [],
+    "repository": "https://github.com/jnmandal/ide-elixir-elixir-lsp-master",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "configurationSchema": {
+      "title": "ElixirLS configuration",
+      "properties": {
+        "elixirLS.dialyzerEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run ElixirLS's rapid Dialyzer when code is saved"
+        },
+        "elixirLS.dialyzerWarnOpts": {
+          "description": "Dialyzer options to enable or disable warnings. See Dialyzer's documentation for options. Note that the \"race_conditions\" option is unsupported",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "error_handling",
+              "no_behaviours",
+              "no_contracts",
+              "no_fail_call",
+              "no_fun_app",
+              "no_improper_lists",
+              "no_match",
+              "no_missing_calls",
+              "no_opaque",
+              "no_return",
+              "no_undefined_callbacks",
+              "no_unused",
+              "underspecs",
+              "unknown",
+              "unmatched_returns",
+              "overspecs",
+              "specdiffs"
+            ]
+          },
+          "default": []
+        },
+        "elixirLS.mixEnv": {
+          "type": "string",
+          "description": "Mix environment to use for compilation",
+          "default": "test",
+          "minLength": 1
+        },
+        "elixirLS.projectDir": {
+          "type": "string",
+          "description": "Subdirectory containing Mix project if not in the project root",
+          "minLength": 1
+        },
+        "elixirLS.fetchDeps": {
+          "type": "boolean",
+          "description": "Automatically fetch project dependencies when compiling",
+          "default": true
+        }
+      }
+    },
+    "dependencies": {
+      "atom-languageclient": "^0.9.5",
+      "shelljs": "^0.8.2"
+    },
+    "enhancedScopes": [
+      "source.elixir"
+    ],
+    "consumedServices": {
+      "datatip": {
+        "versions": {
+          "0.1.0": "consumeDatatip"
+        }
+      },
+      "linter-indie": {
+        "versions": {
+          "2.0.0": "consumeLinterV2"
+        }
+      },
+      "signature-help": {
+        "versions": {
+          "0.1.0": "consumeSignatureHelp"
+        }
+      }
+    },
+    "providedServices": {
+      "autocomplete.provider": {
+        "versions": {
+          "2.0.0": "provideAutocomplete"
+        }
+      },
+      "code-actions": {
+        "versions": {
+          "0.1.0": "provideCodeActions"
+        }
+      },
+      "code-format.range": {
+        "versions": {
+          "0.1.0": "provideCodeFormat"
+        }
+      },
+      "definitions": {
+        "versions": {
+          "0.1.0": "provideDefinitions"
+        }
+      },
+      "find-references": {
+        "versions": {
+          "0.1.0": "provideFindReferences"
+        }
+      },
+      "outline-view": {
+        "versions": {
+          "0.1.0": "provideOutlines"
+        }
+      }
+    },
+    "scripts": {
+      "prepare": "cd elixir-ls && mix deps.get && mix elixir_ls.release -o ../elixir-ls-release"
+    }
+  }
+}

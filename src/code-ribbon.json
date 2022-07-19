@@ -1,0 +1,4496 @@
+{
+  "name": "code-ribbon",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodeRibbon/CodeRibbon"
+  },
+  "downloads": 1055,
+  "stargazers_count": 3,
+  "releases": {
+    "latest": "0.3.7"
+  },
+  "versions": {
+    "0.3.7": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.3.7",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/CodeRibbon/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.57.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.1",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.16.0",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.13.2",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "title": "Patch count calculation",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        },
+        "snap_alignment": {
+          "type": "object",
+          "title": "Horizontal Scroll Snap",
+          "properties": {
+            "autoscroll_timeout": {
+              "title": "Delay until columns are auto-aligned to screen",
+              "description": "Wait this number of seconds after scrolling to automatically align the viewport to the nearest patch column. Set to zero to disable the auto-snapping to columns. Values between 0 and 0.5 are not recommended for physical scrollwheel users.",
+              "default": 1,
+              "type": "number",
+              "minimum": 0,
+              "maximum": 30
+            },
+            "distance_cutoff": {
+              "title": "Max distance to align",
+              "description": "How close do you have to be to a column for the auto-snap to align? You can express this either as a percentage (of the current column width) or as a number of pixels.",
+              "default": "20%",
+              "type": "string",
+              "pattern": "^[0-9]+%?$"
+            }
+          }
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.3.7/tarball"
+      }
+    },
+    "0.3.6": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.3.6",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.57.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "title": "Patch count calculation",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        },
+        "snap_alignment": {
+          "type": "object",
+          "title": "Horizontal Scroll Snap",
+          "properties": {
+            "autoscroll_timeout": {
+              "title": "Delay until columns are auto-aligned to screen",
+              "description": "Wait this number of seconds after scrolling to automatically align the viewport to the nearest patch column. Set to zero to disable the auto-snapping to columns. Values between 0 and 0.5 are not recommended for physical scrollwheel users.",
+              "default": 1,
+              "type": "number",
+              "minimum": 0,
+              "maximum": 30
+            },
+            "distance_cutoff": {
+              "title": "Max distance to align",
+              "description": "How close do you have to be to a column for the auto-snap to align? You can express this either as a percentage (of the current column width) or as a number of pixels.",
+              "default": "20%",
+              "type": "string",
+              "pattern": "^[0-9]+%?$"
+            }
+          }
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.3.6/tarball"
+      }
+    },
+    "0.3.5": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.3.5",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.57.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "title": "Patch count calculation",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        },
+        "snap_alignment": {
+          "type": "object",
+          "title": "Horizontal Scroll Snap",
+          "properties": {
+            "autoscroll_timeout": {
+              "title": "Delay until columns are auto-aligned to screen",
+              "description": "Wait this number of seconds after scrolling to automatically align the viewport to the nearest patch column. Set to zero to disable the auto-snapping to columns. Values between 0 and 0.5 are not recommended for physical scrollwheel users.",
+              "default": 1,
+              "type": "number",
+              "minimum": 0,
+              "maximum": 30
+            },
+            "distance_cutoff": {
+              "title": "Max distance to align",
+              "description": "How close do you have to be to a column for the auto-snap to align? You can express this either as a percentage (of the current column width) or as a number of pixels.",
+              "default": "20%",
+              "type": "string",
+              "pattern": "^[0-9]+%?$"
+            }
+          }
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.3.5/tarball"
+      }
+    },
+    "0.3.4": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.3.4",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.57.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.3.4/tarball"
+      }
+    },
+    "0.3.3": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.3.3",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.57.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.3.3/tarball"
+      }
+    },
+    "0.3.2": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.3.2",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.57.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.3.2/tarball"
+      }
+    },
+    "0.3.1": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.3.1",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.57.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.3.1/tarball"
+      }
+    },
+    "0.3.0": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.3.0",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.57.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.3.0/tarball"
+      }
+    },
+    "0.2.12": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.2.12",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.57.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.2.12/tarball"
+      }
+    },
+    "0.2.11": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.2.11",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.57.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.2.11/tarball"
+      }
+    },
+    "0.2.10": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.2.10",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.57.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.2.10/tarball"
+      }
+    },
+    "0.2.9": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.2.9",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.57.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.2.9/tarball"
+      }
+    },
+    "0.2.8": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.2.8",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.57.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.2.8/tarball"
+      }
+    },
+    "0.2.7": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.2.7",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.57.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.2.7/tarball"
+      }
+    },
+    "0.2.6": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.2.6",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.57.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.2.6/tarball"
+      }
+    },
+    "0.2.5": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.2.5",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.57.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.2.5/tarball"
+      }
+    },
+    "0.2.4": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.2.4",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.47.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.2.4/tarball"
+      }
+    },
+    "0.2.3": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.2.3",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.47.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.2.3/tarball"
+      }
+    },
+    "0.2.2": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.2.2",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.47.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.2.2/tarball"
+      }
+    },
+    "0.2.1": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.2.1",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.47.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.2.1/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.2.0",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.47.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        },
+        "pane_creation_strategy": {
+          "title": "Placement of newly opened files",
+          "order": 41,
+          "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+          "type": "string",
+          "default": "nearest_right",
+          "enum": [
+            {
+              "value": "ribbon_tail",
+              "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+            },
+            {
+              "value": "new_column",
+              "description": "Create a new column right next to your currently focused one"
+            },
+            {
+              "value": "nearest_right",
+              "description": "Find the closest empty patch rightwards of your current position"
+            },
+            {
+              "value": "split_down",
+              "description": "Add a patch to the current column"
+            }
+          ]
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.1": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.1.1",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.47.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.1.1/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.1.0",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.47.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.1.0/tarball"
+      }
+    },
+    "0.0.40": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.0.40",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.47.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Patch Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of horizontal patches."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal patches",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of Patches per Column",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            }
+          }
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.0.40/tarball"
+      }
+    },
+    "0.0.39": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.0.39",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.47.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Send metrics events directly to official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Pane Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of panes."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal panes",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. Also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_mode": {
+              "title": "Vertical Pane Count",
+              "order": 35,
+              "type": "string",
+              "default": "number",
+              "enum": [
+                {
+                  "value": "minlines",
+                  "description": "[UNSUPPORTED] Fit max number of patches with minimum N lines per patch."
+                },
+                {
+                  "value": "number",
+                  "description": "Use a specific number of vertical strips."
+                }
+              ]
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of vertical strips",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            },
+            "pane_count_vertical_min_lines": {
+              "title": "Minimum Lines per Patch",
+              "order": 37,
+              "description": "Minimum number of lines for a single patch.",
+              "type": "integer",
+              "default": 20
+            }
+          }
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.0.39/tarball"
+      }
+    },
+    "0.0.38": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.0.38",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.47.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Send metrics events directly to official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Pane Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of panes."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal panes",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. Also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_mode": {
+              "title": "Vertical Pane Count",
+              "order": 35,
+              "type": "string",
+              "default": "number",
+              "enum": [
+                {
+                  "value": "minlines",
+                  "description": "[UNSUPPORTED] Fit max number of patches with minimum N lines per patch."
+                },
+                {
+                  "value": "number",
+                  "description": "Use a specific number of vertical strips."
+                }
+              ]
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of vertical strips",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            },
+            "pane_count_vertical_min_lines": {
+              "title": "Minimum Lines per Patch",
+              "order": 37,
+              "description": "Minimum number of lines for a single patch.",
+              "type": "integer",
+              "default": 20
+            }
+          }
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.0.38/tarball"
+      }
+    },
+    "0.0.37": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.0.37",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.47.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Send metrics events directly to official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Pane Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor Preferred Line Width"
+                },
+                {
+                  "value": "cr-linelength",
+                  "description": "Automatic: Use the Minimum Characters Wide setting below"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of panes."
+                }
+              ]
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Automatic: Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_horizontal_number": {
+              "title": "Manual: Number of horizontal panes",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. Also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_vertical_mode": {
+              "title": "Vertical Pane Count",
+              "order": 35,
+              "type": "string",
+              "default": "number",
+              "enum": [
+                {
+                  "value": "minlines",
+                  "description": "[UNSUPPORTED] Fit max number of patches with minimum N lines per patch."
+                },
+                {
+                  "value": "number",
+                  "description": "Use a specific number of vertical strips."
+                }
+              ]
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of vertical strips",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            },
+            "pane_count_vertical_min_lines": {
+              "title": "Minimum Lines per Patch",
+              "order": 37,
+              "description": "Minimum number of lines for a single patch.",
+              "type": "integer",
+              "default": 20
+            }
+          }
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.0.37/tarball"
+      }
+    },
+    "0.0.36": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.0.36",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.47.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Send metrics events directly to official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Pane Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor Preferred Line Width"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of panes."
+                }
+              ]
+            },
+            "pane_count_horizontal_number": {
+              "title": "Number of horizontal panes",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. Also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. In automatic width mode using your editor preferred line length, this is used as a fallback value.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_vertical_mode": {
+              "title": "Vertical Pane Count",
+              "order": 35,
+              "type": "string",
+              "default": "number",
+              "enum": [
+                {
+                  "value": "minlines",
+                  "description": "[UNSUPPORTED] Fit max number of patches with minimum N lines per patch."
+                },
+                {
+                  "value": "number",
+                  "description": "Use a specific number of vertical strips."
+                }
+              ]
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of vertical strips",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            },
+            "pane_count_vertical_min_lines": {
+              "title": "Minimum Lines per Patch",
+              "order": 37,
+              "description": "Minimum number of lines for a single patch.",
+              "type": "integer",
+              "default": 20
+            }
+          }
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.0.36/tarball"
+      }
+    },
+    "0.0.35": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.0.35",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.47.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.8.0",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Send metrics events directly to official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Pane Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Automatic: Use your preference for the editor Preferred Line Width"
+                },
+                {
+                  "value": "number",
+                  "description": "Manual: Use a specific number of panes."
+                }
+              ]
+            },
+            "pane_count_horizontal_number": {
+              "title": "Number of horizontal panes",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. Also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. In automatic width mode using your editor preferred line length, this is used as a fallback value.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_vertical_mode": {
+              "title": "Vertical Pane Count",
+              "order": 35,
+              "type": "string",
+              "default": "number",
+              "enum": [
+                {
+                  "value": "minlines",
+                  "description": "[UNSUPPORTED] Fit max number of patches with minimum N lines per patch."
+                },
+                {
+                  "value": "number",
+                  "description": "Use a specific number of vertical strips."
+                }
+              ]
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of vertical strips",
+              "order": 36,
+              "description": "How many vertical patches should new columns be initialized with?",
+              "type": "integer",
+              "default": 2
+            },
+            "pane_count_vertical_min_lines": {
+              "title": "Minimum Lines per Patch",
+              "order": 37,
+              "description": "Minimum number of lines for a single patch.",
+              "type": "integer",
+              "default": 20
+            }
+          }
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.0.35/tarball"
+      }
+    },
+    "0.0.34": {
+      "name": "code-ribbon",
+      "main": "./lib/code-ribbon",
+      "version": "0.0.34",
+      "description": "An Atom implementation of PatchWorks",
+      "keywords": [],
+      "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com/utk-se/CodeRibbon.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.47.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "deserializers": {
+        "CodeRibbonManager": "deserialize_CR_stuff",
+        "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+        "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+        "CodeRibbonPatch": "deserialize_CR_stuff"
+      },
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-select-list": "^0.7.0",
+        "etch": "^0.14.0",
+        "fs-plus": "^3.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.6.0",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "object-hash": "^1.3.1",
+        "scroll-into-view": "^1.14.2",
+        "temp": "^0.8.4",
+        "underscore-plus": "^1.7.0",
+        "vscode-ripgrep": "^1.5.8",
+        "wrench": "^1.5"
+      },
+      "configSchema": {
+        "metrics_preference": {
+          "title": "Metrics reporting preference",
+          "order": 10,
+          "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+          "type": "string",
+          "default": "disabled",
+          "enum": [
+            {
+              "value": "disabled",
+              "description": "Disabled - entire metrics system is disabled."
+            },
+            {
+              "value": "remote",
+              "description": "Send metrics events directly to official CodeRibbon metrics analysis server."
+            },
+            {
+              "value": "local",
+              "description": "Store metrics events in RAM, which can then be exported to file."
+            }
+          ]
+        },
+        "pane_count_calc": {
+          "type": "object",
+          "order": 30,
+          "properties": {
+            "pane_count_horizontal_mode": {
+              "title": "Horizontal Pane Count",
+              "order": 32,
+              "type": "string",
+              "default": "linelength",
+              "enum": [
+                {
+                  "value": "linelength",
+                  "description": "Use your preference for the editor Preferred Line Width"
+                },
+                {
+                  "value": "number",
+                  "description": "Use a specific number of panes."
+                }
+              ]
+            },
+            "pane_count_horizontal_number": {
+              "title": "Number of horizontal panes",
+              "order": 33,
+              "description": "Choose an exact number of patches to show per screen horizontally. Also is used as the fallback in case automatic width detection fails.",
+              "type": "integer",
+              "default": 3
+            },
+            "pane_count_horizontal_min_chars": {
+              "title": "Minimum Characters Wide",
+              "order": 34,
+              "description": "Choose how many columns a patch needs to show at minimum in order to be useful. In automatic width mode using your editor preferred line length, this is used as a fallback value.",
+              "type": "integer",
+              "default": 80
+            },
+            "pane_count_vertical_mode": {
+              "title": "Vertical Pane Count",
+              "order": 35,
+              "type": "string",
+              "default": "number",
+              "enum": [
+                {
+                  "value": "minlines",
+                  "description": "Fit max number of patches with minimum N lines per patch."
+                },
+                {
+                  "value": "number",
+                  "description": "Use a specific number of vertical strips."
+                }
+              ]
+            },
+            "pane_count_vertical_number": {
+              "title": "Number of vertical strips",
+              "order": 36,
+              "description": "How many vertical pane strips per view?",
+              "type": "integer",
+              "default": 2
+            },
+            "pane_count_vertical_min_lines": {
+              "title": "Minimum Lines per Patch",
+              "order": 37,
+              "description": "Minimum number of lines for a single patch.",
+              "type": "integer",
+              "default": 20
+            }
+          }
+        }
+      },
+      "devDependencies": {
+        "eslint": "^5.16.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/code-ribbon/versions/0.0.34/tarball"
+      }
+    }
+  },
+  "readme": "# CodeRibbon\n\nA reimplementation of Patchworks for the Atom Editor.\n\n![Overmode Mode Demo](https://user-images.githubusercontent.com/5423266/108159222-8bfd7580-70b4-11eb-88f6-acd10847982a.gif)\n\nPatchworks was a 2014 research project into better navigation and organization of code in IDEs. It's core concept consisted of an infinite 'Ribbon' of Patches in which code was displayed.\n\nAs you open code to edit, your Ribbon grows to accommodate more active patches, leaving a timeline-like history of recently used files.\n\n## Currently Working Features\n\n - 99.9% of other Atom plugins are still supported and work as usual\n   - If you find one that doesn't, please leave an issue for it!\n - Patch grid layout and dynamic growth of the Ribbon.\n - Configurable, dynamic size for number of Patches per screen\n - `Ctrl-Alt-O` to look at all the Patches in Overview mode\n - Drag files from the project tree view onto Patches to open the file\n - Swap Patches by dragging one item onto the other patch\n - Keyboard shortcuts for navigating the ribbon\n - Quick Fuzzy search files in the project for blank patches\n - Drag and drop patches onto eachother to create new patches and columns\n\n## A research project from UTK\n\nCodeRibbon is a research project from the University of Tennessee, Knoxville.\n\nThe research is supported by Austin Henley. (one of Patchwork's original authors)\n\nFor the contributors of CodeRibbon, see https://github.com/utk-se/CodeRibbon/graphs/contributors\n",
+  "metadata": {
+    "name": "code-ribbon",
+    "main": "./lib/code-ribbon",
+    "version": "0.3.7",
+    "description": "An Atom implementation of PatchWorks",
+    "keywords": [],
+    "repository": {
+      "type": "git",
+      "url": "ssh://git@github.com/CodeRibbon/CodeRibbon.git"
+    },
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.57.0 <2.0.0"
+    },
+    "consumedServices": {
+      "status-bar": {
+        "versions": {
+          "^1.0.0": "consumeStatusBar"
+        }
+      }
+    },
+    "deserializers": {
+      "CodeRibbonManager": "deserialize_CR_stuff",
+      "CodeRibbonRibbonContainer": "deserialize_CR_stuff",
+      "CodeRibbonSingleStrip": "deserialize_CR_stuff",
+      "CodeRibbonPatch": "deserialize_CR_stuff"
+    },
+    "dependencies": {
+      "async": "0.2.6",
+      "atom-select-list": "^0.7.0",
+      "etch": "^0.14.1",
+      "fs-plus": "^3.0.0",
+      "fuzzaldrin": "^2.0",
+      "fuzzaldrin-plus": "^0.6.0",
+      "humanize-plus": "~1.8.2",
+      "minimatch": "~3.0.3",
+      "object-hash": "^1.3.1",
+      "scroll-into-view": "^1.16.0",
+      "temp": "^0.8.4",
+      "underscore-plus": "^1.7.0",
+      "vscode-ripgrep": "^1.13.2",
+      "wrench": "^1.5"
+    },
+    "configSchema": {
+      "metrics_preference": {
+        "title": "Metrics reporting preference",
+        "order": 10,
+        "description": "Help improve CodeRibbon and contribute to academic usability research by enabling completely anonymous and non-identifiable usage reporting!",
+        "type": "string",
+        "default": "disabled",
+        "enum": [
+          {
+            "value": "disabled",
+            "description": "Disabled - entire metrics system is disabled."
+          },
+          {
+            "value": "remote",
+            "description": "Not yet implemented: Send metrics events directly to the official CodeRibbon metrics analysis server."
+          },
+          {
+            "value": "local",
+            "description": "Store metrics events in RAM, which can then be exported to file for later analysis."
+          }
+        ]
+      },
+      "pane_count_calc": {
+        "type": "object",
+        "title": "Patch count calculation",
+        "order": 30,
+        "properties": {
+          "pane_count_horizontal_mode": {
+            "title": "Horizontal Patch Count",
+            "order": 32,
+            "type": "string",
+            "default": "linelength",
+            "enum": [
+              {
+                "value": "linelength",
+                "description": "Automatic: Use your preference for the editor's Preferred Line Width"
+              },
+              {
+                "value": "cr-linelength",
+                "description": "Automatic: Use the Minimum Characters Wide setting below"
+              },
+              {
+                "value": "number",
+                "description": "Manual: Use a specific number of horizontal patches."
+              }
+            ]
+          },
+          "pane_count_horizontal_min_chars": {
+            "title": "Automatic: Minimum Characters Wide",
+            "order": 34,
+            "description": "Choose how many columns a patch needs to show at minimum in order to be useful. Please change the above setting to activate this.",
+            "type": "integer",
+            "default": 80
+          },
+          "pane_count_horizontal_number": {
+            "title": "Manual: Number of horizontal patches",
+            "order": 33,
+            "description": "Choose an exact number of patches to show per screen horizontally. This setting is also is used as the fallback in case automatic width detection fails.",
+            "type": "integer",
+            "default": 3
+          },
+          "pane_count_vertical_number": {
+            "title": "Number of Patches per Column",
+            "order": 36,
+            "description": "How many vertical patches should new columns be initialized with?",
+            "type": "integer",
+            "default": 2
+          }
+        }
+      },
+      "pane_creation_strategy": {
+        "title": "Placement of newly opened files",
+        "order": 41,
+        "description": "When adding items to the ribbon without any empty patches on-screen, where should they be created?",
+        "type": "string",
+        "default": "nearest_right",
+        "enum": [
+          {
+            "value": "ribbon_tail",
+            "description": "Always at the end of the ribbon, leaving prior empty patches alone"
+          },
+          {
+            "value": "new_column",
+            "description": "Create a new column right next to your currently focused one"
+          },
+          {
+            "value": "nearest_right",
+            "description": "Find the closest empty patch rightwards of your current position"
+          },
+          {
+            "value": "split_down",
+            "description": "Add a patch to the current column"
+          }
+        ]
+      },
+      "snap_alignment": {
+        "type": "object",
+        "title": "Horizontal Scroll Snap",
+        "properties": {
+          "autoscroll_timeout": {
+            "title": "Delay until columns are auto-aligned to screen",
+            "description": "Wait this number of seconds after scrolling to automatically align the viewport to the nearest patch column. Set to zero to disable the auto-snapping to columns. Values between 0 and 0.5 are not recommended for physical scrollwheel users.",
+            "default": 1,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 30
+          },
+          "distance_cutoff": {
+            "title": "Max distance to align",
+            "description": "How close do you have to be to a column for the auto-snap to align? You can express this either as a percentage (of the current column width) or as a number of pixels.",
+            "default": "20%",
+            "type": "string",
+            "pattern": "^[0-9]+%?$"
+          }
+        }
+      }
+    },
+    "devDependencies": {
+      "eslint": "^5.16.0"
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "name": "sb-atom-sonic-pi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SunderB/sb-atom-sonic-pi"
+  },
+  "downloads": 983,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "1.0.0-beta.3"
+  },
+  "versions": {
+    "1.0.0-beta.3": {
+      "name": "sb-atom-sonic-pi",
+      "main": "./lib/main",
+      "version": "1.0.0-beta.3",
+      "description": "Sonic Pi Atom integration. Based on rkh/atom-sonic.",
+      "keywords": [
+        "sonic-pi",
+        "music",
+        "live-coding"
+      ],
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "4.0.0": "provide"
+          }
+        }
+      },
+      "consumedServices": {
+        "tool-bar": {
+          "versions": {
+            "^0 || ^1": "consumeToolBar"
+          }
+        }
+      },
+      "repository": "https://github.com/sunderb/sb-atom-sonic-pi",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "jsonfile": "^6.0.1",
+        "node-osc": "^1.2.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/sb-atom-sonic-pi/versions/1.0.0-beta.3/tarball"
+      }
+    },
+    "1.0.0-beta.2": {
+      "name": "sb-atom-sonic-pi",
+      "main": "./lib/sb-atom-sonic-pi",
+      "version": "1.0.0-beta.2",
+      "description": "Sonic Pi Atom integration. Based on rkh/atom-sonic.",
+      "keywords": [],
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provide"
+          }
+        }
+      },
+      "consumedServices": {
+        "tool-bar": {
+          "versions": {
+            "^0 || ^1": "consumeToolBar"
+          }
+        }
+      },
+      "repository": "https://github.com/sunderb/sb-atom-sonic-pi",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "node-osc": "^1.1.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/sb-atom-sonic-pi/versions/1.0.0-beta.2/tarball"
+      }
+    },
+    "1.0.0-beta.1": {
+      "name": "sb-atom-sonic-pi",
+      "main": "./lib/sb-atom-sonic-pi",
+      "version": "1.0.0-beta.1",
+      "description": "Sonic Pi Atom integration. Based on rkh/atom-sonic.",
+      "keywords": [],
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provide"
+          }
+        }
+      },
+      "consumedServices": {
+        "tool-bar": {
+          "versions": {
+            "^0 || ^1": "consumeToolBar"
+          }
+        }
+      },
+      "repository": "https://github.com/sunderb/sb-atom-sonic-pi",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "node-osc": "^1.1.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/sb-atom-sonic-pi/versions/1.0.0-beta.1/tarball"
+      }
+    }
+  },
+  "readme": "# Sonic Pi Atom integration\n\nThis package makes it easier to write and run your [Sonic Pi](http://sonic-pi.net/) code within Atom. :)\nNOTE: This package may not be regularly maintained. This is not an official package.\n\n## Features\n* Control Sonic Pi from Atom:\n  - Play a buffer\n  - Stop the current runs\n  - Save a buffer and tell Sonic Pi to play it - allowing for playback of large buffers\n  - Play a selection\n* Keyboard shortcuts (similar to Sonic Pi's shortcuts) to activate the commands\n* The server IP and port can be changed in the settings\n* Integration with the [tool-bar](https://atom.io/packages/tool-bar) package\n* Auto-completions for (most) synths, FX, and samples (not nearly as well integrated as the official Sonic Pi GUI though)\n* Very partial syntax highlighting and snippets for Sonic Pi functions\n* Quick action to access the online tutorial from your web browser\n\nThis isn't a full client for Sonic Pi; it requires the server to already be running and doesn't have support for viewing the logs, closing the server etc.\n\n## Requirements\n**Sonic Pi needs to be running in the background.**\nThe [tool-bar](https://atom.io/packages/tool-bar) package for Atom needs to be installed to use the toolbar functionality.\n\n## Changes from rkh/atom-sonic\n* Adjusted OSC code to send to Sonic Pi server, and optionally to the Sonic Pi GUI (OSC messages sent to GUI appear in the cue log).\n* Added save-and-play-file command, which saves the current file and tells Sonic Pi to play the file. This allows for playback of large buffers. This command can be activated using F5.\n* Added integration with the [tool-bar](https://atom.io/packages/tool-bar) package to add buttons which run some commands to a toolbar.\n* Changed some of the default key bindings to be more similar to Sonic Pi's keyboard shortcuts, see below for the key bindings.\n* Added options to change the Sonic Pi server IP address and port, and the Sonic Pi GUI IP address and port.\n* Updated autocompletions for synths, FX and samples (not nearly as integrated as the official Sonic Pi GUI though)\n\nI'm happy to contribute these changes to rkh/atom-sonic if wanted. :)\n\n## Commands and Default Key Bindings\n\n Key Binding  | Action                                | Description\n--------------|---------------------------------------|-----------------\n `alt-r`      | `sb-atom-sonic-pi:play-file`          | Sends content of the currently open buffer to Sonic Pi for instant playback.\n `f5`         | `sb-atom-sonic-pi:save-and-play-file` | Saves the current file and tells Sonic Pi to play the file. Allows for playback of large buffers. (If used with an *untitled* file, it opens a save-as dialog box to allow you to save the file.)\n `ctrl-alt-r` | `sb-atom-sonic-pi:play-selection`     | Sends currently selected text to Sonic Pi for instant playback.\n `alt-s`      | `sb-atom-sonic-pi:stop`               | Tells Sonic Pi to stop all playback.\n `alt-i`      | `sb-atom-sonic-pi:open_tutorial`      | Open the online Sonic-Pi tutorial in your system's web browser (https://sonic-pi.net/tutorial)\n\n## Credit\n* This package was originally forked from [rkh/atom-sonic](https://github.com/rkh/atom-sonic)\n* Some code in this package comes from [euwbah/sonic-pi-autocomplete](https://github.com/euwbah/sonic-pi-autocomplete) and [atom/language-ruby](https://github.com/atom/language-ruby)\n\n## License\n This package is licensed under the MIT License. See [LICENSE.md](LICENSE.md) for the full license.\n",
+  "metadata": {
+    "name": "sb-atom-sonic-pi",
+    "main": "./lib/main",
+    "version": "1.0.0-beta.3",
+    "description": "Sonic Pi Atom integration. Based on rkh/atom-sonic.",
+    "keywords": [
+      "sonic-pi",
+      "music",
+      "live-coding"
+    ],
+    "providedServices": {
+      "autocomplete.provider": {
+        "versions": {
+          "4.0.0": "provide"
+        }
+      }
+    },
+    "consumedServices": {
+      "tool-bar": {
+        "versions": {
+          "^0 || ^1": "consumeToolBar"
+        }
+      }
+    },
+    "repository": "https://github.com/sunderb/sb-atom-sonic-pi",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "jsonfile": "^6.0.1",
+      "node-osc": "^1.2.0"
+    }
+  }
+}

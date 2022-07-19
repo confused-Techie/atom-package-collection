@@ -1,0 +1,748 @@
+{
+  "name": "atom-ide-javascript",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atom-ide-community/atom-ide-javascript"
+  },
+  "downloads": 26678,
+  "stargazers_count": 6,
+  "releases": {
+    "latest": "1.5.0"
+  },
+  "versions": {
+    "1.5.0": {
+      "name": "atom-ide-javascript",
+      "main": "dist/main.js",
+      "version": "1.5.0",
+      "author": "Amin Yahyaabadi",
+      "description": "  ",
+      "keywords": [
+        "javascript",
+        "ide",
+        "atom"
+      ],
+      "repository": "https://github.com/atom-ide-community/atom-ide-javascript",
+      "license": "MIT",
+      "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint . --fix",
+        "test": "atom --test spec",
+        "clean": "shx rm -rf dist",
+        "babel": "npm run clean && shx cp -r src dist && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=false babel dist --out-dir dist",
+        "copy": "shx cp -r src/debugger/node/VendorLib dist/debugger/node",
+        "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+        "bundle": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c ",
+        "build": "npm run babel && npm run copy",
+        "build-commit": "build-commit -o dist",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "atomTestRunner": "./spec/runner",
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "^6.0.0",
+        "@atom-ide-community/nuclide-commons-atom": "0.8.2",
+        "@atom-ide-community/nuclide-debugger-common": "0.8.2",
+        "react": "16.6.3",
+        "vscode-chrome-debug-core": "3.17.10",
+        "vscode-debugadapter": "1.24.0",
+        "vscode-nls": "2.0.2"
+      },
+      "devDependencies": {
+        "@types/atom": "1.40.4",
+        "@types/node": "^14.11.8",
+        "typescript": "^4.0.3",
+        "tslib": "^2.0.3",
+        "coffeescript": "^2.5.1",
+        "@types/jasmine": "^3.5.14",
+        "atom-jasmine3-test-runner": "^5.1.2",
+        "prettier": "^2.1.2",
+        "eslint": "7.11.0",
+        "eslint-config-atomic": "^1.5.0",
+        "rollup": "^2.32.0",
+        "rollup-plugin-atomic": "^1.6.1",
+        "shx": "^0.3.2",
+        "cross-env": "^7.0.2",
+        "@babel/cli": "7.11.6",
+        "@babel/core": "7.11.6",
+        "babel-preset-atomic": "^2.4.2",
+        "npm-check-updates": "9.0.4",
+        "build-commit": "0.1.1"
+      },
+      "providedServices": {
+        "debugger.provider": {
+          "description": "NodeJS debugger engine.",
+          "versions": {
+            "0.0.0": "createNodeDebuggerProvider"
+          }
+        }
+      },
+      "consumedServices": {},
+      "package-deps": [
+        "atom-ide-base",
+        "atom-typescript",
+        "linter-eslint",
+        "autocomplete-paths",
+        "javascript-drag-import"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-ide-javascript/versions/1.5.0/tarball"
+      }
+    },
+    "1.4.0": {
+      "name": "atom-ide-javascript",
+      "main": "dist/main.js",
+      "version": "1.4.0",
+      "author": "Amin Yahyaabadi",
+      "description": "  ",
+      "keywords": [
+        "javascript",
+        "ide",
+        "atom"
+      ],
+      "repository": "https://github.com/atom-ide-community/atom-ide-javascript",
+      "license": "MIT",
+      "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint . --fix",
+        "test": "atom --test spec",
+        "clean": "shx rm -rf dist",
+        "babel": "npm run clean && shx cp -r src dist && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=false babel dist --out-dir dist",
+        "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+        "build": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c ",
+        "build-commit": "build-commit -o dist",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "atomTestRunner": "./spec/runner",
+      "activationHooks": [
+        "language-javascript:grammar-used"
+      ],
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "^6.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "1.40.4",
+        "@types/node": "^14.11.8",
+        "typescript": "^4.0.3",
+        "tslib": "^2.0.3",
+        "coffeescript": "^2.5.1",
+        "@types/jasmine": "^3.5.14",
+        "atom-jasmine3-test-runner": "^5.1.2",
+        "prettier": "^2.1.2",
+        "eslint": "7.11.0",
+        "eslint-config-atomic": "^1.5.0",
+        "rollup": "^2.29.0",
+        "rollup-plugin-atomic": "^1.2.0",
+        "shx": "^0.3.2",
+        "cross-env": "^7.0.2",
+        "@babel/cli": "7.11.6",
+        "@babel/core": "7.11.6",
+        "babel-preset-atomic": "^2.4.2",
+        "npm-check-updates": "9.0.4",
+        "build-commit": "0.1.1"
+      },
+      "providedServices": {},
+      "consumedServices": {},
+      "package-deps": [
+        "atom-ide-base",
+        "atom-typescript",
+        "linter-eslint",
+        "autocomplete-paths",
+        "javascript-drag-import"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-ide-javascript/versions/1.4.0/tarball"
+      }
+    },
+    "1.3.1": {
+      "name": "atom-ide-javascript",
+      "main": "dist/main.js",
+      "version": "1.3.1",
+      "author": "Amin Yahyaabadi",
+      "description": "  ",
+      "keywords": [
+        "javascript",
+        "ide",
+        "atom"
+      ],
+      "repository": "https://github.com/atom-ide-community/atom-ide-javascript",
+      "license": "MIT",
+      "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint . --fix",
+        "test": "atom --test spec",
+        "clean": "shx rm -rf dist",
+        "babel": "npm run clean && shx cp -r src dist && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=false babel dist --out-dir dist",
+        "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+        "build": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c ",
+        "build-commit": "build-commit -o dist",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "atomTestRunner": "./spec/runner",
+      "activationHooks": [
+        "language-javascript:grammar-used"
+      ],
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "^6.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "1.40.4",
+        "@types/node": "^14.11.8",
+        "typescript": "^4.0.3",
+        "tslib": "^2.0.3",
+        "coffeescript": "^2.5.1",
+        "@types/jasmine": "^3.5.14",
+        "atom-jasmine3-test-runner": "^5.1.2",
+        "prettier": "^2.1.2",
+        "eslint": "7.11.0",
+        "eslint-config-atomic": "^1.5.0",
+        "rollup": "^2.29.0",
+        "rollup-plugin-atomic": "^1.2.0",
+        "shx": "^0.3.2",
+        "cross-env": "^7.0.2",
+        "@babel/cli": "7.11.6",
+        "@babel/core": "7.11.6",
+        "babel-preset-atomic": "^2.4.2",
+        "npm-check-updates": "9.0.4",
+        "build-commit": "0.1.1"
+      },
+      "providedServices": {},
+      "consumedServices": {},
+      "package-deps": [
+        "atom-ide-base",
+        "atom-typescript",
+        "linter-eslint",
+        "autocomplete-paths",
+        "javascript-drag-import"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-ide-javascript/versions/1.3.1/tarball"
+      }
+    },
+    "1.3.0": {
+      "name": "atom-ide-javascript",
+      "main": "dist/main.js",
+      "version": "1.3.0",
+      "author": "Amin Yahyaabadi",
+      "description": "  ",
+      "keywords": [
+        "javascript",
+        "ide",
+        "atom"
+      ],
+      "repository": "https://github.com/atom-ide-community/atom-ide-javascript",
+      "license": "MIT",
+      "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint . --fix",
+        "test": "atom --test spec",
+        "clean": "shx rm -rf dist",
+        "babel": "npm run clean && shx cp -r src dist && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=false babel dist --out-dir dist",
+        "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+        "build": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c ",
+        "build-commit": "build-commit -o dist",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "atomTestRunner": "./spec/runner",
+      "activationHooks": [
+        "language-javascript:grammar-used"
+      ],
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "^6.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "1.40.4",
+        "@types/node": "^14.11.8",
+        "typescript": "^4.0.3",
+        "tslib": "^2.0.3",
+        "coffeescript": "^2.5.1",
+        "@types/jasmine": "^3.5.14",
+        "atom-jasmine3-test-runner": "^5.1.2",
+        "prettier": "^2.1.2",
+        "eslint": "7.11.0",
+        "eslint-config-atomic": "^1.5.0",
+        "rollup": "^2.29.0",
+        "rollup-plugin-atomic": "^1.2.0",
+        "shx": "^0.3.2",
+        "cross-env": "^7.0.2",
+        "@babel/cli": "7.11.6",
+        "@babel/core": "7.11.6",
+        "babel-preset-atomic": "^2.4.2",
+        "npm-check-updates": "9.0.4",
+        "build-commit": "0.1.1"
+      },
+      "providedServices": {},
+      "consumedServices": {},
+      "package-deps": [
+        "atom-ide-base",
+        "atom-typescript",
+        "linter-eslint",
+        "autocomplete-paths",
+        "javascript-drag-import"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-ide-javascript/versions/1.3.0/tarball"
+      }
+    },
+    "1.2.1": {
+      "name": "atom-ide-javascript",
+      "main": "dist/main.js",
+      "version": "1.2.1",
+      "author": "Amin Yahyaabadi",
+      "description": "  ",
+      "keywords": [
+        "javascript",
+        "ide",
+        "atom"
+      ],
+      "repository": "https://github.com/atom-ide-community/atom-ide-javascript",
+      "license": "MIT",
+      "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint . --fix",
+        "test": "atom --test spec",
+        "clean": "shx rm -rf dist",
+        "babel": "npm run clean && shx cp -r src dist && cross-env NODE_ENV=development cross-env BABEL_ENV=development babel dist --out-dir dist",
+        "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_ENV=production rollup -c -w",
+        "build": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_ENV=production rollup -c ",
+        "build-commit": "build-commit -o dist",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "atomTestRunner": "./spec/runner",
+      "activationHooks": [
+        "language-javascript:grammar-used"
+      ],
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "^6.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "1.40.4",
+        "@types/node": "^14.0.24",
+        "typescript": "^3.9.7",
+        "tslib": "^2.0.0",
+        "coffeescript": "^2.5.1",
+        "jasmine": "^3.5.0",
+        "@types/jasmine": "^3.5.11",
+        "atom-jasmine3-test-runner": "^5.0.0",
+        "prettier": "^2.0.5",
+        "eslint": "7.5.0",
+        "eslint-config-atomic": "^1.2.3",
+        "tslint": "6.1.2",
+        "tslint-config-prettier": "1.18.0",
+        "rollup": "^2.22.1",
+        "rollup-plugin-atomic": "^1.0.2",
+        "shx": "^0.3.2",
+        "cross-env": "^7.0.2",
+        "@babel/cli": "7.10.5",
+        "@babel/core": "7.10.5",
+        "babel-preset-atomic": "^0.1.0",
+        "npm-check-updates": "7.0.2",
+        "build-commit": "0.1.1"
+      },
+      "providedServices": {},
+      "consumedServices": {},
+      "package-deps": [
+        "atom-ide-base",
+        "atom-typescript",
+        "linter-eslint",
+        "autocomplete-paths",
+        "javascript-drag-import"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-ide-javascript/versions/1.2.1/tarball"
+      }
+    },
+    "1.2.0": {
+      "name": "atom-ide-javascript",
+      "main": "dist/main.js",
+      "version": "1.2.0",
+      "author": "Amin Yahyaabadi",
+      "description": "  ",
+      "keywords": [
+        "javascript",
+        "ide",
+        "atom"
+      ],
+      "repository": "https://github.com/atom-ide-community/atom-ide-javascript",
+      "license": "MIT",
+      "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint . --fix",
+        "test": "atom --test spec",
+        "clean": "shx rm -rf dist",
+        "babel": "npm run clean && shx cp -r src dist && cross-env NODE_ENV=development cross-env BABEL_ENV=development babel dist --out-dir dist",
+        "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_ENV=production rollup -c -w",
+        "build": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_ENV=production rollup -c ",
+        "build-commit": "build-commit -o dist",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "atomTestRunner": "./spec/runner",
+      "activationHooks": [
+        "language-javascript:grammar-used"
+      ],
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "^6.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "1.40.4",
+        "@types/node": "^14.0.24",
+        "typescript": "^3.9.7",
+        "tslib": "^2.0.0",
+        "coffeescript": "^2.5.1",
+        "jasmine": "^3.5.0",
+        "@types/jasmine": "^3.5.11",
+        "atom-jasmine3-test-runner": "^5.0.0",
+        "prettier": "^2.0.5",
+        "eslint": "7.5.0",
+        "eslint-config-atomic": "^1.2.3",
+        "tslint": "6.1.2",
+        "tslint-config-prettier": "1.18.0",
+        "rollup": "^2.22.1",
+        "rollup-plugin-atomic": "^1.0.2",
+        "shx": "^0.3.2",
+        "cross-env": "^7.0.2",
+        "@babel/cli": "7.10.5",
+        "@babel/core": "7.10.5",
+        "babel-preset-atomic": "^0.1.0",
+        "npm-check-updates": "7.0.2",
+        "build-commit": "0.1.1"
+      },
+      "providedServices": {},
+      "consumedServices": {},
+      "package-deps": [
+        "atom-ide-base",
+        "atom-typescript",
+        "linter-eslint",
+        "autocomplete-paths",
+        "javascript-drag-import"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-ide-javascript/versions/1.2.0/tarball"
+      }
+    },
+    "1.1.0": {
+      "name": "atom-ide-javascript",
+      "main": "dist/main.js",
+      "version": "1.1.0",
+      "author": "Amin Yahyaabadi",
+      "description": "  ",
+      "keywords": [
+        "javascript",
+        "ide",
+        "atom"
+      ],
+      "repository": "https://github.com/atom-ide-community/atom-ide-javascript",
+      "license": "MIT",
+      "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint . --fix",
+        "test": "atom --test spec",
+        "clean": "shx rm -rf dist",
+        "babel": "npm run clean && shx cp -r src dist && cross-env NODE_ENV=development cross-env BABEL_ENV=development babel dist --out-dir dist",
+        "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_ENV=production rollup -c -w",
+        "build": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_ENV=production rollup -c ",
+        "build-commit": "build-commit -o dist",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "atomTestRunner": "./spec/runner",
+      "activationHooks": [
+        "language-javascript:grammar-used"
+      ],
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "^6.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "1.40.4",
+        "@types/node": "^14.0.24",
+        "typescript": "^3.9.7",
+        "tslib": "^2.0.0",
+        "coffeescript": "^2.5.1",
+        "jasmine": "^3.5.0",
+        "@types/jasmine": "^3.5.11",
+        "atom-jasmine3-test-runner": "^5.0.0",
+        "prettier": "^2.0.5",
+        "eslint": "7.5.0",
+        "eslint-config-atomic": "^1.2.3",
+        "tslint": "6.1.2",
+        "tslint-config-prettier": "1.18.0",
+        "rollup": "^2.22.1",
+        "rollup-plugin-atomic": "^1.0.2",
+        "shx": "^0.3.2",
+        "cross-env": "^7.0.2",
+        "@babel/cli": "7.10.5",
+        "@babel/core": "7.10.5",
+        "babel-preset-atomic": "^0.1.0",
+        "npm-check-updates": "7.0.2",
+        "build-commit": "0.1.1"
+      },
+      "providedServices": {},
+      "consumedServices": {},
+      "package-deps": [
+        "atom-ide-base",
+        "atom-typescript",
+        "linter-eslint",
+        "autocomplete-paths"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-ide-javascript/versions/1.1.0/tarball"
+      }
+    },
+    "1.0.1": {
+      "name": "atom-ide-javascript",
+      "main": "dist/main.js",
+      "version": "1.0.1",
+      "author": "Amin Yahyaabadi",
+      "description": "  ",
+      "keywords": [
+        "javascript",
+        "ide",
+        "atom"
+      ],
+      "repository": "https://github.com/atom-ide-community/atom-ide-javascript",
+      "license": "MIT",
+      "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint . --fix",
+        "test": "atom --test spec",
+        "clean": "shx rm -rf dist",
+        "babel": "npm run clean && shx cp -r src dist && cross-env NODE_ENV=development cross-env BABEL_ENV=development babel dist --out-dir dist",
+        "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_ENV=production rollup -c -w",
+        "build": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_ENV=production rollup -c ",
+        "build-commit": "build-commit -o dist",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "atomTestRunner": "./spec/runner",
+      "activationHooks": [
+        "language-javascript:grammar-used"
+      ],
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "^6.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "1.40.4",
+        "@types/node": "^14.0.24",
+        "typescript": "^3.9.7",
+        "tslib": "^2.0.0",
+        "coffeescript": "^2.5.1",
+        "jasmine": "^3.5.0",
+        "@types/jasmine": "^3.5.11",
+        "atom-jasmine3-test-runner": "^5.0.0",
+        "prettier": "^2.0.5",
+        "eslint": "7.5.0",
+        "eslint-config-atomic": "^1.2.3",
+        "tslint": "6.1.2",
+        "tslint-config-prettier": "1.18.0",
+        "rollup": "^2.22.1",
+        "rollup-plugin-atomic": "^1.0.2",
+        "shx": "^0.3.2",
+        "cross-env": "^7.0.2",
+        "@babel/cli": "7.10.5",
+        "@babel/core": "7.10.5",
+        "babel-preset-atomic": "^0.1.0",
+        "npm-check-updates": "7.0.2",
+        "build-commit": "0.1.1"
+      },
+      "providedServices": {},
+      "consumedServices": {},
+      "package-deps": [
+        "atom-ide-datatip",
+        "atom-ide-signature-help",
+        "atom-ide-hyperclick",
+        "atom-ide-definitions",
+        "atom-ide-outline",
+        "linter",
+        "intentions",
+        "atom-typescript",
+        "linter-eslint"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-ide-javascript/versions/1.0.1/tarball"
+      }
+    },
+    "1.0.0": {
+      "name": "atom-ide-javascript",
+      "main": "dist/main.js",
+      "version": "1.0.0",
+      "author": "Amin Yahyaabadi",
+      "description": "  ",
+      "keywords": [
+        "javascript",
+        "ide",
+        "atom"
+      ],
+      "repository": "https://github.com/atom-ide-community/atom-ide-javascript",
+      "license": "MIT",
+      "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint . --fix",
+        "test": "atom --test spec",
+        "clean": "shx rm -rf dist",
+        "babel": "npm run clean && shx cp -r src dist && cross-env NODE_ENV=development cross-env BABEL_ENV=development babel dist --out-dir dist",
+        "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_ENV=production rollup -c -w",
+        "build": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_ENV=production rollup -c ",
+        "build-commit": "build-commit -o dist",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "atomTestRunner": "./spec/runner",
+      "activationHooks": [
+        "language-javascript:grammar-used"
+      ],
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "^6.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "1.40.4",
+        "@types/node": "^14.0.23",
+        "typescript": "^3.9.7",
+        "tslib": "^2.0.0",
+        "coffeescript": "^2.5.1",
+        "jasmine": "^3.5.0",
+        "@types/jasmine": "^3.5.11",
+        "atom-jasmine3-test-runner": "^5.0.0",
+        "prettier": "^2.0.5",
+        "eslint": "7.5.0",
+        "eslint-config-atomic": "^1.2.2",
+        "tslint": "6.1.2",
+        "tslint-config-prettier": "1.18.0",
+        "rollup": "^2.22.1",
+        "rollup-plugin-atomic": "^1.0.2",
+        "shx": "^0.3.2",
+        "cross-env": "^7.0.2",
+        "@babel/cli": "7.10.5",
+        "@babel/core": "7.10.5",
+        "babel-preset-atomic": "^0.1.0",
+        "npm-check-updates": "7.0.2",
+        "build-commit": "0.1.1"
+      },
+      "providedServices": {},
+      "consumedServices": {},
+      "package-deps": [
+        "atom-ide-datatip",
+        "atom-ide-signature-help",
+        "atom-ide-hyperclick",
+        "atom-ide-definitions",
+        "atom-ide-outline",
+        "linter",
+        "intentions",
+        "atom-typescript",
+        "linter-eslint"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-ide-javascript/versions/1.0.0/tarball"
+      }
+    }
+  },
+  "readme": "# atom-ide-javascript\n\nJavaScript support for Atom IDE.\n\n![Build Status (Github Actions)](https://github.com/atom-ide-community/atom-ide-javascript/workflows/CI/badge.svg)\n[![Dependency Status](https://david-dm.org/atom-ide-community/atom-ide-javascript.svg)](https://david-dm.org/atom-ide-community/atom-ide-javascript)\n[![apm](https://img.shields.io/apm/dm/atom-ide-javascript.svg)](https://github.com/atom-ide-community/atom-ide-javascript)\n[![apm](https://img.shields.io/apm/v/atom-ide-javascript.svg)](https://github.com/atom-ide-community/atom-ide-javascript)\n\n## Features\n\n`atom-ide-javascript` provides many features. It combines the features of `atom-typescript`, `eslint-linter`, and many more.\n\n- Autocomplete\n- Linting (TypeScript, Eslint, etc)\n- Type information on hover\n- Goto Declaration / Hyperclick\n- Find References\n- Outline view and Semantic view\n- Block comment and uncomment\n- Rename refactoring\n- Autocomplete paths\n- Automatically import files by drag and drop from the tree view\n- Common Snippets\n- Alternative to symbols-view\n\n## Usage\n\nJust install and enjoy.\n\n## Roadmap\n\nThis is in the early stage of development. In the future releases, the less relevant typescript errors such as missing declaration files will be suppressed.\n\n## Contributing\n\n- Let me know if you encounter any bugs.\n- Feature requests are always welcome.\n",
+  "metadata": {
+    "name": "atom-ide-javascript",
+    "main": "dist/main.js",
+    "version": "1.5.0",
+    "author": "Amin Yahyaabadi",
+    "description": "  ",
+    "keywords": [
+      "javascript",
+      "ide",
+      "atom"
+    ],
+    "repository": "https://github.com/atom-ide-community/atom-ide-javascript",
+    "license": "MIT",
+    "scripts": {
+      "format": "prettier --write .",
+      "lint": "eslint . --fix",
+      "test": "atom --test spec",
+      "clean": "shx rm -rf dist",
+      "babel": "npm run clean && shx cp -r src dist && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=false babel dist --out-dir dist",
+      "copy": "shx cp -r src/debugger/node/VendorLib dist/debugger/node",
+      "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+      "bundle": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c ",
+      "build": "npm run babel && npm run copy",
+      "build-commit": "build-commit -o dist",
+      "bump": "ncu -u",
+      "prepare": "npm run build"
+    },
+    "atomTestRunner": "./spec/runner",
+    "engines": {
+      "atom": ">=0.174.0 <2.0.0"
+    },
+    "dependencies": {
+      "atom-package-deps": "^6.0.0",
+      "@atom-ide-community/nuclide-commons-atom": "0.8.2",
+      "@atom-ide-community/nuclide-debugger-common": "0.8.2",
+      "react": "16.6.3",
+      "vscode-chrome-debug-core": "3.17.10",
+      "vscode-debugadapter": "1.24.0",
+      "vscode-nls": "2.0.2"
+    },
+    "devDependencies": {
+      "@types/atom": "1.40.4",
+      "@types/node": "^14.11.8",
+      "typescript": "^4.0.3",
+      "tslib": "^2.0.3",
+      "coffeescript": "^2.5.1",
+      "@types/jasmine": "^3.5.14",
+      "atom-jasmine3-test-runner": "^5.1.2",
+      "prettier": "^2.1.2",
+      "eslint": "7.11.0",
+      "eslint-config-atomic": "^1.5.0",
+      "rollup": "^2.32.0",
+      "rollup-plugin-atomic": "^1.6.1",
+      "shx": "^0.3.2",
+      "cross-env": "^7.0.2",
+      "@babel/cli": "7.11.6",
+      "@babel/core": "7.11.6",
+      "babel-preset-atomic": "^2.4.2",
+      "npm-check-updates": "9.0.4",
+      "build-commit": "0.1.1"
+    },
+    "providedServices": {
+      "debugger.provider": {
+        "description": "NodeJS debugger engine.",
+        "versions": {
+          "0.0.0": "createNodeDebuggerProvider"
+        }
+      }
+    },
+    "consumedServices": {},
+    "package-deps": [
+      "atom-ide-base",
+      "atom-typescript",
+      "linter-eslint",
+      "autocomplete-paths",
+      "javascript-drag-import"
+    ]
+  }
+}

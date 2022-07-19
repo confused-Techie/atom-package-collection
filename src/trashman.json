@@ -1,0 +1,801 @@
+{
+  "name": "trashman",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/idleberg/atom-trashman"
+  },
+  "downloads": 1961,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "0.4.0"
+  },
+  "versions": {
+    "0.4.0": {
+      "name": "trashman",
+      "main": "./lib/trashman",
+      "version": "0.4.0",
+      "description": "Clean up outdated package data on disk and Atom storage",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "format:code": "prettierx --write ./src/**/*.ts",
+        "format": "npm-run-all --parallel lint:*",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [
+        "apm",
+        "local storage",
+        "clean"
+      ],
+      "repository": "https://github.com/idleberg/atom-trashman",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "trashman:delete-outdated-package-data",
+          "trashman:delete-outdated-storage-data"
+        ]
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "consumedServices": {
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "atom-select-list": "^0.7.1",
+        "fs-extra": "^8.0.1",
+        "globby": "^11.0.3",
+        "latest-semver": "^3.0.0",
+        "semver": "^6.3.0",
+        "semver-compare": "^1.0.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "eslint-plugin-prettierx": "^0.17.1",
+        "husky": ">=4.3 <5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.{ts,md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/trashman/versions/0.4.0/tarball"
+      }
+    },
+    "0.3.3": {
+      "name": "trashman",
+      "main": "./lib/trashman",
+      "version": "0.3.3",
+      "description": "Clean up outdated package data on disk and Atom storage",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [
+        "apm",
+        "local storage",
+        "clean"
+      ],
+      "repository": "https://github.com/idleberg/atom-trashman",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "trashman:delete-outdated-package-data",
+          "trashman:delete-outdated-storage-data"
+        ]
+      },
+      "consumedServices": {
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "atom-select-list": "^0.7.1",
+        "fs-extra": "^8.0.1",
+        "globby": "^11.0.3",
+        "latest-semver": "^3.0.0",
+        "semver": "^6.3.0",
+        "semver-compare": "^1.0.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "eslint-plugin-prettierx": "^0.17.1",
+        "husky": ">=4.3 <5",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.{ts,md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/trashman/versions/0.3.3/tarball"
+      }
+    },
+    "0.3.2": {
+      "name": "trashman",
+      "main": "./lib/trashman",
+      "version": "0.3.2",
+      "description": "Clean up outdated package data on disk and Atom storage",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [
+        "apm",
+        "local storage",
+        "clean"
+      ],
+      "repository": "https://github.com/idleberg/atom-trashman",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "trashman:delete-outdated-package-data",
+          "trashman:delete-outdated-storage-data"
+        ]
+      },
+      "consumedServices": {
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "atom-select-list": "^0.7.1",
+        "fs-extra": "^8.0.1",
+        "globby": "^11.0.3",
+        "latest-semver": "^3.0.0",
+        "semver": "^6.3.0",
+        "semver-compare": "^1.0.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "eslint-plugin-prettierx": "^0.17.1",
+        "husky": ">=4.3 <5",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.{ts,md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/trashman/versions/0.3.2/tarball"
+      }
+    },
+    "0.3.1": {
+      "name": "trashman",
+      "main": "./lib/trashman",
+      "version": "0.3.1",
+      "description": "Clean up outdated package data on disk and Atom storage",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [
+        "apm",
+        "local storage",
+        "clean"
+      ],
+      "repository": "https://github.com/idleberg/atom-trashman",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "trashman:delete-outdated-package-data",
+          "trashman:delete-outdated-storage-data"
+        ]
+      },
+      "consumedServices": {
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "atom-select-list": "^0.7.1",
+        "fs-extra": "^8.0.1",
+        "globby": "^11.0.3",
+        "latest-semver": "^3.0.0",
+        "semver": "^6.3.0",
+        "semver-compare": "^1.0.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "eslint-plugin-prettierx": "^0.17.1",
+        "husky": ">=4.3 <5",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.{ts,md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/trashman/versions/0.3.1/tarball"
+      }
+    },
+    "0.3.0": {
+      "name": "trashman",
+      "main": "./lib/trashman",
+      "version": "0.3.0",
+      "description": "Clean up outdated package data on disk and Atom storage",
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+        "lint:styles": "echo \"Nothing to lint\"",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "keywords": [
+        "apm",
+        "local storage",
+        "clean"
+      ],
+      "repository": "https://github.com/idleberg/atom-trashman",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "trashman:delete-outdated-package-data",
+          "trashman:delete-outdated-storage-data"
+        ]
+      },
+      "consumedServices": {
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "atom-select-list": "^0.7.1",
+        "fs-extra": "^8.0.1",
+        "globby": "^11.0.3",
+        "latest-semver": "^3.0.0",
+        "semver": "^6.3.0",
+        "semver-compare": "^1.0.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/atom": "^1.40.10",
+        "@types/electron": "^1.6.10",
+        "@types/node": "^14.14.37",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.23.0",
+        "eslint-config-eslint": "^7.0.0",
+        "eslint-plugin-json": "^2.1.2",
+        "eslint-plugin-prettierx": "^0.17.1",
+        "husky": ">=4.3 <5",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "rollup": "^2.44.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.12.0",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.ts": "eslint --cache --fix",
+        "*.{ts,md,yml}": "prettierx --write"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/trashman/versions/0.3.0/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "trashman",
+      "main": "./lib/trashman",
+      "version": "0.2.0",
+      "description": "Clean up outdated package data on disk and Atom storage",
+      "scripts": {
+        "build": "webpack --mode production",
+        "dev": "webpack --mode none --watch",
+        "lint": "gulp lint",
+        "test": "npm run lint"
+      },
+      "keywords": [
+        "apm",
+        "local storage",
+        "clean"
+      ],
+      "activationCommands": {
+        "atom-workspace": [
+          "trashman:delete-outdated-package-data"
+        ]
+      },
+      "repository": "https://github.com/idleberg/atom-trashman",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-select-list": "^0.7.1",
+        "fs-extra": "^8.0.1",
+        "semver": "^6.3.0",
+        "semver-compare": "^1.0.0"
+      },
+      "devDependencies": {
+        "coffee-loader": "^0.9.0",
+        "coffeelint-stylish": "^0.1.2",
+        "coffeescript": "^2.4.1",
+        "gulp": "^4.0.2",
+        "gulp-coffeelint": "^0.6.0",
+        "gulp-debug": "^4.0.0",
+        "gulp-jsonlint": "^1.3.0",
+        "husky": "^3.0.2",
+        "webpack": "^4.39.1",
+        "webpack-cli": "^3.3.6"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "npm run test"
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/trashman/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.3": {
+      "name": "trashman",
+      "main": "./lib/trashman",
+      "version": "0.1.3",
+      "description": "Clean up outdated package data on disk and Atom storage",
+      "scripts": {
+        "precommit": "gulp lint",
+        "test": "gulp lint"
+      },
+      "keywords": [
+        "apm",
+        "local storage",
+        "clean"
+      ],
+      "activationCommands": {
+        "atom-workspace": [
+          "trashman:delete-outdated-package-data"
+        ]
+      },
+      "repository": "https://github.com/idleberg/atom-trashman",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-select-list": "^0.7.1",
+        "fs-extra": "^4.0.2",
+        "semver": "^5.5.0",
+        "semver-compare": "^1.0.0"
+      },
+      "devDependencies": {
+        "coffeelint-stylish": "^0.1.2",
+        "gulp": "^4.0.0",
+        "gulp-coffeelint": "^0.6.0",
+        "gulp-debug": "^4.0.0",
+        "gulp-jsonlint": "^1.2.0",
+        "husky": "^0.14.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/trashman/versions/0.1.3/tarball"
+      }
+    },
+    "0.1.2": {
+      "name": "trashman",
+      "main": "./lib/trashman",
+      "version": "0.1.2",
+      "description": "Clean up outdated package data on disk and Atom storage",
+      "keywords": [
+        "apm",
+        "local storage",
+        "clean"
+      ],
+      "activationCommands": {
+        "atom-workspace": [
+          "trashman:delete-outdated-package-data"
+        ]
+      },
+      "repository": "https://github.com/idleberg/atom-trashman",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-select-list": "^0.3.2",
+        "fs-extra": "^4.0.2",
+        "semver": "^5.4.1",
+        "semver-compare": "^1.0.0"
+      },
+      "devDependencies": {
+        "coffeelint-stylish": "^0.1.2",
+        "gulp": "github:gulpjs/gulp#4.0",
+        "gulp-coffeelint": "^0.6.0",
+        "gulp-debug": "^3.1.0",
+        "gulp-jsonlint": "^1.2.0",
+        "gulp-lesshint": "^4.0.0",
+        "jshint": "^2.9.5"
+      },
+      "scripts": {
+        "test": "gulp lint"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/trashman/versions/0.1.2/tarball"
+      }
+    },
+    "0.1.1": {
+      "name": "trashman",
+      "main": "./lib/trashman",
+      "version": "0.1.1",
+      "description": "Clean up outdated package data on disk and Atom storage",
+      "keywords": [
+        "apm",
+        "local storage",
+        "clean"
+      ],
+      "activationCommands": {
+        "atom-workspace": [
+          "trashman:delete-outdated-package-data"
+        ]
+      },
+      "repository": "https://github.com/idleberg/atom-trashman",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-select-list": "^0.3.2",
+        "fs-extra": "^4.0.2",
+        "semver": "^5.4.1",
+        "semver-compare": "^1.0.0"
+      },
+      "devDependencies": {
+        "coffeelint-stylish": "^0.1.2",
+        "gulp": "github:gulpjs/gulp#4.0",
+        "gulp-coffeelint": "^0.6.0",
+        "gulp-debug": "^3.1.0",
+        "gulp-jsonlint": "^1.2.0",
+        "gulp-lesshint": "^4.0.0",
+        "jshint": "^2.9.5"
+      },
+      "scripts": {
+        "test": "gulp lint"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/trashman/versions/0.1.1/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "trashman",
+      "main": "./lib/trashman",
+      "version": "0.1.0",
+      "description": "Clean up outdated package data on disk and Atom storage",
+      "keywords": [
+        "apm",
+        "local storage",
+        "clean"
+      ],
+      "activationCommands": {
+        "atom-workspace": [
+          "trashman:delete-outdated-package-data"
+        ]
+      },
+      "repository": "https://github.com/idleberg/atom-trashman",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-select-list": "^0.3.2",
+        "fs-extra": "^4.0.2",
+        "semver": "^5.4.1",
+        "semver-compare": "^1.0.0"
+      },
+      "devDependencies": {
+        "coffeelint-stylish": "^0.1.2",
+        "gulp": "github:gulpjs/gulp#4.0",
+        "gulp-coffeelint": "^0.6.0",
+        "gulp-debug": "^3.1.0",
+        "gulp-jsonlint": "^1.2.0",
+        "gulp-lesshint": "^4.0.0",
+        "jshint": "^2.9.5"
+      },
+      "scripts": {
+        "test": "gulp lint"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/trashman/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# trashman\n\n[![apm](https://flat.badgen.net/apm/license/trashman)](https://atom.io/packages/trashman)\n[![apm](https://flat.badgen.net/apm/v/trashman)](https://atom.io/packages/trashman)\n[![apm](https://flat.badgen.net/apm/dl/trashman)](https://atom.io/packages/trashman)\n[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-trashman)](https://circleci.com/gh/idleberg/atom-trashman)\n[![David](https://flat.badgen.net/david/dep/idleberg/atom-trashman)](https://david-dm.org/idleberg/atom-trashman)\n\nClean up outdated package data in `~/.atom/.apm` and Atom's [storage](https://developer.mozilla.org/docs/Web/API/Storage). Take note of the package settings before first time usage!\n\n**Note:** This is a working early prototype, use with care!\n\n## Installation\n\nInstall `trashman` from Atom's [Package Manager](http://flight-manual.atom.io/using-atom/sections/atom-packages/) or the command-line equivalent:\n\n`$ apm install trashman`\n\n### GitHub\n\nChange to your Atom packages directory:\n\n```bash\n# Windows\n$ cd %USERPROFILE%\\.atom\\packages\n\n# Linux & macOS\n$ cd ~/.atom/packages/\n```\n\nClone the repository as `trashman`:\n\n```bash\n$ git clone https://github.com/idleberg/atom-trashman trashman\n```\n\n## Usage\n\nThe following commands are available through the [command-palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette):\n\n- `Trashman: Delete Outdated Package Data`\n- `Trashman: Delete Outdated Storage Data`\n\nAlso take note that several tweaks can be made through the package settings!\n\n## License\n\nThis work licensed under [The MIT License](https://opensource.org/licenses/MIT)\n",
+  "metadata": {
+    "name": "trashman",
+    "main": "./lib/trashman",
+    "version": "0.4.0",
+    "description": "Clean up outdated package data on disk and Atom storage",
+    "scripts": {
+      "analyze": "source-map-explorer lib/**/*.js",
+      "build": "rollup --config",
+      "dev": "npm run start",
+      "format:code": "prettierx --write ./src/**/*.ts",
+      "format": "npm-run-all --parallel lint:*",
+      "lint:code": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern ./src/**/*.ts",
+      "lint:styles": "echo \"Nothing to lint\"",
+      "lint": "npm-run-all --parallel lint:*",
+      "prepublishOnly": "npm run build",
+      "start": "rollup --watch --config",
+      "test": "npm run lint"
+    },
+    "keywords": [
+      "apm",
+      "local storage",
+      "clean"
+    ],
+    "repository": "https://github.com/idleberg/atom-trashman",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "activationCommands": {
+      "atom-workspace": [
+        "trashman:delete-outdated-package-data",
+        "trashman:delete-outdated-storage-data"
+      ]
+    },
+    "activationHooks": [
+      "core:loaded-shell-environment"
+    ],
+    "consumedServices": {
+      "busy-signal": {
+        "versions": {
+          "1.0.0": "consumeSignal"
+        }
+      }
+    },
+    "dependencies": {
+      "@atxm/developer-console": "^0.5.0",
+      "atom-select-list": "^0.7.1",
+      "fs-extra": "^8.0.1",
+      "globby": "^11.0.3",
+      "latest-semver": "^3.0.0",
+      "semver": "^6.3.0",
+      "semver-compare": "^1.0.0"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.13.14",
+      "@babel/eslint-parser": "^7.13.14",
+      "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+      "@babel/preset-env": "^7.13.12",
+      "@rollup/plugin-babel": "^5.3.0",
+      "@rollup/plugin-commonjs": "^18.0.0",
+      "@rollup/plugin-json": "^4.1.0",
+      "@rollup/plugin-node-resolve": "^11.2.1",
+      "@rollup/plugin-typescript": "^8.2.1",
+      "@types/atom": "^1.40.10",
+      "@types/node": "^14.14.37",
+      "@typescript-eslint/eslint-plugin": "^4.21.0",
+      "@typescript-eslint/parser": "^4.21.0",
+      "core-js": "^3.10.1",
+      "eslint": "^7.23.0",
+      "eslint-config-eslint": "^7.0.0",
+      "eslint-plugin-json": "^2.1.2",
+      "eslint-plugin-prettierx": "^0.17.1",
+      "husky": ">=4.3 <5",
+      "jsonlint": "^1.6.3",
+      "lint-staged": "^10.5.4",
+      "npm-run-all": "^4.1.5",
+      "prettierx": "^0.18.0",
+      "rollup": "^2.44.0",
+      "rollup-plugin-scss": "^2.6.1",
+      "rollup-plugin-terser": "^7.0.2",
+      "source-map-explorer": "^2.5.2",
+      "stylelint": "^13.12.0",
+      "tslib": "^2.2.0",
+      "typescript": "^4.2.4"
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+    },
+    "lint-staged": {
+      "*.ts": "eslint --cache --fix",
+      "*.{ts,md,yml}": "prettierx --write"
+    }
+  }
+}

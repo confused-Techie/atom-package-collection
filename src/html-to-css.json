@@ -1,0 +1,144 @@
+{
+  "name": "html-to-css",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ardcore/atom-html-to-css"
+  },
+  "downloads": 127003,
+  "stargazers_count": 73,
+  "releases": {
+    "latest": "0.2.2"
+  },
+  "versions": {
+    "0.2.2": {
+      "name": "html-to-css",
+      "main": "./lib/html-to-css",
+      "version": "0.2.2",
+      "description": "Generate CSS classes from HTML structure",
+      "keywords": [
+        "html",
+        "css",
+        "bem",
+        "productivity"
+      ],
+      "author": "Szymon Pilkowski <szymon.pilkowski@gmail.com>",
+      "activationCommands": {
+        "atom-workspace": "html-to-css:generate"
+      },
+      "repository": "https://github.com/ardcore/atom-html-to-css",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "htmlparser2": "^3.9.0",
+        "partial-any": "0.0.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/html-to-css/versions/0.2.2/tarball"
+      }
+    },
+    "0.1.2": {
+      "name": "html-to-css",
+      "main": "./lib/html-to-css",
+      "version": "0.1.2",
+      "description": "Generate CSS classes from HTML structure",
+      "keywords": [
+        "html",
+        "css",
+        "bem",
+        "productivity"
+      ],
+      "author": "Szymon Pilkowski <szymon.pilkowski@gmail.com>",
+      "activationCommands": {
+        "atom-workspace": "html-to-css:generate"
+      },
+      "repository": "https://github.com/ardcore/atom-html-to-css",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "htmlparser2": "^3.9.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/html-to-css/versions/0.1.2/tarball"
+      }
+    },
+    "0.1.1": {
+      "name": "html-to-css",
+      "main": "./lib/html-to-css",
+      "version": "0.1.1",
+      "description": "Generate CSS classes from HTML structure",
+      "keywords": [
+        "html",
+        "css",
+        "bem",
+        "productivity"
+      ],
+      "author": "Szymon Pilkowski <szymon.pilkowski@gmail.com>",
+      "activationCommands": {
+        "atom-workspace": "html-to-css:generate"
+      },
+      "repository": "https://github.com/ardcore/atom-html-to-css",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "htmlparser2": "^3.9.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/html-to-css/versions/0.1.1/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "html-to-css",
+      "main": "./lib/html-to-css",
+      "version": "0.1.0",
+      "description": "A short description of your package",
+      "keywords": [],
+      "author": "Szymon Pilkowski <szymon.pilkowski@gmail.com>",
+      "activationCommands": {
+        "atom-workspace": "html-to-css:generate"
+      },
+      "repository": "https://github.com/ardcore/atom-html-to-css",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "htmlparser2": "^3.9.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/html-to-css/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# atom html-to-css package\n\nGenerates CSS boilerplate based on the selected HTML.\n\n - Only cares about classes, ignores id's/other possible selectors\n - Supports CSS, SCSS, Sass, LESS and possibly other syntaxes\n - BEM support (actually, more like a *BE* support for now. Modifiers support will be added if needed)\n - Configurable nesting, grouping and formatting\n - \"Supports\" JSX (recognizes the `className` attribute)\n - Is *forgiving* (meaning it should work even with invalid HTML code)\n\n# demo\n\n![atom html to css](http://dracul.kill.pl/~ard/htmltocss.gif)\n\n# settings\n\n## BEM grouping\nkey: `html-to-css.bem-group`, type: `boolean`, default: `false`\n\nShould BEM-style declarations be grouped and nested in a SCSS-style?\n\nWhen *true*:\n\n    <section class=\"introduction\">\n      <h1 class=\"introduction__header\"></h1>\n      <p class=\"introduction__text\"></p>\n    </section>\n\n&darr;\n\n    .introduction {\n\n    \t&__header {\n\n    \t}\n\n    \t&__text {\n\n    \t}\n\n    }\n\nWhen *false*, the same HTML code becomes:\n\n    .introduction {\n\n    }\n\n    .introduction__header {\n\n    }\n\n    .introduction__text {\n\n    }\n\n## BEM separator token\nkey: `html-to-css.bem-separator`, type: `string`, default: `__`\n\nCharacter(s) used as a BLOCK*__*ELEMENT separator in BEM.\n\n## rulelist open token\nkey: `html-to-css.rulelist-open`, type: `string`, default: ` {\\n\\n`\n\nCharacter(s) to output when opening rulelists (including whitespaces)\n\n## rulelist close token\nkey: `html-to-css.rulelist-close`, type: `string`, default: `}\\n\\n`\n\nCharacter(s) to output when opening rulelists (including whitespaces)\n\nYou can change them to fine-tune the output format to your own liking. Just remove `{` and `}` to support SASS-like indented syntax.\n\n## Grouping character\nkey: `html-to-css.grouping-character`, type: `string`, default: `&`\n\nCharacter(s) to be used in output when referring to the parent element while nesting declarations SCSS-style.\n\n# key bindings\n\nTo avoid conflicts and promote peace, this package doesn't register any keys by default. Do it yourself, or just paste the following lines in `~/.atom/keymap.cson`:\n\n    'atom-text-editor':\n      'alt-x': 'html-to-css:generate'\n\nIt'll try to register <kbd>alt</kbd>+<kbd>x</kbd> key shortcut.\n\n# indentation\n\n`\\t` is used to indent, but Atom seems to be clever enough to convert it to your default style when pasting. Let me know if it's not doing that.\n\n# parsing\n\ndue to the forgiving nature of the excellent [htmlparser2](https://github.com/fb55/htmlparser2) used under the hood, this plugin is able to deal with:\n * incomplete selections (wouldn't it be faster if you could select opening tags only? well, you can)\n * not-really-valid-HTML-code (JSX, anyone?)\n * general mess (really. you can hit <kbd>cmd</kbd>+<kbd>a</kbd> in this markdown file and it'll still parse the few HTML lines from the code sample)\n\n# TODO\n\n - ~extend it with different transformers/formatters as settings.~\n\n Contributions welcomed.\n",
+  "metadata": {
+    "name": "html-to-css",
+    "main": "./lib/html-to-css",
+    "version": "0.2.2",
+    "description": "Generate CSS classes from HTML structure",
+    "keywords": [
+      "html",
+      "css",
+      "bem",
+      "productivity"
+    ],
+    "author": "Szymon Pilkowski <szymon.pilkowski@gmail.com>",
+    "activationCommands": {
+      "atom-workspace": "html-to-css:generate"
+    },
+    "repository": "https://github.com/ardcore/atom-html-to-css",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "htmlparser2": "^3.9.0",
+      "partial-any": "0.0.2"
+    }
+  }
+}

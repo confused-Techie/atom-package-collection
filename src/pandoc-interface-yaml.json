@@ -1,0 +1,172 @@
+{
+  "name": "pandoc-interface-yaml",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akstuhl/pandoc-interface-yaml"
+  },
+  "downloads": 175,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "1.4.2"
+  },
+  "versions": {
+    "1.4.2": {
+      "name": "pandoc-interface-yaml",
+      "main": "./lib/init",
+      "version": "1.4.2",
+      "description": "Export markdown or other files via Pandoc using YAML front-matter",
+      "keywords": [
+        "pandoc",
+        "markdown",
+        "export",
+        "convert",
+        "document",
+        "pdf",
+        "docx"
+      ],
+      "repository": "https://github.com/akstuhl/pandoc-interface-yaml",
+      "license": "MIT",
+      "engines": {
+        "atom": ">1.30.0"
+      },
+      "devDependencies": {
+        "eslint": "^5.6.1",
+        "eslint-config-standard": "^12.0.0",
+        "eslint-plugin-import": "^2.14.0",
+        "eslint-plugin-node": "^7.0.1",
+        "eslint-plugin-promise": "^4.0.1",
+        "eslint-plugin-standard": "^4.0.0"
+      },
+      "scripts": {
+        "lint": "eslint ."
+      },
+      "dependencies": {
+        "frontmatter": "0.0.3"
+      },
+      "consumedServices": {
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pandoc-interface-yaml/versions/1.4.2/tarball"
+      }
+    },
+    "1.4.1": {
+      "name": "pandoc-interface-yaml",
+      "main": "./lib/init",
+      "version": "1.4.1",
+      "description": "Export markdown or other files via Pandoc using YAML front-matter",
+      "keywords": [
+        "pandoc",
+        "markdown",
+        "export",
+        "convert",
+        "document",
+        "pdf",
+        "docx"
+      ],
+      "repository": "https://github.com/akstuhl/pandoc-interface-yaml",
+      "license": "MIT",
+      "engines": {
+        "atom": ">1.30.0"
+      },
+      "devDependencies": {
+        "eslint": "^5.6.1",
+        "eslint-config-standard": "^12.0.0",
+        "eslint-plugin-import": "^2.14.0",
+        "eslint-plugin-node": "^7.0.1",
+        "eslint-plugin-promise": "^4.0.1",
+        "eslint-plugin-standard": "^4.0.0"
+      },
+      "scripts": {
+        "lint": "eslint ."
+      },
+      "dependencies": {
+        "frontmatter": "0.0.3"
+      },
+      "consumedServices": {
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pandoc-interface-yaml/versions/1.4.1/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "pandoc-interface-yaml",
+      "main": "./lib/init",
+      "version": "0.1.0",
+      "description": "Export markdown or other files via Pandoc using YAML front-matter",
+      "repository": "https://github.com/akstuhl/pandoc-interface-yaml",
+      "license": "MIT",
+      "engines": {
+        "atom": ">1.30.0"
+      },
+      "devDependencies": {
+        "eslint": "^5.6.1",
+        "eslint-config-standard": "^12.0.0",
+        "eslint-plugin-import": "^2.14.0",
+        "eslint-plugin-node": "^7.0.1",
+        "eslint-plugin-promise": "^4.0.1",
+        "eslint-plugin-standard": "^4.0.0"
+      },
+      "scripts": {
+        "lint": "eslint ."
+      },
+      "dependencies": {
+        "frontmatter": "0.0.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pandoc-interface-yaml/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# A file converter with in-document settings\n\nQuickly export markdown or other text files in Atom to Word, PDF, or any other format supported by [Pandoc](https://pandoc.org/). `pandoc-interface-yaml` is derived from [`pandoc-convert-plus`](https://github.com/Klemet/atom-pandoc-convert-plus). The main differences in this package are:\n\n- File export options (path, format, and other arguments) are set in-file with YAML front-matter instead of using prompts and package settings.\n- Users must install `pandoc` separately due to performance concerns. See the [upstream repository](https://github.com/Klemet/atom-pandoc-convert-plus) for a bundled install option.\n\n## Installation\n\nOn Mac:\n\n```\n> brew install pandoc\n> apm install pandoc-interface-yaml\n```\n\nSee the [Pandoc site](https://pandoc.org/installing.html) for other installation methods.\n\n## Usage\n\nAdd any of these optional keys to a document's front-matter prior to running `Pandoc Interface > Export` (available in the right-click contextual menu, Packages menu, or command palette):\n\n- `export-path` – Set the absolute or relative path for the generated document, including filename and extension. Defaults to the source document's name and directory.\n- `export-format` – See lib/targets.js for supported format names. Pandoc will infer format from path; a default format set in the package settings will be used if neither is specified.\n- `export-options` – Add other command line options for `pandoc`, e.g. `--filter=pandoc-citeproc`.\n\nFor example, the start of file `draft.md` might look like:\n```\n---\nexport-path: 'blog-post.html'\nexport-format: 'html5'\nexport-options: '--filter=pandoc-citeproc'\ntitle: 'A Well-Evidenced Screed'\nbibliography: library.bib\ncsl: chicago-note-bibliography-with-ibid.csl\n---\n\nAs has been well established...\n```\n\n## Package settings\n\n- You can specify the path to the Pandoc binary you want to use. (If the field is left blank, the command line `pandoc` will be called.)\n- Set the default file format to export when neither `export-path` nor `export-format` are defined in a document.\n\nThe rest of this readme is from `pandoc-convert-plus`:\n\n---\n\n## A plugin for the [Atom](https://atom.io/) text editor to unleash the full power of [Pandoc](https://pandoc.org/), and quickly convert your documents in style\n\n`pandoc-convert-plus` is a fork of the `pandoc-convert` plugin for Atom that gives more flexibility to the user, by allowing them to invoke pandoc with additional arguments.\n\nThe original `pandoc-convert` plugin allowed a user to quickly use pandoc to convert their documents to many different formats with the `Ctrl + P` command in atom.\n\nHowever, `pandoc-convert` had one limitation : it didn't allow users to use a set of arguments with the pandoc command that the plugin executed.\n\nWith pandoc-convert-plus, **you can now use any arguments that you want with pandoc**. This allows you to customize how pandoc will convert your document.\n\n## Is there a particular syntax for the arguments ?\n\n**No ! Just add them like you would in a Pandoc command through a terminal/command prompt.**\n\nHere is an example of some arguments to use a bibliography file, to remove the label of figures, and to use the xelatex engine to generate `.pdf` files :\n\n`--citeproc --bibliography=C:/User/Bibliography/Bibliography_file.bib -fmarkdown-implicit_figures --pdf-engine=xelatex`\n\n> ⚠️ **Be careful about spaces and special characters in the file paths present in your arguments**. They might lead to issues with Pandoc.\n\n## Some examples of useful arguments to use with pandoc-convert-plus\n\n### Bibliography\n\n**Do you have a single bibliography database that you use in many markdown (`.md`) notes ?**\n\nIf that's so, you can use pandoc-convert-plus to automatically use the citeproc plugin of pandoc along with a .bib file containing your bibliography for all of your conversions.\n\nHere is an example of the arguments that you might use to that end :\n\n`--citeproc --bibliography=C:/User/Bibliography/Bibliography_file.bib`\n\n### Removing the label of figures\n\nJust use `-fmarkdown-implicit_figures`, *et voila* !\n\n### Using another pdf engine\n\nFor example, you can use `xelatex` with the argument `--pdf-engine=xelatex`.\n\n### Other arguments\n\nPandoc have an incredible number of options, allowing you to use [LaTeX templates](https://pandoc.org/MANUAL.html#templates) among many other things. If you want to know more, just check the [manual of Pandoc](https://pandoc.org/MANUAL.html).\n\n## Other infomations about the plugin\n\nSince `pandoc-convert-plus` is just a tiny modification of the original `pandoc-convert`, please check the [repository page of `pandoc-convert`](https://github.com/josa42/atom-pandoc-convert) for more information about its functioning.\n",
+  "metadata": {
+    "name": "pandoc-interface-yaml",
+    "main": "./lib/init",
+    "version": "1.4.2",
+    "description": "Export markdown or other files via Pandoc using YAML front-matter",
+    "keywords": [
+      "pandoc",
+      "markdown",
+      "export",
+      "convert",
+      "document",
+      "pdf",
+      "docx"
+    ],
+    "repository": "https://github.com/akstuhl/pandoc-interface-yaml",
+    "license": "MIT",
+    "engines": {
+      "atom": ">1.30.0"
+    },
+    "devDependencies": {
+      "eslint": "^5.6.1",
+      "eslint-config-standard": "^12.0.0",
+      "eslint-plugin-import": "^2.14.0",
+      "eslint-plugin-node": "^7.0.1",
+      "eslint-plugin-promise": "^4.0.1",
+      "eslint-plugin-standard": "^4.0.0"
+    },
+    "scripts": {
+      "lint": "eslint ."
+    },
+    "dependencies": {
+      "frontmatter": "0.0.3"
+    },
+    "consumedServices": {
+      "busy-signal": {
+        "versions": {
+          "1.0.0": "consumeSignal"
+        }
+      }
+    }
+  }
+}

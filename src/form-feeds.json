@@ -1,0 +1,250 @@
+{
+  "name": "form-feeds",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alhadis/Atom-FormFeeds"
+  },
+  "downloads": 307,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "1.1.0"
+  },
+  "versions": {
+    "1.1.0": {
+      "name": "form-feeds",
+      "version": "1.1.0",
+      "description": "Display form-feed characters (U+000C) as horizontal dividers in source code.",
+      "author": "John Gardner <gardnerjohng@gmail.com>",
+      "repository": "https://github.com/Alhadis/Atom-FormFeeds",
+      "license": "ISC",
+      "keywords": [
+        "form-feed",
+        "whitespace",
+        "page-break",
+        "line-break"
+      ],
+      "configSchema": {
+        "wrappedCycling": {
+          "order": 1,
+          "title": "Wrapped feed-cycling",
+          "description": "Jump to the other end of the buffer when cycling past the first or last row",
+          "type": "boolean",
+          "default": "true"
+        },
+        "placeholderStyle": {
+          "order": 2,
+          "title": "Placeholder style",
+          "description": "How form-feed indicators are rendered inside a text-buffer.",
+          "type": "string",
+          "default": "border",
+          "enum": [
+            {
+              "value": "none",
+              "title": "None",
+              "description": "Don't show placeholders. Users must define the appearance of form-feeds using their stylesheet"
+            },
+            {
+              "value": "border",
+              "title": "Horizontal border",
+              "description": "Horizontal divider spanning the editor's full width"
+            },
+            {
+              "value": "caret",
+              "title": "Caret notation",
+              "description": "Render form-feeds as `^L` using caret notation."
+            }
+          ]
+        }
+      },
+      "engines": {
+        "atom": ">=1.25.0"
+      },
+      "scripts": {
+        "lint": "npx eslint .",
+        "test": "atom -t spec/"
+      },
+      "atomTestRunner": "atom-mocha",
+      "eslintConfig": {
+        "extends": "@alhadis/eslint-config/atom",
+        "overrides": [
+          {
+            "files": [
+              "index.js"
+            ],
+            "rules": {
+              "indent": [
+                "error",
+                "tab",
+                {
+                  "ignoredNodes": [
+                    "ForOfStatement > ForOfStatement"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "devDependencies": {
+        "@alhadis/eslint-config": "^1.2.0",
+        "atom-mocha": "^2.1.1",
+        "eslint": "^5.16.0",
+        "mocha-when": "^1.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/form-feeds/versions/1.1.0/tarball"
+      }
+    },
+    "1.0.0": {
+      "name": "form-feeds",
+      "version": "1.0.0",
+      "description": "Display form-feed characters (U+000C) as horizontal dividers in source code.",
+      "author": "John Gardner <gardnerjohng@gmail.com>",
+      "repository": "https://github.com/Alhadis/Atom-FormFeeds",
+      "license": "ISC",
+      "keywords": [
+        "form-feed",
+        "whitespace",
+        "page-break",
+        "line-break"
+      ],
+      "configSchema": {
+        "wrappedCycling": {
+          "order": 1,
+          "title": "Wrapped feed-cycling",
+          "description": "Jump to the other end of the buffer when cycling past the first or last row",
+          "type": "boolean",
+          "default": "true"
+        },
+        "placeholderStyle": {
+          "order": 2,
+          "title": "Placeholder style",
+          "description": "How form-feed indicators are rendered inside a text-buffer.",
+          "type": "string",
+          "default": "border",
+          "enum": [
+            {
+              "value": "none",
+              "title": "None",
+              "description": "Don't show placeholders. Users must define the appearance of form-feeds using their stylesheet"
+            },
+            {
+              "value": "border",
+              "title": "Horizontal border",
+              "description": "Horizontal divider spanning the editor's full width"
+            },
+            {
+              "value": "caret",
+              "title": "Caret notation",
+              "description": "Render form-feeds as `^L` using caret notation."
+            }
+          ]
+        }
+      },
+      "engines": {
+        "atom": ">=1.25.0"
+      },
+      "scripts": {
+        "lint": "npx eslint .",
+        "test": "atom -t spec/"
+      },
+      "atomTestRunner": "atom-mocha",
+      "eslintConfig": {
+        "extends": "@alhadis/eslint-config/atom"
+      },
+      "devDependencies": {
+        "@alhadis/eslint-config": "^1.2.0",
+        "atom-mocha": "^2.0.7",
+        "mocha": ">=5.2.0",
+        "chai": ">=4.2.0",
+        "eslint": "^5.9.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/form-feeds/versions/1.0.0/tarball"
+      }
+    }
+  },
+  "readme": "Form-feed support for Atom\n==========================\n\n[![Build status: TravisCI][TravisCI-badge]][TravisCI-link]\n[![Build status: AppVeyor][AppVeyor-badge]][AppVeyor-link]\n[![Latest package version][APM-badge]][APM-link]\n\n\nDisplay form-feed characters (`U+000C`) as horizontal dividers in source code.\n\n![Placeholder preview](preview.png)\n\nInspired by the [MELPA package](https://github.com/wasamasa/form-feed) of the same name.\n\n\nFeatures:\n---------\n* Render form-feeds as horizontal dividers or as `^L` (using [caret notation][])\n* Snippets for inserting form-feeds: `\\f`, `^L`\n* Editor commands (without default keybindings)\n\t*\t`form-feeds:go-to-prev-feed`\n\t*\t`form-feeds:go-to-next-feed`\n\t*\t`form-feeds:strip-feeds`\n\n\nCustomisation\n-------------\nYou can tweak the rendering of form-feed indicators using your stylesheet:\n\n~~~less\n@import \"packages/form-feeds/styles/variables.less\";\n\n// Thicker border\n@{ff-border} @{ff-selector}::before{\n\tborder-top-width: 2px;\n}\n\n// Replace `^L` with a green `FF` when `placeholderStyle` is set to \"caret\"\n@{ff-caret} @{ff-selector}::before{\n\tcontent: \"FF\";\n\tcolor: #0f0;\n}\n~~~\n\n\nMore info\n---------\n* [Caret notation][]\n* [Form-feed characters](https://en.wikipedia.org/wiki/Page_break#Form_feed)\n* [_“What are carriage return, linefeed, and form feed?”_](https://stackoverflow.com/a/3098328)\n\n[Caret notation]: https://en.wikipedia.org/wiki/Caret_notation\n[TravisCI-badge]: https://travis-ci.org/Alhadis/Atom-FormFeeds.svg?branch=master\n[TravisCI-link]:  https://travis-ci.org/Alhadis/Atom-FormFeeds\n[AppVeyor-badge]: https://ci.appveyor.com/api/projects/status/82ue5mapkwsj6x7l?svg=true\n[AppVeyor-link]:  https://ci.appveyor.com/project/Alhadis/atom-formfeeds\n[APM-badge]:      https://img.shields.io/apm/v/form-feeds.svg?colorB=brightgreen\n[APM-link]:       https://atom.io/packages/form-feeds\n",
+  "metadata": {
+    "name": "form-feeds",
+    "version": "1.1.0",
+    "description": "Display form-feed characters (U+000C) as horizontal dividers in source code.",
+    "author": "John Gardner <gardnerjohng@gmail.com>",
+    "repository": "https://github.com/Alhadis/Atom-FormFeeds",
+    "license": "ISC",
+    "keywords": [
+      "form-feed",
+      "whitespace",
+      "page-break",
+      "line-break"
+    ],
+    "configSchema": {
+      "wrappedCycling": {
+        "order": 1,
+        "title": "Wrapped feed-cycling",
+        "description": "Jump to the other end of the buffer when cycling past the first or last row",
+        "type": "boolean",
+        "default": "true"
+      },
+      "placeholderStyle": {
+        "order": 2,
+        "title": "Placeholder style",
+        "description": "How form-feed indicators are rendered inside a text-buffer.",
+        "type": "string",
+        "default": "border",
+        "enum": [
+          {
+            "value": "none",
+            "title": "None",
+            "description": "Don't show placeholders. Users must define the appearance of form-feeds using their stylesheet"
+          },
+          {
+            "value": "border",
+            "title": "Horizontal border",
+            "description": "Horizontal divider spanning the editor's full width"
+          },
+          {
+            "value": "caret",
+            "title": "Caret notation",
+            "description": "Render form-feeds as `^L` using caret notation."
+          }
+        ]
+      }
+    },
+    "engines": {
+      "atom": ">=1.25.0"
+    },
+    "scripts": {
+      "lint": "npx eslint .",
+      "test": "atom -t spec/"
+    },
+    "atomTestRunner": "atom-mocha",
+    "eslintConfig": {
+      "extends": "@alhadis/eslint-config/atom",
+      "overrides": [
+        {
+          "files": [
+            "index.js"
+          ],
+          "rules": {
+            "indent": [
+              "error",
+              "tab",
+              {
+                "ignoredNodes": [
+                  "ForOfStatement > ForOfStatement"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "devDependencies": {
+      "@alhadis/eslint-config": "^1.2.0",
+      "atom-mocha": "^2.1.1",
+      "eslint": "^5.16.0",
+      "mocha-when": "^1.0.0"
+    }
+  }
+}

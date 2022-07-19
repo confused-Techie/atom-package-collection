@@ -1,0 +1,323 @@
+{
+  "name": "syntax-highlighting-scopes-showroom",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baleyko/syntax-highlighting-scopes-showroom"
+  },
+  "downloads": 1045,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "1.0.0"
+  },
+  "versions": {
+    "1.0.0": {
+      "name": "syntax-highlighting-scopes-showroom",
+      "displayName": "Syntax Highlighting Scopes Showroom",
+      "description": "Highlights syntax scopes to simplify syntax highlighting extensions development",
+      "version": "1.0.0",
+      "publisher": "baleiko",
+      "author": {
+        "name": "Valerii Baleiko",
+        "email": "baleyko@gmail.com"
+      },
+      "license": "MIT",
+      "bugs": "https://github.com/baleyko/syntax-highlighting-scopes-showroom/issues",
+      "homepage": "https://github.com/baleyko/syntax-highlighting-scopes-showroom#README.md",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/baleyko/syntax-highlighting-scopes-showroom.git"
+      },
+      "categories": [
+        "Programming Languages"
+      ],
+      "keywords": [
+        "syntax",
+        "highlighting",
+        "scopes"
+      ],
+      "engines": {
+        "vscode": "^1.36.0",
+        "atom": "^1.42.0"
+      },
+      "main": "./extension.js",
+      "activationEvents": [
+        "*"
+      ],
+      "contributes": {
+        "menus": {
+          "commandPalette": [
+            {
+              "command": "syntax-highlighting-scopes-showroom:show-all"
+            }
+          ]
+        },
+        "commands": [
+          {
+            "command": "syntax-highlighting-scopes-showroom:show-all",
+            "title": "Show All Scopes",
+            "category": "Syntax Highlighting Scopes Showroom"
+          }
+        ],
+        "languages": [
+          {
+            "id": "Syntax Highlighting Scopes Showroom",
+            "extensions": [
+              "SyntaxScopes"
+            ],
+            "configuration": "./language-configuration.json"
+          }
+        ],
+        "grammars": [
+          {
+            "language": "Syntax Highlighting Scopes Showroom",
+            "scopeName": "source.syntax-scopes",
+            "path": "./grammars/SyntaxScopes.json"
+          }
+        ]
+      },
+      "devDependencies": {
+        "jsonlint": "1.6.3",
+        "markdownlint-cli": "0.19.0",
+        "yaml-lint": "1.2.4",
+        "eslint": "6.8.0",
+        "prettier": "1.19.1"
+      },
+      "scripts": {
+        "rebuild": "yarn run build:json && yarn run build:sublime-syntax && yarn run build:spec && yarn run build:syntax_test",
+        "build:json": "cat SyntaxScopes | bin/to-json > grammars/SyntaxScopes.json",
+        "build:sublime-syntax": "cat SyntaxScopes | bin/to-sublime-syntax > SyntaxScopes.sublime-syntax",
+        "build:spec": "cat SyntaxScopes | bin/to-spec > test/SyntaxScopes-spec.js",
+        "build:syntax_test": "cat SyntaxScopes | bin/to-syntax_test > test/syntax_test.SyntaxScopes",
+        "ci:lint": "yarn run lint:yaml && yarn run lint:json && yarn run lint:markdown && yarn run lint:js",
+        "lint:yaml": "yarn run yamllint SyntaxScopes.sublime-syntax",
+        "lint:json": "for file in package.json messages.json .eslintrc .prettierrc menus/show-all-scopes.json language-configuration.json .vscode/launch.json grammars/SyntaxScopes.json; do yarn run jsonlint -q $file; done",
+        "lint:markdown": "yarn run markdownlint *.md",
+        "lint:js": "eslint bin/* extension.js",
+        "fix:js": "prettier --write bin/* extension.js"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/syntax-highlighting-scopes-showroom/versions/1.0.0/tarball"
+      }
+    },
+    "0.1.1": {
+      "name": "syntax-highlighting-scopes-showroom",
+      "displayName": "Syntax Highlighting Scopes Showroom",
+      "description": "Syntax Highlighting Scopes Showroom",
+      "version": "0.1.1",
+      "publisher": "baleiko",
+      "author": {
+        "name": "Valerii Baleiko",
+        "email": "baleyko@gmail.com"
+      },
+      "license": "MIT",
+      "bugs": "https://github.com/baleyko/syntax-highlighting-scopes-showroom/issues",
+      "homepage": "https://github.com/baleyko/syntax-highlighting-scopes-showroom#README.md",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/baleyko/syntax-highlighting-scopes-showroom.git"
+      },
+      "categories": [
+        "Programming Languages"
+      ],
+      "keywords": [
+        "syntax",
+        "highlighting",
+        "scopes"
+      ],
+      "engines": {
+        "vscode": "^1.36.0",
+        "atom": "^1.42.0"
+      },
+      "contributes": {
+        "languages": [
+          {
+            "id": "Syntax Highlighting Scopes Showroom",
+            "extensions": [
+              ".shss"
+            ],
+            "configuration": "./language-configuration.json"
+          }
+        ],
+        "grammars": [
+          {
+            "language": "Syntax Highlighting Scopes Showroom",
+            "scopeName": "source.shss",
+            "path": "./grammars/shss.tmLanguage"
+          }
+        ]
+      },
+      "devDependencies": {
+        "coffeelint": "2.1.0",
+        "jsonlint": "1.6.3",
+        "markdownlint-cli": "0.19.0",
+        "plistlint": "1.0.0",
+        "yaml-lint": "1.2.4",
+        "vsce": "^1.67.0"
+      },
+      "scripts": {
+        "ci:lint": "yarn run lint:plist && yarn run lint:coffee && yarn run lint:yaml && yarn run lint:json && yarn run markdownlint *.md",
+        "lint:plist": "yarn run plistlint grammars/shss.tmLanguage",
+        "lint:coffee": "yarn run coffeelint grammars/shss.cson",
+        "lint:yaml": "yarn run yamllint grammars/shss.sublime-syntax",
+        "lint:json": "for file in package.json messages.json language-configuration.json .vscode/launch.json; do yarn run jsonlint -q $file; done",
+        "lint:markdown": "yarn run markdownlint *.md"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/syntax-highlighting-scopes-showroom/versions/0.1.1/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "syntax-highlighting-scopes-showroom",
+      "displayName": "Syntax Highlighting Scopes Showroom",
+      "description": "Syntax Highlighting Scopes Showroom",
+      "version": "0.1.0",
+      "publisher": "baleiko",
+      "author": {
+        "name": "Valerii Baleiko",
+        "email": "baleyko@gmail.com"
+      },
+      "license": "MIT",
+      "bugs": "https://github.com/baleyko/syntax-highlighting-scopes-showroom/issues",
+      "homepage": "https://github.com/baleyko/syntax-highlighting-scopes-showroom#README.md",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/baleyko/syntax-highlighting-scopes-showroom.git"
+      },
+      "categories": [
+        "Programming Languages"
+      ],
+      "keywords": [
+        "syntax",
+        "highlighting",
+        "scopes"
+      ],
+      "engines": {
+        "vscode": "^1.36.0",
+        "atom": "^1.42.0"
+      },
+      "contributes": {
+        "languages": [
+          {
+            "id": "Syntax Highlighting Scopes Showroom",
+            "extensions": [
+              ".shss"
+            ],
+            "configuration": "./language-configuration.json"
+          }
+        ],
+        "grammars": [
+          {
+            "language": "Syntax Highlighting Scopes Showroom",
+            "scopeName": "source.shss",
+            "path": "./grammars/shss.tmLanguage"
+          }
+        ]
+      },
+      "devDependencies": {
+        "coffeelint": "2.1.0",
+        "jsonlint": "1.6.3",
+        "markdownlint-cli": "0.19.0",
+        "plistlint": "1.0.0",
+        "yaml-lint": "1.2.4"
+      },
+      "scripts": {
+        "ci:lint": "yarn run lint:plist && yarn run lint:coffee && yarn run lint:yaml && yarn run lint:json && yarn run markdownlint *.md",
+        "lint:plist": "yarn run plistlint grammars/shss.tmLanguage",
+        "lint:coffee": "yarn run coffeelint grammars/shss.cson",
+        "lint:yaml": "yarn run yamllint grammars/shss.sublime-syntax",
+        "lint:json": "for file in package.json messages.json language-configuration.json .vscode/launch.json; do yarn run jsonlint -q $file; done",
+        "lint:markdown": "yarn run markdownlint *.md"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/syntax-highlighting-scopes-showroom/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# Syntax Highlighting Scopes Showroom\n\n[![Test][gh test workflow badge]][gh test workflow]\n[![Lint][gh lint workflow badge]][gh lint workflow]\n[![The MIT License][mit license badge]][mit license]\n\n[![APM Version][apm version badge]][apm version]\n[![APM Installs][apm installs badge]][apm installs]\n\n[![VSCode Version][vscode version badge]][vscode merketplace]\n[![VSCode Installs][vscode installs badge]][vscode merketplace]\n[![VSCode Rating][vscode rating badge]][vscode merketplace]\n\n[![GitHub release][gh releases badge]][gh releases]\n[![Sublime Downloads][sublime downloads badge]][sublime package control]\n\nThis package tries to show all the syntax scopes just to help you do your\nsyntax highlighting packages development.\n\n## Installation\n\nYou can find this package in corresponding package managment tool for:\n\n### Visual Studio Code - [Visual Studio Marketplace][vscode merketplace]\n\n- `Ctrl+Shift+X` or `Cmd+Shift+X` in Linux/Windows/OS X\n- type `Syntax Highlighting Scopes Showroom`\n- press `Install` on the `Syntax Highlighting Scopes Showroom` pane\n\n### Sublime Package Control - [Package Control][sublime package control]\n\n- `Ctrl+Shift+P` or `Cmd+Shift+P` in Linux/Windows/OS X\n- type `install`, select `Package Control: Install Package`\n- type `Syntax Highlighting Scopes Showroom`, select it\n\n### Atom - [Atom Package Manager][atom package manager]\n\n- `Ctrl+Shift+P` or `Cmd+Shift+P` in Linux/Windows/OS X\n- type `Settings View: Install Packages And Themes`\n- type `syntax-highlighting-scopes-showroom`\n- press `Install` on the `Syntax Highlighting Scopes Showroom` pane\n\n## Usage\n\n### Visual Studio Code\n\n- `Ctrl+Shift+P` or `Cmd+Shift+P` in Linux/Windows/OS X\n- type `Syntax Highlighting Scopes Showroom: Show All Scopes` and press `Enter`\n\n### Sublime Text\n\n- go to `Tools -> Syntax Highlighting Scopes Showroom -> Show All Scopes`\n\n### Atom\n\n- go to `Packages -> Syntax Highlighting Scopes Showroom -> Show All Scopes`\n\nAs a result on all cases your editor will open the SyntaxScopes file which contains\nall known(for authors of this extension) syntax scopes.\n\n## License\n\n[MIT License][mit license] - see the [LICENSE][license.md] for more details.\n\n[vscode merketplace]: https://marketplace.visualstudio.com/items?itemName=baleiko.syntax-highlighting-scopes-showroom\n[sublime package control]: https://packagecontrol.io/installation\n[atom package manager]: https://atom.io/packages/syntax-highlighting-scopes-showroom\n[mit license]: https://opensource.org/licenses/MIT\n[mit license badge]: https://img.shields.io/badge/license-MIT-orange.svg\n[license.md]: https://github.com/baleyko/vscode-b-syntax-highlighting/blob/master/LICENSE.md\n[gh releases]: https://github.com/baleyko/syntax-highlighting-scopes-showroom/releases\n[gh releases badge]: https://img.shields.io/github/release/baleyko/syntax-highlighting-scopes-showroom.svg\n[gh test workflow]: https://github.com/baleyko/syntax-highlighting-scopes-showroom/actions?query=workflow%3ATest\n[gh test workflow badge]: https://github.com/baleyko/syntax-highlighting-scopes-showroom/workflows/Test/badge.svg\n[gh lint workflow]: https://github.com/baleyko/syntax-highlighting-scopes-showroom/actions?query=workflow%3ALint\n[gh lint workflow badge]: https://github.com/baleyko/syntax-highlighting-scopes-showroom/workflows/Lint/badge.svg\n[apm version]: https://atom.io/packages/syntax-highlighting-scopes-showroom\n[apm version badge]: https://img.shields.io/apm/v/syntax-highlighting-scopes-showroom\n[apm installs]: https://atom.io/packages/syntax-highlighting-scopes-showroom\n[apm installs badge]: https://img.shields.io/apm/dm/syntax-highlighting-scopes-showroom\n[vscode merketplace]: https://marketplace.visualstudio.com/items?itemName=baleiko.syntax-highlighting-scopes-showroom\n[vscode version badge]: https://vsmarketplacebadge.apphb.com/version/baleiko.syntax-highlighting-scopes-showroom.svg\n[vscode installs badge]: https://vsmarketplacebadge.apphb.com/installs-short/baleiko.syntax-highlighting-scopes-showroom.svg\n[vscode rating badge]: https://vsmarketplacebadge.apphb.com/rating-short/baleiko.syntax-highlighting-scopes-showroom.svg\n[sublime downloads badge]: https://img.shields.io/packagecontrol/dt/Syntax%20Highlighting%20Scopes%20Showroom\n[sublime package control]: https://packagecontrol.io/packages/Syntax%20Highlighting%20Scopes%20Showroom\n",
+  "metadata": {
+    "name": "syntax-highlighting-scopes-showroom",
+    "displayName": "Syntax Highlighting Scopes Showroom",
+    "description": "Highlights syntax scopes to simplify syntax highlighting extensions development",
+    "version": "1.0.0",
+    "publisher": "baleiko",
+    "author": {
+      "name": "Valerii Baleiko",
+      "email": "baleyko@gmail.com"
+    },
+    "license": "MIT",
+    "bugs": "https://github.com/baleyko/syntax-highlighting-scopes-showroom/issues",
+    "homepage": "https://github.com/baleyko/syntax-highlighting-scopes-showroom#README.md",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/baleyko/syntax-highlighting-scopes-showroom.git"
+    },
+    "categories": [
+      "Programming Languages"
+    ],
+    "keywords": [
+      "syntax",
+      "highlighting",
+      "scopes"
+    ],
+    "engines": {
+      "vscode": "^1.36.0",
+      "atom": "^1.42.0"
+    },
+    "main": "./extension.js",
+    "activationEvents": [
+      "*"
+    ],
+    "contributes": {
+      "menus": {
+        "commandPalette": [
+          {
+            "command": "syntax-highlighting-scopes-showroom:show-all"
+          }
+        ]
+      },
+      "commands": [
+        {
+          "command": "syntax-highlighting-scopes-showroom:show-all",
+          "title": "Show All Scopes",
+          "category": "Syntax Highlighting Scopes Showroom"
+        }
+      ],
+      "languages": [
+        {
+          "id": "Syntax Highlighting Scopes Showroom",
+          "extensions": [
+            "SyntaxScopes"
+          ],
+          "configuration": "./language-configuration.json"
+        }
+      ],
+      "grammars": [
+        {
+          "language": "Syntax Highlighting Scopes Showroom",
+          "scopeName": "source.syntax-scopes",
+          "path": "./grammars/SyntaxScopes.json"
+        }
+      ]
+    },
+    "devDependencies": {
+      "jsonlint": "1.6.3",
+      "markdownlint-cli": "0.19.0",
+      "yaml-lint": "1.2.4",
+      "eslint": "6.8.0",
+      "prettier": "1.19.1"
+    },
+    "scripts": {
+      "rebuild": "yarn run build:json && yarn run build:sublime-syntax && yarn run build:spec && yarn run build:syntax_test",
+      "build:json": "cat SyntaxScopes | bin/to-json > grammars/SyntaxScopes.json",
+      "build:sublime-syntax": "cat SyntaxScopes | bin/to-sublime-syntax > SyntaxScopes.sublime-syntax",
+      "build:spec": "cat SyntaxScopes | bin/to-spec > test/SyntaxScopes-spec.js",
+      "build:syntax_test": "cat SyntaxScopes | bin/to-syntax_test > test/syntax_test.SyntaxScopes",
+      "ci:lint": "yarn run lint:yaml && yarn run lint:json && yarn run lint:markdown && yarn run lint:js",
+      "lint:yaml": "yarn run yamllint SyntaxScopes.sublime-syntax",
+      "lint:json": "for file in package.json messages.json .eslintrc .prettierrc menus/show-all-scopes.json language-configuration.json .vscode/launch.json grammars/SyntaxScopes.json; do yarn run jsonlint -q $file; done",
+      "lint:markdown": "yarn run markdownlint *.md",
+      "lint:js": "eslint bin/* extension.js",
+      "fix:js": "prettier --write bin/* extension.js"
+    }
+  }
+}

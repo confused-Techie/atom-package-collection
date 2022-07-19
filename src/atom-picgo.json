@@ -1,0 +1,80 @@
+{
+  "name": "atom-picgo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MRDGH2821/atom-picgo"
+  },
+  "downloads": 54,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.1.0"
+  },
+  "versions": {
+    "0.1.0": {
+      "name": "atom-picgo",
+      "version": "0.1.0",
+      "main": "./lib/atom-picgo",
+      "description": "Atom Plugin for PicGo Uploader",
+      "keywords": [
+        "atom",
+        "picgo",
+        "image",
+        "uploader"
+      ],
+      "activationCommands": {
+        "atom-workspace": "atom-picgo:toggle"
+      },
+      "repository": "https://github.com/MRDGH2821/atom-picgo",
+      "author": {
+        "name": "MRDGH2821",
+        "url": "https://bit.ly/mrdgh2821"
+      },
+      "license": "MIT",
+      "bugs": {
+        "url": "https://github.com/MRDGH2821/atom-picgo/issues"
+      },
+      "homepage": "https://github.com/MRDGH2821/atom-picgo#readme",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "picgo": "^1.5.0-alpha.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-picgo/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# atom-picgo\n\nAtom Plugin for PicGo Uploader\n\nProvide full path to the `config.json` file in settings. By default it will look for `picgo.json` in project directory.\nFile name can be anything, as long as the extension is `.json`.\n\nWhen no config is provided, PicGo will default to `smms`\n\nUse `ctrl + alt + v` to paste image link\n\nView Changelogs [here](CHANGELOG.md)\n\n## PicGo config\n\nGenerate a PicGo config by referring this [guide](https://picgo.github.io/PicGo-Core-Doc/zh/guide/config.html)\n\nHere is a rough English translation from the guide. (I do not know chinese, but I could figure out the parameters. I mostly used Google Translate to understand stuff)\n\nThe config must be in given json format:\n\n```json\n{\n  \"picBed\": {\n    \"uploader\": \"smms\", //select among given different uploaders.\n\n    //uploader config\n    \"smms\": {\n      \"token\": \"\"\n    }\n  }\n}\n```\n\n### Uploaders\n\nDefault is [smms](https://sm.ms/), even without providing any config file in package settings, as per what I observed during tests.\n\nMultiple uploader configurations can be set. But PicGo will only use whatever is set in `uploader` field value.\n\n#### SM.MS\n\n[Config guide](https://picgo.github.io/PicGo-Doc/en/guide/config.html#sm-ms)\n\n```json\n{\n  \"picBed\": {\n    \"uploader\": \"smms\",\n    \"smms\": {\n       \"token\": \"\"                                 // your api token\n    }\n  }\n}\n```\n\n#### Qiniu\n\n[Config guide](https://picgo.github.io/PicGo-Doc/en/guide/config.html#qiuniu-img)\n\n```json\n{\n  \"picBed\": {\n    \"uploader\": \"qiniu\",\n    \"qiniu\": {\n      \"accessKey\": \"\",\n      \"secretKey\": \"\",\n      \"bucket\": \"\",                               // storage bucket\n      \"url\": \"\",                                  // customized domain\n      \"area\": \"z0\" | \"z1\" | \"z2\" | \"na0\" | \"as0\", // storage area\n      \"options\": \"\",                              // URL suffix\n      \"path\": \"\"                                  // storage path\n    }\n  }\n}\n```\n\n#### Upyun\n\n[Config guide](https://picgo.github.io/PicGo-Doc/en/guide/config.html#upyun-cloud)\n\n```json\n{\n  \"picBed\": {\n    \"uploader\": \"upyun\",\n    \"upyun\": {\n      \"bucket\": \"\",                               // storage bucket, note that v4 is different from v5\n      \"operator\": \"\",                             // operator\n      \"password\": \"\",                             // password\n      \"options\": \"\",                              // URL suffix\n      \"path\": \"\"                                  // storage path\n      \"url\": \"\",                                  // customized domain\n    }\n  }\n}\n```\n\n#### Tencent Cloud COS\n\n[Config guide](https://picgo.github.io/PicGo-Doc/en/guide/config.html#tencent-cloud-cos)\n\n```json\n{\n  \"picBed\": {\n    \"uploader\": \"tcyun\",\n    \"tcyun\": {\n      \"secretId\": \"\",\n      \"secretKey\": \"\",\n      \"bucket\": \"\",                               // storage bucket, note that v4 is different from v5\n      \"appId\": \"\",\n      \"area\": \"\",                                 // storage area\n      \"path\": \"\"                                  // storage path\n      \"customUrl\": \"\", \t\t\t\t\t\t\t\t\t\t\t\t\t\t// customized domain\n      \"version\": \"v5\" | \"v4\" \t\t\t\t\t\t\t\t\t\t\t// COS version\n    }\n  }\n}\n```\n\n#### GitHub\n\n[Config guide](https://picgo.github.io/PicGo-Doc/en/guide/config.html#github-img)\n\n```json\n{\n  \"picBed\": {\n    \"uploader\": \"github\",\n    \"github\": {\n      \"repo\": \"\",                                 // user/repo\n      \"token\": \"\",                                // github token\n      \"path\": \"\"                                  // storage path\n      \"customUrl\": \"\", \t\t\t\t\t\t\t\t\t\t\t\t\t\t// customized domain\n      \"branch\": \"\"                                // branch, main by default\n    }\n  }\n}\n```\n\n#### Alibaba Cloud OSS\n\n[Config guide](https://picgo.github.io/PicGo-Doc/en/guide/config.html#aliyun-oss)\n\n```json\n{\n  \"picBed\": {\n    \"uploader\": \"aliyun\",\n    \"aliyun\": {\n      \"accessKeyId\": \"\",\n      \"accessKeySecret\": \"\",\n      \"bucket\": \"\",                               // storage bucket\n      \"area\": \"\",                                 // storage area\n      \"path\": \"\"                                  // storage path\n      \"customUrl\": \"\", \t\t\t\t\t\t\t\t\t\t\t\t\t\t// customized domain\n    }\n  }\n}\n```\n\n#### Imgur\n\n[Config Guide](https://picgo.github.io/PicGo-Doc/en/guide/config.html#imgur-img)\n\n```json\n{\n  \"picBed\": {\n    \"uploader\": \"imgur\",\n    \"imgur\": {\n      \"clientId\": \"\",                             // your clientId\n      \"proxy\": \"\"                                 // proxy address, only http supported\n    }\n  }\n}\n```\n\n#### HTTP proxy\n\n[Config Guide](https://picgo.github.io/PicGo-Core-Doc/zh/guide/config.html#picbed-proxy)\n\n```json\n{\n  \"picBed\": {\n    \"uploader\": \"proxy\",\n    \"proxy\": {\n      \"proxy\": \"\"                                 // proxy address, only http supported\n    }\n  }\n}\n```\n\n## Licence\n\n[MIT](./LICENSE)\n",
+  "metadata": {
+    "name": "atom-picgo",
+    "version": "0.1.0",
+    "main": "./lib/atom-picgo",
+    "description": "Atom Plugin for PicGo Uploader",
+    "keywords": [
+      "atom",
+      "picgo",
+      "image",
+      "uploader"
+    ],
+    "activationCommands": {
+      "atom-workspace": "atom-picgo:toggle"
+    },
+    "repository": "https://github.com/MRDGH2821/atom-picgo",
+    "author": {
+      "name": "MRDGH2821",
+      "url": "https://bit.ly/mrdgh2821"
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/MRDGH2821/atom-picgo/issues"
+    },
+    "homepage": "https://github.com/MRDGH2821/atom-picgo#readme",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "picgo": "^1.5.0-alpha.0"
+    }
+  }
+}

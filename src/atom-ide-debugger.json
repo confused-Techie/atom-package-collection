@@ -1,0 +1,584 @@
+{
+  "name": "atom-ide-debugger",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atom-ide-community/atom-ide-debugger"
+  },
+  "downloads": 14578,
+  "stargazers_count": 3,
+  "releases": {
+    "latest": "0.0.3"
+  },
+  "versions": {
+    "0.0.3": {
+      "name": "atom-ide-debugger",
+      "main": "dist/main.js",
+      "version": "0.0.3",
+      "author": "Amin Yahyaabadi",
+      "description": "Debugger for Atom IDE",
+      "keywords": [],
+      "repository": "https://github.com/atom-ide-community/atom-ide-debugger",
+      "license": "MIT",
+      "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint . --fix",
+        "test": "atom --test spec",
+        "clean": "shx rm -rf dist",
+        "babel": "npm run clean && shx cp -r src dist && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=false babel dist --out-dir dist",
+        "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+        "bundle": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c ",
+        "build": "npm run babel",
+        "build-commit": "build-commit -o dist",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "atomTestRunner": "./spec/runner",
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "^6.0.0",
+        "idx": "1.2.0",
+        "immutable": "4.0.0-rc.9",
+        "invariant": "2.2.2",
+        "@atom-ide-community/nuclide-commons": "^0.8.2",
+        "@atom-ide-community/nuclide-commons-atom": "^0.8.2",
+        "@atom-ide-community/nuclide-debugger-common": "^0.8.2",
+        "@atom-ide-community/nuclide-commons-ui": "^0.8.2",
+        "nullthrows": "1.0.0",
+        "react": "16.6.0",
+        "rxjs-compat": "6.3.3",
+        "uuid": "3.0.1",
+        "vscode-debugprotocol": "1.24.0"
+      },
+      "devDependencies": {
+        "@types/atom": "1.40.4",
+        "@types/node": "^14.11.8",
+        "typescript": "^4.0.3",
+        "tslib": "^2.0.3",
+        "@types/jasmine": "^3.5.14",
+        "atom-jasmine3-test-runner": "^5.1.2",
+        "prettier": "^2.1.2",
+        "eslint": "7.11.0",
+        "eslint-config-atomic": "^1.5.0",
+        "rollup": "^2.29.0",
+        "rollup-plugin-atomic": "^1.2.0",
+        "shx": "^0.3.2",
+        "cross-env": "^7.0.2",
+        "@babel/cli": "7.11.6",
+        "@babel/core": "7.11.6",
+        "babel-preset-atomic": "^2.4.2",
+        "npm-check-updates": "9.0.4",
+        "build-commit": "0.1.1"
+      },
+      "package-deps": [],
+      "configSchema": {
+        "showDebuggerOnBpSet": {
+          "title": "Show debugger on breakpoint set",
+          "type": "boolean",
+          "default": true,
+          "description": "Shows the debugger, if it is currently hidden, when the user sets a breakpoint in a file via the gutter."
+        }
+      },
+      "providedServices": {
+        "debugger.remote": {
+          "versions": {
+            "description": "Remote control for launching debugger.",
+            "0.0.0": "provideRemoteControlService"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "createAutocompleteProvider"
+          }
+        }
+      },
+      "consumedServices": {
+        "DEPRECATED-nuclide.registerExecutor": {
+          "versions": {
+            "0.0.0": "consumeRegisterExecutor"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatipService"
+          }
+        },
+        "tool-bar": {
+          "versions": {
+            "^1.0.0": "consumeToolBar"
+          }
+        },
+        "nuclide-notifications.provideRaiseNativeNotification": {
+          "versions": {
+            "0.0.0": "consumeNotifications"
+          }
+        },
+        "debugger.provider": {
+          "versions": {
+            "0.0.0": "consumeDebuggerProvider"
+          }
+        },
+        "debugger.configurator": {
+          "versions": {
+            "0.0.0": "consumeDebuggerConfigurationProviders"
+          }
+        },
+        "nuclide-current-working-directory": {
+          "versions": {
+            "0.0.0": "consumeCurrentWorkingDirectory"
+          }
+        },
+        "nuclide-terminal": {
+          "versions": {
+            "0.0.0": "consumeTerminal"
+          }
+        },
+        "nuclide-rpc-services": {
+          "versions": {
+            "0.0.0": "consumeRpcService"
+          }
+        },
+        "console": {
+          "versions": {
+            "0.1.0": "consumeConsole"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-ide-debugger/versions/0.0.3/tarball"
+      }
+    },
+    "0.0.2": {
+      "name": "atom-ide-debugger",
+      "main": "dist/main.js",
+      "version": "0.0.2",
+      "author": "Amin Yahyaabadi",
+      "description": "Debugger for Atom IDE",
+      "keywords": [],
+      "repository": "https://github.com/atom-ide-community/atom-ide-debugger",
+      "license": "MIT",
+      "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint . --fix",
+        "test": "atom --test spec",
+        "clean": "shx rm -rf dist",
+        "babel": "npm run clean && shx cp -r src dist && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=false babel dist --out-dir dist",
+        "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+        "bundle": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c ",
+        "build": "npm run babel",
+        "build-commit": "build-commit -o dist",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "atomTestRunner": "./spec/runner",
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "^6.0.0",
+        "idx": "1.2.0",
+        "immutable": "4.0.0-rc.9",
+        "invariant": "2.2.2",
+        "@atom-ide-community/nuclide-commons": "^0.8.2",
+        "@atom-ide-community/nuclide-commons-atom": "^0.8.2",
+        "@atom-ide-community/nuclide-debugger-common": "^0.8.2",
+        "@atom-ide-community/nuclide-commons-ui": "^0.8.2",
+        "nullthrows": "1.0.0",
+        "react": "16.6.0",
+        "rxjs": "^5.5.9",
+        "rxjs-compat": "6.3.3",
+        "uuid": "3.0.1",
+        "vscode-debugprotocol": "1.24.0"
+      },
+      "devDependencies": {
+        "@types/atom": "1.40.4",
+        "@types/node": "^14.11.8",
+        "typescript": "^4.0.3",
+        "tslib": "^2.0.3",
+        "coffeescript": "^2.5.1",
+        "@types/jasmine": "^3.5.14",
+        "atom-jasmine3-test-runner": "^5.1.2",
+        "prettier": "^2.1.2",
+        "eslint": "7.11.0",
+        "eslint-config-atomic": "^1.5.0",
+        "rollup": "^2.29.0",
+        "rollup-plugin-atomic": "^1.2.0",
+        "shx": "^0.3.2",
+        "cross-env": "^7.0.2",
+        "@babel/cli": "7.11.6",
+        "@babel/core": "7.11.6",
+        "babel-preset-atomic": "^2.4.2",
+        "npm-check-updates": "9.0.4",
+        "build-commit": "0.1.1"
+      },
+      "package-deps": [],
+      "configSchema": {
+        "showDebuggerOnBpSet": {
+          "title": "Show debugger on breakpoint set",
+          "type": "boolean",
+          "default": true,
+          "description": "Shows the debugger, if it is currently hidden, when the user sets a breakpoint in a file via the gutter."
+        }
+      },
+      "providedServices": {
+        "debugger.remote": {
+          "versions": {
+            "description": "Remote control for launching debugger.",
+            "0.0.0": "provideRemoteControlService"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "createAutocompleteProvider"
+          }
+        }
+      },
+      "consumedServices": {
+        "DEPRECATED-nuclide.registerExecutor": {
+          "versions": {
+            "0.0.0": "consumeRegisterExecutor"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatipService"
+          }
+        },
+        "tool-bar": {
+          "versions": {
+            "^1.0.0": "consumeToolBar"
+          }
+        },
+        "nuclide-notifications.provideRaiseNativeNotification": {
+          "versions": {
+            "0.0.0": "consumeNotifications"
+          }
+        },
+        "debugger.provider": {
+          "versions": {
+            "0.0.0": "consumeDebuggerProvider"
+          }
+        },
+        "debugger.configurator": {
+          "versions": {
+            "0.0.0": "consumeDebuggerConfigurationProviders"
+          }
+        },
+        "nuclide-current-working-directory": {
+          "versions": {
+            "0.0.0": "consumeCurrentWorkingDirectory"
+          }
+        },
+        "nuclide-terminal": {
+          "versions": {
+            "0.0.0": "consumeTerminal"
+          }
+        },
+        "nuclide-rpc-services": {
+          "versions": {
+            "0.0.0": "consumeRpcService"
+          }
+        },
+        "console": {
+          "versions": {
+            "0.1.0": "consumeConsole"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-ide-debugger/versions/0.0.2/tarball"
+      }
+    },
+    "0.0.1": {
+      "name": "atom-ide-debugger",
+      "main": "dist/main.js",
+      "version": "0.0.1",
+      "author": "Amin Yahyaabadi",
+      "description": "Debugger for Atom IDE",
+      "keywords": [],
+      "repository": "https://github.com/atom-ide-community/atom-ide-debugger",
+      "license": "MIT",
+      "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint . --fix",
+        "test": "atom --test spec",
+        "clean": "shx rm -rf dist",
+        "babel": "npm run clean && shx cp -r src dist && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=false babel dist --out-dir dist",
+        "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+        "bundle": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c ",
+        "build": "npm run babel",
+        "build-commit": "build-commit -o dist",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "atomTestRunner": "./spec/runner",
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "^6.0.0",
+        "idx": "1.2.0",
+        "immutable": "4.0.0-rc.9",
+        "invariant": "2.2.2",
+        "@atom-ide-community/nuclide-commons": "^0.8.2",
+        "@atom-ide-community/nuclide-commons-atom": "^0.8.2",
+        "@atom-ide-community/nuclide-debugger-common": "^0.8.2",
+        "@atom-ide-community/nuclide-commons-ui": "^0.8.2",
+        "nullthrows": "1.0.0",
+        "react": "16.6.0",
+        "rxjs": "^5.5.9",
+        "rxjs-compat": "6.3.3",
+        "uuid": "3.0.1",
+        "vscode-debugprotocol": "1.24.0"
+      },
+      "devDependencies": {
+        "@types/atom": "1.40.4",
+        "@types/node": "^14.11.8",
+        "typescript": "^4.0.3",
+        "tslib": "^2.0.3",
+        "coffeescript": "^2.5.1",
+        "@types/jasmine": "^3.5.14",
+        "atom-jasmine3-test-runner": "^5.1.2",
+        "prettier": "^2.1.2",
+        "eslint": "7.11.0",
+        "eslint-config-atomic": "^1.5.0",
+        "rollup": "^2.29.0",
+        "rollup-plugin-atomic": "^1.2.0",
+        "shx": "^0.3.2",
+        "cross-env": "^7.0.2",
+        "@babel/cli": "7.11.6",
+        "@babel/core": "7.11.6",
+        "babel-preset-atomic": "^2.4.2",
+        "npm-check-updates": "9.0.4",
+        "build-commit": "0.1.1"
+      },
+      "package-deps": [],
+      "configSchema": {
+        "showDebuggerOnBpSet": {
+          "title": "Show debugger on breakpoint set",
+          "type": "boolean",
+          "default": true,
+          "description": "Shows the debugger, if it is currently hidden, when the user sets a breakpoint in a file via the gutter."
+        }
+      },
+      "providedServices": {
+        "debugger.remote": {
+          "versions": {
+            "description": "Remote control for launching debugger.",
+            "0.0.0": "provideRemoteControlService"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "createAutocompleteProvider"
+          }
+        }
+      },
+      "consumedServices": {
+        "DEPRECATED-nuclide.registerExecutor": {
+          "versions": {
+            "0.0.0": "consumeRegisterExecutor"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatipService"
+          }
+        },
+        "tool-bar": {
+          "versions": {
+            "^1.0.0": "consumeToolBar"
+          }
+        },
+        "nuclide-notifications.provideRaiseNativeNotification": {
+          "versions": {
+            "0.0.0": "consumeNotifications"
+          }
+        },
+        "debugger.provider": {
+          "versions": {
+            "0.0.0": "consumeDebuggerProvider"
+          }
+        },
+        "debugger.configurator": {
+          "versions": {
+            "0.0.0": "consumeDebuggerConfigurationProviders"
+          }
+        },
+        "nuclide-current-working-directory": {
+          "versions": {
+            "0.0.0": "consumeCurrentWorkingDirectory"
+          }
+        },
+        "nuclide-terminal": {
+          "versions": {
+            "0.0.0": "consumeTerminal"
+          }
+        },
+        "nuclide-rpc-services": {
+          "versions": {
+            "0.0.0": "consumeRpcService"
+          }
+        },
+        "console": {
+          "versions": {
+            "0.1.0": "consumeConsole"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-ide-debugger/versions/0.0.1/tarball"
+      }
+    }
+  },
+  "readme": "# atom-ide-debugger\n\nDebugger for Atom IDE\n\n![Build Status (Github Actions)](https://github.com/atom-ide-community/atom-ide-debugger/workflows/CI/badge.svg)\n[![Dependency Status](https://david-dm.org/atom-ide-community/atom-ide-debugger.svg)](https://david-dm.org/atom-ide-community/atom-ide-debugger)\n[![apm](https://img.shields.io/apm/dm/atom-ide-debugger.svg)](https://github.com/atom-ide-community/atom-ide-debugger)\n[![apm](https://img.shields.io/apm/v/atom-ide-debugger.svg)](https://github.com/atom-ide-community/atom-ide-debugger)\n\n## Usage\nThis is a work in progress. This is only tested with atom-ide-javascript and atom-ide-debugger. Once you install both, you can debug Node programs and see the result in the console.\n\nCurrently, you should follow this GIF:\n\n![debugger](https://user-images.githubusercontent.com/16418197/95936245-be136980-0d9a-11eb-9641-6c555ebd0662.gif)\n\n\n## Roadmap\n\nThis is a work in progress.\n\n## Contributing\n\n```\napm install\npnpm babel\napm link .\n```\n\n- Let me know if you encounter any bugs.\n- Feature requests are always welcome.\n",
+  "metadata": {
+    "name": "atom-ide-debugger",
+    "main": "dist/main.js",
+    "version": "0.0.3",
+    "author": "Amin Yahyaabadi",
+    "description": "Debugger for Atom IDE",
+    "keywords": [],
+    "repository": "https://github.com/atom-ide-community/atom-ide-debugger",
+    "license": "MIT",
+    "scripts": {
+      "format": "prettier --write .",
+      "lint": "eslint . --fix",
+      "test": "atom --test spec",
+      "clean": "shx rm -rf dist",
+      "babel": "npm run clean && shx cp -r src dist && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=false babel dist --out-dir dist",
+      "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+      "bundle": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c ",
+      "build": "npm run babel",
+      "build-commit": "build-commit -o dist",
+      "bump": "ncu -u",
+      "prepare": "npm run build"
+    },
+    "atomTestRunner": "./spec/runner",
+    "activationHooks": [
+      "core:loaded-shell-environment"
+    ],
+    "engines": {
+      "atom": ">=0.174.0 <2.0.0"
+    },
+    "dependencies": {
+      "atom-package-deps": "^6.0.0",
+      "idx": "1.2.0",
+      "immutable": "4.0.0-rc.9",
+      "invariant": "2.2.2",
+      "@atom-ide-community/nuclide-commons": "^0.8.2",
+      "@atom-ide-community/nuclide-commons-atom": "^0.8.2",
+      "@atom-ide-community/nuclide-debugger-common": "^0.8.2",
+      "@atom-ide-community/nuclide-commons-ui": "^0.8.2",
+      "nullthrows": "1.0.0",
+      "react": "16.6.0",
+      "rxjs-compat": "6.3.3",
+      "uuid": "3.0.1",
+      "vscode-debugprotocol": "1.24.0"
+    },
+    "devDependencies": {
+      "@types/atom": "1.40.4",
+      "@types/node": "^14.11.8",
+      "typescript": "^4.0.3",
+      "tslib": "^2.0.3",
+      "@types/jasmine": "^3.5.14",
+      "atom-jasmine3-test-runner": "^5.1.2",
+      "prettier": "^2.1.2",
+      "eslint": "7.11.0",
+      "eslint-config-atomic": "^1.5.0",
+      "rollup": "^2.29.0",
+      "rollup-plugin-atomic": "^1.2.0",
+      "shx": "^0.3.2",
+      "cross-env": "^7.0.2",
+      "@babel/cli": "7.11.6",
+      "@babel/core": "7.11.6",
+      "babel-preset-atomic": "^2.4.2",
+      "npm-check-updates": "9.0.4",
+      "build-commit": "0.1.1"
+    },
+    "package-deps": [],
+    "configSchema": {
+      "showDebuggerOnBpSet": {
+        "title": "Show debugger on breakpoint set",
+        "type": "boolean",
+        "default": true,
+        "description": "Shows the debugger, if it is currently hidden, when the user sets a breakpoint in a file via the gutter."
+      }
+    },
+    "providedServices": {
+      "debugger.remote": {
+        "versions": {
+          "description": "Remote control for launching debugger.",
+          "0.0.0": "provideRemoteControlService"
+        }
+      },
+      "autocomplete.provider": {
+        "versions": {
+          "2.0.0": "createAutocompleteProvider"
+        }
+      }
+    },
+    "consumedServices": {
+      "DEPRECATED-nuclide.registerExecutor": {
+        "versions": {
+          "0.0.0": "consumeRegisterExecutor"
+        }
+      },
+      "datatip": {
+        "versions": {
+          "0.1.0": "consumeDatatipService"
+        }
+      },
+      "tool-bar": {
+        "versions": {
+          "^1.0.0": "consumeToolBar"
+        }
+      },
+      "nuclide-notifications.provideRaiseNativeNotification": {
+        "versions": {
+          "0.0.0": "consumeNotifications"
+        }
+      },
+      "debugger.provider": {
+        "versions": {
+          "0.0.0": "consumeDebuggerProvider"
+        }
+      },
+      "debugger.configurator": {
+        "versions": {
+          "0.0.0": "consumeDebuggerConfigurationProviders"
+        }
+      },
+      "nuclide-current-working-directory": {
+        "versions": {
+          "0.0.0": "consumeCurrentWorkingDirectory"
+        }
+      },
+      "nuclide-terminal": {
+        "versions": {
+          "0.0.0": "consumeTerminal"
+        }
+      },
+      "nuclide-rpc-services": {
+        "versions": {
+          "0.0.0": "consumeRpcService"
+        }
+      },
+      "console": {
+        "versions": {
+          "0.1.0": "consumeConsole"
+        }
+      }
+    }
+  }
+}

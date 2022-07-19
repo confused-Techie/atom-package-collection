@@ -1,0 +1,286 @@
+{
+  "name": "auto-highlight",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davideuler/atom-auto-highlight"
+  },
+  "downloads": 4047,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "0.14.0"
+  },
+  "versions": {
+    "0.14.0": {
+      "name": "auto-highlight",
+      "main": "./lib/main",
+      "version": "0.14.0",
+      "description": "Highlight text automatically on cursor(even without selection).",
+      "repository": "https://github.com/davideuler/atom-auto-highlight",
+      "license": "MIT",
+      "engines": {
+        "atom": "^1.13.0-beta1"
+      },
+      "configSchema": {
+        "decorate": {
+          "order": 0,
+          "type": "string",
+          "default": "underline",
+          "enum": [
+            "underline",
+            "box",
+            "highlight"
+          ],
+          "description": "Decoration style for highlight"
+        },
+        "highlightSelection": {
+          "order": 1,
+          "type": "boolean",
+          "default": true,
+          "title": "Highlight Selection"
+        },
+        "highlightSelectionMinimumLength": {
+          "order": 2,
+          "type": "integer",
+          "default": 2,
+          "minimum": 1,
+          "description": "Minimum length of selection to be highlight"
+        },
+        "highlightSelectionMaxNumberOfWord": {
+          "order": 2,
+          "type": "integer",
+          "default": 2,
+          "minimum": 1,
+          "description": "Max number of words highlighted before cleared"
+        },
+        "highlightSelectionExcludeScopes": {
+          "order": 3,
+          "default": [
+            "vim-mode-plus.visual-mode.blockwise"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "highlightSelectionDelay": {
+          "order": 4,
+          "type": "integer",
+          "default": 100,
+          "description": "Delay(ms) before start to highlight selection when selection changed"
+        },
+        "displayCountOnStatusBar": {
+          "order": 5,
+          "type": "boolean",
+          "default": true,
+          "description": "Show found count on StatusBar"
+        },
+        "countDisplayPosition": {
+          "order": 6,
+          "type": "string",
+          "default": "Left",
+          "enum": [
+            "Left",
+            "Right"
+          ]
+        },
+        "countDisplayPriority": {
+          "order": 7,
+          "type": "integer",
+          "default": 120,
+          "description": "Lower priority get closer position to the edges of the window"
+        },
+        "countDisplayStyles": {
+          "order": 8,
+          "type": "string",
+          "default": "icon icon-location",
+          "description": "Style class for count span element. See `styleguide:show`."
+        }
+      },
+      "providedServices": {
+        "auto-highlight": {
+          "description": "auto-highlight events",
+          "versions": {
+            "1.0.0": "provideQuickHighlight"
+          }
+        }
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "vim-mode-plus": {
+          "versions": {
+            "^0.1.0": "consumeVim"
+          }
+        }
+      },
+      "dependencies": {
+        "underscore-plus": "^1.6.6"
+      },
+      "devDependencies": {
+        "prettier": "^1.10.2",
+        "standard": "^10.0.3"
+      },
+      "scripts": {
+        "test": "apm test",
+        "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+        "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+        "lint": "standard lib/*.js lib/**/*.js spec/*.js"
+      },
+      "standard": {
+        "env": {
+          "atomtest": true,
+          "browser": true,
+          "jasmine": true,
+          "node": true
+        },
+        "globals": [
+          "atom"
+        ],
+        "ignore": [
+          "spec/fixtures/*"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/auto-highlight/versions/0.14.0/tarball"
+      }
+    }
+  },
+  "readme": "# Auto-highlight [![Build Status](https://travis-ci.org/t9md/atom-auto-highlight.svg?branch=master)](https://travis-ci.org/t9md/atom-auto-highlight)\n\n- Forked from: https://github.com/t9md/atom-quick-highlight\n\n- Word under cursor and all its occurences would be highlighted automatically.\n\n- Max highlighted number of words default to 2, you can change the settings to 1 or others in the plugin settings.\n\n- Show found count on StatusBar.\n\n# Commands\n\n- `auto-highlight:toggle` toggle highlight for selected or cursor word. In fact you don't need to run the command manually.\n- `auto-highlight:clear` clear all highlight.\n\nAnd following two operator for [vim-mode-plus](https://atom.io/packages/vim-mode-plus) user.\n- `vim-mode-plus-user:auto-highlight`: Operator to highlight by text-object or motion.\n- `vim-mode-plus-user:auto-highlight-word` Highlight cursor word, similar to `auto-highlight:toggle`, but well fit for vim's block cursor orientation. And `.` repeatable.\n\n# Keymap\n\nNo default keymap.\n\ne.g.\n* general\n```coffeescript\n'atom-workspace atom-text-editor:not([mini])':\n  'cmd-k m': 'auto-highlight:toggle'\n  'cmd-k M': 'auto-highlight:clear'\n```\n\n* vim-mode-plus user\n```coffeescript\n'atom-text-editor.vim-mode-plus.normal-mode, atom-text-editor.vim-mode-plus.visual-mode':\n  'space m': 'vim-mode-plus-user:auto-highlight-word'\n  'space M': 'auto-highlight:clear'\n  'g m': 'vim-mode-plus-user:auto-highlight'\n```\n\n## Modify highlight style\n\nYou can override style in you `style.less`.\nSee example below.\n\n```less\n@import \"syntax-variables\";\n\n// For selection color\n//=======================\natom-text-editor .auto-highlight.box-selection .region {\n  border-width: 1px;\n  background-color: transparent;\n  border-color: @syntax-text-color;\n}\n\n// Make underline manual highlight prioritized(come front) over other highlight\n//=======================\n// Mixin to set z-index of auto-highlight manual color\n.auto-highlight-z-index(@name, @value) {\n  .auto-highlight.@{name} .region {\n    z-index: @value;\n  }\n}\n\n// auto-highlight use 0 to 7 color\n//  for box style, use box-01 to box-07\n//  for highlight style, use highlight-01 to highlight-07\n.auto-highlight-z-index(underline-01, 1);\n.auto-highlight-z-index(underline-02, 1);\n.auto-highlight-z-index(underline-03, 1);\n.auto-highlight-z-index(underline-04, 1);\n.auto-highlight-z-index(underline-05, 1);\n.auto-highlight-z-index(underline-06, 1);\n.auto-highlight-z-index(underline-07, 1);\n```\n\n## vim-mode-plus operator\n\nYou can auto-highlight with combination of any motion, text-object.  \nSince it's operator, yes can repeat by `.`.\n\ne.g.\n- `g m i w`: highlight `inner-word`.\n- `g m i l`: highlight `inner-line`.\n- `g m i'`: highlight `inner-single-quote`.\n- `v 2 l g m`: highlight three visually selected character..\n\n# Display found count on StatusBar\n\nBy default, when you highlight new text by `auto-highlight:toggle`, found count is displayed on StatusBar.  \nYou can configure CSS class to use with `countDisplayStyles`.  \nSee. `styleguide:show` for available style classes.  \n\ne.g.\n- Default: `badge icon icon-location`\n- e.g. 2: `badge badge-error icon icon-bookmark`\n- e.g. 3: `badge badge-success icon icon-light-bulb`\n- e.g. 4: `btn btn-primary selected inline-block-tight`\n\n# TODO\n\n* [x] Improve default to dynamically change using [color-channel](http://lesscss.org/functions/#color-channel)?\n* [ ] To highlight whole word except prefix matched ones.\n",
+  "metadata": {
+    "name": "auto-highlight",
+    "main": "./lib/main",
+    "version": "0.14.0",
+    "description": "Highlight text automatically on cursor(even without selection).",
+    "repository": "https://github.com/davideuler/atom-auto-highlight",
+    "license": "MIT",
+    "engines": {
+      "atom": "^1.13.0-beta1"
+    },
+    "configSchema": {
+      "decorate": {
+        "order": 0,
+        "type": "string",
+        "default": "underline",
+        "enum": [
+          "underline",
+          "box",
+          "highlight"
+        ],
+        "description": "Decoration style for highlight"
+      },
+      "highlightSelection": {
+        "order": 1,
+        "type": "boolean",
+        "default": true,
+        "title": "Highlight Selection"
+      },
+      "highlightSelectionMinimumLength": {
+        "order": 2,
+        "type": "integer",
+        "default": 2,
+        "minimum": 1,
+        "description": "Minimum length of selection to be highlight"
+      },
+      "highlightSelectionMaxNumberOfWord": {
+        "order": 2,
+        "type": "integer",
+        "default": 2,
+        "minimum": 1,
+        "description": "Max number of words highlighted before cleared"
+      },
+      "highlightSelectionExcludeScopes": {
+        "order": 3,
+        "default": [
+          "vim-mode-plus.visual-mode.blockwise"
+        ],
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "highlightSelectionDelay": {
+        "order": 4,
+        "type": "integer",
+        "default": 100,
+        "description": "Delay(ms) before start to highlight selection when selection changed"
+      },
+      "displayCountOnStatusBar": {
+        "order": 5,
+        "type": "boolean",
+        "default": true,
+        "description": "Show found count on StatusBar"
+      },
+      "countDisplayPosition": {
+        "order": 6,
+        "type": "string",
+        "default": "Left",
+        "enum": [
+          "Left",
+          "Right"
+        ]
+      },
+      "countDisplayPriority": {
+        "order": 7,
+        "type": "integer",
+        "default": 120,
+        "description": "Lower priority get closer position to the edges of the window"
+      },
+      "countDisplayStyles": {
+        "order": 8,
+        "type": "string",
+        "default": "icon icon-location",
+        "description": "Style class for count span element. See `styleguide:show`."
+      }
+    },
+    "providedServices": {
+      "auto-highlight": {
+        "description": "auto-highlight events",
+        "versions": {
+          "1.0.0": "provideQuickHighlight"
+        }
+      }
+    },
+    "consumedServices": {
+      "status-bar": {
+        "versions": {
+          "^1.0.0": "consumeStatusBar"
+        }
+      },
+      "vim-mode-plus": {
+        "versions": {
+          "^0.1.0": "consumeVim"
+        }
+      }
+    },
+    "dependencies": {
+      "underscore-plus": "^1.6.6"
+    },
+    "devDependencies": {
+      "prettier": "^1.10.2",
+      "standard": "^10.0.3"
+    },
+    "scripts": {
+      "test": "apm test",
+      "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+      "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+      "lint": "standard lib/*.js lib/**/*.js spec/*.js"
+    },
+    "standard": {
+      "env": {
+        "atomtest": true,
+        "browser": true,
+        "jasmine": true,
+        "node": true
+      },
+      "globals": [
+        "atom"
+      ],
+      "ignore": [
+        "spec/fixtures/*"
+      ]
+    }
+  }
+}

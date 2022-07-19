@@ -1,0 +1,1449 @@
+{
+  "name": "todo-show",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrodalgaard/atom-todo-show"
+  },
+  "downloads": 564202,
+  "stargazers_count": 1122,
+  "releases": {
+    "latest": "2.3.2"
+  },
+  "versions": {
+    "2.3.2": {
+      "name": "todo-show",
+      "version": "2.3.2",
+      "main": "./lib/main",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">1.17.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "event-kit": "^2.3.0",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.3",
+        "underscore-plus": "^1.6.6"
+      },
+      "deserializers": {
+        "todo-show/todo-view": "deserializeTodoView"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "configSchema": {
+        "autoRefresh": {
+          "type": "boolean",
+          "default": true
+        },
+        "findTheseTodos": {
+          "description": "An array of todo types used by the search regex.",
+          "type": "array",
+          "default": [
+            "TODO",
+            "FIXME",
+            "CHANGED",
+            "XXX",
+            "IDEA",
+            "HACK",
+            "NOTE",
+            "REVIEW",
+            "NB",
+            "BUG",
+            "QUESTION",
+            "COMBAK",
+            "TEMP"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "findUsingRegex": {
+          "description": "Regex string used to find all your todos. `${TODOS}` is replaced with `FindTheseTodos` from above.",
+          "type": "string",
+          "default": "/\\b(${TODOS})[:;.,]?\\d*($|\\s.*$|[\\{\\[\\(].+$)/g"
+        },
+        "ignoreThesePaths": {
+          "description": "Similar to `.gitignore` (remember to use `/` on Mac/Linux and `\\` on Windows for subdirectories).",
+          "type": "array",
+          "default": [
+            "node_modules",
+            "vendor",
+            "bower_components",
+            "*.pdf"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "showInTable": {
+          "description": "An array of properties to show for each todo in table.",
+          "type": "array",
+          "default": [
+            "Text",
+            "Type",
+            "Path"
+          ]
+        },
+        "sortBy": {
+          "type": "string",
+          "default": "Text",
+          "enum": [
+            "All",
+            "Text",
+            "Type",
+            "Range",
+            "Line",
+            "Regex",
+            "Path",
+            "File",
+            "Tags",
+            "Id",
+            "Project"
+          ]
+        },
+        "sortAscending": {
+          "type": "boolean",
+          "default": true
+        },
+        "exportAs": {
+          "type": "string",
+          "default": "List",
+          "enum": [
+            "List",
+            "Table"
+          ]
+        },
+        "statusBarIndicator": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/2.3.2/tarball"
+      }
+    },
+    "2.3.0": {
+      "name": "todo-show",
+      "version": "2.3.0",
+      "main": "./lib/main",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">1.17.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "event-kit": "^2.3.0",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.3",
+        "underscore-plus": "^1.6.6"
+      },
+      "deserializers": {
+        "todo-show/todo-view": "deserializeTodoView"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "configSchema": {
+        "autoRefresh": {
+          "type": "boolean",
+          "default": true
+        },
+        "findTheseTodos": {
+          "description": "An array of todo types used by the search regex.",
+          "type": "array",
+          "default": [
+            "TODO",
+            "FIXME",
+            "CHANGED",
+            "XXX",
+            "IDEA",
+            "HACK",
+            "NOTE",
+            "REVIEW",
+            "NB",
+            "BUG",
+            "QUESTION",
+            "COMBAK",
+            "TEMP"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "findUsingRegex": {
+          "description": "Regex string used to find all your todos. `${TODOS}` is replaced with `FindTheseTodos` from above.",
+          "type": "string",
+          "default": "/\\b(${TODOS})[:;.,]?\\d*($|\\s.*$|[\\{\\[\\(].+$)/g"
+        },
+        "ignoreThesePaths": {
+          "description": "Similar to `.gitignore` (remember to use `/` on Mac/Linux and `\\` on Windows for subdirectories).",
+          "type": "array",
+          "default": [
+            "node_modules",
+            "vendor",
+            "bower_components",
+            "*.pdf"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "showInTable": {
+          "description": "An array of properties to show for each todo in table.",
+          "type": "array",
+          "default": [
+            "Text",
+            "Type",
+            "Path"
+          ]
+        },
+        "sortBy": {
+          "type": "string",
+          "default": "Text",
+          "enum": [
+            "All",
+            "Text",
+            "Type",
+            "Range",
+            "Line",
+            "Regex",
+            "Path",
+            "File",
+            "Tags",
+            "Id",
+            "Project"
+          ]
+        },
+        "sortAscending": {
+          "type": "boolean",
+          "default": true
+        },
+        "exportAs": {
+          "type": "string",
+          "default": "List",
+          "enum": [
+            "List",
+            "Table"
+          ]
+        },
+        "statusBarIndicator": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/2.3.0/tarball"
+      }
+    },
+    "2.2.0": {
+      "name": "todo-show",
+      "version": "2.2.0",
+      "main": "./lib/main",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">1.17.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "event-kit": "^2.3.0",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.3",
+        "underscore-plus": "^1.6.6"
+      },
+      "deserializers": {
+        "todo-show/todo-view": "deserializeTodoView"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "configSchema": {
+        "autoRefresh": {
+          "type": "boolean",
+          "default": true
+        },
+        "findTheseTodos": {
+          "description": "An array of todo types used by the search regex.",
+          "type": "array",
+          "default": [
+            "TODO",
+            "FIXME",
+            "CHANGED",
+            "XXX",
+            "IDEA",
+            "HACK",
+            "NOTE",
+            "REVIEW",
+            "NB",
+            "BUG",
+            "QUESTION",
+            "COMBAK",
+            "TEMP"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "findUsingRegex": {
+          "description": "Regex string used to find all your todos. `${TODOS}` is replaced with `FindTheseTodos` from above.",
+          "type": "string",
+          "default": "/\\b(${TODOS})[:;.,]?\\d*($|\\s.*$|[\\{\\[\\(].+$)/g"
+        },
+        "ignoreThesePaths": {
+          "description": "Similar to `.gitignore` (remember to use `/` on Mac/Linux and `\\` on Windows for subdirectories).",
+          "type": "array",
+          "default": [
+            "node_modules",
+            "vendor",
+            "bower_components",
+            "*.pdf"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "showInTable": {
+          "description": "An array of properties to show for each todo in table.",
+          "type": "array",
+          "default": [
+            "Text",
+            "Type",
+            "Path"
+          ]
+        },
+        "sortBy": {
+          "type": "string",
+          "default": "Text",
+          "enum": [
+            "All",
+            "Text",
+            "Type",
+            "Range",
+            "Line",
+            "Regex",
+            "Path",
+            "File",
+            "Tags",
+            "Id",
+            "Project"
+          ]
+        },
+        "sortAscending": {
+          "type": "boolean",
+          "default": true
+        },
+        "saveOutputAs": {
+          "type": "string",
+          "default": "List",
+          "enum": [
+            "List",
+            "Table"
+          ]
+        },
+        "statusBarIndicator": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/2.2.0/tarball"
+      }
+    },
+    "2.1.0": {
+      "name": "todo-show",
+      "version": "2.1.0",
+      "main": "./lib/main",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">1.17.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "event-kit": "^2.3.0",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.3",
+        "underscore-plus": "^1.6.6"
+      },
+      "deserializers": {
+        "todo-show/todo-view": "deserializeTodoView"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "configSchema": {
+        "autoRefresh": {
+          "type": "boolean",
+          "default": true
+        },
+        "findTheseTodos": {
+          "description": "An array of todo types used by the search regex.",
+          "type": "array",
+          "default": [
+            "TODO",
+            "FIXME",
+            "CHANGED",
+            "XXX",
+            "IDEA",
+            "HACK",
+            "NOTE",
+            "REVIEW",
+            "NB",
+            "BUG",
+            "QUESTION",
+            "COMBAK",
+            "TEMP"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "findUsingRegex": {
+          "description": "Regex string used to find all your todos. `${TODOS}` is replaced with `FindTheseTodos` from above.",
+          "type": "string",
+          "default": "/\\b(${TODOS})[:;.,]?\\d*($|\\s.*$|[\\{\\[\\(].+$)/g"
+        },
+        "ignoreThesePaths": {
+          "description": "Similar to `.gitignore` (remember to use `/` on Mac/Linux and `\\` on Windows for subdirectories).",
+          "type": "array",
+          "default": [
+            "node_modules",
+            "vendor",
+            "bower_components",
+            "*.pdf"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "showInTable": {
+          "description": "An array of properties to show for each todo in table.",
+          "type": "array",
+          "default": [
+            "Text",
+            "Type",
+            "Path"
+          ]
+        },
+        "sortBy": {
+          "type": "string",
+          "default": "Text",
+          "enum": [
+            "All",
+            "Text",
+            "Type",
+            "Range",
+            "Line",
+            "Regex",
+            "Path",
+            "File",
+            "Tags",
+            "Id",
+            "Project"
+          ]
+        },
+        "sortAscending": {
+          "type": "boolean",
+          "default": true
+        },
+        "saveOutputAs": {
+          "type": "string",
+          "default": "List",
+          "enum": [
+            "List",
+            "Table"
+          ]
+        },
+        "statusBarIndicator": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/2.1.0/tarball"
+      }
+    },
+    "2.0.0": {
+      "name": "todo-show",
+      "version": "2.0.0",
+      "main": "./lib/main",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">1.17.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "event-kit": "^2.3.0",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.3",
+        "underscore-plus": "^1.6.6"
+      },
+      "deserializers": {
+        "todo-show/todo-view": "deserializeTodoView"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "configSchema": {
+        "findTheseTodos": {
+          "description": "An array of todo types used by the search regex.",
+          "type": "array",
+          "default": [
+            "TODO",
+            "FIXME",
+            "CHANGED",
+            "XXX",
+            "IDEA",
+            "HACK",
+            "NOTE",
+            "REVIEW",
+            "NB",
+            "BUG",
+            "QUESTION",
+            "COMBAK",
+            "TEMP"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "findUsingRegex": {
+          "description": "Regex string used to find all your todos. `${TODOS}` is replaced with `FindTheseTodos` from above.",
+          "type": "string",
+          "default": "/\\b(${TODOS})[:;.,]?\\d*($|\\s.*$|[\\{\\[\\(].+$)/g"
+        },
+        "ignoreThesePaths": {
+          "description": "Similar to `.gitignore` (remember to use `/` on Mac/Linux and `\\` on Windows for subdirectories).",
+          "type": "array",
+          "default": [
+            "node_modules",
+            "vendor",
+            "bower_components"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "showInTable": {
+          "description": "An array of properties to show for each todo in table.",
+          "type": "array",
+          "default": [
+            "Text",
+            "Type",
+            "Path"
+          ]
+        },
+        "sortBy": {
+          "type": "string",
+          "default": "Text",
+          "enum": [
+            "All",
+            "Text",
+            "Type",
+            "Range",
+            "Line",
+            "Regex",
+            "Path",
+            "File",
+            "Tags",
+            "Id",
+            "Project"
+          ]
+        },
+        "sortAscending": {
+          "type": "boolean",
+          "default": true
+        },
+        "saveOutputAs": {
+          "type": "string",
+          "default": "List",
+          "enum": [
+            "List",
+            "Table"
+          ]
+        },
+        "statusBarIndicator": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/2.0.0/tarball"
+      }
+    },
+    "1.11.0": {
+      "name": "todo-show",
+      "version": "1.11.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-workspace",
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files",
+          "todo-show:find-in-active-file"
+        ]
+      },
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.3",
+        "underscore-plus": "^1.6.6"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/1.11.0/tarball"
+      }
+    },
+    "1.10.0": {
+      "name": "todo-show",
+      "version": "1.10.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-workspace",
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files",
+          "todo-show:find-in-active-file"
+        ]
+      },
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.3",
+        "underscore-plus": "^1.6.6"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/1.10.0/tarball"
+      }
+    },
+    "1.9.0": {
+      "name": "todo-show",
+      "version": "1.9.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-workspace",
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files",
+          "todo-show:find-in-active-file"
+        ]
+      },
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.1",
+        "underscore-plus": "^1.6.6"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/1.9.0/tarball"
+      }
+    },
+    "1.8.0": {
+      "name": "todo-show",
+      "version": "1.8.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-workspace",
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files",
+          "todo-show:find-in-active-file"
+        ]
+      },
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.1",
+        "underscore-plus": "^1.6.6"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/1.8.0/tarball"
+      }
+    },
+    "1.7.0": {
+      "name": "todo-show",
+      "version": "1.7.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-workspace",
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files"
+        ]
+      },
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.1",
+        "underscore-plus": "^1.6.6"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/1.7.0/tarball"
+      }
+    },
+    "1.6.0": {
+      "name": "todo-show",
+      "version": "1.6.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-workspace",
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files"
+        ]
+      },
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.1",
+        "underscore-plus": "^1.6.6"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/1.6.0/tarball"
+      }
+    },
+    "1.5.0": {
+      "name": "todo-show",
+      "version": "1.5.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-workspace",
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files"
+        ]
+      },
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.1",
+        "underscore-plus": "^1.6.6"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/1.5.0/tarball"
+      }
+    },
+    "1.4.0": {
+      "name": "todo-show",
+      "version": "1.4.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files"
+        ]
+      },
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.1",
+        "underscore-plus": "^1.6.6"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/1.4.0/tarball"
+      }
+    },
+    "1.3.0": {
+      "name": "todo-show",
+      "version": "1.3.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files"
+        ]
+      },
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.1",
+        "underscore-plus": "^1.6.6"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/1.3.0/tarball"
+      }
+    },
+    "1.2.0": {
+      "name": "todo-show",
+      "version": "1.2.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files"
+        ]
+      },
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/1.2.0/tarball"
+      }
+    },
+    "1.1.0": {
+      "name": "todo-show",
+      "version": "1.1.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files"
+        ]
+      },
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/1.1.0/tarball"
+      }
+    },
+    "1.0.1": {
+      "name": "todo-show",
+      "version": "1.0.1",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files"
+        ]
+      },
+      "repository": "https://github.com/mrodalgaard/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "sortablejs": "^1.4.2",
+        "temp": "^0.8.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/1.0.1/tarball"
+      }
+    },
+    "0.16.0": {
+      "name": "todo-show",
+      "version": "0.16.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files"
+        ]
+      },
+      "repository": "https://github.com/jamischarles/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "q": "^1.0.1",
+        "temp": "^0.8.1",
+        "underscore-plus": "^1.6.6"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/0.16.0/tarball"
+      }
+    },
+    "0.15.0": {
+      "name": "todo-show",
+      "version": "0.15.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files"
+        ]
+      },
+      "repository": "https://github.com/jamischarles/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "ignore": "^2.2.15",
+        "q": "^1.0.1",
+        "slash": "^1.0.0",
+        "temp": "^0.8.1",
+        "underscore-plus": "^1.6.6"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/0.15.0/tarball"
+      }
+    },
+    "0.14.0": {
+      "name": "todo-show",
+      "version": "0.14.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files"
+        ]
+      },
+      "repository": "https://github.com/jamischarles/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "ignore": "^2.2.15",
+        "q": "^1.0.1",
+        "slash": "^1.0.0",
+        "temp": "^0.8.1",
+        "underscore-plus": "^1.6.6"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/0.14.0/tarball"
+      }
+    },
+    "0.13.0": {
+      "name": "todo-show",
+      "version": "0.13.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files"
+        ]
+      },
+      "repository": "https://github.com/jamischarles/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "ignore": "^2.2.15",
+        "q": "^1.0.1",
+        "slash": "^1.0.0",
+        "temp": "^0.8.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/0.13.0/tarball"
+      }
+    },
+    "0.12.0": {
+      "name": "todo-show",
+      "version": "0.12.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+      "activationCommands": {
+        "atom-workspace": [
+          "todo-show:find-in-project",
+          "todo-show:find-in-open-files"
+        ]
+      },
+      "repository": "https://github.com/jamischarles/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "ignore": "^2.2.15",
+        "q": "^1.0.1",
+        "slash": "^1.0.0",
+        "temp": "^0.8.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/0.12.0/tarball"
+      }
+    },
+    "0.11.0": {
+      "name": "todo-show",
+      "version": "0.11.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs in your project.",
+      "activationCommands": {
+        "atom-workspace": "todo-show:find-in-project"
+      },
+      "repository": "https://github.com/jamischarles/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "ignore": "^2.2.15",
+        "loophole": "^1.0.0",
+        "q": "^1.0.1",
+        "slash": "^1.0.0",
+        "temp": "^0.8.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/0.11.0/tarball"
+      }
+    },
+    "0.10.0": {
+      "name": "todo-show",
+      "version": "0.10.0",
+      "main": "./lib/show-todo",
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs in your project.",
+      "activationCommands": {
+        "atom-workspace": "todo-show:find-in-project"
+      },
+      "repository": "https://github.com/jamischarles/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-space-pen-views": "^2.0.3",
+        "fs-plus": "2.x",
+        "ignore": "^2.2.15",
+        "loophole": "^1.0.0",
+        "q": "^1.0.1",
+        "slash": "^1.0.0",
+        "temp": "^0.8.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/0.10.0/tarball"
+      }
+    },
+    "0.9.0": {
+      "name": "todo-show",
+      "main": "./lib/show-todo",
+      "version": "0.9.0",
+      "private": true,
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs in your project.",
+      "activationCommands": {
+        "atom-workspace": "todo-show:find-in-project"
+      },
+      "repository": "https://github.com/jamischarles/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "fs-plus": "2.x",
+        "dust.js": "~0.1.0",
+        "underscore": "^1.6.0",
+        "q": "^1.0.1",
+        "loophole": "^1.0.0",
+        "jquery": "^2",
+        "atom-space-pen-views": "^2.0.3",
+        "ignore": "^2.2.15",
+        "slash": "^1.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/0.9.0/tarball"
+      }
+    },
+    "0.8.0": {
+      "name": "todo-show",
+      "main": "./lib/show-todo",
+      "version": "0.8.0",
+      "private": true,
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs in your project.",
+      "activationEvents": [
+        "todo-show:find-in-project"
+      ],
+      "repository": "https://github.com/jamischarles/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "fs-plus": "2.x",
+        "dust.js": "~0.1.0",
+        "underscore": "^1.6.0",
+        "q": "^1.0.1",
+        "loophole": "^1.0.0",
+        "jquery": "^2",
+        "atom-space-pen-views": "^2.0.3",
+        "ignore": "^2.2.15",
+        "slash": "^1.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/0.8.0/tarball"
+      }
+    },
+    "0.7.0": {
+      "name": "todo-show",
+      "main": "./lib/show-todo",
+      "version": "0.7.0",
+      "private": true,
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs in your project.",
+      "activationEvents": [
+        "todo-show:find-in-project"
+      ],
+      "repository": "https://github.com/jamischarles/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "fs-plus": "2.x",
+        "dust.js": "~0.1.0",
+        "underscore": "^1.6.0",
+        "q": "^1.0.1",
+        "loophole": "^1.0.0",
+        "jquery": "^2",
+        "atom-space-pen-views": "^2.0.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/0.7.0/tarball"
+      }
+    },
+    "0.6.1": {
+      "name": "todo-show",
+      "main": "./lib/show-todo",
+      "version": "0.6.1",
+      "private": true,
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs in your project.",
+      "activationEvents": [
+        "todo-show:find-in-project"
+      ],
+      "repository": "https://github.com/jamischarles/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "fs-plus": "2.x",
+        "dust.js": "~0.1.0",
+        "underscore": "^1.6.0",
+        "q": "^1.0.1",
+        "loophole": "^1.0.0",
+        "jquery": "^2",
+        "atom-space-pen-views": "^2.0.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/0.6.1/tarball"
+      }
+    },
+    "0.6.0": {
+      "name": "todo-show",
+      "main": "./lib/show-todo",
+      "version": "0.6.0",
+      "private": true,
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs in your project.",
+      "activationEvents": [
+        "todo-show:find-in-project"
+      ],
+      "repository": "https://github.com/jamischarles/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "fs-plus": "2.x",
+        "dust.js": "~0.1.0",
+        "underscore": "^1.6.0",
+        "q": "^1.0.1",
+        "loophole": "^1.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/0.6.0/tarball"
+      }
+    },
+    "0.5.1": {
+      "name": "todo-show",
+      "main": "./lib/show-todo",
+      "version": "0.5.1",
+      "private": true,
+      "description": "Finds all the TODOs, FIXMEs, CHANGEDs in your project.",
+      "activationEvents": [
+        "todo-show:find-in-project"
+      ],
+      "repository": "https://github.com/jamischarles/atom-todo-show",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "fs-plus": "2.x",
+        "dust.js": "~0.1.0",
+        "underscore": "^1.6.0",
+        "q": "^1.0.1",
+        "loophole": "^1.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/todo-show/versions/0.5.1/tarball"
+      }
+    }
+  },
+  "readme": "# Todo Show Package [![Build Status](https://travis-ci.org/mrodalgaard/atom-todo-show.svg)](https://travis-ci.org/mrodalgaard/atom-todo-show)\n\nFinds all TODO, FIXME, CHANGED, XXX, IDEA, HACK, NOTE, REVIEW, NB, BUG, QUESTION, COMBAK, TEMP comments in your project and shows them in a nice overview list.\n\nAttention: This package searches for todos. For todo word highlighting see [language-todo](https://github.com/atom/language-todo).\n\nOpen todo list using command palette `Todo Show: Find In Workspace`, `Todo Show: Find In Project` or `Todo Show: Find In Open Files`. Keyboard shortcuts <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>T</kbd> on Mac OSX or <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>T</kbd> on Windows and Linux.\n\nInstall with `apm install todo-show` or use *Install Packages* from *Atom Settings*.\n\n![todo-show-package](https://raw.githubusercontent.com/mrodalgaard/atom-todo-show/master/screenshots/preview.png)\n\n## Search Scopes\n\nFive different scopes are available to narrow down your search for todos. Change scope using the button at the top of the todo view or use the corresponding command.\n* __Workspace__: Searches all open projects.\n* __Project__: Searches active project (a project is marked as active when you open a file it contains).\n* __Open Files__: Searches currently open files.\n* __Active File__: Searches last active file only.\n* __Custom__: Tree view has a context menu to search for todos in the selected folder or file.\n\n## Configuration\n\nName                  | Default                                 | Description\n----------------------|-----------------------------------------|------------\n_autoRefresh_         | `true`                                  | Automatic refresh of todo list after saving\n_findTheseTodos_      | `['FIXME', 'TODO', 'CHANGED', 'XXX', 'IDEA', 'HACK', 'NOTE', 'REVIEW', 'NB', 'BUG', 'QUESTION', 'COMBAK', 'TEMP']` | An array of todo types used by the search regex\n_findUsingRegex_      | See 'Regular Expression Search' section | Regex string used to find all your todos. `${TODOS}` is replaced with `FindTheseTodos` from above\n_ignoreThesePaths_    | `['node_modules', 'vendor', 'bower_components', '*.pdf']` | An array of files / folders to exclude (syntax according to [scandal](https://github.com/atom/scandal) used internally by Atom). <br> ⚬ _globally_: `Ignored Names` from atom core settings. <br> ⚬ _locally_: Ignores anything in your `.gitignore` file, if the current project is a valid git repository and atom core setting `Exclude VCS Ignored Paths` is checked.\n_showInTable_         | `['Text', 'Type', 'Path']`              | An array of properties to show for each todo in table\n_sortBy_              | `'Text'`                                | Sort table by this todo property\n_sortAscending_       | `true`                                  | Sort table in ascending or descending order\n_exportAs_        | `'List'`                                | Choose which format to use for exported markdown\n_statusBarIndicator_  | `false`                                 | Show todo count in status bar (this is only shown and updated when the 'Todo Show' tab is open)\n\n## Regular Expression Search\n\nThe regexes in `findTheseRegexes` are used for searching the workspace for todo matches. They are configurable to match the users specific needs.\n\nDefault regex string: `'/\\\\b(${TODOS})[:;.,]?\\\\d*($|\\\\s.*$|\\\\(.*$)/g'`\n* `\\b` start at word boundary\n* `${TODOS}` todo type match (is replaced with `findTheseTodos`)\n* `[:;.,]?` optional separator after type\n* `\\d*` optional digits for supporting [imdone](http://imdone.io/) sorting\n* `$` to end todos without additional text (newline)\n* Or `\\s.*$` to match the todo text with a non-optional space in front\n* Or an immediate parentheses, `\\(.*$`, to support [Google style guide IDs](https://google.github.io/styleguide/cppguide.html#TODO_Comments)\n* Because Atom config only accepts strings all `\\` characters are also escaped\n\nTodos can be tagged using hashtag (e.g. `TODO: do this #object #profile`), which is presented in the tags column.\n\nTo extend the default todo types and search regex, the existing config needs to be copied into your config.cson.\n\n## Credits\nOriginally created by [Jamis Charles](https://github.com/jamischarles)\n\nNow maintained by [Martin Rodalgaard](https://github.com/mrodalgaard)\n",
+  "metadata": {
+    "name": "todo-show",
+    "version": "2.3.2",
+    "main": "./lib/main",
+    "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
+    "repository": "https://github.com/mrodalgaard/atom-todo-show",
+    "license": "MIT",
+    "engines": {
+      "atom": ">1.17.0"
+    },
+    "dependencies": {
+      "atom-space-pen-views": "^2.0.3",
+      "event-kit": "^2.3.0",
+      "fs-plus": "2.x",
+      "sortablejs": "^1.4.2",
+      "temp": "^0.8.3",
+      "underscore-plus": "^1.6.6"
+    },
+    "deserializers": {
+      "todo-show/todo-view": "deserializeTodoView"
+    },
+    "consumedServices": {
+      "status-bar": {
+        "versions": {
+          "^1.0.0": "consumeStatusBar"
+        }
+      }
+    },
+    "configSchema": {
+      "autoRefresh": {
+        "type": "boolean",
+        "default": true
+      },
+      "findTheseTodos": {
+        "description": "An array of todo types used by the search regex.",
+        "type": "array",
+        "default": [
+          "TODO",
+          "FIXME",
+          "CHANGED",
+          "XXX",
+          "IDEA",
+          "HACK",
+          "NOTE",
+          "REVIEW",
+          "NB",
+          "BUG",
+          "QUESTION",
+          "COMBAK",
+          "TEMP"
+        ],
+        "items": {
+          "type": "string"
+        }
+      },
+      "findUsingRegex": {
+        "description": "Regex string used to find all your todos. `${TODOS}` is replaced with `FindTheseTodos` from above.",
+        "type": "string",
+        "default": "/\\b(${TODOS})[:;.,]?\\d*($|\\s.*$|[\\{\\[\\(].+$)/g"
+      },
+      "ignoreThesePaths": {
+        "description": "Similar to `.gitignore` (remember to use `/` on Mac/Linux and `\\` on Windows for subdirectories).",
+        "type": "array",
+        "default": [
+          "node_modules",
+          "vendor",
+          "bower_components",
+          "*.pdf"
+        ],
+        "items": {
+          "type": "string"
+        }
+      },
+      "showInTable": {
+        "description": "An array of properties to show for each todo in table.",
+        "type": "array",
+        "default": [
+          "Text",
+          "Type",
+          "Path"
+        ]
+      },
+      "sortBy": {
+        "type": "string",
+        "default": "Text",
+        "enum": [
+          "All",
+          "Text",
+          "Type",
+          "Range",
+          "Line",
+          "Regex",
+          "Path",
+          "File",
+          "Tags",
+          "Id",
+          "Project"
+        ]
+      },
+      "sortAscending": {
+        "type": "boolean",
+        "default": true
+      },
+      "exportAs": {
+        "type": "string",
+        "default": "List",
+        "enum": [
+          "List",
+          "Table"
+        ]
+      },
+      "statusBarIndicator": {
+        "type": "boolean",
+        "default": false
+      }
+    }
+  }
+}

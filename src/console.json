@@ -1,0 +1,805 @@
+{
+  "name": "console",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/idleberg/atom-console"
+  },
+  "downloads": 1321,
+  "stargazers_count": 2,
+  "releases": {
+    "latest": "0.6.0"
+  },
+  "versions": {
+    "0.6.0": {
+      "name": "console",
+      "version": "0.6.0",
+      "description": "Service provider for read-only console panels",
+      "main": "./lib/console",
+      "typings": "./types",
+      "keywords": [],
+      "repository": "https://github.com/idleberg/atom-console",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.56.0 <2.0.0"
+      },
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --no-error-on-unmatched-pattern ./src/**/*.js",
+        "lint:json": "jsonlint keymaps/*.json menus/*.json --quiet",
+        "lint:styles": "stylelint --allow-empty-input styles/*.{css,less}",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config"
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "providedServices": {
+        "console": {
+          "description": "Read only log console",
+          "versions": {
+            "1.0.0": "provideConsole"
+          }
+        },
+        "console-panel": {
+          "description": "Read only log console",
+          "versions": {
+            "1.0.0": "provideConsole"
+          }
+        }
+      },
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "event-kit": "^2.2.0",
+        "svelte": "^3.37.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.16",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/plugin-proposal-optional-chaining": "^7.13.12",
+        "@babel/preset-env": "^7.13.15",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@tsconfig/svelte": "^1.0.10",
+        "@types/atom": "^1.40.10",
+        "@types/event-kit": "^2.4.0",
+        "@types/node": "^14.14.41",
+        "@typescript-eslint/eslint-plugin": "^4.22.0",
+        "@typescript-eslint/parser": "^4.22.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.24.0",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": ">=4 <5",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^10.5.0",
+        "node-sass": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "remark": "^13.0.0",
+        "remark-lint": "^8.0.0",
+        "remark-preset-prettier": "^0.4.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.32.1",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-svelte": "^7.1.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.7.2",
+        "stylelint-config-standard": "^21.0.0",
+        "svelte-preprocess": "^4.4.2",
+        "tslib": "^2.2.0",
+        "typescript": "^4.2.4"
+      },
+      "prettier": {
+        "singleQuote": true,
+        "tabWidth": 2
+      },
+      "remarkConfig": {
+        "plugins": [
+          "preset-lint-recommended",
+          "remark-preset-prettier"
+        ]
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "echo lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.js": "eslint --cache --fix",
+        "*.json": "jsonlint --quiet",
+        "*.{js,md,yml}": "prettierx --write",
+        "*.less": "stylelint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/console/versions/0.6.0/tarball"
+      }
+    },
+    "0.5.0": {
+      "name": "console",
+      "version": "0.5.0",
+      "description": "Service provider for read-only console panels",
+      "main": "./lib/console",
+      "typings": "./types",
+      "keywords": [],
+      "repository": "https://github.com/idleberg/atom-console",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.56.0 <2.0.0"
+      },
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --no-error-on-unmatched-pattern ./src/**/*.js",
+        "lint:styles": "stylelint --allow-empty-input styles/*.{css,less}",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config"
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "providedServices": {
+        "console": {
+          "description": "Read only log console",
+          "versions": {
+            "1.0.0": "provideConsole"
+          }
+        },
+        "console-panel": {
+          "description": "Read only log console",
+          "versions": {
+            "1.0.0": "provideConsole"
+          }
+        }
+      },
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "event-kit": "^2.2.0",
+        "svelte": "^3.32.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.12.10",
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/plugin-proposal-optional-chaining": "^7.12.7",
+        "@babel/preset-env": "^7.12.16",
+        "@rollup/plugin-commonjs": "^17.1.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-typescript": "^8.2.0",
+        "core-js": "^3.10.1",
+        "eslint": "^7.12.1",
+        "eslint-config-recommended": "^4.1.0",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": "^4.3.0",
+        "lint-staged": "^10.5.0",
+        "node-sass": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "remark": "^13.0.0",
+        "remark-lint": "^8.0.0",
+        "remark-preset-prettier": "^0.4.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.32.1",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-svelte": "^7.1.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.7.2",
+        "stylelint-config-standard": "^20.0.0",
+        "svelte-preprocess": "^4.6.9"
+      },
+      "prettier": {
+        "singleQuote": true,
+        "tabWidth": 2
+      },
+      "remarkConfig": {
+        "plugins": [
+          "preset-lint-recommended",
+          "remark-preset-prettier"
+        ]
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "echo lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.js": "eslint --cache --fix",
+        "*.{js,md,yml}": "prettierx --write",
+        "*.less": "stylelint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/console/versions/0.5.0/tarball"
+      }
+    },
+    "0.4.4": {
+      "name": "console",
+      "version": "0.4.4",
+      "description": "Service provider for read-only console panels",
+      "main": "./lib/console",
+      "typings": "./types",
+      "keywords": [],
+      "repository": "https://github.com/idleberg/atom-console",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.56.0 <2.0.0"
+      },
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --no-error-on-unmatched-pattern ./src/**/*.js",
+        "lint:styles": "stylelint --allow-empty-input styles/*.{css,less}",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config"
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "providedServices": {
+        "console": {
+          "description": "Read only log console",
+          "versions": {
+            "1.0.0": "provideConsole"
+          }
+        },
+        "console-panel": {
+          "description": "Read only log console",
+          "versions": {
+            "1.0.0": "provideConsole"
+          }
+        }
+      },
+      "dependencies": {
+        "event-kit": "^2.2.0",
+        "svelte": "^3.32.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.12.10",
+        "@babel/plugin-proposal-optional-chaining": "^7.12.7",
+        "@babel/preset-env": "^7.12.16",
+        "@rollup/plugin-commonjs": "^17.1.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-typescript": "^8.2.0",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^7.12.1",
+        "eslint-config-recommended": "^4.1.0",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": "^4.3.0",
+        "lint-staged": "^10.5.0",
+        "node-sass": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "remark": "^13.0.0",
+        "remark-lint": "^8.0.0",
+        "remark-preset-prettier": "^0.4.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.32.1",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-svelte": "^7.1.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.7.2",
+        "stylelint-config-standard": "^20.0.0",
+        "svelte-preprocess": "^4.6.9"
+      },
+      "prettier": {
+        "singleQuote": true,
+        "tabWidth": 2
+      },
+      "remarkConfig": {
+        "plugins": [
+          "preset-lint-recommended",
+          "remark-preset-prettier"
+        ]
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "echo lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.js": "eslint --cache --fix",
+        "*.{js,md,yml}": "prettierx --write",
+        "*.less": "stylelint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/console/versions/0.4.4/tarball"
+      }
+    },
+    "0.4.3": {
+      "name": "console",
+      "version": "0.4.3",
+      "description": "Service provider for read-only console panels",
+      "main": "./lib/console",
+      "typings": "./types",
+      "keywords": [],
+      "repository": "https://github.com/idleberg/atom-console",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.56.0 <2.0.0"
+      },
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --no-error-on-unmatched-pattern ./src/**/*.js",
+        "lint:styles": "stylelint --allow-empty-input styles/*.{css,less}",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config"
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "providedServices": {
+        "console": {
+          "description": "Read only log console",
+          "versions": {
+            "1.0.0": "provideConsole"
+          }
+        },
+        "console-panel": {
+          "description": "Read only log console",
+          "versions": {
+            "1.0.0": "provideConsole"
+          }
+        }
+      },
+      "dependencies": {
+        "event-kit": "^2.2.0",
+        "svelte": "^3.32.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.12.10",
+        "@babel/plugin-proposal-optional-chaining": "^7.12.7",
+        "@babel/preset-env": "^7.12.16",
+        "@rollup/plugin-commonjs": "^17.1.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-typescript": "^8.2.0",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^7.12.1",
+        "eslint-config-recommended": "^4.1.0",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": "^4.3.0",
+        "lint-staged": "^10.5.0",
+        "node-sass": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "remark": "^13.0.0",
+        "remark-lint": "^8.0.0",
+        "remark-preset-prettier": "^0.4.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.32.1",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-svelte": "^7.1.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.7.2",
+        "stylelint-config-standard": "^20.0.0",
+        "svelte-preprocess": "^4.6.9"
+      },
+      "prettier": {
+        "singleQuote": true,
+        "tabWidth": 2
+      },
+      "remarkConfig": {
+        "plugins": [
+          "preset-lint-recommended",
+          "remark-preset-prettier"
+        ]
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "echo lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.js": "eslint --cache --fix",
+        "*.{js,md,yml}": "prettierx --write",
+        "*.less": "stylelint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/console/versions/0.4.3/tarball"
+      }
+    },
+    "0.4.2": {
+      "name": "console",
+      "version": "0.4.2",
+      "description": "Service provider for read-only console panels",
+      "main": "./lib/console",
+      "typings": "./types",
+      "keywords": [],
+      "repository": "https://github.com/idleberg/atom-console",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.56.0 <2.0.0"
+      },
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --no-error-on-unmatched-pattern ./src/**/*.js",
+        "lint:styles": "stylelint --allow-empty-input styles/*.{css,less}",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config"
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "providedServices": {
+        "console": {
+          "description": "Read only log console",
+          "versions": {
+            "1.0.0": "provideConsole"
+          }
+        },
+        "console-panel": {
+          "description": "Read only log console",
+          "versions": {
+            "1.0.0": "provideConsole"
+          }
+        }
+      },
+      "dependencies": {
+        "event-kit": "^2.2.0",
+        "svelte": "^3.32.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.12.10",
+        "@babel/plugin-proposal-optional-chaining": "^7.12.7",
+        "@babel/preset-env": "^7.12.16",
+        "@rollup/plugin-commonjs": "^17.1.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-typescript": "^8.2.0",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^7.12.1",
+        "eslint-config-recommended": "^4.1.0",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": "^4.3.0",
+        "lint-staged": "^10.5.0",
+        "node-sass": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "remark": "^13.0.0",
+        "remark-lint": "^8.0.0",
+        "remark-preset-prettier": "^0.4.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.32.1",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-svelte": "^7.1.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.7.2",
+        "stylelint-config-standard": "^20.0.0",
+        "svelte-preprocess": "^4.6.9"
+      },
+      "prettier": {
+        "singleQuote": true,
+        "tabWidth": 2
+      },
+      "remarkConfig": {
+        "plugins": [
+          "preset-lint-recommended",
+          "remark-preset-prettier"
+        ]
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "echo lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.js": "eslint --cache --fix",
+        "*.{js,md,yml}": "prettierx --write",
+        "*.less": "stylelint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/console/versions/0.4.2/tarball"
+      }
+    },
+    "0.4.1": {
+      "name": "console",
+      "version": "0.4.1",
+      "description": "Service provider for read-only console panels",
+      "main": "./lib/console",
+      "typings": "./types",
+      "keywords": [],
+      "repository": "https://github.com/idleberg/atom-console",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.56.0 <2.0.0"
+      },
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --no-error-on-unmatched-pattern ./src/**/*.js",
+        "lint:styles": "stylelint --allow-empty-input styles/*.{css,less}",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config"
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "providedServices": {
+        "console": {
+          "description": "Read only log console",
+          "versions": {
+            "1.0.0": "provideConsole"
+          }
+        },
+        "console-panel": {
+          "description": "Read only log console",
+          "versions": {
+            "1.0.0": "provideConsole"
+          }
+        }
+      },
+      "dependencies": {
+        "event-kit": "^2.2.0",
+        "svelte": "^3.32.3"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.12.10",
+        "@babel/plugin-proposal-optional-chaining": "^7.12.7",
+        "@babel/preset-env": "^7.12.16",
+        "@rollup/plugin-commonjs": "^17.1.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-typescript": "^8.2.0",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^7.12.1",
+        "eslint-config-recommended": "^4.1.0",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": "^4.3.0",
+        "lint-staged": "^10.5.0",
+        "node-sass": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "remark": "^13.0.0",
+        "remark-lint": "^8.0.0",
+        "remark-preset-prettier": "^0.4.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.32.1",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-svelte": "^7.1.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.7.2",
+        "stylelint-config-standard": "^20.0.0",
+        "svelte-preprocess": "^4.6.9"
+      },
+      "prettier": {
+        "singleQuote": true,
+        "tabWidth": 2
+      },
+      "remarkConfig": {
+        "plugins": [
+          "preset-lint-recommended",
+          "remark-preset-prettier"
+        ]
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "echo lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.js": "eslint --cache --fix",
+        "*.{js,md,yml}": "prettierx --write",
+        "*.less": "stylelint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/console/versions/0.4.1/tarball"
+      }
+    },
+    "0.4.0": {
+      "name": "console",
+      "version": "0.4.0",
+      "description": "Service provider for read-only console panels",
+      "main": "./lib/console",
+      "typings": "./types",
+      "keywords": [],
+      "repository": "https://github.com/idleberg/atom-console",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.56.0 <2.0.0"
+      },
+      "scripts": {
+        "analyze": "source-map-explorer lib/**/*.js",
+        "build": "rollup --config",
+        "dev": "npm run start",
+        "lint:code": "eslint --no-error-on-unmatched-pattern ./src/**/*.js",
+        "lint:styles": "stylelint --allow-empty-input styles/*.{css,less}",
+        "lint": "npm-run-all --parallel lint:*",
+        "prepublishOnly": "npm run build",
+        "start": "rollup --watch --config"
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "providedServices": {
+        "console-panel": {
+          "description": "Read only log console",
+          "versions": {
+            "1.0.0": "provideConsole"
+          }
+        }
+      },
+      "dependencies": {
+        "event-kit": "^2.2.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.12.10",
+        "@babel/plugin-proposal-optional-chaining": "^7.12.7",
+        "@babel/preset-env": "^7.12.16",
+        "@rollup/plugin-commonjs": "^17.1.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-typescript": "^8.2.0",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^7.12.1",
+        "eslint-config-recommended": "^4.1.0",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": "^4.3.0",
+        "lint-staged": "^10.5.0",
+        "node-sass": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "prettierx": "^0.18.0",
+        "remark": "^13.0.0",
+        "remark-lint": "^8.0.0",
+        "remark-preset-prettier": "^0.4.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.32.1",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-svelte": "^7.1.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "source-map-explorer": "^2.5.2",
+        "stylelint": "^13.7.2",
+        "stylelint-config-standard": "^20.0.0",
+        "svelte": "^3.32.3",
+        "svelte-preprocess": "^4.6.9"
+      },
+      "prettier": {
+        "singleQuote": true,
+        "tabWidth": 2
+      },
+      "remarkConfig": {
+        "plugins": [
+          "preset-lint-recommended",
+          "remark-preset-prettier"
+        ]
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "echo lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.js": "eslint --cache --fix",
+        "*.{js,md,yml}": "prettierx --write",
+        "*.less": "stylelint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/console/versions/0.4.0/tarball"
+      }
+    }
+  },
+  "readme": "# console\n\n> Service provider for read-only console panels\n\n[![apm](https://flat.badgen.net/apm/license/console)](https://atom.io/packages/console)\n[![apm](https://flat.badgen.net/apm/v/console)](https://atom.io/packages/console)\n[![apm](https://flat.badgen.net/apm/dl/console)](https://atom.io/packages/console)\n[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-console)](https://circleci.com/gh/idleberg/atom-console)\n[![David](https://flat.badgen.net/david/dep/idleberg/atom-console)](https://david-dm.org/idleberg/atom-console)\n\nThis package is a fork of `console-panel`, with a few key-differences:\n\n- uses Svelte for UI\n- deferred package activation\n- shows timestamp\n- filter by message type\n\n**Note:** This package is fully API-compatible to `console-panel`, so you can use it as a drop-in replacement\n\n![Screenshot](https://raw.github.com/idleberg/atom-console/master/screenshot.png)\n\n## Installation\n\n### apm\n\nInstall `console` from Atom's [Package Manager](http://flight-manual.atom.io/using-atom/sections/atom-packages/) or the command-line equivalent:\n\n`$ apm install console`\n\n### Using Git\n\nChange to your Atom packages directory:\n\n**Windows**\n\n```powershell\n# Powershell\n$ cd $Env:USERPROFILE\\.atom\\packages\n```\n\n```cmd\n:: Command Prompt\n$ cd %USERPROFILE%\\.atom\\packages\n```\n\n**Linux & macOS**\n\n```bash\n$ cd ~/.atom/packages/\n```\n\nClone repository as `console`:\n\n```bash\n$ git clone https://github.com/idleberg/atom-console console\n```\n\nInside the cloned directory, install dependencies using your preferred Node package manager:\n\n```bash\n$ yarn || npm install\n```\n\n## Usage\n\nThis package provides the service to that can be used by other packages. To consume it, add the following to your `package.json`:\n\n```json\n{\n  \"consumedServices\": {\n    \"console\": {\n      \"versions\": {\n        \"1.0.0\": \"consumeConsole\"\n      }\n    }\n  }\n}\n```\n\nNext up, you can consume the service in your package:\n\n```js\nconsumeConsole(consolePanel) {\n  this.consolePanel = consolePanel;\n\n  return new Disposable(() => {\n    this.consolePanel = null;\n  });\n}\n```\n\n## License\n\nThis work is licensed under [The MIT License](https://opensource.org/licenses/MIT)\n",
+  "metadata": {
+    "name": "console",
+    "version": "0.6.0",
+    "description": "Service provider for read-only console panels",
+    "main": "./lib/console",
+    "typings": "./types",
+    "keywords": [],
+    "repository": "https://github.com/idleberg/atom-console",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.56.0 <2.0.0"
+    },
+    "scripts": {
+      "analyze": "source-map-explorer lib/**/*.js",
+      "build": "rollup --config",
+      "dev": "npm run start",
+      "lint:code": "eslint --no-error-on-unmatched-pattern ./src/**/*.js",
+      "lint:json": "jsonlint keymaps/*.json menus/*.json --quiet",
+      "lint:styles": "stylelint --allow-empty-input styles/*.{css,less}",
+      "lint": "npm-run-all --parallel lint:*",
+      "prepublishOnly": "npm run build",
+      "start": "rollup --watch --config"
+    },
+    "activationHooks": [
+      "core:loaded-shell-environment"
+    ],
+    "providedServices": {
+      "console": {
+        "description": "Read only log console",
+        "versions": {
+          "1.0.0": "provideConsole"
+        }
+      },
+      "console-panel": {
+        "description": "Read only log console",
+        "versions": {
+          "1.0.0": "provideConsole"
+        }
+      }
+    },
+    "dependencies": {
+      "@atxm/developer-console": "^0.5.0",
+      "event-kit": "^2.2.0",
+      "svelte": "^3.37.0"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.13.16",
+      "@babel/eslint-parser": "^7.13.14",
+      "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+      "@babel/plugin-proposal-optional-chaining": "^7.13.12",
+      "@babel/preset-env": "^7.13.15",
+      "@rollup/plugin-commonjs": "^18.0.0",
+      "@rollup/plugin-json": "^4.1.0",
+      "@rollup/plugin-node-resolve": "^11.2.1",
+      "@rollup/plugin-typescript": "^8.2.1",
+      "@tsconfig/svelte": "^1.0.10",
+      "@types/atom": "^1.40.10",
+      "@types/event-kit": "^2.4.0",
+      "@types/node": "^14.14.41",
+      "@typescript-eslint/eslint-plugin": "^4.22.0",
+      "@typescript-eslint/parser": "^4.22.0",
+      "core-js": "^3.10.1",
+      "eslint": "^7.24.0",
+      "eslint-plugin-json": "^2.1.2",
+      "husky": ">=4 <5",
+      "jsonlint": "^1.6.3",
+      "lint-staged": "^10.5.0",
+      "node-sass": "^5.0.0",
+      "npm-run-all": "^4.1.5",
+      "prettierx": "^0.18.0",
+      "remark": "^13.0.0",
+      "remark-lint": "^8.0.0",
+      "remark-preset-prettier": "^0.4.0",
+      "rimraf": "^3.0.2",
+      "rollup": "^2.32.1",
+      "rollup-plugin-babel": "^4.4.0",
+      "rollup-plugin-svelte": "^7.1.0",
+      "rollup-plugin-terser": "^7.0.2",
+      "source-map-explorer": "^2.5.2",
+      "stylelint": "^13.7.2",
+      "stylelint-config-standard": "^21.0.0",
+      "svelte-preprocess": "^4.4.2",
+      "tslib": "^2.2.0",
+      "typescript": "^4.2.4"
+    },
+    "prettier": {
+      "singleQuote": true,
+      "tabWidth": 2
+    },
+    "remarkConfig": {
+      "plugins": [
+        "preset-lint-recommended",
+        "remark-preset-prettier"
+      ]
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "echo lint-staged"
+      }
+    },
+    "lint-staged": {
+      "*.js": "eslint --cache --fix",
+      "*.json": "jsonlint --quiet",
+      "*.{js,md,yml}": "prettierx --write",
+      "*.less": "stylelint --cache --fix"
+    }
+  }
+}

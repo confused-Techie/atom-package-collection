@@ -1,0 +1,2236 @@
+{
+  "name": "aeons-ui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tuomashatakka/aeons-ui"
+  },
+  "downloads": 760,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.0.10"
+  },
+  "versions": {
+    "0.0.10": {
+      "name": "aeons-ui",
+      "version": "0.0.10",
+      "main": "./lib/index",
+      "theme": "ui",
+      "author": {
+        "name": "Tuomas Hatakka",
+        "email": "tuomas.hatakka@gmail.com"
+      },
+      "bugs": {
+        "url": "https://github.com/tuomashatakka/aeons-ui/issues"
+      },
+      "dependencies": {
+        "etch": "^0.10.0"
+      },
+      "description": "Minimal to its core. Pleasing to the eye.",
+      "devDependencies": {},
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "homepage": "https://github.com/tuomashatakka/aeons-ui",
+      "keywords": [
+        "dark",
+        "clean",
+        "elegant",
+        "plain",
+        "minimal",
+        "custom",
+        "configure",
+        "settings",
+        "clear",
+        "unobtrusive",
+        "easy",
+        "solid",
+        "flat",
+        "material",
+        "monotone",
+        "subtle",
+        "design",
+        "hot",
+        "responsive",
+        "scale",
+        "ui"
+      ],
+      "configSchema": {
+        "display": {
+          "order": 2,
+          "title": "Display",
+          "description": "Hide unnecessary clutter",
+          "type": "object",
+          "properties": {
+            "dockTabs": {
+              "order": 1,
+              "title": "Show all tab bars",
+              "description": "Uncheck to disable docks' tab bars",
+              "type": "boolean",
+              "default": true
+            },
+            "coloredTabs": {
+              "order": 2,
+              "title": "Filled tabs coloring",
+              "description": "If enabled, tabs' states are displayed as fill colors. If disabled, a more subtle border coloring is used to display the state for tabs",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "layout": {
+          "order": 1,
+          "title": "Size & layout",
+          "description": "General user interface definitions",
+          "type": "object",
+          "properties": {
+            "scale": {
+              "order": 1,
+              "title": "Spacing for UI",
+              "description": "Scale the user interface (does not affect the text editor font size)",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "size": {
+              "order": 2,
+              "title": "Basis for UI components' sizing",
+              "description": "Text, tabs, inputs, buttons, ...",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "tabHeight": {
+              "order": 3,
+              "title": "Tab Height",
+              "description": "Tab bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.6,
+                0.8,
+                1,
+                1.2,
+                1.4,
+                1.6,
+                1.8,
+                2
+              ]
+            },
+            "statusBarHeight": {
+              "order": 4,
+              "title": "Status Bar Height",
+              "description": "Factor for the status bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.25,
+                0.5,
+                0.75,
+                1,
+                1.25,
+                1.5
+              ]
+            }
+          }
+        }
+      },
+      "eslintConfig": {
+        "env": {
+          "browser": true,
+          "node": true
+        },
+        "parserOptions": {
+          "ecmaVersion": 7,
+          "sourceType": "module",
+          "ecmaFeatures": {}
+        },
+        "globals": {
+          "atom": true,
+          "Promise": true,
+          "module": true,
+          "process": true,
+          "emit": true,
+          "require": true,
+          "document": true,
+          "window": true,
+          "jQuery": true,
+          "__dirname": true,
+          "__pathname": true
+        },
+        "parser": "babel-eslint",
+        "plugins": [
+          "react",
+          "react-native",
+          "flowtype"
+        ],
+        "extends": [
+          "eslint:recommended",
+          "plugin:react/recommended",
+          "plugin:flowtype/recommended"
+        ],
+        "rules": {
+          "react-native/no-unused-styles": 2,
+          "react-native/split-platform-components": 2,
+          "strict": 0,
+          "flowtype/boolean-style": [
+            2,
+            "boolean"
+          ],
+          "flowtype/define-flow-type": 1,
+          "flowtype/delimiter-dangle": [
+            2,
+            "never"
+          ],
+          "flowtype/generic-spacing": [
+            2,
+            "never"
+          ],
+          "flowtype/no-primitive-constructor-types": 2,
+          "flowtype/no-weak-types": 1,
+          "flowtype/object-type-delimiter": [
+            2,
+            "comma"
+          ],
+          "flowtype/require-parameter-type": 2,
+          "flowtype/require-return-type": [
+            2,
+            "always",
+            {
+              "annotateUndefined": "never"
+            }
+          ],
+          "flowtype/require-valid-file-annotation": 2,
+          "flowtype/semi": [
+            2,
+            "always"
+          ],
+          "flowtype/space-after-type-colon": [
+            2,
+            "always"
+          ],
+          "flowtype/space-before-generic-bracket": [
+            2,
+            "never"
+          ],
+          "flowtype/space-before-type-colon": [
+            2,
+            "never"
+          ],
+          "flowtype/type-id-match": [
+            2,
+            "^([A-Z][a-z0-9]+)+Type$"
+          ],
+          "flowtype/union-intersection-spacing": [
+            2,
+            "always"
+          ],
+          "flowtype/use-flow-type": 1,
+          "flowtype/valid-syntax": 1
+        },
+        "settings": {
+          "react": {
+            "pragma": "React",
+            "version": "15.3.1"
+          },
+          "flowtype": {
+            "onlyFilesWithFlowAnnotation": true
+          }
+        }
+      },
+      "optionalDependencies": {},
+      "readmeFilename": "README.md",
+      "license": "MIT",
+      "repository": "https://github.com/tuomashatakka/aeons-ui",
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/aeons-ui/versions/0.0.10/tarball"
+      }
+    },
+    "0.0.9": {
+      "name": "aeons-ui",
+      "version": "0.0.9",
+      "main": "./lib/index",
+      "theme": "ui",
+      "author": {
+        "name": "Tuomas Hatakka",
+        "email": "tuomas.hatakka@gmail.com"
+      },
+      "bugs": {
+        "url": "https://github.com/tuomashatakka/aeons-ui/issues"
+      },
+      "dependencies": {
+        "etch": "^0.10.0"
+      },
+      "description": "Minimal to its core. Pleasing to the eye.",
+      "devDependencies": {},
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "homepage": "https://github.com/tuomashatakka/aeons-ui",
+      "keywords": [
+        "dark",
+        "clean",
+        "elegant",
+        "plain",
+        "minimal",
+        "custom",
+        "configure",
+        "settings",
+        "clear",
+        "unobtrusive",
+        "easy",
+        "solid",
+        "flat",
+        "material",
+        "monotone",
+        "subtle",
+        "design",
+        "hot",
+        "responsive",
+        "scale",
+        "ui"
+      ],
+      "configSchema": {
+        "display": {
+          "order": 2,
+          "title": "Display",
+          "description": "Hide unnecessary clutter",
+          "type": "object",
+          "properties": {
+            "dockTabs": {
+              "order": 1,
+              "title": "Show all tab bars",
+              "description": "Uncheck to disable docks' tab bars",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "layout": {
+          "order": 1,
+          "title": "Size & layout",
+          "description": "General user interface definitions",
+          "type": "object",
+          "properties": {
+            "scale": {
+              "order": 1,
+              "title": "Spacing for UI",
+              "description": "Scale the user interface (does not affect the text editor font size)",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "size": {
+              "order": 2,
+              "title": "Basis for UI components' sizing",
+              "description": "Text, tabs, inputs, buttons, ...",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "tabHeight": {
+              "order": 3,
+              "title": "Tab Height",
+              "description": "Tab bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.6,
+                0.8,
+                1,
+                1.2,
+                1.4,
+                1.6,
+                1.8,
+                2
+              ]
+            },
+            "statusBarHeight": {
+              "order": 4,
+              "title": "Status Bar Height",
+              "description": "Factor for the status bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.25,
+                0.5,
+                0.75,
+                1,
+                1.25,
+                1.5
+              ]
+            }
+          }
+        }
+      },
+      "eslintConfig": {
+        "env": {
+          "browser": true,
+          "node": true
+        },
+        "parserOptions": {
+          "ecmaVersion": 7,
+          "sourceType": "module",
+          "ecmaFeatures": {}
+        },
+        "globals": {
+          "atom": true,
+          "Promise": true,
+          "module": true,
+          "process": true,
+          "emit": true,
+          "require": true,
+          "document": true,
+          "window": true,
+          "jQuery": true,
+          "__dirname": true,
+          "__pathname": true
+        },
+        "parser": "babel-eslint",
+        "plugins": [
+          "react",
+          "react-native",
+          "flowtype"
+        ],
+        "extends": [
+          "eslint:recommended",
+          "plugin:react/recommended",
+          "plugin:flowtype/recommended"
+        ],
+        "rules": {
+          "react-native/no-unused-styles": 2,
+          "react-native/split-platform-components": 2,
+          "strict": 0,
+          "flowtype/boolean-style": [
+            2,
+            "boolean"
+          ],
+          "flowtype/define-flow-type": 1,
+          "flowtype/delimiter-dangle": [
+            2,
+            "never"
+          ],
+          "flowtype/generic-spacing": [
+            2,
+            "never"
+          ],
+          "flowtype/no-primitive-constructor-types": 2,
+          "flowtype/no-weak-types": 1,
+          "flowtype/object-type-delimiter": [
+            2,
+            "comma"
+          ],
+          "flowtype/require-parameter-type": 2,
+          "flowtype/require-return-type": [
+            2,
+            "always",
+            {
+              "annotateUndefined": "never"
+            }
+          ],
+          "flowtype/require-valid-file-annotation": 2,
+          "flowtype/semi": [
+            2,
+            "always"
+          ],
+          "flowtype/space-after-type-colon": [
+            2,
+            "always"
+          ],
+          "flowtype/space-before-generic-bracket": [
+            2,
+            "never"
+          ],
+          "flowtype/space-before-type-colon": [
+            2,
+            "never"
+          ],
+          "flowtype/type-id-match": [
+            2,
+            "^([A-Z][a-z0-9]+)+Type$"
+          ],
+          "flowtype/union-intersection-spacing": [
+            2,
+            "always"
+          ],
+          "flowtype/use-flow-type": 1,
+          "flowtype/valid-syntax": 1
+        },
+        "settings": {
+          "react": {
+            "pragma": "React",
+            "version": "15.3.1"
+          },
+          "flowtype": {
+            "onlyFilesWithFlowAnnotation": true
+          }
+        }
+      },
+      "optionalDependencies": {},
+      "readmeFilename": "README.md",
+      "license": "MIT",
+      "repository": "https://github.com/tuomashatakka/aeons-ui",
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/aeons-ui/versions/0.0.9/tarball"
+      }
+    },
+    "0.0.8": {
+      "name": "aeons-ui",
+      "version": "0.0.8",
+      "main": "./lib/index",
+      "theme": "ui",
+      "author": {
+        "name": "Tuomas Hatakka",
+        "email": "tuomas.hatakka@gmail.com"
+      },
+      "bugs": {
+        "url": "https://github.com/tuomashatakka/aeons-ui/issues"
+      },
+      "dependencies": {
+        "etch": "^0.10.0"
+      },
+      "description": "Minimal to its core. Pleasing to the eye.",
+      "devDependencies": {},
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "homepage": "https://github.com/tuomashatakka/aeons-ui",
+      "keywords": [
+        "dark",
+        "clean",
+        "elegant",
+        "plain",
+        "minimal",
+        "custom",
+        "configure",
+        "settings",
+        "clear",
+        "unobtrusive",
+        "easy",
+        "solid",
+        "flat",
+        "material",
+        "monotone",
+        "subtle",
+        "design",
+        "hot",
+        "responsive",
+        "scale",
+        "ui"
+      ],
+      "configSchema": {
+        "display": {
+          "order": 2,
+          "title": "Display",
+          "description": "Hide unnecessary clutter",
+          "type": "object",
+          "properties": {
+            "dockTabs": {
+              "order": 1,
+              "title": "Show all tab bars",
+              "description": "Uncheck to disable docks' tab bars",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "layout": {
+          "order": 1,
+          "title": "Size & layout",
+          "description": "General user interface definitions",
+          "type": "object",
+          "properties": {
+            "scale": {
+              "order": 1,
+              "title": "Spacing for UI",
+              "description": "Scale the user interface (does not affect the text editor font size)",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "size": {
+              "order": 2,
+              "title": "Basis for UI components' sizing",
+              "description": "Text, tabs, inputs, buttons, ...",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "tabHeight": {
+              "order": 3,
+              "title": "Tab Height",
+              "description": "Tab bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.6,
+                0.8,
+                1,
+                1.2,
+                1.4,
+                1.6,
+                1.8,
+                2
+              ]
+            },
+            "statusBarHeight": {
+              "order": 4,
+              "title": "Status Bar Height",
+              "description": "Factor for the status bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.25,
+                0.5,
+                0.75,
+                1,
+                1.25,
+                1.5
+              ]
+            }
+          }
+        }
+      },
+      "eslintConfig": {
+        "env": {
+          "browser": true,
+          "node": true
+        },
+        "parserOptions": {
+          "ecmaVersion": 7,
+          "sourceType": "module",
+          "ecmaFeatures": {}
+        },
+        "globals": {
+          "atom": true,
+          "Promise": true,
+          "module": true,
+          "process": true,
+          "emit": true,
+          "require": true,
+          "document": true,
+          "window": true,
+          "jQuery": true,
+          "__dirname": true,
+          "__pathname": true
+        },
+        "parser": "babel-eslint",
+        "plugins": [
+          "react",
+          "react-native",
+          "flowtype"
+        ],
+        "extends": [
+          "eslint:recommended",
+          "plugin:react/recommended",
+          "plugin:flowtype/recommended"
+        ],
+        "rules": {
+          "react-native/no-unused-styles": 2,
+          "react-native/split-platform-components": 2,
+          "strict": 0,
+          "flowtype/boolean-style": [
+            2,
+            "boolean"
+          ],
+          "flowtype/define-flow-type": 1,
+          "flowtype/delimiter-dangle": [
+            2,
+            "never"
+          ],
+          "flowtype/generic-spacing": [
+            2,
+            "never"
+          ],
+          "flowtype/no-primitive-constructor-types": 2,
+          "flowtype/no-weak-types": 1,
+          "flowtype/object-type-delimiter": [
+            2,
+            "comma"
+          ],
+          "flowtype/require-parameter-type": 2,
+          "flowtype/require-return-type": [
+            2,
+            "always",
+            {
+              "annotateUndefined": "never"
+            }
+          ],
+          "flowtype/require-valid-file-annotation": 2,
+          "flowtype/semi": [
+            2,
+            "always"
+          ],
+          "flowtype/space-after-type-colon": [
+            2,
+            "always"
+          ],
+          "flowtype/space-before-generic-bracket": [
+            2,
+            "never"
+          ],
+          "flowtype/space-before-type-colon": [
+            2,
+            "never"
+          ],
+          "flowtype/type-id-match": [
+            2,
+            "^([A-Z][a-z0-9]+)+Type$"
+          ],
+          "flowtype/union-intersection-spacing": [
+            2,
+            "always"
+          ],
+          "flowtype/use-flow-type": 1,
+          "flowtype/valid-syntax": 1
+        },
+        "settings": {
+          "react": {
+            "pragma": "React",
+            "version": "15.3.1"
+          },
+          "flowtype": {
+            "onlyFilesWithFlowAnnotation": true
+          }
+        }
+      },
+      "optionalDependencies": {},
+      "readmeFilename": "README.md",
+      "license": "MIT",
+      "repository": "https://github.com/tuomashatakka/aeons-ui",
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/aeons-ui/versions/0.0.8/tarball"
+      }
+    },
+    "0.0.7": {
+      "name": "aeons-ui",
+      "version": "0.0.7",
+      "main": "./lib/index",
+      "theme": "ui",
+      "author": {
+        "name": "Tuomas Hatakka",
+        "email": "tuomas.hatakka@gmail.com"
+      },
+      "bugs": {
+        "url": "https://github.com/tuomashatakka/aeons-ui/issues"
+      },
+      "dependencies": {
+        "etch": "^0.10.0"
+      },
+      "description": "Minimal to its core. Pleasing to the eye.",
+      "devDependencies": {},
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "homepage": "https://github.com/tuomashatakka/aeons-ui",
+      "keywords": [
+        "dark",
+        "clean",
+        "elegant",
+        "plain",
+        "minimal",
+        "custom",
+        "configure",
+        "settings",
+        "clear",
+        "unobtrusive",
+        "easy",
+        "solid",
+        "flat",
+        "material",
+        "monotone",
+        "subtle",
+        "design",
+        "hot",
+        "responsive",
+        "scale",
+        "ui"
+      ],
+      "configSchema": {
+        "layout": {
+          "order": 1,
+          "title": "Size & layout",
+          "description": "General user interface definitions",
+          "type": "object",
+          "properties": {
+            "scale": {
+              "order": 1,
+              "title": "Spacing for UI",
+              "description": "Scale the user interface (does not affect the text editor font size)",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "size": {
+              "order": 2,
+              "title": "Basis for UI components' sizing",
+              "description": "Text, tabs, inputs, buttons, ...",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "tabHeight": {
+              "order": 3,
+              "title": "Tab Height",
+              "description": "Tab bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.6,
+                0.8,
+                1,
+                1.2,
+                1.4,
+                1.6,
+                1.8,
+                2
+              ]
+            },
+            "statusBarHeight": {
+              "order": 4,
+              "title": "Status Bar Height",
+              "description": "Factor for the status bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.25,
+                0.5,
+                0.75,
+                1,
+                1.25,
+                1.5
+              ]
+            }
+          }
+        }
+      },
+      "eslintConfig": {
+        "env": {
+          "browser": true,
+          "node": true
+        },
+        "parserOptions": {
+          "ecmaVersion": 7,
+          "sourceType": "module",
+          "ecmaFeatures": {}
+        },
+        "globals": {
+          "atom": true,
+          "Promise": true,
+          "module": true,
+          "process": true,
+          "emit": true,
+          "require": true,
+          "document": true,
+          "window": true,
+          "jQuery": true,
+          "__dirname": true,
+          "__pathname": true
+        },
+        "parser": "babel-eslint",
+        "plugins": [
+          "react",
+          "react-native",
+          "flowtype"
+        ],
+        "extends": [
+          "eslint:recommended",
+          "plugin:react/recommended",
+          "plugin:flowtype/recommended"
+        ],
+        "rules": {
+          "react-native/no-unused-styles": 2,
+          "react-native/split-platform-components": 2,
+          "strict": 0,
+          "flowtype/boolean-style": [
+            2,
+            "boolean"
+          ],
+          "flowtype/define-flow-type": 1,
+          "flowtype/delimiter-dangle": [
+            2,
+            "never"
+          ],
+          "flowtype/generic-spacing": [
+            2,
+            "never"
+          ],
+          "flowtype/no-primitive-constructor-types": 2,
+          "flowtype/no-weak-types": 1,
+          "flowtype/object-type-delimiter": [
+            2,
+            "comma"
+          ],
+          "flowtype/require-parameter-type": 2,
+          "flowtype/require-return-type": [
+            2,
+            "always",
+            {
+              "annotateUndefined": "never"
+            }
+          ],
+          "flowtype/require-valid-file-annotation": 2,
+          "flowtype/semi": [
+            2,
+            "always"
+          ],
+          "flowtype/space-after-type-colon": [
+            2,
+            "always"
+          ],
+          "flowtype/space-before-generic-bracket": [
+            2,
+            "never"
+          ],
+          "flowtype/space-before-type-colon": [
+            2,
+            "never"
+          ],
+          "flowtype/type-id-match": [
+            2,
+            "^([A-Z][a-z0-9]+)+Type$"
+          ],
+          "flowtype/union-intersection-spacing": [
+            2,
+            "always"
+          ],
+          "flowtype/use-flow-type": 1,
+          "flowtype/valid-syntax": 1
+        },
+        "settings": {
+          "react": {
+            "pragma": "React",
+            "version": "15.3.1"
+          },
+          "flowtype": {
+            "onlyFilesWithFlowAnnotation": true
+          }
+        }
+      },
+      "optionalDependencies": {},
+      "readmeFilename": "README.md",
+      "license": "MIT",
+      "repository": "https://github.com/tuomashatakka/aeons-ui",
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/aeons-ui/versions/0.0.7/tarball"
+      }
+    },
+    "0.0.6": {
+      "name": "aeons-ui",
+      "version": "0.0.6",
+      "main": "./lib/index",
+      "theme": "ui",
+      "author": {
+        "name": "Tuomas Hatakka",
+        "email": "tuomas.hatakka@gmail.com"
+      },
+      "bugs": {
+        "url": "https://github.com/tuomashatakka/aeons-ui/issues"
+      },
+      "dependencies": {
+        "etch": "^0.10.0"
+      },
+      "description": "Minimal to its core. Pleasing to the eye.",
+      "devDependencies": {},
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "homepage": "https://github.com/tuomashatakka/aeons-ui",
+      "keywords": [
+        "dark",
+        "clean",
+        "elegant",
+        "plain",
+        "minimal",
+        "custom",
+        "configure",
+        "settings",
+        "clear",
+        "unobtrusive",
+        "easy",
+        "solid",
+        "flat",
+        "material",
+        "monotone",
+        "subtle",
+        "design",
+        "hot",
+        "responsive",
+        "scale",
+        "ui"
+      ],
+      "configSchema": {
+        "layout": {
+          "order": 1,
+          "title": "Size & layout",
+          "description": "General user interface definitions",
+          "type": "object",
+          "properties": {
+            "scale": {
+              "order": 1,
+              "title": "Spacing for UI",
+              "description": "Scale the user interface (does not affect the text editor font size)",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "size": {
+              "order": 2,
+              "title": "Basis for UI components' sizing",
+              "description": "Text, tabs, inputs, buttons, ...",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "tabHeight": {
+              "order": 3,
+              "title": "Tab Height",
+              "description": "Tab bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.6,
+                0.8,
+                1,
+                1.2,
+                1.4,
+                1.6,
+                1.8,
+                2
+              ]
+            },
+            "statusBarHeight": {
+              "order": 4,
+              "title": "Status Bar Height",
+              "description": "Factor for the status bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.25,
+                0.5,
+                0.75,
+                1,
+                1.25,
+                1.5
+              ]
+            }
+          }
+        }
+      },
+      "eslintConfig": {
+        "env": {
+          "browser": true,
+          "node": true
+        },
+        "parserOptions": {
+          "ecmaVersion": 7,
+          "sourceType": "module",
+          "ecmaFeatures": {}
+        },
+        "globals": {
+          "atom": true,
+          "Promise": true,
+          "module": true,
+          "process": true,
+          "emit": true,
+          "require": true,
+          "document": true,
+          "window": true,
+          "jQuery": true,
+          "__dirname": true,
+          "__pathname": true
+        },
+        "parser": "babel-eslint",
+        "plugins": [
+          "react",
+          "react-native",
+          "flowtype"
+        ],
+        "extends": [
+          "eslint:recommended",
+          "plugin:react/recommended",
+          "plugin:flowtype/recommended"
+        ],
+        "rules": {
+          "react-native/no-unused-styles": 2,
+          "react-native/split-platform-components": 2,
+          "strict": 0,
+          "flowtype/boolean-style": [
+            2,
+            "boolean"
+          ],
+          "flowtype/define-flow-type": 1,
+          "flowtype/delimiter-dangle": [
+            2,
+            "never"
+          ],
+          "flowtype/generic-spacing": [
+            2,
+            "never"
+          ],
+          "flowtype/no-primitive-constructor-types": 2,
+          "flowtype/no-weak-types": 1,
+          "flowtype/object-type-delimiter": [
+            2,
+            "comma"
+          ],
+          "flowtype/require-parameter-type": 2,
+          "flowtype/require-return-type": [
+            2,
+            "always",
+            {
+              "annotateUndefined": "never"
+            }
+          ],
+          "flowtype/require-valid-file-annotation": 2,
+          "flowtype/semi": [
+            2,
+            "always"
+          ],
+          "flowtype/space-after-type-colon": [
+            2,
+            "always"
+          ],
+          "flowtype/space-before-generic-bracket": [
+            2,
+            "never"
+          ],
+          "flowtype/space-before-type-colon": [
+            2,
+            "never"
+          ],
+          "flowtype/type-id-match": [
+            2,
+            "^([A-Z][a-z0-9]+)+Type$"
+          ],
+          "flowtype/union-intersection-spacing": [
+            2,
+            "always"
+          ],
+          "flowtype/use-flow-type": 1,
+          "flowtype/valid-syntax": 1
+        },
+        "settings": {
+          "react": {
+            "pragma": "React",
+            "version": "15.3.1"
+          },
+          "flowtype": {
+            "onlyFilesWithFlowAnnotation": true
+          }
+        }
+      },
+      "optionalDependencies": {},
+      "readmeFilename": "README.md",
+      "license": "MIT",
+      "repository": "https://github.com/tuomashatakka/aeons-ui",
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/aeons-ui/versions/0.0.6/tarball"
+      }
+    },
+    "0.0.5": {
+      "name": "aeons-ui",
+      "version": "0.0.5",
+      "main": "./lib/index",
+      "theme": "ui",
+      "author": {
+        "name": "Tuomas Hatakka",
+        "email": "tuomas.hatakka@gmail.com"
+      },
+      "bugs": {
+        "url": "https://github.com/tuomashatakka/aeons-ui/issues"
+      },
+      "dependencies": {
+        "etch": "^0.10.0"
+      },
+      "description": "Minimal to its core. Pleasing to the eye.",
+      "devDependencies": {},
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "homepage": "https://github.com/tuomashatakka/aeons-ui",
+      "keywords": [
+        "dark",
+        "clean",
+        "elegant",
+        "plain",
+        "minimal",
+        "custom",
+        "configure",
+        "settings",
+        "clear",
+        "unobtrusive",
+        "easy",
+        "solid",
+        "flat",
+        "material",
+        "monotone",
+        "subtle",
+        "design",
+        "hot",
+        "responsive",
+        "scale",
+        "ui"
+      ],
+      "configSchema": {
+        "layout": {
+          "order": 1,
+          "title": "Size & layout",
+          "description": "General user interface definitions",
+          "type": "object",
+          "properties": {
+            "scale": {
+              "order": 1,
+              "title": "Spacing for UI",
+              "description": "Scale the user interface (does not affect the text editor font size)",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "size": {
+              "order": 2,
+              "title": "Basis for UI components' sizing",
+              "description": "Text, tabs, inputs, buttons, ...",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "tabHeight": {
+              "order": 3,
+              "title": "Tab Height",
+              "description": "Tab bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.6,
+                0.8,
+                1,
+                1.2,
+                1.4,
+                1.6,
+                1.8,
+                2
+              ]
+            },
+            "statusBarHeight": {
+              "order": 4,
+              "title": "Status Bar Height",
+              "description": "Factor for the status bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.25,
+                0.5,
+                0.75,
+                1,
+                1.25,
+                1.5
+              ]
+            }
+          }
+        }
+      },
+      "eslintConfig": {
+        "env": {
+          "browser": true,
+          "node": true
+        },
+        "parserOptions": {
+          "ecmaVersion": 7,
+          "sourceType": "module",
+          "ecmaFeatures": {}
+        },
+        "globals": {
+          "atom": true,
+          "Promise": true,
+          "module": true,
+          "process": true,
+          "emit": true,
+          "require": true,
+          "document": true,
+          "window": true,
+          "jQuery": true,
+          "__dirname": true,
+          "__pathname": true
+        },
+        "parser": "babel-eslint",
+        "plugins": [
+          "react",
+          "react-native",
+          "flowtype"
+        ],
+        "extends": [
+          "eslint:recommended",
+          "plugin:react/recommended",
+          "plugin:flowtype/recommended"
+        ],
+        "rules": {
+          "react-native/no-unused-styles": 2,
+          "react-native/split-platform-components": 2,
+          "strict": 0,
+          "flowtype/boolean-style": [
+            2,
+            "boolean"
+          ],
+          "flowtype/define-flow-type": 1,
+          "flowtype/delimiter-dangle": [
+            2,
+            "never"
+          ],
+          "flowtype/generic-spacing": [
+            2,
+            "never"
+          ],
+          "flowtype/no-primitive-constructor-types": 2,
+          "flowtype/no-weak-types": 1,
+          "flowtype/object-type-delimiter": [
+            2,
+            "comma"
+          ],
+          "flowtype/require-parameter-type": 2,
+          "flowtype/require-return-type": [
+            2,
+            "always",
+            {
+              "annotateUndefined": "never"
+            }
+          ],
+          "flowtype/require-valid-file-annotation": 2,
+          "flowtype/semi": [
+            2,
+            "always"
+          ],
+          "flowtype/space-after-type-colon": [
+            2,
+            "always"
+          ],
+          "flowtype/space-before-generic-bracket": [
+            2,
+            "never"
+          ],
+          "flowtype/space-before-type-colon": [
+            2,
+            "never"
+          ],
+          "flowtype/type-id-match": [
+            2,
+            "^([A-Z][a-z0-9]+)+Type$"
+          ],
+          "flowtype/union-intersection-spacing": [
+            2,
+            "always"
+          ],
+          "flowtype/use-flow-type": 1,
+          "flowtype/valid-syntax": 1
+        },
+        "settings": {
+          "react": {
+            "pragma": "React",
+            "version": "15.3.1"
+          },
+          "flowtype": {
+            "onlyFilesWithFlowAnnotation": true
+          }
+        }
+      },
+      "optionalDependencies": {},
+      "readmeFilename": "README.md",
+      "license": "MIT",
+      "repository": "https://github.com/tuomashatakka/aeons-ui",
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/aeons-ui/versions/0.0.5/tarball"
+      }
+    },
+    "0.0.4": {
+      "name": "aeons-ui",
+      "version": "0.0.4",
+      "main": "./lib/index",
+      "theme": "ui",
+      "author": {
+        "name": "Tuomas Hatakka",
+        "email": "tuomas.hatakka@gmail.com"
+      },
+      "bugs": {
+        "url": "https://github.com/tuomashatakka/aeons-ui/issues"
+      },
+      "dependencies": {
+        "etch": "^0.10.0"
+      },
+      "description": "Minimal to its core. Pleasing to the eye.",
+      "devDependencies": {},
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "homepage": "https://github.com/tuomashatakka/aeons-ui",
+      "keywords": [
+        "dark",
+        "clean",
+        "elegant",
+        "plain",
+        "minimal",
+        "custom",
+        "configure",
+        "settings",
+        "clear",
+        "unobtrusive",
+        "easy",
+        "solid",
+        "flat",
+        "material",
+        "monotone",
+        "subtle",
+        "design",
+        "hot",
+        "responsive",
+        "scale",
+        "ui"
+      ],
+      "configSchema": {
+        "layout": {
+          "order": 1,
+          "title": "Size & layout",
+          "description": "General user interface definitions",
+          "type": "object",
+          "properties": {
+            "scale": {
+              "order": 1,
+              "title": "Spacing for UI",
+              "description": "Scale the user interface (does not affect the text editor font size)",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "size": {
+              "order": 2,
+              "title": "Basis for UI components' sizing",
+              "description": "Text, tabs, inputs, buttons, ...",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "tabHeight": {
+              "order": 3,
+              "title": "Tab Height",
+              "description": "Tab bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.6,
+                0.8,
+                1,
+                1.2,
+                1.4,
+                1.6,
+                1.8,
+                2
+              ]
+            },
+            "statusBarHeight": {
+              "order": 4,
+              "title": "Status Bar Height",
+              "description": "Factor for the status bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.25,
+                0.5,
+                0.75,
+                1,
+                1.25,
+                1.5
+              ]
+            }
+          }
+        }
+      },
+      "eslintConfig": {
+        "env": {
+          "browser": true,
+          "node": true
+        },
+        "parserOptions": {
+          "ecmaVersion": 7,
+          "sourceType": "module",
+          "ecmaFeatures": {}
+        },
+        "globals": {
+          "atom": true,
+          "Promise": true,
+          "module": true,
+          "process": true,
+          "emit": true,
+          "require": true,
+          "document": true,
+          "window": true,
+          "jQuery": true,
+          "__dirname": true,
+          "__pathname": true
+        },
+        "parser": "babel-eslint",
+        "plugins": [
+          "react",
+          "react-native",
+          "flowtype"
+        ],
+        "extends": [
+          "eslint:recommended",
+          "plugin:react/recommended",
+          "plugin:flowtype/recommended"
+        ],
+        "rules": {
+          "react-native/no-unused-styles": 2,
+          "react-native/split-platform-components": 2,
+          "strict": 0,
+          "flowtype/boolean-style": [
+            2,
+            "boolean"
+          ],
+          "flowtype/define-flow-type": 1,
+          "flowtype/delimiter-dangle": [
+            2,
+            "never"
+          ],
+          "flowtype/generic-spacing": [
+            2,
+            "never"
+          ],
+          "flowtype/no-primitive-constructor-types": 2,
+          "flowtype/no-weak-types": 1,
+          "flowtype/object-type-delimiter": [
+            2,
+            "comma"
+          ],
+          "flowtype/require-parameter-type": 2,
+          "flowtype/require-return-type": [
+            2,
+            "always",
+            {
+              "annotateUndefined": "never"
+            }
+          ],
+          "flowtype/require-valid-file-annotation": 2,
+          "flowtype/semi": [
+            2,
+            "always"
+          ],
+          "flowtype/space-after-type-colon": [
+            2,
+            "always"
+          ],
+          "flowtype/space-before-generic-bracket": [
+            2,
+            "never"
+          ],
+          "flowtype/space-before-type-colon": [
+            2,
+            "never"
+          ],
+          "flowtype/type-id-match": [
+            2,
+            "^([A-Z][a-z0-9]+)+Type$"
+          ],
+          "flowtype/union-intersection-spacing": [
+            2,
+            "always"
+          ],
+          "flowtype/use-flow-type": 1,
+          "flowtype/valid-syntax": 1
+        },
+        "settings": {
+          "react": {
+            "pragma": "React",
+            "version": "15.3.1"
+          },
+          "flowtype": {
+            "onlyFilesWithFlowAnnotation": true
+          }
+        }
+      },
+      "optionalDependencies": {},
+      "readmeFilename": "README.md",
+      "license": "MIT",
+      "repository": "https://github.com/tuomashatakka/aeons-ui",
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/aeons-ui/versions/0.0.4/tarball"
+      }
+    },
+    "0.0.3": {
+      "name": "aeons-ui",
+      "version": "0.0.3",
+      "main": "./lib/index",
+      "theme": "ui",
+      "author": {
+        "name": "Tuomas Hatakka",
+        "email": "tuomas.hatakka@gmail.com"
+      },
+      "bugs": {
+        "url": "https://github.com/tuomashatakka/aeons-ui/issues"
+      },
+      "dependencies": {
+        "etch": "^0.10.0"
+      },
+      "description": "Minimal to its core. Pleasing to the eye.",
+      "devDependencies": {},
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "homepage": "https://github.com/tuomashatakka/aeons-ui",
+      "keywords": [
+        "dark",
+        "clean",
+        "elegant",
+        "plain",
+        "minimal",
+        "custom",
+        "configure",
+        "settings",
+        "clear",
+        "unobtrusive",
+        "easy",
+        "solid",
+        "flat",
+        "material",
+        "monotone",
+        "subtle",
+        "design",
+        "hot",
+        "responsive",
+        "scale",
+        "ui"
+      ],
+      "configSchema": {
+        "layout": {
+          "order": 1,
+          "title": "Size & layout",
+          "description": "General user interface definitions",
+          "type": "object",
+          "properties": {
+            "scale": {
+              "order": 1,
+              "title": "Spacing for UI",
+              "description": "Scale the user interface (does not affect the text editor font size)",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "size": {
+              "order": 2,
+              "title": "Basis for UI components' sizing",
+              "description": "Text, tabs, inputs, buttons, ...",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "tabHeight": {
+              "order": 3,
+              "title": "Tab Height",
+              "description": "Tab bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.6,
+                0.8,
+                1,
+                1.2,
+                1.4,
+                1.6,
+                1.8,
+                2
+              ]
+            },
+            "statusBarHeight": {
+              "order": 4,
+              "title": "Status Bar Height",
+              "description": "Factor for the status bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.25,
+                0.5,
+                0.75,
+                1,
+                1.25,
+                1.5
+              ]
+            }
+          }
+        }
+      },
+      "eslintConfig": {
+        "env": {
+          "browser": true,
+          "node": true
+        },
+        "parserOptions": {
+          "ecmaVersion": 7,
+          "sourceType": "module",
+          "ecmaFeatures": {}
+        },
+        "globals": {
+          "atom": true,
+          "Promise": true,
+          "module": true,
+          "process": true,
+          "emit": true,
+          "require": true,
+          "document": true,
+          "window": true,
+          "jQuery": true,
+          "__dirname": true,
+          "__pathname": true
+        },
+        "parser": "babel-eslint",
+        "plugins": [
+          "react",
+          "react-native",
+          "flowtype"
+        ],
+        "extends": [
+          "eslint:recommended",
+          "plugin:react/recommended",
+          "plugin:flowtype/recommended"
+        ],
+        "rules": {
+          "react-native/no-unused-styles": 2,
+          "react-native/split-platform-components": 2,
+          "strict": 0,
+          "flowtype/boolean-style": [
+            2,
+            "boolean"
+          ],
+          "flowtype/define-flow-type": 1,
+          "flowtype/delimiter-dangle": [
+            2,
+            "never"
+          ],
+          "flowtype/generic-spacing": [
+            2,
+            "never"
+          ],
+          "flowtype/no-primitive-constructor-types": 2,
+          "flowtype/no-weak-types": 1,
+          "flowtype/object-type-delimiter": [
+            2,
+            "comma"
+          ],
+          "flowtype/require-parameter-type": 2,
+          "flowtype/require-return-type": [
+            2,
+            "always",
+            {
+              "annotateUndefined": "never"
+            }
+          ],
+          "flowtype/require-valid-file-annotation": 2,
+          "flowtype/semi": [
+            2,
+            "always"
+          ],
+          "flowtype/space-after-type-colon": [
+            2,
+            "always"
+          ],
+          "flowtype/space-before-generic-bracket": [
+            2,
+            "never"
+          ],
+          "flowtype/space-before-type-colon": [
+            2,
+            "never"
+          ],
+          "flowtype/type-id-match": [
+            2,
+            "^([A-Z][a-z0-9]+)+Type$"
+          ],
+          "flowtype/union-intersection-spacing": [
+            2,
+            "always"
+          ],
+          "flowtype/use-flow-type": 1,
+          "flowtype/valid-syntax": 1
+        },
+        "settings": {
+          "react": {
+            "pragma": "React",
+            "version": "15.3.1"
+          },
+          "flowtype": {
+            "onlyFilesWithFlowAnnotation": true
+          }
+        }
+      },
+      "optionalDependencies": {},
+      "readmeFilename": "README.md",
+      "license": "MIT",
+      "repository": "https://github.com/tuomashatakka/aeons-ui",
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/aeons-ui/versions/0.0.3/tarball"
+      }
+    },
+    "0.0.2": {
+      "name": "aeons-ui",
+      "version": "0.0.2",
+      "main": "./lib/index",
+      "theme": "ui",
+      "author": {
+        "name": "Tuomas Hatakka",
+        "email": "tuomas.hatakka@gmail.com"
+      },
+      "bugs": {
+        "url": "https://github.com/tuomashatakka/aeons-ui/issues"
+      },
+      "dependencies": {
+        "etch": "^0.10.0"
+      },
+      "description": "Minimal to its core. Pleasing to the eye.",
+      "devDependencies": {},
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "homepage": "https://github.com/tuomashatakka/aeons-ui",
+      "keywords": [
+        "dark",
+        "clean",
+        "elegant",
+        "plain",
+        "minimal",
+        "custom",
+        "configure",
+        "settings",
+        "clear",
+        "unobtrusive",
+        "easy",
+        "solid",
+        "flat",
+        "material",
+        "monotone",
+        "subtle",
+        "design",
+        "hot",
+        "responsive",
+        "scale",
+        "ui"
+      ],
+      "configSchema": {
+        "layout": {
+          "order": 1,
+          "title": "Size & layout",
+          "description": "General user interface definitions",
+          "type": "object",
+          "properties": {
+            "scale": {
+              "order": 1,
+              "title": "Spacing for UI",
+              "description": "Scale the user interface (does not affect the text editor font size)",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "size": {
+              "order": 2,
+              "title": "Basis for UI components' sizing",
+              "description": "Text, tabs, inputs, buttons, ...",
+              "type": "integer",
+              "default": 100,
+              "minimum": 50,
+              "maximum": 150
+            },
+            "tabHeight": {
+              "order": 3,
+              "title": "Tab Height",
+              "description": "Tab bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.6,
+                0.8,
+                1,
+                1.2,
+                1.4,
+                1.6,
+                1.8,
+                2
+              ]
+            },
+            "statusBarHeight": {
+              "order": 4,
+              "title": "Status Bar Height",
+              "description": "Factor for the status bar's height",
+              "type": "number",
+              "default": 1,
+              "enum": [
+                0.25,
+                0.5,
+                0.75,
+                1,
+                1.25,
+                1.5
+              ]
+            }
+          }
+        }
+      },
+      "eslintConfig": {
+        "env": {
+          "browser": true,
+          "node": true
+        },
+        "parserOptions": {
+          "ecmaVersion": 7,
+          "sourceType": "module",
+          "ecmaFeatures": {}
+        },
+        "globals": {
+          "atom": true,
+          "Promise": true,
+          "module": true,
+          "process": true,
+          "emit": true,
+          "require": true,
+          "document": true,
+          "window": true,
+          "jQuery": true,
+          "__dirname": true,
+          "__pathname": true
+        },
+        "parser": "babel-eslint",
+        "plugins": [
+          "react",
+          "react-native",
+          "flowtype"
+        ],
+        "extends": [
+          "eslint:recommended",
+          "plugin:react/recommended",
+          "plugin:flowtype/recommended"
+        ],
+        "rules": {
+          "react-native/no-unused-styles": 2,
+          "react-native/split-platform-components": 2,
+          "strict": 0,
+          "flowtype/boolean-style": [
+            2,
+            "boolean"
+          ],
+          "flowtype/define-flow-type": 1,
+          "flowtype/delimiter-dangle": [
+            2,
+            "never"
+          ],
+          "flowtype/generic-spacing": [
+            2,
+            "never"
+          ],
+          "flowtype/no-primitive-constructor-types": 2,
+          "flowtype/no-weak-types": 1,
+          "flowtype/object-type-delimiter": [
+            2,
+            "comma"
+          ],
+          "flowtype/require-parameter-type": 2,
+          "flowtype/require-return-type": [
+            2,
+            "always",
+            {
+              "annotateUndefined": "never"
+            }
+          ],
+          "flowtype/require-valid-file-annotation": 2,
+          "flowtype/semi": [
+            2,
+            "always"
+          ],
+          "flowtype/space-after-type-colon": [
+            2,
+            "always"
+          ],
+          "flowtype/space-before-generic-bracket": [
+            2,
+            "never"
+          ],
+          "flowtype/space-before-type-colon": [
+            2,
+            "never"
+          ],
+          "flowtype/type-id-match": [
+            2,
+            "^([A-Z][a-z0-9]+)+Type$"
+          ],
+          "flowtype/union-intersection-spacing": [
+            2,
+            "always"
+          ],
+          "flowtype/use-flow-type": 1,
+          "flowtype/valid-syntax": 1
+        },
+        "settings": {
+          "react": {
+            "pragma": "React",
+            "version": "15.3.1"
+          },
+          "flowtype": {
+            "onlyFilesWithFlowAnnotation": true
+          }
+        }
+      },
+      "optionalDependencies": {},
+      "readmeFilename": "README.md",
+      "license": "MIT",
+      "repository": "https://github.com/tuomashatakka/aeons-ui",
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/aeons-ui/versions/0.0.2/tarball"
+      }
+    }
+  },
+  "readme": "# AEONS UI \n\n### A Kick-ass Atom user interface theme package\n### A UI Theme for atom.io without any compromise in quality or looks\n\n![Display screenshot](https://raw.githubusercontent.com/tuomashatakka/aeons-ui/master/assets/modal.png)\n![Display screenshot](https://raw.githubusercontent.com/tuomashatakka/aeons-ui/master/assets/NOTIFICATIONS.png)\n![Display screenshot](https://raw.githubusercontent.com/tuomashatakka/aeons-ui/master/assets/settings.png)\n![Display screenshot](https://raw.githubusercontent.com/tuomashatakka/aeons-ui/master/assets/lint.png)\n![Display screenshot](https://raw.githubusercontent.com/tuomashatakka/aeons-ui/master/assets/header.png)\n\nDark. Bold. Vivid. Clean.\n\nCarefully crafted.\n",
+  "metadata": {
+    "name": "aeons-ui",
+    "version": "0.0.10",
+    "main": "./lib/index",
+    "theme": "ui",
+    "author": {
+      "name": "Tuomas Hatakka",
+      "email": "tuomas.hatakka@gmail.com"
+    },
+    "bugs": {
+      "url": "https://github.com/tuomashatakka/aeons-ui/issues"
+    },
+    "dependencies": {
+      "etch": "^0.10.0"
+    },
+    "description": "Minimal to its core. Pleasing to the eye.",
+    "devDependencies": {},
+    "engines": {
+      "atom": ">=0.174.0 <2.0.0"
+    },
+    "homepage": "https://github.com/tuomashatakka/aeons-ui",
+    "keywords": [
+      "dark",
+      "clean",
+      "elegant",
+      "plain",
+      "minimal",
+      "custom",
+      "configure",
+      "settings",
+      "clear",
+      "unobtrusive",
+      "easy",
+      "solid",
+      "flat",
+      "material",
+      "monotone",
+      "subtle",
+      "design",
+      "hot",
+      "responsive",
+      "scale",
+      "ui"
+    ],
+    "configSchema": {
+      "display": {
+        "order": 2,
+        "title": "Display",
+        "description": "Hide unnecessary clutter",
+        "type": "object",
+        "properties": {
+          "dockTabs": {
+            "order": 1,
+            "title": "Show all tab bars",
+            "description": "Uncheck to disable docks' tab bars",
+            "type": "boolean",
+            "default": true
+          },
+          "coloredTabs": {
+            "order": 2,
+            "title": "Filled tabs coloring",
+            "description": "If enabled, tabs' states are displayed as fill colors. If disabled, a more subtle border coloring is used to display the state for tabs",
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "layout": {
+        "order": 1,
+        "title": "Size & layout",
+        "description": "General user interface definitions",
+        "type": "object",
+        "properties": {
+          "scale": {
+            "order": 1,
+            "title": "Spacing for UI",
+            "description": "Scale the user interface (does not affect the text editor font size)",
+            "type": "integer",
+            "default": 100,
+            "minimum": 50,
+            "maximum": 150
+          },
+          "size": {
+            "order": 2,
+            "title": "Basis for UI components' sizing",
+            "description": "Text, tabs, inputs, buttons, ...",
+            "type": "integer",
+            "default": 100,
+            "minimum": 50,
+            "maximum": 150
+          },
+          "tabHeight": {
+            "order": 3,
+            "title": "Tab Height",
+            "description": "Tab bar's height",
+            "type": "number",
+            "default": 1,
+            "enum": [
+              0.6,
+              0.8,
+              1,
+              1.2,
+              1.4,
+              1.6,
+              1.8,
+              2
+            ]
+          },
+          "statusBarHeight": {
+            "order": 4,
+            "title": "Status Bar Height",
+            "description": "Factor for the status bar's height",
+            "type": "number",
+            "default": 1,
+            "enum": [
+              0.25,
+              0.5,
+              0.75,
+              1,
+              1.25,
+              1.5
+            ]
+          }
+        }
+      }
+    },
+    "eslintConfig": {
+      "env": {
+        "browser": true,
+        "node": true
+      },
+      "parserOptions": {
+        "ecmaVersion": 7,
+        "sourceType": "module",
+        "ecmaFeatures": {}
+      },
+      "globals": {
+        "atom": true,
+        "Promise": true,
+        "module": true,
+        "process": true,
+        "emit": true,
+        "require": true,
+        "document": true,
+        "window": true,
+        "jQuery": true,
+        "__dirname": true,
+        "__pathname": true
+      },
+      "parser": "babel-eslint",
+      "plugins": [
+        "react",
+        "react-native",
+        "flowtype"
+      ],
+      "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:flowtype/recommended"
+      ],
+      "rules": {
+        "react-native/no-unused-styles": 2,
+        "react-native/split-platform-components": 2,
+        "strict": 0,
+        "flowtype/boolean-style": [
+          2,
+          "boolean"
+        ],
+        "flowtype/define-flow-type": 1,
+        "flowtype/delimiter-dangle": [
+          2,
+          "never"
+        ],
+        "flowtype/generic-spacing": [
+          2,
+          "never"
+        ],
+        "flowtype/no-primitive-constructor-types": 2,
+        "flowtype/no-weak-types": 1,
+        "flowtype/object-type-delimiter": [
+          2,
+          "comma"
+        ],
+        "flowtype/require-parameter-type": 2,
+        "flowtype/require-return-type": [
+          2,
+          "always",
+          {
+            "annotateUndefined": "never"
+          }
+        ],
+        "flowtype/require-valid-file-annotation": 2,
+        "flowtype/semi": [
+          2,
+          "always"
+        ],
+        "flowtype/space-after-type-colon": [
+          2,
+          "always"
+        ],
+        "flowtype/space-before-generic-bracket": [
+          2,
+          "never"
+        ],
+        "flowtype/space-before-type-colon": [
+          2,
+          "never"
+        ],
+        "flowtype/type-id-match": [
+          2,
+          "^([A-Z][a-z0-9]+)+Type$"
+        ],
+        "flowtype/union-intersection-spacing": [
+          2,
+          "always"
+        ],
+        "flowtype/use-flow-type": 1,
+        "flowtype/valid-syntax": 1
+      },
+      "settings": {
+        "react": {
+          "pragma": "React",
+          "version": "15.3.1"
+        },
+        "flowtype": {
+          "onlyFilesWithFlowAnnotation": true
+        }
+      }
+    },
+    "optionalDependencies": {},
+    "readmeFilename": "README.md",
+    "license": "MIT",
+    "repository": "https://github.com/tuomashatakka/aeons-ui"
+  }
+}

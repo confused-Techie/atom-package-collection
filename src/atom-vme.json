@@ -1,0 +1,157 @@
+{
+  "name": "atom-vme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/william-brook/atom-vme"
+  },
+  "downloads": 18,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.0.6"
+  },
+  "versions": {
+    "0.0.6": {
+      "name": "atom-vme",
+      "main": "./lib/vme",
+      "version": "0.0.6",
+      "description": "A modal editing plugin that focuses on text selection",
+      "keywords": [
+        "modal",
+        "editing",
+        "ergonomic"
+      ],
+      "repository": "git@github.com:william-brook/atom-vme.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "underscore": "1.9.1"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-vme/versions/0.0.6/tarball"
+      }
+    },
+    "0.0.5": {
+      "name": "atom-vme",
+      "main": "./lib/vme",
+      "version": "0.0.5",
+      "description": "A modal editing plugin that focuses on text selection",
+      "keywords": [
+        "modal",
+        "editing",
+        "ergonomic"
+      ],
+      "repository": "git@github.com:william-brook/atom-vme.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "underscore": "1.9.1"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-vme/versions/0.0.5/tarball"
+      }
+    },
+    "0.0.3": {
+      "name": "atom-vme",
+      "main": "./lib/vme",
+      "version": "0.0.3",
+      "description": "A modal editing plugin that focuses on text selection",
+      "keywords": [
+        "modal",
+        "editing",
+        "ergonomic"
+      ],
+      "repository": "git@github.com:william-brook/atom-vme.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "underscore": "1.9.1"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-vme/versions/0.0.3/tarball"
+      }
+    },
+    "0.0.2": {
+      "name": "atom-vme",
+      "main": "./lib/vme",
+      "version": "0.0.2",
+      "description": "A modal editing plugin that focuses on text selection",
+      "keywords": [
+        "modal",
+        "editing",
+        "ergonomic"
+      ],
+      "repository": "git@github.com:william-brook/atom-vme.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "underscore": "1.9.1"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-vme/versions/0.0.2/tarball"
+      }
+    }
+  },
+  "readme": "# atom-vme\n\n# Virts Modal Editing\n\nA new modal editing system that focuses on text selection.\n\n## Why?\n\nI love modal editing, and I love vim. But the one thing that bothers me about vim is how you have to commit to a command before you can verify it. You want to delete 3 words? You run `d3w` and it happens perfectly. It gets more complex though if you want to start deleting text via a search, `d/some-identifier`. Do you have complete confidence in what you're deleting?\n\nSure if it goes wrong, you can merely undo your change and try to fix your command... But why can't you see what you're deleting in the first place? Why can't you run `3w` to confirm the correct text is highlighted (I especially would find this useful when looking at hyphenated/underscored identifiers) and then `d` to delete it. If you have confidence that your command is correct, it's the same amount of time to press the keys, BUT if you want confirmation you the time to check it's good beforehand.\n\nSo that's what this package aims to do. I want to provide a smoother modal editing experience for more things than just mutating text, without having to devolve to a `visual` mode that then becomes more cumbersome to work with.\n\nvme will only have 2 editing modes, `selection mode` and `edit mode`. The former is a `normal`/`visual` mode equivalent and the latter is an `insert` mode equivalent, in vim terms.\n\n## How to use\n\nCurrently motions are non-rebindable within the package, however I am trying to keep them as close to vims as possible.\n\nThe thing that I feel differs `vme` from anything else is how the end-user controls their buffer, with `vme` you care very little about where your cursor is and instead you care about where your _selection_ is.\n\nThe difference being than if you want to use the word motion `w`, it will not move your cursor to the next word but it will extend your selection to the next word such that any future motion will try and operate on that range, rather than a singular position. For example, `wd` will move to the next word and delete everything that's been selected.\n\nIf you do need to move your cursor however, the `Enter` key will always move your cursor to the destination of your selection. Likewise, you can use `Escape` to cancel your current selection and keep your cursor in the same place.\n\n### Composing\n\nMost motions within vme are composable, but in different ways. If you come from vim you will be used to doing things like `d2w`, however there are two ways to achieve the same functionality within vme. Because we try to always operate on ranges, as well as allowing traditional composition, `2w` has the same end result as `ww`.\n\nThe power of this system being you have much more control over the selection you want to highlight and then operate it. You can run something like `2w3hd` and it will move the selection across, back and then delete with much more finite control than vim where you'd have to resort to counting the full array of characters you wished to delete.\n\n### Motions\n\nAll motions that are currently supported are found within [motions.js](lib/motions.js).\n",
+  "metadata": {
+    "name": "atom-vme",
+    "main": "./lib/vme",
+    "version": "0.0.6",
+    "description": "A modal editing plugin that focuses on text selection",
+    "keywords": [
+      "modal",
+      "editing",
+      "ergonomic"
+    ],
+    "repository": "git@github.com:william-brook/atom-vme.git",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "underscore": "1.9.1"
+    },
+    "consumedServices": {
+      "status-bar": {
+        "versions": {
+          "^1.0.0": "consumeStatusBar"
+        }
+      }
+    }
+  }
+}

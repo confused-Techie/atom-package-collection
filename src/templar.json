@@ -1,0 +1,136 @@
+{
+  "name": "templar",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twifty/templar"
+  },
+  "downloads": 123,
+  "stargazers_count": 2,
+  "releases": {
+    "latest": "0.4.1"
+  },
+  "versions": {
+    "0.4.1": {
+      "name": "templar",
+      "main": "./lib/templar",
+      "version": "0.4.1",
+      "description": "Enables the use of file templates within the atom editor",
+      "keywords": [
+        "atom",
+        "project",
+        "files",
+        "templates"
+      ],
+      "repository": "https://github.com/twifty/templar.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "0.9.0",
+        "fs-plus": "^2.8.1",
+        "lodash.foreach": "^4.5.0"
+      },
+      "devDependencies": {
+        "babel-eslint": "^7.2.3",
+        "eslint": "^4.5.0",
+        "eslint-plugin-babel": "^4.1.2",
+        "eslint-plugin-react": "^7.3.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/templar/versions/0.4.1/tarball"
+      }
+    },
+    "0.4.0": {
+      "name": "templar",
+      "main": "./lib/templar",
+      "version": "0.4.0",
+      "description": "Enables the use of file templates within the atom editor",
+      "keywords": [
+        "atom",
+        "project",
+        "files",
+        "templates"
+      ],
+      "repository": "https://github.com/twifty/templar.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "0.9.0",
+        "fs-plus": "^2.8.1",
+        "lodash.foreach": "^4.5.0"
+      },
+      "devDependencies": {
+        "babel-eslint": "^7.2.3",
+        "eslint": "^4.5.0",
+        "eslint-plugin-babel": "^4.1.2",
+        "eslint-plugin-react": "^7.3.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/templar/versions/0.4.0/tarball"
+      }
+    },
+    "0.3.0": {
+      "name": "templar",
+      "main": "./lib/templar",
+      "version": "0.3.0",
+      "description": "Enables the use of file templates within the atom editor",
+      "keywords": [
+        "atom",
+        "project",
+        "files",
+        "templates"
+      ],
+      "repository": "https://github.com/twifty/templar.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "0.9.0",
+        "fs-plus": "^2.8.1",
+        "lodash.foreach": "^4.5.0"
+      },
+      "devDependencies": {
+        "babel-eslint": "^7.2.3",
+        "eslint": "^4.5.0",
+        "eslint-plugin-babel": "^4.1.2",
+        "eslint-plugin-react": "^7.3.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/templar/versions/0.3.0/tarball"
+      }
+    }
+  },
+  "readme": "# Templar\n\nAdds the ability to use templates within the editor.\n\nTemplate files can be written for any language with the ability to replace placeholder names with real values. Templates can also be grouped by project type or language, making them easier to find.\n\n### Usage\n\nRun the command `templar:manage-templates` or navigate to `Packages -> Templar -> Manage Templates` to create your templates.\n\nThe fields include:\n* **Template Name**: The name which appears in the menus.\n* **Name Prefix**: (optional) A file name prefix, which all new files using this template MUST use.\n* **Name Postfix**: (optional) A file name postfix, which all new files using this template MUST use.\n* **Project Type**: (optional) A simple group name. Using more than one group name will add the group as a submenu to the context menu.\n* **File Extension**: (optional) The extension to give all new files.\n\nOnce a template has been created, it will be available from the context menu on the projects file tree.\n\n### Advanced\nA `templar` file can be configured from both the package settings and the root directory of a project. Both files will be loaded, but the projects file will take precedence over global. The file must be loadable by a `require` call and export a simple object. The keys of this object map to placeholders within the template. The values will be converted to strings and injected into the template. If a value is a javascript `function`, it will be called with an object containing all known placeholder values. This gives you full control over how the template is written.\n\nA simple `templar.js` example:\n\n```js\nmodule.exports = {\n  author: 'Me',\n  namespace: function(props) {\n    return props.path.split('/').slice(1, -1).join('\\\\')\n  }\n}\n```\n\nwith a template:\n\n```php\nnamespace {{ namespace }};\n\n/**\n * @author {{author}}\n */\nabstract class Abstract{{ name }} {\n  //...\n}\n```\n",
+  "metadata": {
+    "name": "templar",
+    "main": "./lib/templar",
+    "version": "0.4.1",
+    "description": "Enables the use of file templates within the atom editor",
+    "keywords": [
+      "atom",
+      "project",
+      "files",
+      "templates"
+    ],
+    "repository": "https://github.com/twifty/templar.git",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "etch": "0.9.0",
+      "fs-plus": "^2.8.1",
+      "lodash.foreach": "^4.5.0"
+    },
+    "devDependencies": {
+      "babel-eslint": "^7.2.3",
+      "eslint": "^4.5.0",
+      "eslint-plugin-babel": "^4.1.2",
+      "eslint-plugin-react": "^7.3.0"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "language-frege",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paxromana96/language-frege"
+  },
+  "downloads": 165,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "2.0.0"
+  },
+  "versions": {
+    "2.0.0": {
+      "name": "language-frege",
+      "version": "2.0.0",
+      "description": "Frege language support in Atom",
+      "repository": "https://github.com/paxromana96/language-frege",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.8.0 <2.0.0"
+      },
+      "devDependencies": {
+        "season": "^2.0.0",
+        "coffee-script": "~1.9.0",
+        "clone": "^1.0.2",
+        "underscore-plus": "^1.6.6"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/language-frege/versions/2.0.0/tarball"
+      }
+    }
+  },
+  "readme": "# Frege support in Atom\n\nAdds syntax highlighting and snippets to Frege files in Atom.\n\nForked from the package [language-haskell](https://github.com/atom-haskell/language-haskell), since Frege is a Haskell for the JVM.\n\nGrammars:\n\n* Frege (\\*.fr)\n\n![image](https://cloud.githubusercontent.com/assets/7275622/8120540/f16d7ee6-10a8-11e5-9b9d-223ff05a54c6.png)\n\nBased on [Haskell TextMate bundle](https://github.com/textmate/haskell.tmbundle).\n\n# Auto-indent\n\nIf you don't like current auto-indentation settings, you can define your own regexp in `config.cson` (Edit -> Open Your Config), or disable it altogether, e.g.\n\nTo disable auto-indent:\n\n```cson\n\".frege.source\":\n  editor:\n    increaseIndentPattern: ''\n```\n\nNote that regexp expression is using oniguruma for parsing, and it needs to be a string, not a javascript regexp. You'll also have to escape `\\`.\n\nBy default, `increaseIndentPattern` has the following value:\n\n```cson\n\".frege.source\":\n  editor:\n    increaseIndentPattern: '(((=|\\\\bdo|\\\\bwhere|\\\\bthen|\\\\belse|\\\\bof)\\\\s*)|(\\\\bif(?!.*\\\\bthen\\\\b.*\\\\belse\\\\b.*).*))$'\n```\n\n# Configuring highlighting\n\nNote, you may need to reopen currently opened files (or restart Atom) for your new stylesheet to be applied.\n\n## Module names\n\n`language-frege` uses `support.other.module.frege` scope for module names, both in `import` statements and when using qualified identifiers (like `Prelude.foldl`). Your syntax theme might not support this scope. If you want to highlight module names in this case, you can add the following to your stylesheet (Edit → Stylesheet...):\n\n```less\n// pre Atom 1.13\natom-text-editor::shadow, ide-frege-panel {\n  .support.other.module.frege {\n    color: #C0A077; //or whatever color you like\n  }\n}\n// post Atom 1.13\n.syntax--support.syntax--other.syntax--module.syntax--frege {\n  color: #C0A077; //or whatever color you like\n}\n```\n\n## Operators and infix function application\n\n`language-frege` uses `keyword.operator.frege` scope for operators and `keyword.operator.infix.frege` for infix function application, e.g.\n\n```frege\nnegate `map` [1..10]\n```\n\nNot all syntax themes support these scopes (almost none support `keyword.operator.infix` particularly)\n\nIf you want to higlight operators and infix function applications you can add the following to your stylesheet (Edit → Stylesheet...):\n\n```less\n// pre Atom 1.13\natom-text-editor::shadow, ide-frege-panel {\n    .keyword.operator.frege {\n      color: #CF8C00; // or whatever color you like\n    }\n    .keyword.operator.infix.frege {\n      color: #CC77AC; // if you want to highlight infix application differently\n    }\n}\n// post Atom 1.13\n.syntax--keyword.syntax--operator.syntax--frege {\n  color: #CF8C00; // or whatever color you like\n}\n.syntax--keyword.syntax--operator.syntax--infix.syntax--frege {\n  color: #CC77AC; // if you want to highlight infix application differently\n}\n```\n\n## Special `Prelude` treatment\n\nFor historical and other reasons (see #85 for discussion), `Prelude` identifiers (functions, types, etc) are treated slightly differently and, depending on your highlighting theme, can be highlighted differently.\n\nScopes that are used:\n\n* `support.function.prelude.frege` for functions and values\n* `support.class.prelude.frege` for types\n* `entity.other.inherited-class.prelude.frege` for typeclasses\n* `support.tag.prelude.frege` for type constructors\n\nIf you want `Prelude` identifiers highlighted differently from all the rest, you can define different colors for all or some of those, f.ex. by adding something like this to your stylesheet (Edit → Stylesheet...):\n\n```less\n// pre Atom 1.13\natom-text-editor::shadow, ide-frege-panel {\n    .support.function.prelude.frege {\n      color: #56b6c2; // or whatever color you like\n    }\n    .support.tag.prelude.frege {\n      color: #e9969d;\n    }\n}\n// post Atom 1.13\n.syntax--support.syntax--function.syntax--prelude.syntax--frege {\n  color: #56b6c2; // or whatever color you like\n}\n.syntax--support.syntax--tag.syntax--prelude.syntax--frege {\n  color: #e9969d;\n}\n```\n\nIf you don't want `Prelude` identifiers highlighted differently, you can override it by adding something like this to your stylesheet (Edit → Stylesheet...):\n\n```less\n// pre Atom 1.13\natom-text-editor::shadow, ide-frege-panel {\n  .prelude.frege {\n    color: inherit;\n  }\n}\n// post Atom 1.13\n.syntax--prelude.syntax--frege {\n  color: inherit;\n}\n```\n\nNote, you may need to reopen currently opened files (or restart Atom) for your new stylesheet to be applied.\n\n### Different highlighting for different Prelude identifiers\n\nSince language-frege v1.12.0 every Prelude identifier has a scope corresponding to its name added, so you can add special highlighting to particular identifiers only.\n\nFor example, if you would like to highlight `undefined` and `error` in angry bold red, you can add something like this to your stylesheet:\n\n```less\n// pre Atom 1.13\natom-text-editor::shadow, ide-frege-panel {\n  .support.function.prelude.frege {\n    &.undefined, &.error {\n      color: red;\n      font-weight: bold;\n    }\n  }\n}\n// post Atom 1.13\n.syntax--support.syntax--function.syntax--prelude.syntax--frege {\n  &.syntax--undefined, &.syntax--error {\n    color: red;\n    font-weight: bold;\n  }\n}\n```\n\nAll identifier scopes are case-sensitive, so, if you want to highlight, f.ex. `IO`, you would use `support.class.prelude.IO.frege` scope.\n\n# Contributing\n\nSee [CONTRIBUTING.md](https://github.com/atom-frege/language-frege/blob/master/CONTRIBUTING.md)\n\n# License\n\nCopyright © 2015 Atom-Frege\n\nContributors (by number of commits):\n* Nikolay Yakimov\n* Jared Roesch\n* Matthew Griffith\n* samuela\n* Ross Ogilvie\n* Rob Rix\n* Ranjit Jhala\n* Michael Rawson\n* mdgriffith\n* Jesse Cooke\n* Ian D. Bollinger\n* JJ Brown\n\nSee the [LICENSE.md][LICENSE] for details.\n\n[LICENSE]: https://github.com/atom-frege/language-frege/blob/master/LICENSE.md\n",
+  "metadata": {
+    "name": "language-frege",
+    "version": "2.0.0",
+    "description": "Frege language support in Atom",
+    "repository": "https://github.com/paxromana96/language-frege",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.8.0 <2.0.0"
+    },
+    "devDependencies": {
+      "season": "^2.0.0",
+      "coffee-script": "~1.9.0",
+      "clone": "^1.0.2",
+      "underscore-plus": "^1.6.6"
+    }
+  }
+}

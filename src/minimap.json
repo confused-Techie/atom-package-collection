@@ -1,0 +1,3671 @@
+{
+  "name": "minimap",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atom-minimap/minimap"
+  },
+  "downloads": 7542185,
+  "stargazers_count": 5832,
+  "releases": {
+    "latest": "4.40.1"
+  },
+  "versions": {
+    "4.40.1": {
+      "name": "minimap",
+      "version": "4.40.1",
+      "description": "A preview of the full source code.",
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "main": "./dist/main.js",
+      "scripts": {
+        "build": "cross-env NODE_ENV=production parcel build --target main ./lib/main.js",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "build.test": "npm run clean && cross-env NODE_ENV=test parcel build --target main ./lib/main.js",
+        "bump": "ncu -u",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development parcel watch --target main ./lib/main.js",
+        "esdoc": "esdoc -c esdoc.json",
+        "format": "prettier --write .",
+        "lint": "eslint . --fix",
+        "prepare": "npm run build",
+        "test": "atom --test spec",
+        "test.format": "prettier . --check",
+        "test.lint": "eslint ."
+      },
+      "prettier": "prettier-config-atomic",
+      "dependencies": {
+        "atom-ide-base": "^3.3.0",
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.4",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.11",
+        "@types/jasmine": "3.10.3",
+        "build-commit": "^0.1.4",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "eslint": "^7.32.0",
+        "eslint-config-atomic": "^1.17.0",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "parcel": "2.0.0-nightly.760",
+        "prettier-config-atomic": "^3.0.5",
+        "shx": "^0.3.4",
+        "terser-config-atomic": "^0.1.1",
+        "underscore-plus": "^1.7.0"
+      },
+      "engines": {
+        "atom": ">=1.52.0",
+        "electron": ">=6.0.0"
+      },
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "targets": {
+        "main": {
+          "context": "electron-renderer",
+          "includeNodeModules": {
+            "atom": false,
+            "electron": false,
+            "fs-plus": false
+          },
+          "outputFormat": "commonjs",
+          "isLibrary": true
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.40.1/tarball"
+      }
+    },
+    "4.40.0": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.40.0",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "format": "prettier --write .",
+        "test.format": "prettier . --check",
+        "lint": "eslint . --fix",
+        "test.lint": "eslint .",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development parcel watch --target main ./lib/main.js --no-scope-hoist",
+        "build.test": "npm run clean && cross-env NODE_ENV=test parcel build --target main ./lib/main.js --no-scope-hoist",
+        "build": "cross-env NODE_ENV=production parcel build --target main ./lib/main.js --no-scope-hoist",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "prettier": "prettier-config-atomic",
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.52.0",
+        "electron": ">=6.0.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-ide-base": "^3.2.0",
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.3",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.10",
+        "@types/jasmine": "3.7.7",
+        "build-commit": "^0.1.4",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "eslint": "^7.29.0",
+        "eslint-config-atomic": "^1.16.1",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "parcel": "2.0.0-nightly.760",
+        "prettier-config-atomic": "^2.0.5",
+        "shx": "^0.3.3",
+        "terser-config-atomic": "^0.1.1",
+        "underscore-plus": "^1.7.0"
+      },
+      "targets": {
+        "main": {
+          "context": "electron-renderer",
+          "includeNodeModules": {
+            "atom": false,
+            "electron": false,
+            "fs-plus": false
+          },
+          "outputFormat": "commonjs",
+          "isLibrary": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.40.0/tarball"
+      }
+    },
+    "4.39.14": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.39.14",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "format": "prettier --write .",
+        "test.format": "prettier . --check",
+        "lint": "eslint . --fix",
+        "test.lint": "eslint .",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "prettier": "prettier-config-atomic",
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.2",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.10",
+        "@types/jasmine": "3.6.9",
+        "babel-preset-atomic": "^4.1.0",
+        "build-commit": "^0.1.4",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "eslint": "^7.23.0",
+        "eslint-config-atomic": "^1.12.5",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "prettier-config-atomic": "^1.0.1",
+        "rollup-plugin-atomic": "^2.3.1",
+        "shx": "^0.3.3",
+        "underscore-plus": "^1.7.0"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.39.14/tarball"
+      }
+    },
+    "4.39.13": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.39.13",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "format": "prettier --write .",
+        "test.format": "prettier . --check",
+        "lint": "eslint . --fix",
+        "test.lint": "eslint .",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "prettier": "prettier-config-atomic",
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.2",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.10",
+        "@types/jasmine": "3.6.9",
+        "build-commit": "^0.1.4",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "eslint": "^7.23.0",
+        "eslint-config-atomic": "^1.12.5",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "prettier-config-atomic": "^1.0.1",
+        "rollup": "2.44.0",
+        "rollup-plugin-atomic": "^2.1.2",
+        "shx": "^0.3.3",
+        "underscore-plus": "^1.7.0"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.39.13/tarball"
+      }
+    },
+    "4.39.12": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.39.12",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "format": "prettier --write .",
+        "test.format": "prettier . --check",
+        "lint": "eslint . --fix",
+        "test.lint": "eslint .",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "prettier": "prettier-config-atomic",
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.2",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.10",
+        "@types/jasmine": "3.6.9",
+        "build-commit": "^0.1.4",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "eslint": "^7.23.0",
+        "eslint-config-atomic": "^1.12.5",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "prettier-config-atomic": "^1.0.1",
+        "rollup": "2.44.0",
+        "rollup-plugin-atomic": "^2.1.2",
+        "shx": "^0.3.3",
+        "underscore-plus": "^1.7.0"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.39.12/tarball"
+      }
+    },
+    "4.39.11": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.39.11",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "format": "prettier --write .",
+        "test.format": "prettier . --check",
+        "lint": "eslint . --fix",
+        "test.lint": "eslint .",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "prettier": "prettier-config-atomic",
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.2",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.10",
+        "@types/jasmine": "3.6.9",
+        "build-commit": "^0.1.4",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "eslint": "^7.23.0",
+        "eslint-config-atomic": "^1.12.5",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "prettier-config-atomic": "^1.0.1",
+        "rollup": "2.44.0",
+        "rollup-plugin-atomic": "^2.1.2",
+        "shx": "^0.3.3",
+        "underscore-plus": "^1.7.0"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.39.11/tarball"
+      }
+    },
+    "4.39.10": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.39.10",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "format": "prettier --write .",
+        "test.format": "prettier . --check",
+        "lint": "eslint . --fix",
+        "test.lint": "eslint .",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.4",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "eslint": "^7.13.0",
+        "eslint-config-atomic": "^1.5.1",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "prettier": "^2.2.1",
+        "rollup": "2.37.0",
+        "rollup-plugin-atomic": "^2.0.1",
+        "shx": "^0.3.3",
+        "underscore-plus": "^1.7.0"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.39.10/tarball"
+      }
+    },
+    "4.39.9": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.39.9",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "format": "prettier --write .",
+        "test.format": "prettier . --check",
+        "lint": "eslint . --fix",
+        "test.lint": "eslint .",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.4",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "eslint": "^7.13.0",
+        "eslint-config-atomic": "^1.5.1",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "prettier": "^2.2.1",
+        "rollup": "2.37.0",
+        "rollup-plugin-atomic": "^2.0.1",
+        "shx": "^0.3.3",
+        "underscore-plus": "^1.7.0"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.39.9/tarball"
+      }
+    },
+    "4.39.8": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.39.8",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint --fix .",
+        "test:lint": "eslint .",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.4",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "eslint": "^7.13.0",
+        "eslint-config-atomic": "^1.5.1",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "prettier": "^2.2.1",
+        "rollup": "2.37.0",
+        "rollup-plugin-atomic": "^2.0.1",
+        "shx": "^0.3.3",
+        "underscore-plus": "^1.7.0"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.39.8/tarball"
+      }
+    },
+    "4.39.7": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.39.7",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint --fix .",
+        "test:lint": "eslint .",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.4",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "eslint": "^7.13.0",
+        "eslint-config-atomic": "^1.5.1",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "prettier": "^2.2.1",
+        "rollup": "2.37.0",
+        "rollup-plugin-atomic": "^2.0.1",
+        "shx": "^0.3.3",
+        "underscore-plus": "^1.7.0"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.39.7/tarball"
+      }
+    },
+    "4.39.6": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.39.6",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint --fix .",
+        "test:lint": "eslint .",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.4",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "eslint": "^7.13.0",
+        "eslint-config-atomic": "^1.5.1",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "prettier": "^2.2.1",
+        "rollup": "2.37.0",
+        "rollup-plugin-atomic": "^2.0.1",
+        "shx": "^0.3.3",
+        "underscore-plus": "^1.7.0"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.39.6/tarball"
+      }
+    },
+    "4.39.5": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.39.5",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "test:lint": "standard lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "rollup": "2.36.1",
+        "rollup-plugin-atomic": "^2.0.1",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3",
+        "underscore-plus": "^1.7.0"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.39.5/tarball"
+      }
+    },
+    "4.39.4": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.39.4",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "rollup": "2.36.1",
+        "rollup-plugin-atomic": "^2.0.1",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3",
+        "underscore-plus": "^1.7.0"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.39.4/tarball"
+      }
+    },
+    "4.39.3": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.39.3",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "rollup": "2.36.1",
+        "rollup-plugin-atomic": "^2.0.1",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3",
+        "underscore-plus": "^1.7.0"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.39.3/tarball"
+      }
+    },
+    "4.39.2": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.39.2",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "rollup": "2.36.1",
+        "rollup-plugin-atomic": "^2.0.1",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3",
+        "underscore-plus": "^1.7.0"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.39.2/tarball"
+      }
+    },
+    "4.39.1": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.39.1",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "rollup": "2.36.1",
+        "rollup-plugin-atomic": "^2.0.1",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3",
+        "underscore-plus": "^1.7.0"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.39.1/tarball"
+      }
+    },
+    "4.39.0": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.39.0",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "rollup": "2.36.1",
+        "rollup-plugin-atomic": "^2.0.1",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3",
+        "underscore-plus": "^1.7.0"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.39.0/tarball"
+      }
+    },
+    "4.38.3": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.38.3",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "rollup": "2.36.1",
+        "rollup-plugin-atomic": "^2.0.1",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3",
+        "underscore-plus": "^1.7.0"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.38.3/tarball"
+      }
+    },
+    "4.38.2": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.38.2",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "build.test": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build.readable": "cross-env NODE_ENV=production READABLE_BUILD=true BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0",
+        "underscore-plus": "^1.7.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "rollup": "2.36.1",
+        "rollup-plugin-atomic": "^2.0.1",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.38.2/tarball"
+      }
+    },
+    "4.38.1": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.38.1",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "test_build": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c ",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0",
+        "underscore-plus": "^1.7.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "rollup": "2.36.1",
+        "rollup-plugin-atomic": "^2.0.1",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.38.1/tarball"
+      }
+    },
+    "4.38.0": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.38.0",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "test_build": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c ",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0",
+        "underscore-plus": "^1.7.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "rollup": "2.36.1",
+        "rollup-plugin-atomic": "^2.0.1",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.38.0/tarball"
+      }
+    },
+    "4.37.1": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.37.1",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development BABEL_KEEP_MODULES=true rollup -c -w",
+        "test_build": "cross-env NODE_ENV=test BABEL_KEEP_MODULES=true rollup -c",
+        "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c ",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0",
+        "underscore-plus": "^1.7.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "rollup": "2.36.1",
+        "rollup-plugin-atomic": "^2.0.1",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.37.1/tarball"
+      }
+    },
+    "4.37.0": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.37.0",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development parcel watch --target main lib/main.js",
+        "test_build": "cross-env NODE_ENV=test parcel build --target main lib/main.js --no-minify",
+        "build": "cross-env NODE_ENV=production parcel build --target main lib/main.js",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "targets": {
+        "main": {
+          "context": "node",
+          "engines": {
+            "node": ">=12.x"
+          },
+          "includeNodeModules": {
+            "atom": false,
+            "electron": false
+          },
+          "outputFormat": "commonjs",
+          "isLibrary": true,
+          "sourceMap": {
+            "inlineSources": true
+          }
+        }
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0",
+        "underscore-plus": "^1.7.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "parcel": "^2.0.0-nightly.490",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.37.0/tarball"
+      }
+    },
+    "4.36.13": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.36.13",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development parcel watch --target main lib/main.js",
+        "test_build": "cross-env NODE_ENV=test parcel build --target main lib/main.js --no-minify",
+        "build": "cross-env NODE_ENV=production parcel build --target main lib/main.js",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "targets": {
+        "main": {
+          "context": "node",
+          "engines": {
+            "node": ">=12.x"
+          },
+          "includeNodeModules": {
+            "atom": false,
+            "electron": false
+          },
+          "outputFormat": "commonjs",
+          "isLibrary": true,
+          "sourceMap": {
+            "inlineSources": true
+          }
+        }
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0",
+        "underscore-plus": "^1.7.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "parcel": "^2.0.0-nightly.490",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.36.13/tarball"
+      }
+    },
+    "4.36.12": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.36.12",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development parcel watch --target main lib/main.js",
+        "test_build": "cross-env NODE_ENV=test parcel build --target main lib/main.js --no-minify",
+        "build": "cross-env NODE_ENV=production parcel build --target main lib/main.js",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "targets": {
+        "main": {
+          "context": "node",
+          "engines": {
+            "node": ">=12.x"
+          },
+          "includeNodeModules": {
+            "atom": false,
+            "electron": false
+          },
+          "outputFormat": "commonjs",
+          "isLibrary": true,
+          "sourceMap": {
+            "inlineSources": true
+          }
+        }
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0",
+        "underscore-plus": "^1.7.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "parcel": "^2.0.0-nightly.490",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.36.12/tarball"
+      }
+    },
+    "4.36.11": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.36.11",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development parcel watch --target main lib/main.js",
+        "test_build": "cross-env NODE_ENV=test parcel build --target main lib/main.js --no-minify",
+        "build": "cross-env NODE_ENV=production parcel build --target main lib/main.js",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "targets": {
+        "main": {
+          "context": "node",
+          "engines": {
+            "node": ">=12.x"
+          },
+          "includeNodeModules": {
+            "atom": false,
+            "electron": false
+          },
+          "outputFormat": "commonjs",
+          "isLibrary": true,
+          "sourceMap": {
+            "inlineSources": true
+          }
+        }
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0",
+        "underscore-plus": "^1.7.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "parcel": "^2.0.0-nightly.490",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.36.11/tarball"
+      }
+    },
+    "4.36.10": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.36.10",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development parcel watch --target main lib/main.js",
+        "test_build": "cross-env NODE_ENV=test parcel build --target main lib/main.js --no-minify",
+        "build": "cross-env NODE_ENV=production parcel build --target main lib/main.js",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "targets": {
+        "main": {
+          "context": "node",
+          "engines": {
+            "node": ">=12.x"
+          },
+          "includeNodeModules": {
+            "atom": false,
+            "electron": false
+          },
+          "outputFormat": "commonjs",
+          "isLibrary": true,
+          "sourceMap": {
+            "inlineSources": true
+          }
+        }
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0",
+        "underscore-plus": "^1.7.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "parcel": "^2.0.0-nightly.490",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.36.10/tarball"
+      }
+    },
+    "4.36.9": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.36.9",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development parcel watch --target main lib/main.js",
+        "test_build": "cross-env NODE_ENV=test parcel build --target main lib/main.js --no-minify",
+        "build": "cross-env NODE_ENV=production parcel build --target main lib/main.js",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "cross-env NODE_ENV=test atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "targets": {
+        "main": {
+          "context": "node",
+          "engines": {
+            "node": ">=12.x"
+          },
+          "includeNodeModules": {
+            "atom": false,
+            "electron": false
+          },
+          "outputFormat": "commonjs",
+          "isLibrary": true,
+          "sourceMap": {
+            "inlineSources": true
+          }
+        }
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0",
+        "underscore-plus": "^1.7.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "parcel": "^2.0.0-nightly.490",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.36.9/tarball"
+      }
+    },
+    "4.36.8": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.36.8",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development parcel watch --target main lib/main.js",
+        "test_build": "cross-env NODE_ENV=test parcel build --target main lib/main.js --no-minify",
+        "build": "cross-env NODE_ENV=production parcel build --target main lib/main.js",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "cross-env NODE_ENV=test atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "targets": {
+        "main": {
+          "context": "node",
+          "engines": {
+            "node": ">=12.x"
+          },
+          "includeNodeModules": {
+            "atom": false,
+            "electron": false
+          },
+          "outputFormat": "commonjs",
+          "isLibrary": true,
+          "sourceMap": {
+            "inlineSources": true
+          }
+        }
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0",
+        "underscore-plus": "^1.7.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "parcel": "^2.0.0-nightly.490",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.36.8/tarball"
+      }
+    },
+    "4.36.7": {
+      "name": "minimap",
+      "main": "./dist/main.js",
+      "version": "4.36.7",
+      "description": "A preview of the full source code.",
+      "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+      "keywords": [
+        "minimap",
+        "overview"
+      ],
+      "scripts": {
+        "lint": "standard --fix lib/**/*.js spec/**/*.js",
+        "clean": "shx rm -rf dist .parcel-cache",
+        "dev": "cross-env NODE_ENV=development parcel watch --target main lib/main.js",
+        "test_build": "cross-env NODE_ENV=test parcel build --target main lib/main.js --no-minify",
+        "build": "cross-env NODE_ENV=production parcel build --target main lib/main.js",
+        "build-commit": "npm run clean && build-commit -o dist",
+        "esdoc": "esdoc -c esdoc.json",
+        "test": "cross-env NODE_ENV=test atom --test spec",
+        "bump": "ncu -u",
+        "prepare": "npm run build"
+      },
+      "targets": {
+        "main": {
+          "context": "node",
+          "engines": {
+            "node": ">=12.x"
+          },
+          "includeNodeModules": {
+            "atom": false,
+            "electron": false
+          },
+          "outputFormat": "commonjs",
+          "isLibrary": true,
+          "sourceMap": {
+            "inlineSources": true
+          }
+        }
+      },
+      "contributors": [
+        {
+          "name": "Fangdun Cai",
+          "email": "cfddream@gmail.com"
+        },
+        {
+          "name": "Cédric Néhémie",
+          "email": "cedric.nehemie@gmail.com"
+        },
+        {
+          "name": "Amin Yahyaabadi",
+          "email": "aminyahyaabadi74@gmail.com"
+        }
+      ],
+      "repository": "https://github.com/atom-minimap/minimap",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.13.0"
+      },
+      "providedServices": {
+        "minimap": {
+          "description": "Exposes the minimap API to other packages",
+          "versions": {
+            "1.0.0": "provideMinimapServiceV1"
+          }
+        }
+      },
+      "viewProviders": [
+        "minimapViewProvider"
+      ],
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dependencies": {
+        "atom-utils-plus": "^0.11.0",
+        "delegato": "^1.0.0",
+        "element-resize-detector": "^1.2.1",
+        "fs-plus": "^3.1.1",
+        "mixto": "^1.0.0",
+        "underscore-plus": "^1.7.0"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/jasmine": "3.6.2",
+        "build-commit": "^0.1.1",
+        "cross-env": "^7.0.3",
+        "esdoc": "^1.1.0",
+        "esdoc-es7-plugin": "^0.0.3",
+        "jasmine-expect": "^5.0.0",
+        "npm-check-updates": "latest",
+        "parcel": "^2.0.0-nightly.490",
+        "shx": "^0.3.3",
+        "standard": "^16.0.3"
+      },
+      "standard": {
+        "globals": [
+          "advanceClock",
+          "atom",
+          "beforeEach",
+          "afterEach",
+          "expect",
+          "describe",
+          "fdescribe",
+          "ffdescribe",
+          "fffdescribe",
+          "xdescribe",
+          "it",
+          "xit",
+          "fit",
+          "ffit",
+          "fffit",
+          "jasmine",
+          "MouseEvent",
+          "runs",
+          "spyOn",
+          "waits",
+          "waitsFor",
+          "waitsForPromise",
+          "devicePixelRatio",
+          "requestAnimationFrame",
+          "Event",
+          "MouseEvent",
+          "IntersectionObserver",
+          "cancelAnimationFrame"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/minimap/versions/4.36.7/tarball"
+      }
+    }
+  },
+  "readme": "![CI](https://github.com/atom-minimap/minimap/workflows/CI/badge.svg)\n[![APM Version](https://img.shields.io/apm/v/minimap.svg)](https://atom.io/packages/minimap)\n[![APM Downloads](https://img.shields.io/apm/dm/minimap.svg)](https://atom.io/packages/minimap)\n\n# Minimap package\n\nA preview of the full source code.\n\n![Minimap Screenshot](https://github.com/atom-minimap/minimap/blob/master/resources/screenshot.png?raw=true)\n<small>In the screenshot above the minimap-git-diff and minimap-highlight-selected plugins are activated.</small>\n\n### Installation\n\n```\napm install minimap\n```\n\n### Features\n\n- Service-based Plugin API: Use the plugin generation command and start developing your plugin right away.\n- Decoration API: Use the same API to manage `TextEditor` and `Minimap` decorations.\n- Canvas-based Rendering: Simple, fast and flexible.\n- Stand-alone Mode: Wants to display a preview of a text editor in your UIs, use a stand-alone version of the Minimap.\n\n### Available Plugins\n\nBelow is the list of available plugins so far:\n\n| Package                                                                       | Description                                                                                                                                                      |\n| ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| [Auto-Hider](https://atom.io/packages/minimap-autohider)                      | Hides the Minimap while editing.                                                                                                                                 |\n| [Bookmarks](https://atom.io/packages/minimap-bookmarks)                       | Displays Atom bookmarks.                                                                                                                                         |\n| [Code Glance](https://atom.io/packages/minimap-codeglance)                    | Shows the code that's under the mouse cursor when hovering the Minimap.                                                                                          |\n| [Cursor Line](https://atom.io/packages/minimap-cursorline)                    | Highlights the line with cursor.                                                                                                                                 |\n| [Find And Replace](https://atom.io/packages/minimap-find-and-replace)         | Displays the search matches.                                                                                                                                     |\n| [Git Diff](https://atom.io/packages/minimap-git-diff)                         | Displays the file diff.                                                                                                                                          |\n| [Google-Repo-Diff-Minimap](https://atom.io/packages/google-repo-diff-minimap) | A Minimap binding for the [google-repo-diff](https://atom.io/packages/google-repo-diff) package and [google-repo](https://atom.io/packages/google-repo) package. |\n| [GPool-Diff-Minimap](https://atom.io/packages/gpool-diff-minimap)             | A minimap binding for the [gpool-diff](https://atom.io/packages/gpool-diff) package.                                                                             |\n| [Hide on inactive panes](https://atom.io/packages/minimap-hide)               | Hide the Minimap when pane isn't focus.                                                                                                                          |\n| [Highlight Selected](https://atom.io/packages/minimap-highlight-selected)     | A Minimap binding for the [highlight-selected](http://atom.io/packages/highlight-selected) package.                                                              |\n| [Linter](https://atom.io/packages/minimap-linter)                             | Displays [linter](https://atom.io/packages/linter) markers.                                                                                                      |\n| [Pigments](https://atom.io/packages/minimap-pigments)                         | Displays the [Pigments](https://atom.io/packages/pigments) colors.                                                                                               |\n| [Quick-Highlight](https://atom.io/packages/minimap-quick-highlight)           | Shows multiple selections done with the [quick-highlight](https://atom.io/packages/quick-highlight) package.                                                     |\n| [Selection](https://atom.io/packages/minimap-selection)                       | Display the buffer's selections.                                                                                                                                 |\n| [Split-Diff](https://atom.io/packages/minimap-split-diff)                     | A Minimap binding for the [split-diff](https://atom.io/packages/split-diff) package.                                                                             |\n\n### Settings\n\n#### Show Minimap on Atom Start\n\nIf checked the Minimap is displayed on Atom startup. `(default=true)`\n\n#### Device Pixel Ratio Rounding\n\nIf checked the `devicePixelRatio` will be rounded using `Math.floor`. `(default=true)`\n\n#### Display Code Highlights\n\nIf checked the code will be highlighted using the grammar tokens. `(default=true)`\n\n| `true`                                                                                               | `false`                                                                                                 |\n| ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |\n| ![](https://github.com/atom-minimap/minimap/blob/master/resources/with-code-highlights.png?raw=true) | ![](https://github.com/atom-minimap/minimap/blob/master/resources/without-code-highlights.png?raw=true) |\n\n#### Display Minimap On Left\n\nIf checked the Minimap appears on the left side of editors, otherwise it appears on the right side. `(default=false)`\n\n| `true`                                                                                          | `false`                                                                                          |\n| ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |\n| ![](https://github.com/atom-minimap/minimap/blob/master/resources/minimap-on-left.png?raw=true) | ![](https://github.com/atom-minimap/minimap/blob/master/resources/minimap-on-right.png?raw=true) |\n\n#### Char Height\n\nThe height of a character in the Minimap in pixels. `(default=2)`\n\n| `1px`                                                                                           | `2px`                                                                                           | `4px`                                                                                           |\n| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |\n| ![](https://github.com/atom-minimap/minimap/blob/master/resources/1px-char-height.png?raw=true) | ![](https://github.com/atom-minimap/minimap/blob/master/resources/2px-char-height.png?raw=true) | ![](https://github.com/atom-minimap/minimap/blob/master/resources/4px-char-height.png?raw=true) |\n\n#### Char Width\n\nThe width of a character in the Minimap in pixels. `(default=1)`\n\n| `1px`                                                                                          | `2px`                                                                                          |\n| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |\n| ![](https://github.com/atom-minimap/minimap/blob/master/resources/1px-char-width.png?raw=true) | ![](https://github.com/atom-minimap/minimap/blob/master/resources/2px-char-width.png?raw=true) |\n\n#### Interline\n\nThe space between lines in the Minimap in pixels. `(default=1)`\n\n| `1px`                                                                                         | `2px`                                                                                         |\n| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |\n| ![](https://github.com/atom-minimap/minimap/blob/master/resources/1px-interline.png?raw=true) | ![](https://github.com/atom-minimap/minimap/blob/master/resources/2px-interline.png?raw=true) |\n\n#### Text Opacity\n\nThe opacity used to render the line text in the Minimap. `(default=0.6)`\n\n| `0.6`                                                                                                | `1`                                                                                            |\n| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |\n| ![](https://github.com/atom-minimap/minimap/blob/master/resources/text-opacity-default.png?raw=true) | ![](https://github.com/atom-minimap/minimap/blob/master/resources/text-opacity-1.png?raw=true) |\n\n#### Ignore Whitespaces In Tokens\n\nWhen enabled, text editor tokens are rendered as plain blocks, with no regards to the whitespaces they contains. `(default=false)`\n\n| `false`                                                                                          | `true`                                                                                              |\n| ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |\n| ![](https://github.com/atom-minimap/minimap/blob/master/resources/with-whitespaces.png?raw=true) | ![](https://github.com/atom-minimap/minimap/blob/master/resources/without-whitespaces.png?raw=true) |\n\n### Display Plugins Controls\n\nIf checked, the Minimap plugins can be activated/deactivated from the Minimap settings view and a quick settings dropdown will be available on the top right corner of the Minimap. `(default=true)`\n\n**You need to restart Atom for this setting to be effective.**\n\n![](https://github.com/atom-minimap/minimap/blob/master/resources/plugins-control.png?raw=true)\n\n#### Minimap Scroll Indicator\n\nToggles the display of a side line showing which part of the buffer is currently displayed by the Minimap. The side line appear only if the Minimap height is bigger than the editor view height. `(default=true)`\n\n![](https://github.com/atom-minimap/minimap/blob/master/resources/scroll-indicator.png?raw=true)\n\n#### Plugins \\*\n\nWhen plugins are installed, a setting is created for each to enable/disable them directly from the Minimap settings view.\n\n#### Plugins \\* Decorations Z-Index\n\nWhen several plugins create decorations for the same layer, the general rule is to render the decorations as follows:\n\n- On the background layer, the `line` decorations are rendered before the `highlight-under` decorations.\n- On the foreground layer, the `highlight-over` decorations are rendered before the `highlight-outine` decorations.\n- When two plugins adds the same type of decorations at the same place, the decorations are rendered in the order they have been created.\n\nBut fortunately, it's possible to reorder decorations on their specific layer using these settings. These settings works as a `z-index` in CSS, the higher the value, the higher the decorations will be in the render stack, for instance, a plugin's decorations with an order value of `1` will appear above decorations from a plugin with an order value of `0`.\n\n#### Smooth Scrolling\n\nWhether to offset the minimap canvas when scrolling to keep the scroll smooth. When `true` the minimap canvas will be offseted, resulting in a smoother scroll, but with the side-effect of a blurry minimap when the canvas is placed between pixels. When `false` the canvas will always stay at the same position, and will never look blurry, but the scroll will appear more jagged. `(default=true)`\n\n| `true`                                                                                        | `false`                                                                                          |\n| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |\n| ![](https://github.com/atom-minimap/minimap/blob/master/resources/smooth-scroll.png?raw=true) | ![](https://github.com/atom-minimap/minimap/blob/master/resources/no-smooth-scroll.png?raw=true) |\n\n#### Scroll Animation\n\nEnable animations when scrolling the editor by clicking on the Minimap. `(default=false)`\n\n#### Scroll Animation Duration\n\nDuration of the scroll animation when clicking on the Minimap. `(default=300)`\n\n#### Independent Minimap Scroll On Mouse Wheel Events\n\nWhen enabled, using the mouse wheel over the Minimap will make it scroll independently of the text editor. The Minimap will still sync with the editor whenever the editor is scrolled, but it will no longer relay the mouse wheel events to the editor. `(default=false)`\n\n![](https://github.com/atom-minimap/minimap/blob/master/resources/independent-scroll.gif?raw=true)\n\n#### Scroll Sensitivity\n\nThe scrolling speed when the `Independent Minimap Scroll On Mouse Wheel Events` setting is enabled. `(default=0.5)`\n\n#### Use Hardware Acceleration\n\nIf checked the Minimap scroll is done using a `translate3d` transform, otherwise the `translate` transform is used. `(default=true)`\n\n#### Adjust Minimap Width To Soft Wrap\n\nIf this option is enabled and Soft Wrap is checked then the Minimap max width is set to the Preferred Line Length value. `(default=true)`\n\n#### Adjust Minimap Width Only When Smaller\n\nIf this option and `adjustMinimapWidthToSoftWrap` are enabled the minimap width will never go past the limit sets by CSS. On the other hand, when disabled the minimap will expand to honor the preferred line width. `(default=true)`\n\n#### Absolute Mode\n\nWhen enabled the Minimap uses an absolute positioning, letting the editor's content flow below the Minimap. `(default=false)`\n\nNote that this setting will do nothing if `Display Minimap On Left` is also enabled.\n\n| `false`                                                                                     | `true`                                                                                        |\n| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |\n| ![](https://github.com/atom-minimap/minimap/blob/master/resources/normal-mode.png?raw=true) | ![](https://github.com/atom-minimap/minimap/blob/master/resources/absolute-mode.png?raw=true) |\n\n#### Adjust Absolute Mode Height\n\nWhen enabled and `Absolute Mode` is also enabled, the minimap height will be adjusted to only take the space required by the text editor content, leaving the space below triggering mouse events on the text editor. `(default=false)`\n\n**Be aware this can have some impact on performances as the minimap canvases will be resized every time a change in the editor make its height change.**\n\n### Key Bindings\n\nThe Minimap package doesn't provide any default keybindings. But you can define your own as demonstrated below:\n\n```coffee\n'atom-workspace':\n  'cmd-m': 'minimap:toggle'\n  'ctrl-alt-cmd-j': 'minimap:generate-javascript-plugin'\n  'ctrl-alt-cmd-b': 'minimap:generate-babel-plugin'\n  'ctrl-alt-cmd-c': 'minimap:generate-coffee-plugin'\n```\n\n### Tweaking The Minimap\n\n#### Hiding scrollbars\n\nIf you want to hide the default editor scrollbar, edit your `style.less` (Open Your Stylesheet) and use the following snippet:\n\n```css\natom-text-editor[with-minimap] .vertical-scrollbar {\n  display: none;\n}\n```\n\n#### Changing the Minimap's background\n\n![minimap-custom-background](https://github.com/atom-minimap/minimap/blob/master/resources/minimap-custom-background.png?raw=true)\n\n```css\natom-text-editor atom-text-editor-minimap {\n  background: green;\n}\n```\n\n#### Changing the color of the Minimap's `visible-area`\n\n![minimap-custom-background](https://github.com/atom-minimap/minimap/blob/master/resources/minimap-custom-visible-area.png?raw=true)\n\n```css\natom-text-editor atom-text-editor-minimap .minimap-visible-area::after {\n  background-color: rgba(0, 255, 0, 0.5);\n}\n```\n\n#### Changing the color of the Minimap's `scroll-indicator`\n\n![minimap-custom-background](https://github.com/atom-minimap/minimap/blob/master/resources/minimap-custom-scroll-indicator.png?raw=true)\n\n```css\natom-text-editor atom-text-editor-minimap .minimap-scroll-indicator {\n  background-color: green;\n}\n```\n\n#### Adding an opaque background to the minimap in absolute mode with adjusted height\n\nWith both `absoluteMode` and `adjustAbsoluteModeHeight` settings are enabled, the canvases in the minimap won't necessarily takes the whole editor's height.\n\n```css\natom-text-editor,\nhtml  {\n  atom-text-editor-minimap canvas:first-child {\n    background: @syntax-background-color;\n  }\n}\n```\n\n#### Disabling mouse interactions when in absolute mode\n\nIf you want to prevent to catch the mouse pointer when the `absoluteMode` setting is enabled you can use the following snippet to do so:\n\n```css\natom-text-editor atom-text-editor-minimap {\n  pointer-events: none;\n}\n\natom-text-editor atom-text-editor-minimap .minimap-visible-area {\n  pointer-events: auto;\n}\n```\n\nThe visible area will still allow interaction but the Minimap track won't.\n\n#### Making Minimap visible only in the focused pane\n\nYou can put the following code in your user stylesheet to achieve this effect:\n\n```css\natom-text-editor {\n  atom-text-editor-minimap {\n    display: none;\n  }\n\n  &.is-focused {\n    atom-text-editor-minimap {\n      display: block;\n    }\n  }\n}\n```\n\n#### Make Minimap Visible area display like Sublime Text\n\nPut the following code in your user stylesheet to make your minimap look like Sublime text.\nIt's more easy to view when you have code hightlight in minimap.\n\n| `Default State (Hidden)`                                                                        | `Hover`                                                                                       |                  `Only display Visible area when hover or click/drag event.`                   |\n| ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------: |\n| ![](https://github.com/machinavn/minimap/blob/master/resources/on-default-minimap.png?raw=true) | ![](https://github.com/machinavn/minimap/blob/master/resources/on-hover-minimap.png?raw=true) | ![](https://github.com/machinavn/minimap/blob/master/resources/on-scroll-minimap.png?raw=true) |\n\n```css\natom-text-editor,\nhtml {\n  atom-text-editor-minimap {\n    .minimap-visible-area {\n      background-color: #7c7c7c;\n      // Color of Visible area.\n      opacity: 0;\n      // Default 0 when you not working with minimap\n      cursor: default;\n      // Change cursor style to pointer.\n      transition: 0.5s opacity;\n      // Better UI.\n      &:hover {\n        opacity: 0.2;\n      } // Only display Minimap visible area when working.\n      &:active {\n        cursor: default;\n      } // Change cursor when dragging.\n    }\n    &:hover {\n      .minimap-visible-area {\n        opacity: 0.2;\n        transition: opacity 1s;\n      } // When Hover to all minimap area, visible area will display.\n    }\n\n    &:active {\n      .minimap-visible-area {\n        opacity: 0.2;\n        transition: opacity 0.5s;\n      } // Display Minimap visible area when dragging.\n    }\n  }\n}\n```\n\n### ASCII Art Comments\n\nOne neat trick is to use ASCII art to create huge comments visible in the minimap. This is really efficient when navigating huge files.\n\n![ASCII Art Comments](https://github.com/atom-minimap/minimap/blob/master/resources/ascii-comments.png?raw=true)\n\nTo generate these comments you can use on these useful Atom packages:\n\n- [Figlet](https://atom.io/packages/figlet)\n- [Figletify](https://atom.io/packages/figletify)\n- [Minimap Titles](https://atom.io/packages/minimap-titles)\n- [Draw Package](https://atom.io/packages/draw-package)\n\n### Developers Documentation\n\n- [Developers Documentation](https://github.com/atom-minimap/minimap/blob/master/docs/Developers%20Documentation.md)\n- [Minimap API Documentation](http://atom-minimap.github.io/minimap/)\n\n### License\n\n[MIT](./LICENSE)\n",
+  "metadata": {
+    "name": "minimap",
+    "version": "4.40.1",
+    "description": "A preview of the full source code.",
+    "repository": "https://github.com/atom-minimap/minimap",
+    "license": "MIT",
+    "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+    "contributors": [
+      {
+        "name": "Fangdun Cai",
+        "email": "cfddream@gmail.com"
+      },
+      {
+        "name": "Cédric Néhémie",
+        "email": "cedric.nehemie@gmail.com"
+      },
+      {
+        "name": "Amin Yahyaabadi",
+        "email": "aminyahyaabadi74@gmail.com"
+      }
+    ],
+    "main": "./dist/main.js",
+    "scripts": {
+      "build": "cross-env NODE_ENV=production parcel build --target main ./lib/main.js",
+      "build-commit": "npm run clean && build-commit -o dist",
+      "build.test": "npm run clean && cross-env NODE_ENV=test parcel build --target main ./lib/main.js",
+      "bump": "ncu -u",
+      "clean": "shx rm -rf dist .parcel-cache",
+      "dev": "cross-env NODE_ENV=development parcel watch --target main ./lib/main.js",
+      "esdoc": "esdoc -c esdoc.json",
+      "format": "prettier --write .",
+      "lint": "eslint . --fix",
+      "prepare": "npm run build",
+      "test": "atom --test spec",
+      "test.format": "prettier . --check",
+      "test.lint": "eslint ."
+    },
+    "prettier": "prettier-config-atomic",
+    "dependencies": {
+      "atom-ide-base": "^3.3.0",
+      "atom-utils-plus": "^0.11.0",
+      "delegato": "^1.0.0",
+      "element-resize-detector": "^1.2.4",
+      "fs-plus": "^3.1.1",
+      "mixto": "^1.0.0"
+    },
+    "devDependencies": {
+      "@types/atom": "^1.40.11",
+      "@types/jasmine": "3.10.3",
+      "build-commit": "^0.1.4",
+      "cross-env": "^7.0.3",
+      "esdoc": "^1.1.0",
+      "esdoc-es7-plugin": "^0.0.3",
+      "eslint": "^7.32.0",
+      "eslint-config-atomic": "^1.17.0",
+      "jasmine-expect": "^5.0.0",
+      "npm-check-updates": "latest",
+      "parcel": "2.0.0-nightly.760",
+      "prettier-config-atomic": "^3.0.5",
+      "shx": "^0.3.4",
+      "terser-config-atomic": "^0.1.1",
+      "underscore-plus": "^1.7.0"
+    },
+    "engines": {
+      "atom": ">=1.52.0",
+      "electron": ">=6.0.0"
+    },
+    "keywords": [
+      "minimap",
+      "overview"
+    ],
+    "activationHooks": [
+      "core:loaded-shell-environment"
+    ],
+    "providedServices": {
+      "minimap": {
+        "description": "Exposes the minimap API to other packages",
+        "versions": {
+          "1.0.0": "provideMinimapServiceV1"
+        }
+      }
+    },
+    "targets": {
+      "main": {
+        "context": "electron-renderer",
+        "includeNodeModules": {
+          "atom": false,
+          "electron": false,
+          "fs-plus": false
+        },
+        "outputFormat": "commonjs",
+        "isLibrary": true
+      }
+    },
+    "viewProviders": [
+      "minimapViewProvider"
+    ]
+  }
+}

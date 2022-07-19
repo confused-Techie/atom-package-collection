@@ -1,0 +1,1312 @@
+{
+  "name": "atomforce",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matteobertoldo/atomforce"
+  },
+  "downloads": 278,
+  "stargazers_count": 2,
+  "releases": {
+    "latest": "0.13.1"
+  },
+  "versions": {
+    "0.13.1": {
+      "name": "atomforce",
+      "main": "./lib/atomforce",
+      "version": "0.13.1",
+      "description": "Unofficial Salesforce™ Commerce Cloud uploader & manager for Atom. Upload your files and cartridges on SFCC via WebDAV.",
+      "keywords": [
+        "salesforce-commerce-cloud",
+        "sfcc",
+        "demandware",
+        "webdav",
+        "cloud",
+        "uploader"
+      ],
+      "author": {
+        "name": "Matteo Bertoldo",
+        "email": "mrbert93@gmail.com",
+        "url": "https://github.com/matteobertoldo"
+      },
+      "bugs": {
+        "url": "https://github.com/matteobertoldo/atomforce/issues"
+      },
+      "repository": "https://github.com/matteobertoldo/atomforce.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "devDependencies": {
+        "@commitlint/cli": "^11.0.0",
+        "@commitlint/config-conventional": "^11.0.0",
+        "eslint": "^7.20.0",
+        "eslint-config-prettier": "^7.1.0",
+        "eslint-config-standard": "^16.0.2",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-promise": "^4.3.1",
+        "eslint-plugin-react": "^7.22.0",
+        "husky": "^4.3.8",
+        "lint-staged": "^10.5.4",
+        "prettier": "^2.2.1",
+        "remark-cli": "^9.0.0",
+        "remark-lint-no-dead-urls": "^1.1.0",
+        "remark-preset-lint-recommended": "^5.0.0",
+        "standard-version": "^9.1.0",
+        "stylelint": "^13.13.1",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-declaration-use-variable": "^1.7.2"
+      },
+      "dependencies": {
+        "atom-package-deps": "^7.2.2",
+        "chokidar": "^3.5.1",
+        "del": "^6.0.0",
+        "etch": "^0.14.1",
+        "file-url": "^3.0.0",
+        "filesize": "^8.0.7",
+        "multimatch": "^4.0.0",
+        "request": "^2.88.2",
+        "walk": "^2.3.14",
+        "yazl": "^2.5.1"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "providedServices": {
+        "jsonschema.provider": {
+          "versions": {
+            "1.0.0": "consumeDwJsonSchemaProvider"
+          }
+        }
+      },
+      "husky": {
+        "hooks": {
+          "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.{less,md,js,json,yml}": "prettier --write",
+        "*.js": "eslint --fix",
+        "*.less": "stylelint --fix",
+        "*.md": "remark --silently-ignore"
+      },
+      "scripts": {
+        "format": "prettier --config .prettierrc --write .",
+        "lint": "npm run lint:js && npm run lint:less && npm run lint:markdown",
+        "lint:fix": "npm run lint:js:fix && npm run lint:less:fix",
+        "lint:js": "eslint .",
+        "lint:less": "stylelint ./styles",
+        "lint:js:fix": "eslint . --fix",
+        "lint:less:fix": "stylelint ./styles --fix",
+        "lint:markdown": "remark .",
+        "parse": "npm run format && npm run lint",
+        "release": "standard-version",
+        "test": "atom --test spec"
+      },
+      "package-deps": [
+        {
+          "name": "language-sfcc"
+        },
+        {
+          "name": "autocomplete-json"
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atomforce/versions/0.13.1/tarball"
+      }
+    },
+    "0.13.0": {
+      "name": "atomforce",
+      "main": "./lib/atomforce",
+      "version": "0.13.0",
+      "description": "Unofficial Salesforce™ Commerce Cloud uploader & manager for Atom. Upload your files and cartridges on SFCC via WebDAV.",
+      "keywords": [
+        "salesforce-commerce-cloud",
+        "sfcc",
+        "demandware",
+        "webdav",
+        "cloud",
+        "uploader"
+      ],
+      "author": {
+        "name": "Matteo Bertoldo",
+        "email": "mrbert93@gmail.com",
+        "url": "https://github.com/matteobertoldo"
+      },
+      "bugs": {
+        "url": "https://github.com/matteobertoldo/atomforce/issues"
+      },
+      "repository": "https://github.com/matteobertoldo/atomforce.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "devDependencies": {
+        "@commitlint/cli": "^11.0.0",
+        "@commitlint/config-conventional": "^11.0.0",
+        "eslint": "^7.20.0",
+        "eslint-config-prettier": "^7.1.0",
+        "eslint-config-standard": "^16.0.2",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-promise": "^4.3.1",
+        "eslint-plugin-react": "^7.22.0",
+        "husky": "^4.3.8",
+        "lint-staged": "^10.5.4",
+        "prettier": "^2.2.1",
+        "remark-cli": "^9.0.0",
+        "remark-lint-no-dead-urls": "^1.1.0",
+        "remark-preset-lint-recommended": "^5.0.0",
+        "standard-version": "^9.1.0",
+        "stylelint": "^13.13.1",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-declaration-use-variable": "^1.7.2"
+      },
+      "dependencies": {
+        "atom-package-deps": "^7.2.2",
+        "chokidar": "^3.5.1",
+        "del": "^6.0.0",
+        "etch": "^0.14.1",
+        "file-url": "^3.0.0",
+        "filesize": "^8.0.7",
+        "multimatch": "^4.0.0",
+        "request": "^2.88.2",
+        "walk": "^2.3.14",
+        "yazl": "^2.5.1"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "providedServices": {
+        "jsonschema.provider": {
+          "versions": {
+            "1.0.0": "consumeDwJsonSchemaProvider"
+          }
+        }
+      },
+      "husky": {
+        "hooks": {
+          "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.{less,md,js,json,yml}": "prettier --write",
+        "*.js": "eslint --fix",
+        "*.less": "stylelint --fix",
+        "*.md": "remark --silently-ignore"
+      },
+      "scripts": {
+        "format": "prettier --config .prettierrc --write .",
+        "lint": "npm run lint:js && npm run lint:less && npm run lint:markdown",
+        "lint:fix": "npm run lint:js:fix && npm run lint:less:fix",
+        "lint:js": "eslint .",
+        "lint:less": "stylelint ./styles",
+        "lint:js:fix": "eslint . --fix",
+        "lint:less:fix": "stylelint ./styles --fix",
+        "lint:markdown": "remark .",
+        "parse": "npm run format && npm run lint",
+        "release": "standard-version",
+        "test": "atom --test spec"
+      },
+      "package-deps": [
+        {
+          "name": "language-sfcc"
+        },
+        {
+          "name": "autocomplete-json"
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atomforce/versions/0.13.0/tarball"
+      }
+    },
+    "0.12.5": {
+      "name": "atomforce",
+      "main": "./lib/atomforce",
+      "version": "0.12.5",
+      "description": "Unofficial Salesforce™ Commerce Cloud uploader & manager for Atom. Upload your files and cartridges on SFCC via WebDAV.",
+      "keywords": [
+        "salesforce-commerce-cloud",
+        "sfcc",
+        "demandware",
+        "webdav",
+        "cloud",
+        "uploader"
+      ],
+      "author": {
+        "name": "Matteo Bertoldo",
+        "email": "mrbert93@gmail.com",
+        "url": "https://github.com/matteobertoldo"
+      },
+      "bugs": {
+        "url": "https://github.com/matteobertoldo/atomforce/issues"
+      },
+      "repository": "https://github.com/matteobertoldo/atomforce.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "devDependencies": {
+        "@commitlint/cli": "^11.0.0",
+        "@commitlint/config-conventional": "^11.0.0",
+        "eslint": "^7.20.0",
+        "eslint-config-prettier": "^7.1.0",
+        "eslint-config-standard": "^16.0.2",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-promise": "^4.3.1",
+        "eslint-plugin-react": "^7.22.0",
+        "husky": "^4.3.8",
+        "lint-staged": "^10.5.4",
+        "prettier": "^2.2.1",
+        "remark-cli": "^9.0.0",
+        "remark-lint-no-dead-urls": "^1.1.0",
+        "remark-preset-lint-recommended": "^5.0.0",
+        "standard-version": "^9.1.0",
+        "stylelint": "^13.10.0",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-declaration-use-variable": "^1.7.2"
+      },
+      "dependencies": {
+        "atom-package-deps": "^7.2.2",
+        "chokidar": "^3.5.1",
+        "del": "^6.0.0",
+        "etch": "^0.14.1",
+        "file-url": "^3.0.0",
+        "filesize": "^6.1.0",
+        "multimatch": "^4.0.0",
+        "request": "^2.88.2",
+        "walk": "^2.3.14",
+        "yazl": "^2.5.1"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "providedServices": {
+        "jsonschema.provider": {
+          "versions": {
+            "1.0.0": "consumeDwJsonSchemaProvider"
+          }
+        }
+      },
+      "husky": {
+        "hooks": {
+          "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.{less,md,js,json,yml}": "prettier --write",
+        "*.js": "eslint --fix",
+        "*.less": "stylelint --fix",
+        "*.md": "remark --silently-ignore"
+      },
+      "scripts": {
+        "format": "prettier --config .prettierrc --write .",
+        "lint": "npm run lint:js && npm run lint:less && npm run lint:markdown",
+        "lint:fix": "npm run lint:js:fix && npm run lint:less:fix",
+        "lint:js": "eslint .",
+        "lint:less": "stylelint ./styles",
+        "lint:js:fix": "eslint . --fix",
+        "lint:less:fix": "stylelint ./styles --fix",
+        "lint:markdown": "remark .",
+        "parse": "npm run format && npm run lint",
+        "release": "standard-version",
+        "test": "atom --test spec"
+      },
+      "package-deps": [
+        {
+          "name": "language-sfcc"
+        },
+        {
+          "name": "autocomplete-json"
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atomforce/versions/0.12.5/tarball"
+      }
+    },
+    "0.12.4": {
+      "name": "atomforce",
+      "main": "./lib/atomforce",
+      "version": "0.12.4",
+      "description": "Unofficial Salesforce™ Commerce Cloud uploader & manager for Atom. Upload your files and cartridges on SFCC via WebDAV.",
+      "keywords": [
+        "salesforce-commerce-cloud",
+        "sfcc",
+        "demandware",
+        "webdav",
+        "cloud",
+        "uploader"
+      ],
+      "author": {
+        "name": "Matteo Bertoldo",
+        "email": "mrbert93@gmail.com",
+        "url": "https://github.com/matteobertoldo"
+      },
+      "bugs": {
+        "url": "https://github.com/matteobertoldo/atomforce/issues"
+      },
+      "repository": "https://github.com/matteobertoldo/atomforce.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "devDependencies": {
+        "@commitlint/cli": "^11.0.0",
+        "@commitlint/config-conventional": "^11.0.0",
+        "eslint": "^7.20.0",
+        "eslint-config-prettier": "^7.1.0",
+        "eslint-config-standard": "^16.0.2",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-promise": "^4.3.1",
+        "eslint-plugin-react": "^7.22.0",
+        "husky": "^4.3.8",
+        "lint-staged": "^10.5.4",
+        "prettier": "^2.2.1",
+        "remark-cli": "^9.0.0",
+        "remark-lint-no-dead-urls": "^1.1.0",
+        "remark-preset-lint-recommended": "^5.0.0",
+        "standard-version": "^9.1.0",
+        "stylelint": "^13.10.0",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-declaration-use-variable": "^1.7.2"
+      },
+      "dependencies": {
+        "atom-package-deps": "^7.2.2",
+        "chokidar": "^3.5.1",
+        "del": "^6.0.0",
+        "etch": "^0.14.1",
+        "file-url": "^3.0.0",
+        "filesize": "^6.1.0",
+        "multimatch": "^4.0.0",
+        "request": "^2.88.2",
+        "walk": "^2.3.14",
+        "yazl": "^2.5.1"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "providedServices": {
+        "jsonschema.provider": {
+          "versions": {
+            "1.0.0": "consumeDwJsonSchemaProvider"
+          }
+        }
+      },
+      "husky": {
+        "hooks": {
+          "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.{less,md,js,json,yml}": "prettier --write",
+        "*.js": "eslint --fix",
+        "*.less": "stylelint --fix",
+        "*.md": "remark --silently-ignore"
+      },
+      "scripts": {
+        "format": "prettier --config .prettierrc --write .",
+        "lint": "npm run lint:js && npm run lint:less && npm run lint:markdown",
+        "lint:fix": "npm run lint:js:fix && npm run lint:less:fix",
+        "lint:js": "eslint .",
+        "lint:less": "stylelint ./styles",
+        "lint:js:fix": "eslint . --fix",
+        "lint:less:fix": "stylelint ./styles --fix",
+        "lint:markdown": "remark .",
+        "parse": "npm run format && npm run lint",
+        "release": "standard-version",
+        "test": "atom --test spec"
+      },
+      "package-deps": [
+        {
+          "name": "language-sfcc"
+        },
+        {
+          "name": "autocomplete-json"
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atomforce/versions/0.12.4/tarball"
+      }
+    },
+    "0.12.3": {
+      "name": "atomforce",
+      "main": "./lib/atomforce",
+      "version": "0.12.3",
+      "description": "Unofficial Salesforce™ Commerce Cloud uploader & manager for Atom. Upload your files and cartridges on SFCC via WebDAV.",
+      "keywords": [
+        "salesforce-commerce-cloud",
+        "sfcc",
+        "demandware",
+        "webdav",
+        "cloud",
+        "uploader"
+      ],
+      "author": {
+        "name": "Matteo Bertoldo",
+        "email": "mrbert93@gmail.com",
+        "url": "https://github.com/matteobertoldo"
+      },
+      "bugs": {
+        "url": "https://github.com/matteobertoldo/atomforce/issues"
+      },
+      "repository": "https://github.com/matteobertoldo/atomforce.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "devDependencies": {
+        "@commitlint/cli": "^11.0.0",
+        "@commitlint/config-conventional": "^11.0.0",
+        "eslint": "^7.19.0",
+        "eslint-config-prettier": "^7.1.0",
+        "eslint-config-standard": "^16.0.2",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-react": "^7.22.0",
+        "husky": "^5.0.9",
+        "lint-staged": "^10.5.4",
+        "prettier": "^2.2.1",
+        "remark-cli": "^9.0.0",
+        "remark-lint-no-dead-urls": "^1.1.0",
+        "remark-preset-lint-recommended": "^5.0.0",
+        "standard-version": "^9.1.0",
+        "stylelint": "^13.8.0",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-declaration-use-variable": "^1.7.2"
+      },
+      "dependencies": {
+        "atom-package-deps": "^7.2.0",
+        "chokidar": "^3.5.1",
+        "del": "^6.0.0",
+        "etch": "^0.14.1",
+        "file-url": "^3.0.0",
+        "filesize": "^6.1.0",
+        "multimatch": "^4.0.0",
+        "request": "^2.88.2",
+        "walk": "^2.3.14",
+        "yazl": "^2.5.1"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "providedServices": {
+        "jsonschema.provider": {
+          "versions": {
+            "1.0.0": "consumeDwJsonSchemaProvider"
+          }
+        }
+      },
+      "husky": {
+        "hooks": {
+          "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.{less,md,js,json,yml}": "prettier --write",
+        "*.js": "eslint --fix",
+        "*.less": "stylelint --fix",
+        "*.md": "remark --silently-ignore"
+      },
+      "scripts": {
+        "format": "prettier --config .prettierrc --write .",
+        "lint": "npm run lint:js && npm run lint:less && npm run lint:markdown",
+        "lint:fix": "npm run lint:js:fix && npm run lint:less:fix",
+        "lint:js": "eslint .",
+        "lint:less": "stylelint ./styles",
+        "lint:js:fix": "eslint . --fix",
+        "lint:less:fix": "stylelint ./styles --fix",
+        "lint:markdown": "remark .",
+        "parse": "npm run format && npm run lint",
+        "release": "standard-version",
+        "test": "atom --test spec"
+      },
+      "package-deps": [
+        {
+          "name": "language-sfcc"
+        },
+        {
+          "name": "autocomplete-json"
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atomforce/versions/0.12.3/tarball"
+      }
+    },
+    "0.12.2": {
+      "name": "atomforce",
+      "main": "./lib/atomforce",
+      "version": "0.12.2",
+      "description": "Unofficial Salesforce™ Commerce Cloud uploader & manager for Atom. Upload your files and cartridges on SFCC via WebDAV.",
+      "keywords": [
+        "salesforce-commerce-cloud",
+        "sfcc",
+        "demandware",
+        "webdav",
+        "cloud",
+        "uploader"
+      ],
+      "author": {
+        "name": "Matteo Bertoldo",
+        "email": "mrbert93@gmail.com",
+        "url": "https://github.com/matteobertoldo"
+      },
+      "bugs": {
+        "url": "https://github.com/matteobertoldo/atomforce/issues"
+      },
+      "repository": "https://github.com/matteobertoldo/atomforce.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "devDependencies": {
+        "@commitlint/cli": "^11.0.0",
+        "@commitlint/config-conventional": "^11.0.0",
+        "eslint": "^7.18.0",
+        "eslint-config-prettier": "^7.1.0",
+        "eslint-config-standard": "^16.0.2",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-react": "^7.22.0",
+        "husky": "^4.3.8",
+        "lint-staged": "^10.5.3",
+        "prettier": "^2.2.1",
+        "remark-cli": "^9.0.0",
+        "remark-lint-no-dead-urls": "^1.1.0",
+        "remark-preset-lint-recommended": "^5.0.0",
+        "standard-version": "^9.1.0",
+        "stylelint": "^13.8.0",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-declaration-use-variable": "^1.7.2"
+      },
+      "dependencies": {
+        "atom-package-deps": "^7.1.0",
+        "chokidar": "^3.5.1",
+        "del": "^6.0.0",
+        "etch": "^0.14.1",
+        "file-url": "^3.0.0",
+        "filesize": "^6.1.0",
+        "multimatch": "^4.0.0",
+        "request": "^2.88.2",
+        "walk": "^2.3.14",
+        "yazl": "^2.5.1"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "providedServices": {
+        "jsonschema.provider": {
+          "versions": {
+            "1.0.0": "consumeDwJsonSchemaProvider"
+          }
+        }
+      },
+      "husky": {
+        "hooks": {
+          "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.{less,md,js,json,yml}": "prettier --write",
+        "*.js": "eslint --fix",
+        "*.less": "stylelint --fix",
+        "*.md": "remark --silently-ignore"
+      },
+      "scripts": {
+        "format": "prettier --config .prettierrc --write \"./**/*.{less,md,js,json,yml}\"",
+        "lint": "npm run lint:js && npm run lint:less && npm run lint:markdown",
+        "lint:fix": "npm run lint:js:fix && npm run lint:less:fix",
+        "lint:js": "eslint .",
+        "lint:less": "stylelint ./styles",
+        "lint:js:fix": "eslint . --fix",
+        "lint:less:fix": "stylelint ./styles --fix",
+        "lint:markdown": "remark .",
+        "parse": "npm run format && npm run lint",
+        "release": "standard-version",
+        "test": "atom --test spec"
+      },
+      "package-deps": [
+        {
+          "name": "language-sfcc"
+        },
+        {
+          "name": "autocomplete-json"
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atomforce/versions/0.12.2/tarball"
+      }
+    },
+    "0.12.1": {
+      "name": "atomforce",
+      "main": "./lib/atomforce",
+      "version": "0.12.1",
+      "description": "Unofficial Salesforce™ Commerce Cloud uploader & manager for Atom. Upload your files and cartridges on SFCC via WebDAV.",
+      "keywords": [
+        "salesforce-commerce-cloud",
+        "sfcc",
+        "demandware",
+        "webdav",
+        "cloud",
+        "uploader"
+      ],
+      "author": {
+        "name": "Matteo Bertoldo",
+        "email": "mrbert93@gmail.com",
+        "url": "https://github.com/matteobertoldo"
+      },
+      "bugs": {
+        "url": "https://github.com/matteobertoldo/atomforce/issues"
+      },
+      "repository": "https://github.com/matteobertoldo/atomforce.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "devDependencies": {
+        "@commitlint/cli": "^11.0.0",
+        "@commitlint/config-conventional": "^11.0.0",
+        "eslint": "^7.17.0",
+        "eslint-config-prettier": "^7.1.0",
+        "eslint-config-standard": "^16.0.2",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^3.3.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-react": "^7.22.0",
+        "husky": "^4.3.6",
+        "lint-staged": "^10.5.3",
+        "prettier": "^2.2.1",
+        "remark-cli": "^9.0.0",
+        "remark-lint-no-dead-urls": "^1.1.0",
+        "remark-preset-lint-recommended": "^5.0.0",
+        "standard-version": "^9.1.0",
+        "stylelint": "^13.8.0",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-declaration-use-variable": "^1.7.2"
+      },
+      "dependencies": {
+        "atom-package-deps": "^7.0.3",
+        "chokidar": "^3.4.3",
+        "del": "^6.0.0",
+        "etch": "^0.14.1",
+        "file-url": "^3.0.0",
+        "filesize": "^6.1.0",
+        "multimatch": "^4.0.0",
+        "request": "^2.88.2",
+        "walk": "^2.3.14",
+        "yazl": "^2.5.1"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "providedServices": {
+        "jsonschema.provider": {
+          "versions": {
+            "1.0.0": "consumeDwJsonSchemaProvider"
+          }
+        }
+      },
+      "husky": {
+        "hooks": {
+          "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.{less,md,js,json,yml}": "prettier --write",
+        "*.js": "eslint --fix",
+        "*.less": "stylelint --fix",
+        "*.md": "remark --silently-ignore"
+      },
+      "scripts": {
+        "format": "prettier --config .prettierrc --write \"./**/*.{less,md,js,json,yml}\"",
+        "lint": "npm run lint:js && npm run lint:less && npm run lint:markdown",
+        "lint:fix": "npm run lint:js:fix && npm run lint:less:fix",
+        "lint:js": "eslint .",
+        "lint:less": "stylelint ./styles",
+        "lint:js:fix": "eslint . --fix",
+        "lint:less:fix": "stylelint ./styles --fix",
+        "lint:markdown": "remark .",
+        "parse": "npm run format && npm run lint",
+        "release": "standard-version",
+        "test": "atom --test spec"
+      },
+      "package-deps": [
+        {
+          "name": "language-sfcc"
+        },
+        {
+          "name": "autocomplete-json"
+        }
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atomforce/versions/0.12.1/tarball"
+      }
+    },
+    "0.12.0": {
+      "name": "atomforce",
+      "main": "./lib/atomforce",
+      "version": "0.12.0",
+      "description": "Unofficial Salesforce™ Commerce Cloud uploader & manager for Atom. Upload your files and cartridges on SFCC via WebDAV.",
+      "keywords": [
+        "salesforce-commerce-cloud",
+        "sfcc",
+        "demandware",
+        "webdav",
+        "cloud",
+        "uploader"
+      ],
+      "author": {
+        "name": "Matteo Bertoldo",
+        "email": "mrbert93@gmail.com",
+        "url": "https://github.com/matteobertoldo"
+      },
+      "bugs": {
+        "url": "https://github.com/matteobertoldo/atomforce/issues"
+      },
+      "repository": "https://github.com/matteobertoldo/atomforce.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "devDependencies": {
+        "@commitlint/cli": "^9.1.2",
+        "@commitlint/config-conventional": "^9.1.2",
+        "eslint": "^7.7.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-config-standard": "^14.1.1",
+        "eslint-plugin-import": "^2.22.0",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^3.1.4",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-react": "^7.20.6",
+        "eslint-plugin-standard": "^4.0.1",
+        "husky": "^3.1.0",
+        "lint-staged": "^10.2.13",
+        "prettier": "^2.1.1",
+        "remark-cli": "^8.0.1",
+        "remark-lint-no-dead-urls": "^1.1.0",
+        "remark-preset-lint-recommended": "^4.0.1",
+        "stylelint": "^13.6.1",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-declaration-use-variable": "^1.7.2"
+      },
+      "dependencies": {
+        "atom-package-deps": "^6.0.0",
+        "chokidar": "^3.4.2",
+        "del": "^5.1.0",
+        "etch": "^0.14.0",
+        "file-url": "^3.0.0",
+        "filesize": "^6.1.0",
+        "multimatch": "^4.0.0",
+        "request": "^2.88.2",
+        "walk": "^2.3.14",
+        "yazl": "^2.5.1"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "providedServices": {
+        "jsonschema.provider": {
+          "versions": {
+            "1.0.0": "consumeDwJsonSchemaProvider"
+          }
+        }
+      },
+      "husky": {
+        "hooks": {
+          "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.js": "eslint --fix",
+        "*.less": "stylelint --fix",
+        "*.md": "remark .",
+        "*.{json,yml}": "prettier --write"
+      },
+      "scripts": {
+        "changelog": "github_changelog_generator -u matteobertoldo -p atomforce",
+        "format": "prettier --config .prettierrc --write \"./**/*.{less,md,js,json,yml}\"",
+        "lint": "npm run lint:js && npm run lint:less && npm run lint:markdown",
+        "lint:fix": "npm run lint:js:fix && npm run lint:less:fix",
+        "lint:js": "eslint .",
+        "lint:less": "stylelint ./styles",
+        "lint:js:fix": "eslint . --fix",
+        "lint:less:fix": "stylelint ./styles --fix",
+        "lint:markdown": "remark .",
+        "parse": "npm run format && npm run lint",
+        "test": "atom --test spec"
+      },
+      "package-deps": [
+        "autocomplete-json",
+        "language-sfcc"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atomforce/versions/0.12.0/tarball"
+      }
+    },
+    "0.11.1": {
+      "name": "atomforce",
+      "main": "./lib/atomforce",
+      "version": "0.11.1",
+      "description": "Salesforce Commerce Cloud uploader for Atom. Upload your files and cartridges on SFCC via WebDAV.",
+      "keywords": [
+        "salesforce-commerce-cloud",
+        "sfcc",
+        "demandware",
+        "webdav",
+        "cloud",
+        "uploader"
+      ],
+      "author": {
+        "name": "Matteo Bertoldo",
+        "email": "mbertoldo@walit.it",
+        "url": "https://github.com/matteobertoldo"
+      },
+      "bugs": {
+        "url": "https://github.com/matteobertoldo/atomforce/issues"
+      },
+      "repository": "https://github.com/matteobertoldo/atomforce.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0",
+        "node": ">=8.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "devDependencies": {
+        "commitlint": "^8.3.5",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-config-standard": "^14.1.1",
+        "eslint-plugin-import": "^2.20.2",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^3.1.3",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-react": "^7.19.0",
+        "eslint-plugin-standard": "^4.0.1",
+        "eslit": "^6.0.0",
+        "husky": "^4.2.5",
+        "prettier": "^2.0.5",
+        "remark-cli": "^8.0.0",
+        "remark-lint-no-dead-urls": "^1.0.2",
+        "remark-preset-lint-recommended": "^4.0.0",
+        "stylelint": "^13.3.3",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-declaration-use-variable": "^1.7.2"
+      },
+      "dependencies": {
+        "atom-package-deps": "^5.1.0",
+        "chokidar": "^3.4.0",
+        "del": "^5.1.0",
+        "etch": "^0.14.0",
+        "file-url": "^3.0.0",
+        "filesize": "^6.1.0",
+        "multimatch": "^4.0.0",
+        "request": "^2.88.2",
+        "walk": "^2.3.14",
+        "yazl": "^2.5.1"
+      },
+      "husky": {
+        "hooks": {
+          "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+          "pre-commit": "npm run parse"
+        }
+      },
+      "package-deps": [
+        "autocomplete-json",
+        "language-sfcc"
+      ],
+      "providedServices": {
+        "jsonschema.provider": {
+          "versions": {
+            "1.0.0": "consumeDwJsonSchemaProvider"
+          }
+        }
+      },
+      "remarkConfig": {
+        "plugins": [
+          "remark-preset-lint-recommended",
+          "remark-lint-no-dead-urls"
+        ]
+      },
+      "scripts": {
+        "changelog": "github_changelog_generator -u matteobertoldo -p atomforce",
+        "format": "prettier --config .prettierrc --write \"./**/*.{less,md,js,json,yml}\"",
+        "lint": "npm run lint:js && npm run lint:less && npm run lint:markdown",
+        "lint:fix": "npm run lint:js:fix && npm run lint:less:fix",
+        "lint:js": "eslint .",
+        "lint:less": "stylelint ./styles",
+        "lint:js:fix": "eslint . --fix",
+        "lint:less:fix": "stylelint ./styles --fix",
+        "lint:markdown": "remark .",
+        "parse": "npm run format && npm run lint",
+        "test": "atom --test spec"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atomforce/versions/0.11.1/tarball"
+      }
+    },
+    "0.11.0": {
+      "name": "atomforce",
+      "main": "./lib/atomforce",
+      "version": "0.11.0",
+      "description": "Salesforce Commerce Cloud uploader for Atom. Upload your files and cartridges on SFCC via WebDAV.",
+      "keywords": [
+        "salesforce-commerce-cloud",
+        "sfcc",
+        "demandware",
+        "webdav",
+        "cloud",
+        "uploader"
+      ],
+      "author": {
+        "name": "Matteo Bertoldo",
+        "email": "mbertoldo@walit.it",
+        "url": "https://github.com/matteobertoldo"
+      },
+      "bugs": {
+        "url": "https://github.com/matteobertoldo/atomforce/issues"
+      },
+      "repository": "https://github.com/matteobertoldo/atomforce.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0",
+        "node": ">=8.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "devDependencies": {
+        "commitlint": "^8.3.5",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-config-standard": "^14.1.1",
+        "eslint-plugin-import": "^2.20.2",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^3.1.3",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-react": "^7.19.0",
+        "eslint-plugin-standard": "^4.0.1",
+        "eslit": "^6.0.0",
+        "husky": "^4.2.5",
+        "prettier": "^2.0.5",
+        "remark-cli": "^8.0.0",
+        "remark-lint-no-dead-urls": "^1.0.2",
+        "remark-preset-lint-recommended": "^4.0.0",
+        "stylelint": "^13.3.3",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-declaration-use-variable": "^1.7.2"
+      },
+      "dependencies": {
+        "atom-package-deps": "^5.1.0",
+        "chokidar": "^3.4.0",
+        "del": "^5.1.0",
+        "etch": "^0.14.0",
+        "file-url": "^3.0.0",
+        "filesize": "^6.1.0",
+        "multimatch": "^4.0.0",
+        "request": "^2.88.2",
+        "walk": "^2.3.14",
+        "yazl": "^2.5.1"
+      },
+      "husky": {
+        "hooks": {
+          "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+          "pre-commit": "npm run parse"
+        }
+      },
+      "package-deps": [
+        "autocomplete-json",
+        "language-sfcc"
+      ],
+      "providedServices": {
+        "jsonschema.provider": {
+          "versions": {
+            "1.0.0": "consumeDwJsonSchemaProvider"
+          }
+        }
+      },
+      "remarkConfig": {
+        "plugins": [
+          "remark-preset-lint-recommended",
+          "remark-lint-no-dead-urls"
+        ]
+      },
+      "scripts": {
+        "changelog": "github_changelog_generator -u matteobertoldo -p atomforce",
+        "format": "prettier --config .prettierrc --write \"./**/*.{less,md,js,json,yml}\"",
+        "lint": "npm run lint:js && npm run lint:less && npm run lint:markdown",
+        "lint:fix": "npm run lint:js:fix && npm run lint:less:fix",
+        "lint:js": "eslint .",
+        "lint:less": "stylelint ./styles",
+        "lint:js:fix": "eslint . --fix",
+        "lint:less:fix": "stylelint ./styles --fix",
+        "lint:markdown": "remark .",
+        "parse": "npm run format && npm run lint",
+        "test": "atom --test spec"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atomforce/versions/0.11.0/tarball"
+      }
+    },
+    "0.10.0": {
+      "name": "atomforce",
+      "main": "./lib/atomforce",
+      "version": "0.10.0",
+      "description": "Salesforce Commerce Cloud (ex Demandware) uploader for Atom. Upload your files and cartridges on SFCC via WebDAV.",
+      "keywords": [
+        "salesforce-commerce-cloud",
+        "sfcc",
+        "demandware",
+        "webdav",
+        "cloud",
+        "uploader"
+      ],
+      "author": {
+        "name": "Matteo Bertoldo",
+        "email": "mbertoldo@walit.it",
+        "url": "https://github.com/matteobertoldo"
+      },
+      "bugs": {
+        "url": "https://github.com/matteobertoldo/atomforce/issues"
+      },
+      "repository": "https://github.com/matteobertoldo/atomforce.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0",
+        "node": ">=8.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "devDependencies": {
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.9.0",
+        "eslint-config-standard": "^14.1.0",
+        "eslint-plugin-import": "^2.20.0",
+        "eslint-plugin-node": "^11.0.0",
+        "eslint-plugin-prettier": "^3.1.2",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-react": "^7.18.0",
+        "eslint-plugin-standard": "^4.0.1",
+        "eslit": "^6.0.0",
+        "husky": "^4.2.1",
+        "prettier": "^1.19.1",
+        "remark-cli": "^7.0.1",
+        "remark-lint-no-dead-urls": "^1.0.1",
+        "remark-preset-lint-recommended": "^3.0.3",
+        "stylelint": "^13.0.0",
+        "stylelint-config-standard": "^19.0.0",
+        "stylelint-declaration-use-variable": "^1.7.2"
+      },
+      "dependencies": {
+        "chokidar": "^3.3.1",
+        "del": "^5.1.0",
+        "etch": "^0.14.0",
+        "filesize": "^6.0.1",
+        "multimatch": "^4.0.0",
+        "request": "^2.88.0",
+        "walk": "^2.3.14",
+        "yazl": "^2.5.1"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "npm run parse"
+        }
+      },
+      "remarkConfig": {
+        "plugins": [
+          "remark-preset-lint-recommended",
+          "remark-lint-no-dead-urls"
+        ]
+      },
+      "scripts": {
+        "format": "prettier --config .prettierrc --write \"./**/*.{less,md,js,json,yml}\"",
+        "lint": "npm run lint:js && npm run lint:less && npm run lint:markdown",
+        "lint:fix": "npm run lint:js:fix && npm run lint:less:fix",
+        "lint:js": "eslint .",
+        "lint:less": "stylelint ./styles",
+        "lint:js:fix": "eslint . --fix",
+        "lint:less:fix": "stylelint ./styles --fix",
+        "lint:markdown": "remark .",
+        "parse": "npm run format && npm run lint",
+        "test": "atom --test spec"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atomforce/versions/0.10.0/tarball"
+      }
+    }
+  },
+  "readme": "<p align=\"center\">\n    <img\n        width=\"320px\"\n        src=\"https://raw.githubusercontent.com/matteobertoldo/atomforce/assets/logos/atomforce.svg?sanitize=true\"\n        alt=\"Atomforce\"\n    />\n</p>\n\n<p align=\"center\">Unofficial <i>Salesforce &trade; Commerce Cloud</i> B2C uploader &amp; manager for Atom.</p>\n\n<p align=\"center\">\n    <a href=\"https://app.travis-ci.com/github/matteobertoldo/atomforce\">\n        <img\n            src=\"https://travis-ci.com/matteobertoldo/atomforce.svg?branch=master\"\n            alt=\"Build Status\"\n        />\n    </a>\n    <a href=\"https://github.com/prettier/prettier\">\n        <img\n            src=\"https://img.shields.io/badge/code_of-conduct-ff69b4.svg\"\n            alt=\"Prettier\"\n        />\n    </a>\n    <a href=\"https://atom.io/packages/atomforce\">\n        <img\n            src=\"https://img.shields.io/apm/v/atomforce.svg\"\n            alt=\"Package Version\"\n        />\n    </a>\n</p>\n\n---\n\n## Intro\n\nAtomforce is a package for [Atom](https://atom.io), that with a simple interface in the Atom Status Bar, helps you upload files and cartridges in your Sandbox via `WebDAV` for the B2C development.\n\n## Installation\n\n### Command Line\n\n1.  Install the latest version of [Atom](https://atom.io)\n2.  In the terminal, install the package via **apm**:\n\n```sh\napm install atomforce\n```\n\n### GUI\n\n1.  Install the latest version of [Atom](https://atom.io)\n2.  Launch Atom\n3.  Open Settings View using <kbd>Cmd+,</kbd> on macOS or <kbd>Ctrl+,</kbd> on other platforms\n4.  Click the Install tab on the left side\n5.  Enter `atomforce` in the search box and press <kbd>Enter</kbd>\n6.  Click the \"Install\" button that appears\n\n## Configuration\n\nAs required by the standard in the various `npm` Salesforce packages eg: ([`dwupload`](https://www.npmjs.com/package/dwupload#config-file) or [`sgmf-scripts`](https://www.npmjs.com/package/sgmf-scripts)), Atomforce also requires a file named `dw.json` in the `root` of the project, which is needed to enable connection to the **WebDAV**. <br /> In the following indexes you can find most of the examples to be able to upload your files and cartridges to Sandbox correctly.\n\n### dw.json\n\nIn order to create a connection file to the WebDAV it is available with Atomforce, an integrated provider for the autocompletion of the correct properties. Create a new `dw.json` file in the root of your _SFCC_ project in order to auto-complete the file correctly.\n\n![dw-json-schema](https://user-images.githubusercontent.com/15775323/80418605-fd76f800-88d7-11ea-8e8a-88fa64e861c8.gif)\n\nHowever, it's possible to consult the attributes of the properties and the _mandatory_ fields for the right connection, here.\n\n| Keyword                     | Mandatory |   Type   | Description                                                                                                                                                                                                                                                                       |\n| --------------------------- | :-------: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `hostname`                  |  `true`   | `string` | The Hostname of your sandbox without the `https` protocol. The name must end before `/on/demandware.store/`.                                                                                                                                                                      |\n| `username`                  |  `true`   | `string` | The username used to access on your Sandbox. The same value of the field that in \"Sandbox Istance\" is called `login`. In some sandboxes with the _SFRA_ architecture the username, corresponds to the username used in [`account.demandware.com`](https://account.demandware.com) |\n| `password`                  |  `true`   | `string` | The password used to access on your Sandbox. In some sandboxes with the _SFRA_ architecture the password, corresponds to the password used in [`account.demandware.com`](https://account.demandware.com)                                                                          |\n| `code-version` or `version` |  `true`   | `string` | The version of the code active in your Sandbox. You can check the version in `Administration > Site Development > Code Deployment`.                                                                                                                                               |\n| `root`                      |  `false`  | `string` | Root option allows for path resolution of the file to upload _relative_ to a directory.                                                                                                                                                                                           |\n| `cartridges`                |  `false`  | `array`  | List of cartridges to be uploaded and viewed by the watcher filesystem.                                                                                                                                                                                                           |\n| `p12`                       |  `false`  | `string` | The absolute path of `p12` file necessary for two-factor authentication. If `hostname` key contains `cert` initials, this key become **mandatory**.                                                                                                                               |\n| `passphrase`                |  `false`  | `string` | The keyword necessary for two-factor authentication. If `p12` is set, `passphrase` become **mandatory**.                                                                                                                                                                          |\n\nA final example of how the file should be structured. <br />\n\n> _Remember to add the `dw.json` file in your `.gitignore` to avoid committing your Sandbox credentials!_.\n\n```json\n{\n    \"hostname\": \"dev01-eu01-sample.demandware.net\",\n    \"username\": \"username\",\n    \"password\": \"mypassword\",\n    \"code-version\": \"version1\"\n}\n```\n\n### 2FA (Two-factor Authentication)\n\nAtomforce supports **2FA** (Two-factor Authentication). <br /> The `p12` key can be added to the `dw.json` file, and the path of where the `p12` certificate file is allocated as the value. The `passphrase` key is also required, where the keyword required for authentication is indicated as the value.\n\n```json\n{\n    \"hostname\": \"cert.staging.eu01.sample.demandware.net\",\n    \"username\": \"username\",\n    \"password\": \"mypassword\",\n    \"code-version\": \"version1\",\n    \"p12\": \"absolutepath/to/certificate.p12\",\n    \"passphrase\": \"keyword\"\n}\n```\n\n### Root\n\nRoot option allows for path resolution of the file to upload _relative_ to a directory on WebDAV. <br /> To better understand this option, suppose we have the following structure.\n\n```\ncartridges/\n├── app_storefront_base/\n├── plugin_ups/\n├── plugin_wishlist/\n└── README.md\n```\n\nIn this structure in the WebDAV the `cartridges` folder will also be uploaded, to avoid this, just insert the initial path in the value of `root`, where the cartridges are allocated.\n\n```json\n{\n    \"hostname\": \"dev01-eu01-sample.demandware.net\",\n    \"username\": \"username\",\n    \"password\": \"mypassword\",\n    \"code-version\": \"version1\",\n    \"root\": \"cartridges\"\n}\n```\n\nIf the value of `root` is: `.` the full path will be considered, so the `cartridges` folder will also be uploaded in the WebDAV. If the path of your cartridges is on several levels: `cartridges/src` just indicate the complete path. Final slash is not required.\n\n### Cartridges List\n\nThe `cartridges` option allows you to stay in watch on one or more cartridges and upload these accordingly in WebDAV. If this option is not defined in the `dw.json` file, the watcher filesystem will listen all event (add, change and delete) to all files and folders in the project root or path indicated in the `root` option, and all files and folders will be uploaded.\n\n```json\n{\n    \"hostname\": \"dev01-eu01-sample.demandware.net\",\n    \"username\": \"username\",\n    \"password\": \"mypassword\",\n    \"code-version\": \"version1\",\n    \"root\": \"cartridges\",\n    \"cartridges\": [\"app_storefront_base\", \"plugin_ups\"]\n}\n```\n\n## Additionals Packages\n\nTo improve the development workflow in Salesforce Commerce Cloud we recommend installing the `.isml` &amp; `.ds` syntax, snippets and autocompletion package.\n\n-   [language-sfcc](https://github.com/matteobertoldo/language-sfcc)\n\n<img\n    width=\"160px\"\n    src=\"https://raw.githubusercontent.com/matteobertoldo/language-sfcc/assets/ui/atom-sfcc.svg?sanitize=true\"\n    alt=\"Atom SFCC\"\n/>\n\n## Contributing\n\n[![Known Vulnerabilities](https://snyk.io/test/github/matteobertoldo/atomforce/badge.svg?targetFile=package.json)](https://snyk.io/test/github/matteobertoldo/atomforce?targetFile=package.json)\n\n### Prerequisites\n\n1.  Latest version of [Atom](https://atom.io) installed.\n2.  Recommended Installed Packages:\n    -   [editorconfig](https://atom.io/packages/editorconfig)\n    -   [prettier-atom](https://atom.io/packages/prettier-atom) (with `Format Files On Save` enabled)\n\n### Getting Started\n\nBefore cloning the repository, make sure you have [node.js](https://nodejs.org) installed on your OS.\n\n-   `git clone https://github.com/matteobertoldo/atomforce.git`\n-   `cd atomforce`\n-   `apm install`\n-   `apm link`\n\n### Contributing Details\n\nPlease read [CONTRIBUTING.md](https://github.com/matteobertoldo/atomforce/blob/master/CONTRIBUTING.md) for details on code of conduct, and the process for submitting pull requests.\n\n## License\n\nAtomforce is licensed under the MIT License - see the [LICENSE.md](https://github.com/matteobertoldo/atomforce/blob/master/LICENSE.md) file for details.\n",
+  "metadata": {
+    "name": "atomforce",
+    "main": "./lib/atomforce",
+    "version": "0.13.1",
+    "description": "Unofficial Salesforce™ Commerce Cloud uploader & manager for Atom. Upload your files and cartridges on SFCC via WebDAV.",
+    "keywords": [
+      "salesforce-commerce-cloud",
+      "sfcc",
+      "demandware",
+      "webdav",
+      "cloud",
+      "uploader"
+    ],
+    "author": {
+      "name": "Matteo Bertoldo",
+      "email": "mrbert93@gmail.com",
+      "url": "https://github.com/matteobertoldo"
+    },
+    "bugs": {
+      "url": "https://github.com/matteobertoldo/atomforce/issues"
+    },
+    "repository": "https://github.com/matteobertoldo/atomforce.git",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.21.0"
+    },
+    "devDependencies": {
+      "@commitlint/cli": "^11.0.0",
+      "@commitlint/config-conventional": "^11.0.0",
+      "eslint": "^7.20.0",
+      "eslint-config-prettier": "^7.1.0",
+      "eslint-config-standard": "^16.0.2",
+      "eslint-plugin-import": "^2.22.1",
+      "eslint-plugin-node": "^11.1.0",
+      "eslint-plugin-prettier": "^3.3.1",
+      "eslint-plugin-promise": "^4.3.1",
+      "eslint-plugin-react": "^7.22.0",
+      "husky": "^4.3.8",
+      "lint-staged": "^10.5.4",
+      "prettier": "^2.2.1",
+      "remark-cli": "^9.0.0",
+      "remark-lint-no-dead-urls": "^1.1.0",
+      "remark-preset-lint-recommended": "^5.0.0",
+      "standard-version": "^9.1.0",
+      "stylelint": "^13.13.1",
+      "stylelint-config-standard": "^20.0.0",
+      "stylelint-declaration-use-variable": "^1.7.2"
+    },
+    "dependencies": {
+      "atom-package-deps": "^7.2.2",
+      "chokidar": "^3.5.1",
+      "del": "^6.0.0",
+      "etch": "^0.14.1",
+      "file-url": "^3.0.0",
+      "filesize": "^8.0.7",
+      "multimatch": "^4.0.0",
+      "request": "^2.88.2",
+      "walk": "^2.3.14",
+      "yazl": "^2.5.1"
+    },
+    "consumedServices": {
+      "status-bar": {
+        "versions": {
+          "^1.0.0": "consumeStatusBar"
+        }
+      }
+    },
+    "providedServices": {
+      "jsonschema.provider": {
+        "versions": {
+          "1.0.0": "consumeDwJsonSchemaProvider"
+        }
+      }
+    },
+    "husky": {
+      "hooks": {
+        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+        "pre-commit": "lint-staged"
+      }
+    },
+    "lint-staged": {
+      "*.{less,md,js,json,yml}": "prettier --write",
+      "*.js": "eslint --fix",
+      "*.less": "stylelint --fix",
+      "*.md": "remark --silently-ignore"
+    },
+    "scripts": {
+      "format": "prettier --config .prettierrc --write .",
+      "lint": "npm run lint:js && npm run lint:less && npm run lint:markdown",
+      "lint:fix": "npm run lint:js:fix && npm run lint:less:fix",
+      "lint:js": "eslint .",
+      "lint:less": "stylelint ./styles",
+      "lint:js:fix": "eslint . --fix",
+      "lint:less:fix": "stylelint ./styles --fix",
+      "lint:markdown": "remark .",
+      "parse": "npm run format && npm run lint",
+      "release": "standard-version",
+      "test": "atom --test spec"
+    },
+    "package-deps": [
+      {
+        "name": "language-sfcc"
+      },
+      {
+        "name": "autocomplete-json"
+      }
+    ]
+  }
+}

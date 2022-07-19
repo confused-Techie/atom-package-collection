@@ -1,0 +1,100 @@
+{
+  "name": "nucleus",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/faceyspacey/nucleus"
+  },
+  "downloads": 2275,
+  "stargazers_count": 4,
+  "releases": {
+    "latest": "0.3.0"
+  },
+  "versions": {
+    "0.3.0": {
+      "name": "nucleus",
+      "main": "./lib/nucleus",
+      "version": "0.3.0",
+      "description": "True Collaboration in Atom",
+      "activationEvents": [
+        "nucleus:enter",
+        "nucleus:exit"
+      ],
+      "repository": "https://github.com/faceyspacey/nucleus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "firebase": "~1.0.5",
+        "underscore-plus": "^1.4.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nucleus/versions/0.3.0/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "nucleus",
+      "main": "./lib/nucleus",
+      "version": "0.2.0",
+      "description": "True Collaboration in Atom",
+      "activationEvents": [
+        "nucleus:enter",
+        "nucleus:exit"
+      ],
+      "repository": "https://github.com/faceyspacey/nucleus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "firebase": "~1.0.5",
+        "underscore-plus": "^1.4.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nucleus/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "nucleus",
+      "main": "./lib/nucleus",
+      "version": "0.1.0",
+      "description": "True Collaboration in Atom",
+      "activationEvents": [
+        "nucleus:enter",
+        "nucleus:exit"
+      ],
+      "repository": "https://github.com/faceyspacey/nucleus",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "firebase": "~1.0.5",
+        "underscore-plus": "^1.4.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nucleus/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# NUCLEUS\n\n## HOW TO GET IT RUNNIN\n\n* clone this obviously \n\n* Enable package with `apm link --dev /path/to/nucleus` (it will be symlinked in ~/.atom/dev/packages)\n\n* Then run dev version of Atom with `atom --dev`\n\n* Have Atom console always open with `crtl+opt+i`\n\n* Trigger Nucleus from the Nucleus > Enter Nucleus menu option or: `crtl+opt+n`\n\n* You will see a form popup appear. You can submit the form with no options and it will know what to do.\n\n* A key trick is you can refresh the app by typing `command+r` like refreshing a Chrome browser window. But your console has to be focused for the command to work. \n\n* To evaluate code, make a selection and right click the editor--you will see an \"Evaluate in Application!\" option.\n\n* Don't forget the Nucleus menu in the top bar! (and the corresponding keymaps you will see there)\n\n## HOW TO HACK IT\n\nFirst do these things:\n\n* study this: https://atom.io/docs/v0.101.0/creating-a-package\n* study the API: https://atom.io/docs/api/v0.101.0/api (particularly workspace, editor; models + views)\n* study the Space Pen coffeescript view system: http://atom.github.io/space-pen\n* grasp how the commonjs require() + module.exports pattern works\n* analyze Firebase API: https://www.firebase.com/docs/javascript/firebase/index.html\n* login to my Firebase account and go to the playground: https://faceyspacey.firebaseio.com ...you can observe the data change here in realtime in relation to Nucleus doing its thing!\n\nWhere to start in the code:\n\n* https://github.com/faceyspacey/nucleus/blob/master/package.json (main key --> ./lib/nucleus.coffee)\n* https://github.com/faceyspacey/nucleus/blob/master/lib/nucleus.coffee (--> ./lib/views/forms/enter)\n* https://github.com/faceyspacey/nucleus/blob/master/lib/views/forms/enter.coffee (--> new Project)\n* https://github.com/faceyspacey/nucleus/blob/master/lib/core/project.js (like a controller --> adapters)\n\n\nSome Notes on Important Files:\n\n* project.js (Project) is designed to be a thin controller or route map. The idea is to give you an overview of control flow, events, and possible entries for code execution paths. \n* /adapters contains singletons and instantiable objects (File) used by Project. The goal is for all of it to be interchangeable. Some code may seem peculiar in a few places--just know that top priority was perfect explicit interfaces in front of single responsibility objects, not the least amount of code or shortcuts. \n* /views is coffeescript views. The forms extend from an abstract class I made which extend from Space Pen's View class. I try to keep these as dumb and slim as possible. If you have any issues where Atom can't parse the code here, go to the beginning of each line and type backspace until it touches the end of the previous line and then press enter and tab until it's in the right place. Any incorrect spacing and tabs will fuck it up and are hard to see, but perhaps your python skills make this more intuitive for you. \n\n\nHow Spec Pen Works:\n\n* the `@content()` static method is what's used to generate the DOM nodes each time an instance is instantiated. \n* `outlet` attributes on DOM nodes within the `@content()` method create instance properties to access the DOM node in regular instance methods \n* the `initialize()` method is automatically called each time the view is instantiated\n* `toggle()` is also build into the parent View class to attach/detach the view. Extend it to do custom stuff, and keep its format.\n* `attach()` and `detach()` are used to do you know what. So like attach/detach child views in these methods.\n* use `super` to call the parent method. \n\n##NOTEWORTHY PARTS OF THE CODE\n* the way files are created from editors first opened on the current client vs files created because the files were opened on other clients is very interesting and a lot of work was put into doing it right.\n* the entire adapter system goes a long way to make sure that we can truly replace an adapter with a different one. This means in some places code is not what you would typically expect, and goes to great lengths to make sure no code moves out of the principle object responsible for it.\n* the route replication system in the `app_adapter.js` is worth analyzing\n* just start with `project.js` and drill down from there. \n* we simply change adapters here: https://github.com/faceyspacey/nucleus/blob/master/lib/core/config/adapter_config.js\n* lots of callbacks are used, even though they may seem unneeded. But the idea is to change switch control flow over to an adapter so the adapter maintains single responsibility for its purpse, and then return control back to client code. For example, i copied Firebase's `on()` event method for many non-firebase things. Look in project.js\n\n##TIPS ON ATOM\n* all atom API calls are in: https://github.com/faceyspacey/nucleus/blob/master/lib/core/adapters/workspace/atom/workspace_adapter.js\n* search that page for `atom.workspace` and `atom.workspaceView` to find them\n* views extend from Space Pen's View and they themselves extend from jQuery. So you can use `.remove()` to remove them. \n* there's a concept of `model` vs `view` in Atom. Views are the jquery/space-pen objects and the fat model's do the work\n* there's a reason i assigned `window.nucleus = nucleus`. The reason is because atom is configured that way. `atom` is a global var. So are keeping a similar \"interface\"\n\n\n##TIPS ON FIREBASE\n* open up https://faceyspacey.firebaseio.com and open the console and start practicing firebase calls while looking at the data. Firebase is already included on this page\n* you will notice that Firebase is really flexible. Basically u have URI's at our host, i.e. any path, and u can reference it and start adding child data to it. It's infinitely recursive. \n* You don't need a URI to exist to get a reference to it and start adding data to it. So `var reference =  new Firebase('https://faceyspacey.firebaseio.com/india/punjab/chandigarh/people/charan)` will immediately return a reference, and you can add data to it, and if you do, all the parent folders will be created for you (though only holding one node)\n* u can use `ref.child('some_path)` to get a child path\n* use `ref.on('event_name', callback)` to assign a handler that will be called on any changes to the reference\n* use `ref.on('child_added', function(snapshot) {})` to get ur handler function called every time a child document is added\n* the `snapshot` param has methods: `snapshot.val()`, `snapshot.name()` and `snapshot.ref()`. The first retrieves the doc, the second the key, and the last a reference from which you can use like the above reference\n* use `ref.once('value', func)` to basically \"get\" the data at a location, like a `findOne()` call in meteor. `'value'` gets everything at the current reference, whereas `'child_added'` only gets future additions.\n* use `.push()` to essentially add docs with a generated key. It doesn't really appear to be an array to me, just more of the same recursive stuff with hash key. (note `.set()` is a basic call to replace the entire value at a reference location. When u first learn Firebase, u start by trying `ref.set(someValue)`.\n* everything related to firebase is hidden behind the db adapter interface, so you can learn all you need by seeing it in action here: https://github.com/faceyspacey/nucleus/blob/master/lib/core/adapters/database/firebase/db_adapter.js\n\n##CONSOLE TRICKS:\n* `mess('yo whatup')` is how you send a chat from the console\n* `nucleus.app.Router.go()` and `nucleus.app.MobiRouter.go()` send all connected clients to the same route\n* `nucleus.app.login(email, password)` logs everyone in baby!\n* `nucleus.win` is the entire window context of the iframe!\n* `nucleus.Meteor` is the Meteor object within the iframe\n\n##TO DO:\n\n* #test and get all this to work again. Since it's been refactored, it hasnt been forced to work again.\n* #`App.launch()` should also git clone, and should put the code in ~/Nucleus, and toggle git clone vs git pull. It should also open the Atom Project for ~/Nucleus/project_name if not already opened\n* #in `nucleus.coffee` the forms after the Enter form need to be tested. The coffeescript will need to be formatted properly (remove hidden tabs)",
+  "metadata": {
+    "name": "nucleus",
+    "main": "./lib/nucleus",
+    "version": "0.3.0",
+    "description": "True Collaboration in Atom",
+    "activationEvents": [
+      "nucleus:enter",
+      "nucleus:exit"
+    ],
+    "repository": "https://github.com/faceyspacey/nucleus",
+    "license": "MIT",
+    "engines": {
+      "atom": ">0.50.0"
+    },
+    "dependencies": {
+      "firebase": "~1.0.5",
+      "underscore-plus": "^1.4.1"
+    }
+  }
+}

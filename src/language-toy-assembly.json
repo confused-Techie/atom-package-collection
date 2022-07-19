@@ -1,0 +1,76 @@
+{
+  "name": "language-toy-assembly",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alexander-Erlacher/language-toy-assembly"
+  },
+  "downloads": 125,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.2.2"
+  },
+  "versions": {
+    "0.2.2": {
+      "name": "language-toy-assembly",
+      "main": "./lib/language-toy-assembly",
+      "version": "0.2.2",
+      "description": "TOY assembly language syntax-highlighting in Atom.",
+      "keywords": [],
+      "repository": "https://github.com/Alexander-Erlacher/language-toy-assembly.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/language-toy-assembly/versions/0.2.2/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "language-toy-assembly",
+      "main": "./lib/language-toy-assembly",
+      "version": "0.2.0",
+      "description": "TOY assembly language Syntax-Highlighting in Atom.",
+      "keywords": [],
+      "repository": "https://github.com/Alexander-Erlacher/language-toy-assembly.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/language-toy-assembly/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "language-toy-assembly",
+      "main": "./lib/language-toy-assembly",
+      "version": "0.1.0",
+      "description": "This package contains a grammar for the assembly language of the Visual-X-TOY-CPU. The grammar is used to provide a syntax-highlighting, in order to improve the overview and correctnes, while programming in assembly language, for Visual-X-TOY.",
+      "keywords": [],
+      "repository": "https://github.com/Alexander-Erlacher/language-toy-assembly.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/language-toy-assembly/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# Description\nThis atom-editor-package, contains a grammar for the assembly language\nof the Visual-X-TOY-CPU. The grammar is used to provide a syntax-highlighting,\nin order to improve the overview and correctness, while programming in assembly\nlanguage, for Visual-X-TOY.\n\n\n\n## Supported TOY instructions\n\n| # | Assembly     | Register-Transfer   | C-Language          |\n| - | ------------ | ------------------- | ------------------- |\n| 0 | HLT          | halt                |                     |\n| 1 | ADD Rd Rs Rt | Rd ← Rs + Rt        | Rd = Rs + Rt        |\n| 2 | SUB Rd Rs Rt | Rd ← Rs - Rt        | Rd = Rs - Rt        |\n| 3 | AND Rd Rs Rt | Rd ← Rs & Rt        | Rd = Rs & Rt        |\n| 4 | XOR Rd Rs Rt | Rd ← Rs ^ Rt        | Rd = Rs ^ Rt        |\n| 5 | SHL Rd Rs Rt | Rd ← Rs << Rt       | Rd = Rs << Rt       |\n| 6 | SHR Rd Rs Rt | Rd ← Rs >> Rt       | Rd = Rs >> Rt       |\n| 7 | LDA Rd imm   | Rd ← imm            | Rd = imm            |\n| 8 | LD  Rd addr  | Rd ← mem[addr]      | Rd = a              |\n| 9 | ST  Rd addr  | mem[addr] ← Rd      | a = Rd              |\n| A | LDI Rd Rt    | Rd ← mem[Rt]        | Rd = *Rt            |\n| B | STI Rd Rt    | mem[Rt] ← Rd        | *Rt = Rd            |\n| C | BZ  Rd addr  | if(RD==0) IP ← addr | if(RD==0) goto addr |\n| D | BP  Rd addr  | if(RD>0)  IP ← addr | if(RD>0)  goto addr |\n| E | JR  Rd       | IP ← addr           | returning from a function |\n| F | JL  Rd addr  | Rd ← IP; IP ← Rd    | calling a function  |\n\n\n\n## Modified HLT: Extended Instruction Set\n\nNote that the stack in TOY grows with decreasing addresses and shrinks with\nencreasing addresses.  \nRegister-Transfer-Statements:  \n\n| Instruction | RT-Statements   | Explanation                    |\n| ----------- | --------------- | ------------------------------ |\n| CALL ADDR;  | RF ← RF - 1;    | Increase stack size.           |\n|             | mem[RF] ← ADDR; | Safe return-address on stack.  |\n|             | PC ← ADDR;      | PC loads subroutine address.   |\n| RET;        | PC ← RE;        | PC loads callee-return-address.|\n|             | RF ← RF + 1;    | Decrease stack size.           |\n| PUSH Rd;    | RF ← RF - 1;    | Increase stack size.           |\n|             | mem[RF] ← Rd;   | Safe value of Rd on stack.     |\n| POP Rd;     | Rd ← mem[RF];   | Safe value from stack on Rd.   |\n|             | RF ← RF + 1;    | Decrease stack size.           |\n\n\n\n## Syntax Highlighting Sample\n\n![syntax-highlight-sample](syntax-highlight-sample.png)\n",
+  "metadata": {
+    "name": "language-toy-assembly",
+    "main": "./lib/language-toy-assembly",
+    "version": "0.2.2",
+    "description": "TOY assembly language syntax-highlighting in Atom.",
+    "keywords": [],
+    "repository": "https://github.com/Alexander-Erlacher/language-toy-assembly.git",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {}
+  }
+}

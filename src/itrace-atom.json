@@ -1,0 +1,72 @@
+{
+  "name": "itrace-atom",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devjeetr/itrace-atom"
+  },
+  "downloads": 23,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.1.0"
+  },
+  "versions": {
+    "0.1.0": {
+      "name": "itrace-atom",
+      "main": "./lib/iTrace-atom",
+      "version": "0.1.0",
+      "description": "iTrace plugin for Atom",
+      "keywords": [],
+      "repository": "https://github.com/devjeetr/itrace-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "uuid": "^3.4.0",
+        "xml-formatter": "^1.2.0",
+        "xmlbuilder": "^13.0.2",
+        "xmlserializer": "^0.6.1"
+      },
+      "devDependencies": {
+        "electron": "^10.1.5",
+        "eslint": "^6.7.2",
+        "eslint-config-airbnb-base": "^14.0.0",
+        "eslint-config-prettier": "^6.7.0",
+        "eslint-plugin-import": "^2.19.1",
+        "eslint-plugin-prettier": "^3.1.1",
+        "prettier": "^1.19.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/itrace-atom/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# iTrace Atom\n\n## About\niTrace Atom is a plugin for the [Atom](https://atom.io/) text editor. The plugin will establish a connection to the [iTrace Core](https://github.com/iTrace-Dev/iTrace-Core) desktop application. Once connected to the Core the plugin will accept information from the Core and translate it to editor specific data and output the data to an XML file.\n\n## Installation\nLook for `itrace-atom` on the Atom Package Index.\n\n## How to Use\n1. Start Atom\n\n2. Click 'iTrace Atom' in the menu, and click init\n\n3. Start iTrace-Core application on your PC\n\n4. In Atom application, click 'iTrace-Atom', and in the meniu click 'connect to iTrace Core'\n\n5. in iTrace-Core application , setup the environment and pick an output folder\n\n6. In iTrace-Core application, click 'start tracking', and the atom text editor will start tracking automatically\n\n7. When finished, in iTrace-Core applcation click 'stop tracking', and the output files will be saved in the folder specified in the setup step\n\n\n## Features\n- Connection to iTrace-Core application to recieve gaze data\n- Resolution of gaze data to line & column numbers within current file\n- Outputs 4 files in format described below\n\n## Limitations\n- Requires only one document to be visible in the editor (no split window configuration), and on one monitor\n\n## Output Files \n 4 files outputted with names suffixed with the current time\n-   gazeOutput_suffix.xml\n-   originalSource_suffix.txt\n-   modifiedSource_suffix.txt\n-   changeLog_suffix.json\n\n## Output Formats\n\n   gazeOutput_suffix.xml\n     XML format, tags listed with attributes listed directly\n\n     (Root) 'itrace_plugin' tag: \n         session_id, participant_id\n\n         (Child of Root) 'environment' tag: \n             screen_height (height of environment screen)\n             screen_width (width of environment screen)\n             plugin_type='ATOM'\n\n         (Child of Root) 'gazes' tag:\n             no attributes\n\n             (Child of 'gazes') 'response' tag: (One per gaze event recieved from core)\n                 event_id (event id of gaze)\n                 plugin_time (time of gaze recorded by plugin in ms)\n                 x (x position of gaze)\n                 y (y position of gaze)\n                 gaze_target (filename of edited file)\n                 gaze_target_type (atom determined file type of edited file)\n                 source_file_path (path of edited file)\n                 source_file_line (0-indexed line number of edited file)\n                 source_file_col (0-indexed column number of edited file)\n                 editor_line_height (line height of edited file in atom)\n                 editor_font_height (font height of edited file in atom)\n                 editor_line_base_x = ''\n                 editor_line_base_y = ''\n\n\n   originalSource_suffix\n     copy of the source in atom window when logging was started\n\n   modifiedSource_suffix\n     copy of the source in atom window when logging was ended\n\n   changeLog_suffix.json\n     json-formatted file storing the edit history of the file during the logging session\n     \n     Format:\n         {\n             'log': [ //array of many object representing edits\n                 {\n                     \"type\": (string) //\"insert\" or \"delete\"\n                     ,\"offset\": (number) //absolute offset in file at which event occurred\n                     ,\"text\": (string) //text inserted\n                     ,\"len\": (nunber) //length of deleted or inserted text\n                     ,\"ts\": (number) //timestamp in ms\n                     ,\"row\": (number) //row of change\n                     ,\"col\": (number) //col of change\n                 }\n             ]\n         }\n",
+  "metadata": {
+    "name": "itrace-atom",
+    "main": "./lib/iTrace-atom",
+    "version": "0.1.0",
+    "description": "iTrace plugin for Atom",
+    "keywords": [],
+    "repository": "https://github.com/devjeetr/itrace-atom",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "uuid": "^3.4.0",
+      "xml-formatter": "^1.2.0",
+      "xmlbuilder": "^13.0.2",
+      "xmlserializer": "^0.6.1"
+    },
+    "devDependencies": {
+      "electron": "^10.1.5",
+      "eslint": "^6.7.2",
+      "eslint-config-airbnb-base": "^14.0.0",
+      "eslint-config-prettier": "^6.7.0",
+      "eslint-plugin-import": "^2.19.1",
+      "eslint-plugin-prettier": "^3.1.1",
+      "prettier": "^1.19.1"
+    }
+  }
+}

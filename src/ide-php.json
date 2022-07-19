@@ -1,0 +1,3207 @@
+{
+  "name": "ide-php",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atom/ide-php"
+  },
+  "downloads": 491193,
+  "stargazers_count": 143,
+  "releases": {
+    "latest": "0.7.18"
+  },
+  "versions": {
+    "0.7.18": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.18",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path of your PHP 7 binary (e.g. `/usr/local/bin/php` or `c:\\php7\\php.exe`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        },
+        "autocompletePriority": {
+          "title": "AutoComplete suggestion pritority",
+          "type": "string",
+          "enum": [
+            "default",
+            "lower"
+          ],
+          "default": "default",
+          "description": "Set 'lower' if you want to see LSP suggestions under the suggestions from the Autocomplete package. Restart required."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && rm -rf composer.lock && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "0.9.9",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "4.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.18/tarball"
+      }
+    },
+    "0.7.17": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.17",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path of your PHP 7 binary (e.g. `/usr/local/bin/php` or `c:\\php7\\php.exe`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        },
+        "autocompletePriority": {
+          "title": "AutoComplete suggestion pritority",
+          "type": "string",
+          "enum": [
+            "default",
+            "lower"
+          ],
+          "default": "default",
+          "description": "Set 'lower' if you want to see LSP suggestions under the suggestions from the Autocomplete package. Restart required."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && rm -rf composer.lock && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "0.9.4",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "4.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.17/tarball"
+      }
+    },
+    "0.7.16": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.16",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path of your PHP 7 binary (e.g. `/usr/local/bin/php` or `c:\\php7\\php.exe`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        },
+        "autocompletePriority": {
+          "title": "AutoComplete suggestion pritority",
+          "type": "string",
+          "enum": [
+            "default",
+            "lower"
+          ],
+          "default": "default",
+          "description": "Set 'lower' if you want to see LSP suggestions under the suggestions from the Autocomplete package. Restart required."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && rm -rf composer.lock && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "0.9.4",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "4.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.16/tarball"
+      }
+    },
+    "0.7.15": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.15",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path of your PHP 7 binary (e.g. `/usr/local/bin/php` or `c:\\php7\\php.exe`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        },
+        "autocompletePriority": {
+          "title": "AutoComplete suggestion pritority",
+          "type": "string",
+          "enum": [
+            "default",
+            "lower"
+          ],
+          "default": "default",
+          "description": "Set 'lower' if you want to see LSP suggestions under the suggestions from the Autocomplete package. Restart required."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && rm -rf composer.lock && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "0.9.4",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "4.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.15/tarball"
+      }
+    },
+    "0.7.14": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.14",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path of your PHP 7 binary (e.g. `/usr/local/bin/php` or `c:\\php7\\php.exe`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        },
+        "autocompletePriority": {
+          "title": "AutoComplete suggestion pritority",
+          "type": "string",
+          "enum": [
+            "default",
+            "lower"
+          ],
+          "default": "default",
+          "description": "Set 'lower' if you want to see LSP suggestions under the suggestions from the Autocomplete package. Restart required."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && rm -rf composer.lock && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "0.9.4",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "4.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.14/tarball"
+      }
+    },
+    "0.7.13": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.13",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path of your PHP 7 binary (e.g. `/usr/local/bin/php` or `c:\\php7\\php.exe`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        },
+        "autocompletePriority": {
+          "title": "AutoComplete suggestion pritority",
+          "type": "string",
+          "enum": [
+            "default",
+            "lower"
+          ],
+          "default": "default",
+          "description": "Set 'lower' if you want to see LSP suggestions under the suggestions from the Autocomplete package. Restart required."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && rm -rf composer.lock && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "0.9.4",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.13/tarball"
+      }
+    },
+    "0.7.12": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.12",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path of your PHP 7 binary (e.g. `/usr/local/bin/php` or `c:\\php7\\php.exe`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        },
+        "autocompletePriority": {
+          "title": "AutoComplete suggestion pritority",
+          "type": "string",
+          "enum": [
+            "default",
+            "lower"
+          ],
+          "default": "default",
+          "description": "Set 'lower' if you want to see LSP suggestions under the suggestions from the Autocomplete package. Restart required."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && rm -rf composer.lock && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "0.9.3",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.12/tarball"
+      }
+    },
+    "0.7.11": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.11",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path of your PHP 7 binary (e.g. `/usr/local/bin/php` or `c:\\php7\\php.exe`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        },
+        "autocompletePriority": {
+          "title": "AutoComplete suggestion pritority",
+          "type": "string",
+          "enum": [
+            "default",
+            "lower"
+          ],
+          "default": "default",
+          "description": "Set 'lower' if you want to see LSP suggestions under the suggestions from the Autocomplete package. Restart required."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && rm -rf composer.lock && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "0.9.2",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.11/tarball"
+      }
+    },
+    "0.7.10": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.10",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path of your PHP 7 binary (e.g. `/usr/local/bin/php` or `c:\\php7\\php.exe`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        },
+        "autocompletePriority": {
+          "title": "AutoComplete suggestion pritority",
+          "type": "string",
+          "enum": [
+            "default",
+            "lower"
+          ],
+          "default": "default",
+          "description": "Set 'lower' if you want to see LSP suggestions under the suggestions from the Autocomplete package. Restart required."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && rm -rf composer.lock && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "0.9.2",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.10/tarball"
+      }
+    },
+    "0.7.9": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.9",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path of your PHP 7 binary (e.g. `/usr/local/bin/php` or `c:\\php7\\php.exe`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && rm -rf composer.lock && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "0.9.2",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.9/tarball"
+      }
+    },
+    "0.7.8": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.8",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path of your PHP 7 binary (e.g. `/usr/local/bin/php` or `c:\\php7\\php.exe`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && rm -rf composer.lock && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "0.8.3",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.8/tarball"
+      }
+    },
+    "0.7.7": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.7",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path of your PHP 7 binary (e.g. `/usr/local/bin/php` or `c:\\php7\\php.exe`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && rm composer.lock && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "0.8.3",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.7/tarball"
+      }
+    },
+    "0.7.6": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.6",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path of your PHP 7 binary (e.g. `/usr/local/bin/php` or `c:\\php7\\php.exe`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && rm composer.lock && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "0.8.3",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.6/tarball"
+      }
+    },
+    "0.7.5": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.5",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path of your PHP 7 binary (e.g. `/usr/local/bin/php` or `c:\\php7\\php.exe`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && rm composer.lock && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "0.8.3",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.5/tarball"
+      }
+    },
+    "0.7.4": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.4",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to your PHP 7 binary (e.g. `/usr/local/bin/php`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "^0.7.0",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.4/tarball"
+      }
+    },
+    "0.7.3": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.3",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to your PHP 7 binary (e.g. `/usr/local/bin/php`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "^0.7.0",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.3/tarball"
+      }
+    },
+    "0.7.2": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.2",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to your PHP 7 binary (e.g. `/usr/local/bin/php`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar vendor\\* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "^0.7.0",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.2/tarball"
+      }
+    },
+    "0.7.1": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.1",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to your PHP 7 binary (e.g. `/usr/local/bin/php`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar vendor\\* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "^0.7.0",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.1/tarball"
+      }
+    },
+    "0.7.0": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.7.0",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to your PHP 7 binary (e.g. `/usr/local/bin/php`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar vendor\\* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "^0.6.4",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.7.0/tarball"
+      }
+    },
+    "0.6.10": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.6.10",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to your PHP 7 binary (e.g. `/usr/local/bin/php`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "scripts": {
+        "server-install": "rm -rf vendor && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+        "server-package": "7z a temp.tar vendor\\* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "^0.6.4",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.6.10/tarball"
+      }
+    },
+    "0.6.9": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.6.9",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to your PHP 7 binary (e.g. `/usr/local/bin/php`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "^0.6.4",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.6.9/tarball"
+      }
+    },
+    "0.6.8": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.6.8",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to your PHP 7 binary (e.g. `/usr/local/bin/php`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "^0.6.4",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.6.8/tarball"
+      }
+    },
+    "0.6.7": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.6.7",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to PHP 7 folder used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "^0.6.4",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.6.7/tarball"
+      }
+    },
+    "0.6.6": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.6.6",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to PHP 7 folder used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "^0.6.3",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.6.6/tarball"
+      }
+    },
+    "0.6.5": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.6.5",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to PHP 7 folder used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "^0.6.3",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.6.5/tarball"
+      }
+    },
+    "0.6.4": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.6.4",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to PHP 7 folder used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "^0.6.3",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.6.4/tarball"
+      }
+    },
+    "0.6.3": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.6.3",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to PHP 7 folder used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+        },
+        "connectionType": {
+          "title": "Connection Type",
+          "type": "string",
+          "enum": [
+            "auto",
+            "socket",
+            "stdio"
+          ],
+          "default": "auto",
+          "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+        }
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "^0.6.3",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.6.3/tarball"
+      }
+    },
+    "0.6.2": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.6.2",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to PHP 7 folder used to launch the PHP language server."
+        },
+        "memoryLimit": {
+          "title": "Memory Limit",
+          "type": "string",
+          "default": "-1",
+          "description": "The memory limit of the php language server. [Number][K|M|G]. Use '-1' to allow unlimited use of the RAM(default)."
+        }
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "^0.6.1",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.6.2/tarball"
+      }
+    },
+    "0.6.1": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.6.1",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to PHP 7 folder used to launch the PHP language server."
+        }
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "^0.6.1",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.6.1/tarball"
+      }
+    },
+    "0.6.0": {
+      "name": "ide-php",
+      "main": "./lib/main",
+      "version": "0.6.0",
+      "description": "PHP language support for Atom-IDE",
+      "repository": "https://github.com/atom/ide-php",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.21.0"
+      },
+      "configSchema": {
+        "phpPath": {
+          "title": "PHP Path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to PHP 7 folder used to launch the PHP language server."
+        }
+      },
+      "atomTestRunner": "./test/runner",
+      "dependencies": {
+        "atom-languageclient": "^0.6.1",
+        "decompress": "^4.2.0"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-php/versions/0.6.0/tarball"
+      }
+    }
+  },
+  "readme": "# IDE-PHP package\n[![macOS Build Status](https://travis-ci.org/atom/ide-php.svg?branch=master)](https://travis-ci.org/atom/ide-php) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/99y003ssr76ovd17?svg=true)](https://ci.appveyor.com/project/Atom/ide-php/branch/master) [![Dependency Status](https://david-dm.org/atom/ide-php.svg)](https://david-dm.org/atom/ide-php)\n\nPHP language support for Atom-IDE, powered by [FelixFBeckers PHP Language Server](https://github.com/felixfbecker/php-language-server).\n\nRequires [Atom 1.21](https://atom.io/) and a PHP 7.0 runtime installed on your system.\n\n![Screen shot of IDE-PHP](https://user-images.githubusercontent.com/118951/30307874-5a0b03d6-9736-11e7-84d1-55eafe784cda.png)\n\n## Early access\n\nThis package is currently an early access release.  You should also install the [atom-ide-ui](https://atom.io/packages/atom-ide-ui) package to expose the functionality within Atom.\n\n## Features\n\n* Auto completion\n* Diagnostics (errors & warnings)\n* Document outline\n* Find references\n* Go to definition\n* Hover\n* Signature help\n\n## Contributing\nAlways feel free to help out!  Whether it's [filing bugs and feature requests](https://github.com/atom/languageserver-php/issues/new) or working on some of the [open issues](https://github.com/atom/languageserver-php/issues), Atom's [contributing guide](https://github.com/atom/atom/blob/master/CONTRIBUTING.md) will help get you started while the [guide for contributing to packages](https://github.com/atom/atom/blob/master/docs/contributing-to-packages.md) has some extra information.\n\n## License\nMIT License.  See [the license](LICENSE.md) for more details.\n",
+  "metadata": {
+    "name": "ide-php",
+    "main": "./lib/main",
+    "version": "0.7.18",
+    "description": "PHP language support for Atom-IDE",
+    "repository": "https://github.com/atom/ide-php",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.21.0"
+    },
+    "configSchema": {
+      "phpPath": {
+        "title": "PHP Path",
+        "type": "string",
+        "default": "",
+        "description": "Absolute path of your PHP 7 binary (e.g. `/usr/local/bin/php` or `c:\\php7\\php.exe`) if not in PATH or PHP_HOME. This is used to launch the PHP language server."
+      },
+      "memoryLimit": {
+        "title": "Memory Limit",
+        "type": "string",
+        "default": "-1",
+        "description": "Maximum amount of memory the local PHP language server can use. [Number][K|M|G]. Use '-1' to allow unlimited RAM use."
+      },
+      "connectionType": {
+        "title": "Connection Type",
+        "type": "string",
+        "enum": [
+          "auto",
+          "socket",
+          "stdio"
+        ],
+        "default": "auto",
+        "description": "The connection type for communicating with the local PHP language server. 'auto' will use 'socket' on Windows, 'stdio' on other platforms."
+      },
+      "autocompletePriority": {
+        "title": "AutoComplete suggestion pritority",
+        "type": "string",
+        "enum": [
+          "default",
+          "lower"
+        ],
+        "default": "default",
+        "description": "Set 'lower' if you want to see LSP suggestions under the suggestions from the Autocomplete package. Restart required."
+      }
+    },
+    "scripts": {
+      "server-install": "rm -rf vendor && rm -rf composer.lock && composer install --prefer-dist --no-dev && composer dump-autoload --optimize",
+      "server-package": "7z a temp.tar ./vendor/* && 7z a php-ls-x.y.z.tar.gz temp.tar && rm -f temp.tar"
+    },
+    "atomTestRunner": "./test/runner",
+    "dependencies": {
+      "atom-languageclient": "0.9.9",
+      "decompress": "^4.2.0"
+    },
+    "enhancedScopes": [
+      "text.html.php"
+    ],
+    "consumedServices": {
+      "linter-indie": {
+        "versions": {
+          "2.0.0": "consumeLinterV2"
+        }
+      },
+      "atom-ide-busy-signal": {
+        "versions": {
+          "0.1.0": "consumeBusySignal"
+        }
+      },
+      "datatip": {
+        "versions": {
+          "0.1.0": "consumeDatatip"
+        }
+      },
+      "signature-help": {
+        "versions": {
+          "0.1.0": "consumeSignatureHelp"
+        }
+      }
+    },
+    "providedServices": {
+      "autocomplete.provider": {
+        "versions": {
+          "4.0.0": "provideAutocomplete"
+        }
+      },
+      "code-format.range": {
+        "versions": {
+          "0.1.0": "provideCodeFormat"
+        }
+      },
+      "code-highlight": {
+        "versions": {
+          "0.1.0": "provideCodeHighlight"
+        }
+      },
+      "definitions": {
+        "versions": {
+          "0.1.0": "provideDefinitions"
+        }
+      },
+      "find-references": {
+        "versions": {
+          "0.1.0": "provideFindReferences"
+        }
+      },
+      "outline-view": {
+        "versions": {
+          "0.1.0": "provideOutlines"
+        }
+      }
+    }
+  }
+}

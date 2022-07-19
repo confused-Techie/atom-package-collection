@@ -1,0 +1,48 @@
+{
+  "name": "xentu-lua-snippets-atom",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xentu/xentu-lua-snippets-atom"
+  },
+  "downloads": 17,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.1.0"
+  },
+  "versions": {
+    "0.1.0": {
+      "author": "Kodaloid <info@kodaloid.com>",
+      "bundleDependencies": false,
+      "dependencies": {},
+      "deprecated": false,
+      "description": "Add syntax highlighting and snippets to Lua files in Atom",
+      "engines": {
+        "atom": ">=0.50.0"
+      },
+      "license": "MIT",
+      "name": "xentu-lua-snippets-atom",
+      "private": false,
+      "repository": "https://github.com/xentu/xentu-lua-snippets-atom",
+      "version": "0.1.0",
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/xentu-lua-snippets-atom/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "Xentu Lua Snippets for Atom\n======\n\nThis extension provides code snippets for the Xentu game engine for use in Atom.\nSupports keywords, properties, functions, and also constants for things like Keyboard & Mouse.\n\nSome features are not yet added, such as class properties and functions, these will be provided soon. For now now refer to the documentation if you get stuck, found at https://docs.xentu.net\n\nThis package is part of the Xentu game engine project: https://xentu.net\n\n```\n```\n\nRunning a Xentu game from Atom\n----\n\nIf you have the Xentu SDK installed, you can enhance your coding experience by\nadding a few shortcuts to your Atom editor. Here is a script that can be added\nunder *File -> Init Script...* that allows you to launch a game from within the\neditor:\n\n```coffeescript\n# adds a function to allow running a Xentu game within Atom.\nspawn = require('child_process').spawn\natom.commands.add 'atom-text-editor', 'xentu-play', ->\n\tfile = atom.workspace.getActiveTextEditor().getPath()\n\tdir = atom.project.getDirectoryForProjectPath(file).path\n\tproc = spawn('xentusdk', ['play'], { cwd: dir })\n\tproc.stdout.on \"data\", (uint8array) ->\n\t\tdata = new TextDecoder().decode(uint8array)\n\t\tconsole.log data\n\tproc.stdout.on \"close\", () ->\n\t\tconsole.log \"Game Ended\"\n```\n\nOnce you've added the code above, restart Atom, then when you are editing your `game.lua` file, use `CTRL+SHIFT+P` and type \"Xentu Play\" to launch your game. Optionally also use `CTRL+SHIFT+I` to show the Atom developer console also before running the play command to see the console output.\n\nHappy coding!",
+  "metadata": {
+    "author": "Kodaloid <info@kodaloid.com>",
+    "bundleDependencies": false,
+    "dependencies": {},
+    "deprecated": false,
+    "description": "Add syntax highlighting and snippets to Lua files in Atom",
+    "engines": {
+      "atom": ">=0.50.0"
+    },
+    "license": "MIT",
+    "name": "xentu-lua-snippets-atom",
+    "private": false,
+    "repository": "https://github.com/xentu/xentu-lua-snippets-atom",
+    "version": "0.1.0"
+  }
+}

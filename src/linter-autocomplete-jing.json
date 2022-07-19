@@ -1,0 +1,3662 @@
+{
+  "name": "linter-autocomplete-jing",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aerhard/linter-autocomplete-jing"
+  },
+  "downloads": 15304,
+  "stargazers_count": 4,
+  "releases": {
+    "latest": "0.9.0"
+  },
+  "versions": {
+    "0.9.0": {
+      "name": "linter-autocomplete-jing",
+      "main": "./dist/main.js",
+      "version": "0.9.0",
+      "description": "Autocomplete and on-the-fly validation of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation",
+        "autocomplete"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-autocomplete-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-autocomplete-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.53.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "7.0.3"
+      },
+      "devDependencies": {
+        "@types/atom": "^1.40.5",
+        "@types/cross-spawn": "^6.0.2",
+        "@types/jasmine": "^3.6.2",
+        "@types/jest": "^26.0.19",
+        "@types/node": "^14.14.20",
+        "@types/sax": "^1.2.1",
+        "cross-env": "^7.0.3",
+        "cross-spawn": "7.0.3",
+        "eslint": "^7.17.0",
+        "eslint-config-atomic": "^1.5.1",
+        "eslint-config-prettier": "^7.1.0",
+        "eslint-plugin-import": "^2.22.1",
+        "import-sort-style-module": "^6.0.0",
+        "jasmine-fix": "^1.3.1",
+        "jest": "^26.6.3",
+        "prettier": "^2.2.1",
+        "prettier-plugin-import-sort": "0.0.6",
+        "rollup": "^2.36.0",
+        "rollup-plugin-atomic": "^1.8.0",
+        "sax": "^1.2.2",
+        "shx": "^0.3.3",
+        "ts-jest": "^26.4.4",
+        "typescript": "^4.1.3"
+      },
+      "importSort": {
+        ".js, .jsx, .ts, .tsx": {
+          "style": "module",
+          "parser": "typescript"
+        }
+      },
+      "package-deps": [
+        {
+          "name": "linter",
+          "minimumVersion": "2.0.0"
+        }
+      ],
+      "scripts": {
+        "clean": "shx rm -rf dist",
+        "format": "prettier --write .",
+        "test": "apm test",
+        "jest": "jest",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix && npm run format",
+        "tsc:build": "npm run clean && cross-env NODE_ENV=development tsc -p src/tsconfig.json",
+        "build": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+        "watch": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+        "all": "npm run lint:fix && npm run build && npm run jest && npm run test"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "configSchema": {
+        "javaExecutablePath": {
+          "type": "string",
+          "default": "java"
+        },
+        "jvmArguments": {
+          "type": "string",
+          "title": "JVM Arguments",
+          "default": "-Xms32m -Xmx256m"
+        },
+        "schemaCacheSize": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 10
+        },
+        "displaySchemaWarnings": {
+          "title": "Display Schema Parser Warnings",
+          "type": "boolean",
+          "default": false
+        },
+        "xmlCatalog": {
+          "title": "XML Catalog",
+          "type": "string",
+          "default": ""
+        },
+        "dtdValidation": {
+          "title": "DTD Validation",
+          "type": "string",
+          "default": "fallback",
+          "enum": [
+            "never",
+            "always",
+            {
+              "value": "fallback",
+              "description": "only as fallback"
+            }
+          ]
+        },
+        "xIncludeAware": {
+          "title": "XInclude Aware",
+          "type": "boolean",
+          "default": true
+        },
+        "xIncludeFixupBaseUris": {
+          "title": "XInclude Fixup Base URIs",
+          "type": "boolean",
+          "default": true
+        },
+        "xIncludeFixupLanguage": {
+          "title": "XInclude Fixup Language",
+          "type": "boolean",
+          "default": true
+        },
+        "wildcardSuggestions": {
+          "type": "string",
+          "default": "none",
+          "enum": [
+            "none",
+            "localparts",
+            "all"
+          ]
+        },
+        "autocompletePriority": {
+          "type": "integer",
+          "default": 1
+        },
+        "autocompleteScope": {
+          "type": "object",
+          "properties": {
+            "rnc": {
+              "title": "RNC",
+              "type": "boolean",
+              "default": true
+            },
+            "rng": {
+              "title": "RNG",
+              "type": "boolean",
+              "default": true
+            },
+            "xsd": {
+              "title": "XSD",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "priority": {
+                "type": "number",
+                "default": 0
+              },
+              "test": {
+                "type": "object",
+                "properties": {
+                  "grammarScope": {
+                    "type": "string"
+                  },
+                  "pathRegex": {
+                    "type": "string"
+                  },
+                  "rootNs": {
+                    "type": "string"
+                  },
+                  "rootLocalName": {
+                    "type": "string"
+                  },
+                  "rootAttributes": {
+                    "type": "object"
+                  }
+                }
+              },
+              "outcome": {
+                "type": "object",
+                "properties": {
+                  "xmlCatalog": {
+                    "type": "string"
+                  },
+                  "schemaProps": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "lang": {
+                          "type": "string"
+                        },
+                        "path": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "dtdValidation": {
+                    "type": "string",
+                    "default": "fallback",
+                    "enum": [
+                      "never",
+                      "always",
+                      "fallback"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": []
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.9.0/tarball"
+      }
+    },
+    "0.8.4": {
+      "name": "linter-autocomplete-jing",
+      "main": "./lib/main.coffee",
+      "version": "0.8.4",
+      "description": "Autocomplete and on-the-fly validation of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation",
+        "autocomplete"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-autocomplete-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-autocomplete-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.13.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^10.0.0",
+        "atom-package-deps": "^4.6.0",
+        "cross-spawn": "^5.1.0",
+        "sax": "^1.2.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.18.0",
+        "babel-core": "^6.18.2",
+        "babel-eslint": "^7.1.1",
+        "babel-plugin-external-helpers": "^6.18.0",
+        "babel-preset-es2015": "^6.18.0",
+        "babel-preset-es2015-rollup": "3.0.0",
+        "babelrc-rollup": "^3.0.0",
+        "eslint": "^3.11.0",
+        "eslint-config-airbnb-base": "11.1.3",
+        "eslint-plugin-import": "^2.1.0",
+        "eslint-plugin-jasmine": "^2.1.0",
+        "lodash-es": "^4.17.2",
+        "rollup-plugin-babel": "^2.6.1",
+        "rollup-plugin-cleanup": "1.0.0",
+        "rollup-plugin-node-resolve": "3.0.0",
+        "rollup-watch": "3.2.2"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "lint": "eslint src",
+        "build": "rollup -c",
+        "watch": "rollup -c --watch"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "configSchema": {
+        "javaExecutablePath": {
+          "type": "string",
+          "default": "java"
+        },
+        "jvmArguments": {
+          "type": "string",
+          "title": "JVM Arguments",
+          "default": "-Xms32m -Xmx256m"
+        },
+        "schemaCacheSize": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 10
+        },
+        "displaySchemaWarnings": {
+          "title": "Display Schema Parser Warnings",
+          "type": "boolean",
+          "default": false
+        },
+        "xmlCatalog": {
+          "title": "XML Catalog",
+          "type": "string",
+          "default": ""
+        },
+        "dtdValidation": {
+          "title": "DTD Validation",
+          "type": "string",
+          "default": "fallback",
+          "enum": [
+            "never",
+            "always",
+            {
+              "value": "fallback",
+              "description": "only as fallback"
+            }
+          ]
+        },
+        "xIncludeAware": {
+          "title": "XInclude Aware",
+          "type": "boolean",
+          "default": true
+        },
+        "xIncludeFixupBaseUris": {
+          "title": "XInclude Fixup Base URIs",
+          "type": "boolean",
+          "default": true
+        },
+        "xIncludeFixupLanguage": {
+          "title": "XInclude Fixup Language",
+          "type": "boolean",
+          "default": true
+        },
+        "wildcardSuggestions": {
+          "type": "string",
+          "default": "none",
+          "enum": [
+            "none",
+            "localparts",
+            "all"
+          ]
+        },
+        "autocompletePriority": {
+          "type": "integer",
+          "default": 1
+        },
+        "autocompleteScope": {
+          "type": "object",
+          "properties": {
+            "rnc": {
+              "title": "RNC",
+              "type": "boolean",
+              "default": true
+            },
+            "rng": {
+              "title": "RNG",
+              "type": "boolean",
+              "default": true
+            },
+            "xsd": {
+              "title": "XSD",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "priority": {
+                "type": "number"
+              },
+              "test": {
+                "type": "object",
+                "properties": {
+                  "grammarScope": {
+                    "type": "string"
+                  },
+                  "pathRegex": {
+                    "type": "string"
+                  },
+                  "rootNs": {
+                    "type": "string"
+                  },
+                  "rootLocalName": {
+                    "type": "string"
+                  },
+                  "rootAttributes": {
+                    "type": "object"
+                  }
+                }
+              },
+              "outcome": {
+                "type": "object",
+                "properties": {
+                  "xmlCatalog": {
+                    "type": "string"
+                  },
+                  "schemaProps": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "lang": {
+                          "type": "string"
+                        },
+                        "path": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "dtdValidation": {
+                    "type": "string",
+                    "default": "fallback",
+                    "enum": [
+                      "never",
+                      "always",
+                      "fallback"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": []
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.8.4/tarball"
+      }
+    },
+    "0.8.3": {
+      "name": "linter-autocomplete-jing",
+      "main": "./lib/main.coffee",
+      "version": "0.8.3",
+      "description": "Autocomplete and on-the-fly validation of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation",
+        "autocomplete"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-autocomplete-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-autocomplete-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.13.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^10.0.0",
+        "atom-package-deps": "^4.6.0",
+        "cross-spawn": "^5.1.0",
+        "sax": "^1.2.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.18.0",
+        "babel-core": "^6.18.2",
+        "babel-eslint": "^7.1.1",
+        "babel-plugin-external-helpers": "^6.18.0",
+        "babel-preset-es2015": "^6.18.0",
+        "babel-preset-es2015-rollup": "3.0.0",
+        "babelrc-rollup": "^3.0.0",
+        "eslint": "^3.11.0",
+        "eslint-config-airbnb-base": "11.1.3",
+        "eslint-plugin-import": "^2.1.0",
+        "eslint-plugin-jasmine": "^2.1.0",
+        "lodash-es": "^4.17.2",
+        "rollup-plugin-babel": "^2.6.1",
+        "rollup-plugin-cleanup": "1.0.0",
+        "rollup-plugin-node-resolve": "3.0.0",
+        "rollup-watch": "3.2.2"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "lint": "eslint src",
+        "build": "rollup -c",
+        "watch": "rollup -c --watch"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "configSchema": {
+        "javaExecutablePath": {
+          "type": "string",
+          "default": "java"
+        },
+        "jvmArguments": {
+          "type": "string",
+          "title": "JVM Arguments",
+          "default": "-Xms32m -Xmx256m"
+        },
+        "schemaCacheSize": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 10
+        },
+        "displaySchemaWarnings": {
+          "title": "Display Schema Parser Warnings",
+          "type": "boolean",
+          "default": false
+        },
+        "xmlCatalog": {
+          "title": "XML Catalog",
+          "type": "string",
+          "default": ""
+        },
+        "dtdValidation": {
+          "title": "DTD Validation",
+          "type": "string",
+          "default": "fallback",
+          "enum": [
+            "never",
+            "always",
+            {
+              "value": "fallback",
+              "description": "only as fallback"
+            }
+          ]
+        },
+        "xIncludeAware": {
+          "title": "XInclude Aware",
+          "type": "boolean",
+          "default": true
+        },
+        "xIncludeFixupBaseUris": {
+          "title": "XInclude Fixup Base URIs",
+          "type": "boolean",
+          "default": true
+        },
+        "xIncludeFixupLanguage": {
+          "title": "XInclude Fixup Language",
+          "type": "boolean",
+          "default": true
+        },
+        "wildcardSuggestions": {
+          "type": "string",
+          "default": "none",
+          "enum": [
+            "none",
+            "localparts",
+            "all"
+          ]
+        },
+        "autocompletePriority": {
+          "type": "integer",
+          "default": 1
+        },
+        "autocompleteScope": {
+          "type": "object",
+          "properties": {
+            "rnc": {
+              "title": "RNC",
+              "type": "boolean",
+              "default": true
+            },
+            "rng": {
+              "title": "RNG",
+              "type": "boolean",
+              "default": true
+            },
+            "xsd": {
+              "title": "XSD",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "priority": {
+                "type": "number"
+              },
+              "test": {
+                "type": "object",
+                "properties": {
+                  "grammarScope": {
+                    "type": "string"
+                  },
+                  "pathRegex": {
+                    "type": "string"
+                  },
+                  "rootNs": {
+                    "type": "string"
+                  },
+                  "rootLocalName": {
+                    "type": "string"
+                  },
+                  "rootAttributes": {
+                    "type": "object"
+                  }
+                }
+              },
+              "outcome": {
+                "type": "object",
+                "properties": {
+                  "xmlCatalog": {
+                    "type": "string"
+                  },
+                  "schemaProps": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "lang": {
+                          "type": "string"
+                        },
+                        "path": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "dtdValidation": {
+                    "type": "string",
+                    "default": "fallback",
+                    "enum": [
+                      "never",
+                      "always",
+                      "fallback"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": []
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.8.3/tarball"
+      }
+    },
+    "0.8.2": {
+      "name": "linter-autocomplete-jing",
+      "main": "./lib/main.coffee",
+      "version": "0.8.2",
+      "description": "Autocomplete and on-the-fly validation of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation",
+        "autocomplete"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-autocomplete-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-autocomplete-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.13.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^10.0.0",
+        "atom-package-deps": "^4.6.0",
+        "cross-spawn": "^5.1.0",
+        "sax": "^1.2.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.18.0",
+        "babel-core": "^6.18.2",
+        "babel-eslint": "^7.1.1",
+        "babel-plugin-external-helpers": "^6.18.0",
+        "babel-preset-es2015": "^6.18.0",
+        "babel-preset-es2015-rollup": "3.0.0",
+        "babelrc-rollup": "^3.0.0",
+        "eslint": "^3.11.0",
+        "eslint-config-airbnb-base": "11.1.3",
+        "eslint-plugin-import": "^2.1.0",
+        "eslint-plugin-jasmine": "^2.1.0",
+        "lodash-es": "^4.17.2",
+        "rollup-plugin-babel": "^2.6.1",
+        "rollup-plugin-cleanup": "1.0.0",
+        "rollup-plugin-node-resolve": "3.0.0",
+        "rollup-watch": "3.2.2"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "lint": "eslint src",
+        "build": "rollup -c",
+        "watch": "rollup -c --watch"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "configSchema": {
+        "javaExecutablePath": {
+          "type": "string",
+          "default": "java"
+        },
+        "jvmArguments": {
+          "type": "string",
+          "title": "JVM Arguments",
+          "default": "-Xms32m -Xmx256m"
+        },
+        "schemaCacheSize": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 10
+        },
+        "displaySchemaWarnings": {
+          "title": "Display Schema Parser Warnings",
+          "type": "boolean",
+          "default": false
+        },
+        "xmlCatalog": {
+          "title": "XML Catalog",
+          "type": "string",
+          "default": ""
+        },
+        "dtdValidation": {
+          "title": "DTD Validation",
+          "type": "string",
+          "default": "fallback",
+          "enum": [
+            "never",
+            "always",
+            {
+              "value": "fallback",
+              "description": "only as fallback"
+            }
+          ]
+        },
+        "xIncludeAware": {
+          "title": "XInclude Aware",
+          "type": "boolean",
+          "default": true
+        },
+        "xIncludeFixupBaseUris": {
+          "title": "XInclude Fixup Base URIs",
+          "type": "boolean",
+          "default": true
+        },
+        "xIncludeFixupLanguage": {
+          "title": "XInclude Fixup Language",
+          "type": "boolean",
+          "default": true
+        },
+        "wildcardSuggestions": {
+          "type": "string",
+          "default": "none",
+          "enum": [
+            "none",
+            "localparts",
+            "all"
+          ]
+        },
+        "autocompletePriority": {
+          "type": "integer",
+          "default": 1
+        },
+        "autocompleteScope": {
+          "type": "object",
+          "properties": {
+            "rnc": {
+              "title": "RNC",
+              "type": "boolean",
+              "default": true
+            },
+            "rng": {
+              "title": "RNG",
+              "type": "boolean",
+              "default": true
+            },
+            "xsd": {
+              "title": "XSD",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "priority": {
+                "type": "number"
+              },
+              "test": {
+                "type": "object",
+                "properties": {
+                  "grammarScope": {
+                    "type": "string"
+                  },
+                  "pathRegex": {
+                    "type": "string"
+                  },
+                  "rootNs": {
+                    "type": "string"
+                  },
+                  "rootLocalName": {
+                    "type": "string"
+                  },
+                  "rootAttributes": {
+                    "type": "object"
+                  }
+                }
+              },
+              "outcome": {
+                "type": "object",
+                "properties": {
+                  "xmlCatalog": {
+                    "type": "string"
+                  },
+                  "schemaProps": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "lang": {
+                          "type": "string"
+                        },
+                        "path": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "dtdValidation": {
+                    "type": "string",
+                    "default": "fallback",
+                    "enum": [
+                      "never",
+                      "always",
+                      "fallback"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": []
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.8.2/tarball"
+      }
+    },
+    "0.8.1": {
+      "name": "linter-autocomplete-jing",
+      "main": "./lib/main.coffee",
+      "version": "0.8.1",
+      "description": "Autocomplete and on-the-fly validation of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation",
+        "autocomplete"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-autocomplete-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-autocomplete-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.13.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^10.0.0",
+        "atom-package-deps": "^4.6.0",
+        "cross-spawn": "^5.1.0",
+        "sax": "^1.2.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.18.0",
+        "babel-core": "^6.18.2",
+        "babel-eslint": "^7.1.1",
+        "babel-plugin-external-helpers": "^6.18.0",
+        "babel-preset-es2015": "^6.18.0",
+        "babel-preset-es2015-rollup": "3.0.0",
+        "babelrc-rollup": "^3.0.0",
+        "eslint": "^3.11.0",
+        "eslint-config-airbnb-base": "11.1.3",
+        "eslint-plugin-import": "^2.1.0",
+        "eslint-plugin-jasmine": "^2.1.0",
+        "lodash-es": "^4.17.2",
+        "rollup-plugin-babel": "^2.6.1",
+        "rollup-plugin-cleanup": "1.0.0",
+        "rollup-plugin-node-resolve": "3.0.0",
+        "rollup-watch": "3.2.2"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "lint": "eslint src",
+        "build": "rollup -c",
+        "watch": "rollup -c --watch"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "configSchema": {
+        "javaExecutablePath": {
+          "type": "string",
+          "default": "java"
+        },
+        "jvmArguments": {
+          "type": "string",
+          "title": "JVM Arguments",
+          "default": "-Xms32m -Xmx256m"
+        },
+        "schemaCacheSize": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 10
+        },
+        "displaySchemaWarnings": {
+          "title": "Display Schema Parser Warnings",
+          "type": "boolean",
+          "default": false
+        },
+        "xmlCatalog": {
+          "title": "XML Catalog",
+          "type": "string",
+          "default": ""
+        },
+        "dtdValidation": {
+          "title": "DTD Validation",
+          "type": "string",
+          "default": "fallback",
+          "enum": [
+            "never",
+            "always",
+            {
+              "value": "fallback",
+              "description": "only as fallback"
+            }
+          ]
+        },
+        "xIncludeAware": {
+          "title": "XInclude Aware",
+          "type": "boolean",
+          "default": true
+        },
+        "xIncludeFixupBaseUris": {
+          "title": "XInclude Fixup Base URIs",
+          "type": "boolean",
+          "default": true
+        },
+        "xIncludeFixupLanguage": {
+          "title": "XInclude Fixup Language",
+          "type": "boolean",
+          "default": true
+        },
+        "wildcardSuggestions": {
+          "type": "string",
+          "default": "none",
+          "enum": [
+            "none",
+            "localparts",
+            "all"
+          ]
+        },
+        "autocompletePriority": {
+          "type": "integer",
+          "default": 1
+        },
+        "autocompleteScope": {
+          "type": "object",
+          "properties": {
+            "rnc": {
+              "title": "RNC",
+              "type": "boolean",
+              "default": true
+            },
+            "rng": {
+              "title": "RNG",
+              "type": "boolean",
+              "default": true
+            },
+            "xsd": {
+              "title": "XSD",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "priority": {
+                "type": "number"
+              },
+              "test": {
+                "type": "object",
+                "properties": {
+                  "grammarScope": {
+                    "type": "string"
+                  },
+                  "pathRegex": {
+                    "type": "string"
+                  },
+                  "rootNs": {
+                    "type": "string"
+                  },
+                  "rootLocalName": {
+                    "type": "string"
+                  },
+                  "rootAttributes": {
+                    "type": "object"
+                  }
+                }
+              },
+              "outcome": {
+                "type": "object",
+                "properties": {
+                  "xmlCatalog": {
+                    "type": "string"
+                  },
+                  "schemaProps": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "lang": {
+                          "type": "string"
+                        },
+                        "path": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "dtdValidation": {
+                    "type": "string",
+                    "default": "fallback",
+                    "enum": [
+                      "never",
+                      "always",
+                      "fallback"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": []
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.8.1/tarball"
+      }
+    },
+    "0.8.0": {
+      "name": "linter-autocomplete-jing",
+      "main": "./lib/main.coffee",
+      "version": "0.8.0",
+      "description": "Autocomplete and on-the-fly validation of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation",
+        "autocomplete"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-autocomplete-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-autocomplete-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.13.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^10.0.0",
+        "atom-package-deps": "^4.6.0",
+        "cross-spawn": "^5.1.0",
+        "sax": "^1.2.2"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.18.0",
+        "babel-core": "^6.18.2",
+        "babel-eslint": "^7.1.1",
+        "babel-plugin-external-helpers": "^6.18.0",
+        "babel-preset-es2015": "^6.18.0",
+        "babel-preset-es2015-rollup": "^1.2.0",
+        "babelrc-rollup": "^3.0.0",
+        "eslint": "^3.11.0",
+        "eslint-config-airbnb-base": "^10.0.1",
+        "eslint-plugin-import": "^2.1.0",
+        "eslint-plugin-jasmine": "^2.1.0",
+        "lodash-es": "^4.17.2",
+        "rollup-plugin-babel": "^2.6.1",
+        "rollup-plugin-cleanup": "^0.1.4",
+        "rollup-plugin-node-resolve": "^2.0.0",
+        "rollup-watch": "^2.5.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "lint": "eslint src",
+        "build": "rollup -c",
+        "watch": "rollup -c --watch"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "configSchema": {
+        "javaExecutablePath": {
+          "type": "string",
+          "default": "java"
+        },
+        "jvmArguments": {
+          "type": "string",
+          "title": "JVM Arguments",
+          "default": "-Xms32m -Xmx256m"
+        },
+        "schemaCacheSize": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 10
+        },
+        "displaySchemaWarnings": {
+          "title": "Display Schema Parser Warnings",
+          "type": "boolean",
+          "default": false
+        },
+        "xmlCatalog": {
+          "title": "XML Catalog",
+          "type": "string",
+          "default": ""
+        },
+        "dtdValidation": {
+          "title": "DTD Validation",
+          "type": "string",
+          "default": "fallback",
+          "enum": [
+            "never",
+            "always",
+            {
+              "value": "fallback",
+              "description": "only as fallback"
+            }
+          ]
+        },
+        "xIncludeAware": {
+          "title": "XInclude Aware",
+          "type": "boolean",
+          "default": true
+        },
+        "xIncludeFixupBaseUris": {
+          "title": "XInclude Fixup Base URIs",
+          "type": "boolean",
+          "default": true
+        },
+        "xIncludeFixupLanguage": {
+          "title": "XInclude Fixup Language",
+          "type": "boolean",
+          "default": true
+        },
+        "wildcardSuggestions": {
+          "type": "string",
+          "default": "none",
+          "enum": [
+            "none",
+            "localparts",
+            "all"
+          ]
+        },
+        "autocompletePriority": {
+          "type": "integer",
+          "default": 1
+        },
+        "autocompleteScope": {
+          "type": "object",
+          "properties": {
+            "rnc": {
+              "title": "RNC",
+              "type": "boolean",
+              "default": true
+            },
+            "rng": {
+              "title": "RNG",
+              "type": "boolean",
+              "default": true
+            },
+            "xsd": {
+              "title": "XSD",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "priority": {
+                "type": "number"
+              },
+              "test": {
+                "type": "object",
+                "properties": {
+                  "grammarScope": {
+                    "type": "string"
+                  },
+                  "pathRegex": {
+                    "type": "string"
+                  },
+                  "rootNs": {
+                    "type": "string"
+                  },
+                  "rootLocalName": {
+                    "type": "string"
+                  },
+                  "rootAttributes": {
+                    "type": "object"
+                  }
+                }
+              },
+              "outcome": {
+                "type": "object",
+                "properties": {
+                  "xmlCatalog": {
+                    "type": "string"
+                  },
+                  "schemaProps": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "lang": {
+                          "type": "string"
+                        },
+                        "path": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "dtdValidation": {
+                    "type": "string",
+                    "default": "fallback",
+                    "enum": [
+                      "never",
+                      "always",
+                      "fallback"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": []
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.8.0/tarball"
+      }
+    },
+    "0.7.2": {
+      "name": "linter-autocomplete-jing",
+      "main": "./lib/main.coffee",
+      "version": "0.7.2",
+      "description": "Autocomplete and on-the-fly validation of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation",
+        "autocomplete"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-autocomplete-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-autocomplete-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.8.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^8.0.0",
+        "atom-package-deps": "^4.3.1",
+        "cross-spawn": "^5.0.1",
+        "sax": "^1.2.1"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.18.0",
+        "babel-core": "^6.18.2",
+        "babel-eslint": "^7.1.1",
+        "babel-plugin-external-helpers": "^6.18.0",
+        "babel-preset-es2015": "^6.18.0",
+        "babel-preset-es2015-rollup": "^1.2.0",
+        "babelrc-rollup": "^3.0.0",
+        "eslint": "^3.11.0",
+        "eslint-config-airbnb-base": "^10.0.1",
+        "eslint-plugin-import": "^2.1.0",
+        "eslint-plugin-jasmine": "^2.1.0",
+        "lodash-es": "^4.17.2",
+        "rollup-plugin-babel": "^2.6.1",
+        "rollup-plugin-cleanup": "^0.1.4",
+        "rollup-plugin-node-resolve": "^2.0.0",
+        "rollup-watch": "^2.5.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "lint": "eslint src",
+        "build": "rollup -c",
+        "watch": "rollup -c --watch"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "configSchema": {
+        "javaExecutablePath": {
+          "type": "string",
+          "default": "java"
+        },
+        "jvmArguments": {
+          "type": "string",
+          "title": "JVM Arguments",
+          "default": "-Xms32m -Xmx256m"
+        },
+        "schemaCacheSize": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 10
+        },
+        "displaySchemaWarnings": {
+          "title": "Display Schema Parser Warnings",
+          "type": "boolean",
+          "default": false
+        },
+        "xmlCatalog": {
+          "title": "XML Catalog",
+          "type": "string",
+          "default": ""
+        },
+        "dtdValidation": {
+          "title": "DTD Validation",
+          "type": "string",
+          "default": "fallback",
+          "enum": [
+            "never",
+            "always",
+            {
+              "value": "fallback",
+              "description": "only as fallback"
+            }
+          ]
+        },
+        "wildcardSuggestions": {
+          "type": "string",
+          "default": "none",
+          "enum": [
+            "none",
+            "localparts",
+            "all"
+          ]
+        },
+        "autocompletePriority": {
+          "type": "integer",
+          "default": 1
+        },
+        "autocompleteScope": {
+          "type": "object",
+          "properties": {
+            "rnc": {
+              "title": "RNC",
+              "type": "boolean",
+              "default": true
+            },
+            "rng": {
+              "title": "RNG",
+              "type": "boolean",
+              "default": true
+            },
+            "xsd": {
+              "title": "XSD",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "priority": {
+                "type": "number"
+              },
+              "test": {
+                "type": "object",
+                "properties": {
+                  "grammarScope": {
+                    "type": "string"
+                  },
+                  "pathRegex": {
+                    "type": "string"
+                  },
+                  "rootNs": {
+                    "type": "string"
+                  },
+                  "rootLocalName": {
+                    "type": "string"
+                  },
+                  "rootAttributes": {
+                    "type": "object"
+                  }
+                }
+              },
+              "outcome": {
+                "type": "object",
+                "properties": {
+                  "xmlCatalog": {
+                    "type": "string"
+                  },
+                  "schemaProps": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "lang": {
+                          "type": "string"
+                        },
+                        "path": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "dtdValidation": {
+                    "type": "string",
+                    "default": "fallback",
+                    "enum": [
+                      "never",
+                      "always",
+                      "fallback"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": []
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.7.2/tarball"
+      }
+    },
+    "0.7.1": {
+      "name": "linter-autocomplete-jing",
+      "main": "./lib/main.coffee",
+      "version": "0.7.1",
+      "description": "Autocomplete and on-the-fly validation of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation",
+        "autocomplete"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-autocomplete-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-autocomplete-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.8.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^8.0.0",
+        "atom-package-deps": "^4.3.1",
+        "cross-spawn": "^5.0.1",
+        "sax": "^1.2.1"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.18.0",
+        "babel-core": "^6.18.2",
+        "babel-eslint": "^7.1.1",
+        "babel-plugin-external-helpers": "^6.18.0",
+        "babel-preset-es2015": "^6.18.0",
+        "babel-preset-es2015-rollup": "^1.2.0",
+        "babelrc-rollup": "^3.0.0",
+        "eslint": "^3.11.0",
+        "eslint-config-airbnb-base": "^10.0.1",
+        "eslint-plugin-import": "^2.1.0",
+        "eslint-plugin-jasmine": "^2.1.0",
+        "lodash-es": "^4.17.2",
+        "rollup-plugin-babel": "^2.6.1",
+        "rollup-plugin-cleanup": "^0.1.4",
+        "rollup-plugin-node-resolve": "^2.0.0",
+        "rollup-watch": "^2.5.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "lint": "eslint src",
+        "build": "rollup -c",
+        "watch": "rollup -c --watch"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "configSchema": {
+        "javaExecutablePath": {
+          "type": "string",
+          "default": "java"
+        },
+        "jvmArguments": {
+          "type": "string",
+          "title": "JVM Arguments",
+          "default": "-Xms32m -Xmx256m"
+        },
+        "schemaCacheSize": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 10
+        },
+        "displaySchemaWarnings": {
+          "title": "Display Schema Parser Warnings",
+          "type": "boolean",
+          "default": false
+        },
+        "xmlCatalog": {
+          "title": "XML Catalog",
+          "type": "string",
+          "default": ""
+        },
+        "dtdValidation": {
+          "title": "DTD Validation",
+          "type": "string",
+          "default": "fallback",
+          "enum": [
+            "never",
+            "always",
+            {
+              "value": "fallback",
+              "description": "only as fallback"
+            }
+          ]
+        },
+        "wildcardSuggestions": {
+          "type": "string",
+          "default": "none",
+          "enum": [
+            "none",
+            "localparts",
+            "all"
+          ]
+        },
+        "autocompletePriority": {
+          "type": "integer",
+          "default": 1
+        },
+        "autocompleteScope": {
+          "type": "object",
+          "properties": {
+            "rnc": {
+              "title": "RNC",
+              "type": "boolean",
+              "default": true
+            },
+            "rng": {
+              "title": "RNG",
+              "type": "boolean",
+              "default": true
+            },
+            "xsd": {
+              "title": "XSD",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "priority": {
+                "type": "number"
+              },
+              "test": {
+                "type": "object",
+                "properties": {
+                  "grammarScope": {
+                    "type": "string"
+                  },
+                  "pathRegex": {
+                    "type": "string"
+                  },
+                  "rootNs": {
+                    "type": "string"
+                  },
+                  "rootLocalName": {
+                    "type": "string"
+                  },
+                  "rootAttributes": {
+                    "type": "object"
+                  }
+                }
+              },
+              "outcome": {
+                "type": "object",
+                "properties": {
+                  "xmlCatalog": {
+                    "type": "string"
+                  },
+                  "schemaProps": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "lang": {
+                          "type": "string"
+                        },
+                        "path": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "dtdValidation": {
+                    "type": "string",
+                    "default": "fallback",
+                    "enum": [
+                      "never",
+                      "always",
+                      "fallback"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": []
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.7.1/tarball"
+      }
+    },
+    "0.7.0": {
+      "name": "linter-autocomplete-jing",
+      "main": "./lib/main.coffee",
+      "version": "0.7.0",
+      "description": "Autocomplete and on-the-fly validation of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation",
+        "autocomplete"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-autocomplete-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-autocomplete-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.8.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^8.0.0",
+        "atom-package-deps": "^4.3.1",
+        "cross-spawn": "^5.0.1",
+        "sax": "^1.2.1"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.18.0",
+        "babel-core": "^6.18.2",
+        "babel-eslint": "^7.1.1",
+        "babel-plugin-external-helpers": "^6.18.0",
+        "babel-preset-es2015": "^6.18.0",
+        "babel-preset-es2015-rollup": "^1.2.0",
+        "babelrc-rollup": "^3.0.0",
+        "eslint": "^3.11.0",
+        "eslint-config-airbnb-base": "^10.0.1",
+        "eslint-plugin-import": "^2.1.0",
+        "eslint-plugin-jasmine": "^2.1.0",
+        "lodash-es": "^4.17.2",
+        "rollup-plugin-babel": "^2.6.1",
+        "rollup-plugin-cleanup": "^0.1.4",
+        "rollup-plugin-node-resolve": "^2.0.0",
+        "rollup-watch": "^2.5.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "lint": "eslint src",
+        "build": "rollup -c",
+        "watch": "rollup -c --watch"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "configSchema": {
+        "javaExecutablePath": {
+          "type": "string",
+          "default": "java"
+        },
+        "jvmArguments": {
+          "type": "string",
+          "title": "JVM Arguments",
+          "default": "-Xms32m -Xmx256m"
+        },
+        "schemaCacheSize": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 10
+        },
+        "displaySchemaWarnings": {
+          "title": "Display Schema Parser Warnings",
+          "type": "boolean",
+          "default": false
+        },
+        "xmlCatalog": {
+          "title": "XML Catalog",
+          "type": "string",
+          "default": ""
+        },
+        "dtdValidation": {
+          "title": "DTD Validation",
+          "type": "string",
+          "default": "fallback",
+          "enum": [
+            "never",
+            "always",
+            {
+              "value": "fallback",
+              "description": "only as fallback"
+            }
+          ]
+        },
+        "wildcardSuggestions": {
+          "type": "string",
+          "default": "none",
+          "enum": [
+            "none",
+            "localparts",
+            "all"
+          ]
+        },
+        "autocompletePriority": {
+          "type": "integer",
+          "default": 1
+        },
+        "autocompleteScope": {
+          "type": "object",
+          "properties": {
+            "rnc": {
+              "title": "RNC",
+              "type": "boolean",
+              "default": true
+            },
+            "rng": {
+              "title": "RNG",
+              "type": "boolean",
+              "default": true
+            },
+            "xsd": {
+              "title": "XSD",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "priority": {
+                "type": "number"
+              },
+              "test": {
+                "type": "object",
+                "properties": {
+                  "grammarScope": {
+                    "type": "string"
+                  },
+                  "pathRegex": {
+                    "type": "string"
+                  },
+                  "rootNs": {
+                    "type": "string"
+                  },
+                  "rootLocalName": {
+                    "type": "string"
+                  },
+                  "rootAttributes": {
+                    "type": "object"
+                  }
+                }
+              },
+              "outcome": {
+                "type": "object",
+                "properties": {
+                  "xmlCatalog": {
+                    "type": "string"
+                  },
+                  "schemaProps": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "lang": {
+                          "type": "string"
+                        },
+                        "path": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "dtdValidation": {
+                    "type": "string",
+                    "default": "fallback",
+                    "enum": [
+                      "never",
+                      "always",
+                      "fallback"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": []
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.7.0/tarball"
+      }
+    },
+    "0.6.1": {
+      "name": "linter-autocomplete-jing",
+      "main": "./lib/main.coffee",
+      "version": "0.6.1",
+      "description": "Autocomplete and on-the-fly validation of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation",
+        "autocomplete"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-autocomplete-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-autocomplete-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.8.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^8.0.0",
+        "atom-package-deps": "^4.3.1",
+        "cross-spawn": "^5.0.1",
+        "lodash": "^4.16.6",
+        "sax": "^1.2.1"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.18.0",
+        "babel-core": "^6.18.2",
+        "babel-eslint": "^7.1.0",
+        "babel-plugin-external-helpers": "^6.18.0",
+        "babel-preset-es2015": "^6.18.0",
+        "babel-preset-es2015-rollup": "^1.2.0",
+        "babelrc-rollup": "^3.0.0",
+        "eslint": "^3.9.1",
+        "eslint-config-airbnb-base": "^10.0.1",
+        "eslint-plugin-import": "^2.1.0",
+        "eslint-plugin-jasmine": "^2.1.0",
+        "rollup-plugin-babel": "^2.6.1",
+        "rollup-watch": "^2.5.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "lint": "eslint src",
+        "build": "rollup -c",
+        "watch": "rollup -c --watch"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "configSchema": {
+        "javaExecutablePath": {
+          "type": "string",
+          "default": "java"
+        },
+        "jvmArguments": {
+          "type": "string",
+          "title": "JVM Arguments",
+          "default": "-Xms32m -Xmx256m"
+        },
+        "schemaCacheSize": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 10
+        },
+        "displaySchemaWarnings": {
+          "title": "Display Schema Parser Warnings",
+          "type": "boolean",
+          "default": false
+        },
+        "xmlCatalog": {
+          "title": "XML Catalog",
+          "type": "string",
+          "default": ""
+        },
+        "dtdValidation": {
+          "title": "DTD Validation",
+          "type": "string",
+          "default": "fallback",
+          "enum": [
+            "never",
+            "always",
+            {
+              "value": "fallback",
+              "description": "only as fallback"
+            }
+          ]
+        },
+        "wildcardSuggestions": {
+          "type": "string",
+          "default": "none",
+          "enum": [
+            "none",
+            "localparts",
+            "all"
+          ]
+        },
+        "autocompletePriority": {
+          "type": "integer",
+          "default": 2
+        },
+        "autocompleteScope": {
+          "type": "object",
+          "properties": {
+            "rnc": {
+              "title": "RNC",
+              "type": "boolean",
+              "default": true
+            },
+            "rng": {
+              "title": "RNG",
+              "type": "boolean",
+              "default": true
+            },
+            "xsd": {
+              "title": "XSD",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "priority": {
+                "type": "number"
+              },
+              "test": {
+                "type": "object",
+                "properties": {
+                  "grammarScope": {
+                    "type": "string"
+                  },
+                  "pathRegex": {
+                    "type": "string"
+                  },
+                  "rootNs": {
+                    "type": "string"
+                  },
+                  "rootLocalName": {
+                    "type": "string"
+                  },
+                  "rootAttributes": {
+                    "type": "object"
+                  }
+                }
+              },
+              "outcome": {
+                "type": "object",
+                "properties": {
+                  "xmlCatalog": {
+                    "type": "string"
+                  },
+                  "schemaProps": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "lang": {
+                          "type": "string"
+                        },
+                        "path": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "dtdValidation": {
+                    "type": "string",
+                    "default": "fallback",
+                    "enum": [
+                      "never",
+                      "always",
+                      "fallback"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": []
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.6.1/tarball"
+      }
+    },
+    "0.6.0": {
+      "name": "linter-autocomplete-jing",
+      "main": "./lib/main.coffee",
+      "version": "0.6.0",
+      "description": "Autocomplete and on-the-fly validation of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation",
+        "autocomplete"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-autocomplete-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-autocomplete-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.8.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^8.0.0",
+        "atom-package-deps": "^4.3.1",
+        "cross-spawn": "^4.0.0",
+        "lodash": "^4.16.0",
+        "sax": "^1.2.1"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.14.0",
+        "babel-core": "^6.14.0",
+        "babel-eslint": "^6.1.2",
+        "babel-plugin-external-helpers": "^6.8.0",
+        "babel-preset-es2015": "^6.16.0",
+        "babel-preset-es2015-rollup": "^1.2.0",
+        "babelrc-rollup": "^3.0.0",
+        "eslint": "^3.5.0",
+        "eslint-config-airbnb-base": "^7.1.0",
+        "eslint-plugin-import": "^1.16.0",
+        "eslint-plugin-jasmine": "^1.8.1",
+        "rollup-plugin-babel": "^2.6.1",
+        "rollup-watch": "^2.5.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "lint": "eslint src",
+        "build": "rollup -c",
+        "watch": "rollup -c --watch"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "configSchema": {
+        "javaExecutablePath": {
+          "type": "string",
+          "default": "java"
+        },
+        "jvmArguments": {
+          "type": "string",
+          "title": "JVM Arguments",
+          "default": "-Xms32m -Xmx256m"
+        },
+        "schemaCacheSize": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 10
+        },
+        "displaySchemaWarnings": {
+          "title": "Display Schema Parser Warnings",
+          "type": "boolean",
+          "default": false
+        },
+        "xmlCatalog": {
+          "title": "XML Catalog",
+          "type": "string",
+          "default": ""
+        },
+        "dtdValidation": {
+          "title": "DTD Validation",
+          "type": "string",
+          "default": "fallback",
+          "enum": [
+            "never",
+            "always",
+            {
+              "value": "fallback",
+              "description": "only as fallback"
+            }
+          ]
+        },
+        "wildcardSuggestions": {
+          "type": "string",
+          "default": "none",
+          "enum": [
+            "none",
+            "localparts",
+            "all"
+          ]
+        },
+        "autocompletePriority": {
+          "type": "integer",
+          "default": 2
+        },
+        "autocompleteScope": {
+          "type": "object",
+          "properties": {
+            "rnc": {
+              "title": "RNC",
+              "type": "boolean",
+              "default": true
+            },
+            "rng": {
+              "title": "RNG",
+              "type": "boolean",
+              "default": true
+            },
+            "xsd": {
+              "title": "XSD",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "priority": {
+                "type": "number"
+              },
+              "test": {
+                "type": "object",
+                "properties": {
+                  "grammarScope": {
+                    "type": "string"
+                  },
+                  "pathRegex": {
+                    "type": "string"
+                  },
+                  "rootNs": {
+                    "type": "string"
+                  },
+                  "rootLocalName": {
+                    "type": "string"
+                  },
+                  "rootAttributes": {
+                    "type": "object"
+                  }
+                }
+              },
+              "outcome": {
+                "type": "object",
+                "properties": {
+                  "xmlCatalog": {
+                    "type": "string"
+                  },
+                  "schemaProps": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "lang": {
+                          "type": "string"
+                        },
+                        "path": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "dtdValidation": {
+                    "type": "string",
+                    "default": "fallback",
+                    "enum": [
+                      "never",
+                      "always",
+                      "fallback"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": []
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.6.0/tarball"
+      }
+    },
+    "0.5.3": {
+      "name": "linter-autocomplete-jing",
+      "main": "./lib/main.js",
+      "version": "0.5.3",
+      "description": "Autocomplete and on-the-fly validation of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation",
+        "autocomplete"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-autocomplete-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-autocomplete-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.8.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^8.0.0",
+        "atom-package-deps": "^4.3.1",
+        "cross-spawn": "^4.0.0",
+        "lodash": "^4.16.0",
+        "sax": "^1.2.1"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.14.0",
+        "babel-core": "^6.14.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.14.0",
+        "babel-preset-es2015-loose": "^8.0.0",
+        "eslint": "^3.5.0",
+        "eslint-config-airbnb-base": "^7.1.0",
+        "eslint-plugin-import": "^1.15.0",
+        "eslint-plugin-jasmine": "^1.8.1"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "build": "babel src --out-dir lib --presets es2015-loose",
+        "watch": "babel src --watch --out-dir lib --presets es2015-loose"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "configSchema": {
+        "javaExecutablePath": {
+          "type": "string",
+          "default": "java"
+        },
+        "jvmArguments": {
+          "type": "string",
+          "title": "JVM Arguments",
+          "default": "-Xms32m -Xmx256m"
+        },
+        "schemaCacheSize": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 10
+        },
+        "displaySchemaWarnings": {
+          "title": "Display Schema Parser Warnings",
+          "type": "boolean",
+          "default": false
+        },
+        "xmlCatalog": {
+          "title": "XML Catalog",
+          "type": "string",
+          "default": ""
+        },
+        "autocompletePriority": {
+          "type": "integer",
+          "default": 2
+        },
+        "autocompleteScope": {
+          "type": "object",
+          "properties": {
+            "rnc": {
+              "title": "RNC",
+              "type": "boolean",
+              "default": true
+            },
+            "rng": {
+              "title": "RNG",
+              "type": "boolean",
+              "default": true
+            },
+            "xsd": {
+              "title": "XSD",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.5.3/tarball"
+      }
+    },
+    "0.5.2": {
+      "name": "linter-autocomplete-jing",
+      "main": "./lib/main.js",
+      "version": "0.5.2",
+      "description": "Autocomplete and on-the-fly validation of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation",
+        "autocomplete"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-autocomplete-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-autocomplete-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.8.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^8.0.0",
+        "atom-package-deps": "^4.3.1",
+        "cross-spawn": "^4.0.0",
+        "lodash": "^4.16.0",
+        "sax": "^1.2.1"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.14.0",
+        "babel-core": "^6.14.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.14.0",
+        "babel-preset-es2015-loose": "^8.0.0",
+        "eslint": "^3.5.0",
+        "eslint-config-airbnb-base": "^7.1.0",
+        "eslint-plugin-import": "^1.15.0",
+        "eslint-plugin-jasmine": "^1.8.1"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "build": "babel src --out-dir lib --presets es2015-loose",
+        "watch": "babel src --watch --out-dir lib --presets es2015-loose"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "configSchema": {
+        "javaExecutablePath": {
+          "type": "string",
+          "default": "java"
+        },
+        "jvmArguments": {
+          "type": "string",
+          "title": "JVM Arguments",
+          "default": "-Xms32m -Xmx256m"
+        },
+        "schemaCacheSize": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 10
+        },
+        "displaySchemaWarnings": {
+          "title": "Display Schema Parser Warnings",
+          "type": "boolean",
+          "default": false
+        },
+        "xmlCatalog": {
+          "title": "XML Catalog",
+          "type": "string",
+          "default": ""
+        },
+        "autocompletePriority": {
+          "type": "integer",
+          "default": 1
+        },
+        "autocompleteScope": {
+          "type": "object",
+          "properties": {
+            "rnc": {
+              "title": "RNC",
+              "type": "boolean",
+              "default": true
+            },
+            "rng": {
+              "title": "RNG",
+              "type": "boolean",
+              "default": true
+            },
+            "xsd": {
+              "title": "XSD",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.5.2/tarball"
+      }
+    },
+    "0.5.1": {
+      "name": "linter-autocomplete-jing",
+      "main": "./lib/main.js",
+      "version": "0.5.1",
+      "description": "Autocomplete and on-the-fly validation of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation",
+        "autocomplete"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-autocomplete-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-autocomplete-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.8.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^8.0.0",
+        "atom-package-deps": "^4.3.1",
+        "cross-spawn": "^4.0.0",
+        "lodash": "^4.16.0",
+        "sax": "^1.2.1"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.14.0",
+        "babel-core": "^6.14.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.14.0",
+        "babel-preset-es2015-loose": "^8.0.0",
+        "eslint": "^3.5.0",
+        "eslint-config-airbnb-base": "^7.1.0",
+        "eslint-plugin-import": "^1.15.0",
+        "eslint-plugin-jasmine": "^1.8.1"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "build": "babel src --out-dir lib --presets es2015-loose",
+        "watch": "babel src --watch --out-dir lib --presets es2015-loose"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "configSchema": {
+        "javaExecutablePath": {
+          "type": "string",
+          "default": "java"
+        },
+        "jvmArguments": {
+          "type": "string",
+          "title": "JVM Arguments",
+          "default": "-Xms32m -Xmx256m"
+        },
+        "schemaCacheSize": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 10
+        },
+        "displaySchemaWarnings": {
+          "title": "Display Schema Parser Warnings",
+          "type": "boolean",
+          "default": false
+        },
+        "xmlCatalog": {
+          "title": "XML Catalog",
+          "type": "string",
+          "default": ""
+        },
+        "autocompletePriority": {
+          "type": "integer",
+          "default": 2
+        },
+        "autocompleteScope": {
+          "type": "object",
+          "properties": {
+            "rnc": {
+              "title": "RNC",
+              "type": "boolean",
+              "default": true
+            },
+            "rng": {
+              "title": "RNG",
+              "type": "boolean",
+              "default": true
+            },
+            "xsd": {
+              "title": "XSD",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.5.1/tarball"
+      }
+    },
+    "0.5.0": {
+      "name": "linter-autocomplete-jing",
+      "main": "./lib/main.js",
+      "version": "0.5.0",
+      "description": "Autocomplete and on-the-fly validation of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation",
+        "autocomplete"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-autocomplete-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-autocomplete-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.8.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^8.0.0",
+        "atom-package-deps": "^4.3.1",
+        "cross-spawn": "^4.0.0",
+        "lodash": "^4.16.0",
+        "sax": "^1.2.1"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.14.0",
+        "babel-core": "^6.14.0",
+        "babel-eslint": "^6.1.2",
+        "babel-preset-es2015": "^6.14.0",
+        "babel-preset-es2015-loose": "^8.0.0",
+        "eslint": "^3.5.0",
+        "eslint-config-airbnb-base": "^7.1.0",
+        "eslint-plugin-import": "^1.15.0",
+        "eslint-plugin-jasmine": "^1.8.1"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "build": "babel src --out-dir lib --presets es2015-loose",
+        "watch": "babel src --watch --out-dir lib --presets es2015-loose"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        },
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "provideAutocomplete"
+          }
+        }
+      },
+      "configSchema": {
+        "javaExecutablePath": {
+          "type": "string",
+          "default": "java"
+        },
+        "jvmArguments": {
+          "type": "string",
+          "title": "JVM Arguments",
+          "default": "-Xms32m -Xmx256m"
+        },
+        "schemaCacheSize": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 10
+        },
+        "displaySchemaWarnings": {
+          "title": "Display Schema Parser Warnings",
+          "type": "boolean",
+          "default": false
+        },
+        "xmlCatalog": {
+          "title": "XML Catalog",
+          "type": "string",
+          "default": ""
+        },
+        "autocompletePriority": {
+          "type": "integer",
+          "default": 2
+        },
+        "autocompleteScope": {
+          "type": "object",
+          "properties": {
+            "rnc": {
+              "title": "RNC",
+              "type": "boolean",
+              "default": true
+            },
+            "rng": {
+              "title": "RNG",
+              "type": "boolean",
+              "default": true
+            },
+            "xsd": {
+              "title": "XSD",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.5.0/tarball"
+      }
+    },
+    "0.4.3": {
+      "name": "linter-jing",
+      "main": "./lib/main.js",
+      "version": "0.4.3",
+      "description": "On-the-fly validation and well-formedness check of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^5.0.1",
+        "atom-package-deps": "^4.0.1",
+        "cross-spawn": "^4.0.0",
+        "lodash": "^4.13.1",
+        "sax": "^1.1.4"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.5.1",
+        "babel-core": "^6.5.1",
+        "babel-eslint": "^6.0.4",
+        "babel-preset-es2015": "^6.6.0",
+        "babel-preset-es2015-loose": "^7.0.0",
+        "eslint": "^2.5.3",
+        "eslint-config-airbnb": "^6.2.0",
+        "eslint-plugin-jasmine": "^1.8.1",
+        "eslint-plugin-react": "^4.2.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "build": "babel src --out-dir lib --presets es2015-loose",
+        "watch": "babel src --watch --out-dir lib --presets es2015-loose"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": [
+              "provideLinter"
+            ]
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.4.3/tarball"
+      }
+    },
+    "0.4.2": {
+      "name": "linter-jing",
+      "main": "./lib/main.js",
+      "version": "0.4.2",
+      "description": "On-the-fly validation and well-formedness check of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^5.0.1",
+        "atom-package-deps": "^4.0.1",
+        "cross-spawn": "^4.0.0",
+        "lodash": "^4.13.1",
+        "sax": "^1.1.4"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.5.1",
+        "babel-core": "^6.5.1",
+        "babel-eslint": "^6.0.4",
+        "babel-preset-es2015": "^6.6.0",
+        "babel-preset-es2015-loose": "^7.0.0",
+        "eslint": "^2.5.3",
+        "eslint-config-airbnb": "^6.2.0",
+        "eslint-plugin-jasmine": "^1.8.1",
+        "eslint-plugin-react": "^4.2.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "build": "babel src --out-dir lib --presets es2015-loose",
+        "watch": "babel src --watch --out-dir lib --presets es2015-loose"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": [
+              "provideLinter"
+            ]
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.4.2/tarball"
+      }
+    },
+    "0.4.1": {
+      "name": "linter-jing",
+      "main": "./lib/main.js",
+      "version": "0.4.1",
+      "description": "On-the-fly validation and well-formedness check of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^5.0.1",
+        "atom-package-deps": "^4.0.1",
+        "cross-spawn": "^4.0.0",
+        "lodash": "^4.13.1",
+        "sax": "^1.1.4"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.5.1",
+        "babel-core": "^6.5.1",
+        "babel-eslint": "^6.0.4",
+        "babel-preset-es2015": "^6.6.0",
+        "babel-preset-es2015-loose": "^7.0.0",
+        "eslint": "^2.5.3",
+        "eslint-config-airbnb": "^6.2.0",
+        "eslint-plugin-jasmine": "^1.8.1",
+        "eslint-plugin-react": "^4.2.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "build": "babel src --out-dir lib --presets es2015-loose",
+        "watch": "babel src --watch --out-dir lib --presets es2015-loose"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": [
+              "provideLinter"
+            ]
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.4.1/tarball"
+      }
+    },
+    "0.4.0": {
+      "name": "linter-jing",
+      "main": "./lib/main.js",
+      "version": "0.4.0",
+      "description": "On-the-fly validation and well-formedness check of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+      "keywords": [
+        "xml",
+        "relaxng",
+        "schematron",
+        "xsd",
+        "validation"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^5.0.1",
+        "atom-package-deps": "^4.0.1",
+        "cross-spawn": "^4.0.0",
+        "lodash": "^4.13.1",
+        "sax": "^1.1.4"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.5.1",
+        "babel-core": "^6.5.1",
+        "babel-eslint": "^6.0.4",
+        "babel-preset-es2015": "^6.6.0",
+        "babel-preset-es2015-loose": "^7.0.0",
+        "eslint": "^2.5.3",
+        "eslint-config-airbnb": "^6.2.0",
+        "eslint-plugin-jasmine": "^1.8.1",
+        "eslint-plugin-react": "^4.2.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "build": "babel src --out-dir lib --presets es2015-loose",
+        "watch": "babel src --watch --out-dir lib --presets es2015-loose"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": [
+              "provideLinter"
+            ]
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.4.0/tarball"
+      }
+    },
+    "0.3.2": {
+      "name": "linter-jing",
+      "main": "./lib/linter-jing",
+      "version": "0.3.2",
+      "description": "Well-formedness check and validation of XML files against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD) and DTD",
+      "keywords": [
+        "XML",
+        "RELAX NG",
+        "Schematron",
+        "XSD",
+        "validation"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-jing/issues",
+      "license": "SEE LICENSE IN LICENSE.md",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-linter": "^5.0.1",
+        "atom-package-deps": "^4.0.1",
+        "sax": "^1.1.4"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.5.1",
+        "babel-core": "^6.5.1",
+        "babel-eslint": "^6.0.4",
+        "babel-preset-es2015": "^6.6.0",
+        "babel-preset-es2015-loose": "^7.0.0",
+        "eslint": "^2.5.3",
+        "eslint-config-airbnb": "^6.2.0",
+        "eslint-plugin-jasmine": "^1.8.1",
+        "eslint-plugin-react": "^4.2.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "build": "babel src --out-file lib/linter-jing.js --presets es2015-loose",
+        "watch": "babel src --watch --out-file lib/linter-jing.js --presets es2015-loose"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": [
+              "provideLinter"
+            ]
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.3.2/tarball"
+      }
+    },
+    "0.3.0": {
+      "name": "linter-jing",
+      "main": "./lib/linter-jing",
+      "version": "0.3.0",
+      "description": "On-the-fly well-formedness check and validation of XML files against RelaxNG (compact, XML), Schematron (1.5, ISO) and W3C Schema (XSD) and DTDs",
+      "keywords": [
+        "XML",
+        "RelaxNG",
+        "Schematron",
+        "XSD",
+        "validation"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-jing/issues",
+      "license": "MIT",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-linter": "^5.0.1",
+        "atom-package-deps": "^4.0.1",
+        "sax": "^1.1.4"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.5.1",
+        "babel-core": "^6.5.1",
+        "babel-eslint": "^6.0.4",
+        "babel-preset-es2015": "^6.6.0",
+        "babel-preset-es2015-loose": "^7.0.0",
+        "eslint": "^2.5.3",
+        "eslint-config-airbnb": "^6.2.0",
+        "eslint-plugin-jasmine": "^1.8.1",
+        "eslint-plugin-react": "^4.2.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "build": "babel src --out-file lib/linter-jing.js --presets es2015-loose",
+        "watch": "babel src --watch --out-file lib/linter-jing.js --presets es2015-loose"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": [
+              "provideLinter"
+            ]
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.3.0/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "linter-jing",
+      "main": "./lib/linter-jing",
+      "version": "0.2.0",
+      "description": "On-the-fly well-formedness check and validation of XML files against RelaxNG (compact, XML), Schematron (1.5, ISO) and W3C Schema (XSD)",
+      "keywords": [
+        "XML",
+        "RelaxNG",
+        "Schematron",
+        "XSD",
+        "validation"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-jing/issues",
+      "license": "MIT",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-linter": "^5.0.1",
+        "atom-package-deps": "^4.0.1",
+        "sax": "^1.1.4"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.5.1",
+        "babel-core": "^6.5.1",
+        "babel-eslint": "^6.0.4",
+        "babel-preset-es2015": "^6.6.0",
+        "babel-preset-es2015-loose": "^7.0.0",
+        "eslint": "^2.5.3",
+        "eslint-config-airbnb": "^6.2.0",
+        "eslint-plugin-jasmine": "^1.8.1",
+        "eslint-plugin-react": "^4.2.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "build": "babel src --out-file lib/linter-jing.js --presets es2015-loose",
+        "watch": "babel src --watch --out-file lib/linter-jing.js --presets es2015-loose"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": [
+              "provideLinter"
+            ]
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.2": {
+      "name": "linter-jing",
+      "main": "./lib/linter-jing",
+      "version": "0.1.2",
+      "description": "On-the-fly well-formedness check and validation of XML files against RelaxNG (compact, XML), Schematron (1.5, ISO) and W3C Schema (XSD)",
+      "keywords": [
+        "XML",
+        "RelaxNG",
+        "Schematron",
+        "XSD",
+        "validation"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-jing/issues",
+      "license": "MIT",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-linter": "^5.0.1",
+        "atom-package-deps": "^4.0.1",
+        "sax": "^1.1.4"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.5.1",
+        "babel-core": "^6.5.1",
+        "babel-eslint": "^6.0.4",
+        "babel-preset-es2015": "^6.6.0",
+        "babel-preset-es2015-loose": "^7.0.0",
+        "eslint": "^2.5.3",
+        "eslint-config-airbnb": "^6.2.0",
+        "eslint-plugin-jasmine": "^1.8.1",
+        "eslint-plugin-react": "^4.2.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "build": "babel src --out-file lib/linter-jing.js --presets es2015-loose",
+        "watch": "babel src --watch --out-file lib/linter-jing.js --presets es2015-loose"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": [
+              "provideLinter"
+            ]
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.1.2/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "linter-jing",
+      "main": "./lib/linter-jing",
+      "version": "0.1.0",
+      "description": "On-the-fly well-formedness check and validation of XML files against RelaxNG (compact, XML), Schematron (1.5, ISO) and W3C Schema",
+      "keywords": [
+        "XML",
+        "validation",
+        "Jing",
+        "RelaxNG",
+        "RNG",
+        "RNC",
+        "XSD",
+        "Schematron"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/aerhard/linter-jing.git"
+      },
+      "bugs": "https://github.com/aerhard/linter-jing/issues",
+      "license": "MIT",
+      "author": "Alexander Erhard (https://github.com/aerhard/)",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "atom-linter": "^4.7.0",
+        "atom-package-deps": "^4.0.1",
+        "sax": "^1.1.4"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.5.1",
+        "babel-core": "^6.5.1",
+        "babel-eslint": "^6.0.4",
+        "babel-preset-es2015": "^6.6.0",
+        "babel-preset-es2015-loose": "^7.0.0",
+        "eslint": "^2.5.3",
+        "eslint-config-airbnb": "^6.2.0",
+        "eslint-plugin-jasmine": "^1.8.1",
+        "eslint-plugin-react": "^4.2.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "scripts": {
+        "eslint": "eslint .",
+        "test": "apm test",
+        "build": "babel src --out-file lib/linter-jing.js --presets es2015-loose",
+        "watch": "babel src --watch --out-file lib/linter-jing.js --presets es2015-loose"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": [
+              "provideLinter"
+            ]
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-autocomplete-jing/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# linter-autocomplete-jing\n\n[![Appveyor CI Status](https://ci.appveyor.com/api/projects/status/github/aerhard/linter-autocomplete-jing?branch=master&svg=true)](https://ci.appveyor.com/project/aerhard/linter-autocomplete-jing)\n[![Circle CI Status](https://circleci.com/gh/aerhard/linter-autocomplete-jing/tree/master.svg?style=shield&circle-token=93c48cdbcad41ba1b7cd08f231286b94b195de53)](https://circleci.com/gh/aerhard/linter-autocomplete-jing)\n[![Dependencies](https://david-dm.org/aerhard/linter-autocomplete-jing.svg)](https://david-dm.org/aerhard/linter-autocomplete-jing)\n[![devDependencies Status](https://david-dm.org/aerhard/linter-autocomplete-jing/dev-status.svg)](https://david-dm.org/aerhard/linter-autocomplete-jing?type=dev)\n\nAutocomplete and on-the-fly validation of XML documents in Atom.\n\nSupported schema types:\n\n* *Validation*: RELAX NG (XML and compact syntax), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD\n* *Autocomplete*: RELAX NG (XML and compact syntax), W3C Schema (XSD 1.0)\n\nYou can find a basic set of common XML schemata and corresponding rules for linter-autocomplete-jing in the [xml-common-schemata](https://atom.io/packages/xml-common-schemata) package.  \n\nXML document processing is handled in Java using [Jing](https://github.com/aerhard/jing-trang), [Xerces](http://xerces.apache.org/xerces2-j/) and [Saxon HE](http://saxon.sourceforge.net/). For the source code of the Java part see https://github.com/aerhard/xml-tools.\n\n## Installation\n\nSelect the package in Atom's Settings View (<kbd>Ctrl-,</kbd>) / Install Packages or run `apm install linter-autocomplete-jing` from the command line.\n\nThe package depends on a Java Runtime Environment (JRE) v1.7 or above. If running `java -version` on the command line returns an appropriate version number, you should be set. Otherwise, install a recent JRE and provide the path to the Java executable either in the PATH environment variable or in the linter-autocomplete-jing package settings in Atom.\n\n## Package Settings\n\n| Settings Form                  | Atom Config Property  | Description  |\n|--------------------------------|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| Java Executable Path           | javaExecutablePath    | The path to the Java executable (`java`). |\n| JVM Arguments                  | jvmArguments          | Space-separated list of arguments to get passed to the Java Virtual Machine on which the validation server is run. |\n| Schema Cache Size              | schemaCacheSize       | The maximum number of schemata retained simultaneously in memory. |\n| Display Schema Parser Warnings | displaySchemaWarnings | Whether or not to display warning messages from the schema parser. |\n| XML Catalog                    | xmlCatalog            | The path to the XML Catalog file to be used in validation. |\n| DTD Validation                 | dtdValidation         | Determines under which circumstances DTDs should be used in validation. Possible values: 'always', 'never' or 'only as fallback'. When 'only as fallback' is selected, documents get validated against DTDs only if no other schemata are available for validation. |\n| XInclude Aware                 | xIncludeAware         | Whether or not validation should resolve XIncludes in the instance document. XInclude-aware validation is currently not supported in DTD-based validation. If this option is set to 'true' and your documents contain or refer to DOCTYPE declarations, you can prevent DTD error messages by adjusting the DTD Validation option. |\n| XInclude Fixup Base URIs       | xIncludeFixupBaseUris | Whether or not xml:base attributes should be added / adjusted in documents included with XInclude statements. |\n| XInclude Fixup Language       | xIncludeFixupLanguage | Whether or not xml:lang attributes should be added / adjusted in documents included with XInclude statements. |\n| Autocomplete Priority          | autocompletePriority  | The inclusion priority of the Autocomplete Plus provider. In order to exclude other autocomplete providers, the number must be larger than the other providers' priorities. Defaults to 1 (In order to suppresses the default tag snippets provided by the `language-xml` package, set autocomplete priority to 2.) |\n| Autocomplete Scope             | autocompleteScope     | The schema types which should be used for autocomplete. |\n| Wildcard Suggestions           | wildcardSuggestions   | Inclusion of wildcards in autocomplete suggestions. Possible values: 'all', 'localparts', 'none'. |\n\n(In order to edit the settings, press <kbd>Ctrl-,</kbd> or select \"Packages\" / \"Settings View\" / \"Open\" in the main menu. Then either navigate to the settings form (\"Packages\" tab, search for \"linter-autocomplete-jing\" and click the \"Settings\" button) or click the link to Atom's config file.\n\n## File types\n\nValidation and autocomplete get activated when the current file's grammar scope includes an item starting with `text.xml`. The Atom core package [language-xml](https://atom.io/packages/language-xml) (installed by default) assigns a large set of common XML file extensions to `text.xml` and `text.xml.xsl`. XML property lists (`text.xml.plist`) are supported by another core package, [language-property-list](https://atom.io/packages/language-property-list).\n\nIf a file extension you're working with isn't included in `language-xml` or any grammar derived from `text.xml` you can either request adding the extension at https://github.com/atom/language-xml or create a local association in your `config.cson`:\n\n1. Open `config.cson` by pressing <kbd>Ctrl-Shift-P</kbd> and then entering `Open Your Config`\n2. Add or extend the `customFileTypes` property of `core`\n\nThe following example assigns the `.tei`, `.mei` and `.odd` extensions to `text.xml`:  \n\n```\n  core:\n    customFileTypes:\n      \"text.xml\": [\n        \"tei\"\n        \"mei\"\n        \"odd\"\n      ]\n```\n\nA second way of supporting custom file extensions is creating a new grammar package based on `text.xml` and specifying the extensions in the grammar definition. An example can be found in the [demo package](https://github.com/aerhard/xml-demo-package).\n\n\n## Specifying Schemata\n\n### Schema References in Source Documents\n\nYou can specify schemata by providing a DOCTYPE declaration, XSI schema instance attributes or xml-model processing instructions; see https://github.com/aerhard/linter-autocomplete-jing/tree/master/spec/validation/xml for a collection of examples).   \nIf your documents contain references to remote schemata, you can improve performance and reduce network traffic by using an XML catalog file to map remote resources to local files. Projects like the Text Encoding Initiative (TEI) provide [packages](https://sourceforge.net/projects/tei/files/TEI-P5-all/) which include catalog files that can be added to the linter settings.\n\n### Schema Rules\n\nIf you'd like to avoid providing schema hints in each individual source document you can specify 'validation rules' in Atom's `config.cson` or in a separate Atom package.\n\nBelow is an example of rules in `config.cson`. The first rule associates files ending with `.rng` with an RNG schema at `/path/to/relaxng.rng`, the second one associates the root element namespace `urn:oasis:names:tc:entity:xmlns:xml:catalog` with the RNC schema at `/path/to/catalog.rnc`:\n\n```\n\"*\":\n  \"linter-autocomplete-jing\":\n    rules: [\n      {\n        priority: 1\n        test:\n          pathRegex: \"\\\\.rng$\"\n        outcome:\n          schemaProps: [\n            {\n              lang: \"rng\"\n              path: \"/path/to/relaxng.rng\"\n            }\n          ]\n      }\n      {\n        priority: 1\n        test:\n          rootNs: \"urn:oasis:names:tc:entity:xmlns:xml:catalog\"\n        outcome:\n          schemaProps: [\n            {\n              lang: \"rnc\"\n              path: \"/path/to/catalog.rnc\"\n            }\n          ]\n      }\n    ]\n```\n\nEach rule must have a `test` and an `outcome` property. `test` contains the criteria which need to be fulfilled for that rule to apply. `outcome` contains the schema / catalog information to be used when the rule is matched. When there are multiple rules, the `outcome` of the first matched rule gets applied (order is significant). The `priority` property of a rule is optional and defaults to 0. Rules with higher `priority` get evaluated first, rules with the same priority get evaluated in the order in which they are specified. Rules in `config.cson` always take precedence over rules from packages.\n\nPossible properties of `test`:\n\n* `pathRegex`: a regular expression string matching the full path of the current file\n* `rootNs`: the namespace of the root element (string)\n* `rootLocalName`: the localname of the root element (string)\n* `rootAttributes`: the required attributes of the root element (object with attribute names as keys and expected attribute values as values)\n* `publicId`: the Public ID specified in the DOCTYPE declaration\n\nPossible properties of `outcome`:\n\n* `dtdValidation`: determines under which circumstances DTDs should be used in validation. Possible values: 'always', 'never' or 'fallback'. When 'fallback' is selected, documents get validated against DTDs only if no other schemata are available for validation.\n* `xIncludeAware`: whether or not validation should resolve XIncludes in the instance document (boolean)\n* `xIncludeFixupBaseUris`: whether or not xml:base attributes should be added / adjusted in documents included with XInclude statements (boolean)\n* `xIncludeFixupLanguage`: whether or not xml:lang attributes should be added / adjusted in documents included with XInclude statements (boolean)\n* `xmlCatalog`: the path to the XML Catalog file to be used in validation\n* `schemaProps`: the schemata to be used in validation (array of objects with the properties `lang` and `path`. `path` specifies the file path of the schema, `lang` the schema language which must be one of 'rng', 'rnc', 'sch.iso', 'sch.15', 'xsd' or 'none')\n\nFor an example of an Atom package containing a schema and schema association rules see [demo package](https://github.com/aerhard/xml-demo-package).  \n\n## Commands\n\n* *linter-autocomplete-jing:clear-schema-cache*: Removes all schema and catalog data from the in-memory cache so it will get read from disk in the next validation run.\n\n## Development\n\nIf you intend to adjust the TypeScript part of the package (without making changes to the Java server), first uninstall the version of linter-autocomplete-jing downloaded with Atom’s package manager (`apm uninstall linter-autocomplete-jing`) and clone the package respository from https://github.com/aerhard/linter-autocomplete-jing. From the root of the repository, first run `apm install` and `npm install --only=dev` to install all dependencies. Then run `apm link` to register the package in Atom (undo with `apm unlink`). The Typescript source code is in the `src` folder of the project. `npm run build` and `npm run watch` transpile the content of `src` to a single JavaScript file in `dist` which gets loaded by Atom.\nPress <kbd>Ctrl-Alt-R</kbd> in Atom to reload the updated module.\nIntegration tests are located in the `spec` folder and can be run with `npm run test`. Unit tests are located in `src` (all files ending with `.spec.ts`) and get run with `npm run jest`.\n\nIn order to make adjustments to the TypeScript as well as as the Java parts, checkout https://github.com/aerhard/xml-tools and follow the instructions in the README file.\n",
+  "metadata": {
+    "name": "linter-autocomplete-jing",
+    "main": "./dist/main.js",
+    "version": "0.9.0",
+    "description": "Autocomplete and on-the-fly validation of XML documents against RELAX NG (compact, XML), Schematron (1.5, ISO), W3C Schema (XSD 1.0) and DTD",
+    "keywords": [
+      "xml",
+      "relaxng",
+      "schematron",
+      "xsd",
+      "validation",
+      "autocomplete"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/aerhard/linter-autocomplete-jing.git"
+    },
+    "bugs": "https://github.com/aerhard/linter-autocomplete-jing/issues",
+    "license": "SEE LICENSE IN LICENSE.md",
+    "author": "Alexander Erhard (https://github.com/aerhard/)",
+    "engines": {
+      "atom": ">=1.53.0 <2.0.0"
+    },
+    "dependencies": {
+      "atom-package-deps": "7.0.3"
+    },
+    "devDependencies": {
+      "@types/atom": "^1.40.5",
+      "@types/cross-spawn": "^6.0.2",
+      "@types/jasmine": "^3.6.2",
+      "@types/jest": "^26.0.19",
+      "@types/node": "^14.14.20",
+      "@types/sax": "^1.2.1",
+      "cross-env": "^7.0.3",
+      "cross-spawn": "7.0.3",
+      "eslint": "^7.17.0",
+      "eslint-config-atomic": "^1.5.1",
+      "eslint-config-prettier": "^7.1.0",
+      "eslint-plugin-import": "^2.22.1",
+      "import-sort-style-module": "^6.0.0",
+      "jasmine-fix": "^1.3.1",
+      "jest": "^26.6.3",
+      "prettier": "^2.2.1",
+      "prettier-plugin-import-sort": "0.0.6",
+      "rollup": "^2.36.0",
+      "rollup-plugin-atomic": "^1.8.0",
+      "sax": "^1.2.2",
+      "shx": "^0.3.3",
+      "ts-jest": "^26.4.4",
+      "typescript": "^4.1.3"
+    },
+    "importSort": {
+      ".js, .jsx, .ts, .tsx": {
+        "style": "module",
+        "parser": "typescript"
+      }
+    },
+    "package-deps": [
+      {
+        "name": "linter",
+        "minimumVersion": "2.0.0"
+      }
+    ],
+    "scripts": {
+      "clean": "shx rm -rf dist",
+      "format": "prettier --write .",
+      "test": "apm test",
+      "jest": "jest",
+      "lint": "eslint .",
+      "lint:fix": "eslint . --fix && npm run format",
+      "tsc:build": "npm run clean && cross-env NODE_ENV=development tsc -p src/tsconfig.json",
+      "build": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+      "watch": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+      "all": "npm run lint:fix && npm run build && npm run jest && npm run test"
+    },
+    "providedServices": {
+      "linter": {
+        "versions": {
+          "2.0.0": "provideLinter"
+        }
+      },
+      "autocomplete.provider": {
+        "versions": {
+          "2.0.0": "provideAutocomplete"
+        }
+      }
+    },
+    "configSchema": {
+      "javaExecutablePath": {
+        "type": "string",
+        "default": "java"
+      },
+      "jvmArguments": {
+        "type": "string",
+        "title": "JVM Arguments",
+        "default": "-Xms32m -Xmx256m"
+      },
+      "schemaCacheSize": {
+        "type": "integer",
+        "minimum": 0,
+        "default": 10
+      },
+      "displaySchemaWarnings": {
+        "title": "Display Schema Parser Warnings",
+        "type": "boolean",
+        "default": false
+      },
+      "xmlCatalog": {
+        "title": "XML Catalog",
+        "type": "string",
+        "default": ""
+      },
+      "dtdValidation": {
+        "title": "DTD Validation",
+        "type": "string",
+        "default": "fallback",
+        "enum": [
+          "never",
+          "always",
+          {
+            "value": "fallback",
+            "description": "only as fallback"
+          }
+        ]
+      },
+      "xIncludeAware": {
+        "title": "XInclude Aware",
+        "type": "boolean",
+        "default": true
+      },
+      "xIncludeFixupBaseUris": {
+        "title": "XInclude Fixup Base URIs",
+        "type": "boolean",
+        "default": true
+      },
+      "xIncludeFixupLanguage": {
+        "title": "XInclude Fixup Language",
+        "type": "boolean",
+        "default": true
+      },
+      "wildcardSuggestions": {
+        "type": "string",
+        "default": "none",
+        "enum": [
+          "none",
+          "localparts",
+          "all"
+        ]
+      },
+      "autocompletePriority": {
+        "type": "integer",
+        "default": 1
+      },
+      "autocompleteScope": {
+        "type": "object",
+        "properties": {
+          "rnc": {
+            "title": "RNC",
+            "type": "boolean",
+            "default": true
+          },
+          "rng": {
+            "title": "RNG",
+            "type": "boolean",
+            "default": true
+          },
+          "xsd": {
+            "title": "XSD",
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "rules": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "priority": {
+              "type": "number",
+              "default": 0
+            },
+            "test": {
+              "type": "object",
+              "properties": {
+                "grammarScope": {
+                  "type": "string"
+                },
+                "pathRegex": {
+                  "type": "string"
+                },
+                "rootNs": {
+                  "type": "string"
+                },
+                "rootLocalName": {
+                  "type": "string"
+                },
+                "rootAttributes": {
+                  "type": "object"
+                }
+              }
+            },
+            "outcome": {
+              "type": "object",
+              "properties": {
+                "xmlCatalog": {
+                  "type": "string"
+                },
+                "schemaProps": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "lang": {
+                        "type": "string"
+                      },
+                      "path": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "dtdValidation": {
+                  "type": "string",
+                  "default": "fallback",
+                  "enum": [
+                    "never",
+                    "always",
+                    "fallback"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "default": []
+      }
+    }
+  }
+}

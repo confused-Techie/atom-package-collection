@@ -1,0 +1,964 @@
+{
+  "name": "ide-intelephense",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cdaguerre/ide-intelephense"
+  },
+  "downloads": 1526,
+  "stargazers_count": 2,
+  "releases": {
+    "latest": "0.7.0"
+  },
+  "versions": {
+    "0.7.0": {
+      "name": "ide-intelephense",
+      "main": "./lib/ide-intelephense",
+      "version": "0.7.0",
+      "description": "PHP language support powered by Intelephense",
+      "keywords": [],
+      "activationCommands": {},
+      "repository": "https://github.com/cdaguerre/ide-intelephense",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-languageclient": "^1.6.0",
+        "axios": "^0.21.1",
+        "crypto": "^1.0.1",
+        "eslint": "^7.23.0",
+        "eslint-config-standard": "^16.0.2",
+        "fs": "^0.0.1-security",
+        "intelephense": "^1.6.3",
+        "os": "^0.1.1",
+        "path": "^0.12.7",
+        "querystring": "^0.2.1"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "configSchema": {
+        "licenseKey": {
+          "title": "Intelephense license key",
+          "type": "string",
+          "default": "",
+          "description": "Enter a license key to get access to [premium features](https://intelephense.com/)."
+        },
+        "globalStoragePath": {
+          "title": "Global storage path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to a global storage dir. Defaults to `os.homedir()/.ide-intelephense`."
+        },
+        "storagePath": {
+          "title": "Storage path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to storage dir. Defaults to `os.tmpdir()`."
+        }
+      },
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "4.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-intelephense/versions/0.7.0/tarball"
+      }
+    },
+    "0.6.0": {
+      "name": "ide-intelephense",
+      "main": "./lib/ide-intelephense",
+      "version": "0.6.0",
+      "description": "PHP language support powered by Intelephense",
+      "keywords": [],
+      "activationCommands": {},
+      "repository": "https://github.com/cdaguerre/ide-intelephense",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-languageclient": "^1.6.0",
+        "axios": "^0.21.1",
+        "crypto": "^1.0.1",
+        "eslint": "^7.23.0",
+        "eslint-config-standard": "^16.0.2",
+        "fs": "^0.0.1-security",
+        "intelephense": "^1.6.3",
+        "os": "^0.1.1",
+        "path": "^0.12.7",
+        "querystring": "^0.2.1"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "configSchema": {
+        "licenseKey": {
+          "title": "Intelephense license key",
+          "type": "string",
+          "default": "",
+          "description": "Enter a license key to get access to [premium features](https://intelephense.com/)."
+        },
+        "globalStoragePath": {
+          "title": "Global storage path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to a global storage dir. Defaults to `os.homedir()/.ide-intelephense`."
+        },
+        "storagePath": {
+          "title": "Storage path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to storage dir. Defaults to `os.tmpdir()`."
+        }
+      },
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "4.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-intelephense/versions/0.6.0/tarball"
+      }
+    },
+    "0.5.0": {
+      "name": "ide-intelephense",
+      "main": "./lib/ide-intelephense",
+      "version": "0.5.0",
+      "description": "PHP language support powered by Intelephense",
+      "keywords": [],
+      "activationCommands": {},
+      "repository": "https://github.com/cdaguerre/ide-intelephense",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-languageclient": "^1.6.0",
+        "axios": "^0.21.1",
+        "crypto": "^1.0.1",
+        "eslint": "^7.23.0",
+        "eslint-config-standard": "^16.0.2",
+        "fs": "^0.0.1-security",
+        "intelephense": "^1.6.3",
+        "os": "^0.1.1",
+        "path": "^0.12.7",
+        "querystring": "^0.2.1"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "configSchema": {
+        "licenseKey": {
+          "title": "Intelephense license key",
+          "type": "string",
+          "default": "",
+          "description": "Enter a license key to get access to [premium features](https://intelephense.com/)."
+        },
+        "globalStoragePath": {
+          "title": "Global storage path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to a global storage dir. Defaults to `os.homedir()/.ide-intelephense`."
+        },
+        "storagePath": {
+          "title": "Storage path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to storage dir. Defaults to `os.tmpdir()`."
+        }
+      },
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "4.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-intelephense/versions/0.5.0/tarball"
+      }
+    },
+    "0.4.0": {
+      "name": "ide-intelephense",
+      "main": "./lib/ide-intelephense",
+      "version": "0.4.0",
+      "description": "PHP language support powered by Intelephense",
+      "keywords": [],
+      "activationCommands": {},
+      "repository": "https://github.com/cdaguerre/ide-intelephense",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-languageclient": "1.0.0",
+        "axios": "^0.21.1",
+        "crypto": "^1.0.1",
+        "eslint": "^7.23.0",
+        "eslint-config-standard": "^16.0.2",
+        "fs": "^0.0.1-security",
+        "intelephense": "^1.6.3",
+        "os": "^0.1.1",
+        "path": "^0.12.7",
+        "querystring": "^0.2.1"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "configSchema": {
+        "licenseKey": {
+          "title": "Intelephense license key",
+          "type": "string",
+          "default": "",
+          "description": "Enter a license key to get access to [premium features](https://intelephense.com/)."
+        },
+        "globalStoragePath": {
+          "title": "Global storage path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to a global storage dir. Defaults to `os.homedir()/.ide-intelephense`."
+        },
+        "storagePath": {
+          "title": "Storage path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to storage dir. Defaults to `os.tmpdir()`."
+        }
+      },
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "4.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-intelephense/versions/0.4.0/tarball"
+      }
+    },
+    "0.3.3": {
+      "name": "ide-intelephense",
+      "main": "./lib/ide-intelephense",
+      "version": "0.3.3",
+      "description": "PHP language support powered by Intelephense",
+      "keywords": [],
+      "activationCommands": {},
+      "repository": "https://github.com/cdaguerre/ide-intelephense",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-languageclient": "1.0.0",
+        "eslint": "^7.23.0",
+        "eslint-config-standard": "^16.0.2",
+        "intelephense": "^1.6.3"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "configSchema": {
+        "licenseKey": {
+          "title": "Intelephense license key",
+          "type": "string",
+          "default": "",
+          "description": "Enter a license key to get access to [premium features](https://intelephense.com/)."
+        },
+        "globalStoragePath": {
+          "title": "Global storage path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to a global storage dir. Defaults to `os.homedir()`."
+        },
+        "storagePath": {
+          "title": "Storage path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to storage dir. Defaults to `os.tmpdir()`."
+        }
+      },
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "4.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-intelephense/versions/0.3.3/tarball"
+      }
+    },
+    "0.3.2": {
+      "name": "ide-intelephense",
+      "main": "./lib/ide-intelephense",
+      "version": "0.3.2",
+      "description": "PHP language support powered by Intelephense",
+      "keywords": [],
+      "activationCommands": {},
+      "repository": "https://github.com/cdaguerre/ide-intelephense",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-languageclient": "1.0.0",
+        "eslint": "^7.23.0",
+        "eslint-config-standard": "^16.0.2",
+        "intelephense": "^1.6.3"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "configSchema": {
+        "licenseKey": {
+          "title": "Intelephense license key",
+          "type": "string",
+          "default": "",
+          "description": "Enter a license key to get access to [premium features](https://intelephense.com/)."
+        },
+        "globalStoragePath": {
+          "title": "Global storage path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to a global storage dir. Defaults to `os.homedir()`."
+        },
+        "storagePath": {
+          "title": "Storage path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to storage dir. Defaults to `os.tmpdir()`."
+        }
+      },
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "4.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        },
+        "code-actions": {
+          "versions": {
+            "0.1.0": "provideCodeActions"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-intelephense/versions/0.3.2/tarball"
+      }
+    },
+    "0.3.1": {
+      "name": "ide-intelephense",
+      "main": "./lib/ide-intelephense",
+      "version": "0.3.1",
+      "description": "PHP language support powered by Intelephense",
+      "keywords": [],
+      "activationCommands": {},
+      "repository": "https://github.com/cdaguerre/ide-intelephense",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-languageclient": "1.0.0",
+        "intelephense": "^1.6.3"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "configSchema": {
+        "licenseKey": {
+          "title": "Intelephense license key",
+          "type": "string",
+          "default": "",
+          "description": "Enter a license key to get access to [premium features](https://intelephense.com/)."
+        },
+        "globalStoragePath": {
+          "title": "Global storage path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to a global storage dir. Defaults to `os.homedir()`."
+        },
+        "storagePath": {
+          "title": "Storage path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to storage dir. Defaults to `os.tmpdir()`."
+        }
+      },
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "4.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-intelephense/versions/0.3.1/tarball"
+      }
+    },
+    "0.3.0": {
+      "name": "ide-intelephense",
+      "main": "./lib/ide-intelephense",
+      "version": "0.3.0",
+      "description": "A short description of your package",
+      "keywords": [],
+      "activationCommands": {},
+      "repository": "https://github.com/cdaguerre/ide-intelephense",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-languageclient": "1.0.0",
+        "intelephense": "^1.6.3"
+      },
+      "enhancedScopes": [
+        "text.html.php"
+      ],
+      "configSchema": {
+        "licenseKey": {
+          "title": "Intelephense license key",
+          "type": "string",
+          "default": "",
+          "description": "Enter a license key to get access to [premium features](https://intelephense.com/)."
+        },
+        "globalStoragePath": {
+          "title": "Global storage path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to a global storage dir. Defaults to `os.homedir()`."
+        },
+        "storagePath": {
+          "title": "Storage path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to storage dir. Defaults to `os.tmpdir()`."
+        }
+      },
+      "consumedServices": {
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinterV2"
+          }
+        },
+        "atom-ide-busy-signal": {
+          "versions": {
+            "0.1.0": "consumeBusySignal"
+          }
+        },
+        "datatip": {
+          "versions": {
+            "0.1.0": "consumeDatatip"
+          }
+        },
+        "signature-help": {
+          "versions": {
+            "0.1.0": "consumeSignatureHelp"
+          }
+        }
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "4.0.0": "provideAutocomplete"
+          }
+        },
+        "code-format.range": {
+          "versions": {
+            "0.1.0": "provideCodeFormat"
+          }
+        },
+        "code-highlight": {
+          "versions": {
+            "0.1.0": "provideCodeHighlight"
+          }
+        },
+        "definitions": {
+          "versions": {
+            "0.1.0": "provideDefinitions"
+          }
+        },
+        "find-references": {
+          "versions": {
+            "0.1.0": "provideFindReferences"
+          }
+        },
+        "outline-view": {
+          "versions": {
+            "0.1.0": "provideOutlines"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ide-intelephense/versions/0.3.0/tarball"
+      }
+    }
+  },
+  "readme": "# ide-intelephense package\n\nPHP language support for Atom-IDE, powered by the [Intelephense](https://intelephense.com/) PHP Language Server.\n\n## Supported features\n\n**Basic features**\n- [x] Code completion\n- [x] Signature help\n- [x] Go to definition\n- [x] Find all references\n- [x] Symbol search\n- [x] Diagnostics\n- [ ] Formatting _(Not sure)_\n- [ ] Embedded language support _(Not sure)_\n- [x] Hover\n- [x] Highlight\n\n**Premium features**\n- [ ] Rename\n- [ ] Code folding (Doesn't seem implemented in [atom/auto-languageclient](https://github.com/atom/atom-languageclient/blob/65ae206c6ac3feff006a93f98c4856b0a08ad9ba/lib/auto-languageclient.ts#L208))\n- [ ] Find all implementations (Doesn't seem implemented in [atom/auto-languageclient](https://github.com/atom/atom-languageclient/blob/65ae206c6ac3feff006a93f98c4856b0a08ad9ba/lib/auto-languageclient.ts#L205))\n- [ ] Go to type definition (Doesn't seem implemented in [atom/auto-languageclient](https://github.com/atom/atom-languageclient/blob/65ae206c6ac3feff006a93f98c4856b0a08ad9ba/lib/auto-languageclient.ts#L206))\n- [ ] Go to declaration\n- [ ] Smart select\n- [ ] Code actions",
+  "metadata": {
+    "name": "ide-intelephense",
+    "main": "./lib/ide-intelephense",
+    "version": "0.7.0",
+    "description": "PHP language support powered by Intelephense",
+    "keywords": [],
+    "activationCommands": {},
+    "repository": "https://github.com/cdaguerre/ide-intelephense",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "atom-languageclient": "^1.6.0",
+      "axios": "^0.21.1",
+      "crypto": "^1.0.1",
+      "eslint": "^7.23.0",
+      "eslint-config-standard": "^16.0.2",
+      "fs": "^0.0.1-security",
+      "intelephense": "^1.6.3",
+      "os": "^0.1.1",
+      "path": "^0.12.7",
+      "querystring": "^0.2.1"
+    },
+    "enhancedScopes": [
+      "text.html.php"
+    ],
+    "configSchema": {
+      "licenseKey": {
+        "title": "Intelephense license key",
+        "type": "string",
+        "default": "",
+        "description": "Enter a license key to get access to [premium features](https://intelephense.com/)."
+      },
+      "globalStoragePath": {
+        "title": "Global storage path",
+        "type": "string",
+        "default": "",
+        "description": "Absolute path to a global storage dir. Defaults to `os.homedir()/.ide-intelephense`."
+      },
+      "storagePath": {
+        "title": "Storage path",
+        "type": "string",
+        "default": "",
+        "description": "Absolute path to storage dir. Defaults to `os.tmpdir()`."
+      }
+    },
+    "consumedServices": {
+      "linter-indie": {
+        "versions": {
+          "2.0.0": "consumeLinterV2"
+        }
+      },
+      "atom-ide-busy-signal": {
+        "versions": {
+          "0.1.0": "consumeBusySignal"
+        }
+      },
+      "datatip": {
+        "versions": {
+          "0.1.0": "consumeDatatip"
+        }
+      },
+      "signature-help": {
+        "versions": {
+          "0.1.0": "consumeSignatureHelp"
+        }
+      }
+    },
+    "providedServices": {
+      "autocomplete.provider": {
+        "versions": {
+          "4.0.0": "provideAutocomplete"
+        }
+      },
+      "code-format.range": {
+        "versions": {
+          "0.1.0": "provideCodeFormat"
+        }
+      },
+      "code-highlight": {
+        "versions": {
+          "0.1.0": "provideCodeHighlight"
+        }
+      },
+      "definitions": {
+        "versions": {
+          "0.1.0": "provideDefinitions"
+        }
+      },
+      "find-references": {
+        "versions": {
+          "0.1.0": "provideFindReferences"
+        }
+      },
+      "outline-view": {
+        "versions": {
+          "0.1.0": "provideOutlines"
+        }
+      },
+      "code-actions": {
+        "versions": {
+          "0.1.0": "provideCodeActions"
+        }
+      }
+    }
+  }
+}

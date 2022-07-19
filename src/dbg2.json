@@ -1,0 +1,126 @@
+{
+  "name": "dbg2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monnoliv/atom-dbg2"
+  },
+  "downloads": 88,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "1.6.5"
+  },
+  "versions": {
+    "1.6.5": {
+      "name": "dbg2",
+      "main": "./lib/main",
+      "version": "1.6.5",
+      "description": "An interactive debugger frontend v2",
+      "keywords": [
+        "debug",
+        "debugger"
+      ],
+      "repository": "https://github.com/monnoliv/atom-dbg2",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.17.0 <2.0.0"
+      },
+      "dependencies": {
+        "cson-parser": "^1.3.0",
+        "chokidar": "^1.6.0",
+        "atom-select-list": "^0.0.16"
+      },
+      "providedServices": {
+        "dbg": {
+          "description": "Provides debug support in Atom",
+          "versions": {
+            "1.1.0": "provideDbg"
+          }
+        }
+      },
+      "consumedServices": {
+        "dbgProvider": {
+          "versions": {
+            "^1.1.0": "consumeDbgProvider"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/dbg2/versions/1.6.5/tarball"
+      }
+    },
+    "1.6.4": {
+      "name": "dbg2",
+      "main": "./lib/main",
+      "version": "1.6.4",
+      "description": "An interactive debugger frontend v2",
+      "keywords": [
+        "debug",
+        "debugger"
+      ],
+      "repository": "https://github.com/monnoliv/atom-dbg2",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.17.0 <2.0.0"
+      },
+      "dependencies": {
+        "cson-parser": "^1.3.0",
+        "chokidar": "^1.6.0",
+        "atom-select-list": "^0.0.16"
+      },
+      "providedServices": {
+        "dbg": {
+          "description": "Provides debug support in Atom",
+          "versions": {
+            "1.1.0": "provideDbg"
+          }
+        }
+      },
+      "consumedServices": {
+        "dbgProvider": {
+          "versions": {
+            "^1.1.0": "consumeDbgProvider"
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/dbg2/versions/1.6.4/tarball"
+      }
+    }
+  },
+  "readme": "# dbg2 package\n\n**This package is the same as the dbg one, but with the bug fs.writeFile corrected in the ConfigManager.coffee**\n\nIt seems that the 31i73/atom-dbg initial package is no longer maintained\n\n### Remote debugging example\nCreate a file .atom-dbg.cson in your project folder and write your debug configuration, example for the ESP32:\n```\n\"ESP32\":\n  gdb_executable: 'xtensa-esp32-elf-gdb'\n  gdb_commands: ['target remote localhost:3333',\n                 'set remote hardware-watchpoint-limit 2',\n                 'mon reset halt',\n                 'flushregs',\n                 'thb app_main', 'c'\n                ]\n  path: \"./build/YourProgram.elf\"\n  cwd: \".\"\n  ```\nDon't forget to start the gdb server before starting your debugging session, example my gdb server is openOCD, I start it with\n```\nopenocd -f board/esp32-wrover-kit-3.3v.cfg\n```\n### -----------------------------------\nAn interactive debugger frontend\n\n\n![Debug screenshot](http://i.imgur.com/1Xuvll8.png)\n\n![Debug screenshot](http://i.imgur.com/XcI592U.png)\n\nSupports:\n\n* Breakpoints\n* Interactive debugger controls (Continue/pause/stop/step-over/step-in/step-out)\n* Inline hints automatically mark changed variables when stepping through code\n* Browsable callstack\n* Local variable browsing\n* Multiple debugger backends via provided `dbg` service\n\nCurrent available backends:  \n\n* [dbg-gdb-esp32](https://atom.io/packages/dbg-gdb-esp32) - Debug with gdb\n\n*Please install a backend to get started!*\n\n## Commands:\n\n`dbg:debug` - Begins a new debug session, or continues an existing  \n`dbg:continue` - Continues a paused, active debug session  \n`dbg:pause` - Pause  \n`dbg:pause-continue` - Toggle pause/continue (or begin anew if none active)  \n`dbg:step-over` - Step over the current line of code  \n`dbg:step-in` - Step into the current procedure  \n`dbg:step-out` - Complete and step out of the current procedure  \n`dbg:stop` - Stop debugging  \n`dbg:toggle-breakpoint` - Toggle a breakpoint on the currently active line  \n`dbg:clear-breakpoints` - Clear all breakpoints\n\n`dbg:custom-debug` - Opens the debug configuration panel  \n`dbg:select-config` - Opens the select list for choosing a saved debug configuration (.atom-dbg files)  \n\n## Debug Configuration Files:\n\nIf you need access to more options than are available in the config panel or you want to save different debug configs for easy use, you can click the save button from the debug config panel or create/amend a config file in the root directory of your project directory.\n\n**Supported files/formats:**  \n `.atom-dbg.json` - Config file in JSON format  \n `.atom-dbg.cson` - Config file in CSON format\n\n### Example:\n\nThis cson example creates debug configurations `client` and `server`, which can then be selected by starting a new debug session, or with the `dbg:select-config` command:\n\n```\nclient:\n\tdebugger: 'dbg-gdb'\n\tcwd: 'client'\n\tpath: 'client/bin'\n\targs: ['--connect', '1234']\n\nserver:\n\tdebugger: 'dbg-gdb'\n\tcwd: 'server'\n\tpath: 'server/bin'\n\targs: ['--port', '1234']\n```\n\n#### Config Parameters:\n`debugger` - *Optional*. Specifies which debugger backend to use (If omitted a suitable backend will be selected automatically, based on the `path` target file)  \n`file` - The target file to debug\n\nRefer to the specific backend documentation for a list of all other supported parameter options\n\n\n## Service: `dbg`\n\nReturns an object with the following events and functions:\n\n### Events:\n\n`start` - A debug session has begun  \n`stop` - A debug session has ended  \n\n### Functions:\n\n`debug(options?):Promise<Bool>` - Attempt to start a new debug session (any existing session will be `stop()`ed first)\n\nExample: `dbg.debug({ path: './myProg', args: ['testmode'] });`\n\n> `options` - An optional object with the following properties:\n\n>> `debugger` - *Optional*. The name of the dbg provider to use. (This can be omitted to auto-detect)  \n>> `path` - *Optional*. The path to the file to debug  \n>> `args` - *Optional*. An array of arguments to pass to the file being debugged  \n>> `cwd` - *Optional*. The working directory to use when debugging  \n>> `basedir` - *Optional*. The base dir for any relative paths  \n>> `...` - *Optional*. Custom debugger arguments  \n\n> If a `debugger` is not specified, every dbg provider will be queried with the options object provided;  \n> The first provider to respond as being compatible will be selected  \n> Note that the options supported vary depending on dbg providers, but `path`, `args` and `cwd` are recommended as defaults if relevant to the target  \n\nReturns a promise that fulfills as `true` if a valid dbg provider is found, or `false` if not.\n\nIf no options are passed and the user has configured valid settings in the config panel, these will be used instead. Alternatively, the config panel will be displayed and the returned promise will immediately fulfill as `true`.\n\n`stop()` - Cancel the currently active debug session  \n\n`customDebug(options?)` - Displays the configuration panel  \n\n> `options` - An optional object with the following properties:\n\n>> `debugger` - *Optional*. The name of the dbg provider to use. If set to an empty string, ``\"automatic\"`` will be selected  \n>> `path` - *Optional*. The path to the file to debug  \n>> `args` - *Optional*. An array of arguments to pass to the file being debugged  \n>> `cwd` - *Optional*. The working directory to use when debugging\n\n`continue()` - Continue  \n`pause()` - Pause  \n`pause_continue()` - Pause or continue (toggle)\n\n`stepOver()` - Step over the current line of code  \n`stepIn()` - Step into the current procedure  \n`stepOut()` - Complete and step out of the current procedure  \n\n`addBreakpoint(path:String, line:Int)` - Add breakpoint at the specified location  \n> `path` - The absolute file path  \n> `line` - The line number (1-based)  \n\n`removeBreakpoint(path:String, line:Int)` - Remove a breakpoint at the specified location  \n> `path` - The absolute file path  \n> `line` - The line number (1-based)  \n\n`toggleBreakpoint(path:String, line:Int)` - Toggle a breakpoint at the specified location  \n> `path` - The absolute file path  \n> `line` - The line number (1-based)  \n\n`getBreakpoints()` - Return an array of all breakpoints. Each array item has the following properties:  \n> `path` - The absolute file path  \n> `line` - The line number (1-based)  \n\n`hasBreakpoint(path:String, line:Int)` - Toggles a breakpoint at the specified location  \n> `path` - The absolute file path  \n> `line` - The line number (1-based)  \n\n## Consumed service: `dbgProvider`\n\nTo create a dbg provider provide a `dbgProvider` service with the following properties:\n\n`name` - The name of this provider  \n`description` - A brief one-line description of this provider  \n\n`canHandleOptions(options):Promise<Bool>` - A function that returns a promise that fulfilling as `true` if it is compatible with the provided debug options, or `false` if it is not\n> `options` - The options parameter passed to `debug()` of the `dbg` service\n\n`debug(options, api)` - A function to begin debugging  \n> `options` - The options parameter passed to `debug()` of the `dbg` service  \n> `api` - An object containing the following properties:\n>> `breakpoints` - An array of all breakpoints currently present  \n>> Each item in the array contains the following properties:\n>>> `path` - The absolute file path  \n>>> `line` - The line number (1-based)  \n\n>> `ui` - An object containing the following functions for controlling the dbg frontend:  \n>>> `setStack(stack:Frame[])` - Set the stacktrace display to the specified items.  \n>>> Frames are ordered from bottom to top, with index 0 being the entrypoint of the program and the highest index being the current executing location\n\n>>> Each `Frame` should have the following properties:  \n>>>> `name` - The friendly name of this location (\"main()\" etc)  \n>>>> `local:Bool` - Specifes if the location is locally accessible, or a system location (hidden by default unless at the top of the stack)  \n>>>> `file` - *Optional*. The absolute file path\n>>>> `path` - The displayed technical path  (`file.c:4`, `file.so:xbaadf00d` etc)  \n>>>> `line` - The line number (1-based)  \n>>>> `error` - *Optional*. If there is an error associated with this frame this should be a brief description (e.g. \"Division by zero\")  \n\n>>> `setVariables(variables:Variable[])` - The list of variables visible in the currently active frame\n\n>>>  Each `Variable` should have the following properties:\n>>>> `name` - The name of the variable  \n>>>> `type` - *Optional*. The type of the variable (as a String)  \n>>>> `value` - *Optional*. The value of the variable (as a String)  \n>>>> `expandable` - *Optional*. If `true` this variable may contain child properties. If expanded by the user `getVariableChildren()` will be called to retrieve them\n\n\n>>> `setFrame(frameIndex:Int)` - Set this index in the stack as the currently active frame, and navigate the Atom to this file and location if it exists  \n>>> If this frame in the stack is a system location then all system frames will be shown\n\n>>> `running()` - Mark the debug as current running  \n>>> `paused()` - Mark the debug as currently paused  \n>>> `stop()` - Abort the current debug in process (this will call `stop()` for the `dbg` service internally and then `stop()` on this packages `dbgProvider`)  \n\n>>> `showWarning(warning:String)` - Display the specified warning  \n>>> `showError(error:String)` - Display the specified error  \n\n`getVariableChildren(fullName):Promise<Variable[]>` - *Optional*. If any variables are marked as `expandable` this function may be called to retrieve them  \nIt should return a promise that fulfills an array of child variables, also with the following properties:\n> `name` - The name of the variable  \n> `fullName` - *Optional*. The full pathed name of the variable, for use on successive `getVariableChildren` queries. If omitted, the parents fullName followed by a dot followed by this name will be used  \n> `type` - *Optional*. The type of the variable (as a String)  \n> `value` - *Optional*. The value of the variable (as a String)  \n> `expandable` - *Optional*. If `true` this variable may contain child properties. If expanded by the user `getVariableChildren()` will again be called to retrieve them\n\n`stop()` - This function is called when debugging has ceased  \nOnce this has been called the `api` property passed to `start()` should no longer be accessed  \n\n`continue()` - This function is called when the user request the debugger continue  \n`pause()` - This function is called when the user request the debugger pause  \n\n`selectFrame()` - This function is called when the user selects a frame from the stacktrace  \n\n`stepOver()` - This function is called when the user requests a step over  \n`stepIn()` - This function is called when the user requests step into  \n`stepOut()` - This function is called when the user requests step out  \n\n`addBreakpoint(breakpoint:Breakpoint)` - This function is called if the user adds a breakpoint during an active debug session  \nThe breakpoint contains the following properties:\n> `path` - The absolute file path  \n> `line` - The line number (1-based)  \n\n`removeBreakpoint(breakpoint:Breakpoint)` - This function is called if the user removes a breakpoint during an active debug session  \nThe breakpoint contains the following properties:\n> `path` - The absolute file path  \n> `line` - The line number (1-based)  \n",
+  "metadata": {
+    "name": "dbg2",
+    "main": "./lib/main",
+    "version": "1.6.5",
+    "description": "An interactive debugger frontend v2",
+    "keywords": [
+      "debug",
+      "debugger"
+    ],
+    "repository": "https://github.com/monnoliv/atom-dbg2",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.17.0 <2.0.0"
+    },
+    "dependencies": {
+      "cson-parser": "^1.3.0",
+      "chokidar": "^1.6.0",
+      "atom-select-list": "^0.0.16"
+    },
+    "providedServices": {
+      "dbg": {
+        "description": "Provides debug support in Atom",
+        "versions": {
+          "1.1.0": "provideDbg"
+        }
+      }
+    },
+    "consumedServices": {
+      "dbgProvider": {
+        "versions": {
+          "^1.1.0": "consumeDbgProvider"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "name": "musa-dsl-atom-repl",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/javier-sy/musa-dsl-atom-repl"
+  },
+  "downloads": 87,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.2.0"
+  },
+  "versions": {
+    "0.2.0": {
+      "name": "musa-dsl-atom-repl",
+      "main": "./lib/musa-dsl-atom-repl",
+      "version": "0.2.0",
+      "description": "Atom package for REPL Musa-DSL live coding",
+      "keywords": [
+        "musa-dsl",
+        "live coding",
+        "music composition",
+        "repl"
+      ],
+      "activationCommands": {
+        "atom-workspace": [
+          "musa-dsl-atom-repl:send",
+          "musa-dsl-atom-repl:toggle"
+        ]
+      },
+      "repository": "https://github.com/javier-sy/musa-dsl-atom-repl.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/musa-dsl-atom-repl/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.6": {
+      "name": "musa-dsl-atom-repl",
+      "main": "./lib/musa-dsl-atom-repl",
+      "version": "0.1.6",
+      "description": "Atom package for REPL Musa-DSL live coding",
+      "keywords": [
+        "musa-dsl",
+        "live coding",
+        "music composition",
+        "repl"
+      ],
+      "activationCommands": {
+        "atom-workspace": [
+          "musa-dsl-atom-repl:send",
+          "musa-dsl-atom-repl:toggle"
+        ]
+      },
+      "repository": "https://github.com/javier-sy/musa-dsl-atom-repl.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/musa-dsl-atom-repl/versions/0.1.6/tarball"
+      }
+    },
+    "0.1.4": {
+      "name": "musa-dsl-atom-repl",
+      "main": "./lib/musa-dsl-atom-repl",
+      "version": "0.1.4",
+      "description": "Atom package for REPL Musa-DSL live coding",
+      "keywords": [
+        "musa-dsl",
+        "live coding",
+        "music composition",
+        "repl"
+      ],
+      "activationCommands": {
+        "atom-workspace": [
+          "musa-dsl-atom-repl:send",
+          "musa-dsl-atom-repl:toggle"
+        ]
+      },
+      "repository": "https://github.com/javier-sy/musa-dsl-atom-repl",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/musa-dsl-atom-repl/versions/0.1.4/tarball"
+      }
+    }
+  },
+  "readme": "# musa-dsl-atom-repl\n\nAn Atom package to allow a Read-Eval-Print-Loop connected to a Musa-DSL REPL server.\n\n[Musa-DSL](https://github.com/javier-sy/musa-dsl) is a Ruby Domain Specific Language for algorithmic musical composition.\n\nThe Musa-DSL server should be implemented creating a new REPL instance inside the binding context of the sequencer DSL. A simple instantiation scenario is the following:\n\n```ruby\nrequire 'musa-dsl'\nrequire 'unimidi'\n\nclock_input = UniMIDI::Input.all.select { |x| x.name == 'Apple Inc. Driver IAC' }[1]\noutput = UniMIDI::Output.all.select { |x| x.name == 'Apple Inc. Driver IAC' }[1]\n\nclock = Musa::InputMidiClock.new clock_input\n\nvoices = Musa::MIDIVoices.new sequencer: transport.sequencer, output: output, channels: [0]\n\ntransport = Musa::Transport.new clock, 1, 24\n\ntransport.sequencer.with do\n  Musa::REPL.new binding\nend\n\ntransport.start\n```\n\nThis opens a REPL socket in localhost:1327. musa-dsl-atom-repl package automatically connects to this default server.\n\nKeystrokes inside Atom:\n\n* *Ctrl-Alt-M:* opens the Musa-DSL REPL Status panel. This panel shows the responses from the server when it evals the commands sent from the Atom client. The response includes the inmediate response and the future responses for the commands that develop in time.\n\n* *Ctrl-Alt-Return:* sends current selection or current line (if nothing is selected) as a command to Musa-DSL REPL server. The response is shown in Musa-DSL REPL Status panel.\n",
+  "metadata": {
+    "name": "musa-dsl-atom-repl",
+    "main": "./lib/musa-dsl-atom-repl",
+    "version": "0.2.0",
+    "description": "Atom package for REPL Musa-DSL live coding",
+    "keywords": [
+      "musa-dsl",
+      "live coding",
+      "music composition",
+      "repl"
+    ],
+    "activationCommands": {
+      "atom-workspace": [
+        "musa-dsl-atom-repl:send",
+        "musa-dsl-atom-repl:toggle"
+      ]
+    },
+    "repository": "https://github.com/javier-sy/musa-dsl-atom-repl.git",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {}
+  }
+}

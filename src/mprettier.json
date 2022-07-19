@@ -1,0 +1,1622 @@
+{
+  "name": "mprettier",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/t9md/atom-mprettier"
+  },
+  "downloads": 863,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "0.6.0"
+  },
+  "versions": {
+    "0.6.0": {
+      "name": "mprettier",
+      "main": "./lib/main",
+      "version": "0.6.0",
+      "description": "Minimalistic prettier runner for more performant Atom startup",
+      "license": "MIT",
+      "private": true,
+      "repository": "https://github.com/t9md/atom-mprettier",
+      "engines": {
+        "atom": "^1.15.0"
+      },
+      "configSchema": {
+        "notificationMethodOnPrettierError": {
+          "order": 0,
+          "type": "string",
+          "default": "atom-notification",
+          "enum": [
+            "atom-notification",
+            "console"
+          ]
+        },
+        "debug": {
+          "order": 1,
+          "type": "boolean",
+          "default": false
+        },
+        "formatOnSave": {
+          "order": 2,
+          "type": "object",
+          "collapsed": false,
+          "properties": {
+            "enable": {
+              "title": "Enable",
+              "order": 0,
+              "description": "works only for **active** editor",
+              "type": "boolean",
+              "default": false
+            },
+            "skipWhenPrettierIsNotProjectDependencies": {
+              "title": "Skip When Prettier Is Not Project Dependencies",
+              "order": 1,
+              "type": "boolean",
+              "default": false
+            },
+            "skipWhenPrettierConfigIsNotFound": {
+              "title": "Skip When Prettier Config Is Not Found",
+              "order": 2,
+              "type": "boolean",
+              "default": false
+            },
+            "disabledParsers": {
+              "title": "Disabled Parsers",
+              "order": 3,
+              "description": "Put parser names here e.g. `markdown, postcss`",
+              "type": "array",
+              "default": [],
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "prettierToUseInOrder": {
+          "order": 3,
+          "type": "object",
+          "collapsed": false,
+          "properties": {
+            "inCurrentFileDirectory": {
+              "title": "1. In Current File Directory",
+              "order": 0,
+              "type": "boolean",
+              "default": false
+            },
+            "inCurrentProject": {
+              "title": "2. In Current Project",
+              "order": 1,
+              "type": "boolean",
+              "default": true
+            },
+            "inAbsolutePath": {
+              "title": "3. In Absolute Path",
+              "order": 2,
+              "type": "boolean",
+              "default": false
+            },
+            "prettierPath": {
+              "title": "Prettier Path",
+              "order": 3,
+              "type": "string",
+              "default": "/usr/local/lib/node_modules/prettier/index.js"
+            },
+            "globallyInstalled": {
+              "title": "4. Globally Installed",
+              "order": 4,
+              "type": "boolean",
+              "default": false
+            },
+            "bundled": {
+              "title": "5. Bundled in mprettier",
+              "order": 5,
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "scopesForParser": {
+          "order": 4,
+          "type": "object",
+          "collapsed": false,
+          "properties": {
+            "javascriptParser": {
+              "title": "JavaScript Parser",
+              "order": 0,
+              "type": "string",
+              "default": "babylon",
+              "enum": [
+                "babylon",
+                "flow"
+              ]
+            },
+            "javascript": {
+              "order": 1,
+              "title": "javascript",
+              "description": "Parser you chose in `JavaScript Parser` is used",
+              "type": "array",
+              "default": [
+                "source.js",
+                "source.jsx",
+                "source.js.jsx",
+                "source.babel",
+                "source.js-semantic",
+                "text.html.basic",
+                "text.html.vue"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "typescript": {
+              "order": 2,
+              "title": "typescript",
+              "type": "array",
+              "default": [
+                "source.ts",
+                "source.tsx",
+                "source.ts.tsx"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "postcss": {
+              "order": 3,
+              "title": "postcss",
+              "type": "array",
+              "default": [
+                "source.css",
+                "source.less",
+                "source.css.less",
+                "source.scss",
+                "source.css.scss",
+                "source.css.postcss"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "json": {
+              "order": 4,
+              "title": "json",
+              "type": "array",
+              "default": [
+                "source.json"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "graphql": {
+              "order": 5,
+              "title": "graphql",
+              "type": "array",
+              "default": [
+                "source.graphql"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "markdown": {
+              "order": 6,
+              "title": "markdown",
+              "type": "array",
+              "default": [
+                "source.gfm",
+                "text.md"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dependencies": {
+        "fs-plus": "^3.0.1",
+        "prettier": "^1.8.2",
+        "read-pkg-up": "^3.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/mprettier/versions/0.6.0/tarball"
+      }
+    },
+    "0.5.1": {
+      "name": "mprettier",
+      "main": "./lib/main",
+      "version": "0.5.1",
+      "description": "Minimalistic prettier runner for more performant Atom startup",
+      "license": "MIT",
+      "private": true,
+      "repository": "https://github.com/t9md/atom-mprettier",
+      "engines": {
+        "atom": "^1.15.0"
+      },
+      "configSchema": {
+        "javascriptParser": {
+          "title": "JavaScript Parser",
+          "order": 1,
+          "type": "string",
+          "default": "babylon",
+          "enum": [
+            "babylon",
+            "flow"
+          ]
+        },
+        "notificationMethodOnPrettierError": {
+          "order": 2,
+          "type": "string",
+          "default": "atom-notification",
+          "enum": [
+            "atom-notification",
+            "console"
+          ]
+        },
+        "debug": {
+          "order": 3,
+          "type": "boolean",
+          "default": false
+        },
+        "formatOnSave": {
+          "order": 4,
+          "type": "object",
+          "collapsed": false,
+          "properties": {
+            "enable": {
+              "title": "Enable",
+              "order": 1,
+              "description": "works only for **active** editor",
+              "type": "boolean",
+              "default": false
+            },
+            "skipWhenPrettierIsNotProjectDependencies": {
+              "title": "Skip When Prettier Is Not Project Dependencies",
+              "order": 2,
+              "type": "boolean",
+              "default": false
+            },
+            "skipWhenPrettierConfigIsNotFound": {
+              "title": "Skip When Prettier Config Is Not Found",
+              "order": 3,
+              "type": "boolean",
+              "default": false
+            },
+            "disabledParsers": {
+              "title": "Disabled Parsers",
+              "order": 4,
+              "description": "Put parser names here e.g. `markdown, postcss`",
+              "type": "array",
+              "default": [],
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "prettierToUseInOrder": {
+          "order": 5,
+          "type": "object",
+          "collapsed": false,
+          "properties": {
+            "inCurrentFileDirectory": {
+              "title": "1. In Current File Directory",
+              "order": 1,
+              "type": "boolean",
+              "default": false
+            },
+            "inCurrentProject": {
+              "title": "2. In Current Project",
+              "order": 2,
+              "type": "boolean",
+              "default": true
+            },
+            "inAbsolutePath": {
+              "title": "3. In Absolute Path",
+              "order": 3,
+              "type": "boolean",
+              "default": false
+            },
+            "prettierPath": {
+              "title": "Prettier Path",
+              "order": 4,
+              "type": "string",
+              "default": "/usr/local/lib/node_modules/prettier/index.js"
+            },
+            "globallyInstalled": {
+              "title": "4. Globally Installed",
+              "order": 5,
+              "type": "boolean",
+              "default": false
+            },
+            "bundled": {
+              "title": "5. Bundled in mprettier",
+              "order": 6,
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "scopesForParser": {
+          "order": 6,
+          "type": "object",
+          "collapsed": false,
+          "properties": {
+            "javascript": {
+              "order": 0,
+              "title": "javascript",
+              "description": "Parser you chose in `JavaScript Parser` is used",
+              "type": "array",
+              "default": [
+                "source.js",
+                "source.jsx",
+                "source.js.jsx",
+                "source.babel",
+                "source.js-semantic",
+                "text.html.basic",
+                "text.html.vue"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "typescript": {
+              "order": 1,
+              "title": "typescript",
+              "type": "array",
+              "default": [
+                "source.ts",
+                "source.tsx",
+                "source.ts.tsx"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "postcss": {
+              "order": 2,
+              "title": "postcss",
+              "type": "array",
+              "default": [
+                "source.css",
+                "source.less",
+                "source.css.less",
+                "source.scss",
+                "source.css.scss",
+                "source.css.postcss"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "json": {
+              "order": 3,
+              "title": "json",
+              "type": "array",
+              "default": [
+                "source.json"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "graphql": {
+              "order": 4,
+              "title": "graphql",
+              "type": "array",
+              "default": [
+                "source.graphql"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "markdown": {
+              "order": 5,
+              "title": "markdown",
+              "type": "array",
+              "default": [
+                "source.gfm",
+                "text.md"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dependencies": {
+        "fs-plus": "^3.0.1",
+        "prettier": "^1.8.2",
+        "read-pkg-up": "^3.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/mprettier/versions/0.5.1/tarball"
+      }
+    },
+    "0.5.0": {
+      "name": "mprettier",
+      "main": "./lib/main",
+      "version": "0.5.0",
+      "description": "Minimalistic prettier runner for more performant Atom startup",
+      "license": "MIT",
+      "private": true,
+      "repository": "https://github.com/t9md/atom-mprettier",
+      "engines": {
+        "atom": "^1.15.0"
+      },
+      "configSchema": {
+        "javascriptParser": {
+          "title": "JavaScript Parser",
+          "order": 1,
+          "type": "string",
+          "default": "babylon",
+          "enum": [
+            "babylon",
+            "flow"
+          ]
+        },
+        "notificationMethodOnPrettierError": {
+          "order": 2,
+          "type": "string",
+          "default": "atom-notification",
+          "enum": [
+            "atom-notification",
+            "console"
+          ]
+        },
+        "debug": {
+          "order": 3,
+          "type": "boolean",
+          "default": false
+        },
+        "formatOnSave": {
+          "order": 4,
+          "type": "object",
+          "collapsed": true,
+          "properties": {
+            "enable": {
+              "title": "Enable",
+              "order": 1,
+              "description": "works only for **active** editor",
+              "type": "boolean",
+              "default": false
+            },
+            "skipWhenPrettierIsNotProjectDependencies": {
+              "title": "Skip When Prettier Is Not Project Dependencies",
+              "order": 2,
+              "type": "boolean",
+              "default": false
+            },
+            "skipWhenPrettierConfigIsNotFound": {
+              "title": "Skip When Prettier Config Is Not Found",
+              "order": 3,
+              "type": "boolean",
+              "default": false
+            },
+            "disabledParsers": {
+              "title": "Disabled Parsers",
+              "order": 4,
+              "description": "Put parser names here e.g. `markdown, postcss`",
+              "type": "array",
+              "default": [],
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "prettierToUseInOrder": {
+          "order": 5,
+          "type": "object",
+          "collapsed": true,
+          "properties": {
+            "inCurrentFileDirectory": {
+              "title": "1. In Current File Directory",
+              "order": 1,
+              "type": "boolean",
+              "default": false
+            },
+            "inCurrentProject": {
+              "title": "2. In Current Project",
+              "order": 2,
+              "type": "boolean",
+              "default": true
+            },
+            "inAbsolutePath": {
+              "title": "3. In Absolute Path",
+              "order": 3,
+              "type": "boolean",
+              "default": false
+            },
+            "prettierPath": {
+              "title": "Prettier Path",
+              "order": 4,
+              "type": "string",
+              "default": "/usr/local/lib/node_modules/prettier/index.js"
+            },
+            "globallyInstalled": {
+              "title": "4. Globally Installed",
+              "order": 5,
+              "type": "boolean",
+              "default": false
+            },
+            "bundled": {
+              "title": "5. Bundled in mprettier",
+              "order": 6,
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "scopesForParser": {
+          "order": 6,
+          "type": "object",
+          "collapsed": true,
+          "properties": {
+            "javascript": {
+              "order": 0,
+              "title": "javascript",
+              "description": "Parser you chose in `JavaScript Parser` is used",
+              "type": "array",
+              "default": [
+                "source.js",
+                "source.jsx",
+                "source.js.jsx",
+                "source.babel",
+                "source.js-semantic",
+                "text.html.basic",
+                "text.html.vue"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "typescript": {
+              "order": 1,
+              "title": "typescript",
+              "type": "array",
+              "default": [
+                "source.ts",
+                "source.tsx",
+                "source.ts.tsx"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "postcss": {
+              "order": 2,
+              "title": "postcss",
+              "type": "array",
+              "default": [
+                "source.css",
+                "source.less",
+                "source.css.less",
+                "source.scss",
+                "source.css.scss",
+                "source.css.postcss"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "json": {
+              "order": 3,
+              "title": "json",
+              "type": "array",
+              "default": [
+                "source.json"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "graphql": {
+              "order": 4,
+              "title": "graphql",
+              "type": "array",
+              "default": [
+                "source.graphql"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "markdown": {
+              "order": 5,
+              "title": "markdown",
+              "type": "array",
+              "default": [
+                "source.gfm",
+                "text.md"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "dependencies": {
+        "fs-plus": "^3.0.1",
+        "prettier": "^1.8.2",
+        "read-pkg-up": "^3.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/mprettier/versions/0.5.0/tarball"
+      }
+    },
+    "0.4.0": {
+      "name": "mprettier",
+      "main": "./lib/main",
+      "version": "0.4.0",
+      "description": "Minimal prettier with less Atom startup overhead",
+      "license": "MIT",
+      "private": true,
+      "repository": "https://github.com/t9md/atom-mprettier",
+      "engines": {
+        "atom": "^1.15.0"
+      },
+      "configSchema": {
+        "formatOnSave": {
+          "order": 0,
+          "description": "works only for **active** editor",
+          "type": "boolean",
+          "default": false
+        },
+        "usePrettierInCurrentFileDirectory": {
+          "order": 1,
+          "type": "boolean",
+          "default": true
+        },
+        "usePrettierInCurrentProject": {
+          "order": 2,
+          "type": "boolean",
+          "default": true
+        },
+        "usePrettierInAbsolutePath": {
+          "order": 3,
+          "type": "boolean",
+          "default": false
+        },
+        "prettierInAbsolutePath": {
+          "order": 4,
+          "type": "string",
+          "default": "/usr/local/lib/node_modules/prettier/index.js"
+        },
+        "usePrettierGloballyInstalled": {
+          "order": 5,
+          "type": "boolean",
+          "default": false
+        },
+        "usePrettierBundled": {
+          "order": 6,
+          "type": "boolean",
+          "default": true
+        },
+        "disabledParsers": {
+          "order": 7,
+          "description": "Put parser names here e.g. `markdown, postcss`",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "disabledParsersOnFormatOnSave": {
+          "order": 8,
+          "description": "Checked only when formatOnSave before checking `disabledParsers`",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "javascriptParser": {
+          "title": "JavaScript Parser",
+          "order": 9,
+          "type": "string",
+          "default": "babylon",
+          "enum": [
+            "babylon",
+            "flow"
+          ]
+        },
+        "scopesForParser": {
+          "type": "object",
+          "collapsed": false,
+          "properties": {
+            "javascript": {
+              "order": 0,
+              "title": "javascript",
+              "description": "Parser you chose in `JavaScript Parser` is used",
+              "type": "array",
+              "default": [
+                "source.js",
+                "source.jsx",
+                "source.js.jsx",
+                "source.babel",
+                "source.js-semantic",
+                "text.html.basic",
+                "text.html.vue"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "typescript": {
+              "order": 1,
+              "title": "typescript",
+              "type": "array",
+              "default": [
+                "source.ts",
+                "source.tsx",
+                "source.ts.tsx"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "postcss": {
+              "order": 2,
+              "title": "postcss",
+              "type": "array",
+              "default": [
+                "source.css",
+                "source.less",
+                "source.css.less",
+                "source.scss",
+                "source.css.scss",
+                "source.css.postcss"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "json": {
+              "order": 3,
+              "title": "json",
+              "type": "array",
+              "default": [
+                "source.json"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "graphql": {
+              "order": 4,
+              "title": "graphql",
+              "type": "array",
+              "default": [
+                "source.graphql"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "markdown": {
+              "order": 5,
+              "title": "markdown",
+              "type": "array",
+              "default": [
+                "source.gfm",
+                "text.md"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "notificationMethodOnPrettierError": {
+          "order": 10,
+          "type": "string",
+          "default": "atom-notification",
+          "enum": [
+            "atom-notification",
+            "console"
+          ]
+        },
+        "debug": {
+          "order": 11,
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "dependencies": {
+        "fs-plus": "^3.0.1",
+        "prettier": "^1.8.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/mprettier/versions/0.4.0/tarball"
+      }
+    },
+    "0.3.0": {
+      "name": "mprettier",
+      "main": "./lib/main",
+      "version": "0.3.0",
+      "description": "Minimal prettier, always invoked manually, no linter integration, no Atom startup overhead",
+      "license": "MIT",
+      "private": true,
+      "repository": "https://github.com/t9md/atom-mprettier",
+      "engines": {
+        "atom": "^1.15.0"
+      },
+      "configSchema": {
+        "formatOnSave": {
+          "order": 0,
+          "description": "works only for **active** editor",
+          "type": "boolean",
+          "default": false
+        },
+        "usePrettierInCurrentFileDirectory": {
+          "order": 1,
+          "type": "boolean",
+          "default": true
+        },
+        "usePrettierInCurrentProject": {
+          "order": 2,
+          "type": "boolean",
+          "default": true
+        },
+        "usePrettierInAbsolutePath": {
+          "order": 3,
+          "type": "boolean",
+          "default": false
+        },
+        "prettierInAbsolutePath": {
+          "order": 4,
+          "type": "string",
+          "default": "/usr/local/lib/node_modules/prettier/index.js"
+        },
+        "usePrettierGloballyInstalled": {
+          "order": 5,
+          "type": "boolean",
+          "default": false
+        },
+        "usePrettierBundled": {
+          "order": 6,
+          "type": "boolean",
+          "default": true
+        },
+        "javascriptParser": {
+          "title": "JavaScript Parser",
+          "order": 7,
+          "type": "string",
+          "default": "babylon",
+          "enum": [
+            "babylon",
+            "flow"
+          ]
+        },
+        "scopesForParser": {
+          "type": "object",
+          "collapsed": false,
+          "properties": {
+            "javascript": {
+              "order": 0,
+              "title": "javascript",
+              "description": "Parser you chose in `JavaScript Parser` is used",
+              "type": "array",
+              "default": [
+                "source.js",
+                "source.jsx",
+                "source.js.jsx",
+                "source.babel",
+                "source.js-semantic",
+                "text.html.basic",
+                "text.html.vue"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "typescript": {
+              "order": 1,
+              "title": "typescript",
+              "type": "array",
+              "default": [
+                "source.ts",
+                "source.tsx",
+                "source.ts.tsx"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "postcss": {
+              "order": 2,
+              "title": "postcss",
+              "type": "array",
+              "default": [
+                "source.css",
+                "source.less",
+                "source.css.less",
+                "source.scss",
+                "source.css.scss",
+                "source.css.postcss"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "json": {
+              "order": 3,
+              "title": "json",
+              "type": "array",
+              "default": [
+                "source.json"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "graphql": {
+              "order": 4,
+              "title": "graphql",
+              "type": "array",
+              "default": [
+                "source.graphql"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "markdown": {
+              "order": 5,
+              "title": "markdown",
+              "type": "array",
+              "default": [
+                "source.gfm",
+                "text.md"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "notificationMethodOnPrettierError": {
+          "order": 8,
+          "type": "string",
+          "default": "atom-notification",
+          "enum": [
+            "atom-notification",
+            "console"
+          ]
+        },
+        "debug": {
+          "order": 9,
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "dependencies": {
+        "fs-plus": "^3.0.1",
+        "prettier": "^1.8.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/mprettier/versions/0.3.0/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "mprettier",
+      "main": "./lib/main",
+      "version": "0.2.0",
+      "description": "Minimal prettier, always invoked manually, no linter integration, no Atom startup overhead",
+      "license": "MIT",
+      "private": true,
+      "repository": "https://github.com/t9md/atom-mprettier",
+      "engines": {
+        "atom": "^1.15.0"
+      },
+      "configSchema": {
+        "usePrettierInCurrentFileDirectory": {
+          "order": 0,
+          "type": "boolean",
+          "default": true
+        },
+        "usePrettierInCurrentProject": {
+          "order": 1,
+          "type": "boolean",
+          "default": true
+        },
+        "usePrettierInAbsolutePath": {
+          "order": 2,
+          "type": "boolean",
+          "default": false
+        },
+        "prettierInAbsolutePath": {
+          "order": 3,
+          "type": "string",
+          "default": "/usr/local/lib/node_modules/prettier/index.js"
+        },
+        "usePrettierGloballyInstalled": {
+          "order": 4,
+          "type": "boolean",
+          "default": false
+        },
+        "usePrettierBundled": {
+          "order": 5,
+          "type": "boolean",
+          "default": true
+        },
+        "javascriptParser": {
+          "title": "JavaScript Parser",
+          "order": 6,
+          "type": "string",
+          "default": "babylon",
+          "enum": [
+            "babylon",
+            "flow"
+          ]
+        },
+        "scopesForParser": {
+          "type": "object",
+          "collapsed": false,
+          "properties": {
+            "javascript": {
+              "order": 0,
+              "title": "javascript",
+              "description": "Parser you chose in `JavaScript Parser` is used",
+              "type": "array",
+              "default": [
+                "source.js",
+                "source.jsx",
+                "source.js.jsx",
+                "source.babel",
+                "source.js-semantic",
+                "text.html.basic",
+                "text.html.vue"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "typescript": {
+              "order": 1,
+              "title": "typescript",
+              "type": "array",
+              "default": [
+                "source.ts",
+                "source.tsx",
+                "source.ts.tsx"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "postcss": {
+              "order": 2,
+              "title": "postcss",
+              "type": "array",
+              "default": [
+                "source.css",
+                "source.less",
+                "source.css.less",
+                "source.scss",
+                "source.css.scss",
+                "source.css.postcss"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "json": {
+              "order": 3,
+              "title": "json",
+              "type": "array",
+              "default": [
+                "source.json"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "graphql": {
+              "order": 4,
+              "title": "graphql",
+              "type": "array",
+              "default": [
+                "source.graphql"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "markdown": {
+              "order": 5,
+              "title": "markdown",
+              "type": "array",
+              "default": [
+                "source.gfm",
+                "text.md"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "notificationMethodOnPrettierError": {
+          "order": 7,
+          "type": "string",
+          "default": "atom-notification",
+          "enum": [
+            "atom-notification",
+            "console"
+          ]
+        },
+        "debug": {
+          "order": 8,
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "mprettier:format"
+        ]
+      },
+      "dependencies": {
+        "fs-plus": "^3.0.1",
+        "prettier": "^1.8.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/mprettier/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.2": {
+      "name": "mprettier",
+      "main": "./lib/main",
+      "version": "0.1.2",
+      "description": "Minimal prettier, always invoked manually, no linter integration, no Atom startup overhead",
+      "license": "MIT",
+      "private": true,
+      "repository": "https://github.com/t9md/atom-mprettier",
+      "engines": {
+        "atom": "^1.15.0"
+      },
+      "configSchema": {
+        "usePrettierInCurrentFileDirectory": {
+          "order": 0,
+          "type": "boolean",
+          "default": true
+        },
+        "usePrettierInCurrentProject": {
+          "order": 1,
+          "type": "boolean",
+          "default": true
+        },
+        "usePrettierInAbsolutePath": {
+          "order": 2,
+          "type": "boolean",
+          "default": false
+        },
+        "prettierInAbsolutePath": {
+          "order": 3,
+          "type": "string",
+          "default": "/usr/local/lib/node_modules/prettier/index.js"
+        },
+        "usePrettierGloballyInstalled": {
+          "order": 4,
+          "type": "boolean",
+          "default": false
+        },
+        "usePrettierBundled": {
+          "order": 5,
+          "type": "boolean",
+          "default": true
+        },
+        "javascriptParser": {
+          "order": 6,
+          "type": "string",
+          "default": "babylon",
+          "enum": [
+            "babylon",
+            "flow"
+          ]
+        },
+        "notificationMethodOnPrettierError": {
+          "order": 7,
+          "type": "string",
+          "default": "atom-notification",
+          "enum": [
+            "atom-notification",
+            "console"
+          ]
+        },
+        "debug": {
+          "order": 8,
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "mprettier:format"
+        ]
+      },
+      "dependencies": {
+        "fs-plus": "^3.0.1",
+        "prettier": "^1.8.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/mprettier/versions/0.1.2/tarball"
+      }
+    },
+    "0.1.1": {
+      "name": "mprettier",
+      "main": "./lib/main",
+      "version": "0.1.1",
+      "description": "Minimal prettier, always invoked manually, no linter integration, no Atom startup overhead",
+      "license": "MIT",
+      "private": true,
+      "repository": "https://github.com/t9md/atom-mprettier",
+      "engines": {
+        "atom": "^1.15.0"
+      },
+      "configSchema": {
+        "usePrettierInCurrentFileDir": {
+          "order": 0,
+          "type": "boolean",
+          "default": true
+        },
+        "usePrettierInCurrentProject": {
+          "order": 1,
+          "type": "boolean",
+          "default": true
+        },
+        "usePrettierInAbsolutePath": {
+          "order": 2,
+          "type": "boolean",
+          "default": false
+        },
+        "prettierInAbsolutePath": {
+          "order": 3,
+          "type": "string",
+          "default": "/usr/local/lib/node_modules/prettier/index.js"
+        },
+        "usePrettierGloballyInstalled": {
+          "order": 4,
+          "type": "boolean",
+          "default": false
+        },
+        "usePrettierBundled": {
+          "order": 5,
+          "type": "boolean",
+          "default": true
+        },
+        "javascriptParser": {
+          "order": 6,
+          "type": "string",
+          "default": "babylon",
+          "enum": [
+            "babylon",
+            "flow"
+          ]
+        },
+        "notificationMethodOnPrettierError": {
+          "order": 7,
+          "type": "string",
+          "default": "atom-notification",
+          "enum": [
+            "atom-notification",
+            "console"
+          ]
+        },
+        "debug": {
+          "order": 8,
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "mprettier:format"
+        ]
+      },
+      "dependencies": {
+        "fs-plus": "^3.0.1",
+        "prettier": "^1.8.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/mprettier/versions/0.1.1/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "mprettier",
+      "main": "./lib/main",
+      "version": "0.1.0",
+      "description": "Minimal prettier, always invoked manually, no linter integration, no Atom startup overhead",
+      "license": "MIT",
+      "private": true,
+      "repository": "https://github.com/t9md/atom-mprettier",
+      "engines": {
+        "atom": "^1.15.0"
+      },
+      "configSchema": {
+        "usePrettierInCurrentFileDir": {
+          "order": 0,
+          "type": "boolean",
+          "default": true
+        },
+        "usePrettierInCurrentProject": {
+          "order": 1,
+          "type": "boolean",
+          "default": true
+        },
+        "usePrettierInAbsolutePath": {
+          "order": 2,
+          "type": "boolean",
+          "default": false
+        },
+        "prettierInAbsolutePath": {
+          "order": 3,
+          "type": "string",
+          "default": "/usr/local/lib/node_modules/prettier/index.js"
+        },
+        "usePrettierGloballyInstalled": {
+          "order": 4,
+          "type": "boolean",
+          "default": false
+        },
+        "usePrettierBundled": {
+          "order": 5,
+          "type": "boolean",
+          "default": true
+        },
+        "javascriptParser": {
+          "order": 6,
+          "type": "string",
+          "default": "babylon",
+          "enum": [
+            "babylon",
+            "flow"
+          ]
+        },
+        "notificationMethodOnPrettierError": {
+          "order": 7,
+          "type": "string",
+          "default": "atom-notification",
+          "enum": [
+            "atom-notification",
+            "console"
+          ]
+        },
+        "debug": {
+          "order": 8,
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "activationCommands": {
+        "atom-workspace": [
+          "mprettier:format"
+        ]
+      },
+      "dependencies": {
+        "fs-plus": "^3.0.1",
+        "prettier": "^1.8.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/mprettier/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# mprettier\n\n:warning: **Alpha status**: Might introduce breaking changes until I set this stable(or remove this warning).\n\n**M**inimalistic [prettier](https://github.com/prettier/prettier) runner for AtomEditor\n\n- Small overhead on Atom startup with less feature(E.g. no eslint integration for now)\n- You need configure prettier options directly in your `config.cson`, no fancy setting UI.\n- Trying to as explicit as possible for behavior/code/configuration parameters.\n\nIf this package is not for you, use [prettier-atom](https://atom.io/packages/prettier-atom) which is basically **better** than this package.\n\n![img](https://raw.githubusercontent.com/t9md/t9md/321b0393309a3cfc653e3ee9627c162294b8e5cd/img/mprettier.png)\n\n## How to use?\n\n- Invoke `mprettier:format`(`ctrl-alt-f`) on text editor.\n- If you have trouble, execute `mprettier:clip-debug-info`.\n  - This command clip debug info into clipboard\n  - Paste it to buffer then observe it by yourself before opening issue.\n\n## Config example\n\n- For [prettierOptions](https://prettier.io/docs/en/options.html), you need to edit `config.cson` manually.\n\n`config.cson`\n\n```coffeescript\n  mprettier:\n    prettierOptions:\n      bracketSpacing: false\n      jsxBracketSameLine: true\n      printWidth: 120\n      semi: false\n      trailingComma: \"es5\"\n```\n\n## TODO\n\n- [x] determine parser to use from language grammar\n- [ ] ignore file, scope?\n- [x] ignore parser formatOnSave only and both formatOnSave + manual execution respectively\n- [x] detect user's prettier config by `prettier.resolveConfig`\n- [x] make prettier path configurable? flexibility which global/local prettier to use\n- [ ] support embedded code block\n- [x] format on save\n\n## Thanks\n\nThanks for creating super great library and tools, this package is greatly owning to following projects.\n\n- [prettier](https://github.com/prettier/prettier)\n- [prettier-atom](https://atom.io/packages/prettier-atom)\n",
+  "metadata": {
+    "name": "mprettier",
+    "main": "./lib/main",
+    "version": "0.6.0",
+    "description": "Minimalistic prettier runner for more performant Atom startup",
+    "license": "MIT",
+    "private": true,
+    "repository": "https://github.com/t9md/atom-mprettier",
+    "engines": {
+      "atom": "^1.15.0"
+    },
+    "configSchema": {
+      "notificationMethodOnPrettierError": {
+        "order": 0,
+        "type": "string",
+        "default": "atom-notification",
+        "enum": [
+          "atom-notification",
+          "console"
+        ]
+      },
+      "debug": {
+        "order": 1,
+        "type": "boolean",
+        "default": false
+      },
+      "formatOnSave": {
+        "order": 2,
+        "type": "object",
+        "collapsed": false,
+        "properties": {
+          "enable": {
+            "title": "Enable",
+            "order": 0,
+            "description": "works only for **active** editor",
+            "type": "boolean",
+            "default": false
+          },
+          "skipWhenPrettierIsNotProjectDependencies": {
+            "title": "Skip When Prettier Is Not Project Dependencies",
+            "order": 1,
+            "type": "boolean",
+            "default": false
+          },
+          "skipWhenPrettierConfigIsNotFound": {
+            "title": "Skip When Prettier Config Is Not Found",
+            "order": 2,
+            "type": "boolean",
+            "default": false
+          },
+          "disabledParsers": {
+            "title": "Disabled Parsers",
+            "order": 3,
+            "description": "Put parser names here e.g. `markdown, postcss`",
+            "type": "array",
+            "default": [],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "prettierToUseInOrder": {
+        "order": 3,
+        "type": "object",
+        "collapsed": false,
+        "properties": {
+          "inCurrentFileDirectory": {
+            "title": "1. In Current File Directory",
+            "order": 0,
+            "type": "boolean",
+            "default": false
+          },
+          "inCurrentProject": {
+            "title": "2. In Current Project",
+            "order": 1,
+            "type": "boolean",
+            "default": true
+          },
+          "inAbsolutePath": {
+            "title": "3. In Absolute Path",
+            "order": 2,
+            "type": "boolean",
+            "default": false
+          },
+          "prettierPath": {
+            "title": "Prettier Path",
+            "order": 3,
+            "type": "string",
+            "default": "/usr/local/lib/node_modules/prettier/index.js"
+          },
+          "globallyInstalled": {
+            "title": "4. Globally Installed",
+            "order": 4,
+            "type": "boolean",
+            "default": false
+          },
+          "bundled": {
+            "title": "5. Bundled in mprettier",
+            "order": 5,
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "scopesForParser": {
+        "order": 4,
+        "type": "object",
+        "collapsed": false,
+        "properties": {
+          "javascriptParser": {
+            "title": "JavaScript Parser",
+            "order": 0,
+            "type": "string",
+            "default": "babylon",
+            "enum": [
+              "babylon",
+              "flow"
+            ]
+          },
+          "javascript": {
+            "order": 1,
+            "title": "javascript",
+            "description": "Parser you chose in `JavaScript Parser` is used",
+            "type": "array",
+            "default": [
+              "source.js",
+              "source.jsx",
+              "source.js.jsx",
+              "source.babel",
+              "source.js-semantic",
+              "text.html.basic",
+              "text.html.vue"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "typescript": {
+            "order": 2,
+            "title": "typescript",
+            "type": "array",
+            "default": [
+              "source.ts",
+              "source.tsx",
+              "source.ts.tsx"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "postcss": {
+            "order": 3,
+            "title": "postcss",
+            "type": "array",
+            "default": [
+              "source.css",
+              "source.less",
+              "source.css.less",
+              "source.scss",
+              "source.css.scss",
+              "source.css.postcss"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "json": {
+            "order": 4,
+            "title": "json",
+            "type": "array",
+            "default": [
+              "source.json"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "graphql": {
+            "order": 5,
+            "title": "graphql",
+            "type": "array",
+            "default": [
+              "source.graphql"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "markdown": {
+            "order": 6,
+            "title": "markdown",
+            "type": "array",
+            "default": [
+              "source.gfm",
+              "text.md"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "dependencies": {
+      "fs-plus": "^3.0.1",
+      "prettier": "^1.8.2",
+      "read-pkg-up": "^3.0.0"
+    }
+  }
+}

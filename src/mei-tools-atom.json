@@ -1,0 +1,136 @@
+{
+  "name": "mei-tools-atom",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nCoda/mei-tools-atom"
+  },
+  "downloads": 613,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "0.2.1"
+  },
+  "versions": {
+    "0.2.1": {
+      "name": "mei-tools-atom",
+      "main": "./lib/mei-tools-atom",
+      "version": "0.2.1",
+      "author": "Sienna M. Wood <sienna.m.wood@gmail.com>",
+      "description": "A package for the Atom text editor to provide music notation rendering (with Verovio) and other tools for the development of music encodings in the MEI format (music-encoding.org). Developed and maintained by the nCoda team (https://ncodamusic.org/).",
+      "keywords": [],
+      "activationHooks": [
+        "language-mei:grammar-used",
+        "language-xml:grammar-used"
+      ],
+      "repository": "https://github.com/nCoda/mei-tools-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "^4.6.0",
+        "jquery": "^3.2.1",
+        "verovio-dev": "^2.0.0-4"
+      },
+      "package-deps": [
+        "language-mei"
+      ],
+      "deserializers": {
+        "mei-tools-atom/MeiToolsAtom": "deserializeMeiToolsAtomView"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/mei-tools-atom/versions/0.2.1/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "mei-tools-atom",
+      "main": "./lib/mei-tools-atom",
+      "version": "0.2.0",
+      "author": "Sienna M. Wood <sienna.m.wood@gmail.com>",
+      "description": "A package for the Atom text editor to provide music notation rendering (with Verovio) and other tools for the development of music encodings in the MEI format (music-encoding.org).",
+      "keywords": [],
+      "activationHooks": [
+        "language-mei:grammar-used",
+        "language-xml:grammar-used"
+      ],
+      "repository": "https://github.com/siennamw/mei-tools-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "^4.6.0",
+        "jquery": "^3.2.1",
+        "verovio-dev": "^2.0.0-4"
+      },
+      "package-deps": [
+        "language-mei"
+      ],
+      "deserializers": {
+        "mei-tools-atom/MeiToolsAtom": "deserializeMeiToolsAtomView"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/mei-tools-atom/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "mei-tools-atom",
+      "main": "./lib/mei-tools-atom",
+      "version": "0.1.0",
+      "author": "Sienna M. Wood <sienna.m.wood@gmail.com>",
+      "description": "A package for the Atom text editor to provide music notation rendering (with Verovio) and other tools for the development of music encodings in the MEI format (music-encoding.org).",
+      "keywords": [],
+      "activationHooks": [
+        "language-mei:grammar-used",
+        "language-xml:grammar-used"
+      ],
+      "repository": "https://github.com/siennamw/mei-tools-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "atom-package-deps": "^4.6.0",
+        "jquery": "^3.2.1",
+        "verovio-dev": "^2.0.0-4"
+      },
+      "package-deps": [
+        "language-mei"
+      ],
+      "deserializers": {
+        "mei-tools-atom/MeiToolsAtom": "deserializeMeiToolsAtomView"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/mei-tools-atom/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# mei-tools-atom\n\nFor use with the open-source text editor [_Atom_](https://atom.io/), this package provides on-the-fly rendering of [MEI](http://music-encoding.org/) into music notation with _[Verovio](http://www.verovio.org/)_. It was created with the support of the [nCoda](https://ncodamusic.org/) team, who will also provide ongoing development and maintenance.\n\n__This package is currently under development__ and there are known performance issues with large files.  Contributions are welcome.\n\n## Screenshots\n![screenshot - Chopin piano etude, paginated, magenta highlight](./screenshots/chopin_paginated.png)\n![screenshot - Berlioz symphony, paginated, orange highlight](./screenshots/berlioz_paginated.png)\n![screenshot - Ahle chorale, not paginated, blue highlight](screenshots/ahle_not-paginated.png)\n\n## Current Features\n\n- As-you-type rendering of MEI into music notation with _[Verovio](http://www.verovio.org/)_\n- Scale notation (zoom in or out) for ease of viewing\n- Pagination allows larger files to be rendered into notation with better performance\n- Flow measures horizontally for smaller files\n- Element under cursor in MEI code is highlighted in notation\n    - this feature works by matching `xml:id`s, so if you have no `xml:id`s on your elements you will have no highlighting in your notation\n    - if the current element has no `xml:id`, the parent `<staff>` and then `<measure>` will be checked for an `xml:id` and will be highlighted if one is found\n- Choose color for highlighting\n- Click on a note or other rendered notation element to take the cursor to the associated place in the MEI code\n    - also relies on `xml:id`s, so elements without `xml:id`s do not provide this feature\n\n## Planned Features\n- Create function to automatically generate `xml:id`s\n- Address remaining performance issues with large documents\n- Integrate validation and autocomplete?\n- Integrate other XML helper tools and style sheets?\n\n## Installation\nThis package is [published to the official Atom registry](https://atom.io/packages/mei-tools-atom)\nand can be installed by following their [general instructions](https://flight-manual.atom.io/using-atom/sections/atom-packages/).\nIf prompted to install dependencies, click 'yes' and allow installation to complete.\n\nOnce installed, use the package by following these steps:\n1. Launch Atom and open an MEI file (menu item File > Open...).\n    - [this is a nice example encoding](https://raw.githubusercontent.com/music-encoding/sample-encodings/master/MEI_3.0/Music/Complete_examples/Chopin_Etude_op.10_no.9.mei) - save with the `.mei` extension (delete anything after `.mei`)\n    - [more examples of MEI 3.0 encodings can be found here](https://github.com/music-encoding/sample-encodings/tree/master/MEI_3.0/Music/Complete_examples)\n1. To display the notation, use the menu item Packages > MEI Tools > Show/Hide Notation, or simply press `Ctrl Option M` on a Mac, or `Ctrl Alt M` for Windows.\n\n## Dependencies\nThis package requires [atom-language-mei](https://github.com/nCoda/atom-language-mei), which will be installed automatically when this package is installed.\n\n## Validating your MEI\nOnly valid MEI can be rendered into notation with _[Verovio](http://www.verovio.org/)_. To ensure your MEI is valid, an XML validation package is recommended.  [linter-autocomplete-jing](https://github.com/aerhard/linter-autocomplete-jing) was designed for use with TEI and MEI, so I recommend starting there.  Please note that [linter-autocomplete-jing](https://github.com/aerhard/linter-autocomplete-jing) requires Java Runtime Environment (JRE) v1.6 or above.  [Visit the package repository](https://github.com/aerhard/linter-autocomplete-jing) for details.\n\n## Gratitude\nThanks to Laurent Pugin and the MEI community for [all their work on _Verovio_](https://github.com/rism-ch/verovio).  Thanks also to Laurent for making _Verovio_ available to me as a Node package. Thanks to the [nCoda](https://ncodamusic.org/) team for the financial support that started this project and for their ongoing contributions.\n",
+  "metadata": {
+    "name": "mei-tools-atom",
+    "main": "./lib/mei-tools-atom",
+    "version": "0.2.1",
+    "author": "Sienna M. Wood <sienna.m.wood@gmail.com>",
+    "description": "A package for the Atom text editor to provide music notation rendering (with Verovio) and other tools for the development of music encodings in the MEI format (music-encoding.org). Developed and maintained by the nCoda team (https://ncodamusic.org/).",
+    "keywords": [],
+    "activationHooks": [
+      "language-mei:grammar-used",
+      "language-xml:grammar-used"
+    ],
+    "repository": "https://github.com/nCoda/mei-tools-atom",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "atom-package-deps": "^4.6.0",
+      "jquery": "^3.2.1",
+      "verovio-dev": "^2.0.0-4"
+    },
+    "package-deps": [
+      "language-mei"
+    ],
+    "deserializers": {
+      "mei-tools-atom/MeiToolsAtom": "deserializeMeiToolsAtomView"
+    }
+  }
+}

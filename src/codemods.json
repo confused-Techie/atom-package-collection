@@ -1,0 +1,215 @@
+{
+  "name": "codemods",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kabbi/codemods"
+  },
+  "downloads": 118,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.0.4"
+  },
+  "versions": {
+    "0.0.4": {
+      "name": "codemods",
+      "main": "./lib/main",
+      "version": "0.0.4",
+      "description": "Atom plugin to run custom js transforms / codemods on your code",
+      "keywords": [],
+      "consumedServices": {
+        "nuclide-output": {
+          "versions": {
+            "0.0.0": "consumeOutputService"
+          }
+        }
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/kabbi/codemods.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "atom --test spec",
+        "lint": "eslint lib spec",
+        "editor": "atom -d .",
+        "example": "atom example"
+      },
+      "pre-commit": [
+        "lint"
+      ],
+      "dependencies": {
+        "atom-space-pen-views": "2.2.0",
+        "babel-preset-es2015": "6.9.0",
+        "babel-register": "6.9.0",
+        "es6-promisify": "4.1.0",
+        "glob": "7.0.5",
+        "jscodeshift": "0.3.20",
+        "node-uuid": "1.4.7",
+        "rxjs": "5.0.0-beta.9"
+      },
+      "devDependencies": {
+        "babel-eslint": "6.0.4",
+        "eslint": "2.10.1",
+        "eslint-config-airbnb-base": "3.0.1",
+        "eslint-plugin-import": "1.8.0",
+        "pre-commit": "1.1.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/codemods/versions/0.0.4/tarball"
+      }
+    },
+    "0.0.3": {
+      "name": "codemods",
+      "main": "./lib/main",
+      "version": "0.0.3",
+      "description": "Atom plugin to run custom js transforms / codemods on your code",
+      "keywords": [],
+      "consumedServices": {
+        "nuclide-output": {
+          "versions": {
+            "0.0.0": "consumeOutputService"
+          }
+        }
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/kabbi/codemods.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "atom --test spec",
+        "lint": "eslint lib spec",
+        "editor": "atom -d .",
+        "example": "atom example"
+      },
+      "pre-commit": [
+        "lint"
+      ],
+      "dependencies": {
+        "atom-space-pen-views": "2.2.0",
+        "babel-preset-es2015": "6.9.0",
+        "babel-register": "6.9.0",
+        "es6-promisify": "4.1.0",
+        "glob": "7.0.5",
+        "jscodeshift": "0.3.20",
+        "node-uuid": "1.4.7",
+        "rxjs": "5.0.0-beta.9"
+      },
+      "devDependencies": {
+        "babel-eslint": "6.0.4",
+        "eslint": "2.10.1",
+        "eslint-config-airbnb-base": "3.0.1",
+        "eslint-plugin-import": "1.8.0",
+        "pre-commit": "1.1.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/codemods/versions/0.0.3/tarball"
+      }
+    },
+    "0.0.2": {
+      "name": "codemods",
+      "main": "./lib/main",
+      "version": "0.0.2",
+      "description": "Atom plugin for running codemods",
+      "keywords": [],
+      "consumedServices": {
+        "nuclide-output": {
+          "versions": {
+            "0.0.0": "consumeOutputService"
+          }
+        }
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/kabbi/codemods.git"
+      },
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "test": "atom --test spec",
+        "lint": "eslint lib spec",
+        "editor": "atom -d ."
+      },
+      "pre-commit": [
+        "lint"
+      ],
+      "dependencies": {
+        "atom-space-pen-views": "2.2.0",
+        "babel-preset-es2015": "6.9.0",
+        "babel-register": "6.9.0",
+        "es6-promisify": "4.1.0",
+        "glob": "7.0.5",
+        "jscodeshift": "0.3.20",
+        "node-uuid": "1.4.7",
+        "rxjs": "5.0.0-beta.9"
+      },
+      "devDependencies": {
+        "babel-eslint": "6.0.4",
+        "eslint": "2.10.1",
+        "eslint-config-airbnb-base": "3.0.1",
+        "eslint-plugin-import": "1.8.0",
+        "pre-commit": "1.1.3"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/codemods/versions/0.0.2/tarball"
+      }
+    }
+  },
+  "readme": "# Codemods\n\nAn atom plugin to run js codemods on your selections, files, folders and whole projects. Uses `jscodeshift` runner and API.\n\n![A little demo](https://cloud.githubusercontent.com/assets/1160550/16445466/76ca5396-3deb-11e6-95ba-07fd5300e505.gif)\n\n**WARNING:**\nDon't run transforms on the code when you can't revert it (using git, manual backups or anything else). Transform runner we use makes no backups and modifies the files in place (when applied to file or folder level, selection transforms are safer), and can potentially destroy large codebases. This mostly concerns codemods in general, not the atom plugin.\n\n**TIP:**\nInstall `nuclide` package to get the cute console windows with `jscodeshift` output within atom, and a ton of other IDE-like functionality that nuclide provides.\n\nFeatures:\n- runs your own transforms on js code\n- fetches transform files from `/transforms` folder in your project\n- can run transforms on your files and selections\n- displays jscodeshift output in nuclide console window\n\nRoadmap:\n- load transforms from `node_modules` folder (i. e. provide support to some transform packs that are distributed as npm packages, like [js-codemod](https://github.com/cpojer/js-codemod) or [react-codemod](https://github.com/reactjs/react-codemod))\n- configure default transform search path\n- better worker process lifecycle management\n- run transforms on specific folder or whole project\n- reduce installation time\n\nCredits:\n- [jscodeshift](https://github.com/facebook/jscodeshift) - codemod runner and API wrapper\n",
+  "metadata": {
+    "name": "codemods",
+    "main": "./lib/main",
+    "version": "0.0.4",
+    "description": "Atom plugin to run custom js transforms / codemods on your code",
+    "keywords": [],
+    "consumedServices": {
+      "nuclide-output": {
+        "versions": {
+          "0.0.0": "consumeOutputService"
+        }
+      }
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/kabbi/codemods.git"
+    },
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "scripts": {
+      "test": "atom --test spec",
+      "lint": "eslint lib spec",
+      "editor": "atom -d .",
+      "example": "atom example"
+    },
+    "pre-commit": [
+      "lint"
+    ],
+    "dependencies": {
+      "atom-space-pen-views": "2.2.0",
+      "babel-preset-es2015": "6.9.0",
+      "babel-register": "6.9.0",
+      "es6-promisify": "4.1.0",
+      "glob": "7.0.5",
+      "jscodeshift": "0.3.20",
+      "node-uuid": "1.4.7",
+      "rxjs": "5.0.0-beta.9"
+    },
+    "devDependencies": {
+      "babel-eslint": "6.0.4",
+      "eslint": "2.10.1",
+      "eslint-config-airbnb-base": "3.0.1",
+      "eslint-plugin-import": "1.8.0",
+      "pre-commit": "1.1.3"
+    }
+  }
+}

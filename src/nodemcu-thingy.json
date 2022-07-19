@@ -1,0 +1,88 @@
+{
+  "name": "nodemcu-thingy",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/holtermp/nodemcu-thingy"
+  },
+  "downloads": 467,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.0.3"
+  },
+  "versions": {
+    "0.0.3": {
+      "name": "nodemcu-thingy",
+      "main": "./lib/nodemcu-thingy",
+      "version": "0.0.3",
+      "description": "Provides \"over the air\" access to your NodeMCU device (work in progress)",
+      "keywords": [],
+      "activationCommands": {
+        "atom-workspace": "nodemcu-thingy:toggle"
+      },
+      "repository": "https://github.com/holtermp/nodemcu-thingy",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nodemcu-thingy/versions/0.0.3/tarball"
+      }
+    },
+    "0.0.2": {
+      "name": "nodemcu-thingy",
+      "main": "./lib/nodemcu-thingy",
+      "version": "0.0.2",
+      "description": "Provides \"over the air\" access to your NodeMCU device (work in progress)",
+      "keywords": [],
+      "activationCommands": {
+        "atom-workspace": "nodemcu-thingy:toggle"
+      },
+      "repository": "https://github.com/holtermp/nodemcu-thingy",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nodemcu-thingy/versions/0.0.2/tarball"
+      }
+    },
+    "0.0.1": {
+      "name": "nodemcu-thingy",
+      "main": "./lib/nodemcu-thingy",
+      "version": "0.0.1",
+      "description": "Provides \"over the air\" access to your NodeMCU device (work in progress)",
+      "keywords": [],
+      "activationCommands": {
+        "atom-workspace": "nodemcu-thingy:toggle"
+      },
+      "repository": "https://github.com/holtermp/nodemcu-thingy",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nodemcu-thingy/versions/0.0.1/tarball"
+      }
+    }
+  },
+  "readme": "# nodemcu-thingy\n\n**THIS PACKAGE IS CURRENTLY UNDER DEVOLOPMENT AND TO BE CONSIDERED ALPHA**\n\nNodeMCU Thingy is an [atom](https://atom.io/) package for \"over the air\" development on the NodeMCU platform.\nIt uses a websocket connection to the esp8266 for communication, so in an ideal world the USB cable should be needed only to upload the basic firmware and the initial websocket server to the NodeMCU.\n\n\nFeatures include:\n\n* Upload of files to the NodeMCU\n* Download of files from the NodeMCU\n* Deletion of files on the NodeMCU\n* Interactive Console\n\n![demo](https://github.com/holtermp/nodemcu-thingy/blob/master/screencasts/console.gif)\n\n**Setup**\n\n*Get the firmware*\n\nFlash your esp8266 with a current NodeMCU firmware. I recommend using a firmware built with Marcel Stoer's excellent online tool at  https://nodemcu-build.com/\n\nSelect branch ```master``` and at least the following 9 modules:\n * ```bit```\n * ```crypto```\n * ```file```\n * ```gpio```\n * ```net```\n * ```node```\n * ```tmr```\n * ```uart```\n * ```wifi```\n\nNote that ```bit``` and ```crypto``` are not selected by default.\n\nThis creates two versions of the firmware: integer and float. If you do not know which one to use, the integer version is probably ok for you.\n\n*Flash the firmware*\n\nDownload ```esptool.py``` from https://github.com/espressif/esptool.\n\nFlash the firmware to the esp8266 with (use the appropriate ```--port``` parameter)\n```\nesptool.py --port /dev/ttyUSB0 erase_flash\nesptool.py --port /dev/ttyUSB0 write_flash -fm dio 0x00000 nodemcu-master*.bin\n```\n\nwhich should produce an output like:\n\n```\nesptool.py v1.3-dev\nConnecting...\nRunning Cesanta flasher stub...\nErasing flash (this may take a while)...\nErase took 6.6 seconds\n\nesptool.py v1.3-dev\nConnecting...\nAuto-detected Flash size: 32m\nRunning Cesanta flasher stub...\nFlash params set to 0x0240\nWriting 401408 @ 0x0... 401408 (100 %)\nWrote 401408 bytes at 0x0 in 34.8 seconds (92.3 kbit/s)...\nLeaving...\n```\nGive it a few seconds to reboot.\n\n\n*Install websocket server*\n\nCd to ```.atom/packages/nodemcu-thingy/mcu/```.\nChange ```init.lua``` to match your wireless LAN.\n\n```\nstation_cfg.ssid=\"your ssid\"\nstation_cfg.pwd=\"yout wifi password\"\nwifi.sta.sethostname(\"your hostname for the esp8266\")\n```\nEdit ```upload.sh``` and check if the ```--port``` value matches your system and execute ```bash upload.sh```.\n\nThis takes some time and you should see a lot of lines like\n```\n->file.writeline([==[end]==]) -> ok\n```\nending in\n```\n->file.flush() -> ok\n->file.close() -> ok\n--->>> All done <<<---\n```\nRestart the esp8266 by pressing the ```RST``` button on the esp8266.\n\nAfter a few seconds you should be able to ping the esp8266 using the value from ```wifi.sta.sethostname()```\n\n*Configure package nodemcu-thingy*\n\n\nOpen Atom's preferences screen (```Edit->Preferences``` or ```Ctrl-,```). Open ```Packages```. Find package ```nodemcu-thingy``` and click ```Settings```.\nEnter the ip address or hostname of your esp8266 (value from ```wifi.sta.sethostname()```) into the ```host``` field.\n\nActivate the package with ```Packages->nodemcu-thingy->Toggle```\n\nClick ```Connect```.\nIf everything worked the red ```Disconnected``` changes to a green ```Connected``` after a few seconds.\n\n![demo](https://github.com/holtermp/nodemcu-thingy/blob/master/screencasts/connect.gif)\n\nYou are now good to go.\nVery brave programmers can now unhook the usb cable from the computer and run\nthe esp8266 on some other power source (probably a phone charger).\n\n*Use package nodemcu-thingy*\n\n\nYou can upload, download, erase files on the esp8266.\n\nThe installation process has installed 3 files on the esp8266 which are protected from modification by this package:\n* ```websocket.lc``` implements the websocket protocol\n* ```main.lc``` implements the server side functions for this package\n* ```init.lua``` called by the NodeMCU firmware on startup.\n * sets up the wifi connection\n * starts the websocket server\n * calls ```userinit.lua``` if present.\n\n(The original implementation of these 3 files is borrowed from [nodemcu-webide](https://github.com/creationix/nodemcu-webide))\n\nTo implement your own functionality upload a custom ```userinit.lua``` to start your own custom code.\n\n![demo](https://github.com/holtermp/nodemcu-thingy/blob/master/screencasts/upload.gif)\n\nSee https://nodemcu.readthedocs.io/en/master/ for the all the good stuff you can use...\n\n\n\n\n\n\n\n\n\n\n*Credits*\n\nThe Websocket server on the NodeMCU is a slightly modified version of the one in Creationix's\n[nodemcu-webide](https://github.com/creationix/nodemcu-webide)\n\nThe Python luatool comes from 4ref0nt@gmail.com  (http://esp8266.ru)\n",
+  "metadata": {
+    "name": "nodemcu-thingy",
+    "main": "./lib/nodemcu-thingy",
+    "version": "0.0.3",
+    "description": "Provides \"over the air\" access to your NodeMCU device (work in progress)",
+    "keywords": [],
+    "activationCommands": {
+      "atom-workspace": "nodemcu-thingy:toggle"
+    },
+    "repository": "https://github.com/holtermp/nodemcu-thingy",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {}
+  }
+}

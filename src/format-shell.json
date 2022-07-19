@@ -1,0 +1,813 @@
+{
+  "name": "format-shell",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/focusaurus/atom-format-shell"
+  },
+  "downloads": 25223,
+  "stargazers_count": 15,
+  "releases": {
+    "latest": "2.2.1"
+  },
+  "versions": {
+    "2.2.1": {
+      "activationHooks": [
+        "language-shellscript:grammar-used"
+      ],
+      "author": "Peter Lyons <pete@peterlyons.com> (http://peterlyons.com)",
+      "bugs": {
+        "url": "https://github.com/focusaurus/atom-format-shell/issues"
+      },
+      "configSchema": {
+        "shfmtPath": {
+          "title": "Path to shfmt executable",
+          "description": "Absolute filesystem path. If you do not have shfmt installed, you can [download a package for your OS here](https://github.com/mvdan/sh/releases).",
+          "type": "string",
+          "default": "shfmt",
+          "order": 1
+        },
+        "indent": {
+          "description": "Indent setting for how your shell code is formatted. 0 for tab, 2 for 2 spaces, 4 for 4 spaces",
+          "type": "integer",
+          "default": 2,
+          "enum": [
+            0,
+            2,
+            4
+          ],
+          "order": 2
+        },
+        "simplify": {
+          "description": "simplify the code (-s command line flag)",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "binary": {
+          "description": "binary ops like && and | may start a line (-bn command line flag)",
+          "type": "boolean",
+          "default": false,
+          "order": 4
+        },
+        "indentSwitch": {
+          "description": "switch cases will be indented (-ci command line flag)",
+          "type": "boolean",
+          "default": false,
+          "order": 5
+        },
+        "spaceAfterRedirect": {
+          "description": "redirect operators will be followed by a space (-sr command line flag)",
+          "type": "boolean",
+          "default": false,
+          "order": 6
+        },
+        "keepPaddings": {
+          "description": "keep column alignment paddings (-kp command line flag)",
+          "type": "boolean",
+          "default": false,
+          "order": 7
+        },
+        "minifyProgram": {
+          "description": "minify program to reduce its size (implies -s) (-mn command line flag)",
+          "type": "boolean",
+          "default": false,
+          "order": 8
+        },
+        "showNotifications": {
+          "description": "Do you want to see the success message?",
+          "type": "boolean",
+          "default": false,
+          "order": 9
+        },
+        "showErrorNotifications": {
+          "description": "Do you want to see the error message?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "formatOnSave": {
+          "description": "Format file on save.",
+          "type": "boolean",
+          "default": false,
+          "order": 11
+        }
+      },
+      "dependencies": {},
+      "description": "Format your shell scripts automatically in the Atom text editor",
+      "engines": {
+        "atom": ">=1.4.0 <2.0.0"
+      },
+      "homepage": "https://github.com/focusaurus/atom-format-shell#readme",
+      "keywords": [
+        "format",
+        "beautify",
+        "shell",
+        "bash",
+        "atom"
+      ],
+      "license": "MIT",
+      "main": "./lib/format-shell.js",
+      "name": "format-shell",
+      "repository": {
+        "type": "git",
+        "url": "git@github.com:focusaurus/atom-format-shell.git"
+      },
+      "scripts": {
+        "release": "standard-version"
+      },
+      "version": "2.2.1",
+      "devDependencies": {
+        "standard-version": "7.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/format-shell/versions/2.2.1/tarball"
+      }
+    },
+    "2.2.0": {
+      "activationHooks": [
+        "language-shellscript:grammar-used"
+      ],
+      "author": "Peter Lyons <pete@peterlyons.com> (http://peterlyons.com)",
+      "bugs": {
+        "url": "https://github.com/focusaurus/atom-format-shell/issues"
+      },
+      "configSchema": {
+        "shfmtPath": {
+          "title": "Path to shfmt executable",
+          "description": "Absolute filesystem path. If you do not have shfmt installed, you can [download a package for your OS here](https://github.com/mvdan/sh/releases).",
+          "type": "string",
+          "default": "shfmt",
+          "order": 1
+        },
+        "indent": {
+          "description": "Indent setting for how your shell code is formatted. 0 for tab, 2 for 2 spaces, 4 for 4 spaces",
+          "type": "integer",
+          "default": 2,
+          "enum": [
+            0,
+            2,
+            4
+          ],
+          "order": 2
+        },
+        "simplify": {
+          "description": "simplify the code (-s command line flag)",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "binary": {
+          "description": "binary ops like && and | may start a line (-bn command line flag)",
+          "type": "boolean",
+          "default": false,
+          "order": 4
+        },
+        "indentSwitch": {
+          "description": "switch cases will be indented (-ci command line flag)",
+          "type": "boolean",
+          "default": false,
+          "order": 5
+        },
+        "spaceAfterRedirect": {
+          "description": "redirect operators will be followed by a space (-sr command line flag)",
+          "type": "boolean",
+          "default": false,
+          "order": 6
+        },
+        "keepPaddings": {
+          "description": "keep column alignment paddings (-kp command line flag)",
+          "type": "boolean",
+          "default": false,
+          "order": 7
+        },
+        "minifyProgram": {
+          "description": "minify program to reduce its size (implies -s) (-mn command line flag)",
+          "type": "boolean",
+          "default": false,
+          "order": 8
+        },
+        "showNotifications": {
+          "description": "Do you want to see the success message?",
+          "type": "boolean",
+          "default": false,
+          "order": 9
+        },
+        "showErrorNotifications": {
+          "description": "Do you want to see the error message?",
+          "type": "boolean",
+          "default": true,
+          "order": 10
+        },
+        "formatOnSave": {
+          "description": "Format file on save.",
+          "type": "boolean",
+          "default": false,
+          "order": 11
+        }
+      },
+      "dependencies": {},
+      "description": "Format your shell scripts automatically in the Atom text editor",
+      "engines": {
+        "atom": ">=1.4.0 <2.0.0"
+      },
+      "homepage": "https://github.com/focusaurus/atom-format-shell#readme",
+      "keywords": [
+        "format",
+        "beautify",
+        "shell",
+        "bash",
+        "atom"
+      ],
+      "license": "MIT",
+      "main": "./lib/format-shell.js",
+      "name": "format-shell",
+      "repository": {
+        "type": "git",
+        "url": "git@github.com:focusaurus/atom-format-shell.git"
+      },
+      "scripts": {
+        "release": "standard-version"
+      },
+      "version": "2.2.0",
+      "devDependencies": {
+        "standard-version": "3.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/format-shell/versions/2.2.0/tarball"
+      }
+    },
+    "2.1.6": {
+      "activationHooks": [
+        "language-shellscript:grammar-used"
+      ],
+      "author": "Peter Lyons <pete@peterlyons.com> (http://peterlyons.com)",
+      "bugs": {
+        "url": "https://github.com/focusaurus/atom-format-shell/issues"
+      },
+      "configSchema": {
+        "shfmtPath": {
+          "title": "Path to shfmt executable",
+          "description": "Absolute filesystem path. If you do not have shfmt installed, you can [download a package for your OS here](https://github.com/mvdan/sh/releases).",
+          "type": "string",
+          "default": "shfmt",
+          "order": 1
+        },
+        "indent": {
+          "description": "Indent setting for how your shell code is formatted. 0 for tab, 2 for 2 spaces, 4 for 4 spaces",
+          "type": "integer",
+          "default": 2,
+          "enum": [
+            0,
+            2,
+            4
+          ],
+          "order": 2
+        },
+        "simplify": {
+          "description": "simplify the code (-s command line flag)",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "indentSwitch": {
+          "description": "switch cases will be indented (-ci command line flag)",
+          "type": "boolean",
+          "default": false,
+          "order": 4
+        },
+        "binary": {
+          "description": "binary ops like && and | may start a line (-bn command line flag)",
+          "type": "boolean",
+          "default": false,
+          "order": 5
+        },
+        "showNotifications": {
+          "description": "Do you want to see the success message?",
+          "type": "boolean",
+          "default": false,
+          "order": 6
+        },
+        "showErrorNotifications": {
+          "description": "Do you want to see the error message?",
+          "type": "boolean",
+          "default": true,
+          "order": 7
+        },
+        "formatOnSave": {
+          "description": "Format file on save.",
+          "type": "boolean",
+          "default": false,
+          "order": 8
+        }
+      },
+      "dependencies": {},
+      "description": "Format your shell scripts automatically in the Atom text editor",
+      "engines": {
+        "atom": ">=1.4.0 <2.0.0"
+      },
+      "homepage": "https://github.com/focusaurus/atom-format-shell#readme",
+      "keywords": [
+        "format",
+        "beautify",
+        "shell",
+        "bash",
+        "atom"
+      ],
+      "license": "MIT",
+      "main": "./lib/format-shell.js",
+      "name": "format-shell",
+      "repository": {
+        "type": "git",
+        "url": "git@github.com:focusaurus/atom-format-shell.git"
+      },
+      "scripts": {
+        "release": "standard-version"
+      },
+      "version": "2.1.6",
+      "devDependencies": {
+        "standard-version": "3.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/format-shell/versions/2.1.6/tarball"
+      }
+    },
+    "2.0.0": {
+      "activationHooks": [
+        "language-shellscript:grammar-used"
+      ],
+      "author": "Peter Lyons <pete@peterlyons.com> (http://peterlyons.com)",
+      "bugs": {
+        "url": "https://github.com/focusaurus/atom-format-shell/issues"
+      },
+      "configSchema": {
+        "shfmtPath": {
+          "title": "Path to shfmt executable",
+          "description": "Absolute filesystem path. If you do not have shfmt installed, you can [download a package for your OS here](https://github.com/mvdan/sh/releases).",
+          "type": "string",
+          "default": "shfmt",
+          "order": 1
+        },
+        "indent": {
+          "description": "Indent setting for how your shell code is formatted. 0 for tab, 2 for 2 spaces, 4 for 4 spaces",
+          "type": "integer",
+          "default": 2,
+          "enum": [
+            0,
+            2,
+            4
+          ],
+          "order": 2
+        },
+        "showNotifications": {
+          "description": "Do you want to see the success message?",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "showErrorNotifications": {
+          "description": "Do you want to see the error message?",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        },
+        "formatOnSave": {
+          "description": "Format file on save.",
+          "type": "boolean",
+          "default": false,
+          "order": 5
+        }
+      },
+      "dependencies": {},
+      "description": "Format your shell scripts automatically in the Atom text editor",
+      "engines": {
+        "atom": ">=1.4.0 <2.0.0"
+      },
+      "homepage": "https://github.com/focusaurus/atom-format-shell#readme",
+      "keywords": [
+        "format",
+        "beautify",
+        "shell",
+        "bash",
+        "atom"
+      ],
+      "license": "MIT",
+      "main": "./lib/format-shell.js",
+      "name": "format-shell",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/focusaurus/atom-format-shell.git"
+      },
+      "scripts": {
+        "test": "tap --100 code/**/*.tap.js"
+      },
+      "version": "2.0.0",
+      "devDependencies": {
+        "standard-version": "3.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/format-shell/versions/2.0.0/tarball"
+      }
+    },
+    "1.1.1": {
+      "activationHooks": [
+        "language-shellscript:grammar-used"
+      ],
+      "author": "Peter Lyons <pete@peterlyons.com> (http://peterlyons.com)",
+      "bugs": {
+        "url": "https://github.com/focusaurus/atom-format-shell/issues"
+      },
+      "configSchema": {
+        "shfmtPath": {
+          "title": "Path to shfmt executable",
+          "description": "Absolute filesystem path. If you do not have shfmt installed, you can [download a package for your OS here](https://github.com/mvdan/sh/releases).",
+          "type": "string",
+          "default": "shfmt",
+          "order": 1
+        },
+        "indent": {
+          "description": "Indent setting for how your shell code is formatted. 0 for tab, 2 for 2 spaces, 4 for 4 spaces",
+          "type": "integer",
+          "default": 2,
+          "enum": [
+            0,
+            2,
+            4
+          ],
+          "order": 2
+        },
+        "showNotifications": {
+          "description": "Do you want to see the success message?",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "showErrorNotifications": {
+          "description": "Do you want to see the error message?",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        },
+        "formatOnSave": {
+          "description": "Format file on save.",
+          "type": "boolean",
+          "default": false,
+          "order": 5
+        }
+      },
+      "dependencies": {},
+      "description": "Format your shell scripts automatically in the Atom text editor",
+      "engines": {
+        "atom": ">=1.4.0 <2.0.0"
+      },
+      "homepage": "https://github.com/focusaurus/atom-format-shell#readme",
+      "keywords": [
+        "format",
+        "beautify",
+        "shell",
+        "bash",
+        "atom"
+      ],
+      "license": "MIT",
+      "main": "./lib/format-shell.js",
+      "name": "format-shell",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/focusaurus/atom-format-shell.git"
+      },
+      "scripts": {
+        "test": "tap --100 code/**/*.tap.js"
+      },
+      "version": "1.1.1",
+      "devDependencies": {
+        "standard-version": "3.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/format-shell/versions/1.1.1/tarball"
+      }
+    },
+    "1.0.4": {
+      "activationHooks": [
+        "language-shellscript:grammar-used"
+      ],
+      "author": "Peter Lyons <pete@peterlyons.com> (http://peterlyons.com)",
+      "bugs": {
+        "url": "https://github.com/focusaurus/atom-format-shell/issues"
+      },
+      "configSchema": {
+        "shfmtPath": {
+          "title": "Path to shfmt executable",
+          "description": "Absolute filesystem path. If you do not have shfmt installed, you can [download a package for your OS here](https://github.com/mvdan/sh/releases).",
+          "type": "string",
+          "default": "shfmt",
+          "order": 1
+        },
+        "indent": {
+          "description": "Indent setting for how your shell code is formatted. 0 for tab, 2 for 2 spaces, 4 for 4 spaces",
+          "type": "integer",
+          "default": 2,
+          "enum": [
+            0,
+            2,
+            4
+          ],
+          "order": 2
+        },
+        "showNotifications": {
+          "description": "Do you want to see the success message?",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "showErrorNotifications": {
+          "description": "Do you want to see the error message?",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        }
+      },
+      "dependencies": {},
+      "description": "Format your shell scripts automatically in the Atom text editor",
+      "engines": {
+        "atom": ">=1.4.0 <2.0.0"
+      },
+      "homepage": "https://github.com/focusaurus/atom-format-shell#readme",
+      "keywords": [
+        "format",
+        "beautify",
+        "shell",
+        "bash",
+        "atom"
+      ],
+      "license": "MIT",
+      "main": "./lib/format-shell.js",
+      "name": "format-shell",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/focusaurus/atom-format-shell.git"
+      },
+      "scripts": {
+        "test": "tap --100 code/**/*.tap.js"
+      },
+      "version": "1.0.4",
+      "devDependencies": {
+        "standard-version": "3.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/format-shell/versions/1.0.4/tarball"
+      }
+    },
+    "1.0.3": {
+      "activationHooks": [
+        "language-shellscript:grammar-used"
+      ],
+      "author": "Peter Lyons <pete@peterlyons.com> (http://peterlyons.com)",
+      "bugs": {
+        "url": "https://github.com/focusaurus/atom-format-shell/issues"
+      },
+      "configSchema": {
+        "shfmtPath": {
+          "title": "Path to shfmt executable",
+          "description": "Absolute filesystem path. If you do not have shfmt installed, you can [download a package for your OS here](https://github.com/mvdan/sh/releases).",
+          "type": "string",
+          "default": "/usr/local/bin/shfmt",
+          "order": 1
+        },
+        "indent": {
+          "description": "Indent setting for how your shell code is formatted. 0 for tab, 2 for 2 spaces, 4 for 4 spaces",
+          "type": "integer",
+          "default": 2,
+          "enum": [
+            0,
+            2,
+            4
+          ],
+          "order": 2
+        },
+        "showNotifications": {
+          "description": "Do you want to see the success message?",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "showErrorNotifications": {
+          "description": "Do you want to see the error message?",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        }
+      },
+      "dependencies": {},
+      "description": "Format your shell scripts automatically in the Atom text editor",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "homepage": "https://github.com/focusaurus/atom-format-shell#readme",
+      "keywords": [
+        "format",
+        "beautify",
+        "shell",
+        "bash",
+        "atom"
+      ],
+      "license": "MIT",
+      "main": "./lib/format-shell.js",
+      "name": "format-shell",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/focusaurus/atom-format-shell.git"
+      },
+      "scripts": {
+        "test": "tap --100 code/**/*.tap.js"
+      },
+      "version": "1.0.3",
+      "devDependencies": {
+        "standard-version": "3.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/format-shell/versions/1.0.3/tarball"
+      }
+    },
+    "1.0.2": {
+      "activationHooks": [
+        "language-shellscript:grammar-used"
+      ],
+      "author": "Peter Lyons <pete@peterlyons.com> (http://peterlyons.com)",
+      "bugs": {
+        "url": "https://github.com/focusaurus/atom-format-shell/issues"
+      },
+      "configSchema": {
+        "shfmtPath": {
+          "title": "Path to shfmt executable",
+          "description": "Absolute filesystem path. If you do not have shfmt installed, you can [download a package for your OS here](https://github.com/mvdan/sh/releases).",
+          "type": "string",
+          "default": "/Users/plyons/projects/go/bin/shfmt",
+          "order": 1
+        },
+        "indent": {
+          "description": "Indent setting for how your shell code is formatted. 0 for tab, 2 for 2 spaces, 4 for 4 spaces",
+          "type": "integer",
+          "default": 2,
+          "enum": [
+            0,
+            2,
+            4
+          ],
+          "order": 2
+        },
+        "showNotifications": {
+          "description": "Do you want to see the success message?",
+          "type": "boolean",
+          "default": false,
+          "order": 3
+        },
+        "showErrorNotifications": {
+          "description": "Do you want to see the error message?",
+          "type": "boolean",
+          "default": true,
+          "order": 4
+        }
+      },
+      "dependencies": {},
+      "description": "Format your shell scripts automatically in the Atom text editor",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "homepage": "https://github.com/focusaurus/atom-format-shell#readme",
+      "keywords": [
+        "format",
+        "beautify",
+        "shell",
+        "bash",
+        "atom"
+      ],
+      "license": "MIT",
+      "main": "./lib/format-shell.js",
+      "name": "format-shell",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/focusaurus/atom-format-shell.git"
+      },
+      "scripts": {
+        "test": "tap --100 code/**/*.tap.js"
+      },
+      "version": "1.0.2",
+      "devDependencies": {
+        "standard-version": "3.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/format-shell/versions/1.0.2/tarball"
+      }
+    }
+  },
+  "readme": "# Atom Format Shell\n\nAutomatically format/beautify/pretty-print your shell script source code from within the Atom text editor.\n\nThe formatting is powered under the hood by [shfmt](https://github.com/mvdan/sh), which must be installed separately from atom and this atom package.\n\nYou can install shfmt by [several package managers as documented here](https://github.com/mvdan/sh).\n\n## How to use\n\nThere are two ways to format your code:\n\n- Automatically **format on save** (requires enabling in _Packages → Format Shell → Toggle Format on Save_)\n- Run the command _Format Shell: Format_ to invoke `shfmt` manually",
+  "metadata": {
+    "activationHooks": [
+      "language-shellscript:grammar-used"
+    ],
+    "author": "Peter Lyons <pete@peterlyons.com> (http://peterlyons.com)",
+    "bugs": {
+      "url": "https://github.com/focusaurus/atom-format-shell/issues"
+    },
+    "configSchema": {
+      "shfmtPath": {
+        "title": "Path to shfmt executable",
+        "description": "Absolute filesystem path. If you do not have shfmt installed, you can [download a package for your OS here](https://github.com/mvdan/sh/releases).",
+        "type": "string",
+        "default": "shfmt",
+        "order": 1
+      },
+      "indent": {
+        "description": "Indent setting for how your shell code is formatted. 0 for tab, 2 for 2 spaces, 4 for 4 spaces",
+        "type": "integer",
+        "default": 2,
+        "enum": [
+          0,
+          2,
+          4
+        ],
+        "order": 2
+      },
+      "simplify": {
+        "description": "simplify the code (-s command line flag)",
+        "type": "boolean",
+        "default": false,
+        "order": 3
+      },
+      "binary": {
+        "description": "binary ops like && and | may start a line (-bn command line flag)",
+        "type": "boolean",
+        "default": false,
+        "order": 4
+      },
+      "indentSwitch": {
+        "description": "switch cases will be indented (-ci command line flag)",
+        "type": "boolean",
+        "default": false,
+        "order": 5
+      },
+      "spaceAfterRedirect": {
+        "description": "redirect operators will be followed by a space (-sr command line flag)",
+        "type": "boolean",
+        "default": false,
+        "order": 6
+      },
+      "keepPaddings": {
+        "description": "keep column alignment paddings (-kp command line flag)",
+        "type": "boolean",
+        "default": false,
+        "order": 7
+      },
+      "minifyProgram": {
+        "description": "minify program to reduce its size (implies -s) (-mn command line flag)",
+        "type": "boolean",
+        "default": false,
+        "order": 8
+      },
+      "showNotifications": {
+        "description": "Do you want to see the success message?",
+        "type": "boolean",
+        "default": false,
+        "order": 9
+      },
+      "showErrorNotifications": {
+        "description": "Do you want to see the error message?",
+        "type": "boolean",
+        "default": true,
+        "order": 10
+      },
+      "formatOnSave": {
+        "description": "Format file on save.",
+        "type": "boolean",
+        "default": false,
+        "order": 11
+      }
+    },
+    "dependencies": {},
+    "description": "Format your shell scripts automatically in the Atom text editor",
+    "engines": {
+      "atom": ">=1.4.0 <2.0.0"
+    },
+    "homepage": "https://github.com/focusaurus/atom-format-shell#readme",
+    "keywords": [
+      "format",
+      "beautify",
+      "shell",
+      "bash",
+      "atom"
+    ],
+    "license": "MIT",
+    "main": "./lib/format-shell.js",
+    "name": "format-shell",
+    "repository": {
+      "type": "git",
+      "url": "git@github.com:focusaurus/atom-format-shell.git"
+    },
+    "scripts": {
+      "release": "standard-version"
+    },
+    "version": "2.2.1",
+    "devDependencies": {
+      "standard-version": "7.0.0"
+    }
+  }
+}

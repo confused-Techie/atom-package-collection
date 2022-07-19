@@ -1,0 +1,96 @@
+{
+  "name": "atom-scripts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GCSBOSS/atom-scripts"
+  },
+  "downloads": 7232,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "0.1.3"
+  },
+  "versions": {
+    "0.1.3": {
+      "name": "atom-scripts",
+      "main": "./lib/atom-scripts",
+      "version": "0.1.3",
+      "description": "This package allow you to bind javascript functions to commands and key bindings just by writing those in a file.",
+      "keywords": [
+        "script",
+        "macro",
+        "run",
+        "command"
+      ],
+      "repository": "https://github.com/GCSBOSS/atom-scripts.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-scripts/versions/0.1.3/tarball"
+      }
+    },
+    "0.1.2": {
+      "name": "atom-scripts",
+      "main": "./lib/atom-scripts",
+      "version": "0.1.2",
+      "description": "This package allow you to bind javascript functions to commands and key bindings just by writing those in a file.",
+      "keywords": [
+        "script",
+        "macro",
+        "run",
+        "command"
+      ],
+      "repository": "https://github.com/GCSBOSS/atom-scripts.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-scripts/versions/0.1.2/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "atom-scripts",
+      "main": "./lib/atom-scripts",
+      "version": "0.1.0",
+      "description": "This package allow you to bind javascript functions to commands and key bindings just by writing those in a file.",
+      "keywords": [
+        "script",
+        "macro",
+        "run",
+        "command"
+      ],
+      "repository": "https://github.com/GCSBOSS/atom-scripts.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-scripts/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# Scripts in Atom\nThis package allow you to bind javascript functions to commands (`Ctrl-Shift-P`) and key bindings just by writing those in a file.\n\n## How To\nIn the root of a specific the desired project, create a file named `scripts.js`. In this file, you will code the functions related to the this very project root, thus not binding them to stranger files.\n\n![](walkthrough.gif)\n\n## Scripts File\nEach scripts file must be a node module exporting an array of objects with the following properties:\n\n- **name:** Contains a string command name in lower case, dash separated words format. Ex.: 'build'; This will be used to identify the script.\n- **match:** Contains a string with a regex pattern. Eg.: `'^index\\\\.js$'`; This will filter the files allowed to run the script.\n- **hotkey:** Contains a [key combination string][1] in the atom default pattern. Eg.: `'ctrl-f9'`; This will be the registered key binding for the script.\n- **script:** Contains the actual script as a function. The function will receive a `data` argument whose members provide a few utilities:\n    - `file`: A string containing the active file path.\n    - `project`: A string containing the active project root path.\n    - `exec`: The `child_process` [function][2] for executing shell commands.\n\nSo we end up with the following file `scripts.js`.\n\n```javascript\nmodule.exports = [\n    {\n        name: 'build',\n        match: '^index\\\\.js$',\n        hotkey: 'ctrl-f9',\n        script: (data) => {\n            // Your code here...\n        }\n    },\n\n    {\n        name: 'debug',\n        match: '^.*\\\\.js$',\n        hotkey: 'ctrl-f8',\n        script: (data) => {\n            // Your code here.\n        }\n    }\n]\n```\n\n## Contributing\nFor bug reporting, feature requesting and any issues, please refer to our [active GitLab repo](https://gitlab.com/guillitem/atom-scripts). Enjoy scripting!\n\n[1]: http://flight-manual.atom.io/behind-atom/sections/keymaps-in-depth/#key-combinations\n[2]: https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback\n",
+  "metadata": {
+    "name": "atom-scripts",
+    "main": "./lib/atom-scripts",
+    "version": "0.1.3",
+    "description": "This package allow you to bind javascript functions to commands and key bindings just by writing those in a file.",
+    "keywords": [
+      "script",
+      "macro",
+      "run",
+      "command"
+    ],
+    "repository": "https://github.com/GCSBOSS/atom-scripts.git",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {}
+  }
+}

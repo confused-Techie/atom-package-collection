@@ -1,0 +1,136 @@
+{
+  "name": "ls-archive",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atom/node-ls-archive"
+  },
+  "downloads": 444,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "1.3.2"
+  },
+  "versions": {
+    "1.3.2": {
+      "name": "ls-archive",
+      "description": "A package for listing and reading files in archive files",
+      "version": "1.3.2",
+      "licenses": [
+        {
+          "type": "MIT",
+          "url": "http://github.com/atom/node-ls-archive/raw/master/LICENSE.md"
+        }
+      ],
+      "keywords": [
+        "ls",
+        "zip",
+        "gzip",
+        "tar",
+        "unzip",
+        "gunzip",
+        "archive",
+        "archives",
+        "uncompress"
+      ],
+      "author": {
+        "name": "Kevin Sawicki",
+        "email": "kevin@github.com"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/atom/node-ls-archive.git"
+      },
+      "bugs": {
+        "url": "https://github.com/atom/node-ls-archive/issues"
+      },
+      "homepage": "http://atom.github.io/node-ls-archive",
+      "main": "./lib/ls-archive.js",
+      "bin": {
+        "lsa": "./bin/lsa"
+      },
+      "devDependencies": {
+        "grunt": "~0.4.0",
+        "grunt-contrib-coffee": "~0.9.0",
+        "coffeescript": "~1.7.0",
+        "grunt-cli": "~0.1.6",
+        "grunt-shell": "~0.2.2",
+        "jasmine-focused": "1.x",
+        "grunt-coffeelint": "0.0.6"
+      },
+      "scripts": {
+        "prepublish": "grunt",
+        "test": "grunt test"
+      },
+      "dependencies": {
+        "tar": "^2.2.1",
+        "optimist": "~0.5.2",
+        "async": "~0.2.9",
+        "colors": "~0.6.2",
+        "rimraf": "~2.2.6",
+        "yauzl": "^2.9.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/ls-archive/versions/1.3.2/tarball"
+      }
+    }
+  },
+  "readme": "# Node Ls Archive Module [![Build Status](https://travis-ci.org/atom/node-ls-archive.png)](https://travis-ci.org/atom/node-ls-archive)\n\nList or read the files and folders inside archive files.\n\nSupported file extensions:\n\n  * .epub\n  * .jar\n  * .love\n  * .nupkg\n  * .tar\n  * .tar.gz\n  * .tgz\n  * .war\n  * .zip\n  * .egg\n  * .whl\n  * .xpi\n\n## Installing\n\n```sh\nnpm install ls-archive\n```\n\n## Building\n  * Clone the repository\n  * Run `npm install`\n  * Run `grunt` to compile CoffeeScript code\n  * Run `grunt test` to run the specs\n\n## Using\n\n```coffeescript\narchive = require 'ls-archive'\n```\n\n### archive.list(archivePath, callback)\n\nList the files and folders inside the archive file path. The `callback` gets\ntwo arguments `(error, archiveEntries)`.\n\n`archivePath` - The string path to the archive file.\n\n`callback` - The function to call after reading completes with an error or\nan array of [ArchiveEntry](#archiveentry) objects.\n\n### archive.readFile(archivePath, filePath, callback)\n\nRead the contents of the file path in the archive path and invoke the callback\nwith those contents. The `callback` gets two arguments\n`(error, filePathContents)`.\n\n`archivePath` - The string path to the archive file.\n\n`filePath` - The string path inside the archive to read.\n\n`callback` - The function to call after reading completes with an error or\nthe Buffer contents.\n\n### archive.readGzip(gzipArchivePath, callback)\n\nRead the contents of the gzipped archive path and invoke the callback with the\nBuffer contents of the uncompressed paths.  The `callback` gets two arguments\n`(error, pathContents)`.\n\n`gzipArchivePath` - The string path to the gzipped archive file.\n\n`callback` - The function to call after reading completes with an error or\nthe Buffer contents.\n\n### ArchiveEntry\n\nClass representing a path entry inside an archive file.\n\n#### .isFile()\nIs the entry a file?\n\nReturns `true` if a file, `false` otherwise.\n\n#### .isFolder()\nIs the entry a folder?\n\nReturns `true` if a folder, `false` otherwise.\n\n#### .isSymbolicLink()\nIs the entry a symbolic link?\n\nReturns `true` if a symbolic link, `false` otherwise.\n\n#### .getPath()\nGet the path of this entry.\n\nReturns the string path.\n",
+  "metadata": {
+    "name": "ls-archive",
+    "description": "A package for listing and reading files in archive files",
+    "version": "1.3.2",
+    "licenses": [
+      {
+        "type": "MIT",
+        "url": "http://github.com/atom/node-ls-archive/raw/master/LICENSE.md"
+      }
+    ],
+    "keywords": [
+      "ls",
+      "zip",
+      "gzip",
+      "tar",
+      "unzip",
+      "gunzip",
+      "archive",
+      "archives",
+      "uncompress"
+    ],
+    "author": {
+      "name": "Kevin Sawicki",
+      "email": "kevin@github.com"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/atom/node-ls-archive.git"
+    },
+    "bugs": {
+      "url": "https://github.com/atom/node-ls-archive/issues"
+    },
+    "homepage": "http://atom.github.io/node-ls-archive",
+    "main": "./lib/ls-archive.js",
+    "bin": {
+      "lsa": "./bin/lsa"
+    },
+    "devDependencies": {
+      "grunt": "~0.4.0",
+      "grunt-contrib-coffee": "~0.9.0",
+      "coffeescript": "~1.7.0",
+      "grunt-cli": "~0.1.6",
+      "grunt-shell": "~0.2.2",
+      "jasmine-focused": "1.x",
+      "grunt-coffeelint": "0.0.6"
+    },
+    "scripts": {
+      "prepublish": "grunt",
+      "test": "grunt test"
+    },
+    "dependencies": {
+      "tar": "^2.2.1",
+      "optimist": "~0.5.2",
+      "async": "~0.2.9",
+      "colors": "~0.6.2",
+      "rimraf": "~2.2.6",
+      "yauzl": "^2.9.1"
+    }
+  }
+}

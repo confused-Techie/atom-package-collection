@@ -1,0 +1,236 @@
+{
+  "name": "dafny-workbench",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alchiadus/dafny-workbench"
+  },
+  "downloads": 473,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "0.1.0"
+  },
+  "versions": {
+    "0.1.0": {
+      "name": "dafny-workbench",
+      "main": "./lib/main",
+      "version": "0.1.0",
+      "description": "Workbench for the program verification tool Dafny.",
+      "keywords": [
+        "dafny",
+        "verification",
+        "linter"
+      ],
+      "repository": "https://github.com/alchiadus/dafny-workbench",
+      "license": "MIT",
+      "engines": {
+        "atom": "^1.13.0"
+      },
+      "activationHooks": [
+        "language-dafny:grammar-used"
+      ],
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        },
+        "busy-signal": {
+          "versions": {
+            "1.0.0": "consumeSignal"
+          }
+        },
+        "linter-indie": {
+          "versions": {
+            "2.0.0": "consumeLinter"
+          }
+        }
+      },
+      "configSchema": {
+        "executableSettings": {
+          "order": 1,
+          "title": "Executable Settings",
+          "type": "object",
+          "properties": {
+            "dafnyExecutablePath": {
+              "order": 1,
+              "title": "Dafny Executable Path",
+              "description": "The location of the Dafny binary. By default it is resolved against the PATH variable.",
+              "type": "string",
+              "default": "dafny"
+            },
+            "dafnyExecutableArguments": {
+              "order": 2,
+              "title": "Dafny Executable Arguments",
+              "description": "Comma separated list of options to pass to the Dafny binary. Execute `dafny /help` in your terminal to see which options are allowed.",
+              "type": "array",
+              "default": [
+                "/nologo",
+                "/compile:0"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "devDependencies": {
+        "babel-eslint": "^7.0.0",
+        "eslint": "^3.0.0",
+        "eslint-config-xo": "^0.18.0"
+      },
+      "eslintConfig": {
+        "extends": "xo/esnext",
+        "env": {
+          "browser": true,
+          "node": true
+        },
+        "globals": {
+          "atom": true
+        },
+        "parser": "babel-eslint",
+        "rules": {
+          "arrow-parens": [
+            "error",
+            "always"
+          ],
+          "capitalized-comments": "off",
+          "comma-dangle": [
+            "error",
+            "always-multiline"
+          ],
+          "indent": [
+            "error",
+            2,
+            {
+              "SwitchCase": 1
+            }
+          ],
+          "max-params": "off",
+          "no-console": "error",
+          "no-negated-condition": "off",
+          "no-unused-expressions": [
+            "error",
+            {
+              "allowTernary": true
+            }
+          ],
+          "no-warning-comments": "off"
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/dafny-workbench/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# dafny-workbench\n\nDafny Workbench provides users with an environment in which they can easily write and verify [Dafny](https://www.microsoft.com/en-us/research/project/dafny-a-language-and-program-verifier-for-functional-correctness/) programs.\n\n## Installation\n\nAtom → File → Settings → Install → `dafny-workbench`, or:\n\n```sh\n$ apm install dafny-workbench\n```\n\n### Additional Steps\n\n#### Required\n\n- Install [Dafny](https://github.com/Microsoft/dafny/wiki/INSTALL) and verify it runs from the command line.\n- Install the [language-dafny](https://atom.io/packages/language-dafny) package.\n\nNote:\n  - On non-Windows operating systems `pkill` is used to terminate Dafny and its descendants (e.g. Z3), make sure it can be resolved against the `PATH` variable.\n\n#### Recommended\n\n- Install the [linter](https://atom.io/packages/linter) package.\n\n## Configuration\n\nBy default, the Dafny executable is resolved against the `PATH` variable. If the location of the tool's binary is added to the path, there's no need to change its `dafnyExecutablePath` setting.\n\nAdditionally, one may change the `dafnyExecutableArguments` (options) passed to Dafny. By default, the first line (banner) is excluded and compilation is turned off.\n\nIt is possible to change these settings in the Settings View:\n\nAtom → File → Settings → Packages → `dafny-workbench`.\n\nAlternatively, change them via Atom's `config.json`, for example:\n\n```coffeescript\n\"dafny-workbench\":\n  executableSettings:\n    # The location of the Dafny binary. By default it is resolved against the PATH variable.\n    dafnyExecutablePath: \"/path/to/dafny\"\n    # Comma separated list of options to pass to the Dafny binary. Execute `dafny /help` in your terminal to see which options are allowed.\n    dafnyExecutableArguments: [\n      \"/nologo\"\n      \"/compile:0\"\n    ]\n```\n\n## Commands and Keybindings\n\nThe following commands are available via the Command Palette if a Dafny file is open in the active editor:\n- `dafny-workbench:start-dafny`\n- `dafny-workbench:stop-dafny`\n\nBy default, no keybindings are setup. They can be added to your `keymap.cson`, for example:\n\n```cson\n'atom-text-editor[data-grammar~=\"source\"][data-grammar~=\"dafny\"]':\n  'ctrl-shift-B': 'dafny-workbench:start-dafny'\n  'ctrl-shift-alt-B': 'dafny-workbench:stop-dafny'\n```\n\n## Usage\n\nWhen you open a file that is associated with the language grammar of the desired verification tool (e.g. `.dfy` for `language-dafny`), the verification tool will be run on the editor's content. Since the verification tools do not accept input from `stdin`, the package writes a copy of the file buffer to the OS's temporary folder each time a change is made to provide continuous verification, without the need to save a file.\n\n## FAQ\n\n**Q:** _I am having trouble getting Dafny to run. What should I do?_\n\n**A:** A few tips:\n  - Make sure that Dafny executes properly when you run it directly from the command line. See also: https://github.com/Microsoft/dafny/wiki/INSTALL.\n  - Make sure that `dafnyExecutablePath` points directly (and only) to the Dafny executable, so no wrapper script and no options (define those in `dafnyExecutableArguments`).\n  - If you are on a Unix system and have to use a wrapper script, make sure the `dafny-workbench` package can pass the options, as well as the file path to the script. The following example has been confirmed to work on a Mac (note the absence of quotes around `$*`, this is important):\n\n  ```sh\n  #!/usr/bin/env bash\n  mono /path/to/Dafny.exe $*\n  ```\n",
+  "metadata": {
+    "name": "dafny-workbench",
+    "main": "./lib/main",
+    "version": "0.1.0",
+    "description": "Workbench for the program verification tool Dafny.",
+    "keywords": [
+      "dafny",
+      "verification",
+      "linter"
+    ],
+    "repository": "https://github.com/alchiadus/dafny-workbench",
+    "license": "MIT",
+    "engines": {
+      "atom": "^1.13.0"
+    },
+    "activationHooks": [
+      "language-dafny:grammar-used"
+    ],
+    "consumedServices": {
+      "status-bar": {
+        "versions": {
+          "^1.0.0": "consumeStatusBar"
+        }
+      },
+      "busy-signal": {
+        "versions": {
+          "1.0.0": "consumeSignal"
+        }
+      },
+      "linter-indie": {
+        "versions": {
+          "2.0.0": "consumeLinter"
+        }
+      }
+    },
+    "configSchema": {
+      "executableSettings": {
+        "order": 1,
+        "title": "Executable Settings",
+        "type": "object",
+        "properties": {
+          "dafnyExecutablePath": {
+            "order": 1,
+            "title": "Dafny Executable Path",
+            "description": "The location of the Dafny binary. By default it is resolved against the PATH variable.",
+            "type": "string",
+            "default": "dafny"
+          },
+          "dafnyExecutableArguments": {
+            "order": 2,
+            "title": "Dafny Executable Arguments",
+            "description": "Comma separated list of options to pass to the Dafny binary. Execute `dafny /help` in your terminal to see which options are allowed.",
+            "type": "array",
+            "default": [
+              "/nologo",
+              "/compile:0"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "devDependencies": {
+      "babel-eslint": "^7.0.0",
+      "eslint": "^3.0.0",
+      "eslint-config-xo": "^0.18.0"
+    },
+    "eslintConfig": {
+      "extends": "xo/esnext",
+      "env": {
+        "browser": true,
+        "node": true
+      },
+      "globals": {
+        "atom": true
+      },
+      "parser": "babel-eslint",
+      "rules": {
+        "arrow-parens": [
+          "error",
+          "always"
+        ],
+        "capitalized-comments": "off",
+        "comma-dangle": [
+          "error",
+          "always-multiline"
+        ],
+        "indent": [
+          "error",
+          2,
+          {
+            "SwitchCase": 1
+          }
+        ],
+        "max-params": "off",
+        "no-console": "error",
+        "no-negated-condition": "off",
+        "no-unused-expressions": [
+          "error",
+          {
+            "allowTernary": true
+          }
+        ],
+        "no-warning-comments": "off"
+      }
+    }
+  }
+}

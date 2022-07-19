@@ -1,0 +1,64 @@
+{
+  "name": "scaffolding",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Drew-S/Scaffolding"
+  },
+  "downloads": 183,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "1.1.0"
+  },
+  "versions": {
+    "1.1.0": {
+      "name": "scaffolding",
+      "main": "./lib/scaffolding",
+      "version": "1.1.0",
+      "description": "A scaffolding package for quickly generating new project files and directories",
+      "keywords": [
+        "scaffolding",
+        "hierarchy",
+        "folder",
+        "file"
+      ],
+      "activationCommands": {
+        "atom-workspace": "scaffolding:toggle"
+      },
+      "repository": "https://github.com/Drew-S/Scaffolding",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "cson": "^4.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/scaffolding/versions/1.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# Scaffolding\n\nScaffolding is a package used to create a project folder and file hierarchy with the click of a button.\n\n![Scaffolding](/preview/preview.png)\n\nAdded a separate file hierarchy system for splitting the main file up into smaller files for better management.\n\n__I still need to actually develop some unit testing__\n\n## Structure\n\nEdit the scaffolding.cson file to include your folder file hierarchy:\n\nYou can edit this by using the command:\n```\n\"ctrl-alt-o\": \"scaffolding:edit\"\n```\n\nor by clicking the edit button in the scaffolding panel.\n\nWhen you click on your scaffolding name in the list the hierarchy is built in the current project root directory.\n\n```CSON\n[\n  {\n    name: \"Scaffolding\"\n    root: [\n      {\n        type: \"dir\"\n        name: \"folder\"\n        root: [\n          {\n            type: \"file\"\n            name: \"file.txt\"\n          }\n        ]\n      }\n      {\n        type: \"dir\"\n        name: \"empty\"\n      }\n      {\n        type: \"file\"\n        name: \"file_with_stuff.txt\"\n        contents: \"stuff\"\n      }\n      {\n        type: \"file\"\n        name: \"file_with_multi-line_stuff.txt\"\n        contents: '''\n          stuff\n          more stuff\n        '''\n      }\n    ]\n  }\n  {\n    name: \"item 2\"\n    rootUrl: './file.txt'\n    ...\n  }\n]\n```\n\n## Separate file structure\n\nYou can setup an external root file using the `rootUrl` option instead of using `root`, this is a relative path to the file from the default scaffolding.cson file. This is designed to store the other files in the same directory as the main scaffolding file.\n\nYou can optionally link a plain text hierarchy file `.txt`, `.cson`, or `.json` file\n\n### CSON\n\n```CSON\n{\n    name: \"name\"\n    root: [\n        {\n            name: \"name\"\n            type: \"file|dir\"\n            root: [\n\n            ]\n        }\n    ]\n}\n```\n\n### JSON\n\n```JSON\n{\n    \"name\": \"name\",\n    \"root\": [\n        {\n            \"name\": \"name\",\n            \"type\": \"file|dir\",\n            \"root\": [\n\n            ]\n        }\n    ]\n}\n```\n\n### Plain text\n\n```\n#Name\nfolder/\n    file.txt\n        content\n        content\n            indented content\n    folder2/\n```\n\nThe first line is optionally the name of the hierarchy denoted by starting the line with `#`.\n\nFolders require a `/` at the end of the line to denote a folder.\n\nThe structure is indent sensitive. The file needs to be indented by 4 spaces ` ` ` ` ` ` ` `, or a tab `\\t`. Indenting inside a file, such as the example `file.txt` is ignored past the first indent and will show up in the contents of the file:\n\nfile.txt:\n\n```\ncontent\ncontent\n    indented content\n```\n\n## keymapping\n\nThis package uses the default keymapping from package generation:\n\nToggle scaffolding panel:\n\n```\n\"ctrl-alt-o\": \"scaffolding:toggle\"\n```\n",
+  "metadata": {
+    "name": "scaffolding",
+    "main": "./lib/scaffolding",
+    "version": "1.1.0",
+    "description": "A scaffolding package for quickly generating new project files and directories",
+    "keywords": [
+      "scaffolding",
+      "hierarchy",
+      "folder",
+      "file"
+    ],
+    "activationCommands": {
+      "atom-workspace": "scaffolding:toggle"
+    },
+    "repository": "https://github.com/Drew-S/Scaffolding",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "cson": "^4.0.0"
+    }
+  }
+}

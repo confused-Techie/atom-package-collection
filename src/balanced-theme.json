@@ -1,0 +1,266 @@
+{
+  "name": "balanced-theme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seantrane/balanced-theme-for-atom"
+  },
+  "downloads": 471,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "1.0.1"
+  },
+  "versions": {
+    "1.0.1": {
+      "name": "balanced-theme",
+      "theme": "syntax",
+      "description": "BalanceD, a syntax theme with semantic purpose.",
+      "version": "1.0.1",
+      "keywords": [
+        "syntax",
+        "theme"
+      ],
+      "author": "Sean Trane Sciarrone",
+      "license": "ISC",
+      "homepage": "https://github.com/seantrane/balanced-theme-for-atom#readme",
+      "repository": "github:seantrane/balanced-theme-for-atom",
+      "bugs": "https://github.com/seantrane/balanced-theme-for-atom/issues",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "lint:md": "npm run markdownlint -- -i 'node_modules/' -i 'atom/' -c '.markdownlint.yaml' './'",
+        "lint": "npm run lint:md",
+        "markdownlint": "markdownlint",
+        "semantic-release": "semantic-release"
+      },
+      "devDependencies": {
+        "@commitlint/cli": "^7.5.1",
+        "@commitlint/config-conventional": "^7.5.0",
+        "@commitlint/travis-cli": "^7.5.1",
+        "@semantic-release/changelog": "^3.0.2",
+        "@semantic-release/exec": "^3.3.2",
+        "@semantic-release/git": "^7.0.8",
+        "husky": "^1.3.1",
+        "markdownlint-cli": "^0.13.0",
+        "semantic-release": "^15.13.3"
+      },
+      "commitlint": {
+        "extends": [
+          "@commitlint/config-conventional"
+        ],
+        "rules": {
+          "header-max-length": [
+            0,
+            "always",
+            80
+          ]
+        }
+      },
+      "husky": {
+        "hooks": {
+          "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+      },
+      "release": {
+        "verifyConditions": [
+          "@semantic-release/changelog",
+          "@semantic-release/npm",
+          "@semantic-release/git",
+          "@semantic-release/github"
+        ],
+        "prepare": [
+          {
+            "path": "@semantic-release/changelog",
+            "changelogTitle": "# CHANGELOG"
+          },
+          "@semantic-release/npm",
+          "@semantic-release/git"
+        ],
+        "publish": [
+          {
+            "path": "@semantic-release/exec",
+            "cmd": "apm publish --tag ${nextRelease.gitTag} 1>&2"
+          },
+          "@semantic-release/github"
+        ],
+        "success": [
+          "@semantic-release/github"
+        ],
+        "fail": [
+          "@semantic-release/github"
+        ],
+        "npmPublish": false
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/balanced-theme/versions/1.0.1/tarball"
+      }
+    },
+    "1.0.0": {
+      "name": "balanced-theme",
+      "theme": "syntax",
+      "description": "BalanceD, a syntax theme with semantic purpose.",
+      "version": "1.0.0",
+      "keywords": [
+        "syntax",
+        "theme"
+      ],
+      "author": "Sean Trane Sciarrone",
+      "license": "MIT",
+      "homepage": "https://github.com/seantrane/balanced-theme-for-atom",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/seantrane/balanced-theme-for-atom.git"
+      },
+      "bugs": {
+        "url": "https://github.com/seantrane/balanced-theme-for-atom/issues"
+      },
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "scripts": {
+        "commitmsg": "commitlint -E GIT_PARAMS",
+        "lint:md": "npm run markdownlint -- -i 'node_modules/' -i 'atom/' -c '.markdownlint.yaml' './'",
+        "lint": "npm run lint:md",
+        "markdownlint": "markdownlint",
+        "semantic-release": "semantic-release"
+      },
+      "devDependencies": {
+        "@commitlint/cli": "^7.0.0",
+        "@commitlint/config-conventional": "^7.0.1",
+        "@commitlint/travis-cli": "^7.0.0",
+        "@semantic-release/changelog": "^3.0.0",
+        "@semantic-release/exec": "^3.0.1",
+        "@semantic-release/git": "^7.0.1",
+        "husky": "^0.14.3",
+        "markdownlint-cli": "^0.12.0",
+        "semantic-release": "^15.9.5"
+      },
+      "commitlint": {
+        "extends": [
+          "@commitlint/config-conventional"
+        ]
+      },
+      "release": {
+        "verifyConditions": [
+          "@semantic-release/changelog",
+          {
+            "path": "@semantic-release/npm",
+            "npmPublish": false
+          },
+          "@semantic-release/git",
+          "@semantic-release/github"
+        ],
+        "prepare": [
+          {
+            "path": "@semantic-release/changelog",
+            "changelogTitle": "# CHANGELOG"
+          },
+          {
+            "path": "@semantic-release/npm",
+            "npmPublish": false
+          },
+          "@semantic-release/git"
+        ],
+        "publish": [
+          {
+            "path": "@semantic-release/exec",
+            "cmd": "apm publish --tag ${nextRelease.gitTag} 1>&2"
+          },
+          "@semantic-release/github"
+        ],
+        "success": [
+          "@semantic-release/github"
+        ],
+        "fail": [
+          "@semantic-release/github"
+        ]
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/balanced-theme/versions/1.0.0/tarball"
+      }
+    }
+  },
+  "readme": "# BalanceD Syntax Theme for Atom\n\n[![Build Status](https://travis-ci.com/seantrane/balanced-theme-for-atom.svg?branch=master)](https://travis-ci.com/seantrane/balanced-theme-for-atom) [![devDependencies Status](https://david-dm.org/seantrane/balanced-theme-for-atom/dev-status.svg)](https://david-dm.org/seantrane/balanced-theme-for-atom?type=dev) [![Greenkeeper badge](https://badges.greenkeeper.io/seantrane/balanced-theme-for-atom.svg)](https://greenkeeper.io/) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)\n\n[![apm](https://img.shields.io/apm/l/balanced-theme.svg?style=flat-square)](https://atom.io/themes/balanced-theme) [![apm](https://img.shields.io/apm/v/balanced-theme.svg?style=flat-square)](https://atom.io/themes/balanced-theme) [![apm downloads](https://img.shields.io/apm/dm/balanced-theme.svg?style=flat-square)](https://atom.io/themes/balanced-theme)\n\n> _BalanceD_ is a syntax theme that was developed to be pleasing to the eye while maintaining a sense of semantic purpose.\n\n![BalanceD Theme Screenshot: HTML, CSS, JS](https://raw.githubusercontent.com/seantrane/balanced-theme-for-atom/master/balanced-theme-screenshot-html.png)\n\nView on Atom.io at <https://atom.io/packages/balanced-theme>\n\n## Install <a id=\"install\"></a>\n\n1. Open **Atom** application\n2. Go to **Preferences**\n3. Go to **Install**\n4. Search for `balanced theme`\n5. **Install** the _Balanced Theme_ package\n\nOr, install from the command-line:\n\n```bash\napm install balanced-theme\n```\n\n## Contribute <a id=\"contribute\"></a>\n\nContributions are always appreciated. Read [CONTRIBUTING.md](https://github.com/seantrane/balanced-theme-for-atom/blob/master/CONTRIBUTING.md) documentation to learn more.\n\n## Changelog <a id=\"changelog\"></a>\n\nRelease details are documented in the [CHANGELOG.md](https://github.com/seantrane/balanced-theme-for-atom/blob/master/CHANGELOG.md) file, and on the [GitHub Releases page](https://github.com/seantrane/balanced-theme-for-atom/releases).\n\n---\n\n## License <a id=\"license\"></a>\n\n[ISC License](https://github.com/seantrane/balanced-theme-for-atom/blob/master/LICENSE)\n\nCopyright (c) 2015 [Sean Trane Sciarrone](https://github.com/seantrane)\n",
+  "metadata": {
+    "name": "balanced-theme",
+    "theme": "syntax",
+    "description": "BalanceD, a syntax theme with semantic purpose.",
+    "version": "1.0.1",
+    "keywords": [
+      "syntax",
+      "theme"
+    ],
+    "author": "Sean Trane Sciarrone",
+    "license": "ISC",
+    "homepage": "https://github.com/seantrane/balanced-theme-for-atom#readme",
+    "repository": "github:seantrane/balanced-theme-for-atom",
+    "bugs": "https://github.com/seantrane/balanced-theme-for-atom/issues",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "scripts": {
+      "lint:md": "npm run markdownlint -- -i 'node_modules/' -i 'atom/' -c '.markdownlint.yaml' './'",
+      "lint": "npm run lint:md",
+      "markdownlint": "markdownlint",
+      "semantic-release": "semantic-release"
+    },
+    "devDependencies": {
+      "@commitlint/cli": "^7.5.1",
+      "@commitlint/config-conventional": "^7.5.0",
+      "@commitlint/travis-cli": "^7.5.1",
+      "@semantic-release/changelog": "^3.0.2",
+      "@semantic-release/exec": "^3.3.2",
+      "@semantic-release/git": "^7.0.8",
+      "husky": "^1.3.1",
+      "markdownlint-cli": "^0.13.0",
+      "semantic-release": "^15.13.3"
+    },
+    "commitlint": {
+      "extends": [
+        "@commitlint/config-conventional"
+      ],
+      "rules": {
+        "header-max-length": [
+          0,
+          "always",
+          80
+        ]
+      }
+    },
+    "husky": {
+      "hooks": {
+        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      }
+    },
+    "release": {
+      "verifyConditions": [
+        "@semantic-release/changelog",
+        "@semantic-release/npm",
+        "@semantic-release/git",
+        "@semantic-release/github"
+      ],
+      "prepare": [
+        {
+          "path": "@semantic-release/changelog",
+          "changelogTitle": "# CHANGELOG"
+        },
+        "@semantic-release/npm",
+        "@semantic-release/git"
+      ],
+      "publish": [
+        {
+          "path": "@semantic-release/exec",
+          "cmd": "apm publish --tag ${nextRelease.gitTag} 1>&2"
+        },
+        "@semantic-release/github"
+      ],
+      "success": [
+        "@semantic-release/github"
+      ],
+      "fail": [
+        "@semantic-release/github"
+      ],
+      "npmPublish": false
+    }
+  }
+}

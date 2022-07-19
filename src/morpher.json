@@ -1,0 +1,159 @@
+{
+  "name": "morpher",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/suchipi/atom-morpher"
+  },
+  "downloads": 60,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "1.1.1"
+  },
+  "versions": {
+    "1.1.1": {
+      "name": "morpher",
+      "main": "./index",
+      "version": "1.1.1",
+      "description": "Run code transformations on the current buffer",
+      "keywords": [
+        "ast",
+        "babel",
+        "estree",
+        "prune",
+        "spidermonkey",
+        "babylon",
+        "wrap",
+        "unwrap",
+        "rename",
+        "jscodeshift",
+        "recast",
+        "codemod"
+      ],
+      "repository": "https://github.com/suchipi/atom-morpher",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        ".workspace": "morpher:open-your-transforms-file",
+        ".editor": "morpher:open-transforms-list"
+      },
+      "dependencies": {
+        "atom-space-pen-views": ">=2.2.0 <3.0",
+        "etch": "^0.14.0",
+        "shelljs": "^0.7.7"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/morpher/versions/1.1.1/tarball"
+      }
+    },
+    "1.1.0": {
+      "name": "morpher",
+      "main": "./index",
+      "version": "1.1.0",
+      "description": "Run code transformations on the current buffer",
+      "keywords": [
+        "ast",
+        "babel",
+        "estree",
+        "prune",
+        "spidermonkey",
+        "babylon",
+        "wrap",
+        "unwrap",
+        "rename",
+        "jscodeshift",
+        "recast",
+        "codemod"
+      ],
+      "repository": "https://github.com/suchipi/atom-morpher",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        ".workspace": "morpher:open-your-transforms-file",
+        ".editor": "morpher:open-transforms-list"
+      },
+      "dependencies": {
+        "atom-space-pen-views": ">=2.2.0 <3.0",
+        "etch": "^0.14.0",
+        "shelljs": "^0.7.7"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/morpher/versions/1.1.0/tarball"
+      }
+    },
+    "1.0.1": {
+      "name": "morpher",
+      "main": "./index",
+      "version": "1.0.1",
+      "description": "Run code transformations on the current buffer",
+      "keywords": [
+        "ast",
+        "babel",
+        "estree",
+        "prune",
+        "spidermonkey",
+        "babylon",
+        "wrap",
+        "unwrap",
+        "rename",
+        "jscodeshift",
+        "recast",
+        "codemod"
+      ],
+      "repository": "https://github.com/suchipi/atom-morpher",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationCommands": {
+        ".workspace": "morpher:open-your-transforms-file",
+        ".editor": "morpher:open-transforms-list"
+      },
+      "dependencies": {
+        "atom-space-pen-views": ">=2.2.0 <3.0",
+        "shelljs": "^0.7.7"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/morpher/versions/1.0.1/tarball"
+      }
+    }
+  },
+  "readme": "# morpher\n\n`morpher` is a package for the atom text editor that provides an API and UI for\nprogrammatically changing the text, cursor position, and selection range of the\ncurrent buffer.\n\nThe user writes \"transforms\" in `~/.atom/morpher-transforms.js`, and can bring\nup a list of these transforms, then choose one to execute on the current buffer.\n\n![Usage example gif](example.gif)\n\nTransform functions receive:\n* The text in the current buffer\n* The current cursor position\n* The current selection range\n* The absolute path to the current file (if any)\n\nAnd can modify:\n* The text in the current buffer\n* The current cursor position\n* The current selection range\n\n# Documentation\n\nAll transforms are defined in `~/.atom/morpher-transforms.js`, known as \"the\ntransforms file\". Each time the command \"Morpher: Open Transform List\" is run\n(from the command palette or via keystroke), morpher loads all the transforms\nexported from this file and presents them in a list to the user.\n\n> Morpher will reload the transforms file each time you open the list.\n\nThe transforms file should export a function that returns either an Array of\ntransforms or a Promise that resolves to an Array of transforms.\n\nA transform is an object with these properties:\n* `name` is a required string. This is the name that will be shown in the list.\n* `description` is an optional string. If present, it will be displayed\n  underneath the name in the list.\n* `variables` is an optional object, or function returning an object.\n  If present, after the user selects this transform, they will be prompted to\n  enter values for these variables in another dialog.\n  If a function is given, it will be called with the same props as `onSelected`\n  (except the `variableValues`) and must return an object.\n  The key is the variable name, and the value is an object containing additional\n  options:\n  * `label` (default: variable name) - the label for the editor in the variables dialog\n  * `multiline` (default: `false`) - if `true`, use a multiline editor\n  * `defaultValue` (default: empty string) - the initial value for the editor\n* `onSelected` is a required function that will be called when the user selects\n  the transform.\n\nThe `onSelected` function will be called with an object called the \"buffer\nstate\". The buffer state represents the current state of the active buffer in\nthe editor. It has these properties:\n* `text`: A string containing all the text in the buffer.\n* `cursorPosition` A [Point](https://atom.io/docs/api/latest/Point) representing\n  the current position of the cursor in the buffer.\n* `selection`: A [Range](https://atom.io/docs/api/latest/Range) representing the\n  current selection in the buffer.\n* `filePath`: A string containing the absolute path the current file open in the\n  buffer. If the current buffer does not refer to a file (ie \"untitled\"), this\n  property will be undefined.\n* `selectedText`: A string containing the selected text in the buffer.\n* `variableValues`: if the transform requested `variables` in its config, this will\n  be an object containing the values for the variables entered by the user.\n\nThe return value of the `onSelected` function is an object describing the\nchanges that should be applied to the buffer, called a \"transform result\".\n`onSelected` can return a transform result or a Promise that resolves to one.\nA transform result has these properties:\n* `text`: An optional string. If included, the buffer text will be replaced with\n  this text.\n* `selectedText`: An optional string. If included, the selected text in the\n  buffer will be replaced with this text.\n* `cursorPosition`: An optional [Point](https://atom.io/docs/api/latest/Point)\n  (or Point-compatible Array). If included, the cursor will be moved to the new\n  position specified.\n* `selection`: An optional [Range](https://atom.io/docs/api/latest/Range) (or\n  Range-compatible Array). If included, the selection will be changed to the\n  range specified.\n\nYou may notice that a transform result is shaped almost the same as a buffer\nstate, but does not include `filePath`.\n\nHere are some flowtype definitions for the concepts:\n```js\ntype BufferState = {\n  text: string,\n  selectedText: string,\n  cursorPosition: Point,\n  selection: Range,\n  filePath?: string,\n  variables?: {[variable: string]: string},\n};\n\ntype TransformResult = {\n  text?: string,\n  selectedText?: string,\n  cursorPosition?: Point | [number,  number],\n  selection?: Range | [[number, number], [number, number]],\n};\n\ntype VariablesConfig = {\n  [variable: string]: {\n    label?: string, // (default: variable)\n    multiline?: boolean, // (default: false)\n    defaultValue?: string, // (default: empty string)\n  },\n};\n\ntype Transform = {\n  name: string,\n  description?: string,\n  onSelected: (BufferState) => TransformResult | void | Promise<TransformResult | void>,\n  variables?: VariablesConfig | (BufferState) => (VariablesConfig | Promise<VariablesConfig>),\n};\n\ntype TransformsFileExport = () => Array<Transform> | Promise<Array<Transform>>,\n```\n\nHere's some example transforms:\n```js\nconst { TextBuffer, Point } = require(\"atom\");\n\nmodule.exports = function() {\n  return [\n    {\n      name: \"Uppercase selected text\",\n      description: \"Converts all characters in the selection to uppercase\",\n      onSelected({ selectedText }) {\n        return { selectedText: selectedText.toUpperCase() };\n      },\n    },\n    {\n      name: \"Move cursor to start\",\n      onSelected() {\n        return {\n          cursorPosition: new Point(0, 0)\n        };\n      },\n    },\n    {\n      name: \"Add // @flow\",\n      description: \"Adds '// @flow' to the top of the file (if not present)\",\n      onSelected({ text }) {\n        if (text.split(\"\\n\")[0].indexOf(\"// @flow\") === -1) {\n          return { text: \"// @flow\\n\" + text };\n        }\n\n        // If you don't return anything, nothing will happen\n      }\n    },\n  ];\n};\n```\n",
+  "metadata": {
+    "name": "morpher",
+    "main": "./index",
+    "version": "1.1.1",
+    "description": "Run code transformations on the current buffer",
+    "keywords": [
+      "ast",
+      "babel",
+      "estree",
+      "prune",
+      "spidermonkey",
+      "babylon",
+      "wrap",
+      "unwrap",
+      "rename",
+      "jscodeshift",
+      "recast",
+      "codemod"
+    ],
+    "repository": "https://github.com/suchipi/atom-morpher",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "activationCommands": {
+      ".workspace": "morpher:open-your-transforms-file",
+      ".editor": "morpher:open-transforms-list"
+    },
+    "dependencies": {
+      "atom-space-pen-views": ">=2.2.0 <3.0",
+      "etch": "^0.14.0",
+      "shelljs": "^0.7.7"
+    }
+  }
+}

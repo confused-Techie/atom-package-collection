@@ -1,0 +1,120 @@
+{
+  "name": "yard",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carlosbaraza/yard"
+  },
+  "downloads": 2784,
+  "stargazers_count": 13,
+  "releases": {
+    "latest": "0.5.1"
+  },
+  "versions": {
+    "0.5.1": {
+      "name": "yard",
+      "main": "./lib/yard",
+      "version": "0.5.1",
+      "description": "YARD Documentation generator (Ruby)",
+      "activationCommands": {
+        "atom-workspace": "yard:create"
+      },
+      "repository": "https://github.com/carlosbaraza/yard",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/yard/versions/0.5.1/tarball"
+      }
+    },
+    "0.5.0": {
+      "name": "yard",
+      "main": "./lib/yard",
+      "version": "0.5.0",
+      "description": "YARD Documentation generator (Ruby)",
+      "activationCommands": {
+        "atom-workspace": "yard:create"
+      },
+      "repository": "https://github.com/carlosbaraza/yard",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/yard/versions/0.5.0/tarball"
+      }
+    },
+    "0.3.1": {
+      "name": "yard",
+      "main": "./lib/yard",
+      "version": "0.3.1",
+      "description": "YARD Documentation generator (Ruby)",
+      "activationCommands": {
+        "atom-workspace": "yard:create"
+      },
+      "repository": "https://github.com/carlosbaraza/yard",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/yard/versions/0.3.1/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "yard",
+      "main": "./lib/yard",
+      "version": "0.2.0",
+      "description": "YARD Documentation generator (Ruby)",
+      "activationCommands": {
+        "atom-workspace": "yard:create"
+      },
+      "repository": "https://github.com/xel51/yard",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/yard/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "yard",
+      "main": "./lib/yard",
+      "version": "0.1.0",
+      "description": "YARD Documentation generator (Ruby)",
+      "activationCommands": {
+        "atom-workspace": "yard:create"
+      },
+      "repository": "https://github.com/xel51/yard",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/yard/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# YARD Generator (Atom package)\n\n[![Build Status](https://travis-ci.org/carlosbaraza/yard.svg)](https://travis-ci.org/carlosbaraza/yard)\n\nYARD is a commonly used Ruby documentation tool. This package will accelerate\nthe creation of the YARD-style comments for your methods and classes.\n\n## Usage\n\nTo use it is as simple as moving the cursor below something that needs documentation and pressing `ctrl + enter`.\n\n###### In many cases, this will be the body of a method, but if the cursor is above the topmost method it will search for the next, constant, class, or module.\n\nThis will analyse the method (and its params), class, constant, or module and generate the following type of documentation:\n\n```ruby\n# Description of UndocumentedModule\nmodule UndocumentedModule\n  # Description of UndocumentedClass\n  class UndocumentedClass\n    MY_CONSTANT = 'Important string'.freeze # Description of MY_CONSTANT\n\n    # Description of #undocumented_method\n    #\n    # @param param1 [Type] describe_param1\n    # @param param2 [Type] default: 3\n    # @param param4 [Type] default: { foo: :bar, baz: 'qux' }\n    # @return [Type] description_of_returned_object\n    def undocumented_method(param1, param2=3, param4 = { foo: :bar, baz: 'qux' })\n      'The method is not documented!'\n    end\n\n    # Description of #method_with_named_params\n    #\n    # @param param1 [Type] describe_param1\n    # @param param2 [Type] default: true\n    # @param param3 [Type] default: nil\n    # @return [Type] description_of_returned_object\n    def method_with_named_params(param1:, param2: true, param3: nil)\n      'The method is not documented!'\n    end\n\n    # Description of .undocumented_method\n    #\n    # @param param1 [Type] describe_param1\n    # @param param2 [Type] default: 3\n    # @return [Type] description_of_returned_object\n    def self.undocumented_class_method(param1, param2=3)\n      'The method is not documented!'\n    end\n  end\nend\n```\n\n`Tab`/`shift + Tab` keys could be used to jump to the next param, description or\nType.\n\n#### Snippets\n\n| Type This then Tab | Produces This                                                                                                      |\n| ------------------ | ------------------------------------------------------------------------------------------------------------------ |\n| #@E                | `#\\n# @example example here\\n#`                                                                                    |\n| #@O                | `# @option parent [Type] argument definition`                                                                      |\n| #@P                | `# @param param_name [Type] describe_param_here`                                                                   |\n| #@H                | `# @param argument [Type]\\n# @option parent [Type] argument definition\\n# @option parent [Type] argument definition` |\n| #@R                | `# @return [Type] definition`                                                                                      |\n\n## Configuration\n\nThrough configuration settings you can add a blank comment line above or below the\ndescription, `@param`s, and `@return`, as well as ensure there is a blank line\nabove the generated comment.\n\n```ruby\nmodule UndocumentedModule\n  class UndocumentedClass\n    def undocumented_method(param1, param2=3)\n      'The method is not documented!'\n    end\n  end\nend\n```\n\nwith minimal spacing changes to (everything set to false):\n\n```ruby\n# Description of UndocumentedModule\nmodule UndocumentedModule\n  # Description of UndocumentedClass\n  class UndocumentedClass\n    # Description of #undocumented_method\n    # @param param1 [Type] describe param1\n    # @param param2 [Type] default: 3\n    # @return [Type] description_of_returned_object\n    def undocumented_method(param1, param2=3)\n      'The method is not documented!'\n    end\n  end\nend\n```\n\nwith maximum spacing changes to(everything set to true):\n\n```ruby\n#\n# Description of UndocumentedModule\n#\nmodule UndocumentedModule\n\n  #\n  # Description of UndocumentedClass\n  #\n  class UndocumentedClass\n\n    #\n    # Description of #undocumented_method\n    #\n    #\n    # @param param1 [Type] describe param1\n    #\n    #\n    # @param param2 [Type] default: 3\n    #\n    #\n    # @return [Type] description_of_returned_object\n    #\n    def undocumented_method(param1, param2=3)\n      'The method is not documented!'\n    end\n  end\nend\n```\n\nand any combination in between.\n\n# Planned Future Development\n\n### • Add support for interpreting Hash params with `@options`\n\n```ruby\n# Description of #undocumented_method\n#\n# @param param1 [Type]\n# @option param1 [Type] foo default: nil\n# @option param1 [Type] bar default: nil\n# @option param1 [Type] baz default: nil\n# @return [Type] description_of_returned_object\ndef undocumented_method(param1={ foo: nil, bar: nil, baz: nil })\n  'The method is not documented!'\nend\n```\n",
+  "metadata": {
+    "name": "yard",
+    "main": "./lib/yard",
+    "version": "0.5.1",
+    "description": "YARD Documentation generator (Ruby)",
+    "activationCommands": {
+      "atom-workspace": "yard:create"
+    },
+    "repository": "https://github.com/carlosbaraza/yard",
+    "license": "MIT",
+    "engines": {
+      "atom": ">0.50.0"
+    },
+    "dependencies": {}
+  }
+}

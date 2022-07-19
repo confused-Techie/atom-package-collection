@@ -1,0 +1,1757 @@
+{
+  "name": "athena-ide-atom",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aergoio/athena-ide-atom"
+  },
+  "downloads": 1502,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "0.5.2"
+  },
+  "versions": {
+    "0.5.2": {
+      "name": "athena-ide-atom",
+      "main": "./dist/athena-ide-atom.js",
+      "version": "0.5.2",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm-run-all rebuild:*:*",
+        "rebuild:win32:atom1.28.0": "npm rebuild --runtime=electron --target=2.0.0 --target_arch=x64 --target_libc=unknown --target_platform=win32 grpc",
+        "rebuild:win32:atom1.39.0": "npm rebuild --runtime=electron --target=3.1.1 --target_arch=x64 --target_libc=unknown --target_platform=win32 grpc",
+        "rebuild:win32:atom1.41.0": "npm rebuild --runtime=electron --target=4.2.0 --target_arch=x64 --target_libc=unknown --target_platform=win32 grpc",
+        "rebuild:osx:atom1.28.0": "npm rebuild --runtime=electron --target=2.0.0 --target_arch=x64 --target_libc=unknown --target_platform=darwin grpc",
+        "rebuild:osx:atom1.39.0": "npm rebuild --runtime=electron --target=3.1.1 --target_arch=x64 --target_libc=unknown --target_platform=darwin grpc",
+        "rebuild:osx:atom1.41.0": "npm rebuild --runtime=electron --target=4.2.0 --target_arch=x64 --target_libc=unknown --target_platform=darwin grpc",
+        "rebuild:linux:atom1.28.0": "npm rebuild --runtime=electron --target=2.0.0 --target_arch=x64 --target_libc=glibc --target_platform=linux grpc",
+        "rebuild:linux:atom1.39.0": "npm rebuild --runtime=electron --target=3.1.1 --target_arch=x64 --target_libc=glibc --target_platform=linux grpc",
+        "rebuild:linux:atom1.41.0": "npm rebuild --runtime=electron --target=4.2.0 --target_arch=x64 --target_libc=glibc --target_platform=linux grpc",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive",
+        "dev": "npm run test && rollup -c ./scripts/rollup.config.js -w --environment NODE_ENV:development",
+        "build": "npm run test && rollup -c ./scripts/rollup.config.js --environment BUILD:production",
+        "archive": "./scripts/make-bin.sh"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.28.0 <=2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "package-deps": [
+        "linter:2.3.0",
+        "linter-ui-default:1.7.0"
+      ],
+      "deserializers": {
+        "RootStore": "deserializeStores"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.6.4",
+        "@babel/plugin-proposal-class-properties": "^7.5.5",
+        "@babel/plugin-proposal-decorators": "^7.6.0",
+        "@babel/preset-env": "^7.6.3",
+        "@babel/preset-react": "^7.6.3",
+        "@babel/register": "^7.6.2",
+        "babel-eslint": "^10.0.3",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^6.5.1",
+        "eslint-plugin-react": "^7.16.0",
+        "mocha": "^6.2.2",
+        "rollup": "^1.25.2",
+        "rollup-plugin-alias": "^2.2.0",
+        "rollup-plugin-babel": "^4.3.3",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-json": "^4.0.0",
+        "rollup-plugin-node-builtins": "^2.1.2",
+        "rollup-plugin-node-globals": "^1.4.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-replace": "^2.2.0"
+      },
+      "dependencies": {
+        "@aergo/athena-analysis": "0.1.2",
+        "@aergo/athena-client": "0.2.1",
+        "@aergo/athena-compiler": "0.2.0",
+        "atom-package-deps": "^5.1.0",
+        "clipboardy": "^2.1.0",
+        "lodash": "^4.17.15",
+        "loglevel": "^1.6.4",
+        "mobx": "^5.14.2",
+        "mobx-react": "^6.1.4",
+        "npm-run-all": "^4.1.5",
+        "react": "^16.11.0",
+        "react-collapsible": "^2.6.0",
+        "react-dom": "^16.11.0",
+        "react-dropdown": "^1.6.4",
+        "reactjs-popup": "^1.5.0",
+        "reflexbox": "^3.0.1",
+        "universal-analytics": "^0.4.20",
+        "uuid": "^3.3.3",
+        "validator": "^11.1.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.5.2/tarball"
+      }
+    },
+    "0.5.1": {
+      "name": "athena-ide-atom",
+      "main": "./dist/athena-ide-atom.js",
+      "version": "0.5.1",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm-run-all rebuild:*:*",
+        "rebuild:win32:atom1.28.0": "npm rebuild --runtime=electron --target=2.0.0 --target_arch=x64 --target_libc=unknown --target_platform=win32 grpc",
+        "rebuild:win32:atom1.39.0": "npm rebuild --runtime=electron --target=3.1.1 --target_arch=x64 --target_libc=unknown --target_platform=win32 grpc",
+        "rebuild:win32:atom1.41.0": "npm rebuild --runtime=electron --target=4.2.0 --target_arch=x64 --target_libc=unknown --target_platform=win32 grpc",
+        "rebuild:osx:atom1.28.0": "npm rebuild --runtime=electron --target=2.0.0 --target_arch=x64 --target_libc=unknown --target_platform=darwin grpc",
+        "rebuild:osx:atom1.39.0": "npm rebuild --runtime=electron --target=3.1.1 --target_arch=x64 --target_libc=unknown --target_platform=darwin grpc",
+        "rebuild:osx:atom1.41.0": "npm rebuild --runtime=electron --target=4.2.0 --target_arch=x64 --target_libc=unknown --target_platform=darwin grpc",
+        "rebuild:linux:atom1.28.0": "npm rebuild --runtime=electron --target=2.0.0 --target_arch=x64 --target_libc=glibc --target_platform=linux grpc",
+        "rebuild:linux:atom1.39.0": "npm rebuild --runtime=electron --target=3.1.1 --target_arch=x64 --target_libc=glibc --target_platform=linux grpc",
+        "rebuild:linux:atom1.41.0": "npm rebuild --runtime=electron --target=4.2.0 --target_arch=x64 --target_libc=glibc --target_platform=linux grpc",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive",
+        "dev": "npm run test && rollup -c ./scripts/rollup.config.js -w --environment NODE_ENV:development",
+        "build": "npm run test && rollup -c ./scripts/rollup.config.js --environment BUILD:production",
+        "archive": "./scripts/make-bin.sh"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.28.0 <=2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "package-deps": [
+        "linter:2.3.0",
+        "linter-ui-default:1.7.0"
+      ],
+      "deserializers": {
+        "RootStore": "deserializeStores"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.6.4",
+        "@babel/plugin-proposal-class-properties": "^7.5.5",
+        "@babel/plugin-proposal-decorators": "^7.6.0",
+        "@babel/preset-env": "^7.6.3",
+        "@babel/preset-react": "^7.6.3",
+        "@babel/register": "^7.6.2",
+        "babel-eslint": "^10.0.3",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^6.5.1",
+        "eslint-plugin-react": "^7.16.0",
+        "mocha": "^6.2.2",
+        "rollup": "^1.25.2",
+        "rollup-plugin-alias": "^2.2.0",
+        "rollup-plugin-babel": "^4.3.3",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-json": "^4.0.0",
+        "rollup-plugin-node-builtins": "^2.1.2",
+        "rollup-plugin-node-globals": "^1.4.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-replace": "^2.2.0"
+      },
+      "dependencies": {
+        "@aergo/athena-analysis": "0.1.2",
+        "@aergo/athena-client": "0.2.0",
+        "@aergo/athena-compiler": "0.2.0",
+        "atom-package-deps": "^5.1.0",
+        "clipboardy": "^2.1.0",
+        "lodash": "^4.17.15",
+        "loglevel": "^1.6.4",
+        "mobx": "^5.14.2",
+        "mobx-react": "^6.1.4",
+        "npm-run-all": "^4.1.5",
+        "react": "^16.11.0",
+        "react-collapsible": "^2.6.0",
+        "react-dom": "^16.11.0",
+        "react-dropdown": "^1.6.4",
+        "reactjs-popup": "^1.5.0",
+        "reflexbox": "^3.0.1",
+        "universal-analytics": "^0.4.20",
+        "uuid": "^3.3.3",
+        "validator": "^11.1.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.5.1/tarball"
+      }
+    },
+    "0.5.0": {
+      "name": "athena-ide-atom",
+      "main": "./dist/athena-ide-atom.js",
+      "version": "0.5.0",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm-run-all rebuild:*:*",
+        "rebuild:win32:atom1.28.0": "npm rebuild --runtime=electron --target=2.0.0 --target_arch=x64 --target_libc=unknown --target_platform=win32 grpc",
+        "rebuild:win32:atom1.39.0": "npm rebuild --runtime=electron --target=3.1.1 --target_arch=x64 --target_libc=unknown --target_platform=win32 grpc",
+        "rebuild:win32:atom1.41.0": "npm rebuild --runtime=electron --target=4.2.0 --target_arch=x64 --target_libc=unknown --target_platform=win32 grpc",
+        "rebuild:osx:atom1.28.0": "npm rebuild --runtime=electron --target=2.0.0 --target_arch=x64 --target_libc=unknown --target_platform=darwin grpc",
+        "rebuild:osx:atom1.39.0": "npm rebuild --runtime=electron --target=3.1.1 --target_arch=x64 --target_libc=unknown --target_platform=darwin grpc",
+        "rebuild:osx:atom1.41.0": "npm rebuild --runtime=electron --target=4.2.0 --target_arch=x64 --target_libc=unknown --target_platform=darwin grpc",
+        "rebuild:linux:atom1.28.0": "npm rebuild --runtime=electron --target=2.0.0 --target_arch=x64 --target_libc=glibc --target_platform=linux grpc",
+        "rebuild:linux:atom1.39.0": "npm rebuild --runtime=electron --target=3.1.1 --target_arch=x64 --target_libc=glibc --target_platform=linux grpc",
+        "rebuild:linux:atom1.41.0": "npm rebuild --runtime=electron --target=4.2.0 --target_arch=x64 --target_libc=glibc --target_platform=linux grpc",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive",
+        "dev": "npm run test && rollup -c ./scripts/rollup.config.js -w --environment NODE_ENV:development",
+        "build": "npm run test && rollup -c ./scripts/rollup.config.js --environment BUILD:production",
+        "archive": "./scripts/make-bin.sh"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.28.0 <=2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "package-deps": [
+        "linter:2.3.0",
+        "linter-ui-default:1.7.0"
+      ],
+      "deserializers": {
+        "RootStore": "deserializeStores"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.6.4",
+        "@babel/plugin-proposal-class-properties": "^7.5.5",
+        "@babel/plugin-proposal-decorators": "^7.6.0",
+        "@babel/preset-env": "^7.6.3",
+        "@babel/preset-react": "^7.6.3",
+        "@babel/register": "^7.6.2",
+        "babel-eslint": "^10.0.3",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^6.5.1",
+        "eslint-plugin-react": "^7.16.0",
+        "mocha": "^6.2.2",
+        "rollup": "^1.25.2",
+        "rollup-plugin-alias": "^2.2.0",
+        "rollup-plugin-babel": "^4.3.3",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-json": "^4.0.0",
+        "rollup-plugin-node-builtins": "^2.1.2",
+        "rollup-plugin-node-globals": "^1.4.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-replace": "^2.2.0"
+      },
+      "dependencies": {
+        "@aergo/athena-analysis": "0.1.2",
+        "@aergo/athena-client": "0.2.0",
+        "@aergo/athena-compiler": "0.2.0",
+        "atom-package-deps": "^5.1.0",
+        "clipboardy": "^2.1.0",
+        "lodash": "^4.17.15",
+        "loglevel": "^1.6.4",
+        "mobx": "^5.14.2",
+        "mobx-react": "^6.1.4",
+        "npm-run-all": "^4.1.5",
+        "react": "^16.11.0",
+        "react-collapsible": "^2.6.0",
+        "react-dom": "^16.11.0",
+        "react-dropdown": "^1.6.4",
+        "reactjs-popup": "^1.5.0",
+        "reflexbox": "^3.0.1",
+        "universal-analytics": "^0.4.20",
+        "uuid": "^3.3.3",
+        "validator": "^11.1.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.5.0/tarball"
+      }
+    },
+    "0.4.7": {
+      "name": "athena-ide-atom",
+      "main": "./dist/athena-ide-atom.js",
+      "version": "0.4.7",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm-run-all rebuild:*",
+        "rebuild:atom1.28.0": "npm rebuild --runtime=electron --target=2.0.0 grpc",
+        "rebuild:atom1.39.0": "npm rebuild --runtime=electron --target=3.1.1 grpc",
+        "rebuild:atom1.41.0": "npm rebuild --runtime=electron --target=4.2.0 grpc",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive",
+        "dev": "npm run test && rollup -c ./scripts/rollup.config.js -w --environment NODE_ENV:development",
+        "build": "npm run test && rollup -c ./scripts/rollup.config.js --environment BUILD:production"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.28.0 <=1.41.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "package-deps": [
+        "linter:2.3.0",
+        "linter-ui-default:1.7.0"
+      ],
+      "deserializers": {
+        "RootStore": "deserializeStores"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.6.4",
+        "@babel/plugin-proposal-class-properties": "^7.5.5",
+        "@babel/plugin-proposal-decorators": "^7.6.0",
+        "@babel/preset-env": "^7.6.3",
+        "@babel/preset-react": "^7.6.3",
+        "@babel/register": "^7.6.2",
+        "babel-eslint": "^10.0.3",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^6.5.1",
+        "eslint-plugin-react": "^7.16.0",
+        "mocha": "^6.2.2",
+        "rollup": "^1.25.2",
+        "rollup-plugin-alias": "^2.2.0",
+        "rollup-plugin-babel": "^4.3.3",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-json": "^4.0.0",
+        "rollup-plugin-node-builtins": "^2.1.2",
+        "rollup-plugin-node-globals": "^1.4.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-replace": "^2.2.0"
+      },
+      "dependencies": {
+        "@aergo/athena-analysis": "0.1.1",
+        "@aergo/athena-client": "0.1.2",
+        "@aergo/athena-compiler": "0.1.4",
+        "atom-package-deps": "^5.1.0",
+        "clipboardy": "^2.1.0",
+        "lodash": "^4.17.15",
+        "loglevel": "^1.6.4",
+        "mobx": "^5.14.2",
+        "mobx-react": "^6.1.4",
+        "npm-run-all": "^4.1.5",
+        "react": "^16.11.0",
+        "react-collapsible": "^2.6.0",
+        "react-dom": "^16.11.0",
+        "react-dropdown": "^1.6.4",
+        "reactjs-popup": "^1.5.0",
+        "reflexbox": "^3.0.1",
+        "universal-analytics": "^0.4.20",
+        "uuid": "^3.3.3",
+        "validator": "^11.1.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.4.7/tarball"
+      }
+    },
+    "0.4.2": {
+      "name": "athena-ide-atom",
+      "main": "./dist/athena-ide-atom.js",
+      "version": "0.4.2",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm rebuild --runtime=electron --target=2.0.0",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive",
+        "dev": "npm run test && rollup -c ./scripts/rollup.config.js -w --environment NODE_ENV:development",
+        "build": "npm run test && rollup -c ./scripts/rollup.config.js --environment BUILD:production"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "package-deps": [
+        "linter:2.3.0",
+        "linter-ui-default:1.7.0"
+      ],
+      "deserializers": {
+        "RootStore": "deserializeStores"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.5.5",
+        "@babel/plugin-proposal-class-properties": "^7.5.5",
+        "@babel/plugin-proposal-decorators": "^7.4.4",
+        "@babel/preset-env": "^7.5.5",
+        "@babel/preset-react": "^7.0.0",
+        "@babel/register": "^7.5.5",
+        "babel-eslint": "^10.0.2",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^6.1.0",
+        "eslint-plugin-react": "^7.14.3",
+        "mocha": "^6.2.0",
+        "rollup": "^1.17.0",
+        "rollup-plugin-alias": "^1.5.2",
+        "rollup-plugin-babel": "^4.3.3",
+        "rollup-plugin-commonjs": "^10.0.1",
+        "rollup-plugin-json": "^4.0.0",
+        "rollup-plugin-node-builtins": "^2.1.2",
+        "rollup-plugin-node-globals": "^1.4.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-replace": "^2.2.0"
+      },
+      "dependencies": {
+        "@aergo/athena-analysis": "0.1.1",
+        "@aergo/athena-client": "0.1.1",
+        "@aergo/athena-compiler": "0.1.3",
+        "atom-package-deps": "^5.1.0",
+        "clipboardy": "^2.1.0",
+        "lodash": "^4.17.15",
+        "loglevel": "^1.6.3",
+        "mobx": "^5.13.0",
+        "mobx-react": "^6.1.1",
+        "react": "^16.8.6",
+        "react-collapsible": "^2.6.0",
+        "react-dom": "^16.8.6",
+        "react-dropdown": "^1.6.4",
+        "reactjs-popup": "^1.4.1",
+        "reflexbox": "^3.0.1",
+        "universal-analytics": "^0.4.20",
+        "uuid": "^3.3.2",
+        "validator": "^11.1.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.4.2/tarball"
+      }
+    },
+    "0.4.1": {
+      "name": "athena-ide-atom",
+      "main": "./dist/athena-ide-atom.js",
+      "version": "0.4.1",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm rebuild --runtime=electron --target=2.0.0",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive",
+        "dev": "npm run test && rollup -c ./scripts/rollup.config.js -w",
+        "build": "npm run test && rollup -c ./scripts/rollup.config.js --environment BUILD:production"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "package-deps": [
+        "linter:2.3.0",
+        "linter-ui-default:1.7.0"
+      ],
+      "deserializers": {
+        "RootStore": "deserializeStores"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/plugin-proposal-class-properties": "^7.4.0",
+        "@babel/plugin-proposal-decorators": "^7.4.0",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/preset-react": "^7.0.0",
+        "@babel/register": "^7.0.0",
+        "babel-eslint": "^10.0.1",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^5.12.0",
+        "eslint-plugin-react": "^7.12.4",
+        "mocha": "^5.2.0",
+        "rollup": "^1.10.1",
+        "rollup-plugin-alias": "^1.5.1",
+        "rollup-plugin-babel": "^4.3.2",
+        "rollup-plugin-commonjs": "^9.3.4",
+        "rollup-plugin-json": "^4.0.0",
+        "rollup-plugin-node-builtins": "^2.1.2",
+        "rollup-plugin-node-globals": "^1.4.0",
+        "rollup-plugin-node-resolve": "^4.2.3"
+      },
+      "dependencies": {
+        "@aergo/athena-analysis": "0.1.1",
+        "@aergo/athena-client": "0.1.0",
+        "@aergo/athena-compiler": "0.1.2",
+        "atom-package-deps": "^5.0.0",
+        "atom-space-pen-views": "^2.2.0",
+        "clipboardy": "^2.0.0",
+        "lodash": "^4.17.11",
+        "loglevel": "^1.6.1",
+        "mobx": "^5.9.4",
+        "mobx-react": "^5.4.3",
+        "react": "^16.8.2",
+        "react-collapsible": "^2.6.0",
+        "react-dom": "^16.8.2",
+        "react-dropdown": "^1.6.4",
+        "reactjs-popup": "^1.3.2",
+        "reflexbox": "^3.0.1",
+        "universal-analytics": "^0.4.20",
+        "uuid": "^3.3.2",
+        "validator": "^10.11.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.4.1/tarball"
+      }
+    },
+    "0.4.0": {
+      "name": "athena-ide-atom",
+      "main": "./dist/athena-ide-atom.js",
+      "version": "0.4.0",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm rebuild --runtime=electron --target=2.0.0",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive",
+        "dev": "npm run test && rollup -c ./scripts/rollup.config.js -w",
+        "build": "npm run test && rollup -c ./scripts/rollup.config.js --environment BUILD:production"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "package-deps": [
+        "linter:2.3.0",
+        "linter-ui-default:1.7.0"
+      ],
+      "deserializers": {
+        "RootStore": "deserializeStores"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/plugin-proposal-class-properties": "^7.4.0",
+        "@babel/plugin-proposal-decorators": "^7.4.0",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/preset-react": "^7.0.0",
+        "@babel/register": "^7.0.0",
+        "babel-eslint": "^10.0.1",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^5.12.0",
+        "eslint-plugin-react": "^7.12.4",
+        "mocha": "^5.2.0",
+        "rollup": "^1.10.1",
+        "rollup-plugin-alias": "^1.5.1",
+        "rollup-plugin-babel": "^4.3.2",
+        "rollup-plugin-commonjs": "^9.3.4",
+        "rollup-plugin-json": "^4.0.0",
+        "rollup-plugin-node-builtins": "^2.1.2",
+        "rollup-plugin-node-globals": "^1.4.0",
+        "rollup-plugin-node-resolve": "^4.2.3"
+      },
+      "dependencies": {
+        "@aergo/athena-analysis": "0.1.1",
+        "@aergo/athena-client": "0.1.0",
+        "@aergo/athena-compiler": "0.1.2",
+        "atom-package-deps": "^5.0.0",
+        "atom-space-pen-views": "^2.2.0",
+        "clipboardy": "^2.0.0",
+        "lodash": "^4.17.11",
+        "loglevel": "^1.6.1",
+        "mobx": "^5.9.4",
+        "mobx-react": "^5.4.3",
+        "react": "^16.8.2",
+        "react-collapsible": "^2.6.0",
+        "react-dom": "^16.8.2",
+        "react-select": "^2.4.1",
+        "reactjs-popup": "^1.3.2",
+        "reflexbox": "^3.0.1",
+        "universal-analytics": "^0.4.20",
+        "uuid": "^3.3.2",
+        "validator": "^10.11.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.4.0/tarball"
+      }
+    },
+    "0.4.0-rc2": {
+      "name": "athena-ide-atom",
+      "main": "./dist/athena-ide-atom.js",
+      "version": "0.4.0-rc2",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm rebuild --runtime=electron --target=2.0.0",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive",
+        "dev": "npm run test && rollup -c ./scripts/rollup.config.js -w",
+        "build": "npm run test && rollup -c ./scripts/rollup.config.js --environment BUILD:production"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "package-deps": [
+        "linter:2.3.0",
+        "linter-ui-default:1.7.0"
+      ],
+      "deserializers": {
+        "RootStore": "deserializeStores"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/plugin-proposal-class-properties": "^7.4.0",
+        "@babel/plugin-proposal-decorators": "^7.4.0",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/preset-react": "^7.0.0",
+        "@babel/register": "^7.0.0",
+        "babel-eslint": "^10.0.1",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^5.12.0",
+        "eslint-plugin-react": "^7.12.4",
+        "mocha": "^5.2.0",
+        "rollup": "^1.10.1",
+        "rollup-plugin-alias": "^1.5.1",
+        "rollup-plugin-babel": "^4.3.2",
+        "rollup-plugin-commonjs": "^9.3.4",
+        "rollup-plugin-json": "^4.0.0",
+        "rollup-plugin-node-builtins": "^2.1.2",
+        "rollup-plugin-node-globals": "^1.4.0",
+        "rollup-plugin-node-resolve": "^4.2.3"
+      },
+      "dependencies": {
+        "@aergo/athena-analysis": "0.1.1",
+        "@aergo/athena-client": "0.1.0",
+        "@aergo/athena-compiler": "0.1.1",
+        "atom-package-deps": "^5.0.0",
+        "atom-space-pen-views": "^2.2.0",
+        "clipboardy": "^2.0.0",
+        "lodash": "^4.17.11",
+        "loglevel": "^1.6.1",
+        "mobx": "^5.9.4",
+        "mobx-react": "^5.4.3",
+        "react": "^16.8.2",
+        "react-collapsible": "^2.6.0",
+        "react-dom": "^16.8.2",
+        "react-select": "^2.4.1",
+        "reactjs-popup": "^1.3.2",
+        "reflexbox": "^3.0.1",
+        "universal-analytics": "^0.4.20",
+        "uuid": "^3.3.2",
+        "validator": "^10.11.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.4.0-rc2/tarball"
+      }
+    },
+    "0.4.0-rc1": {
+      "name": "athena-ide-atom",
+      "main": "./dist/athena-ide-atom.js",
+      "version": "0.4.0-rc1",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm rebuild --runtime=electron --target=2.0.0",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive",
+        "dev": "npm run test && rollup -c ./scripts/rollup.config.js -w",
+        "build": "npm run test && rollup -c ./scripts/rollup.config.js --environment BUILD:production"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "package-deps": [
+        "linter:2.3.0",
+        "linter-ui-default:1.7.0"
+      ],
+      "deserializers": {
+        "RootStore": "deserializeStores"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/plugin-proposal-class-properties": "^7.4.0",
+        "@babel/plugin-proposal-decorators": "^7.4.0",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/preset-react": "^7.0.0",
+        "@babel/register": "^7.0.0",
+        "babel-eslint": "^10.0.1",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^5.12.0",
+        "eslint-plugin-react": "^7.12.4",
+        "mocha": "^5.2.0",
+        "rollup": "^1.10.1",
+        "rollup-plugin-alias": "^1.5.1",
+        "rollup-plugin-babel": "^4.3.2",
+        "rollup-plugin-commonjs": "^9.3.4",
+        "rollup-plugin-json": "^4.0.0",
+        "rollup-plugin-node-builtins": "^2.1.2",
+        "rollup-plugin-node-globals": "^1.4.0",
+        "rollup-plugin-node-resolve": "^4.2.3"
+      },
+      "dependencies": {
+        "@aergo/athena-analysis": "0.1.1",
+        "@aergo/athena-client": "0.1.0",
+        "@aergo/athena-compiler": "0.1.1",
+        "atom-package-deps": "^5.0.0",
+        "atom-space-pen-views": "^2.2.0",
+        "clipboardy": "^2.0.0",
+        "lodash": "^4.17.11",
+        "loglevel": "^1.6.1",
+        "mobx": "^5.9.4",
+        "mobx-react": "^5.4.3",
+        "react": "^16.8.2",
+        "react-collapsible": "^2.6.0",
+        "react-dom": "^16.8.2",
+        "react-select": "^2.4.1",
+        "reactjs-popup": "^1.3.2",
+        "reflexbox": "^3.0.1",
+        "universal-analytics": "^0.4.20",
+        "uuid": "^3.3.2",
+        "validator": "^10.11.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.4.0-rc1/tarball"
+      }
+    },
+    "0.3.4": {
+      "name": "athena-ide-atom",
+      "main": "./src/container",
+      "version": "0.3.4",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm rebuild --runtime=electron --target=2.0.0 && npm rebuild --runtime=node --target=8.0.0",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "package-deps": [
+        "linter:2.3.0",
+        "linter-ui-default:1.7.0"
+      ],
+      "deserializers": {
+        "RootStore": "deserializeStores"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/plugin-proposal-class-properties": "^7.4.0",
+        "@babel/plugin-proposal-decorators": "^7.4.0",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/register": "^7.0.0",
+        "babel-eslint": "^10.0.1",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^5.12.0",
+        "eslint-plugin-react": "^7.12.4",
+        "mocha": "^5.2.0"
+      },
+      "dependencies": {
+        "@aergoio/athena-analysis": "0.0.3",
+        "@aergoio/athena-compiler": "0.0.6",
+        "@herajs/client": "^0.8.6",
+        "@herajs/crypto": "^0.4.2",
+        "atom-package-deps": "^5.0.0",
+        "atom-space-pen-views": "^2.2.0",
+        "lodash": "^4.17.11",
+        "loglevel": "^1.6.1",
+        "mobx": "^5.9.0",
+        "mobx-react": "^5.4.3",
+        "react": "^16.8.2",
+        "react-dom": "^16.8.2",
+        "react-select": "^2.4.1",
+        "react-tabs": "^3.0.0",
+        "reactjs-popup": "^1.3.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.3.4/tarball"
+      }
+    },
+    "0.3.3": {
+      "name": "athena-ide-atom",
+      "main": "./src/container",
+      "version": "0.3.3",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm rebuild --runtime=electron --target=2.0.0 && npm rebuild --runtime=node --target=8.0.0",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "package-deps": [
+        "linter:2.3.0",
+        "linter-ui-default:1.7.0"
+      ],
+      "deserializers": {
+        "RootStore": "deserializeStores"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/plugin-proposal-class-properties": "^7.4.0",
+        "@babel/plugin-proposal-decorators": "^7.4.0",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/register": "^7.0.0",
+        "babel-eslint": "^10.0.1",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^5.12.0",
+        "eslint-plugin-react": "^7.12.4",
+        "mocha": "^5.2.0"
+      },
+      "dependencies": {
+        "@aergoio/athena-analysis": "0.0.1",
+        "@aergoio/athena-compiler": "0.0.6",
+        "@herajs/client": "^0.8.6",
+        "@herajs/crypto": "^0.4.2",
+        "atom-package-deps": "^5.0.0",
+        "atom-space-pen-views": "^2.2.0",
+        "lodash": "^4.17.11",
+        "loglevel": "^1.6.1",
+        "mobx": "^5.9.0",
+        "mobx-react": "^5.4.3",
+        "react": "^16.8.2",
+        "react-dom": "^16.8.2",
+        "react-select": "^2.4.1",
+        "react-tabs": "^3.0.0",
+        "reactjs-popup": "^1.3.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.3.3/tarball"
+      }
+    },
+    "0.3.1": {
+      "name": "athena-ide-atom",
+      "main": "./src/container",
+      "version": "0.3.1",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm rebuild --runtime=electron --target=2.0.0",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "package-deps": [
+        "linter:2.3.0",
+        "linter-ui-default:1.7.0"
+      ],
+      "deserializers": {
+        "RootStore": "deserializeStores"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/plugin-proposal-class-properties": "^7.4.0",
+        "@babel/plugin-proposal-decorators": "^7.4.0",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/register": "^7.0.0",
+        "babel-eslint": "^10.0.1",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^5.12.0",
+        "eslint-plugin-react": "^7.12.4",
+        "mocha": "^5.2.0"
+      },
+      "dependencies": {
+        "@aergoio/athena-analysis": "0.0.1",
+        "@aergoio/athena-compiler": "0.0.1",
+        "@herajs/client": "^0.8.3",
+        "@herajs/crypto": "^0.3.1",
+        "atom-package-deps": "^5.0.0",
+        "atom-space-pen-views": "^2.2.0",
+        "lodash": "^4.17.11",
+        "loglevel": "^1.6.1",
+        "mobx": "^5.9.0",
+        "mobx-react": "^5.4.3",
+        "react": "^16.8.2",
+        "react-dom": "^16.8.2",
+        "react-select": "^2.4.1",
+        "react-tabs": "^3.0.0",
+        "reactjs-popup": "^1.3.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.3.1/tarball"
+      }
+    },
+    "0.3.0": {
+      "name": "athena-ide-atom",
+      "main": "./src/container",
+      "version": "0.3.0",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm rebuild --runtime=electron --target=2.0.0",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "package-deps": [
+        "linter:2.3.0",
+        "linter-ui-default:1.7.0"
+      ],
+      "deserializers": {
+        "RootStore": "deserializeStores"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/plugin-proposal-class-properties": "^7.4.0",
+        "@babel/plugin-proposal-decorators": "^7.4.0",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/register": "^7.0.0",
+        "babel-eslint": "^10.0.1",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^5.12.0",
+        "eslint-plugin-react": "^7.12.4",
+        "mocha": "^5.2.0"
+      },
+      "dependencies": {
+        "@aergoio/athena-analysis": "0.0.1",
+        "@aergoio/athena-compiler": "0.0.1",
+        "@herajs/client": "^0.8.3",
+        "@herajs/crypto": "^0.3.1",
+        "atom-package-deps": "^5.0.0",
+        "atom-space-pen-views": "^2.2.0",
+        "lodash": "^4.17.11",
+        "loglevel": "^1.6.1",
+        "mobx": "^5.9.0",
+        "mobx-react": "^5.4.3",
+        "react": "^16.8.2",
+        "react-dom": "^16.8.2",
+        "react-select": "^2.4.1",
+        "react-tabs": "^3.0.0",
+        "reactjs-popup": "^1.3.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.3.0/tarball"
+      }
+    },
+    "0.2.3": {
+      "name": "athena-ide-atom",
+      "main": "./src/container",
+      "version": "0.2.3",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm rebuild --runtime=electron --target=2.0.0",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "package-deps": [
+        "linter:2.3.0",
+        "linter-ui-default:1.7.0"
+      ],
+      "deserializers": {
+        "RootStore": "deserializeStores"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/plugin-proposal-class-properties": "^7.4.0",
+        "@babel/plugin-proposal-decorators": "^7.4.0",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/register": "^7.0.0",
+        "babel-eslint": "^10.0.1",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^5.12.0",
+        "eslint-plugin-react": "^7.12.4",
+        "mocha": "^5.2.0"
+      },
+      "dependencies": {
+        "@aergoio/athena-analysis": "0.0.1",
+        "@aergoio/athena-compiler": "0.0.1",
+        "@herajs/client": "^0.5.2",
+        "@herajs/crypto": "^0.1.0",
+        "atom-package-deps": "^5.0.0",
+        "atom-space-pen-views": "^2.2.0",
+        "lodash": "^4.17.11",
+        "loglevel": "^1.6.1",
+        "mobx": "^5.9.0",
+        "mobx-react": "^5.4.3",
+        "react": "^16.8.2",
+        "react-dom": "^16.8.2",
+        "react-select": "^2.4.1",
+        "react-tabs": "^3.0.0",
+        "reactjs-popup": "^1.3.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.2.3/tarball"
+      }
+    },
+    "0.2.2": {
+      "name": "athena-ide-atom",
+      "main": "./src/container",
+      "version": "0.2.2",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm rebuild --runtime=electron --target=2.0.0",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "package-deps": [
+        "linter:2.3.0",
+        "linter-ui-default:1.7.0"
+      ],
+      "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/register": "^7.0.0",
+        "babel-eslint": "^10.0.1",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^5.12.0",
+        "eslint-plugin-react": "^7.12.4",
+        "mocha": "^5.2.0"
+      },
+      "dependencies": {
+        "@aergoio/luaparse": "git://github.com:aergoio/luaparse.git#master",
+        "@herajs/client": "^0.5.2",
+        "@herajs/crypto": "^0.1.0",
+        "atom-package-deps": "^5.0.0",
+        "atom-space-pen-views": "^2.2.0",
+        "lodash": "^4.17.11",
+        "loglevel": "^1.6.1",
+        "mobx": "^5.9.0",
+        "mobx-react": "^5.4.3",
+        "react": "^16.8.2",
+        "react-dom": "^16.8.2",
+        "react-select": "^2.4.1",
+        "react-tabs": "^3.0.0",
+        "reactjs-popup": "^1.3.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.2.2/tarball"
+      }
+    },
+    "0.2.1": {
+      "name": "athena-ide-atom",
+      "main": "./src/container",
+      "version": "0.2.1",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm rebuild --runtime=electron --target=2.0.0",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "package-deps": [
+        "linter:2.3.0",
+        "linter-ui-default:1.7.0"
+      ],
+      "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/register": "^7.0.0",
+        "babel-eslint": "^10.0.1",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^5.12.0",
+        "eslint-plugin-react": "^7.12.4",
+        "mocha": "^5.2.0"
+      },
+      "dependencies": {
+        "@aergoio/luaparse": "git://github.com:aergoio/luaparse.git#master",
+        "@herajs/client": "^0.5.2",
+        "@herajs/crypto": "^0.1.0",
+        "atom-package-deps": "^5.0.0",
+        "atom-space-pen-views": "^2.2.0",
+        "lodash": "^4.17.11",
+        "loglevel": "^1.6.1",
+        "mobx": "^5.9.0",
+        "mobx-react": "^5.4.3",
+        "react": "^16.8.2",
+        "react-dom": "^16.8.2",
+        "react-select": "^2.4.1",
+        "react-tabs": "^3.0.0",
+        "reactjs-popup": "^1.3.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.2.1/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "athena-ide-atom",
+      "main": "./src/container",
+      "version": "0.2.0",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "postinstall": "npm rebuild --runtime=electron --target=2.0.0",
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "atomPackageDependencies": {
+        "linter": ">=2.2.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/register": "^7.0.0",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^5.12.0",
+        "eslint-plugin-react": "^7.12.4",
+        "mocha": "^5.2.0"
+      },
+      "dependencies": {
+        "@aergoio/luaparse": "git://github.com:aergoio/luaparse.git#master",
+        "@herajs/client": "^0.5.2",
+        "@herajs/crypto": "^0.1.0",
+        "atom-space-pen-views": "^2.2.0",
+        "lodash": "^4.17.11",
+        "loglevel": "^1.6.1",
+        "react": "^16.8.2",
+        "react-dom": "^16.8.2",
+        "react-select": "^2.4.1",
+        "react-tabs": "^3.0.0",
+        "reactjs-popup": "^1.3.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.2": {
+      "name": "athena-ide-atom",
+      "main": "./src/container",
+      "version": "0.1.2",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "author": "aergo team and contributors",
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "atomPackageDependencies": {
+        "linter": ">=2.2.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/register": "^7.0.0",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^5.12.0",
+        "mocha": "^5.2.0"
+      },
+      "dependencies": {
+        "@aergoio/luaparse": "git://github.com:aergoio/luaparse.git#master",
+        "atom-space-pen-views": "^2.2.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.1.2/tarball"
+      }
+    },
+    "0.1.1": {
+      "name": "athena-ide-atom",
+      "main": "./src/main",
+      "version": "0.1.1",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "atomPackageDependencies": {
+        "linter": ">=2.2.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/register": "^7.0.0",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^5.12.0",
+        "mocha": "^5.2.0"
+      },
+      "dependencies": {
+        "@aergoio/luaparse": "git://github.com:aergoio/luaparse.git#master",
+        "atom-message-panel": "^1.3.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.1.1/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "athena-ide-atom",
+      "main": "./src/main",
+      "version": "0.1.0",
+      "description": "A package for writing smart contract in aergo using atom ide",
+      "scripts": {
+        "lint": "eslint --fix ./src",
+        "test": "npm run lint && mocha --exit --require @babel/register --recursive"
+      },
+      "repository": "https://github.com/aergoio/athena-ide-atom",
+      "keywords": [
+        "aergo",
+        "smart contract",
+        "lua"
+      ],
+      "bugs": {
+        "url": "https://github.com/aergoio/athena-ide-atom/issues"
+      },
+      "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "autocomplete.provider": {
+          "versions": {
+            "2.0.0": "getProvider"
+          }
+        },
+        "linter": {
+          "versions": {
+            "2.0.0": "getLinter"
+          }
+        }
+      },
+      "atomPackageDependencies": {
+        "linter": ">=2.2.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/register": "^7.0.0",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^5.12.0",
+        "mocha": "^5.2.0"
+      },
+      "dependencies": {
+        "@aergoio/luaparse": "git://github.com:aergoio/luaparse.git#master",
+        "atom-message-panel": "^1.3.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/athena-ide-atom/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# Athena-ide package\n\n[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)\n[![Travis_ci](https://travis-ci.org/aergoio/athena-ide-atom.svg?branch=develop)](https://travis-ci.org/aergoio/athena-ide-atom/)\n[![apm version](https://img.shields.io/apm/v/athena-ide-atom.svg)](https://atom.io/packages/athena-ide-atom)\n[![apm downloads](https://img.shields.io/apm/dm/athena-ide-atom.svg)](https://atom.io/packages/athena-ide-atom)\n\nA package for writing smart contract in aergo using atom\n\n## Compatibility\n\n- Atom: v1.28 or higher\n- Aergo: v2.2.x\n\nNeed to rebuild for atom compatible electron version for grpc native modules in a herajs\n\n- atom 1.28.0: electron 2.0.0\n- atom 1.39.0: electron 3.1.1\n- atom 1.41.0: electron 4.2.0\n\nAnd for all platform (win32, linux, darwin) for packaging\n\nCheck [release notes of atom](https://github.com/atom/atom/releases)\n\n## Features\n\n- [X] Syntax highlighting\n- [X] Basic autocomplete\n- [X] Basic linter\n- [X] Compile\n- [X] Deploy smart contract\n- [X] Execute smart contract\n- [X] Query smart contract result\n- [X] Fee delegation\n- [X] Re-deploy smart contract (private mode only)\n- [X] Advanced autocomplete (lua specific, nested table)\n\n`./screenshots` holds all the supported features\n\n## Build from source\n\n- Install dependency: `npm install`\n- Lint: `npm run lint`\n- Run test (including lint): `npm run test`\n- Link and run as dev mode (real time ui changes)\n  - Atom package link: `apm link`\n  - Run dev mode: `npm run dev`\n- Build dist: `npm run build`\n- Make installer: `npm run archive`\n\n## Product\n\n### Prerequisite\n\n- [Atom](https://atom.io/)\n- [Git bash (windows only)](https://git-scm.com/downloads)\n- [Aergo smart contract guide](https://docs.aergo.io/en/latest/smart-contracts/lua/index.html)\n\n### Install\n\nWith atom package manager\n\n```sh\n> apm install athena-ide-atom\n```\n\nWith atom ui\n\n![install-with-atom-ui](./screenshots/install-with-atom-ui.gif)\n\nWith installer (use gitbash in windows)\n\n[Release page](https://github.com/aergoio/athena-ide-atom/releases)\n\n```sh\n> ./athena-ide-atom-x.x.x-installer.bin\n```\n\n### Open panel\n\nWith shortcut: `Alt + Shift + L`\n\n![open-with-shortcut](./screenshots/open-with-shortcut.gif)\n\nWith menu bar\n\n![open-with-menubar](./screenshots/open-with-menubar.gif)\n\n### Editor\n\nAutoComplete\n\n![editor-autocomplete](./screenshots/editor-autocomplete.gif)\n\nLint\n\n![editor-lint](./screenshots/editor-lint.gif)\n\n### Node\n\nNew\n\n![node-new](./screenshots/node-new.gif)\n\nRemove\n\n![node-remove](./screenshots/node-remove.gif)\n\n### Account\n\nNew\n\n![account-new](./screenshots/account-new.gif)\n\nImport\n\n![account-import](./screenshots/account-import.gif)\n\nExport\n\n![account-export](./screenshots/account-export.gif)\n\nRemove\n\n![account-remove](./screenshots/account-remove.gif)\n\n### Deployment\n\n#### Compile\n\nWith shortcut: `f7`\n\n![compile-with-shortcut](./screenshots/compile-with-shortcut.gif)\n\nWith button\n\n![compile-with-button](./screenshots/compile-with-button.gif)\n\n#### Deploy\n\nWithout args\n\n![deploy-without-args](./screenshots/deploy-without-args.gif)\n\nWithout args with gas limit\n\n![deploy-without-args-with-gas-limit](./screenshots/deploy-without-args-with-gas-limit.gif)\n\nWithout args with amount\n\n![deploy-without-args-with-amount](./screenshots/deploy-without-args-with-amount.gif)\n\nWith args\n\n![deploy-with-args](./screenshots/deploy-with-args.gif)\n\n### Import / Remove\n\nImport deployed contract\n\n![import-deployed-contract](./screenshots/import-deployed-contract.gif)\n\nRemove contract\n\n![remove-contract](./screenshots/remove-contract.gif)\n\n### Execute / Query\n\nExecute contract\n\n![execute-contract](./screenshots/execute-contract.gif)\n\nExecute with varargs\n\n![execute-with-varargs](./screenshots/execute-with-varargs.gif)\n\nExecute contract set gas limit\n\n![execute-contract-set-gas-limit](./screenshots/execute-contract-set-gas-limit.gif)\n\nExecute contract with fee delegation\n\n![execute-contract-with-fee-delegation](./screenshots/execute-contract-with-fee-delegation.gif)\n\nExecute contract with amount\n\n![execute-contract-with-amount](./screenshots/execute-contract-with-amount.gif)\n\nQuery contract state\n\n![query-contract-state](./screenshots/query-contract-state.gif)\n\n### Redeploy (private mode only)\n\nRedeploy to already deployed one (Deployer must be an origin deployer)\n\n![redeploy](./screenshots/redeploy.gif)\n\n## Contribution\n\n1. Do not write custom scripts as external file like\n\n   ```json\n   \"scripts\": {\n     \"some-script\": \"scripts/some-script.sh\",\n   },\n   ```\n\n   It would break windows build in cmd.exe. Which causes package install failure in windows.\n\n2. Since atom is electron-based, make sure external library is build on electron target.\\\n   Do not use `electron-rebuild` because of grpc [see also](https://www.npmjs.com/package/grpc#about-electron).\n\nFollowing these rules, feel free to make any pull requests.\n",
+  "metadata": {
+    "name": "athena-ide-atom",
+    "main": "./dist/athena-ide-atom.js",
+    "version": "0.5.2",
+    "description": "A package for writing smart contract in aergo using atom ide",
+    "scripts": {
+      "postinstall": "npm-run-all rebuild:*:*",
+      "rebuild:win32:atom1.28.0": "npm rebuild --runtime=electron --target=2.0.0 --target_arch=x64 --target_libc=unknown --target_platform=win32 grpc",
+      "rebuild:win32:atom1.39.0": "npm rebuild --runtime=electron --target=3.1.1 --target_arch=x64 --target_libc=unknown --target_platform=win32 grpc",
+      "rebuild:win32:atom1.41.0": "npm rebuild --runtime=electron --target=4.2.0 --target_arch=x64 --target_libc=unknown --target_platform=win32 grpc",
+      "rebuild:osx:atom1.28.0": "npm rebuild --runtime=electron --target=2.0.0 --target_arch=x64 --target_libc=unknown --target_platform=darwin grpc",
+      "rebuild:osx:atom1.39.0": "npm rebuild --runtime=electron --target=3.1.1 --target_arch=x64 --target_libc=unknown --target_platform=darwin grpc",
+      "rebuild:osx:atom1.41.0": "npm rebuild --runtime=electron --target=4.2.0 --target_arch=x64 --target_libc=unknown --target_platform=darwin grpc",
+      "rebuild:linux:atom1.28.0": "npm rebuild --runtime=electron --target=2.0.0 --target_arch=x64 --target_libc=glibc --target_platform=linux grpc",
+      "rebuild:linux:atom1.39.0": "npm rebuild --runtime=electron --target=3.1.1 --target_arch=x64 --target_libc=glibc --target_platform=linux grpc",
+      "rebuild:linux:atom1.41.0": "npm rebuild --runtime=electron --target=4.2.0 --target_arch=x64 --target_libc=glibc --target_platform=linux grpc",
+      "lint": "eslint --fix ./src",
+      "test": "npm run lint && mocha --exit --require @babel/register --recursive",
+      "dev": "npm run test && rollup -c ./scripts/rollup.config.js -w --environment NODE_ENV:development",
+      "build": "npm run test && rollup -c ./scripts/rollup.config.js --environment BUILD:production",
+      "archive": "./scripts/make-bin.sh"
+    },
+    "repository": "https://github.com/aergoio/athena-ide-atom",
+    "keywords": [
+      "aergo",
+      "smart contract",
+      "lua"
+    ],
+    "author": "aergo team and contributors",
+    "bugs": {
+      "url": "https://github.com/aergoio/athena-ide-atom/issues"
+    },
+    "homepage": "https://github.com/aergoio/athena-ide-atom#readme",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.28.0 <=2.0.0"
+    },
+    "providedServices": {
+      "autocomplete.provider": {
+        "versions": {
+          "2.0.0": "getProvider"
+        }
+      },
+      "linter": {
+        "versions": {
+          "2.0.0": "getLinter"
+        }
+      }
+    },
+    "package-deps": [
+      "linter:2.3.0",
+      "linter-ui-default:1.7.0"
+    ],
+    "deserializers": {
+      "RootStore": "deserializeStores"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.6.4",
+      "@babel/plugin-proposal-class-properties": "^7.5.5",
+      "@babel/plugin-proposal-decorators": "^7.6.0",
+      "@babel/preset-env": "^7.6.3",
+      "@babel/preset-react": "^7.6.3",
+      "@babel/register": "^7.6.2",
+      "babel-eslint": "^10.0.3",
+      "chai": "^4.2.0",
+      "chai-as-promised": "^7.1.1",
+      "eslint": "^6.5.1",
+      "eslint-plugin-react": "^7.16.0",
+      "mocha": "^6.2.2",
+      "rollup": "^1.25.2",
+      "rollup-plugin-alias": "^2.2.0",
+      "rollup-plugin-babel": "^4.3.3",
+      "rollup-plugin-commonjs": "^10.1.0",
+      "rollup-plugin-json": "^4.0.0",
+      "rollup-plugin-node-builtins": "^2.1.2",
+      "rollup-plugin-node-globals": "^1.4.0",
+      "rollup-plugin-node-resolve": "^5.2.0",
+      "rollup-plugin-replace": "^2.2.0"
+    },
+    "dependencies": {
+      "@aergo/athena-analysis": "0.1.2",
+      "@aergo/athena-client": "0.2.1",
+      "@aergo/athena-compiler": "0.2.0",
+      "atom-package-deps": "^5.1.0",
+      "clipboardy": "^2.1.0",
+      "lodash": "^4.17.15",
+      "loglevel": "^1.6.4",
+      "mobx": "^5.14.2",
+      "mobx-react": "^6.1.4",
+      "npm-run-all": "^4.1.5",
+      "react": "^16.11.0",
+      "react-collapsible": "^2.6.0",
+      "react-dom": "^16.11.0",
+      "react-dropdown": "^1.6.4",
+      "reactjs-popup": "^1.5.0",
+      "reflexbox": "^3.0.1",
+      "universal-analytics": "^0.4.20",
+      "uuid": "^3.3.3",
+      "validator": "^11.1.0"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "name": "atom-htmlizer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webBoxio/atom-htmlizer"
+  },
+  "downloads": 682,
+  "stargazers_count": 5,
+  "releases": {
+    "latest": "0.1.1"
+  },
+  "versions": {
+    "0.1.1": {
+      "name": "atom-htmlizer",
+      "main": "./lib/atom-htmlizer",
+      "version": "0.1.1",
+      "description": "HTMLizer is a tool simply captures basic Bold, Italic and Underline keys.",
+      "activationEvents": [
+        "atom-htmlizer:toggle-bold",
+        "atom-htmlizer:toggle-italic",
+        "atom-htmlizer:toggle-underline",
+        "atom-htmlizer:toggle-image"
+      ],
+      "repository": "https://github.com/webBoxio/atom-htmlizer",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-htmlizer/versions/0.1.1/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "atom-htmlizer",
+      "main": "./lib/atom-htmlizer",
+      "version": "0.1.0",
+      "description": "A short description of your package",
+      "activationEvents": [
+        "atom-htmlizer:toggle-bold",
+        "atom-htmlizer:toggle-italic",
+        "atom-htmlizer:toggle-underline",
+        "atom-htmlizer:toggle-image"
+      ],
+      "repository": "https://github.com/webBoxio/atom-htmlizer",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-htmlizer/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# HTMLizer\n\nHTMLizer is a tool simply captures basic **Bold, Italic and Underline**\nkeys. Just use `CMD-B`, `CMD-I` and `CMD-U` keys. It will wrap the selection.\n\n## HTML Scope\n\n### Bold `CMD-B`\nIt will wrap `any text` to `<strong>any text</strong>`\n\n### Italic `CMD-I`\nIt will wrap `any text` to `<em>any text</em>`\n\n### Underline `CMD-U`\nIt will wrap `any text` to `<u>any text</u>`\n\n## Markdown Scope\n\n### Bold `CMD-B`\nIt will wrap `any text` to `**any text**`\n\n### Italic `CMD-I`\nIt will wrap `any text` to `*any text*`\n\n### Underline `CMD-U`\nIt will wrap `any text` to `_any text_`\n\n## CSS Scope\n\n### Bold `CMD-B`\nIt will add `font-weight: bold` to CSS rule.\n\n### Italic `CMD-I`\nIt will add `font-style: italic` to CSS rule.\n\n### Underline `CMD-U`\nIt will add `text-decoration: underline` to CSS rule.\n\n## Extend and Contribute\n\nAlso you can extend the package with editing `maps.coffee` file.\n\nYou need to write an object like below. `activate` is the function\nexplains how to wrap text, and extract is the array explains how to\nextract wrapped text back.\n\n```coffeescript\n  \"bold\":\n    'text\\.html':\n      activate: (text)-> \"<strong>#{text}</strong>\"\n      extract: [/^<(strong[^>]*)>(.*?)<\\/\\1>$/im, 2]\n\n    'source\\.gfm':\n      activate: (text)-> \"**#{text}**\"\n      extract: [/^(\\*\\*)(.*?)\\1/im, 2]\n\n    'source\\.css':\n      activate: (text)-> \"font-weight: bold;\";\n      extract: [/^font-weight:\\s*bold;?$/im, '/* font-weight: bold; */']\n```\n",
+  "metadata": {
+    "name": "atom-htmlizer",
+    "main": "./lib/atom-htmlizer",
+    "version": "0.1.1",
+    "description": "HTMLizer is a tool simply captures basic Bold, Italic and Underline keys.",
+    "activationEvents": [
+      "atom-htmlizer:toggle-bold",
+      "atom-htmlizer:toggle-italic",
+      "atom-htmlizer:toggle-underline",
+      "atom-htmlizer:toggle-image"
+    ],
+    "repository": "https://github.com/webBoxio/atom-htmlizer",
+    "license": "MIT",
+    "engines": {
+      "atom": ">0.50.0"
+    },
+    "dependencies": {}
+  }
+}

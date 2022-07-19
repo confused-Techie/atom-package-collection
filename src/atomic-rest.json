@@ -1,0 +1,78 @@
+{
+  "name": "atomic-rest",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lzrski/atomic-rest"
+  },
+  "downloads": 422,
+  "stargazers_count": 3,
+  "releases": {
+    "latest": "0.2.1"
+  },
+  "versions": {
+    "0.2.1": {
+      "name": "atomic-rest",
+      "main": "./lib/atomic-rest",
+      "version": "0.2.1",
+      "author": "Tadeusz Łazurski <tadeusz@lazurski.pl>",
+      "description": "Quick and dirty REST API tester",
+      "activationEvents": [
+        "atomic-rest:request"
+      ],
+      "repository": "https://github.com/lzrski/atomic-rest",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "cson-safe": "^0.1.1",
+        "request": "^2.37.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atomic-rest/versions/0.2.1/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "atomic-rest",
+      "main": "./lib/atomic-rest",
+      "version": "0.2.0",
+      "author": "Tadeusz Łazurski <tadeusz@lazurski.pl>",
+      "description": "Quick and dirty REST API tester",
+      "activationEvents": [
+        "atomic-rest:request"
+      ],
+      "repository": "https://github.com/lzrski/atomic-rest",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {
+        "cson-safe": "^0.1.1",
+        "request": "^2.37.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atomic-rest/versions/0.2.0/tarball"
+      }
+    }
+  },
+  "readme": "atomic-rest package\n===================\n\nDirty REST API tester for [Atom Editor](http://atom.io/).\n\nInstall\n-------\n\n```shell\napm install atomic-rest\n```\n\nUse\n---\n\nIn editor, type a request block like that:\n\n```\nGET http://api.twitter.com/1.1/search/tweets.json\n```\n\nSelect request block and type alt-ctrl-enter to get response along with headers, like that:\n\n```\n\n### Response\n# Headers:\n{\n  \"content-length\": \"61\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"date\": \"Wed, 09 Jul 2014 09:09:50 UTC\",\n  \"server\": \"tfe\",\n  \"set-cookie\": [\n    \"guest_id=v1%3A140489699053965426; Domain=.twitter.com; Path=/; Expires=Fri, 08-Jul-2016 09:09:50 UTC\"\n  ],\n  \"connection\": \"close\"\n}\n# Body:\n{\n  \"errors\": [\n    {\n      \"message\": \"Bad Authentication data\",\n      \"code\": 215\n    }\n  ]\n}\n###\n```\n\nYou can also add a request body, formated as [CSON](https://github.com/bevry/cson/). It will be converted to JSON and appropriate headers will be set. So, assuming there is an API endpoint there:\n\n```\nPOST http://api.example.com:8080/cats\n  # Below and indented is your CSON formated body.\n  # It's ok for it to contain comments!\n\n  name: 'Katiusza'\n  moods: [\n    'playful'\n    'chicky'\n    'moody'\n  ]\n\n### Response\n# headers\nHTTP/1.1 200 OK\nX-Powered-By: Express\nVary: Accept\nContent-Type: application/json; charset=utf-8\nContent-Length: 19\nETag: W/\"13-2838837460\"\nDate: Tue, 08 Jul 2014 19:06:49 GMT\nConnection: keep-alive\n\n# Body\n{\n  \"_id\": 1,\n  \"name\": \"Katiusza\",\n  \"moods\": [\n    \"playfull\",\n    \"chicky\",\n    \"moody\"\n  ]\n}\n###\n```\n\nNotes\n-----\n\n[CSON Safe](https://github.com/groupon/cson-safe) is used for parsing request body. It has a [known issue with array of objects syntax](https://github.com/groupon/cson-safe/issues/5). You have to write them like that:\n\n```coffeescript\ncats: [\n  {\n    name: \"Katiusza\"\n    mood: \"Playful\"\n  }\n  {\n    name: \"George\"\n    mood: \"Weltschmerz\"\n  }\n]\n```\n\nBTW, if you can't stand the absence of curly braces and colons, you can write strict JSON documents as a request body. Everything that is valid JSON is a valid CSON as well. So, feel at home :)\n\nTODOs\n-----\n\n  * Automatic request block selection\n\n    to allow triggering request with cursor inside the block, without the need to select it manually.\n\n  * Authentication\n\n  * Cookies\n\n  * Many more, probably...\n\nContributing\n------------\n\nIssues are more then welcome, but pull request are even more welcome :)\n",
+  "metadata": {
+    "name": "atomic-rest",
+    "main": "./lib/atomic-rest",
+    "version": "0.2.1",
+    "author": "Tadeusz Łazurski <tadeusz@lazurski.pl>",
+    "description": "Quick and dirty REST API tester",
+    "activationEvents": [
+      "atomic-rest:request"
+    ],
+    "repository": "https://github.com/lzrski/atomic-rest",
+    "license": "MIT",
+    "engines": {
+      "atom": ">0.50.0"
+    },
+    "dependencies": {
+      "cson-safe": "^0.1.1",
+      "request": "^2.37.0"
+    }
+  }
+}

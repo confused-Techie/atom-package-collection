@@ -1,0 +1,967 @@
+{
+  "name": "build-homebrew",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/idleberg/atom-build-homebrew"
+  },
+  "downloads": 681,
+  "stargazers_count": 2,
+  "releases": {
+    "latest": "0.8.0"
+  },
+  "versions": {
+    "0.8.0": {
+      "name": "build-homebrew",
+      "version": "0.8.0",
+      "description": "Atom Build provider for Homebrew formulas",
+      "repository": "https://github.com/idleberg/atom-build-homebrew",
+      "license": "MIT",
+      "keywords": [
+        "buildprovider",
+        "compile",
+        "homebrew",
+        "brew",
+        "formula"
+      ],
+      "main": "lib/provider.js",
+      "engines": {
+        "atom": ">=1.56.0 <2.0.0"
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "providedServices": {
+        "builder": {
+          "description": "Builds and audits Homebrew formulas",
+          "versions": {
+            "2.0.0": "provideBuilder"
+          }
+        }
+      },
+      "package-deps": [
+        [
+          {
+            "name": "buildium"
+          },
+          {
+            "name": "build"
+          }
+        ]
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.6",
+        "@babel/eslint-parser": "^7.14.7",
+        "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+        "atom-package-deps": "^7.2.3",
+        "atom-satisfy-dependencies": "^0.3.0",
+        "cross-env": "^7.0.3",
+        "esbuild": "^0.12.15",
+        "eslint": "^7.31.0",
+        "eslint-plugin-json": "^3.0.0",
+        "husky": ">=4 <5",
+        "lint-staged": "^11.0.1",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "remark-cli": "^9.0.0",
+        "rimraf": "^3.0.2",
+        "which": "^2.0.2"
+      },
+      "scripts": {
+        "build": "node ./tools/build.mjs",
+        "clean": "rimraf ./lib",
+        "dev": "npm run start",
+        "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+        "lint:js": "eslint ./src --ignore-path .gitignore",
+        "lint": "npm-run-all --parallel lint:*",
+        "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+        "test": "npm run lint"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.js": "eslint --cache --fix"
+      },
+      "volta": {
+        "node": "14.17.0",
+        "yarn": "1.22.10"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/build-homebrew/versions/0.8.0/tarball"
+      }
+    },
+    "0.7.0": {
+      "name": "build-homebrew",
+      "version": "0.7.0",
+      "description": "Atom Build provider for Homebrew formulas",
+      "repository": "https://github.com/idleberg/atom-build-homebrew",
+      "license": "MIT",
+      "keywords": [
+        "buildprovider",
+        "compile",
+        "homebrew",
+        "brew",
+        "formula"
+      ],
+      "main": "lib/provider.js",
+      "engines": {
+        "atom": ">=1.0.0 <1.56.0"
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "providedServices": {
+        "builder": {
+          "description": "Builds and audits Homebrew formulas",
+          "versions": {
+            "2.0.0": "provideBuilder"
+          }
+        }
+      },
+      "package-deps": [
+        [
+          {
+            "name": "buildium"
+          },
+          {
+            "name": "build"
+          }
+        ]
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.6",
+        "@babel/eslint-parser": "^7.14.7",
+        "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+        "atom-package-deps": "^7.2.3",
+        "atom-satisfy-dependencies": "^0.3.0",
+        "cross-env": "^7.0.3",
+        "esbuild": "^0.12.11",
+        "eslint": "^7.29.0",
+        "eslint-plugin-json": "^3.0.0",
+        "husky": ">=4 <5",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "remark-cli": "^9.0.0",
+        "rimraf": "^3.0.2",
+        "which": "^2.0.2"
+      },
+      "scripts": {
+        "build": "node ./tools/build.mjs",
+        "clean": "rimraf ./lib",
+        "dev": "npm run start",
+        "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+        "lint:js": "eslint ./src --ignore-path .gitignore",
+        "lint": "npm-run-all --parallel lint:*",
+        "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+        "test": "npm run lint"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.js": "eslint --cache --fix"
+      },
+      "volta": {
+        "node": "14.17.0",
+        "yarn": "1.22.10"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/build-homebrew/versions/0.7.0/tarball"
+      }
+    },
+    "0.6.0": {
+      "name": "build-homebrew",
+      "version": "0.6.0",
+      "description": "Atom Build provider for Homebrew formulas",
+      "repository": "https://github.com/idleberg/atom-build-homebrew",
+      "license": "MIT",
+      "keywords": [
+        "buildprovider",
+        "compile",
+        "homebrew",
+        "brew",
+        "formula"
+      ],
+      "main": "lib/provider.js",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "providedServices": {
+        "builder": {
+          "description": "Builds and audits Homebrew formulas",
+          "versions": {
+            "2.0.0": "provideBuilder"
+          }
+        }
+      },
+      "package-deps": [
+        [
+          {
+            "name": "buildium"
+          },
+          {
+            "name": "build"
+          }
+        ]
+      ],
+      "dependencies": {},
+      "devDependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-optional-chaining": "^7.14.2",
+        "atom-package-deps": "^7.2.3",
+        "atom-satisfy-dependencies": "^0.3.0",
+        "cross-env": "^7.0.3",
+        "esbuild": "^0.12.1",
+        "eslint": "^7.26.0",
+        "eslint-plugin-json": "^3.0.0",
+        "husky": ">=4 <5",
+        "lint-staged": "^11.0.0",
+        "log-symbols": "^5.0.0",
+        "npm-run-all": "^4.1.5",
+        "remark-cli": "^9.0.0",
+        "rimraf": "^3.0.2",
+        "which": "^2.0.2"
+      },
+      "scripts": {
+        "build": "node ./tools/build.mjs",
+        "clean": "rimraf ./lib",
+        "dev": "npm run start",
+        "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+        "lint:js": "eslint ./src --ignore-path .gitignore",
+        "lint": "npm-run-all --parallel lint:*",
+        "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+        "test": "npm run lint"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.js": "eslint --cache --fix"
+      },
+      "volta": {
+        "node": "14.17.0",
+        "yarn": "1.22.10"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/build-homebrew/versions/0.6.0/tarball"
+      }
+    },
+    "0.5.1": {
+      "name": "build-homebrew",
+      "version": "0.5.1",
+      "description": "Atom Build provider for Homebrew formulas",
+      "repository": "https://github.com/idleberg/atom-build-homebrew",
+      "license": "MIT",
+      "keywords": [
+        "buildprovider",
+        "compile",
+        "homebrew",
+        "brew",
+        "formula"
+      ],
+      "main": "lib/provider.js",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "providedServices": {
+        "builder": {
+          "description": "Builds and audits Homebrew formulas",
+          "versions": {
+            "2.0.0": "provideBuilder"
+          }
+        }
+      },
+      "package-deps": [
+        [
+          {
+            "name": "buildium"
+          },
+          {
+            "name": "build"
+          }
+        ]
+      ],
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "atom-package-deps": "^7.2.2",
+        "atom-satisfy-dependencies": "^0.3.0",
+        "which": "^1.3.1"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.16",
+        "@babel/eslint-parser": "^7.13.10",
+        "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^17.1.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.0",
+        "eslint": "^7.2.2",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": ">=4 <5",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "remark-cli": "^9.0.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.42.0",
+        "rollup-plugin-terser": "^7.0.2"
+      },
+      "scripts": {
+        "build": "npm run clean && rollup --config",
+        "clean": "rimraf ./lib",
+        "dev": "npm run start",
+        "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+        "lint:js": "eslint ./src --ignore-path .gitignore",
+        "lint": "npm-run-all --parallel lint:*",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.js": "eslint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/build-homebrew/versions/0.5.1/tarball"
+      }
+    },
+    "0.5.0": {
+      "name": "build-homebrew",
+      "version": "0.5.0",
+      "description": "Atom Build provider for Homebrew formulas",
+      "repository": "https://github.com/idleberg/atom-build-homebrew",
+      "license": "MIT",
+      "keywords": [
+        "buildprovider",
+        "compile",
+        "homebrew",
+        "brew",
+        "formula"
+      ],
+      "main": "lib/provider.js",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationHooks": [
+        "language-ruby:grammar-used"
+      ],
+      "providedServices": {
+        "builder": {
+          "description": "Builds and audits Homebrew formulas",
+          "versions": {
+            "2.0.0": "provideBuilder"
+          }
+        }
+      },
+      "package-deps": [
+        [
+          {
+            "name": "buildium"
+          },
+          {
+            "name": "build"
+          }
+        ]
+      ],
+      "dependencies": {
+        "@atxm/developer-console": "^0.5.0",
+        "atom-package-deps": "^7.2.2",
+        "atom-satisfy-dependencies": "^0.3.0",
+        "which": "^1.3.1"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.16",
+        "@babel/eslint-parser": "^7.13.10",
+        "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^17.1.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.0",
+        "eslint": "^7.2.2",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": ">=4 <5",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "remark-cli": "^9.0.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.42.0",
+        "rollup-plugin-terser": "^7.0.2"
+      },
+      "scripts": {
+        "build": "npm run clean && rollup --config",
+        "clean": "rimraf ./lib",
+        "dev": "npm run start",
+        "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+        "lint:js": "eslint ./src --ignore-path .gitignore",
+        "lint": "npm-run-all --parallel lint:*",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.js": "eslint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/build-homebrew/versions/0.5.0/tarball"
+      }
+    },
+    "0.4.0": {
+      "name": "build-homebrew",
+      "version": "0.4.0",
+      "description": "Atom Build provider for Homebrew formulas",
+      "repository": "https://github.com/idleberg/atom-build-homebrew",
+      "license": "MIT",
+      "keywords": [
+        "buildprovider",
+        "compile",
+        "homebrew",
+        "brew",
+        "formula"
+      ],
+      "main": "lib/provider.js",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationHooks": [
+        "language-ruby:grammar-used"
+      ],
+      "providedServices": {
+        "builder": {
+          "description": "Builds and audits Homebrew formulas",
+          "versions": {
+            "2.0.0": "provideBuilder"
+          }
+        }
+      },
+      "package-deps": [
+        {
+          "name": "buildium"
+        }
+      ],
+      "dependencies": {
+        "atom-package-deps": "^7.2.2",
+        "atom-satisfy-dependencies": "^0.3.0"
+      },
+      "devDependencies": {
+        "@babel/eslint-parser": "^7.13.10",
+        "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^17.1.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.0",
+        "eslint": "^7.2.2",
+        "eslint-plugin-json": "^2.1.2",
+        "husky": ">=4 <5",
+        "lint-staged": "^10.5.4",
+        "npm-run-all": "^4.1.5",
+        "remark-cli": "^9.0.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.42.0",
+        "rollup-plugin-terser": "^7.0.2"
+      },
+      "scripts": {
+        "build": "npm run clean && rollup --config",
+        "clean": "rimraf ./lib",
+        "dev": "npm run start",
+        "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+        "lint:js": "eslint ./src --ignore-path .gitignore",
+        "lint": "npm-run-all --parallel lint:*",
+        "start": "rollup --watch --config",
+        "test": "npm run lint"
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.js": "eslint --cache --fix"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/build-homebrew/versions/0.4.0/tarball"
+      }
+    },
+    "0.3.2": {
+      "name": "build-homebrew",
+      "version": "0.3.2",
+      "description": "Atom Build provider for Homebrew formulas",
+      "repository": "https://github.com/idleberg/atom-build-homebrew",
+      "license": "MIT",
+      "scripts": {
+        "build": "webpack --mode none",
+        "dev": "webpack --mode none --watch",
+        "lint": "eslint ./src",
+        "test": "npm run lint"
+      },
+      "keywords": [
+        "buildprovider",
+        "compile",
+        "homebrew",
+        "brew",
+        "formula"
+      ],
+      "main": "lib/provider.js",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationHooks": [
+        "language-ruby:grammar-used"
+      ],
+      "providedServices": {
+        "builder": {
+          "description": "Builds and audits Homebrew formulas",
+          "versions": {
+            "2.0.0": "provideBuilder"
+          }
+        }
+      },
+      "package-deps": [
+        "build"
+      ],
+      "dependencies": {
+        "atom-package-deps": "^5.1.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.4.5",
+        "babel-eslint": "^10.0.2",
+        "babel-loader": "^8.0.6",
+        "eslint": "^6.0.0",
+        "eslint-config-atom-build": "^4.0.0",
+        "husky": "^2.4.1",
+        "webpack": "^4.35.0",
+        "webpack-cli": "^3.3.5"
+      },
+      "eslintConfig": {
+        "parser": "babel-eslint",
+        "extends": "atom-build",
+        "rules": {
+          "consistent-return": 0,
+          "no-console": 0
+        }
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "npm run lint"
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/build-homebrew/versions/0.3.2/tarball"
+      }
+    },
+    "0.3.1": {
+      "name": "build-homebrew",
+      "version": "0.3.1",
+      "description": "Atom Build provider for Homebrew formulas",
+      "repository": "https://github.com/idleberg/atom-build-homebrew",
+      "license": "MIT",
+      "scripts": {
+        "build": "webpack --mode none",
+        "dev": "webpack --mode none --watch",
+        "lint": "eslint ./src",
+        "test": "npm run lint"
+      },
+      "keywords": [
+        "buildprovider",
+        "compile",
+        "homebrew",
+        "brew",
+        "formula"
+      ],
+      "main": "lib/provider.js",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationHooks": [
+        "language-ruby:grammar-used"
+      ],
+      "providedServices": {
+        "builder": {
+          "description": "Builds and audits Homebrew formulas",
+          "versions": {
+            "2.0.0": "provideBuilder"
+          }
+        }
+      },
+      "package-deps": [
+        "build"
+      ],
+      "dependencies": {
+        "atom-package-deps": "^5.1.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.4.5",
+        "babel-eslint": "^10.0.2",
+        "babel-loader": "^8.0.6",
+        "eslint": "^6.0.0",
+        "eslint-config-atom-build": "^4.0.0",
+        "husky": "^2.4.1",
+        "webpack": "^4.35.0",
+        "webpack-cli": "^3.3.5"
+      },
+      "eslintConfig": {
+        "parser": "babel-eslint",
+        "extends": "atom-build",
+        "rules": {
+          "consistent-return": 0,
+          "no-console": 0
+        }
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "npm run lint"
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/build-homebrew/versions/0.3.1/tarball"
+      }
+    },
+    "0.3.0": {
+      "name": "build-homebrew",
+      "version": "0.3.0",
+      "description": "Atom Build provider for Homebrew formulas",
+      "repository": "https://github.com/idleberg/atom-build-homebrew",
+      "license": "MIT",
+      "scripts": {
+        "build": "webpack --mode none",
+        "dev": "webpack --mode none --watch",
+        "lint": "eslint ./src",
+        "test": "npm run lint"
+      },
+      "keywords": [
+        "buildprovider",
+        "compile",
+        "homebrew",
+        "brew",
+        "formula"
+      ],
+      "main": "lib/provider.js",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "activationHooks": [
+        "language-ruby:grammar-used"
+      ],
+      "providedServices": {
+        "builder": {
+          "description": "Builds and audits Homebrew formulas",
+          "versions": {
+            "2.0.0": "provideBuilder"
+          }
+        }
+      },
+      "package-deps": [
+        "build"
+      ],
+      "dependencies": {
+        "atom-package-deps": "^5.1.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.4.5",
+        "babel-eslint": "^10.0.2",
+        "babel-loader": "^8.0.6",
+        "eslint": "^6.0.0",
+        "eslint-config-atom-build": "^4.0.0",
+        "husky": "^2.4.1",
+        "webpack": "^4.35.0",
+        "webpack-cli": "^3.3.5"
+      },
+      "eslintConfig": {
+        "parser": "babel-eslint",
+        "extends": "atom-build",
+        "rules": {
+          "consistent-return": 0,
+          "no-console": 0
+        }
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "npm run lint"
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/build-homebrew/versions/0.3.0/tarball"
+      }
+    },
+    "0.2.1": {
+      "name": "build-homebrew",
+      "version": "0.2.1",
+      "description": "Atom Build provider for Homebrew formulas",
+      "repository": "https://github.com/idleberg/atom-build-homebrew",
+      "license": "MIT",
+      "keywords": [
+        "buildprovider",
+        "compile",
+        "homebrew",
+        "brew",
+        "formula"
+      ],
+      "main": "lib/provider.js",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "builder": {
+          "description": "Builds and audits Homebrew formulas",
+          "versions": {
+            "2.0.0": "provideBuilder"
+          }
+        }
+      },
+      "package-deps": [
+        "build"
+      ],
+      "dependencies": {
+        "atom-package-deps": "^5.1.0"
+      },
+      "devDependencies": {
+        "babel-eslint": "^10.0.2",
+        "coffeelint-stylish": "^0.1.2",
+        "eslint": "^5.16.0",
+        "eslint-config-atom-build": "^4.0.0",
+        "gulp": "^4.0.2",
+        "gulp-coffeelint": "^0.6.0",
+        "gulp-debug": "^4.0.0",
+        "gulp-eslint": "^5.0.0",
+        "gulp-jsonlint": "^1.3.0",
+        "gulp-lesshint": "^6.1.0"
+      },
+      "eslintConfig": {
+        "parser": "babel-eslint",
+        "extends": "atom-build",
+        "rules": {
+          "consistent-return": 0,
+          "no-console": 0
+        }
+      },
+      "scripts": {
+        "test": "gulp lint"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/build-homebrew/versions/0.2.1/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "build-homebrew",
+      "version": "0.2.0",
+      "description": "Atom Build provider for Homebrew formulas",
+      "repository": "https://github.com/idleberg/atom-build-homebrew",
+      "license": "MIT",
+      "keywords": [
+        "buildprovider",
+        "compile",
+        "homebrew",
+        "brew",
+        "formula"
+      ],
+      "main": "lib/provider.js",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "builder": {
+          "description": "Builds and audits Homebrew formulas",
+          "versions": {
+            "2.0.0": "provideBuilder"
+          }
+        }
+      },
+      "package-deps": [
+        "build"
+      ],
+      "dependencies": {
+        "atom-package-deps": "^4.6.2"
+      },
+      "devDependencies": {
+        "babel-eslint": "^9.0.0",
+        "coffeelint-stylish": "^0.1.2",
+        "eslint": "^5.5.0",
+        "eslint-config-atom-build": "^4.0.0",
+        "gulp": "^4.0.0",
+        "gulp-coffeelint": "^0.6.0",
+        "gulp-debug": "^4.0.0",
+        "gulp-eslint": "^5.0.0",
+        "gulp-jsonlint": "^1.2.2",
+        "gulp-lesshint": "^5.0.2"
+      },
+      "eslintConfig": {
+        "parser": "babel-eslint",
+        "extends": "atom-build",
+        "rules": {
+          "consistent-return": 0,
+          "no-console": 0
+        }
+      },
+      "scripts": {
+        "test": "gulp lint"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/build-homebrew/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "build-homebrew",
+      "version": "0.1.0",
+      "description": "Atom Build provider for Homebrew formulas",
+      "repository": "https://github.com/idleberg/atom-build-homebrew",
+      "license": "MIT",
+      "keywords": [
+        "buildprovider",
+        "compile",
+        "homebrew",
+        "brew",
+        "formula"
+      ],
+      "main": "lib/provider.js",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "providedServices": {
+        "builder": {
+          "description": "Builds and audits Homebrew formulas",
+          "versions": {
+            "2.0.0": "provideBuilder"
+          }
+        }
+      },
+      "package-deps": [
+        "build"
+      ],
+      "dependencies": {
+        "atom-package-deps": "^4.6.2"
+      },
+      "devDependencies": {
+        "babel-eslint": "^9.0.0",
+        "coffeelint-stylish": "^0.1.2",
+        "eslint": "^5.5.0",
+        "eslint-config-atom-build": "^4.0.0",
+        "gulp": "^4.0.0",
+        "gulp-coffeelint": "^0.6.0",
+        "gulp-debug": "^4.0.0",
+        "gulp-eslint": "^5.0.0",
+        "gulp-jsonlint": "^1.2.2",
+        "gulp-lesshint": "^5.0.2"
+      },
+      "eslintConfig": {
+        "parser": "babel-eslint",
+        "extends": "atom-build",
+        "rules": {
+          "consistent-return": 0,
+          "no-console": 0
+        }
+      },
+      "scripts": {
+        "test": "gulp lint"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/build-homebrew/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# build-homebrew\n\n[![apm](https://flat.badgen.net/apm/license/build-homebrew)](https://atom.io/packages/build-homebrew)\n[![apm](https://flat.badgen.net/apm/v/build-homebrew)](https://atom.io/packages/build-homebrew)\n[![apm](https://flat.badgen.net/apm/dl/build-homebrew)](https://atom.io/packages/build-homebrew)\n[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-build-homebrew)](https://circleci.com/gh/idleberg/atom-build-homebrew)\n[![David](https://flat.badgen.net/david/dev/idleberg/atom-build-homebrew)](https://david-dm.org/idleberg/atom-build-homebrew?type=dev)\n\n[Atom Build](https://atombuild.github.io/) provider for Homebrew. Audits, tests and builds Homebrew formulas\n\n## Installation\n\n### apm\n\nInstall `build-homebrew` from Atom's [Package Manager](http://flight-manual.atom.io/using-atom/sections/atom-packages/) or the command-line equivalent:\n\n`$ apm install build-homebrew`\n\n### Using Git\n\nChange to your Atom packages directory:\n\n**Windows**\n\n```powershell\n# Powershell\n$ cd $Env:USERPROFILE\\.atom\\packages\n```\n\n```cmd\n:: Command Prompt\n$ cd %USERPROFILE%\\.atom\\packages\n```\n\n**Linux & macOS**\n\n```bash\n$ cd ~/.atom/packages/\n```\n\nClone repository as `build-homebrew`:\n\n```bash\n$ git clone https://github.com/idleberg/atom-build-homebrew build-homebrew\n```\n\nInside the cloned directory, install Node dependencies:\n\n```bash\n$ yarn || npm install\n```\n\nYou should now be setup to build the package:\n\n```bash\n$ yarn build || npm run build\n```\n\n## Usage\n\n### Build\n\nBefore you can build, select an active target with your preferred build option.\n\nAvailable targets:\n\n- Homebrew Audit: strict\n- Homebrew Audit: New Formula\n- Homebrew Install: Build from Source\n- Homebrew Re-install: Build from Source\n- Homebrew Uninstall\n- Homebrew Test\n\n### Shortcuts\n\nHere's a reminder of the default shortcuts you can use with this package:\n\n**Select active target**\n\n<kbd>Super</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> or <kbd>F7</kbd>\n\n**Build script**\n\n<kbd>Super</kbd>+<kbd>Alt</kbd>+<kbd>B</kbd> or <kbd>F9</kbd>\n\n**Jump to error**\n\n<kbd>Super</kbd>+<kbd>Alt</kbd>+<kbd>G</kbd> or <kbd>F4</kbd>\n\n**Toggle build panel**\n\n<kbd>Super</kbd>+<kbd>Alt</kbd>+<kbd>V</kbd> or <kbd>F8</kbd>\n\n## License\n\nThis work is licensed under [The MIT License](https://opensource.org/licenses/MIT)\n",
+  "metadata": {
+    "name": "build-homebrew",
+    "version": "0.8.0",
+    "description": "Atom Build provider for Homebrew formulas",
+    "repository": "https://github.com/idleberg/atom-build-homebrew",
+    "license": "MIT",
+    "keywords": [
+      "buildprovider",
+      "compile",
+      "homebrew",
+      "brew",
+      "formula"
+    ],
+    "main": "lib/provider.js",
+    "engines": {
+      "atom": ">=1.56.0 <2.0.0"
+    },
+    "activationHooks": [
+      "core:loaded-shell-environment"
+    ],
+    "providedServices": {
+      "builder": {
+        "description": "Builds and audits Homebrew formulas",
+        "versions": {
+          "2.0.0": "provideBuilder"
+        }
+      }
+    },
+    "package-deps": [
+      [
+        {
+          "name": "buildium"
+        },
+        {
+          "name": "build"
+        }
+      ]
+    ],
+    "dependencies": {},
+    "devDependencies": {
+      "@atxm/developer-console": "^0.5.0",
+      "@babel/core": "^7.14.6",
+      "@babel/eslint-parser": "^7.14.7",
+      "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+      "atom-package-deps": "^7.2.3",
+      "atom-satisfy-dependencies": "^0.3.0",
+      "cross-env": "^7.0.3",
+      "esbuild": "^0.12.15",
+      "eslint": "^7.31.0",
+      "eslint-plugin-json": "^3.0.0",
+      "husky": ">=4 <5",
+      "lint-staged": "^11.0.1",
+      "log-symbols": "^5.0.0",
+      "npm-run-all": "^4.1.5",
+      "remark-cli": "^9.0.0",
+      "rimraf": "^3.0.2",
+      "which": "^2.0.2"
+    },
+    "scripts": {
+      "build": "node ./tools/build.mjs",
+      "clean": "rimraf ./lib",
+      "dev": "npm run start",
+      "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+      "lint:js": "eslint ./src --ignore-path .gitignore",
+      "lint": "npm-run-all --parallel lint:*",
+      "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+      "test": "npm run lint"
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+    },
+    "lint-staged": {
+      "*.js": "eslint --cache --fix"
+    },
+    "volta": {
+      "node": "14.17.0",
+      "yarn": "1.22.10"
+    }
+  }
+}

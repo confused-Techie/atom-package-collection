@@ -1,0 +1,108 @@
+{
+  "name": "pandoc-pdf",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/allefeld/atom-pandoc-pdf"
+  },
+  "downloads": 5791,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "0.1.3"
+  },
+  "versions": {
+    "0.1.3": {
+      "name": "pandoc-pdf",
+      "main": "./lib/pandoc-pdf",
+      "version": "0.1.3",
+      "description": "Use Pandoc to create a PDF from an Atom editor pane, and view it in another pane.",
+      "keywords": [
+        "Pandoc",
+        "PDF",
+        "Markdown"
+      ],
+      "repository": "https://github.com/allefeld/atom-pandoc-pdf",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "path": ">=0.12.7",
+        "temp": ">=0.9.1",
+        "fs-extra": ">=8.1.0 <9.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pandoc-pdf/versions/0.1.3/tarball"
+      }
+    },
+    "0.1.2": {
+      "name": "pandoc-pdf",
+      "main": "./lib/pandoc-pdf",
+      "version": "0.1.2",
+      "description": "Use Pandoc to create a PDF from an Atom editor pane, and view it in another pane.",
+      "keywords": [
+        "Pandoc",
+        "PDF",
+        "Markdown"
+      ],
+      "repository": "https://github.com/allefeld/atom-pandoc-pdf",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "path": ">=0.12.7",
+        "temp": ">=0.9.1",
+        "fs-extra": ">=8.1.0 <9.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pandoc-pdf/versions/0.1.2/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "pandoc-pdf",
+      "main": "./lib/pandoc-pdf",
+      "version": "0.1.0",
+      "description": "Use Pandoc to create a PDF from an Atom editor pane, and view it in another pane.",
+      "keywords": [
+        "Pandoc",
+        "PDF",
+        "Markdown"
+      ],
+      "repository": "https://github.com/allefeld/atom-pandoc-pdf",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "path": ">=0.12.7",
+        "temp": ">=0.9.1",
+        "fs-extra": ">=8.1.0 <9.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pandoc-pdf/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# Pandoc/PDF\n\nPandoc/PDF is a package for the [Atom editor](https://atom.io/) that makes it possible to use [Pandoc](https://pandoc.org/) directly from an editor pane to create a PDF, and to view that PDF in another Atom pane.\n\nIt is __not a preview__ package, because what you see is the final, high-quality PDF output.\n\n![](pandoc-pdf.gif)\n\nActivated by keyboard shortcut (default `Alt-P`) or menu item, Pandoc/PDF inserts a toolbar into the active editor, processes the document with Pandoc, and shows the resulting PDF. By default, the document is reprocessed every time it is saved, but that can be deactivated and reprocessing triggered instead with the keyboard shortcut or a toolbar button.\n\nPandoc/PDF supports all of Pandoc's text-based input formats, including Pandoc's Markdown, reStructuredText, Textile, MediaWiki & DokuWiki markup, and DocBook. It supports PDF generation via Pandoc's `latex`, `beamer`, `context`, `html`, and `ms` output formats.\n\n\n## Installation and prerequisites\n\nInstall from Atom's Settings/Install dialog (search for `pandoc-pdf`) or via `apm install pandoc-pdf`.\n\nPandoc needs to be installed. For full functionality, version 2.9.1 or later is necessary.\n\nAt least one PDF engine needs to be installed:\n\n-   Latexmk with pdfLaTeX, XeLaTeX, or LuaLaTeX (e.g. from [TeX Live](https://www.tug.org/texlive/) or [MiKTeX](https://miktex.org/about))\n-   ConTeXt with pdfTeX, XeTeX, or LuaTeX (e.g. from [TeX Live](https://www.tug.org/texlive/))\n-   [wkhtmltopdf](https://wkhtmltopdf.org/), [WeasyPrint](https://weasyprint.org/), or [Prince](https://www.princexml.com/)\n-   pdfroff (from [GNU troff](https://www.gnu.org/software/groff/))\n\nIf you choose Latexmk, see the Pandoc documentation for a [list of the LaTeX packages](https://pandoc.org/MANUAL.html#creating-a-pdf) needed by the default template.\n\nTo view the generated PDF within Atom, the [pdfjs-viewer](https://atom.io/packages/pdfjs-viewer) package is recommended, but [pdf-view-plus](https://atom.io/packages/pdf-view-plus) or [pdf-view](https://atom.io/packages/pdf-view) can be used, too.\n\nIf the input format is Pandoc's Markdown, using the [language-markdown](https://atom.io/packages/language-markdown) package with a supported syntax theme is recommended for writing, but this does not affect the functionality of Pandoc/PDF.\n\n\n## Settings\n\nPandoc/PDF has settings to choose the PDF engine, Pandoc template and defaults file, and configure input file extensions. For a detailed explanation, see the package settings dialog after installation.\n\n\n## Toolbar buttons\n\nThe toolbar contains the following buttons:\n\n##### ![](img/reversed-pilcrow.svg)   Process with Pandoc into PDF\n\nTriggers reprocessing with Pandoc. Processing occurs in the background, and Pandoc's log messages are shown in the \"Pandoc log messages\" dialog.\n\n##### ![](img/three-bars.svg)   Toggle Pandoc log messages\n\nToggles an overlay dialog with shows the Pandoc call including command line arguments, Pandoc's log messages, and its exit code. The icon is animated during processing, and changes color if warning or error messages are found. If Pandoc aborts processing with an error, the dialog opens automatically.\n\n##### ![](img/file-pdf.svg)   Save generated PDF\n\nPandoc generates the PDF file in a temporary directory along with other files, and opens it from there. This button allows to save the PDF to a user-chosen directory.\n\n##### ![](img/circuit-board.svg)   Open local defaults file in Atom\n\nRecent versions of Pandoc allow options to be specified in a YAML-format [\"Defaults\nFile\"](https://pandoc.org/MANUAL.html#default-files). Pandoc/PDF checks whether a file with the same name as the document but the extension `.yaml` is present in the document's directory, and if yes, passes it to Pandoc. This button creates/opens such a local defaults file in Atom.\n\n##### ![](img/file-directory.svg)   Show intermediate files generated by Pandoc\n\nOpens the temporary directory in the system file browser.\n\n##### ![](img/tools.svg)   Show Pandoc/PDF settings\n\nOpens the Pandoc/PDF package settings dialog.\n\n##### ![](img/question.svg)   Show Pandoc User's Guide\n\nOpens <https://pandoc.org/MANUAL.pdf> within Atom for quick reference. Note that only a subset of Pandoc's capabilities are relevant for Pandoc/PDF.\n\n---\n\nThis software is copyrighted &copy; 2020 by Carsten Allefeld and released under the terms of the MIT license.\n",
+  "metadata": {
+    "name": "pandoc-pdf",
+    "main": "./lib/pandoc-pdf",
+    "version": "0.1.3",
+    "description": "Use Pandoc to create a PDF from an Atom editor pane, and view it in another pane.",
+    "keywords": [
+      "Pandoc",
+      "PDF",
+      "Markdown"
+    ],
+    "repository": "https://github.com/allefeld/atom-pandoc-pdf",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "path": ">=0.12.7",
+      "temp": ">=0.9.1",
+      "fs-extra": ">=8.1.0 <9.0.0"
+    }
+  }
+}

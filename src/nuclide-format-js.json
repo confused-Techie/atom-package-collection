@@ -1,0 +1,2197 @@
+{
+  "name": "nuclide-format-js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/facebook-atom/nuclide-format-js"
+  },
+  "downloads": 315190,
+  "stargazers_count": 33,
+  "releases": {
+    "latest": "0.0.47"
+  },
+  "versions": {
+    "0.0.47": {
+      "name": "nuclide-format-js",
+      "version": "0.0.47",
+      "description": "A collection of codemods to help auto format javascript",
+      "keywords": [
+        "codemod",
+        "javascript",
+        "jscodeshift"
+      ],
+      "homepage": "https://nuclide.io/",
+      "license": "SEE LICENSE IN LICENSE",
+      "main": "./lib/index.js",
+      "repository": "https://github.com/facebook-atom/nuclide-format-js",
+      "scripts": {
+        "build": "yarn run clean && babel src --out-dir lib",
+        "clean": "rm -rf lib",
+        "lint": "flow check --show-all-errors && eslint .",
+        "test": "yarn run lint && jest",
+        "watch": "yarn run clean && babel src --out-dir lib --watch"
+      },
+      "dependencies": {
+        "jscodeshift": "^0.5.1",
+        "regenerator-runtime": "^0.10.5"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.24.1",
+        "babel-eslint": "6.1.2",
+        "babel-plugin-transform-inline-imports-commonjs": "1.2.0",
+        "babel-preset-env": "^1.5.2",
+        "babel-preset-flow": "^6.23.0",
+        "babel-preset-stage-2": "^6.24.1",
+        "eslint": "3.5.0",
+        "eslint-plugin-babel": "3.3.0",
+        "eslint-plugin-flowtype": "2.6.1",
+        "eslint-plugin-prefer-object-spread": "1.1.0",
+        "flow-bin": "^0.66.0",
+        "jest": "^20.0.4"
+      },
+      "engines": {
+        "atom": ">=1.10.2",
+        "node": ">=4.3.2"
+      },
+      "babel": {
+        "sourceMap": "inline",
+        "presets": [
+          "flow",
+          "env",
+          "stage-2"
+        ],
+        "plugins": [
+          [
+            "transform-inline-imports-commonjs",
+            {
+              "excludeModules": [
+                "atom"
+              ],
+              "excludeNodeBuiltins": true
+            }
+          ]
+        ]
+      },
+      "jest": {
+        "testEnvironment": "node",
+        "testPathIgnorePatterns": [
+          "__tests__/fixtures/"
+        ]
+      },
+      "providedServices": {
+        "organizeRequires": {
+          "versions": {
+            "0.0.1": "provideOrganizeRequires"
+          }
+        }
+      },
+      "configSchema": {
+        "useAsService": {
+          "title": "Use with Nuclide",
+          "description": "Allow Nuclide to provide different `cmd-shift-i` command using Language Server Protocol.",
+          "type": "boolean",
+          "default": true
+        },
+        "runOnSave": {
+          "title": "Run on save",
+          "description": "This setting is not recommended yet. Instead use the default keyboard shortcut, `cmd-shift-i`.",
+          "type": "boolean",
+          "default": false
+        },
+        "saveAfterRun": {
+          "title": "Save after run",
+          "description": "Save any changes the transform makes after it has run.",
+          "type": "boolean",
+          "default": false
+        },
+        "builtIns": {
+          "title": "Built-ins",
+          "description": "Requires will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "builtInTypes": {
+          "title": "Built-in Types",
+          "description": "Type imports will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "aliases": {
+          "title": "Aliases",
+          "description": "This is used to specify common aliases that you use. Each pair of entries should be in the format \"variableName, moduleName\".",
+          "type": "array",
+          "default": [
+            "Immutable",
+            "immutable",
+            "fbt",
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "confirmNoChangeSuccess": {
+          "title": "Confirm success",
+          "description": "Show a brief notification when the transform led to no changes.",
+          "type": "boolean",
+          "default": true
+        },
+        "moveCursorToSyntaxError": {
+          "title": "Move cursor to error",
+          "description": "Place the cursor at the location of the syntax error when the transform fails.",
+          "type": "boolean",
+          "default": true
+        },
+        "nuclideFixHeader": {
+          "title": "Nuclide: Fix Header",
+          "description": "This is used to fix the header when developing on Nuclide source code. This should rarely affect anything outside of Nuclide source.",
+          "type": "boolean",
+          "default": true
+        },
+        "jsxNonReactNames": {
+          "title": "React: Ignored JSX Tags",
+          "description": "These tags or namespaces do not require React to be required.",
+          "type": "array",
+          "default": [
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "jsxSuffix": {
+          "title": "React: Add module name suffix",
+          "description": "Attach the `.react` suffix to React component module names.",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresTransferComments": {
+          "title": "Requires: Transfer Comments",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedRequires": {
+          "title": "Requires: Remove Unused Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingRequires": {
+          "title": "Requires: Add Missing Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedTypes": {
+          "title": "Requires: Remove Unused Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingTypes": {
+          "title": "Requires: Add Missing Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresFormatRequires": {
+          "title": "Requires: Format Requires",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nuclide-format-js/versions/0.0.47/tarball"
+      }
+    },
+    "0.0.46": {
+      "name": "nuclide-format-js",
+      "version": "0.0.46",
+      "description": "A collection of codemods to help auto format javascript",
+      "keywords": [
+        "codemod",
+        "javascript",
+        "jscodeshift"
+      ],
+      "homepage": "https://nuclide.io/",
+      "license": "SEE LICENSE IN LICENSE",
+      "main": "./lib/index.js",
+      "repository": "https://github.com/facebook-atom/nuclide-format-js",
+      "scripts": {
+        "build": "yarn run clean && babel src --out-dir lib",
+        "clean": "rm -rf lib",
+        "lint": "flow check --show-all-errors && eslint .",
+        "test": "yarn run lint && jest",
+        "watch": "yarn run clean && babel src --out-dir lib --watch"
+      },
+      "dependencies": {
+        "jscodeshift": "^0.5.1",
+        "regenerator-runtime": "^0.10.5"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.24.1",
+        "babel-eslint": "6.1.2",
+        "babel-plugin-transform-inline-imports-commonjs": "1.2.0",
+        "babel-preset-env": "^1.5.2",
+        "babel-preset-flow": "^6.23.0",
+        "babel-preset-stage-2": "^6.24.1",
+        "eslint": "3.5.0",
+        "eslint-plugin-babel": "3.3.0",
+        "eslint-plugin-flowtype": "2.6.1",
+        "eslint-plugin-prefer-object-spread": "1.1.0",
+        "flow-bin": "^0.66.0",
+        "jest": "^20.0.4"
+      },
+      "engines": {
+        "atom": ">=1.10.2",
+        "node": ">=4.3.2"
+      },
+      "babel": {
+        "sourceMap": "inline",
+        "presets": [
+          "flow",
+          "env",
+          "stage-2"
+        ],
+        "plugins": [
+          [
+            "transform-inline-imports-commonjs",
+            {
+              "excludeModules": [
+                "atom"
+              ],
+              "excludeNodeBuiltins": true
+            }
+          ]
+        ]
+      },
+      "jest": {
+        "testEnvironment": "node",
+        "testPathIgnorePatterns": [
+          "__tests__/fixtures/"
+        ]
+      },
+      "providedServices": {
+        "organizeRequires": {
+          "versions": {
+            "0.0.1": "provideOrganizeRequires"
+          }
+        }
+      },
+      "configSchema": {
+        "useAsService": {
+          "title": "Use with Nuclide",
+          "description": "Allow Nuclide to provide different `cmd-shift-i` command using Language Server Protocol.",
+          "type": "boolean",
+          "default": true
+        },
+        "runOnSave": {
+          "title": "Run on save",
+          "description": "This setting is not recommended yet. Instead use the default keyboard shortcut, `cmd-shift-i`.",
+          "type": "boolean",
+          "default": false
+        },
+        "saveAfterRun": {
+          "title": "Save after run",
+          "description": "Save any changes the transform makes after it has run.",
+          "type": "boolean",
+          "default": false
+        },
+        "builtIns": {
+          "title": "Built-ins",
+          "description": "Requires will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "builtInTypes": {
+          "title": "Built-in Types",
+          "description": "Type imports will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "aliases": {
+          "title": "Aliases",
+          "description": "This is used to specify common aliases that you use. Each pair of entries should be in the format \"variableName, moduleName\".",
+          "type": "array",
+          "default": [
+            "Immutable",
+            "immutable",
+            "fbt",
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "confirmNoChangeSuccess": {
+          "title": "Confirm success",
+          "description": "Show a brief notification when the transform led to no changes.",
+          "type": "boolean",
+          "default": true
+        },
+        "moveCursorToSyntaxError": {
+          "title": "Move cursor to error",
+          "description": "Place the cursor at the location of the syntax error when the transform fails.",
+          "type": "boolean",
+          "default": true
+        },
+        "nuclideFixHeader": {
+          "title": "Nuclide: Fix Header",
+          "description": "This is used to fix the header when developing on Nuclide source code. This should rarely affect anything outside of Nuclide source.",
+          "type": "boolean",
+          "default": true
+        },
+        "jsxNonReactNames": {
+          "title": "React: Ignored JSX Tags",
+          "description": "These tags or namespaces do not require React to be required.",
+          "type": "array",
+          "default": [
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "jsxSuffix": {
+          "title": "React: Add module name suffix",
+          "description": "Attach the `.react` suffix to React component module names.",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresTransferComments": {
+          "title": "Requires: Transfer Comments",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedRequires": {
+          "title": "Requires: Remove Unused Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingRequires": {
+          "title": "Requires: Add Missing Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedTypes": {
+          "title": "Requires: Remove Unused Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingTypes": {
+          "title": "Requires: Add Missing Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresFormatRequires": {
+          "title": "Requires: Format Requires",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nuclide-format-js/versions/0.0.46/tarball"
+      }
+    },
+    "0.0.45": {
+      "name": "nuclide-format-js",
+      "version": "0.0.45",
+      "description": "A collection of codemods to help auto format javascript",
+      "keywords": [
+        "codemod",
+        "javascript",
+        "jscodeshift"
+      ],
+      "homepage": "https://nuclide.io/",
+      "license": "SEE LICENSE IN LICENSE",
+      "main": "./lib/index.js",
+      "repository": "https://github.com/facebook-atom/nuclide-format-js",
+      "scripts": {
+        "build": "yarn run clean && babel src --out-dir lib",
+        "clean": "rm -rf lib",
+        "lint": "flow check --show-all-errors && eslint .",
+        "test": "yarn run lint && jest",
+        "watch": "yarn run clean && babel src --out-dir lib --watch"
+      },
+      "dependencies": {
+        "jscodeshift": "^0.5.0",
+        "regenerator-runtime": "^0.10.5"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.24.1",
+        "babel-eslint": "6.1.2",
+        "babel-plugin-transform-inline-imports-commonjs": "1.2.0",
+        "babel-preset-env": "^1.5.2",
+        "babel-preset-flow": "^6.23.0",
+        "babel-preset-stage-2": "^6.24.1",
+        "eslint": "3.5.0",
+        "eslint-plugin-babel": "3.3.0",
+        "eslint-plugin-flowtype": "2.6.1",
+        "eslint-plugin-prefer-object-spread": "1.1.0",
+        "flow-bin": "^0.66.0",
+        "jest": "^20.0.4"
+      },
+      "engines": {
+        "atom": ">=1.10.2",
+        "node": ">=4.3.2"
+      },
+      "babel": {
+        "sourceMap": "inline",
+        "presets": [
+          "flow",
+          "env",
+          "stage-2"
+        ],
+        "plugins": [
+          [
+            "transform-inline-imports-commonjs",
+            {
+              "excludeModules": [
+                "atom"
+              ],
+              "excludeNodeBuiltins": true
+            }
+          ]
+        ]
+      },
+      "jest": {
+        "testEnvironment": "node",
+        "testPathIgnorePatterns": [
+          "__tests__/fixtures/"
+        ]
+      },
+      "providedServices": {
+        "organizeRequires": {
+          "versions": {
+            "0.0.1": "provideOrganizeRequires"
+          }
+        }
+      },
+      "configSchema": {
+        "useAsService": {
+          "title": "Use with Nuclide",
+          "description": "Allow Nuclide to provide different `cmd-shift-i` command using Language Server Protocol.",
+          "type": "boolean",
+          "default": true
+        },
+        "runOnSave": {
+          "title": "Run on save",
+          "description": "This setting is not recommended yet. Instead use the default keyboard shortcut, `cmd-shift-i`.",
+          "type": "boolean",
+          "default": false
+        },
+        "saveAfterRun": {
+          "title": "Save after run",
+          "description": "Save any changes the transform makes after it has run.",
+          "type": "boolean",
+          "default": false
+        },
+        "builtIns": {
+          "title": "Built-ins",
+          "description": "Requires will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "builtInTypes": {
+          "title": "Built-in Types",
+          "description": "Type imports will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "aliases": {
+          "title": "Aliases",
+          "description": "This is used to specify common aliases that you use. Each pair of entries should be in the format \"variableName, moduleName\".",
+          "type": "array",
+          "default": [
+            "Immutable",
+            "immutable",
+            "fbt",
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "confirmNoChangeSuccess": {
+          "title": "Confirm success",
+          "description": "Show a brief notification when the transform led to no changes.",
+          "type": "boolean",
+          "default": true
+        },
+        "moveCursorToSyntaxError": {
+          "title": "Move cursor to error",
+          "description": "Place the cursor at the location of the syntax error when the transform fails.",
+          "type": "boolean",
+          "default": true
+        },
+        "nuclideFixHeader": {
+          "title": "Nuclide: Fix Header",
+          "description": "This is used to fix the header when developing on Nuclide source code. This should rarely affect anything outside of Nuclide source.",
+          "type": "boolean",
+          "default": true
+        },
+        "jsxNonReactNames": {
+          "title": "React: Ignored JSX Tags",
+          "description": "These tags or namespaces do not require React to be required.",
+          "type": "array",
+          "default": [
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "jsxSuffix": {
+          "title": "React: Add module name suffix",
+          "description": "Attach the `.react` suffix to React component module names.",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresTransferComments": {
+          "title": "Requires: Transfer Comments",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedRequires": {
+          "title": "Requires: Remove Unused Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingRequires": {
+          "title": "Requires: Add Missing Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedTypes": {
+          "title": "Requires: Remove Unused Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingTypes": {
+          "title": "Requires: Add Missing Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresFormatRequires": {
+          "title": "Requires: Format Requires",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nuclide-format-js/versions/0.0.45/tarball"
+      }
+    },
+    "0.0.44": {
+      "name": "nuclide-format-js",
+      "version": "0.0.44",
+      "description": "A collection of codemods to help auto format javascript",
+      "keywords": [
+        "codemod",
+        "javascript",
+        "jscodeshift"
+      ],
+      "homepage": "https://nuclide.io/",
+      "license": "SEE LICENSE IN LICENSE",
+      "main": "./lib/index.js",
+      "repository": "https://github.com/facebook-atom/nuclide-format-js",
+      "scripts": {
+        "build": "yarn run clean && babel src --out-dir lib",
+        "clean": "rm -rf lib",
+        "lint": "flow check --show-all-errors && eslint .",
+        "test": "yarn run lint && jest",
+        "watch": "yarn run clean && babel src --out-dir lib --watch"
+      },
+      "dependencies": {
+        "jscodeshift": "^0.3.31",
+        "regenerator-runtime": "^0.10.5"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.24.1",
+        "babel-eslint": "6.1.2",
+        "babel-plugin-transform-inline-imports-commonjs": "1.2.0",
+        "babel-preset-env": "^1.5.2",
+        "babel-preset-flow": "^6.23.0",
+        "babel-preset-stage-2": "^6.24.1",
+        "eslint": "3.5.0",
+        "eslint-plugin-babel": "3.3.0",
+        "eslint-plugin-flowtype": "2.6.1",
+        "eslint-plugin-prefer-object-spread": "1.1.0",
+        "flow-bin": "^0.57.2",
+        "jest": "^20.0.4"
+      },
+      "engines": {
+        "atom": ">=1.10.2",
+        "node": ">=4.3.2"
+      },
+      "babel": {
+        "sourceMap": "inline",
+        "presets": [
+          "flow",
+          "env",
+          "stage-2"
+        ],
+        "plugins": [
+          [
+            "transform-inline-imports-commonjs",
+            {
+              "excludeModules": [
+                "atom"
+              ],
+              "excludeNodeBuiltins": true
+            }
+          ]
+        ]
+      },
+      "jest": {
+        "testEnvironment": "node",
+        "testPathIgnorePatterns": [
+          "__tests__/fixtures/"
+        ]
+      },
+      "providedServices": {
+        "organizeRequires": {
+          "versions": {
+            "0.0.1": "provideOrganizeRequires"
+          }
+        }
+      },
+      "configSchema": {
+        "useAsService": {
+          "title": "Use with Nuclide",
+          "description": "Allow Nuclide to provide different `cmd-shift-i` command using Language Server Protocol.",
+          "type": "boolean",
+          "default": true
+        },
+        "runOnSave": {
+          "title": "Run on save",
+          "description": "This setting is not recommended yet. Instead use the default keyboard shortcut, `cmd-shift-i`.",
+          "type": "boolean",
+          "default": false
+        },
+        "saveAfterRun": {
+          "title": "Save after run",
+          "description": "Save any changes the transform makes after it has run.",
+          "type": "boolean",
+          "default": false
+        },
+        "builtIns": {
+          "title": "Built-ins",
+          "description": "Requires will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "builtInTypes": {
+          "title": "Built-in Types",
+          "description": "Type imports will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "aliases": {
+          "title": "Aliases",
+          "description": "This is used to specify common aliases that you use. Each pair of entries should be in the format \"variableName, moduleName\".",
+          "type": "array",
+          "default": [
+            "Immutable",
+            "immutable",
+            "fbt",
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "confirmNoChangeSuccess": {
+          "title": "Confirm success",
+          "description": "Show a brief notification when the transform led to no changes.",
+          "type": "boolean",
+          "default": true
+        },
+        "moveCursorToSyntaxError": {
+          "title": "Move cursor to error",
+          "description": "Place the cursor at the location of the syntax error when the transform fails.",
+          "type": "boolean",
+          "default": true
+        },
+        "nuclideFixHeader": {
+          "title": "Nuclide: Fix Header",
+          "description": "This is used to fix the header when developing on Nuclide source code. This should rarely affect anything outside of Nuclide source.",
+          "type": "boolean",
+          "default": true
+        },
+        "jsxNonReactNames": {
+          "title": "React: Ignored JSX Tags",
+          "description": "These tags or namespaces do not require React to be required.",
+          "type": "array",
+          "default": [
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "jsxSuffix": {
+          "title": "React: Add module name suffix",
+          "description": "Attach the `.react` suffix to React component module names.",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresTransferComments": {
+          "title": "Requires: Transfer Comments",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedRequires": {
+          "title": "Requires: Remove Unused Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingRequires": {
+          "title": "Requires: Add Missing Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedTypes": {
+          "title": "Requires: Remove Unused Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingTypes": {
+          "title": "Requires: Add Missing Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresFormatRequires": {
+          "title": "Requires: Format Requires",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nuclide-format-js/versions/0.0.44/tarball"
+      }
+    },
+    "0.0.43": {
+      "name": "nuclide-format-js",
+      "version": "0.0.43",
+      "description": "A collection of codemods to help auto format javascript",
+      "keywords": [
+        "codemod",
+        "javascript",
+        "jscodeshift"
+      ],
+      "homepage": "https://nuclide.io/",
+      "license": "SEE LICENSE IN LICENSE",
+      "main": "./lib/index.js",
+      "repository": "https://github.com/facebook-atom/nuclide-format-js",
+      "scripts": {
+        "build": "yarn run clean && babel src --out-dir lib",
+        "clean": "rm -rf lib",
+        "lint": "flow check --show-all-errors && eslint .",
+        "test": "yarn run lint && jest",
+        "watch": "yarn run clean && babel src --out-dir lib --watch"
+      },
+      "dependencies": {
+        "jscodeshift": "^0.3.31",
+        "regenerator-runtime": "^0.10.5"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.24.1",
+        "babel-eslint": "6.1.2",
+        "babel-plugin-transform-inline-imports-commonjs": "1.2.0",
+        "babel-preset-env": "^1.5.2",
+        "babel-preset-flow": "^6.23.0",
+        "babel-preset-stage-2": "^6.24.1",
+        "eslint": "3.5.0",
+        "eslint-plugin-babel": "3.3.0",
+        "eslint-plugin-flowtype": "2.6.1",
+        "eslint-plugin-prefer-object-spread": "1.1.0",
+        "flow-bin": "^0.57.2",
+        "jest": "^20.0.4"
+      },
+      "engines": {
+        "atom": ">=1.10.2",
+        "node": ">=4.3.2"
+      },
+      "babel": {
+        "sourceMap": "inline",
+        "presets": [
+          "flow",
+          "env",
+          "stage-2"
+        ],
+        "plugins": [
+          [
+            "transform-inline-imports-commonjs",
+            {
+              "excludeModules": [
+                "atom"
+              ],
+              "excludeNodeBuiltins": true
+            }
+          ]
+        ]
+      },
+      "jest": {
+        "testEnvironment": "node",
+        "testPathIgnorePatterns": [
+          "__tests__/fixtures/"
+        ]
+      },
+      "providedServices": {
+        "organizeRequires": {
+          "versions": {
+            "0.0.1": "provideOrganizeRequires"
+          }
+        }
+      },
+      "configSchema": {
+        "useAsService": {
+          "title": "Use with Nuclide",
+          "description": "Allow Nuclide to provide different `cmd-shift-i` command using Language Server Protocol.",
+          "type": "boolean",
+          "default": true
+        },
+        "runOnSave": {
+          "title": "Run on save",
+          "description": "This setting is not recommended yet. Instead use the default keyboard shortcut, `cmd-shift-i`.",
+          "type": "boolean",
+          "default": false
+        },
+        "saveAfterRun": {
+          "title": "Save after run",
+          "description": "Save any changes the transform makes after it has run.",
+          "type": "boolean",
+          "default": false
+        },
+        "builtIns": {
+          "title": "Built-ins",
+          "description": "Requires will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "builtInTypes": {
+          "title": "Built-in Types",
+          "description": "Type imports will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "aliases": {
+          "title": "Aliases",
+          "description": "This is used to specify common aliases that you use. Each pair of entries should be in the format \"variableName, moduleName\".",
+          "type": "array",
+          "default": [
+            "Immutable",
+            "immutable",
+            "fbt",
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "confirmNoChangeSuccess": {
+          "title": "Confirm success",
+          "description": "Show a brief notification when the transform led to no changes.",
+          "type": "boolean",
+          "default": true
+        },
+        "moveCursorToSyntaxError": {
+          "title": "Move cursor to error",
+          "description": "Place the cursor at the location of the syntax error when the transform fails.",
+          "type": "boolean",
+          "default": true
+        },
+        "nuclideFixHeader": {
+          "title": "Nuclide: Fix Header",
+          "description": "This is used to fix the header when developing on Nuclide source code. This should rarely affect anything outside of Nuclide source.",
+          "type": "boolean",
+          "default": true
+        },
+        "jsxNonReactNames": {
+          "title": "React: Ignored JSX Tags",
+          "description": "These tags or namespaces do not require React to be required.",
+          "type": "array",
+          "default": [
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "jsxSuffix": {
+          "title": "React: Add module name suffix",
+          "description": "Attach the `.react` suffix to React component module names.",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresTransferComments": {
+          "title": "Requires: Transfer Comments",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedRequires": {
+          "title": "Requires: Remove Unused Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingRequires": {
+          "title": "Requires: Add Missing Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedTypes": {
+          "title": "Requires: Remove Unused Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingTypes": {
+          "title": "Requires: Add Missing Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresFormatRequires": {
+          "title": "Requires: Format Requires",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nuclide-format-js/versions/0.0.43/tarball"
+      }
+    },
+    "0.0.42": {
+      "name": "nuclide-format-js",
+      "version": "0.0.42",
+      "description": "A collection of codemods to help auto format javascript",
+      "keywords": [
+        "codemod",
+        "javascript",
+        "jscodeshift"
+      ],
+      "homepage": "https://nuclide.io/",
+      "license": "SEE LICENSE IN LICENSE",
+      "main": "./lib/index.js",
+      "repository": "https://github.com/facebooknuclide/nuclide-format-js",
+      "scripts": {
+        "build": "yarn run clean && babel src --out-dir lib",
+        "clean": "rm -rf lib",
+        "lint": "flow check --show-all-errors && eslint .",
+        "test": "yarn run lint && jest",
+        "watch": "yarn run clean && babel src --out-dir lib --watch"
+      },
+      "dependencies": {
+        "jscodeshift": "^0.3.31",
+        "regenerator-runtime": "^0.10.5"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.24.1",
+        "babel-eslint": "6.1.2",
+        "babel-preset-env": "^1.5.2",
+        "babel-preset-flow": "^6.23.0",
+        "babel-preset-stage-2": "^6.24.1",
+        "eslint": "3.5.0",
+        "eslint-plugin-babel": "3.3.0",
+        "eslint-plugin-flowtype": "2.6.1",
+        "eslint-plugin-prefer-object-spread": "1.1.0",
+        "flow-bin": "^0.57.2",
+        "jest": "^20.0.4"
+      },
+      "engines": {
+        "atom": ">=1.10.2",
+        "node": ">=4.3.2"
+      },
+      "babel": {
+        "sourceMap": "inline",
+        "presets": [
+          "flow",
+          "env",
+          "stage-2"
+        ]
+      },
+      "jest": {
+        "testEnvironment": "node",
+        "testPathIgnorePatterns": [
+          "__tests__/fixtures/"
+        ]
+      },
+      "providedServices": {
+        "organizeRequires": {
+          "versions": {
+            "0.0.1": "provideOrganizeRequires"
+          }
+        }
+      },
+      "configSchema": {
+        "useAsService": {
+          "title": "Use with Nuclide",
+          "description": "Allow Nuclide to provide different `cmd-shift-i` command using Language Server Protocol.",
+          "type": "boolean",
+          "default": true
+        },
+        "runOnSave": {
+          "title": "Run on save",
+          "description": "This setting is not recommended yet. Instead use the default keyboard shortcut, `cmd-shift-i`.",
+          "type": "boolean",
+          "default": false
+        },
+        "saveAfterRun": {
+          "title": "Save after run",
+          "description": "Save any changes the transform makes after it has run.",
+          "type": "boolean",
+          "default": false
+        },
+        "builtIns": {
+          "title": "Built-ins",
+          "description": "Requires will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "builtInTypes": {
+          "title": "Built-in Types",
+          "description": "Type imports will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "aliases": {
+          "title": "Aliases",
+          "description": "This is used to specify common aliases that you use. Each pair of entries should be in the format \"variableName, moduleName\".",
+          "type": "array",
+          "default": [
+            "Immutable",
+            "immutable",
+            "fbt",
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "confirmNoChangeSuccess": {
+          "title": "Confirm success",
+          "description": "Show a brief notification when the transform led to no changes.",
+          "type": "boolean",
+          "default": true
+        },
+        "moveCursorToSyntaxError": {
+          "title": "Move cursor to error",
+          "description": "Place the cursor at the location of the syntax error when the transform fails.",
+          "type": "boolean",
+          "default": true
+        },
+        "nuclideFixHeader": {
+          "title": "Nuclide: Fix Header",
+          "description": "This is used to fix the header when developing on Nuclide source code. This should rarely affect anything outside of Nuclide source.",
+          "type": "boolean",
+          "default": true
+        },
+        "jsxNonReactNames": {
+          "title": "React: Ignored JSX Tags",
+          "description": "These tags or namespaces do not require React to be required.",
+          "type": "array",
+          "default": [
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "jsxSuffix": {
+          "title": "React: Add module name suffix",
+          "description": "Attach the `.react` suffix to React component module names.",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresTransferComments": {
+          "title": "Requires: Transfer Comments",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedRequires": {
+          "title": "Requires: Remove Unused Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingRequires": {
+          "title": "Requires: Add Missing Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedTypes": {
+          "title": "Requires: Remove Unused Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingTypes": {
+          "title": "Requires: Add Missing Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresFormatRequires": {
+          "title": "Requires: Format Requires",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nuclide-format-js/versions/0.0.42/tarball"
+      }
+    },
+    "0.0.41": {
+      "name": "nuclide-format-js",
+      "version": "0.0.41",
+      "description": "A collection of codemods to help auto format javascript",
+      "keywords": [
+        "codemod",
+        "javascript",
+        "jscodeshift"
+      ],
+      "homepage": "https://nuclide.io/",
+      "license": "SEE LICENSE IN LICENSE",
+      "main": "./lib/index.js",
+      "repository": "https://github.com/facebooknuclide/nuclide-format-js",
+      "scripts": {
+        "build": "yarn run clean && babel src --out-dir lib",
+        "clean": "rm -rf lib",
+        "lint": "flow check --show-all-errors && eslint .",
+        "test": "yarn run lint && jest",
+        "watch": "yarn run clean && babel src --out-dir lib --watch"
+      },
+      "dependencies": {
+        "jscodeshift": "^0.3.31",
+        "regenerator-runtime": "^0.10.5"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.24.1",
+        "babel-eslint": "6.1.2",
+        "babel-preset-env": "^1.5.2",
+        "babel-preset-flow": "^6.23.0",
+        "babel-preset-stage-2": "^6.24.1",
+        "eslint": "3.5.0",
+        "eslint-plugin-babel": "3.3.0",
+        "eslint-plugin-flowtype": "2.6.1",
+        "eslint-plugin-prefer-object-spread": "1.1.0",
+        "flow-bin": "^0.49.1",
+        "jest": "^20.0.4"
+      },
+      "engines": {
+        "atom": ">=1.10.2",
+        "node": ">=5.10.0"
+      },
+      "babel": {
+        "sourceMap": "inline",
+        "presets": [
+          "flow",
+          "env",
+          "stage-2"
+        ]
+      },
+      "jest": {
+        "testEnvironment": "node",
+        "testPathIgnorePatterns": [
+          "__tests__/fixtures/"
+        ]
+      },
+      "activationCommands": {
+        "atom-text-editor": "nuclide-format-js:organize-requires"
+      },
+      "configSchema": {
+        "runOnSave": {
+          "title": "Run on save",
+          "description": "This setting is not recommended yet. Instead use the default keyboard shortcut, `cmd-shift-i`.",
+          "type": "boolean",
+          "default": false
+        },
+        "saveAfterRun": {
+          "title": "Save after run",
+          "description": "Save any changes the transform makes after it has run.",
+          "type": "boolean",
+          "default": false
+        },
+        "builtIns": {
+          "title": "Built-ins",
+          "description": "Requires will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "builtInTypes": {
+          "title": "Built-in Types",
+          "description": "Type imports will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "aliases": {
+          "title": "Aliases",
+          "description": "This is used to specify common aliases that you use. Each pair of entries should be in the format \"variableName, moduleName\".",
+          "type": "array",
+          "default": [
+            "Immutable",
+            "immutable",
+            "fbt",
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "confirmNoChangeSuccess": {
+          "title": "Confirm success",
+          "description": "Show a brief notification when the transform led to no changes.",
+          "type": "boolean",
+          "default": true
+        },
+        "moveCursorToSyntaxError": {
+          "title": "Move cursor to error",
+          "description": "Place the cursor at the location of the syntax error when the transform fails.",
+          "type": "boolean",
+          "default": true
+        },
+        "nuclideFixHeader": {
+          "title": "Nuclide: Fix Header",
+          "description": "This is used to fix the header when developing on Nuclide source code. This should rarely affect anything outside of Nuclide source.",
+          "type": "boolean",
+          "default": true
+        },
+        "jsxNonReactNames": {
+          "title": "React: Ignored JSX Tags",
+          "description": "These tags or namespaces do not require React to be required.",
+          "type": "array",
+          "default": [
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "jsxSuffix": {
+          "title": "React: Add module name suffix",
+          "description": "Attach the `.react` suffix to React component module names.",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresTransferComments": {
+          "title": "Requires: Transfer Comments",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedRequires": {
+          "title": "Requires: Remove Unused Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingRequires": {
+          "title": "Requires: Add Missing Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedTypes": {
+          "title": "Requires: Remove Unused Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingTypes": {
+          "title": "Requires: Add Missing Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresFormatRequires": {
+          "title": "Requires: Format Requires",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nuclide-format-js/versions/0.0.41/tarball"
+      }
+    },
+    "0.0.40": {
+      "name": "nuclide-format-js",
+      "version": "0.0.40",
+      "description": "A collection of codemods to help auto format javascript",
+      "keywords": [
+        "codemod",
+        "javascript",
+        "jscodeshift"
+      ],
+      "homepage": "https://nuclide.io/",
+      "license": "SEE LICENSE IN LICENSE",
+      "main": "./lib/index.js",
+      "repository": "https://github.com/facebooknuclide/nuclide-format-js",
+      "scripts": {
+        "build": "yarn run clean && babel src --out-dir lib",
+        "clean": "rm -rf lib",
+        "lint": "flow check --show-all-errors && eslint .",
+        "test": "yarn run lint && jest",
+        "watch": "yarn run clean && babel src --out-dir lib --watch"
+      },
+      "dependencies": {
+        "jscodeshift": "^0.3.31",
+        "regenerator-runtime": "^0.10.5"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.24.1",
+        "babel-eslint": "6.1.2",
+        "babel-preset-env": "^1.5.2",
+        "babel-preset-flow": "^6.23.0",
+        "babel-preset-stage-2": "^6.24.1",
+        "eslint": "3.5.0",
+        "eslint-plugin-babel": "3.3.0",
+        "eslint-plugin-flowtype": "2.6.1",
+        "eslint-plugin-prefer-object-spread": "1.1.0",
+        "flow-bin": "^0.49.1",
+        "jest": "^20.0.4"
+      },
+      "engines": {
+        "atom": ">=1.10.2",
+        "node": ">=5.10.0"
+      },
+      "babel": {
+        "sourceMap": "inline",
+        "presets": [
+          "flow",
+          "env",
+          "stage-2"
+        ]
+      },
+      "jest": {
+        "testEnvironment": "node",
+        "testPathIgnorePatterns": [
+          "__tests__/fixtures/"
+        ]
+      },
+      "activationCommands": {
+        "atom-text-editor": "nuclide-format-js:format"
+      },
+      "configSchema": {
+        "runOnSave": {
+          "title": "Run on save",
+          "description": "This setting is not recommended yet. Instead use the default keyboard shortcut, `cmd-shift-i`.",
+          "type": "boolean",
+          "default": false
+        },
+        "saveAfterRun": {
+          "title": "Save after run",
+          "description": "Save any changes the transform makes after it has run.",
+          "type": "boolean",
+          "default": false
+        },
+        "builtIns": {
+          "title": "Built-ins",
+          "description": "Requires will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "builtInTypes": {
+          "title": "Built-in Types",
+          "description": "Type imports will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "aliases": {
+          "title": "Aliases",
+          "description": "This is used to specify common aliases that you use. Each pair of entries should be in the format \"variableName, moduleName\".",
+          "type": "array",
+          "default": [
+            "Immutable",
+            "immutable",
+            "fbt",
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "confirmNoChangeSuccess": {
+          "title": "Confirm success",
+          "description": "Show a brief notification when the transform led to no changes.",
+          "type": "boolean",
+          "default": true
+        },
+        "moveCursorToSyntaxError": {
+          "title": "Move cursor to error",
+          "description": "Place the cursor at the location of the syntax error when the transform fails.",
+          "type": "boolean",
+          "default": true
+        },
+        "nuclideFixHeader": {
+          "title": "Nuclide: Fix Header",
+          "description": "This is used to fix the header when developing on Nuclide source code. This should rarely affect anything outside of Nuclide source.",
+          "type": "boolean",
+          "default": true
+        },
+        "jsxNonReactNames": {
+          "title": "React: Ignored JSX Tags",
+          "description": "These tags or namespaces do not require React to be required.",
+          "type": "array",
+          "default": [
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "jsxSuffix": {
+          "title": "React: Add module name suffix",
+          "description": "Attach the `.react` suffix to React component module names.",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresTransferComments": {
+          "title": "Requires: Transfer Comments",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedRequires": {
+          "title": "Requires: Remove Unused Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingRequires": {
+          "title": "Requires: Add Missing Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedTypes": {
+          "title": "Requires: Remove Unused Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingTypes": {
+          "title": "Requires: Add Missing Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresFormatRequires": {
+          "title": "Requires: Format Requires",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nuclide-format-js/versions/0.0.40/tarball"
+      }
+    },
+    "0.0.39": {
+      "name": "nuclide-format-js",
+      "version": "0.0.39",
+      "description": "A collection of codemods to help auto format javascript",
+      "keywords": [
+        "codemod",
+        "javascript",
+        "jscodeshift"
+      ],
+      "homepage": "https://nuclide.io/",
+      "license": "SEE LICENSE IN LICENSE",
+      "main": "./lib/index.js",
+      "repository": "https://github.com/facebooknuclide/nuclide-format-js",
+      "scripts": {
+        "build": "yarn run clean && babel src --out-dir lib",
+        "clean": "rm -rf lib",
+        "lint": "flow check --show-all-errors && eslint .",
+        "test": "yarn run lint && jest",
+        "watch": "yarn run clean && babel src --out-dir lib --watch"
+      },
+      "dependencies": {
+        "jscodeshift": "^0.3.31",
+        "regenerator-runtime": "^0.10.5"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.24.1",
+        "babel-eslint": "6.1.2",
+        "babel-preset-env": "^1.5.2",
+        "babel-preset-flow": "^6.23.0",
+        "babel-preset-stage-2": "^6.24.1",
+        "eslint": "3.5.0",
+        "eslint-plugin-babel": "3.3.0",
+        "eslint-plugin-flowtype": "2.6.1",
+        "eslint-plugin-prefer-object-spread": "1.1.0",
+        "flow-bin": "^0.49.1",
+        "jest": "^20.0.4"
+      },
+      "engines": {
+        "atom": ">=1.10.2",
+        "node": ">=5.10.0"
+      },
+      "babel": {
+        "sourceMap": "inline",
+        "presets": [
+          "flow",
+          "env",
+          "stage-2"
+        ]
+      },
+      "jest": {
+        "testEnvironment": "node",
+        "testPathIgnorePatterns": [
+          "__tests__/fixtures/"
+        ]
+      },
+      "activationCommands": {
+        "atom-text-editor": "nuclide-format-js:format"
+      },
+      "configSchema": {
+        "runOnSave": {
+          "title": "Run on save",
+          "description": "This setting is not recommended yet. Instead use the default keyboard shortcut, `cmd-shift-i`.",
+          "type": "boolean",
+          "default": false
+        },
+        "saveAfterRun": {
+          "title": "Save after run",
+          "description": "Save any changes the transform makes after it has run.",
+          "type": "boolean",
+          "default": false
+        },
+        "builtIns": {
+          "title": "Built-ins",
+          "description": "Requires will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "builtInTypes": {
+          "title": "Built-in Types",
+          "description": "Type imports will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "aliases": {
+          "title": "Aliases",
+          "description": "This is used to specify common aliases that you use. Each pair of entries should be in the format \"variableName, moduleName\".",
+          "type": "array",
+          "default": [
+            "Immutable",
+            "immutable",
+            "fbt",
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "confirmNoChangeSuccess": {
+          "title": "Confirm success",
+          "description": "Show a brief notification when the transform led to no changes.",
+          "type": "boolean",
+          "default": true
+        },
+        "moveCursorToSyntaxError": {
+          "title": "Move cursor to error",
+          "description": "Place the cursor at the location of the syntax error when the transform fails.",
+          "type": "boolean",
+          "default": true
+        },
+        "nuclideFixHeader": {
+          "title": "Nuclide: Fix Header",
+          "description": "This is used to fix the header when developing on Nuclide source code. This should rarely affect anything outside of Nuclide source.",
+          "type": "boolean",
+          "default": true
+        },
+        "jsxNonReactNames": {
+          "title": "React: Ignored JSX Tags",
+          "description": "These tags or namespaces do not require React to be required.",
+          "type": "array",
+          "default": [
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "jsxSuffix": {
+          "title": "React: Add module name suffix",
+          "description": "Attach the `.react` suffix to React component module names.",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresTransferComments": {
+          "title": "Requires: Transfer Comments",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedRequires": {
+          "title": "Requires: Remove Unused Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingRequires": {
+          "title": "Requires: Add Missing Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedTypes": {
+          "title": "Requires: Remove Unused Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingTypes": {
+          "title": "Requires: Add Missing Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresFormatRequires": {
+          "title": "Requires: Format Requires",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nuclide-format-js/versions/0.0.39/tarball"
+      }
+    },
+    "0.0.37": {
+      "name": "nuclide-format-js",
+      "version": "0.0.37",
+      "description": "A collection of codemods to help auto format javascript",
+      "keywords": [
+        "codemod",
+        "javascript",
+        "jscodeshift"
+      ],
+      "homepage": "https://nuclide.io/",
+      "license": "SEE LICENSE IN LICENSE",
+      "main": "./lib/index.js",
+      "repository": "https://github.com/facebooknuclide/nuclide-format-js",
+      "scripts": {
+        "build": "yarn run clean && babel src --out-dir lib",
+        "clean": "rm -rf lib",
+        "lint": "flow check --show-all-errors && eslint .",
+        "test": "yarn run lint && jest",
+        "watch": "yarn run clean && babel src --out-dir lib --watch"
+      },
+      "dependencies": {
+        "jscodeshift": "^0.3.31",
+        "regenerator-runtime": "^0.10.5"
+      },
+      "devDependencies": {
+        "babel-cli": "^6.24.1",
+        "babel-eslint": "6.1.2",
+        "babel-preset-env": "^1.5.2",
+        "babel-preset-flow": "^6.23.0",
+        "babel-preset-stage-2": "^6.24.1",
+        "eslint": "3.5.0",
+        "eslint-plugin-babel": "3.3.0",
+        "eslint-plugin-flowtype": "2.6.1",
+        "eslint-plugin-prefer-object-spread": "1.1.0",
+        "flow-bin": "^0.49.1",
+        "jest": "^20.0.4"
+      },
+      "engines": {
+        "atom": ">=1.10.2",
+        "node": ">=5.10.0"
+      },
+      "babel": {
+        "sourceMap": "inline",
+        "presets": [
+          "flow",
+          "env",
+          "stage-2"
+        ]
+      },
+      "jest": {
+        "testEnvironment": "node",
+        "testPathIgnorePatterns": [
+          "__tests__/fixtures/"
+        ]
+      },
+      "activationCommands": {
+        "atom-text-editor": "nuclide-format-js:format"
+      },
+      "configSchema": {
+        "runOnSave": {
+          "title": "Run on save",
+          "description": "This setting is not recommended yet. Instead use the default keyboard shortcut, `cmd-shift-i`.",
+          "type": "boolean",
+          "default": false
+        },
+        "saveAfterRun": {
+          "title": "Save after run",
+          "description": "Save any changes the transform makes after it has run.",
+          "type": "boolean",
+          "default": false
+        },
+        "builtIns": {
+          "title": "Built-ins",
+          "description": "Requires will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "builtInTypes": {
+          "title": "Built-in Types",
+          "description": "Type imports will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "aliases": {
+          "title": "Aliases",
+          "description": "This is used to specify common aliases that you use. Each pair of entries should be in the format \"variableName, moduleName\".",
+          "type": "array",
+          "default": [
+            "Immutable",
+            "immutable",
+            "fbt",
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "confirmNoChangeSuccess": {
+          "title": "Confirm success",
+          "description": "Show a brief notification when the transform led to no changes.",
+          "type": "boolean",
+          "default": true
+        },
+        "moveCursorToSyntaxError": {
+          "title": "Move cursor to error",
+          "description": "Place the cursor at the location of the syntax error when the transform fails.",
+          "type": "boolean",
+          "default": true
+        },
+        "nuclideFixHeader": {
+          "title": "Nuclide: Fix Header",
+          "description": "This is used to fix the header when developing on Nuclide source code. This should rarely affect anything outside of Nuclide source.",
+          "type": "boolean",
+          "default": true
+        },
+        "jsxNonReactNames": {
+          "title": "React: Ignored JSX Tags",
+          "description": "These tags or namespaces do not require React to be required.",
+          "type": "array",
+          "default": [
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "jsxSuffix": {
+          "title": "React: Add module name suffix",
+          "description": "Attach the `.react` suffix to React component module names.",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresTransferComments": {
+          "title": "Requires: Transfer Comments",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedRequires": {
+          "title": "Requires: Remove Unused Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingRequires": {
+          "title": "Requires: Add Missing Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedTypes": {
+          "title": "Requires: Remove Unused Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingTypes": {
+          "title": "Requires: Add Missing Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresFormatRequires": {
+          "title": "Requires: Format Requires",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nuclide-format-js/versions/0.0.37/tarball"
+      }
+    },
+    "0.0.36": {
+      "name": "nuclide-format-js",
+      "version": "0.0.36",
+      "description": "A collection of codemods to help auto format javascript",
+      "keywords": [
+        "codemod",
+        "javascript",
+        "jscodeshift"
+      ],
+      "homepage": "https://nuclide.io/",
+      "license": "SEE LICENSE IN LICENSE",
+      "main": "./lib/index.js",
+      "repository": "https://github.com/facebooknuclide/nuclide-format-js",
+      "scripts": {
+        "build": "npm run clean && babel src --out-dir lib",
+        "clean": "rm -rf lib",
+        "lint": "flow check --show-all-errors && eslint .",
+        "test": "npm run lint && jest",
+        "watch": "npm run clean && babel src --out-dir lib --watch"
+      },
+      "dependencies": {
+        "babel-core": "5.8.38",
+        "immutable": "3.7.6",
+        "jscodeshift": "0.3.20"
+      },
+      "devDependencies": {
+        "ast-types-flow": "0.0.7",
+        "babel": "5.8.38",
+        "babel-eslint": "6.1.2",
+        "eslint": "3.5.0",
+        "eslint-plugin-babel": "3.3.0",
+        "eslint-plugin-flowtype": "2.6.1",
+        "eslint-plugin-prefer-object-spread": "1.1.0",
+        "flow-bin": "0.32.0",
+        "jest": "15.1.1"
+      },
+      "engines": {
+        "atom": ">=1.10.2",
+        "node": ">=5.10.0"
+      },
+      "jest": {
+        "scriptPreprocessor": "<rootDir>/tools/jestPreprocessor.js",
+        "testPathIgnorePatterns": [
+          "__tests__/fixtures/"
+        ]
+      },
+      "activationCommands": {
+        "atom-text-editor": "nuclide-format-js:format"
+      },
+      "configSchema": {
+        "runOnSave": {
+          "title": "Run on save",
+          "description": "This setting is not recommended yet. Instead use the default keyboard shortcut, `cmd-shift-i`.",
+          "type": "boolean",
+          "default": false
+        },
+        "saveAfterRun": {
+          "title": "Save after run",
+          "description": "Save any changes the transform makes after it has run.",
+          "type": "boolean",
+          "default": false
+        },
+        "builtIns": {
+          "title": "Built-ins",
+          "description": "Requires will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "builtInTypes": {
+          "title": "Built-in Types",
+          "description": "Type imports will not be added for identifiers in this list.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "aliases": {
+          "title": "Aliases",
+          "description": "This is used to specify common aliases that you use. Each pair of entries should be in the format \"variableName, moduleName\".",
+          "type": "array",
+          "default": [
+            "Immutable",
+            "immutable",
+            "fbt",
+            "fbt"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "nuclideFixHeader": {
+          "title": "Nuclide: Fix Header",
+          "description": "This is used to fix the header when developing on Nuclide source code. This should rarely affect anything outside of Nuclide source.",
+          "type": "boolean",
+          "default": true
+        },
+        "reprint": {
+          "title": "Reprint: Format all code",
+          "type": "boolean",
+          "default": false
+        },
+        "requiresTransferComments": {
+          "title": "Requires: Transfer Comments",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedRequires": {
+          "title": "Requires: Remove Unused Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingRequires": {
+          "title": "Requires: Add Missing Requires",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresRemoveUnusedTypes": {
+          "title": "Requires: Remove Unused Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresAddMissingTypes": {
+          "title": "Requires: Add Missing Types",
+          "type": "boolean",
+          "default": true
+        },
+        "requiresFormatRequires": {
+          "title": "Requires: Format Requires",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/nuclide-format-js/versions/0.0.36/tarball"
+      }
+    }
+  },
+  "readme": "# nuclide-format-js\n\n[![Build Status](https://travis-ci.org/facebook-atom/nuclide-format-js.svg?branch=master)](https://travis-ci.org/facebook-atom/nuclide-format-js)\n\nUse this [Atom](https://atom.io/) plugin to automatically add `require` and `import` statements for values and types in your JavaScript.\n\n## Usage\n\nThe default keyboard shortcut for `nuclide-format-js:organize-requires` is `cmd-shift-i`.\n\n## Details\n\nThis collection of codemods automatically adds, removes, and formats your requires. It is primarily\na heuristic that works by requiring identifiers that are being used that were not declared. It is\nalso aware of Flow types and will properly promote type imports to requires, and demote requires to\ntype imports when appropriate.\n\nThere are a few best practices that you should follow in order to get the most benefit out of these\ntransforms:\n\n+ Don't shadow require names anywhere in the file. The transform is very minimally aware of scope.\n+ Don't alias requires (unless you specify the alias in the aliases setting).\n+ Destructure in a line separate from the require (this is a general best practice):\n\n```js\nvar React = require('react');\nvar {PropTypes} = React;\n```\n\n### Ordering Rules\n\nIt is good to keep a consistent ordering of lists to avoid most merge conflicts. You do not need to\nremember the ordering specified here, it has been chosen to give good results and this plugin will\nautomatically follow it.\n\nThere are 5 groups separated by a blank line:\n\n1. type `import`s\n3. bare `require`s\n4. `require`s from modules with capitalized names\n5. `require`s from modules with non-capitalized names\n\nFor example:\n\n```\nimport type A from 'a';\nimport typeof B from 'b';\n\nrequire('c');\n\nconst D = require('d');\n\nconst e = require('e');\n```\n\nEach group is then ordered by the module name (the string on the right hand side), with capitalized names being first. The reason for using the module name as opposed to the type or value names\non the left hand side is that with changing names in destructuring it is more likely that lines\nwould shift, causing merge conflicts. Type and object destructuring lists are also sorted by\nlocal names, with capitalized names grouped first.\n\n### Scope\n\nThere are also a few things that are not supported yet that would be nice to support:\n\n+ Relative requires, e.g. `require('../lib/module');`\n+ Only add requires for known modules by maintaining a list of known modules, or by getting this\ninformation from Flow.\n+ Allow per-directory configurations.\n+ `import` statements for requiring values.\n\nRight now the recommended set up is to not run-on-save and instead use the default\nkeyboard shortcut.\n\nMake sure to verify the requires that are added by this plugin and report any issues. If anything\nis getting in your way when using this plugin you can generally work around it by modifying the\nplugin's settings. It's possible to adjust things like built-ins, aliases, and even blacklist\nparticular transforms there.\n\n## Developing\n\n```sh\n# Clone the repo\ngit clone git@github.com:facebook-atom/nuclide-format-js.git\n\ncd nuclide-format-js\n\n# To use as an Atom package\napm link\n\n# Install dependencies and start the transpiler watcher\nyarn install\nyarn run watch\n```\n\n## Releasing\n\n* Make sure that `master` is up-to-date.\n\n```sh\n# Bump the version number\nyarn version --no-git-tag-version\n\n# Commit the version bump\ngit add package.json\ngit commit -m \"$(node -p 'require(\"./package.json\").version')\"\n\n# Run the release script\n./tools/release.sh\n\n# Follow the printed instructions if everything looks good\n```\n",
+  "metadata": {
+    "name": "nuclide-format-js",
+    "version": "0.0.47",
+    "description": "A collection of codemods to help auto format javascript",
+    "keywords": [
+      "codemod",
+      "javascript",
+      "jscodeshift"
+    ],
+    "homepage": "https://nuclide.io/",
+    "license": "SEE LICENSE IN LICENSE",
+    "main": "./lib/index.js",
+    "repository": "https://github.com/facebook-atom/nuclide-format-js",
+    "scripts": {
+      "build": "yarn run clean && babel src --out-dir lib",
+      "clean": "rm -rf lib",
+      "lint": "flow check --show-all-errors && eslint .",
+      "test": "yarn run lint && jest",
+      "watch": "yarn run clean && babel src --out-dir lib --watch"
+    },
+    "dependencies": {
+      "jscodeshift": "^0.5.1",
+      "regenerator-runtime": "^0.10.5"
+    },
+    "devDependencies": {
+      "babel-cli": "^6.24.1",
+      "babel-eslint": "6.1.2",
+      "babel-plugin-transform-inline-imports-commonjs": "1.2.0",
+      "babel-preset-env": "^1.5.2",
+      "babel-preset-flow": "^6.23.0",
+      "babel-preset-stage-2": "^6.24.1",
+      "eslint": "3.5.0",
+      "eslint-plugin-babel": "3.3.0",
+      "eslint-plugin-flowtype": "2.6.1",
+      "eslint-plugin-prefer-object-spread": "1.1.0",
+      "flow-bin": "^0.66.0",
+      "jest": "^20.0.4"
+    },
+    "engines": {
+      "atom": ">=1.10.2",
+      "node": ">=4.3.2"
+    },
+    "babel": {
+      "sourceMap": "inline",
+      "presets": [
+        "flow",
+        "env",
+        "stage-2"
+      ],
+      "plugins": [
+        [
+          "transform-inline-imports-commonjs",
+          {
+            "excludeModules": [
+              "atom"
+            ],
+            "excludeNodeBuiltins": true
+          }
+        ]
+      ]
+    },
+    "jest": {
+      "testEnvironment": "node",
+      "testPathIgnorePatterns": [
+        "__tests__/fixtures/"
+      ]
+    },
+    "providedServices": {
+      "organizeRequires": {
+        "versions": {
+          "0.0.1": "provideOrganizeRequires"
+        }
+      }
+    },
+    "configSchema": {
+      "useAsService": {
+        "title": "Use with Nuclide",
+        "description": "Allow Nuclide to provide different `cmd-shift-i` command using Language Server Protocol.",
+        "type": "boolean",
+        "default": true
+      },
+      "runOnSave": {
+        "title": "Run on save",
+        "description": "This setting is not recommended yet. Instead use the default keyboard shortcut, `cmd-shift-i`.",
+        "type": "boolean",
+        "default": false
+      },
+      "saveAfterRun": {
+        "title": "Save after run",
+        "description": "Save any changes the transform makes after it has run.",
+        "type": "boolean",
+        "default": false
+      },
+      "builtIns": {
+        "title": "Built-ins",
+        "description": "Requires will not be added for identifiers in this list.",
+        "type": "array",
+        "default": [],
+        "items": {
+          "type": "string"
+        }
+      },
+      "builtInTypes": {
+        "title": "Built-in Types",
+        "description": "Type imports will not be added for identifiers in this list.",
+        "type": "array",
+        "default": [],
+        "items": {
+          "type": "string"
+        }
+      },
+      "aliases": {
+        "title": "Aliases",
+        "description": "This is used to specify common aliases that you use. Each pair of entries should be in the format \"variableName, moduleName\".",
+        "type": "array",
+        "default": [
+          "Immutable",
+          "immutable",
+          "fbt",
+          "fbt"
+        ],
+        "items": {
+          "type": "string"
+        }
+      },
+      "confirmNoChangeSuccess": {
+        "title": "Confirm success",
+        "description": "Show a brief notification when the transform led to no changes.",
+        "type": "boolean",
+        "default": true
+      },
+      "moveCursorToSyntaxError": {
+        "title": "Move cursor to error",
+        "description": "Place the cursor at the location of the syntax error when the transform fails.",
+        "type": "boolean",
+        "default": true
+      },
+      "nuclideFixHeader": {
+        "title": "Nuclide: Fix Header",
+        "description": "This is used to fix the header when developing on Nuclide source code. This should rarely affect anything outside of Nuclide source.",
+        "type": "boolean",
+        "default": true
+      },
+      "jsxNonReactNames": {
+        "title": "React: Ignored JSX Tags",
+        "description": "These tags or namespaces do not require React to be required.",
+        "type": "array",
+        "default": [
+          "fbt"
+        ],
+        "items": {
+          "type": "string"
+        }
+      },
+      "jsxSuffix": {
+        "title": "React: Add module name suffix",
+        "description": "Attach the `.react` suffix to React component module names.",
+        "type": "boolean",
+        "default": true
+      },
+      "requiresTransferComments": {
+        "title": "Requires: Transfer Comments",
+        "type": "boolean",
+        "default": true
+      },
+      "requiresRemoveUnusedRequires": {
+        "title": "Requires: Remove Unused Requires",
+        "type": "boolean",
+        "default": true
+      },
+      "requiresAddMissingRequires": {
+        "title": "Requires: Add Missing Requires",
+        "type": "boolean",
+        "default": true
+      },
+      "requiresRemoveUnusedTypes": {
+        "title": "Requires: Remove Unused Types",
+        "type": "boolean",
+        "default": true
+      },
+      "requiresAddMissingTypes": {
+        "title": "Requires: Add Missing Types",
+        "type": "boolean",
+        "default": true
+      },
+      "requiresFormatRequires": {
+        "title": "Requires: Format Requires",
+        "type": "boolean",
+        "default": true
+      }
+    }
+  }
+}

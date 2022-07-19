@@ -1,0 +1,1462 @@
+{
+  "name": "pinned-tabs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ericcornelissen/pinned-tabs-for-atom"
+  },
+  "downloads": 32571,
+  "stargazers_count": 61,
+  "releases": {
+    "latest": "2.3.1"
+  },
+  "versions": {
+    "2.3.1": {
+      "name": "pinned-tabs",
+      "version": "2.3.1",
+      "description": "An Atom package that allows you to pin tabs",
+      "license": "MIT",
+      "main": "./lib/pinned-tabs",
+      "repository": "git@github.com:ericcornelissen/pinned-tabs-for-atom.git",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "devDependencies": {
+        "atom-mocha": "^2.2.1",
+        "eslint": "^6.8.0",
+        "husky": "^4.2.3",
+        "rimraf": "^2.6.2",
+        "sinon": "^6.3.5",
+        "sinon-chai": "^3.5.0",
+        "stylelint": "^13.2.0",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-order": "^4.0.0"
+      },
+      "scripts": {
+        "lint": "eslint lib/*.js spec/*.js && stylelint styles/*.less",
+        "test": "atom --test spec"
+      },
+      "atomTestRunner": "atom-mocha",
+      "configSchema": {
+        "animated": {
+          "type": "boolean",
+          "default": true,
+          "order": 1,
+          "title": "Enable animations",
+          "description": "Tick this to enable all animation related to pinned tabs"
+        },
+        "closeUnpinned": {
+          "type": "boolean",
+          "default": false,
+          "order": 2,
+          "title": "Enable the 'Close Unpinned Tabs' option",
+          "description": "Tick this to show the 'Close Unpinned Tabs' from the context menu"
+        },
+        "pinButton": {
+          "type": "boolean",
+          "default": false,
+          "order": 3,
+          "title": "Enable pin button on tabs",
+          "description": "Tick this to add a button to unpinned tabs to pin them"
+        },
+        "modified": {
+          "type": "string",
+          "default": "always",
+          "order": 4,
+          "title": "Modified indicator",
+          "enum": [
+            {
+              "value": "dont",
+              "description": "Don't use this feature"
+            },
+            {
+              "value": "hover",
+              "description": "Only show this when I hover over the tab"
+            },
+            {
+              "value": "always",
+              "description": "Always show this when a tab is modified"
+            }
+          ]
+        },
+        "visualstudio": {
+          "type": "object",
+          "title": "Visual Studio style pinning",
+          "description": "When _Visual Studio style pinning_ is enabled pinned tabs wno't shrink. Instead, the closing button is replaced by an indicator that the tab is now pinned.",
+          "order": 5,
+          "properties": {
+            "enable": {
+              "type": "boolean",
+              "default": false,
+              "order": 1,
+              "title": "Enable VS style pinning"
+            },
+            "minimumWidth": {
+              "type": "integer",
+              "default": 180,
+              "minimum": 0,
+              "order": 2,
+              "title": "Minimum width for pinned tabs"
+            }
+          }
+        }
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/2.3.1/tarball"
+      }
+    },
+    "2.3.0": {
+      "name": "pinned-tabs",
+      "version": "2.3.0",
+      "description": "An Atom package that allows you to pin tabs",
+      "license": "MIT",
+      "main": "./lib/pinned-tabs",
+      "repository": "git@github.com:ericcornelissen/pinned-tabs-for-atom.git",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "devDependencies": {
+        "atom-mocha": "^2.2.1",
+        "eslint": "^6.8.0",
+        "husky": "^4.2.3",
+        "rimraf": "^2.6.2",
+        "sinon": "^6.3.5",
+        "sinon-chai": "^3.5.0",
+        "stylelint": "^13.2.0",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-order": "^4.0.0"
+      },
+      "scripts": {
+        "lint": "eslint lib/*.js spec/*.js && stylelint styles/*.less",
+        "test": "atom --test spec"
+      },
+      "atomTestRunner": "atom-mocha",
+      "configSchema": {
+        "animated": {
+          "type": "boolean",
+          "default": true,
+          "order": 1,
+          "title": "Enable animations",
+          "description": "Tick this to enable all animation related to pinned tabs"
+        },
+        "closeUnpinned": {
+          "type": "boolean",
+          "default": false,
+          "order": 2,
+          "title": "Enable the 'Close Unpinned Tabs' option",
+          "description": "Tick this to show the 'Close Unpinned Tabs' from the context menu"
+        },
+        "pinButton": {
+          "type": "boolean",
+          "default": false,
+          "order": 3,
+          "title": "Enable pin button on tabs",
+          "description": "Tick this to add a button to unpinned tabs to pin them"
+        },
+        "modified": {
+          "type": "string",
+          "default": "always",
+          "order": 4,
+          "title": "Modified indicator",
+          "enum": [
+            {
+              "value": "dont",
+              "description": "Don't use this feature"
+            },
+            {
+              "value": "hover",
+              "description": "Only show this when I hover over the tab"
+            },
+            {
+              "value": "always",
+              "description": "Always show this when a tab is modified"
+            }
+          ]
+        },
+        "visualstudio": {
+          "type": "object",
+          "title": "Visual Studio style pinning",
+          "description": "When _Visual Studio style pinning_ is enabled pinned tabs wno't shrink. Instead, the closing button is replaced by an indicator that the tab is now pinned.",
+          "order": 5,
+          "properties": {
+            "enable": {
+              "type": "boolean",
+              "default": false,
+              "order": 1,
+              "title": "Enable VS style pinning"
+            },
+            "minimumWidth": {
+              "type": "integer",
+              "default": 180,
+              "minimum": 0,
+              "order": 2,
+              "title": "Minimum width for pinned tabs"
+            }
+          }
+        }
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/2.3.0/tarball"
+      }
+    },
+    "2.2.1": {
+      "name": "pinned-tabs",
+      "version": "2.2.1",
+      "description": "An Atom package that allows you to pin tabs",
+      "license": "MIT",
+      "main": "./lib/pinned-tabs",
+      "repository": "git@github.com:ericcornelissen/pinned-tabs-for-atom.git",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "devDependencies": {
+        "atom-mocha": "^2.2.1",
+        "eslint": "^6.8.0",
+        "husky": "^4.2.3",
+        "rimraf": "^2.6.2",
+        "sinon": "^6.3.5",
+        "sinon-chai": "^3.5.0",
+        "stylelint": "^13.2.0",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-order": "^4.0.0"
+      },
+      "scripts": {
+        "lint": "eslint lib/*.js spec/*.js && stylelint styles/*.less",
+        "test": "atom --test spec"
+      },
+      "atomTestRunner": "atom-mocha",
+      "configSchema": {
+        "animated": {
+          "type": "boolean",
+          "default": true,
+          "order": 1,
+          "title": "Enable animations",
+          "description": "Tick this to enable all animation related to pinned tabs"
+        },
+        "closeUnpinned": {
+          "type": "boolean",
+          "default": false,
+          "order": 2,
+          "title": "Enable the 'Close Unpinned Tabs' option",
+          "description": "Tick this to show the 'Close Unpinned Tabs' from the context menu"
+        },
+        "modified": {
+          "type": "string",
+          "default": "always",
+          "order": 3,
+          "title": "Modified indicator",
+          "enum": [
+            {
+              "value": "dont",
+              "description": "Don't use this feature"
+            },
+            {
+              "value": "hover",
+              "description": "Only show this when I hover over the tab"
+            },
+            {
+              "value": "always",
+              "description": "Always show this when a tab is modified"
+            }
+          ]
+        },
+        "visualstudio": {
+          "type": "object",
+          "title": "Visual Studio style pinning",
+          "description": "When _Visual Studio style pinning_ is enabled pinned tabs wno't shrink. Instead, the closing button is replaced by an indicator that the tab is now pinned.",
+          "order": 4,
+          "properties": {
+            "enable": {
+              "type": "boolean",
+              "default": false,
+              "order": 1,
+              "title": "Enable VS style pinning"
+            },
+            "minimumWidth": {
+              "type": "integer",
+              "default": 180,
+              "minimum": 0,
+              "order": 2,
+              "title": "Minimum width for pinned tabs"
+            }
+          }
+        }
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/2.2.1/tarball"
+      }
+    },
+    "2.2.0": {
+      "name": "pinned-tabs",
+      "version": "2.2.0",
+      "description": "An Atom package that allows you to pin tabs",
+      "license": "MIT",
+      "main": "./lib/pinned-tabs",
+      "repository": "git@github.com:ericcornelissen/pinned-tabs-for-atom.git",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "devDependencies": {
+        "atom-mocha": "^2.2.1",
+        "eslint": "^6.8.0",
+        "husky": "^4.2.3",
+        "rimraf": "^2.6.2",
+        "sinon": "^6.3.5",
+        "sinon-chai": "^3.5.0"
+      },
+      "scripts": {
+        "lint": "eslint lib/*.js spec/*.js",
+        "test": "atom --test spec"
+      },
+      "atomTestRunner": "atom-mocha",
+      "configSchema": {
+        "animated": {
+          "type": "boolean",
+          "default": true,
+          "order": 1,
+          "title": "Enable animations",
+          "description": "Tick this to enable all animation related to pinned tabs"
+        },
+        "closeUnpinned": {
+          "type": "boolean",
+          "default": false,
+          "order": 2,
+          "title": "Enable the 'Close Unpinned Tabs' option",
+          "description": "Tick this to show the 'Close Unpinned Tabs' from the context menu"
+        },
+        "modified": {
+          "type": "string",
+          "default": "always",
+          "order": 3,
+          "title": "Modified indicator",
+          "enum": [
+            {
+              "value": "dont",
+              "description": "Don't use this feature"
+            },
+            {
+              "value": "hover",
+              "description": "Only show this when I hover over the tab"
+            },
+            {
+              "value": "always",
+              "description": "Always show this when a tab is modified"
+            }
+          ]
+        },
+        "visualstudio": {
+          "type": "object",
+          "title": "Visual Studio style pinning",
+          "description": "Options for...",
+          "order": 4,
+          "properties": {
+            "enable": {
+              "type": "boolean",
+              "default": false,
+              "order": 1,
+              "title": "Enable VS style pinning"
+            },
+            "minimumWidth": {
+              "type": "integer",
+              "default": 180,
+              "minimum": 0,
+              "order": 2,
+              "title": "Minimum width for pinned tabs"
+            }
+          }
+        }
+      },
+      "activationHooks": [
+        "core:loaded-shell-environment"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/2.2.0/tarball"
+      }
+    },
+    "2.1.2": {
+      "name": "pinned-tabs",
+      "version": "2.1.2",
+      "description": "An Atom package that allows you to pin tabs",
+      "license": "MIT",
+      "main": "./lib/pinned-tabs",
+      "repository": "git@github.com:ericcornelissen/pinned-tabs-for-atom.git",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "devDependencies": {
+        "atom-mocha": "^2.2.1",
+        "eslint": "^4.10.0",
+        "husky": "^4.2.3",
+        "rimraf": "^2.6.2",
+        "sinon": "^6.3.5",
+        "sinon-chai": "^3.5.0"
+      },
+      "scripts": {
+        "lint": "eslint lib/*.js spec/*.js",
+        "test": "atom --test spec"
+      },
+      "atomTestRunner": "atom-mocha",
+      "configSchema": {
+        "animated": {
+          "type": "boolean",
+          "default": true,
+          "order": 1,
+          "title": "Enable animations",
+          "description": "Tick this to enable all animation related to pinned tabs"
+        },
+        "closeUnpinned": {
+          "type": "boolean",
+          "default": false,
+          "order": 2,
+          "title": "Enable the 'Close Unpinned Tabs' option",
+          "description": "Tick this to show the 'Close Unpinned Tabs' from the context menu"
+        },
+        "modified": {
+          "type": "string",
+          "default": "always",
+          "order": 3,
+          "title": "Modified indicator",
+          "enum": [
+            {
+              "value": "dont",
+              "description": "Don't use this feature"
+            },
+            {
+              "value": "hover",
+              "description": "Only show this when I hover over the tab"
+            },
+            {
+              "value": "always",
+              "description": "Always show this when a tab is modified"
+            }
+          ]
+        },
+        "visualstudio": {
+          "type": "object",
+          "title": "Visual Studio style pinning",
+          "description": "Options for...",
+          "order": 4,
+          "properties": {
+            "enable": {
+              "type": "boolean",
+              "default": false,
+              "order": 1,
+              "title": "Enable VS style pinning"
+            },
+            "minimumWidth": {
+              "type": "integer",
+              "default": 180,
+              "minimum": 0,
+              "order": 2,
+              "title": "Minimum width for pinned tabs"
+            }
+          }
+        }
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/2.1.2/tarball"
+      }
+    },
+    "2.1.1": {
+      "name": "pinned-tabs",
+      "version": "2.1.1",
+      "description": "An Atom package that allows you to pin tabs",
+      "license": "MIT",
+      "main": "./lib/pinned-tabs",
+      "repository": "git@github.com:ericcornelissen/pinned-tabs-for-atom.git",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "devDependencies": {
+        "atom-coverage": "^1.1.2",
+        "atom-mocha": "^2.0.7",
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.3",
+        "babel-plugin-istanbul": "^5.1.0",
+        "babel-preset-env": "^1.7.0",
+        "cross-env": "^5.2.0",
+        "eslint": "^4.10.0",
+        "husky": "^0.14.3",
+        "nyc": "^13.1.0",
+        "rimraf": "^2.6.2",
+        "sinon": "^6.3.5",
+        "sinon-chai": "^3.2.0"
+      },
+      "scripts": {
+        "check:coverage": "nyc check-coverage",
+        "clean": "rimraf coverage/ .nyc_output/",
+        "lint": "eslint lib/*.js spec/*.js",
+        "precommit": "npm run lint",
+        "test": "atom --test spec",
+        "test:coverage": "atom-coverage"
+      },
+      "atomTestRunner": "atom-mocha",
+      "configSchema": {
+        "animated": {
+          "type": "boolean",
+          "default": true,
+          "order": 1,
+          "title": "Enable animations",
+          "description": "Tick this to enable all animation related to pinned tabs"
+        },
+        "closeUnpinned": {
+          "type": "boolean",
+          "default": false,
+          "order": 2,
+          "title": "Enable the 'Close Unpinned Tabs' option",
+          "description": "Tick this to show the 'Close Unpinned Tabs' from the context menu"
+        },
+        "modified": {
+          "type": "string",
+          "default": "always",
+          "order": 3,
+          "title": "Modified indicator",
+          "enum": [
+            {
+              "value": "dont",
+              "description": "Don't use this feature"
+            },
+            {
+              "value": "hover",
+              "description": "Only show this when I hover over the tab"
+            },
+            {
+              "value": "always",
+              "description": "Always show this when a tab is modified"
+            }
+          ]
+        },
+        "visualstudio": {
+          "type": "object",
+          "title": "Visual Studio style pinning",
+          "description": "Options for...",
+          "order": 4,
+          "properties": {
+            "enable": {
+              "type": "boolean",
+              "default": false,
+              "order": 1,
+              "title": "Enable VS style pinning"
+            },
+            "minimumWidth": {
+              "type": "integer",
+              "default": 180,
+              "minimum": 0,
+              "order": 2,
+              "title": "Minimum width for pinned tabs"
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/2.1.1/tarball"
+      }
+    },
+    "2.1.0": {
+      "name": "pinned-tabs",
+      "version": "2.1.0",
+      "description": "An Atom package that allows you to pin tabs",
+      "license": "MIT",
+      "main": "./lib/pinned-tabs",
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "devDependencies": {
+        "atom-coverage": "^1.1.2",
+        "atom-mocha": "^2.0.6",
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.3",
+        "babel-plugin-istanbul": "^5.0.1",
+        "babel-preset-env": "^1.7.0",
+        "cross-env": "^5.2.0",
+        "eslint": "^4.10.0",
+        "husky": "^0.14.3",
+        "nyc": "^13.0.1",
+        "rimraf": "^2.6.2",
+        "sinon": "^6.2.0",
+        "sinon-chai": "^3.2.0"
+      },
+      "scripts": {
+        "check:coverage": "nyc check-coverage",
+        "clean": "rimraf coverage/",
+        "lint": "eslint lib/*.js spec/*.js",
+        "precommit": "npm run lint",
+        "test": "atom --test spec",
+        "test:coverage": "atom-coverage"
+      },
+      "atomTestRunner": "atom-mocha",
+      "configSchema": {
+        "animated": {
+          "type": "boolean",
+          "default": true,
+          "order": 1,
+          "title": "Enable animations",
+          "description": "Tick this to enable all animation related to pinned tabs"
+        },
+        "closeUnpinned": {
+          "type": "boolean",
+          "default": false,
+          "order": 2,
+          "title": "Enable the 'Close Unpinned Tabs' option",
+          "description": "Tick this to show the 'Close Unpinned Tabs' from the context menu"
+        },
+        "modified": {
+          "type": "string",
+          "default": "always",
+          "order": 3,
+          "title": "Modified indicator",
+          "enum": [
+            {
+              "value": "dont",
+              "description": "Don't use this feature"
+            },
+            {
+              "value": "hover",
+              "description": "Only show this when I hover over the tab"
+            },
+            {
+              "value": "always",
+              "description": "Always show this when a tab is modified"
+            }
+          ]
+        },
+        "visualstudio": {
+          "type": "object",
+          "title": "Visual Studio style pinning",
+          "description": "Options for...",
+          "order": 4,
+          "properties": {
+            "enable": {
+              "type": "boolean",
+              "default": false,
+              "order": 1,
+              "title": "Enable VS style pinning"
+            },
+            "minimumWidth": {
+              "type": "integer",
+              "default": 180,
+              "minimum": 0,
+              "order": 2,
+              "title": "Minimum width for pinned tabs"
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/2.1.0/tarball"
+      }
+    },
+    "2.0.6": {
+      "name": "pinned-tabs",
+      "version": "2.0.6",
+      "description": "An Atom package that allows you to pin tabs",
+      "license": "MIT",
+      "main": "./lib/pinned-tabs",
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "devDependencies": {
+        "atom-jasmine2-test-runner": "^1.1.2",
+        "eslint": "^4.10.0"
+      },
+      "scripts": {
+        "test": "apm test",
+        "lint": "eslint lib/*.js"
+      },
+      "atomTestRunner": "./spec/runner",
+      "configSchema": {
+        "animated": {
+          "type": "boolean",
+          "default": true,
+          "order": 1,
+          "title": "Enable animations",
+          "description": "Tick this to enable all animation related to pinned tabs"
+        },
+        "closeUnpinned": {
+          "type": "boolean",
+          "default": false,
+          "order": 2,
+          "title": "Enable the 'Close Unpinned Tabs' option",
+          "description": "Tick this to show the 'Close Unpinned Tabs' from the context menu"
+        },
+        "modified": {
+          "type": "string",
+          "default": "always",
+          "order": 3,
+          "title": "Modified indicator",
+          "enum": [
+            {
+              "value": "dont",
+              "description": "Don't use this feature"
+            },
+            {
+              "value": "hover",
+              "description": "Only show this when I hover over the tab"
+            },
+            {
+              "value": "always",
+              "description": "Always show this when a tab is modified"
+            }
+          ]
+        },
+        "visualstudio": {
+          "type": "object",
+          "title": "Visual Studio style pinning",
+          "description": "Options for...",
+          "order": 4,
+          "properties": {
+            "enable": {
+              "type": "boolean",
+              "default": false,
+              "order": 1,
+              "title": "Enable VS style pinning"
+            },
+            "minimumWidth": {
+              "type": "integer",
+              "default": 180,
+              "minimum": 0,
+              "order": 2,
+              "title": "Minimum width for pinned tabs"
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/2.0.6/tarball"
+      }
+    },
+    "2.0.5": {
+      "name": "pinned-tabs",
+      "version": "2.0.5",
+      "description": "An Atom package that allows you to pin tabs",
+      "license": "MIT",
+      "main": "./lib/pinned-tabs",
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "devDependencies": {
+        "atom-jasmine2-test-runner": "^1.1.2",
+        "eslint": "^4.10.0"
+      },
+      "scripts": {
+        "test": "apm test",
+        "lint": "eslint lib/*.js"
+      },
+      "atomTestRunner": "./spec/runner",
+      "configSchema": {
+        "animated": {
+          "type": "boolean",
+          "default": true,
+          "order": 1,
+          "title": "Enable animations",
+          "description": "Tick this to enable all animation related to pinned tabs"
+        },
+        "closeUnpinned": {
+          "type": "boolean",
+          "default": false,
+          "order": 2,
+          "title": "Enable the 'Close Unpinned Tabs' option",
+          "description": "Tick this to show the 'Close Unpinned Tabs' from the context menu"
+        },
+        "modified": {
+          "type": "string",
+          "default": "always",
+          "order": 3,
+          "title": "Modified indicator",
+          "enum": [
+            {
+              "value": "dont",
+              "description": "Don't use this feature"
+            },
+            {
+              "value": "hover",
+              "description": "Only show this when I hover over the tab"
+            },
+            {
+              "value": "always",
+              "description": "Always show this when a tab is modified"
+            }
+          ]
+        },
+        "visualstudio": {
+          "type": "object",
+          "title": "Visual Studio style pinning",
+          "description": "Options for...",
+          "order": 4,
+          "properties": {
+            "enable": {
+              "type": "boolean",
+              "default": false,
+              "order": 1,
+              "title": "Enable VS style pinning"
+            },
+            "minimumWidth": {
+              "type": "integer",
+              "default": 180,
+              "minimum": 0,
+              "order": 2,
+              "title": "Minimum width for pinned tabs"
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/2.0.5/tarball"
+      }
+    },
+    "2.0.4": {
+      "name": "pinned-tabs",
+      "version": "2.0.4",
+      "description": "An Atom package that allows you to pin tabs",
+      "license": "MIT",
+      "main": "./lib/pinned-tabs",
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "devDependencies": {
+        "atom-jasmine2-test-runner": "^1.1.2",
+        "eslint": "^4.10.0"
+      },
+      "scripts": {
+        "test": "apm test",
+        "lint": "eslint lib/*.js"
+      },
+      "atomTestRunner": "./spec/runner",
+      "configSchema": {
+        "animated": {
+          "type": "boolean",
+          "default": true,
+          "order": 1,
+          "title": "Enable animations",
+          "description": "Tick this to enable all animation related to pinned tabs"
+        },
+        "closeUnpinned": {
+          "type": "boolean",
+          "default": false,
+          "order": 2,
+          "title": "Enable the 'Close Unpinned Tabs' option",
+          "description": "Tick this to show the 'Close Unpinned Tabs' from the context menu"
+        },
+        "modified": {
+          "type": "string",
+          "default": "always",
+          "order": 3,
+          "title": "Modified indicator",
+          "enum": [
+            {
+              "value": "dont",
+              "description": "Don't use this feature"
+            },
+            {
+              "value": "hover",
+              "description": "Only show this when I hover over the tab"
+            },
+            {
+              "value": "always",
+              "description": "Always show this when a tab is modified"
+            }
+          ]
+        },
+        "visualstudio": {
+          "type": "object",
+          "title": "Visual Studio style pinning",
+          "description": "Options for...",
+          "order": 4,
+          "properties": {
+            "enable": {
+              "type": "boolean",
+              "default": false,
+              "order": 1,
+              "title": "Enable VS style pinning"
+            },
+            "minimumWidth": {
+              "type": "integer",
+              "default": 180,
+              "minimum": 0,
+              "order": 2,
+              "title": "Minimum width for pinned tabs"
+            }
+          }
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/2.0.4/tarball"
+      }
+    },
+    "2.0.3": {
+      "name": "pinned-tabs",
+      "version": "2.0.3",
+      "description": "An Atom package that allows you to pin tabs",
+      "license": "MIT",
+      "main": "./lib/pinned-tabs",
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "devDependencies": {
+        "atom-jasmine2-test-runner": "^1.1.2",
+        "eslint": "^4.10.0"
+      },
+      "scripts": {
+        "lint": "eslint lib/*.js"
+      },
+      "atomTestRunner": "./spec/runner",
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/2.0.3/tarball"
+      }
+    },
+    "2.0.2": {
+      "name": "pinned-tabs",
+      "version": "2.0.2",
+      "description": "An Atom package that allows you to pin tabs",
+      "license": "MIT",
+      "main": "./lib/pinned-tabs",
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "devDependencies": {
+        "atom-jasmine2-test-runner": "^1.1.2",
+        "eslint": "^4.10.0"
+      },
+      "scripts": {
+        "lint": "eslint lib/*.js"
+      },
+      "atomTestRunner": "./spec/runner",
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/2.0.2/tarball"
+      }
+    },
+    "2.0.1": {
+      "name": "pinned-tabs",
+      "version": "2.0.1",
+      "description": "An Atom package that allows you to pin tabs",
+      "license": "MIT",
+      "main": "./lib/pinned-tabs",
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "devDependencies": {
+        "atom-jasmine2-test-runner": "^1.1.2",
+        "eslint": "^4.10.0"
+      },
+      "scripts": {
+        "lint": "eslint lib/*.js"
+      },
+      "atomTestRunner": "./spec/runner",
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/2.0.1/tarball"
+      }
+    },
+    "2.0.0": {
+      "name": "pinned-tabs",
+      "version": "2.0.0",
+      "description": "An Atom package that allows you to pin tabs",
+      "license": "MIT",
+      "main": "./lib/pinned-tabs",
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "devDependencies": {
+        "atom-jasmine2-test-runner": "^1.1.2",
+        "eslint": "^4.10.0"
+      },
+      "scripts": {
+        "lint": "eslint lib/*.js"
+      },
+      "atomTestRunner": "./spec/runner",
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/2.0.0/tarball"
+      }
+    },
+    "1.3.1": {
+      "name": "pinned-tabs",
+      "main": "./lib/pinned-tabs",
+      "version": "1.3.1",
+      "description": "An Atom package that allows you to pin tabs",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/1.3.1/tarball"
+      }
+    },
+    "1.3.0": {
+      "name": "pinned-tabs",
+      "main": "./lib/pinned-tabs",
+      "version": "1.3.0",
+      "description": "An Atom package that allows you to pin tabs",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/1.3.0/tarball"
+      }
+    },
+    "1.2.0": {
+      "name": "pinned-tabs",
+      "main": "./lib/pinned-tabs",
+      "version": "1.2.0",
+      "description": "An Atom package that allows you to pin tabs",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/1.2.0/tarball"
+      }
+    },
+    "1.1.0": {
+      "name": "pinned-tabs",
+      "main": "./lib/pinned-tabs",
+      "version": "1.1.0",
+      "description": "An Atom package that allows you to pin tabs",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/1.1.0/tarball"
+      }
+    },
+    "1.0.3": {
+      "name": "pinned-tabs",
+      "main": "./lib/pinned-tabs",
+      "version": "1.0.3",
+      "description": "An Atom package that allows you to pin tabs",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/1.0.3/tarball"
+      }
+    },
+    "1.0.2": {
+      "name": "pinned-tabs",
+      "main": "./lib/pinned-tabs",
+      "version": "1.0.2",
+      "description": "An Atom package that allows you to pin tabs",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/1.0.2/tarball"
+      }
+    },
+    "1.0.1": {
+      "name": "pinned-tabs",
+      "main": "./lib/pinned-tabs",
+      "version": "1.0.1",
+      "description": "An Atom package that allows you to pin tabs",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/1.0.1/tarball"
+      }
+    },
+    "1.0.0": {
+      "name": "pinned-tabs",
+      "main": "./lib/pinned-tabs",
+      "version": "1.0.0",
+      "description": "An Atom package that allows you to pin tabs",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/1.0.0/tarball"
+      }
+    },
+    "0.4.2": {
+      "name": "pinned-tabs",
+      "main": "./lib/pinned-tabs",
+      "version": "0.4.2",
+      "description": "An Atom package that allows you to pin tabs",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/0.4.2/tarball"
+      }
+    },
+    "0.4.1": {
+      "name": "pinned-tabs",
+      "main": "./lib/pinned-tabs",
+      "version": "0.4.1",
+      "description": "An Atom package that allows you to pin tabs",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/0.4.1/tarball"
+      }
+    },
+    "0.4.0": {
+      "name": "pinned-tabs",
+      "main": "./lib/pinned-tabs",
+      "version": "0.4.0",
+      "description": "An Atom package that allows you to pin tabs",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/0.4.0/tarball"
+      }
+    },
+    "0.3.3": {
+      "name": "pinned-tabs",
+      "main": "./lib/pinned-tabs",
+      "version": "0.3.3",
+      "description": "An Atom package that allows you to pin tabs",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/0.3.3/tarball"
+      }
+    },
+    "0.3.2": {
+      "name": "pinned-tabs",
+      "main": "./lib/pinned-tabs",
+      "version": "0.3.2",
+      "description": "An Atom package that allows you to pin tabs",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/0.3.2/tarball"
+      }
+    },
+    "0.3.1": {
+      "name": "pinned-tabs",
+      "main": "./lib/pinned-tabs",
+      "version": "0.3.1",
+      "description": "An Atom package that allows you to pin tabs",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/0.3.1/tarball"
+      }
+    },
+    "0.3.0": {
+      "name": "pinned-tabs",
+      "main": "./lib/pinned-tabs",
+      "version": "0.3.0",
+      "description": "An Atom package that allows you to pin tabs",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/0.3.0/tarball"
+      }
+    },
+    "0.2.5": {
+      "name": "pinned-tabs",
+      "main": "./lib/pinned-tabs",
+      "version": "0.2.5",
+      "description": "An Atom package that allows you to pin tabs",
+      "keywords": [
+        "pinned",
+        "pin",
+        "tabs"
+      ],
+      "repository": "https://github.com/ericcornelissen/pinned-tabs-for-atom",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/pinned-tabs/versions/0.2.5/tarball"
+      }
+    }
+  },
+  "readme": "# Pinned tabs for Atom\n\n[![Build Status](https://travis-ci.com/ericcornelissen/pinned-tabs-for-atom.svg?branch=master)](https://travis-ci.com/ericcornelissen/pinned-tabs-for-atom)\n[![Maintainability](https://api.codeclimate.com/v1/badges/e7d6b69e47a27a0a6ef0/maintainability)](https://codeclimate.com/github/ericcornelissen/pinned-tabs-for-atom/maintainability)\n\nA simple package for the Atom text editor from GitHub that allows you to pin tabs. Inspired by the pin tab feature from Browsers, also supports Visual Studio style pinning.\n\nFor the best experience of this package, I recommend using it with the [file-icons](https://atom.io/packages/file-icons) package.\n\n![preview gif](http://i.imgur.com/zdzpBnd.gif)\n\n* * *\n\n## Usage\nThere are three ways to pin/unpin a tab using this package.\n- Via the context menu of a tab.\n- Via the keyboard shortcut <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>p</kbd>.\n- Via the command-palette, by typing `Pin Active`.\n\n* * *\n\n## Installation\nVia the Atom Package Manager (APM)\n```bash\n$ apm install pinned-tabs\n```\n\nOr via Git clone\n```bash\n$ cd ~/.atom/packages\n$ git clone https://github.com/ericcornelissen/pinned-tabs-for-atom --depth=1\n```\n\n* * *\n\n## Customization\nYou can add custom styles for pinned tabs. Use your [Stylesheet](https://flight-manual.atom.io/using-atom/sections/basic-customization/#style-tweaks) and target `.tab.pinned-tab` to tweak a pinned tab. You can consult the [package stylesheet](./styles/pinned-tabs.less) to see what classes are used.\n\nBelow are a few examples of ways to customize the styling of pinned tabs.\n\n#### Style the active pinned tab\n```css\n.tab.pinned-tab.active {\n  background-color: salmon;\n}\n\n/* Or all non active pinned tabs */\n.tab.pinned-tab:not(.active) {\n  background-color: olive;\n}\n```\n\n#### Choose your own icon for pinned tabs\n```css\n.tab.pinned-tab > .title::before {\n  content: '\\f135';\n  font-family: FontAwesome;\n  font-size: 18px;\n}\n```\n\nIf you're using file-icons, you can check out its [customization documentation](https://github.com/file-icons/atom#customisation) as well.\n\n#### Change the pin button on tabs\n```css\n.tab > .pin-icon::before {\n  content: '\\f015' !important;\n}\n```\n\n#### Change the 'pinned' icon for Visual Studio mode\n```css\n.tab.pinned-tab > .close-icon::before {\n  content: '\\f276';\n  font-family: FontAwesome;\n  font-size: 12px;\n}\n```\n\n#### Style tabs that are not pinned\n```css\n.tab:not(.pinned-tab):not([data-type=\"TreeView\"]):not([data-type=\"PanelDock\"]):not([data-type=\"Object\"]) {\n  opacity: 0.5;\n}\n```\n\nWhere the different `:not([data-type])` exclude tabs elsewhere in Atom.\n\n* * *\n\nCopyright © Eric Cornelissen | MIT license\n",
+  "metadata": {
+    "name": "pinned-tabs",
+    "version": "2.3.1",
+    "description": "An Atom package that allows you to pin tabs",
+    "license": "MIT",
+    "main": "./lib/pinned-tabs",
+    "repository": "git@github.com:ericcornelissen/pinned-tabs-for-atom.git",
+    "keywords": [
+      "pinned",
+      "pin",
+      "tabs"
+    ],
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "devDependencies": {
+      "atom-mocha": "^2.2.1",
+      "eslint": "^6.8.0",
+      "husky": "^4.2.3",
+      "rimraf": "^2.6.2",
+      "sinon": "^6.3.5",
+      "sinon-chai": "^3.5.0",
+      "stylelint": "^13.2.0",
+      "stylelint-config-standard": "^20.0.0",
+      "stylelint-order": "^4.0.0"
+    },
+    "scripts": {
+      "lint": "eslint lib/*.js spec/*.js && stylelint styles/*.less",
+      "test": "atom --test spec"
+    },
+    "atomTestRunner": "atom-mocha",
+    "configSchema": {
+      "animated": {
+        "type": "boolean",
+        "default": true,
+        "order": 1,
+        "title": "Enable animations",
+        "description": "Tick this to enable all animation related to pinned tabs"
+      },
+      "closeUnpinned": {
+        "type": "boolean",
+        "default": false,
+        "order": 2,
+        "title": "Enable the 'Close Unpinned Tabs' option",
+        "description": "Tick this to show the 'Close Unpinned Tabs' from the context menu"
+      },
+      "pinButton": {
+        "type": "boolean",
+        "default": false,
+        "order": 3,
+        "title": "Enable pin button on tabs",
+        "description": "Tick this to add a button to unpinned tabs to pin them"
+      },
+      "modified": {
+        "type": "string",
+        "default": "always",
+        "order": 4,
+        "title": "Modified indicator",
+        "enum": [
+          {
+            "value": "dont",
+            "description": "Don't use this feature"
+          },
+          {
+            "value": "hover",
+            "description": "Only show this when I hover over the tab"
+          },
+          {
+            "value": "always",
+            "description": "Always show this when a tab is modified"
+          }
+        ]
+      },
+      "visualstudio": {
+        "type": "object",
+        "title": "Visual Studio style pinning",
+        "description": "When _Visual Studio style pinning_ is enabled pinned tabs wno't shrink. Instead, the closing button is replaced by an indicator that the tab is now pinned.",
+        "order": 5,
+        "properties": {
+          "enable": {
+            "type": "boolean",
+            "default": false,
+            "order": 1,
+            "title": "Enable VS style pinning"
+          },
+          "minimumWidth": {
+            "type": "integer",
+            "default": 180,
+            "minimum": 0,
+            "order": 2,
+            "title": "Minimum width for pinned tabs"
+          }
+        }
+      }
+    },
+    "activationHooks": [
+      "core:loaded-shell-environment"
+    ]
+  }
+}

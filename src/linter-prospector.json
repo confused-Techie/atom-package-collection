@@ -1,0 +1,198 @@
+{
+  "name": "linter-prospector",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattgeiger/linter-prospector"
+  },
+  "downloads": 207,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "0.1.0"
+  },
+  "versions": {
+    "0.1.0": {
+      "name": "linter-prospector",
+      "main": "./lib/linter-prospector.js",
+      "version": "0.1.0",
+      "private": true,
+      "description": "Lint python on the fly, using prospector",
+      "repository": "https://github.com/mattgeiger/linter-prospector",
+      "license": "MIT",
+      "scripts": {
+        "test": "apm test",
+        "lint": "eslint ."
+      },
+      "engines": {
+        "atom": ">=1.4.0 <2.0.0"
+      },
+      "configSchema": {
+        "executablePath": {
+          "type": "string",
+          "default": "prospector",
+          "description": "Command or full path to prospector. Use %p for current project directory (no trailing /) or %h for current project name.",
+          "order": 1
+        },
+        "pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Paths to be added to $PYTHONPATH. Use %p for current project directory or %f for the directory of the current file.",
+          "order": 1
+        },
+        "profile": {
+          "type": "string",
+          "default": "",
+          "description": "Path to .prospector.yaml file. Use %p for the current project directory or %f for the directory of the current file.",
+          "order": 2
+        },
+        "workingDirectory": {
+          "type": "string",
+          "default": "%p",
+          "description": "Directory prospector is run from. Use %p for the current project directory or %f for the directory of the current file.",
+          "order": 2
+        },
+        "userArgs": {
+          "title": "Prospector Arguments",
+          "type": "string",
+          "default": "",
+          "description": "Extra arguments for prospector, separated with a space.",
+          "order": 3
+        }
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^10.0.0",
+        "atom-package-deps": "^4.5.0",
+        "lazy-req": "^2.0.0"
+      },
+      "devDependencies": {
+        "eslint": "^4.6.0",
+        "eslint-config-airbnb-base": "^12.0.0",
+        "eslint-plugin-import": "^2.7.0",
+        "jasmine-fix": "^1.3.1"
+      },
+      "package-deps": [
+        "linter:2.0.0"
+      ],
+      "eslintConfig": {
+        "extends": "airbnb-base",
+        "rules": {
+          "global-require": "off",
+          "import/no-unresolved": [
+            "error",
+            {
+              "ignore": [
+                "atom"
+              ]
+            }
+          ]
+        },
+        "globals": {
+          "atom": true
+        },
+        "env": {
+          "node": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-prospector/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# linter-prospector\nThis package will lint your opened Python-files in Atom, using [Prospector](https://prospector.landscape.io/en/master/#).\n\n## Installation\n\n* Install [prospector](https://prospector.landscape.io/en/master/#installation).\n* `$ apm install linter-prospector`\n\n## Configuration\n* **Executable** Path to your pylint executable. This is useful if you have different versions of pylint for Python 2\n  and 3 or if you are using a virtualenv. Use `%p` for the current project (no trailing /).\n* **Python Path** Paths to be added to the `PYTHONPATH` environment variable. Use `%p` for the current project\n  directory (e.g. `%p/vendor`) or `%f` for the directory of the current\n  file location.\n* **Profile** Path to .prospector.yaml file. Use `%p` for the current project directory or `%f` for the directory of the current\n  file location.\n* **Working Directory** Directory pylint is run from. Use `%p` for the current project directory or `%f` for the\n  directory of the current file.\n  `%p` will fallback to the current file's directory (equivilent to `%f`) if no project directory can be determined.\n* **Prospector Arguments** Extra arguments for prospector, separated with a space.\n\n## Other available linters\nThere are other linters available - take a look at the linters [mainpage](https://github.com/steelbrain/linter).\n",
+  "metadata": {
+    "name": "linter-prospector",
+    "main": "./lib/linter-prospector.js",
+    "version": "0.1.0",
+    "private": true,
+    "description": "Lint python on the fly, using prospector",
+    "repository": "https://github.com/mattgeiger/linter-prospector",
+    "license": "MIT",
+    "scripts": {
+      "test": "apm test",
+      "lint": "eslint ."
+    },
+    "engines": {
+      "atom": ">=1.4.0 <2.0.0"
+    },
+    "configSchema": {
+      "executablePath": {
+        "type": "string",
+        "default": "prospector",
+        "description": "Command or full path to prospector. Use %p for current project directory (no trailing /) or %h for current project name.",
+        "order": 1
+      },
+      "pythonPath": {
+        "type": "string",
+        "default": "",
+        "description": "Paths to be added to $PYTHONPATH. Use %p for current project directory or %f for the directory of the current file.",
+        "order": 1
+      },
+      "profile": {
+        "type": "string",
+        "default": "",
+        "description": "Path to .prospector.yaml file. Use %p for the current project directory or %f for the directory of the current file.",
+        "order": 2
+      },
+      "workingDirectory": {
+        "type": "string",
+        "default": "%p",
+        "description": "Directory prospector is run from. Use %p for the current project directory or %f for the directory of the current file.",
+        "order": 2
+      },
+      "userArgs": {
+        "title": "Prospector Arguments",
+        "type": "string",
+        "default": "",
+        "description": "Extra arguments for prospector, separated with a space.",
+        "order": 3
+      }
+    },
+    "providedServices": {
+      "linter": {
+        "versions": {
+          "2.0.0": "provideLinter"
+        }
+      }
+    },
+    "dependencies": {
+      "atom-linter": "^10.0.0",
+      "atom-package-deps": "^4.5.0",
+      "lazy-req": "^2.0.0"
+    },
+    "devDependencies": {
+      "eslint": "^4.6.0",
+      "eslint-config-airbnb-base": "^12.0.0",
+      "eslint-plugin-import": "^2.7.0",
+      "jasmine-fix": "^1.3.1"
+    },
+    "package-deps": [
+      "linter:2.0.0"
+    ],
+    "eslintConfig": {
+      "extends": "airbnb-base",
+      "rules": {
+        "global-require": "off",
+        "import/no-unresolved": [
+          "error",
+          {
+            "ignore": [
+              "atom"
+            ]
+          }
+        ]
+      },
+      "globals": {
+        "atom": true
+      },
+      "env": {
+        "node": true
+      }
+    }
+  }
+}

@@ -1,0 +1,1391 @@
+{
+  "name": "linter-pylint",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AtomLinter/linter-pylint"
+  },
+  "downloads": 215156,
+  "stargazers_count": 209,
+  "releases": {
+    "latest": "2.1.1"
+  },
+  "versions": {
+    "2.1.1": {
+      "name": "linter-pylint",
+      "main": "./lib/main.js",
+      "version": "2.1.1",
+      "private": true,
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "scripts": {
+        "test": "apm test",
+        "lint": "eslint ."
+      },
+      "engines": {
+        "atom": ">=1.4.0 <2.0.0"
+      },
+      "configSchema": {
+        "executablePath": {
+          "type": "string",
+          "default": "pylint",
+          "description": "Command or full path to pylint. Use %p for current project directory (no trailing /) or %h for current project name.",
+          "order": 1
+        },
+        "pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Paths to be added to $PYTHONPATH. Use %p for current project directory or %f for the directory of the current file.",
+          "order": 1
+        },
+        "rcFile": {
+          "type": "string",
+          "default": "",
+          "description": "Path to pylintrc file. Use %p for the current project directory or %f for the directory of the current file.",
+          "order": 2
+        },
+        "workingDirectory": {
+          "type": "string",
+          "default": "%p",
+          "description": "Directory pylint is run from. Use %p for the current project directory or %f for the directory of the current file.",
+          "order": 2
+        },
+        "messageFormat": {
+          "type": "string",
+          "default": "%i %m",
+          "description": "Format for Pylint messages where %m is the message, %i is the numeric mesasge ID (e.g. W0613) and %s is the human-readable message ID (e.g. unused-argument).",
+          "order": 2
+        },
+        "disableTimeout": {
+          "title": "Disable Execution Timeout",
+          "type": "boolean",
+          "default": false,
+          "description": "By default processes running longer than 10 seconds will be automatically terminated. Enable this option if you are getting messages about process execution timing out.",
+          "order": 3
+        }
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^10.0.0",
+        "atom-package-deps": "^4.5.0",
+        "lazy-req": "^2.0.0"
+      },
+      "devDependencies": {
+        "eslint": "^4.6.0",
+        "eslint-config-airbnb-base": "^12.0.0",
+        "eslint-plugin-import": "^2.7.0",
+        "jasmine-fix": "^1.3.1"
+      },
+      "package-deps": [
+        "linter:2.0.0"
+      ],
+      "eslintConfig": {
+        "extends": "airbnb-base",
+        "rules": {
+          "global-require": "off",
+          "import/no-unresolved": [
+            "error",
+            {
+              "ignore": [
+                "atom"
+              ]
+            }
+          ]
+        },
+        "globals": {
+          "atom": true
+        },
+        "env": {
+          "node": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/2.1.1/tarball"
+      }
+    },
+    "2.1.0": {
+      "name": "linter-pylint",
+      "main": "./lib/main.js",
+      "version": "2.1.0",
+      "private": true,
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "scripts": {
+        "test": "apm test",
+        "lint": "eslint ."
+      },
+      "engines": {
+        "atom": ">=1.4.0 <2.0.0"
+      },
+      "configSchema": {
+        "executablePath": {
+          "type": "string",
+          "default": "pylint",
+          "description": "Command or full path to pylint. Use %p for current project directory (no trailing /) or %h for current project name.",
+          "order": 1
+        },
+        "pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Paths to be added to $PYTHONPATH. Use %p for current project directory or %f for the directory of the current file.",
+          "order": 1
+        },
+        "rcFile": {
+          "type": "string",
+          "default": "",
+          "description": "Path to pylintrc file. Use %p for the current project directory or %f for the directory of the current file.",
+          "order": 2
+        },
+        "workingDirectory": {
+          "type": "string",
+          "default": "%p",
+          "description": "Directory pylint is run from. Use %p for the current project directory or %f for the directory of the current file.",
+          "order": 2
+        },
+        "messageFormat": {
+          "type": "string",
+          "default": "%i %m",
+          "description": "Format for Pylint messages where %m is the message, %i is the numeric mesasge ID (e.g. W0613) and %s is the human-readable message ID (e.g. unused-argument).",
+          "order": 2
+        },
+        "disableTimeout": {
+          "title": "Disable Execution Timeout",
+          "type": "boolean",
+          "default": false,
+          "description": "By default processes running longer than 10 seconds will be automatically terminated. Enable this option if you are getting messages about process execution timing out.",
+          "order": 3
+        }
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^10.0.0",
+        "atom-package-deps": "^4.5.0",
+        "lazy-req": "^2.0.0"
+      },
+      "devDependencies": {
+        "eslint": "^3.13.0",
+        "eslint-config-airbnb-base": "^11.1.1",
+        "eslint-plugin-import": "^2.2.0"
+      },
+      "package-deps": [
+        "linter:2.0.0"
+      ],
+      "eslintConfig": {
+        "extends": "airbnb-base",
+        "rules": {
+          "global-require": "off",
+          "import/no-unresolved": [
+            "error",
+            {
+              "ignore": [
+                "atom"
+              ]
+            }
+          ]
+        },
+        "globals": {
+          "atom": true
+        },
+        "env": {
+          "node": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/2.1.0/tarball"
+      }
+    },
+    "2.0.1": {
+      "name": "linter-pylint",
+      "main": "./lib/main.js",
+      "version": "2.0.1",
+      "private": true,
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "scripts": {
+        "test": "apm test",
+        "lint": "eslint ."
+      },
+      "engines": {
+        "atom": ">=1.4.0 <2.0.0"
+      },
+      "configSchema": {
+        "executablePath": {
+          "type": "string",
+          "default": "pylint",
+          "description": "Command or full path to pylint. Use %p for current project directory (no trailing /).",
+          "order": 1
+        },
+        "pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Paths to be added to $PYTHONPATH. Use %p for current project directory or %f for the directory of the current file.",
+          "order": 1
+        },
+        "rcFile": {
+          "type": "string",
+          "default": "",
+          "description": "Path to pylintrc file. Use %p for the current project directory or %f for the directory of the current file.",
+          "order": 2
+        },
+        "workingDirectory": {
+          "type": "string",
+          "default": "%p",
+          "description": "Directory pylint is run from. Use %p for the current project directory or %f for the directory of the current file.",
+          "order": 2
+        },
+        "messageFormat": {
+          "type": "string",
+          "default": "%i %m",
+          "description": "Format for Pylint messages where %m is the message, %i is the numeric mesasge ID (e.g. W0613) and %s is the human-readable message ID (e.g. unused-argument).",
+          "order": 2
+        },
+        "disableTimeout": {
+          "title": "Disable Execution Timeout",
+          "type": "boolean",
+          "default": false,
+          "description": "By default processes running longer than 10 seconds will be automatically terminated. Enable this option if you are getting messages about process execution timing out.",
+          "order": 3
+        }
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^9.0.0",
+        "atom-package-deps": "^4.5.0",
+        "lazy-req": "^2.0.0"
+      },
+      "devDependencies": {
+        "eslint": "^3.13.0",
+        "eslint-config-airbnb-base": "^11.1.1",
+        "eslint-plugin-import": "^2.2.0"
+      },
+      "package-deps": [
+        "linter:2.0.0"
+      ],
+      "eslintConfig": {
+        "extends": "airbnb-base",
+        "rules": {
+          "global-require": "off",
+          "import/no-unresolved": [
+            "error",
+            {
+              "ignore": [
+                "atom"
+              ]
+            }
+          ]
+        },
+        "globals": {
+          "atom": true
+        },
+        "env": {
+          "node": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/2.0.1/tarball"
+      }
+    },
+    "2.0.0": {
+      "name": "linter-pylint",
+      "main": "./lib/main.js",
+      "version": "2.0.0",
+      "private": true,
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "scripts": {
+        "test": "apm test",
+        "lint": "eslint ."
+      },
+      "engines": {
+        "atom": ">=1.4.0 <2.0.0"
+      },
+      "configSchema": {
+        "executablePath": {
+          "type": "string",
+          "default": "pylint",
+          "description": "Command or full path to pylint. Use %p for current project directory (no trailing /).",
+          "order": 1
+        },
+        "pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Paths to be added to $PYTHONPATH. Use %p for current project directory or %f for the directory of the current file.",
+          "order": 1
+        },
+        "rcFile": {
+          "type": "string",
+          "default": "",
+          "description": "Path to pylintrc file. Use %p for the current project directory or %f for the directory of the current file.",
+          "order": 2
+        },
+        "workingDirectory": {
+          "type": "string",
+          "default": "%p",
+          "description": "Directory pylint is run from. Use %p for the current project directory or %f for the directory of the current file.",
+          "order": 2
+        },
+        "messageFormat": {
+          "type": "string",
+          "default": "%i %m",
+          "description": "Format for Pylint messages where %m is the message, %i is the numeric mesasge ID (e.g. W0613) and %s is the human-readable message ID (e.g. unused-argument).",
+          "order": 2
+        },
+        "disableTimeout": {
+          "title": "Disable Execution Timeout",
+          "type": "boolean",
+          "default": false,
+          "description": "By default processes running longer than 10 seconds will be automatically terminated. Enable this option if you are getting messages about process execution timing out.",
+          "order": 3
+        }
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "2.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^9.0.0",
+        "atom-package-deps": "^4.5.0",
+        "lazy-req": "^2.0.0"
+      },
+      "devDependencies": {
+        "eslint": "^3.13.0",
+        "eslint-config-airbnb-base": "^11.1.1",
+        "eslint-plugin-import": "^2.2.0"
+      },
+      "package-deps": [
+        "linter:2.0.0"
+      ],
+      "eslintConfig": {
+        "extends": "airbnb-base",
+        "rules": {
+          "global-require": "off",
+          "import/no-unresolved": [
+            "error",
+            {
+              "ignore": [
+                "atom"
+              ]
+            }
+          ]
+        },
+        "globals": {
+          "atom": true
+        },
+        "env": {
+          "node": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/2.0.0/tarball"
+      }
+    },
+    "1.2.3": {
+      "name": "linter-pylint",
+      "main": "./lib/main.js",
+      "version": "1.2.3",
+      "private": true,
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "scripts": {
+        "test": "apm test",
+        "lint": "eslint ."
+      },
+      "engines": {
+        "atom": ">=1.4.0 <2.0.0"
+      },
+      "configSchema": {
+        "executable": {
+          "type": "string",
+          "default": "pylint",
+          "description": "Command or path to executable. Use %p for current project directory (no trailing /)."
+        },
+        "pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Paths to be added to $PYTHONPATH. Use %p for current project directory or %f for the directory of the current file."
+        },
+        "rcFile": {
+          "type": "string",
+          "default": "",
+          "description": "Path to pylintrc file. Use %p for the current project directory or %f for the directory of the current file."
+        },
+        "workingDirectory": {
+          "type": "string",
+          "default": "%p",
+          "description": "Directory pylint is run from. Use %p for the current project directory or %f for the directory of the current file."
+        },
+        "messageFormat": {
+          "type": "string",
+          "default": "%i %m",
+          "description": "Format for Pylint messages where %m is the message, %i is the numeric mesasge ID (e.g. W0613) and %s is the human-readable message ID (e.g. unused-argument)."
+        }
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^9.0.0",
+        "atom-package-deps": "^4.0.1",
+        "lazy-req": "^2.0.0"
+      },
+      "devDependencies": {
+        "eslint": "^3.13.0",
+        "eslint-config-airbnb-base": "^11.1.1",
+        "eslint-plugin-import": "^2.2.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "eslintConfig": {
+        "extends": "airbnb-base",
+        "rules": {
+          "global-require": "off",
+          "import/no-unresolved": [
+            "error",
+            {
+              "ignore": [
+                "atom"
+              ]
+            }
+          ]
+        },
+        "globals": {
+          "atom": true
+        },
+        "env": {
+          "node": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/1.2.3/tarball"
+      }
+    },
+    "1.2.2": {
+      "name": "linter-pylint",
+      "main": "./lib/main.js",
+      "version": "1.2.2",
+      "private": true,
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "scripts": {
+        "test": "apm test",
+        "lint": "eslint ."
+      },
+      "engines": {
+        "atom": ">=1.4.0 <2.0.0"
+      },
+      "configSchema": {
+        "executable": {
+          "type": "string",
+          "default": "pylint",
+          "description": "Command or path to executable. Use %p for current project directory (no trailing /)."
+        },
+        "pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Paths to be added to $PYTHONPATH. Use %p for current project directory or %f for the directory of the current file."
+        },
+        "rcFile": {
+          "type": "string",
+          "default": "",
+          "description": "Path to pylintrc file. Use %p for the current project directory or %f for the directory of the current file."
+        },
+        "workingDirectory": {
+          "type": "string",
+          "default": "%p",
+          "description": "Directory pylint is run from. Use %p for the current project directory or %f for the directory of the current file."
+        },
+        "messageFormat": {
+          "type": "string",
+          "default": "%i %m",
+          "description": "Format for Pylint messages where %m is the message, %i is the numeric mesasge ID (e.g. W0613) and %s is the human-readable message ID (e.g. unused-argument)."
+        }
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^8.0.0",
+        "atom-package-deps": "^4.0.1",
+        "lazy-req": "^1.1.0"
+      },
+      "devDependencies": {
+        "eslint": "^3.5.0",
+        "eslint-config-airbnb-base": "^7.1.0",
+        "eslint-plugin-import": "^1.15.0"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "eslintConfig": {
+        "rules": {
+          "global-require": "off",
+          "import/no-extraneous-dependencies": "off",
+          "import/no-unresolved": [
+            "error",
+            {
+              "ignore": [
+                "atom"
+              ]
+            }
+          ]
+        },
+        "extends": "airbnb-base",
+        "globals": {
+          "atom": true
+        },
+        "env": {
+          "es6": true,
+          "node": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/1.2.2/tarball"
+      }
+    },
+    "1.2.1": {
+      "name": "linter-pylint",
+      "main": "./lib/main.js",
+      "version": "1.2.1",
+      "private": true,
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "scripts": {
+        "test": "apm test",
+        "lint": "eslint ."
+      },
+      "engines": {
+        "atom": ">=1.4.0 <2.0.0"
+      },
+      "configSchema": {
+        "executable": {
+          "type": "string",
+          "default": "pylint",
+          "description": "Command or path to executable. Use %p for current project directory (no trailing /)."
+        },
+        "pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Paths to be added to $PYTHONPATH. Use %p for current project directory or %f for the directory of the current file."
+        },
+        "rcFile": {
+          "type": "string",
+          "default": "",
+          "description": "Path to pylintrc file. Use %p for the current project directory or %f for the directory of the current file."
+        },
+        "workingDirectory": {
+          "type": "string",
+          "default": "%p",
+          "description": "Directory pylint is run from. Use %p for the current project directory or %f for the directory of the current file."
+        },
+        "messageFormat": {
+          "type": "string",
+          "default": "%i %m",
+          "description": "Format for Pylint messages where %m is the message, %i is the numeric mesasge ID (e.g. W0613) and %s is the human-readable message ID (e.g. unused-argument)."
+        }
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^6.0.0",
+        "atom-package-deps": "^4.0.1",
+        "lazy-req": "^1.1.0"
+      },
+      "devDependencies": {
+        "eslint": "^2.11.1",
+        "eslint-config-airbnb-base": "^3.0.1",
+        "eslint-plugin-import": "^1.8.1"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "eslintConfig": {
+        "rules": {
+          "global-require": 0,
+          "import/no-unresolved": [
+            2,
+            {
+              "ignore": [
+                "atom"
+              ]
+            }
+          ]
+        },
+        "extends": "airbnb-base",
+        "globals": {
+          "atom": true
+        },
+        "env": {
+          "es6": true,
+          "node": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/1.2.1/tarball"
+      }
+    },
+    "1.2.0": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "main": "./lib/main",
+      "version": "1.2.0",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "scripts": {
+        "lint": "./node_modules/.bin/coffeelint lib"
+      },
+      "engines": {
+        "atom": ">=1"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^3.3.9",
+        "atom-package-deps": "^3.0.5",
+        "lodash": "^3.10.1"
+      },
+      "devDependencies": {
+        "coffeelint": "^1.14.1",
+        "eslint": "^1.10.2",
+        "babel-eslint": "^4.1.6",
+        "eslint-config-airbnb": "latest"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "eslintConfig": {
+        "extends": "airbnb/base",
+        "parser": "babel-eslint",
+        "globals": {
+          "atom": true
+        },
+        "env": {
+          "es6": true,
+          "node": true
+        },
+        "rules": {
+          "comma-dangle": 0
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/1.2.0/tarball"
+      }
+    },
+    "1.1.2": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "main": "./lib/main",
+      "version": "1.1.2",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "scripts": {
+        "lint": "./node_modules/.bin/coffeelint lib"
+      },
+      "engines": {
+        "atom": ">=1"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^3.3.9",
+        "atom-package-deps": "^3.0.5",
+        "lodash": "^3.10.1"
+      },
+      "devDependencies": {
+        "coffeelint": "^1.14.1",
+        "eslint": "^1.10.2",
+        "babel-eslint": "^4.1.6",
+        "eslint-config-airbnb": "latest"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "eslintConfig": {
+        "extends": "airbnb/base",
+        "parser": "babel-eslint",
+        "globals": {
+          "atom": true
+        },
+        "env": {
+          "es6": true,
+          "node": true
+        },
+        "rules": {
+          "comma-dangle": 0
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/1.1.2/tarball"
+      }
+    },
+    "1.1.1": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "main": "./lib/main",
+      "version": "1.1.1",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "scripts": {
+        "lint": "./node_modules/.bin/coffeelint lib"
+      },
+      "engines": {
+        "atom": ">=1"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^3.3.9",
+        "atom-package-deps": "^3.0.5",
+        "lodash": "^3.10.1"
+      },
+      "devDependencies": {
+        "coffeelint": "^1.14.1",
+        "eslint": "^1.10.2",
+        "babel-eslint": "^4.1.6",
+        "eslint-config-airbnb": "latest"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "eslintConfig": {
+        "extends": "airbnb/base",
+        "parser": "babel-eslint",
+        "globals": {
+          "atom": true
+        },
+        "env": {
+          "es6": true,
+          "node": true
+        },
+        "rules": {
+          "comma-dangle": 0
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/1.1.1/tarball"
+      }
+    },
+    "1.1.0": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "main": "./lib/main",
+      "version": "1.1.0",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "scripts": {
+        "lint": "./node_modules/.bin/coffeelint lib"
+      },
+      "engines": {
+        "atom": ">=1"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^3.3.9",
+        "atom-package-deps": "^3.0.5",
+        "lodash": "^3.10.1"
+      },
+      "devDependencies": {
+        "coffeelint": "^1.14.1",
+        "eslint": "^1.10.2",
+        "babel-eslint": "^4.1.6",
+        "eslint-config-airbnb": "latest"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "eslintConfig": {
+        "extends": "airbnb/base",
+        "parser": "babel-eslint",
+        "globals": {
+          "atom": true
+        },
+        "env": {
+          "es6": true,
+          "node": true
+        },
+        "rules": {
+          "comma-dangle": 0
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/1.1.0/tarball"
+      }
+    },
+    "1.0.5": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "main": "./lib/main",
+      "version": "1.0.5",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "scripts": {
+        "lint": "./node_modules/.bin/coffeelint lib"
+      },
+      "engines": {
+        "atom": ">=1"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^3.3.7",
+        "atom-package-deps": "^3.0.5",
+        "lodash": "^3.10.1"
+      },
+      "devDependencies": {
+        "coffeelint": "^1.14.1",
+        "eslint": "^1.9.0",
+        "babel-eslint": "^4.1.5",
+        "eslint-config-airbnb": "latest"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "eslintConfig": {
+        "extends": "airbnb/base",
+        "parser": "babel-eslint",
+        "globals": {
+          "atom": true
+        },
+        "env": {
+          "es6": true,
+          "node": true
+        },
+        "rules": {
+          "comma-dangle": 0
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/1.0.5/tarball"
+      }
+    },
+    "1.0.4": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "main": "./lib/main",
+      "version": "1.0.4",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "scripts": {
+        "lint": "./node_modules/.bin/coffeelint lib"
+      },
+      "engines": {
+        "atom": ">=1"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^3.3.7",
+        "atom-package-deps": "^3.0.2",
+        "lodash": "^3.10.1"
+      },
+      "devDependencies": {
+        "coffeelint": "^1.14.1",
+        "eslint": "^1.9.0",
+        "babel-eslint": "^4.1.5",
+        "eslint-config-airbnb": "latest"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "eslintConfig": {
+        "extends": "airbnb/base",
+        "parser": "babel-eslint",
+        "globals": {
+          "atom": true
+        },
+        "env": {
+          "es6": true,
+          "node": true
+        },
+        "rules": {
+          "comma-dangle": 0
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/1.0.4/tarball"
+      }
+    },
+    "1.0.3": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "main": "./lib/main",
+      "version": "1.0.3",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "scripts": {
+        "lint": "./node_modules/.bin/coffeelint lib"
+      },
+      "engines": {
+        "atom": ">=1"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^3.2.0",
+        "atom-package-deps": "^2.0.2",
+        "lodash": "^3.10.1"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "devDependencies": {
+        "coffeelint": "^1.12.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/1.0.3/tarball"
+      }
+    },
+    "1.0.2": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "main": "./lib/main",
+      "version": "1.0.2",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^3.2.0",
+        "atom-package-deps": "^2.0.2",
+        "lodash": "^3.10.1"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/1.0.2/tarball"
+      }
+    },
+    "1.0.1": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "main": "./lib/main",
+      "version": "1.0.1",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^3.2.0",
+        "atom-package-deps": "^2.0.2",
+        "lodash": "^3.10.1"
+      },
+      "package-deps": [
+        "linter"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/1.0.1/tarball"
+      }
+    },
+    "1.0.0": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "main": "./lib/main",
+      "version": "1.0.0",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1"
+      },
+      "providedServices": {
+        "linter": {
+          "versions": {
+            "1.0.0": "provideLinter"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-linter": "^3.2.0",
+        "lodash": "^3.10.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/1.0.0/tarball"
+      }
+    },
+    "0.2.2": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "main": "./lib/init",
+      "version": "0.2.2",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/0.2.2/tarball"
+      }
+    },
+    "0.2.1": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "activationEvents": [],
+      "main": "./lib/init",
+      "version": "0.2.1",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/0.2.1/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "activationEvents": [],
+      "main": "./lib/init",
+      "version": "0.2.0",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.5": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "activationEvents": [],
+      "main": "./lib/init",
+      "version": "0.1.5",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/0.1.5/tarball"
+      }
+    },
+    "0.1.4": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "activationEvents": [],
+      "main": "./lib/init",
+      "version": "0.1.4",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/0.1.4/tarball"
+      }
+    },
+    "0.1.3": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "activationEvents": [],
+      "main": "./lib/init",
+      "version": "0.1.3",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/0.1.3/tarball"
+      }
+    },
+    "0.1.2": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "activationEvents": [],
+      "main": "./lib/init",
+      "version": "0.1.2",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/0.1.2/tarball"
+      }
+    },
+    "0.1.1": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "activationEvents": [],
+      "main": "./lib/init",
+      "version": "0.1.1",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/0.1.1/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "activationEvents": [],
+      "main": "./lib/init",
+      "version": "0.1.0",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/0.1.0/tarball"
+      }
+    },
+    "0.0.4": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "activationEvents": [],
+      "main": "./lib/init",
+      "version": "0.0.4",
+      "description": "Lint python on the fly, using pylint (not yet ready)",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/0.0.4/tarball"
+      }
+    },
+    "0.0.1": {
+      "name": "linter-pylint",
+      "linter-package": true,
+      "activationEvents": [],
+      "main": "./lib/init",
+      "version": "0.0.1",
+      "description": "Lint python on the fly, using pylint",
+      "repository": "https://github.com/AtomLinter/linter-pylint",
+      "license": "MIT",
+      "engines": {
+        "atom": ">0.50.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/linter-pylint/versions/0.0.1/tarball"
+      }
+    }
+  },
+  "readme": "# linter-pylint\n[![Build Status](https://travis-ci.org/AtomLinter/linter-pylint.svg?branch=master)](https://travis-ci.org/AtomLinter/linter-pylint)\n[![Dependency Status](https://david-dm.org/AtomLinter/linter-pylint.svg)](https://david-dm.org/AtomLinter/linter-pylint)\n[![Plugin installs!](https://img.shields.io/apm/dm/linter-pylint.svg)](https://atom.io/packages/linter-pylint)\n[![Package version!](https://img.shields.io/apm/v/linter-pylint.svg?style=flat)](https://atom.io/packages/linter-pylint)\n\nThis package will lint your opened Python-files in Atom, using [pylint](https://www.pylint.org/).\n\n## Installation\n\n* Install [pylint](http://www.pylint.org/#install).\n* `$ apm install linter-pylint`\n\n## Configuration\n* **Executable** Path to your pylint executable. This is useful if you have different versions of pylint for Python 2\n  and 3 or if you are using a virtualenv. Use `%p` for the current project (no trailing /).\n* **Message Format** Format for Pylint messages where `%m` is the message, `%i` is the numeric message ID (e.g. W0613)\n  and `%s` is the human-readable message ID (e.g. unused-argument).\n* **Python Path** Paths to be added to the `PYTHONPATH` environment variable. Use `%p` for the current project\n  directory (e.g. `%p/vendor`) or `%f` for the directory of the current\n  file location.\n* **Rc File** Path to pylintrc file. Use `%p` for the current project directory or `%f` for the directory of the current\n  file location.\n* **Working Directory** Directory pylint is run from. Use `%p` for the current project directory or `%f` for the\n  directory of the current file.\n* `%p` will fallback to the current file's directory (equivilent to `%f`) if no project directory can be determined.\n\n## Other available linters\nThere are other linters available - take a look at the linters [mainpage](https://github.com/steelbrain/linter).\n\n## Changelog\n\n### 1.1.0\n- Allow use of project and file directories in rcfile, cwd, and PYTHONPATH (d82116d)\n- Fix use of PYTHONPATH (7fb325)\n\n### 1.0.0\n- Use latest linter API\n\n### 0.2.1\n - Use new API for project path\n\n### 0.2.0\n - Settings to configure rcfile, executable name [#24](https://github.com/AtomLinter/linter-pylint/pull/24)\n\n### 0.1.5\n - Fix lint message display on Windows [#15](https://github.com/AtomLinter/linter-pylint/issues/15)\n - Fix temporary file leak when pylint isn't present\n\n### 0.1.3\n - Display pylint message ids\n - Fix debug mode [#9](https://github.com/AtomLinter/linter-pylint/pull/9)\n - Use project directory as cwd (works better with Atom projects)\n\n### 0.1.2\n - fix 'has no method getCmd' bug [#4](https://github.com/AtomLinter/linter-pylint/issues/4)\n\n### 0.1.0\n\n - Implemented first version of 'linter-pylint'\n - Added support for Errors and Warnings, \"Refactor\", \"Convention and \"Fatal\"-messages are ignored due to missing display-capabilities.\n",
+  "metadata": {
+    "name": "linter-pylint",
+    "main": "./lib/main.js",
+    "version": "2.1.1",
+    "private": true,
+    "description": "Lint python on the fly, using pylint",
+    "repository": "https://github.com/AtomLinter/linter-pylint",
+    "license": "MIT",
+    "scripts": {
+      "test": "apm test",
+      "lint": "eslint ."
+    },
+    "engines": {
+      "atom": ">=1.4.0 <2.0.0"
+    },
+    "configSchema": {
+      "executablePath": {
+        "type": "string",
+        "default": "pylint",
+        "description": "Command or full path to pylint. Use %p for current project directory (no trailing /) or %h for current project name.",
+        "order": 1
+      },
+      "pythonPath": {
+        "type": "string",
+        "default": "",
+        "description": "Paths to be added to $PYTHONPATH. Use %p for current project directory or %f for the directory of the current file.",
+        "order": 1
+      },
+      "rcFile": {
+        "type": "string",
+        "default": "",
+        "description": "Path to pylintrc file. Use %p for the current project directory or %f for the directory of the current file.",
+        "order": 2
+      },
+      "workingDirectory": {
+        "type": "string",
+        "default": "%p",
+        "description": "Directory pylint is run from. Use %p for the current project directory or %f for the directory of the current file.",
+        "order": 2
+      },
+      "messageFormat": {
+        "type": "string",
+        "default": "%i %m",
+        "description": "Format for Pylint messages where %m is the message, %i is the numeric mesasge ID (e.g. W0613) and %s is the human-readable message ID (e.g. unused-argument).",
+        "order": 2
+      },
+      "disableTimeout": {
+        "title": "Disable Execution Timeout",
+        "type": "boolean",
+        "default": false,
+        "description": "By default processes running longer than 10 seconds will be automatically terminated. Enable this option if you are getting messages about process execution timing out.",
+        "order": 3
+      }
+    },
+    "providedServices": {
+      "linter": {
+        "versions": {
+          "2.0.0": "provideLinter"
+        }
+      }
+    },
+    "dependencies": {
+      "atom-linter": "^10.0.0",
+      "atom-package-deps": "^4.5.0",
+      "lazy-req": "^2.0.0"
+    },
+    "devDependencies": {
+      "eslint": "^4.6.0",
+      "eslint-config-airbnb-base": "^12.0.0",
+      "eslint-plugin-import": "^2.7.0",
+      "jasmine-fix": "^1.3.1"
+    },
+    "package-deps": [
+      "linter:2.0.0"
+    ],
+    "eslintConfig": {
+      "extends": "airbnb-base",
+      "rules": {
+        "global-require": "off",
+        "import/no-unresolved": [
+          "error",
+          {
+            "ignore": [
+              "atom"
+            ]
+          }
+        ]
+      },
+      "globals": {
+        "atom": true
+      },
+      "env": {
+        "node": true
+      }
+    }
+  }
+}

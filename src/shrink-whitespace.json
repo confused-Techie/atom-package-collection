@@ -1,0 +1,156 @@
+{
+  "name": "shrink-whitespace",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jcpetkovich/atom-shrink-whitespace"
+  },
+  "downloads": 600,
+  "stargazers_count": 3,
+  "releases": {
+    "latest": "0.2.3"
+  },
+  "versions": {
+    "0.2.3": {
+      "name": "shrink-whitespace",
+      "main": "./lib/shrink-whitespace",
+      "version": "0.2.3",
+      "description": "Shrink whitespace dwim key.",
+      "keywords": [
+        "editing",
+        "whitespace"
+      ],
+      "activationCommands": {
+        "atom-workspace": "shrink-whitespace:shrink"
+      },
+      "repository": "https://github.com/jcpetkovich/atom-shrink-whitespace",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "text-buffer": ">=6.3.8"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/shrink-whitespace/versions/0.2.3/tarball"
+      }
+    },
+    "0.2.2": {
+      "name": "shrink-whitespace",
+      "main": "./lib/shrink-whitespace",
+      "version": "0.2.2",
+      "description": "Shrink whitespace dwim key.",
+      "keywords": [
+        "editing",
+        "whitespace"
+      ],
+      "activationCommands": {
+        "atom-workspace": "shrink-whitespace:shrink"
+      },
+      "repository": "https://github.com/jcpetkovich/atom-shrink-whitespace",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "text-buffer": "6.3.8"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/shrink-whitespace/versions/0.2.2/tarball"
+      }
+    },
+    "0.2.1": {
+      "name": "shrink-whitespace",
+      "main": "./lib/shrink-whitespace",
+      "version": "0.2.1",
+      "description": "Shrink whitespace dwim key.",
+      "keywords": [
+        "editing",
+        "whitespace"
+      ],
+      "activationCommands": {
+        "atom-workspace": "shrink-whitespace:shrink"
+      },
+      "repository": "https://github.com/jcpetkovich/atom-shrink-whitespace",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "text-buffer": "6.3.8"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/shrink-whitespace/versions/0.2.1/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "shrink-whitespace",
+      "main": "./lib/shrink-whitespace",
+      "version": "0.2.0",
+      "description": "Shrink whitespace dwim key.",
+      "keywords": [
+        "editing",
+        "whitespace"
+      ],
+      "activationCommands": {
+        "atom-workspace": "shrink-whitespace:shrink"
+      },
+      "repository": "https://github.com/jcpetkovich/atom-shrink-whitespace",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "text-buffer": "6.3.8"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/shrink-whitespace/versions/0.2.0/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "shrink-whitespace",
+      "main": "./lib/shrink-whitespace",
+      "version": "0.1.0",
+      "description": "Shrink whitespace dwim key.",
+      "keywords": [
+        "editing",
+        "whitespace"
+      ],
+      "activationCommands": {
+        "atom-workspace": "shrink-whitespace:shrink"
+      },
+      "repository": "https://github.com/jcpetkovich/atom-shrink-whitespace",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "text-buffer": "6.3.8"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/shrink-whitespace/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "# shrink-whitespace package\n\n[![Build Status](https://travis-ci.org/jcpetkovich/atom-shrink-whitespace.svg?branch=master)](https://travis-ci.org/jcpetkovich/atom-shrink-whitespace)\n\nThis package is a port of my [shrink-whitespace.el](https://github.com/jcpetkovich/shrink-whitespace.el) package from Emacs to atom. I did this as an experiment to see how easy it was to develop atom packages, and what the API was like.\n\n![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)\n\n`shrink-whitespace` is a DWIM whitespace removal key for emacs. The behaviour is\npretty simple, but I haven't found anything else that does what I want.\n\n# Usage\n\nConsider the following scenario, point represented by (|):\n\n```\nHere is some text\n\n\n(|)\n\n\n\nHere is some more text\n```\n\nWhen you invoke `shrink-whitespace`, the whitespace between the lines is reduced\nto a single line like so:\n\n```\nHere is some text\n(|)\nHere is some more text\n```\n\nIf you want to remove further whitespace, just invoke it again:\n\n```\nHere is some text\n(|)Here is some more text\n```\n\nNow there is no space between the two lines, and point is at the beginning of\nthe second line.\n\n\nThis same function works with horizontal space, and uses the same general logic.\nConsider the following scenario:\n\n```c\nint main(int argc,     (|) char *argv[])\n{\n\n\treturn 0;\n}\n```\n\nInvoking `shrink-whitespace` removes the extra whitespace around point:\n\n```c\nint main(int argc, (|)char *argv[])\n{\n\n\treturn 0;\n}\n```\n\nAnd can be invoked again:\n\n```c\nint main(int argc,(|)char *argv[])\n{\n\n\treturn 0;\n}\n```\n\nThat's really all there is to it, but I find it remarkably useful, and use it\nevery single day.\n",
+  "metadata": {
+    "name": "shrink-whitespace",
+    "main": "./lib/shrink-whitespace",
+    "version": "0.2.3",
+    "description": "Shrink whitespace dwim key.",
+    "keywords": [
+      "editing",
+      "whitespace"
+    ],
+    "activationCommands": {
+      "atom-workspace": "shrink-whitespace:shrink"
+    },
+    "repository": "https://github.com/jcpetkovich/atom-shrink-whitespace",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "text-buffer": ">=6.3.8"
+    }
+  }
+}

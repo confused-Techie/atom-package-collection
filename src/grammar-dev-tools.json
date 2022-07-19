@@ -1,0 +1,111 @@
+{
+  "name": "grammar-dev-tools",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aerijo/grammar-dev-tools"
+  },
+  "downloads": 716,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "0.4.0"
+  },
+  "versions": {
+    "0.4.0": {
+      "name": "grammar-dev-tools",
+      "main": "./dist/main",
+      "version": "0.4.0",
+      "description": "A package to assist development of grammars in Atom",
+      "keywords": [
+        "grammar"
+      ],
+      "repository": "https://github.com/Aerijo/grammar-dev-tools",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "latest"
+      },
+      "devDependencies": {
+        "@types/atom": "latest",
+        "@types/text-buffer": "^13.0.4",
+        "typescript": "latest",
+        "tslint": "latest"
+      },
+      "scripts": {
+        "build": "tsc"
+      },
+      "configSchema": {
+        "onlyInDevMode": {
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/grammar-dev-tools/versions/0.4.0/tarball"
+      }
+    },
+    "0.3.0": {
+      "name": "grammar-dev-tools",
+      "main": "./dist/main",
+      "version": "0.3.0",
+      "description": "A package to assist development of grammars in Atom",
+      "keywords": [
+        "grammar"
+      ],
+      "repository": "https://github.com/Aerijo/grammar-dev-tools",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "etch": "latest"
+      },
+      "devDependencies": {
+        "@types/atom": "latest",
+        "@types/text-buffer": "^13.0.4",
+        "typescript": "latest",
+        "tslint": "latest"
+      },
+      "scripts": {
+        "build": "tsc"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/grammar-dev-tools/versions/0.3.0/tarball"
+      }
+    }
+  },
+  "readme": "# Grammar Dev Tools\n\nA collection of tools to make developing grammars (TextMate and Tree-sitter) easier in Atom.\n\n### Features (planned)\n- Persistent popup box at cursor for current scope and / or tree path\n- Doctor grammar packages\n  - Inspect installation process (e.g., if it depends on build tools)\n  - Validate grammar files\n    - Deprecated properties\n    - Missing properties\n    - Mispelled properties\n- Generate relational view of grammar\n- Generate all scopes used by grammar\n- Links to development guides\n- Detect truncated lines and max token limits\n\n\n### Guide (TODO)\n\nSome notes:\n- The scopes are for the character immediately following the cursor. So `a|bc` would report the scopes for `b`.\n  - Note it gets weird when at the end of a line. Because we more often care about the character at the end of the line, and not the newline character itself, the scope is manually adjusted to compensate. So both `ab|c` and `abc|` report the scope of `c`. This behaviour can be toggled in settings.\n  - Disabling this will show you the true scopes, which may be more helpful when debugging the grammar. Enabling it will show what scope checkers see, which helps debugging things like autocomplete (the completions are scope sensitive).\n- Immediate scope refers to the range over which no scopes change, whereas the \"proper\" range is generally wider. E.g., for `let foo = \"b|ar\"` the text in the immediate scope is `bar` (and same for proper scope). However, for `let foo =| \"bar\"` the immediate text is ` ` (the space between `=` and `\"`), but the proper scope is the entire text (because the scope of ` ` is `source.js`).\n",
+  "metadata": {
+    "name": "grammar-dev-tools",
+    "main": "./dist/main",
+    "version": "0.4.0",
+    "description": "A package to assist development of grammars in Atom",
+    "keywords": [
+      "grammar"
+    ],
+    "repository": "https://github.com/Aerijo/grammar-dev-tools",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "etch": "latest"
+    },
+    "devDependencies": {
+      "@types/atom": "latest",
+      "@types/text-buffer": "^13.0.4",
+      "typescript": "latest",
+      "tslint": "latest"
+    },
+    "scripts": {
+      "build": "tsc"
+    },
+    "configSchema": {
+      "onlyInDevMode": {
+        "type": "boolean",
+        "default": true
+      }
+    }
+  }
+}

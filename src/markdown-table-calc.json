@@ -1,0 +1,93 @@
+{
+  "name": "markdown-table-calc",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oswida/markdown-table-recalc"
+  },
+  "downloads": 1662,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "0.4.0"
+  },
+  "versions": {
+    "0.4.0": {
+      "name": "markdown-table-calc",
+      "author": "Oskar Świda",
+      "main": "./lib/markdown-table-calc",
+      "version": "0.4.0",
+      "description": "Markdown table calculations",
+      "keywords": [
+        "markdown",
+        "calc",
+        "table"
+      ],
+      "activationCommands": {
+        "atom-workspace": "markdown-table-calc:recalculate"
+      },
+      "repository": "git@github.com:oswida/markdown-table-recalc.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "hot-formula-parser": "^2.3.3",
+        "markdown-it": "^8.4.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/markdown-table-calc/versions/0.4.0/tarball"
+      }
+    },
+    "0.3.0": {
+      "name": "markdown-table-calc",
+      "author": "Oskar Świda",
+      "main": "./lib/markdown-table-calc",
+      "version": "0.3.0",
+      "description": "Markdown table calculations",
+      "keywords": [
+        "markdown",
+        "calc",
+        "table"
+      ],
+      "activationCommands": {
+        "atom-workspace": "markdown-table-calc:recalculate"
+      },
+      "repository": "git@github.com:oswida/markdown-table-recalc.git",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "hot-formula-parser": "^2.3.3",
+        "markdown-it": "^8.4.1"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/markdown-table-calc/versions/0.3.0/tarball"
+      }
+    }
+  },
+  "readme": "# Atom editor markdown-table-calc package\n\nAtom editor extension for making calculations in markdown tables. Inspired by an Emacs Org mode feature which allows to make TBLFM comments under the table and perform calculations.\n\n## References / Thanks\n\nBig thanks to authors of two projects which are the calculation engine core:\n - Markdown-it (https://github.com/markdown-it/markdown-it) with the wonderful Markdown parser, I've used it to locate and extract table data in a Markdown document.\n - _Hot_ formula parser from https://github.com/handsontable/formula-parser - incredible useful library for evauating mathematical formulas.\n\n## Features\n\n- Define table formulas in Markdown files\n- Recalculate all formulas in a file using custom command\n\n## Usage\nTo define a set of table formulas, you can add a special HTML comment **below** a given Markdown table (TBLFM is a tribute to an Emacs Org mode :) . Only the first comment under the table will be taken into account.\n\n```markdown\n| Column A | Column B | Column C |\n|:---------|:---------|:---------|\n| 123      | 456      | 789      |\n| 0        | 0        | 0        |\n<!--TBLFM C2=A1+A2; C1=56*78/4 -->\n```\nThe comment can span multiple lines and contain multiple formulas separated by a semicolon. Formulas are calculated in the order they are written.\nTable cells are described using spreadsheet notation, columns designated with letters like **A,B,C .. Z** (and even more  AA, AB etc.) and rows with integers **1,2,3 ...**\nYou can also use range notation like **A1:E23**.\nMoreover, [hot-formula-parser](https://github.com/handsontable/formula-parser) contains also a big set of predefined functions which can be used in formulas. The list of these functions (taken by SUPPORTED_FORMULAS function) looks like this:\n```\n- ABS,ACCRINT,ACOS,ACOSH,ACOT,ACOTH,ADD,AGGREGATE,AND,ARABIC,ARGS2ARRAY,ASIN,ASINH,ATAN,ATAN2,ATANH,AVEDEV,AVERAGE,AVERAGEA,AVERAGEIF,AVERAGEIFS,\n- BASE,BESSELI,BESSELJ,BESSELK,BESSELY,BETA.DIST,BETA.INV,BETADIST,BETAINV,BIN2DEC,BIN2HEX,BIN2OCT,BINOM.DIST,BINOM.DIST.RANGE,BINOM.INV,BINOMDIST,BITAND,BITLSHIFT,BITOR,BITRSHIFT,BITXOR,\n- CEILING,CEILINGMATH,CEILINGPRECISE,CHAR,CHISQ.DIST,CHISQ.DIST.RT,CHISQ.INV,CHISQ.INV.RT,CHOOSE,CHOOSE,CLEAN,CODE,COLUMN,COLUMNS,COMBIN,COMBINA,COMPLEX,CONCATENATE,CONFIDENCE,CONFIDENCE.NORM,CONFIDENCE.T,CONVERT,CORREL,COS,COSH,COT,COTH,COUNT,COUNTA,COUNTBLANK,COUNTIF,COUNTIFS,COUNTIN,COUNTUNIQUE,COVARIANCE.P,COVARIANCE.S,CSC,CSCH,CUMIPMT,CUMPRINC,\n- DATE,DATEVALUE,DAY,DAYS,DAYS360,DB,DDB,DEC2BIN,DEC2HEX,DEC2OCT,DECIMAL,DEGREES,DELTA,DEVSQ,DIVIDE,DOLLAR,DOLLARDE,DOLLARFR,\n- E,EDATE,EFFECT,EOMONTH,EQ,ERF,ERFC,EVEN,EXACT,EXP,EXPON.DIST,EXPONDIST,\n- F.DIST,F.DIST.RT,F.INV,F.INV.RT,FACT,FACTDOUBLE,FALSE,FDIST,FDISTRT,FIND,FINV,FINVRT,FISHER,FISHERINV,FIXED,FLATTEN,FLOOR,FORECAST,FREQUENCY,FV,FVSCHEDULE,\n- GAMMA,GAMMA.DIST,GAMMA.INV,GAMMADIST,GAMMAINV,GAMMALN,GAMMALN.PRECISE,GAUSS,GCD,GEOMEAN,GESTEP,GROWTH,GTE,\n- HARMEAN,HEX2BIN,HEX2DEC,HEX2OCT,HOUR,HTML2TEXT,HYPGEOM.DIST,HYPGEOMDIST,\n- IF,IMABS,IMAGINARY,IMARGUMENT,IMCONJUGATE,IMCOS,IMCOSH,IMCOT,IMCSC,IMCSCH,IMDIV,IMEXP,IMLN,IMLOG10,IMLOG2,IMPOWER,IMPRODUCT,IMREAL,IMSEC,IMSECH,IMSIN,IMSINH,IMSQRT,IMSUB,IMSUM,IMTAN,INT,INTERCEPT,INTERVAL,IPMT,IRR,ISBINARY,ISBLANK,ISEVEN,ISLOGICAL,ISNONTEXT,ISNUMBER,ISODD,ISODD,ISOWEEKNUM,ISPMT,ISTEXT,\n- JOIN,\n- KURT,\n- LARGE,LCM,LEFT,LEN,LINEST,LN,LOG,LOG10,LOGEST,LOGNORM.DIST,LOGNORM.INV,LOGNORMDIST,LOGNORMINV,LOWER,LT,LTE,\n- MATCH,MAX,MAXA,MEDIAN,MID,MIN,MINA,MINUS,MINUTE,MIRR,MOD,MODE.MULT,MODE.SNGL,MODEMULT,MODESNGL,MONTH,MROUND,MULTINOMIAL,MULTIPLY,\n- NE,NEGBINOM.DIST,NEGBINOMDIST,NETWORKDAYS,NOMINAL,NORM.DIST,NORM.INV,NORM.S.DIST,NORM.S.INV,NORMDIST,NORMINV,NORMSDIST,NORMSINV,NOT,NOW,NPER,NPV,NUMBERS,NUMERAL,\n- OCT2BIN,OCT2DEC,OCT2HEX,ODD,OR,\n- PDURATION,PEARSON,PERCENTILEEXC,PERCENTILEINC,PERCENTRANKEXC,PERCENTRANKINC,PERMUT,PERMUTATIONA,PHI,PI,PMT,POISSON.DIST,POISSONDIST,POW,POWER,PPMT,PROB,PRODUCT,PROPER,PV,\n- QUARTILE.EXC,QUARTILE.INC,QUARTILEEXC,QUARTILEINC,QUOTIENT,\n- RADIANS,RAND,RANDBETWEEN,RANK.AVG,RANK.EQ,RANKAVG,RANKEQ,RATE,REFERENCE,REGEXEXTRACT,REGEXMATCH REGEXREPLACE,REPLACE,REPT,RIGHT,ROMAN,ROUND,ROUNDDOWN,ROUNDUP,ROW,ROWS,RRI,RSQ,\n- SEARCH,SEC,SECH,SECOND,SERIESSUM,SIGN,SIN,SINH,SKEW,SKEW.P,SKEWP,SLN,SLOPE,SMALL,SPLIT,SPLIT,SQRT,SQRTPI,STANDARDIZE,STDEV.P,STDEV.S,STDEVA,STDEVP,STDEVPA,STDEVS,STEYX,SUBSTITUTE,SUBTOTAL,SUM,SUMIF,SUMIFS,SUMPRODUCT,SUMSQ,SUMX2MY2,SUMX2PY2,SUMXMY2,SWITCH,SYD,\n- T,T.DIST,T.DIST.2T,T.DIST.RT,T.INV,T.INV.2T,TAN,TANH,TBILLEQ,TBILLPRICE,TBILLYIELD,TDIST,TDIST2T,TDISTRT,TEXT,TIME,TIMEVALUE,TINV,TINV2T,TODAY,TRANSPOSE,TREND,TRIM,TRIMMEAN,TRUE,TRUNC,\n- UNICHAR,UNICODE,UNIQUE,UPPER,\n- VALUE,VAR.P,VAR.S,VARA,VARP,VARPA,VARS,\n- WEEKDAY,WEEKNUM,WEIBULL.DIST WEIBULLDIST,WORKDAY,\n- XIRR,XNPV,XOR,\n- YEAR,YEARFRAC\n```\n### Extension command\nTo activate table formula recalculation you need to use a new editor command: **Markdown Table Calc: Recalculate**\n\n## Known Issues\n\nThis is my first Atom package, please, expect that something can go wrong.\n\n### 0.0.0\n\nInitial release of markdown table calc\n\n# License\nThe MIT License (see the [LICENSE](https://github.com/oswida/vscode-markdown-table-calc/blob/master/LICENSE) file for the full text).\n",
+  "metadata": {
+    "name": "markdown-table-calc",
+    "author": "Oskar Świda",
+    "main": "./lib/markdown-table-calc",
+    "version": "0.4.0",
+    "description": "Markdown table calculations",
+    "keywords": [
+      "markdown",
+      "calc",
+      "table"
+    ],
+    "activationCommands": {
+      "atom-workspace": "markdown-table-calc:recalculate"
+    },
+    "repository": "git@github.com:oswida/markdown-table-recalc.git",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "hot-formula-parser": "^2.3.3",
+      "markdown-it": "^8.4.1"
+    }
+  }
+}

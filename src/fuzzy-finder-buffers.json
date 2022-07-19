@@ -1,0 +1,186 @@
+{
+  "name": "fuzzy-finder-buffers",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bradens/fuzzy-finder"
+  },
+  "downloads": 175,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "1.5.3"
+  },
+  "versions": {
+    "1.5.3": {
+      "name": "fuzzy-finder-buffers",
+      "version": "1.5.3",
+      "main": "./lib/main",
+      "description": "Fork of the fuzzy-finder package, with buffer closing.",
+      "repository": "https://github.com/bradens/fuzzy-finder",
+      "license": "MIT",
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-space-pen-views": "^2.0.0",
+        "fs-plus": "^2.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.4.1",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "temp": "~0.8.1",
+        "underscore-plus": "^1.0.0",
+        "wrench": "^1.5"
+      },
+      "engines": {
+        "atom": "*"
+      },
+      "devDependencies": {
+        "coffeelint": "^1.9.7"
+      },
+      "consumedServices": {
+        "atom.file-icons": {
+          "versions": {
+            "1.0.0": "consumeFileIcons"
+          }
+        }
+      },
+      "configSchema": {
+        "ignoredNames": {
+          "type": "array",
+          "default": [],
+          "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+        },
+        "searchAllPanes": {
+          "type": "boolean",
+          "default": false,
+          "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+        },
+        "preserveLastSearch": {
+          "type": "boolean",
+          "default": false,
+          "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+        },
+        "useAlternateScoring": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use an alternative scoring approach which prefers run of consecutive characters, acronyms and start of words. (Experimental)"
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/fuzzy-finder-buffers/versions/1.5.3/tarball"
+      }
+    },
+    "1.5.0": {
+      "name": "fuzzy-finder-buffers",
+      "version": "1.5.0",
+      "main": "./lib/main",
+      "description": "Fork of the fuzzy-finder package, with buffer closing.",
+      "repository": "https://github.com/bradens/fuzzy-finder",
+      "license": "MIT",
+      "dependencies": {
+        "async": "0.2.6",
+        "atom-space-pen-views": "^2.0.0",
+        "fs-plus": "^2.0.0",
+        "fuzzaldrin": "^2.0",
+        "fuzzaldrin-plus": "^0.4.1",
+        "humanize-plus": "~1.8.2",
+        "minimatch": "~3.0.3",
+        "temp": "~0.8.1",
+        "underscore-plus": "^1.0.0",
+        "wrench": "^1.5"
+      },
+      "engines": {
+        "atom": "*"
+      },
+      "devDependencies": {
+        "coffeelint": "^1.9.7"
+      },
+      "consumedServices": {
+        "atom.file-icons": {
+          "versions": {
+            "1.0.0": "consumeFileIcons"
+          }
+        }
+      },
+      "configSchema": {
+        "ignoredNames": {
+          "type": "array",
+          "default": [],
+          "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+        },
+        "searchAllPanes": {
+          "type": "boolean",
+          "default": false,
+          "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+        },
+        "preserveLastSearch": {
+          "type": "boolean",
+          "default": false,
+          "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+        },
+        "useAlternateScoring": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use an alternative scoring approach which prefers run of consecutive characters, acronyms and start of words. (Experimental)"
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/fuzzy-finder-buffers/versions/1.5.0/tarball"
+      }
+    }
+  },
+  "readme": "# Fuzzy Finder Buffers package\n\n*This is a fork of the great [fuzzy-finder](https://github.com/atom/fuzzy-finder) package*\n\nThe difference is that in the buffer list, you can close the buffers by hitting `ctrl-k` or remapping to `fuzzy-finder:close-buffer`\n\n---\n\nQuickly find and open files using <kbd>cmd-t</kbd>.\n\n  * <kbd>cmd-t</kbd> or <kbd>cmd-p</kbd> to open the file finder\n  * <kbd>cmd-b</kbd> to open the list of open buffers\n  * <kbd>cmd-shift-b</kbd> to open the list of Git modified and untracked files\n  * <kbd>enter</kbd> defaults to opening the selected file without leaving the current pane\n  * <kbd>shift-enter</kbd> defaults to switching to another pane if the file is already open there\n  * <kbd>cmd-k</kbd> <kbd>right</kbd> (or any other directional arrow) will open the highlighted file in a new pane on the side indicated by the arrow\n\nTurning on the \"Search All Panes\" setting reverses the behavior of <kbd>enter</kbd> and <kbd>shift-enter</kbd> so <kbd>enter</kbd> opens the file in any pane and <kbd>shift-enter</kbd> creates a new tab in the current pane.\n\nThis package uses both the `core.ignoredNames` and `fuzzy-finder.ignoredNames` config settings to filter out files and folders that will not be shown. Both of those config settings are interpreted as arrays of [minimatch](https://github.com/isaacs/minimatch) glob patterns.\n\nThis package also will also not show Git ignored files when the `core.excludeVcsIgnoredPaths` is enabled.\n\n![](https://f.cloud.github.com/assets/671378/2241456/100db6b8-9cd3-11e3-9b3a-569c6b50cc60.png)\n",
+  "metadata": {
+    "name": "fuzzy-finder-buffers",
+    "version": "1.5.3",
+    "main": "./lib/main",
+    "description": "Fork of the fuzzy-finder package, with buffer closing.",
+    "repository": "https://github.com/bradens/fuzzy-finder",
+    "license": "MIT",
+    "dependencies": {
+      "async": "0.2.6",
+      "atom-space-pen-views": "^2.0.0",
+      "fs-plus": "^2.0.0",
+      "fuzzaldrin": "^2.0",
+      "fuzzaldrin-plus": "^0.4.1",
+      "humanize-plus": "~1.8.2",
+      "minimatch": "~3.0.3",
+      "temp": "~0.8.1",
+      "underscore-plus": "^1.0.0",
+      "wrench": "^1.5"
+    },
+    "engines": {
+      "atom": "*"
+    },
+    "devDependencies": {
+      "coffeelint": "^1.9.7"
+    },
+    "consumedServices": {
+      "atom.file-icons": {
+        "versions": {
+          "1.0.0": "consumeFileIcons"
+        }
+      }
+    },
+    "configSchema": {
+      "ignoredNames": {
+        "type": "array",
+        "default": [],
+        "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+      },
+      "searchAllPanes": {
+        "type": "boolean",
+        "default": false,
+        "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+      },
+      "preserveLastSearch": {
+        "type": "boolean",
+        "default": false,
+        "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+      },
+      "useAlternateScoring": {
+        "type": "boolean",
+        "default": true,
+        "description": "Use an alternative scoring approach which prefers run of consecutive characters, acronyms and start of words. (Experimental)"
+      }
+    }
+  }
+}

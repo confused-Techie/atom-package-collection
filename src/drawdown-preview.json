@@ -1,0 +1,152 @@
+{
+  "name": "drawdown-preview",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lyubo-slavilov/atom-drawdown-preview"
+  },
+  "downloads": 309,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "1.0.5"
+  },
+  "versions": {
+    "1.0.5": {
+      "name": "drawdown-preview",
+      "main": "./lib/drawdown-preview",
+      "version": "1.0.5",
+      "description": "Atom plugin for visualizing markdown files with `drawdown` diagrams in it.",
+      "keywords": [
+        "markdown",
+        "drawdown",
+        "diagram",
+        "chart",
+        "flow",
+        "graph",
+        "preview"
+      ],
+      "repository": "https://github.com/lyubo-slavilov/atom-drawdown-preview",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "drawdown-parser": "^1.6.2",
+        "drawdown-svg-render": "^2.0.0",
+        "markdown-it": "^8.4.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/drawdown-preview/versions/1.0.5/tarball"
+      }
+    },
+    "1.0.4": {
+      "name": "drawdown-preview",
+      "main": "./lib/drawdown-preview",
+      "version": "1.0.4",
+      "description": "Atom plugin for visualizing markdown files with `drawdown` diagrams in it.",
+      "keywords": [
+        "markdown",
+        "drawdown",
+        "diagram",
+        "chart",
+        "flow",
+        "graph",
+        "preview"
+      ],
+      "repository": "https://github.com/lyubo-slavilov/atom-drawdown-preview",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "drawdown-parser": "^1.6.1",
+        "drawdown-svg-render": "^1.5.2",
+        "markdown-it": "^8.4.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/drawdown-preview/versions/1.0.4/tarball"
+      }
+    },
+    "1.0.3": {
+      "name": "drawdown-preview",
+      "main": "./lib/drawdown-preview",
+      "version": "1.0.3",
+      "description": "Atom plugin for visualizing markdown files with `drawdown` diagrams in it.",
+      "keywords": [
+        "markdown",
+        "drawdown",
+        "diagram",
+        "chart",
+        "flow",
+        "graph",
+        "preview"
+      ],
+      "repository": "https://github.com/lyubo-slavilov/atom-drawdown-preview",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "drawdown-parser": "^1.2.0",
+        "drawdown-svg-render": "^1.4.0",
+        "markdown-it": "^8.4.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/drawdown-preview/versions/1.0.3/tarball"
+      }
+    },
+    "1.0.0": {
+      "name": "drawdown-preview",
+      "main": "./lib/drawdown-preview",
+      "version": "1.0.0",
+      "description": "Atom plugin for visualizing markdown files with `drawdown` diagrams in it.",
+      "keywords": [
+        "markdown",
+        "drawdown",
+        "diagram",
+        "chart",
+        "flow",
+        "graph",
+        "preview"
+      ],
+      "repository": "https://github.com/lyubo-slavilov/atom-drawdown-preview",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {
+        "drawdown-parser": "^1.2.0",
+        "drawdown-svg-render": "^1.4.0",
+        "markdown-it": "^8.4.2"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/drawdown-preview/versions/1.0.0/tarball"
+      }
+    }
+  },
+  "readme": "# Drawdown preview package\n\nAtom plugin for visualizing markdown files with `drawdown` diagrams in it.\n\n![Screenshot of the package](./assets/screenshot.png)\n\nPlugin relies on the [drawdown parser][b7941411] and [drawdown renderer][4619e374] which are build especially for the purposes of this plugin, but already live their own live as `npm` modules.\n\n\n\n  [b7941411]: https://github.com/lyubo-slavilov/drawdown-parser \"npm install drawdown-parser\"\n  [4619e374]: https://github.com/lyubo-slavilov/drawdown-svg-render \"npm install drawdown-svg-render\"\n\n## Drawdown syntaxis\n\nThe syntax of the drawdown language is pretty simple and its main goal is to be as human readable as possible.\n\n### Header\nAll drawdon diagrams are parsed form markdown `code block` and need to have a header in the format `drawdown.<diagram-type>.<diagram-identifier`\n\nExample\n\n    ```drawdown.flow.particle-trap\n      ...\n      ...\n\n    ```\n\nIn the example above we declared **flow** diagram called `particle-trap`.\n\n### Flow diagrams\nCurrently flow diagrams consist of two different type of blocks you can use:\n\n#### Process block\n\nProcess blocks are represented by a simple rectangular shape and we can declare them by typing:\n\n```\n- Catch the particle.\n```\n\n#### Conditional block\nConditional blocks are represented by a diamond shape and we can declare them by typing:\n\n```\n- Particle is positive?\n```\n\nYou will notice all blocks start with `-` token and end either with full stop `.` or question mark `?` followed by new line.\n\nExample\n\n    ```drawdown.flow.particle-trap\n\n    - Catch the particle.\n    - Particle is positive?\n\n    ```\nThis will prodice the following diagram:\n\n![Diagram 01](assets/diagram01.png)\n\n#### Arrow labeling\nWe can label an arrow by using a special token called `CASE` token. Its syntax is as follows `- <label>:`\n\nExample\n\n```\n- Yes:\n```\n\n#### Branching the flow\n\nIn order to branch several flow paths (arrows) from a block all we have to do is to use an arrow label (a CASE token) and indentation for the consequential blocks:\n\n```\n- Yes:\n  - Branched block.\n- No:\n  - Another Branched block.\n- Maybe:\n  - Third branch.\n  - The third branch follows.\n```\n\nExample\n\n    ```drawdown.flow.particle-trap\n\n    - Catch the particle.\n    - Particle is positive?\n    - Yes:\n      - It is a proton.\n      - Store it in a positive charge trap.\n    - No:\n      - It is an electron.\n      - Store it in a negative charge trap.\n\n    ```\n![Diagram 02](assets/diagram02.png)\n\nThere are several things we should know:\n1. The actual indentation size is not important as long as it is consistent over the branch.\n2. Tokens of type `CASE` can have any label we want: `- Yes:`, `- No:`, `- Negative:`, `- Positive:`, etc.\n3. We can branch as many branches as we want, but arrows will start to look awkward.\n\n### Graph diagrams\n\nThis diagrams represent general graphs and their syntax is ridiculously simple:\n\n    ```drawdown.graph.entanglement\n\n    electron ~~ proton\n    proton ~~ neutron\n    electron ~~ neutron\n    up quark ~~ proton\n    down quark ~~ proton\n    up quark ~~ neutron\n    down quark ~~ neutron\n    ```\nThis will produce something like\n\n![Diagram 03](assets/diagram03.png)\n\n#### Arrows\n\nWe have several types of arrows which we can use\n\nArrow  | Source Head | Target Head |     Line type\n:-----:|:-----------:|:-----------:|:----------------:\n `--`  |     no      |     no      | Straight poly-line\n`-->`  |     no      |     yes     | Straight poly-line\n`<--`  |     yes     |     no      | Straight poly-line\n`<-->` |     yes     |     yes     | Straight poly-line\n `~~`  |     no      |     no      | Curved line\n`~~>`  |     no      |     yes     | Curved line\n`<~~`  |     yes     |     no      | Curved line\n`<~~>` |     yes     |     yes     | Curved line\n\nWe can have arrow labels by placing a text between the arrow's token style symbols:\n\n    ```drawdown.graph.quantum-teleportation\n    Alice ~~ Alice\n    Alice ~loves~> Bob\n    Bob ~knows~> Alice\n    Bob ~~> Charlie\n    Charlie ~never sees~> Bob\n    Charlie ~chats with~> Alice\n    ```\n\n![Diagram 04](assets/diagram04.png)\n",
+  "metadata": {
+    "name": "drawdown-preview",
+    "main": "./lib/drawdown-preview",
+    "version": "1.0.5",
+    "description": "Atom plugin for visualizing markdown files with `drawdown` diagrams in it.",
+    "keywords": [
+      "markdown",
+      "drawdown",
+      "diagram",
+      "chart",
+      "flow",
+      "graph",
+      "preview"
+    ],
+    "repository": "https://github.com/lyubo-slavilov/atom-drawdown-preview",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+      "drawdown-parser": "^1.6.2",
+      "drawdown-svg-render": "^2.0.0",
+      "markdown-it": "^8.4.2"
+    }
+  }
+}

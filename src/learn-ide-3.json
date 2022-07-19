@@ -1,0 +1,1868 @@
+{
+  "name": "learn-ide-3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/learn-co/learn-ide-3"
+  },
+  "downloads": 2719,
+  "stargazers_count": 1,
+  "releases": {
+    "latest": "3.0.0"
+  },
+  "versions": {
+    "3.0.0": {
+      "name": "learn-ide-3",
+      "version": "3.0.0",
+      "atomVersion": "1.14.4",
+      "main": "./lib/learn-ide",
+      "urlMain": "./lib/url-handler",
+      "description": "A new way to work on Learn.co",
+      "scripts": {
+        "postpublish": "./scripts/airbrake_deploy"
+      },
+      "keywords": [
+        "beta"
+      ],
+      "repository": "https://github.com/learn-co/learn-ide-3",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-socket": "0.0.9",
+        "atom-space-pen-views": "2.1.0",
+        "dotenv": "2.0.0",
+        "page-bus": "3.0.1",
+        "phoenix": "^1.3.0",
+        "register-protocol-win32": "1.0.0",
+        "semver": "5.3.0",
+        "stacktrace-parser": "0.1.4",
+        "xterm": "2.6.0"
+      },
+      "packageDependencies": {
+        "atom-material-syntax": "1.0.2",
+        "atom-material-syntax-dark": "0.2.7",
+        "atom-material-syntax-light": "0.4.6",
+        "learn-ide-material-ui": "1.3.15",
+        "learn-ide-3-notifications": "1.0.0",
+        "learn-ide-3-tree": "2.0.2"
+      },
+      "devDependencies": {
+        "decompress": "4.0.0",
+        "del": "2.2.2",
+        "gulp": "3.9.1",
+        "gulp-util": "3.0.7",
+        "request": "2.75.0",
+        "run-sequence": "1.2.2",
+        "shelljs": "0.7.3",
+        "ssh2": "0.5.0",
+        "underscore-plus": "^1.6.6"
+      },
+      "configSchema": {
+        "bleedingUpdates": {
+          "order": 0,
+          "type": "boolean",
+          "default": false,
+          "title": "Subscribe to Bleeding Updates",
+          "description": "Recieve update notifications as beta and early releases of the Learn IDE become available. Learn more on the [help center](https://learn.co/ide/bleeding)."
+        },
+        "notifier": {
+          "order": 1,
+          "type": "boolean",
+          "default": true,
+          "title": "Learn Status Notifications",
+          "description": "Receive desktop notifications that correspond to the lights on Learn.co."
+        },
+        "terminalColors": {
+          "order": 2,
+          "type": "object",
+          "properties": {
+            "basic": {
+              "order": 1,
+              "title": "Basic Colors",
+              "type": "object",
+              "properties": {
+                "foreground": {
+                  "order": 0,
+                  "type": "color",
+                  "default": "#7ea2b4",
+                  "title": "Foreground"
+                },
+                "background": {
+                  "order": 1,
+                  "type": "color",
+                  "default": "#1A2226",
+                  "title": "Background"
+                }
+              }
+            },
+            "ansi": {
+              "order": 2,
+              "title": "ANSI Colors",
+              "type": "object",
+              "properties": {
+                "0": {
+                  "order": 0,
+                  "type": "color",
+                  "default": "#161b1d",
+                  "title": "Black"
+                },
+                "1": {
+                  "order": 1,
+                  "type": "color",
+                  "default": "#d22d72",
+                  "title": "Red"
+                },
+                "2": {
+                  "order": 2,
+                  "type": "color",
+                  "default": "#568c3b",
+                  "title": "Green"
+                },
+                "3": {
+                  "order": 3,
+                  "type": "color",
+                  "default": "#8a8a0f",
+                  "title": "Yellow"
+                },
+                "4": {
+                  "order": 4,
+                  "type": "color",
+                  "default": "#257fad",
+                  "title": "Blue"
+                },
+                "5": {
+                  "order": 5,
+                  "type": "color",
+                  "default": "#5d5db1",
+                  "title": "Magenta"
+                },
+                "6": {
+                  "order": 6,
+                  "type": "color",
+                  "default": "#2d8f6f",
+                  "title": "Cyan"
+                },
+                "7": {
+                  "order": 7,
+                  "type": "color",
+                  "default": "#7ea2b4",
+                  "title": "White"
+                },
+                "8": {
+                  "order": 8,
+                  "type": "color",
+                  "default": "#5a7b8c",
+                  "title": "Bright Black"
+                },
+                "9": {
+                  "order": 9,
+                  "type": "color",
+                  "default": "#d22d72",
+                  "title": "Bright Red"
+                },
+                "10": {
+                  "order": 10,
+                  "type": "color",
+                  "default": "#568c3b",
+                  "title": "Bright Green"
+                },
+                "11": {
+                  "order": 11,
+                  "type": "color",
+                  "default": "#8a8a0f",
+                  "title": "Bright Yellow"
+                },
+                "12": {
+                  "order": 12,
+                  "type": "color",
+                  "default": "#257fad",
+                  "title": "Bright Blue"
+                },
+                "13": {
+                  "order": 13,
+                  "type": "color",
+                  "default": "#5d5db1",
+                  "title": "Bright Magenta"
+                },
+                "14": {
+                  "order": 14,
+                  "type": "color",
+                  "default": "#2d8f6f",
+                  "title": "Bright Cyan"
+                },
+                "15": {
+                  "order": 15,
+                  "type": "color",
+                  "default": "#ebf8ff",
+                  "title": "Bright White"
+                }
+              }
+            },
+            "json": {
+              "title": "JSON Color Scheme",
+              "order": 3,
+              "type": "string",
+              "default": "",
+              "description": "Import complete and customizable color schemes from [terminal.sexy](https://terminal.sexy/) by pasting a JSON export here. For more information, visit the [help center](http://help.learn.co/)."
+            }
+          }
+        },
+        "fontFamily": {
+          "title": "Font Family",
+          "order": 3,
+          "type": "string",
+          "default": "",
+          "description": "The name of the font family used in the terminal. Be sure to choose a monospaced font!"
+        },
+        "fontSize": {
+          "title": "Font Size",
+          "order": 4,
+          "type": "number",
+          "default": 14,
+          "minimum": 2,
+          "description": "The name of the font size used in the terminal."
+        },
+        "openOnHome": {
+          "order": 5,
+          "type": "boolean",
+          "default": false,
+          "title": "Set Home as the Default Project",
+          "description": "When the Learn IDE is opened without a lab, open the tree on the remote server's home directory rather than 'temporary' (your work will still NOT be persisted; in other words, it is still temporary, just in a different location)."
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/learn-ide-3/versions/3.0.0/tarball"
+      }
+    },
+    "3.0.0-beta5": {
+      "name": "learn-ide-3",
+      "version": "3.0.0-beta5",
+      "atomVersion": "1.14.4",
+      "main": "./lib/learn-ide",
+      "urlMain": "./lib/url-handler",
+      "description": "THIS PACKAGE IS IN BETA, learn-ide is the stable release.",
+      "scripts": {
+        "postpublish": "./scripts/airbrake_deploy"
+      },
+      "keywords": [
+        "beta"
+      ],
+      "repository": "https://github.com/learn-co/learn-ide-3",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-socket": "0.0.9",
+        "atom-space-pen-views": "2.1.0",
+        "dotenv": "2.0.0",
+        "page-bus": "3.0.1",
+        "phoenix": "^1.3.0",
+        "register-protocol-win32": "1.0.0",
+        "semver": "5.3.0",
+        "stacktrace-parser": "0.1.4",
+        "xterm": "2.6.0"
+      },
+      "packageDependencies": {
+        "atom-material-syntax": "1.0.2",
+        "atom-material-syntax-dark": "0.2.7",
+        "atom-material-syntax-light": "0.4.6",
+        "learn-ide-material-ui": "1.3.15",
+        "learn-ide-3-notifications": "1.0.0",
+        "learn-ide-3-tree": "2.0.2"
+      },
+      "devDependencies": {
+        "decompress": "4.0.0",
+        "del": "2.2.2",
+        "gulp": "3.9.1",
+        "gulp-util": "3.0.7",
+        "request": "2.75.0",
+        "run-sequence": "1.2.2",
+        "shelljs": "0.7.3",
+        "ssh2": "0.5.0",
+        "underscore-plus": "^1.6.6"
+      },
+      "configSchema": {
+        "bleedingUpdates": {
+          "order": 0,
+          "type": "boolean",
+          "default": false,
+          "title": "Subscribe to Bleeding Updates",
+          "description": "Recieve update notifications as beta and early releases of the Learn IDE become available. Learn more on the [help center](https://learn.co/ide/bleeding)."
+        },
+        "notifier": {
+          "order": 1,
+          "type": "boolean",
+          "default": true,
+          "title": "Learn Status Notifications",
+          "description": "Receive desktop notifications that correspond to the lights on Learn.co."
+        },
+        "terminalColors": {
+          "order": 2,
+          "type": "object",
+          "properties": {
+            "basic": {
+              "order": 1,
+              "title": "Basic Colors",
+              "type": "object",
+              "properties": {
+                "foreground": {
+                  "order": 0,
+                  "type": "color",
+                  "default": "#7ea2b4",
+                  "title": "Foreground"
+                },
+                "background": {
+                  "order": 1,
+                  "type": "color",
+                  "default": "#1A2226",
+                  "title": "Background"
+                }
+              }
+            },
+            "ansi": {
+              "order": 2,
+              "title": "ANSI Colors",
+              "type": "object",
+              "properties": {
+                "0": {
+                  "order": 0,
+                  "type": "color",
+                  "default": "#161b1d",
+                  "title": "Black"
+                },
+                "1": {
+                  "order": 1,
+                  "type": "color",
+                  "default": "#d22d72",
+                  "title": "Red"
+                },
+                "2": {
+                  "order": 2,
+                  "type": "color",
+                  "default": "#568c3b",
+                  "title": "Green"
+                },
+                "3": {
+                  "order": 3,
+                  "type": "color",
+                  "default": "#8a8a0f",
+                  "title": "Yellow"
+                },
+                "4": {
+                  "order": 4,
+                  "type": "color",
+                  "default": "#257fad",
+                  "title": "Blue"
+                },
+                "5": {
+                  "order": 5,
+                  "type": "color",
+                  "default": "#5d5db1",
+                  "title": "Magenta"
+                },
+                "6": {
+                  "order": 6,
+                  "type": "color",
+                  "default": "#2d8f6f",
+                  "title": "Cyan"
+                },
+                "7": {
+                  "order": 7,
+                  "type": "color",
+                  "default": "#7ea2b4",
+                  "title": "White"
+                },
+                "8": {
+                  "order": 8,
+                  "type": "color",
+                  "default": "#5a7b8c",
+                  "title": "Bright Black"
+                },
+                "9": {
+                  "order": 9,
+                  "type": "color",
+                  "default": "#d22d72",
+                  "title": "Bright Red"
+                },
+                "10": {
+                  "order": 10,
+                  "type": "color",
+                  "default": "#568c3b",
+                  "title": "Bright Green"
+                },
+                "11": {
+                  "order": 11,
+                  "type": "color",
+                  "default": "#8a8a0f",
+                  "title": "Bright Yellow"
+                },
+                "12": {
+                  "order": 12,
+                  "type": "color",
+                  "default": "#257fad",
+                  "title": "Bright Blue"
+                },
+                "13": {
+                  "order": 13,
+                  "type": "color",
+                  "default": "#5d5db1",
+                  "title": "Bright Magenta"
+                },
+                "14": {
+                  "order": 14,
+                  "type": "color",
+                  "default": "#2d8f6f",
+                  "title": "Bright Cyan"
+                },
+                "15": {
+                  "order": 15,
+                  "type": "color",
+                  "default": "#ebf8ff",
+                  "title": "Bright White"
+                }
+              }
+            },
+            "json": {
+              "title": "JSON Color Scheme",
+              "order": 3,
+              "type": "string",
+              "default": "",
+              "description": "Import complete and customizable color schemes from [terminal.sexy](https://terminal.sexy/) by pasting a JSON export here. For more information, visit the [help center](http://help.learn.co/)."
+            }
+          }
+        },
+        "fontFamily": {
+          "title": "Font Family",
+          "order": 3,
+          "type": "string",
+          "default": "",
+          "description": "The name of the font family used in the terminal. Be sure to choose a monospaced font!"
+        },
+        "fontSize": {
+          "title": "Font Size",
+          "order": 4,
+          "type": "number",
+          "default": 14,
+          "minimum": 2,
+          "description": "The name of the font size used in the terminal."
+        },
+        "openOnHome": {
+          "order": 5,
+          "type": "boolean",
+          "default": false,
+          "title": "Set Home as the Default Project",
+          "description": "When the Learn IDE is opened without a lab, open the tree on the remote server's home directory rather than 'temporary' (your work will still NOT be persisted; in other words, it is still temporary, just in a different location)."
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/learn-ide-3/versions/3.0.0-beta5/tarball"
+      }
+    },
+    "3.0.0-beta4": {
+      "name": "learn-ide-3",
+      "version": "3.0.0-beta4",
+      "atomVersion": "1.14.4",
+      "main": "./lib/learn-ide",
+      "urlMain": "./lib/url-handler",
+      "description": "THIS PACKAGE IS IN BETA, learn-ide is the stable release.",
+      "scripts": {
+        "postpublish": "./scripts/airbrake_deploy"
+      },
+      "keywords": [
+        "beta"
+      ],
+      "repository": "https://github.com/learn-co/learn-ide-3",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-socket": "0.0.9",
+        "atom-space-pen-views": "2.1.0",
+        "dotenv": "2.0.0",
+        "page-bus": "3.0.1",
+        "phoenix": "^1.3.0",
+        "register-protocol-win32": "1.0.0",
+        "semver": "5.3.0",
+        "stacktrace-parser": "0.1.4",
+        "xterm": "2.6.0"
+      },
+      "packageDependencies": {
+        "atom-material-syntax": "1.0.2",
+        "atom-material-syntax-dark": "0.2.7",
+        "atom-material-syntax-light": "0.4.6",
+        "learn-ide-material-ui": "1.3.15",
+        "learn-ide-3-notifications": "1.0.0",
+        "learn-ide-3-tree": "2.0.2"
+      },
+      "devDependencies": {
+        "decompress": "4.0.0",
+        "del": "2.2.2",
+        "gulp": "3.9.1",
+        "gulp-util": "3.0.7",
+        "request": "2.75.0",
+        "run-sequence": "1.2.2",
+        "shelljs": "0.7.3",
+        "ssh2": "0.5.0",
+        "underscore-plus": "^1.6.6"
+      },
+      "configSchema": {
+        "bleedingUpdates": {
+          "order": 0,
+          "type": "boolean",
+          "default": false,
+          "title": "Subscribe to Bleeding Updates",
+          "description": "Recieve update notifications as beta and early releases of the Learn IDE become available. Learn more on the [help center](https://learn.co/ide/bleeding)."
+        },
+        "notifier": {
+          "order": 1,
+          "type": "boolean",
+          "default": true,
+          "title": "Learn Status Notifications",
+          "description": "Receive desktop notifications that correspond to the lights on Learn.co."
+        },
+        "terminalColors": {
+          "order": 2,
+          "type": "object",
+          "properties": {
+            "basic": {
+              "order": 1,
+              "title": "Basic Colors",
+              "type": "object",
+              "properties": {
+                "foreground": {
+                  "order": 0,
+                  "type": "color",
+                  "default": "#7ea2b4",
+                  "title": "Foreground"
+                },
+                "background": {
+                  "order": 1,
+                  "type": "color",
+                  "default": "#1A2226",
+                  "title": "Background"
+                }
+              }
+            },
+            "ansi": {
+              "order": 2,
+              "title": "ANSI Colors",
+              "type": "object",
+              "properties": {
+                "0": {
+                  "order": 0,
+                  "type": "color",
+                  "default": "#161b1d",
+                  "title": "Black"
+                },
+                "1": {
+                  "order": 1,
+                  "type": "color",
+                  "default": "#d22d72",
+                  "title": "Red"
+                },
+                "2": {
+                  "order": 2,
+                  "type": "color",
+                  "default": "#568c3b",
+                  "title": "Green"
+                },
+                "3": {
+                  "order": 3,
+                  "type": "color",
+                  "default": "#8a8a0f",
+                  "title": "Yellow"
+                },
+                "4": {
+                  "order": 4,
+                  "type": "color",
+                  "default": "#257fad",
+                  "title": "Blue"
+                },
+                "5": {
+                  "order": 5,
+                  "type": "color",
+                  "default": "#5d5db1",
+                  "title": "Magenta"
+                },
+                "6": {
+                  "order": 6,
+                  "type": "color",
+                  "default": "#2d8f6f",
+                  "title": "Cyan"
+                },
+                "7": {
+                  "order": 7,
+                  "type": "color",
+                  "default": "#7ea2b4",
+                  "title": "White"
+                },
+                "8": {
+                  "order": 8,
+                  "type": "color",
+                  "default": "#5a7b8c",
+                  "title": "Bright Black"
+                },
+                "9": {
+                  "order": 9,
+                  "type": "color",
+                  "default": "#d22d72",
+                  "title": "Bright Red"
+                },
+                "10": {
+                  "order": 10,
+                  "type": "color",
+                  "default": "#568c3b",
+                  "title": "Bright Green"
+                },
+                "11": {
+                  "order": 11,
+                  "type": "color",
+                  "default": "#8a8a0f",
+                  "title": "Bright Yellow"
+                },
+                "12": {
+                  "order": 12,
+                  "type": "color",
+                  "default": "#257fad",
+                  "title": "Bright Blue"
+                },
+                "13": {
+                  "order": 13,
+                  "type": "color",
+                  "default": "#5d5db1",
+                  "title": "Bright Magenta"
+                },
+                "14": {
+                  "order": 14,
+                  "type": "color",
+                  "default": "#2d8f6f",
+                  "title": "Bright Cyan"
+                },
+                "15": {
+                  "order": 15,
+                  "type": "color",
+                  "default": "#ebf8ff",
+                  "title": "Bright White"
+                }
+              }
+            },
+            "json": {
+              "title": "JSON Color Scheme",
+              "order": 3,
+              "type": "string",
+              "default": "",
+              "description": "Import complete and customizable color schemes from [terminal.sexy](https://terminal.sexy/) by pasting a JSON export here. For more information, visit the [help center](http://help.learn.co/)."
+            }
+          }
+        },
+        "fontFamily": {
+          "title": "Font Family",
+          "order": 3,
+          "type": "string",
+          "default": "",
+          "description": "The name of the font family used in the terminal. Be sure to choose a monospaced font!"
+        },
+        "fontSize": {
+          "title": "Font Size",
+          "order": 4,
+          "type": "number",
+          "default": 14,
+          "minimum": 2,
+          "description": "The name of the font size used in the terminal."
+        },
+        "openOnHome": {
+          "order": 5,
+          "type": "boolean",
+          "default": false,
+          "title": "Set Home as the Default Project",
+          "description": "When the Learn IDE is opened without a lab, open the tree on the remote server's home directory rather than 'temporary' (your work will still NOT be persisted; in other words, it is still temporary, just in a different location)."
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/learn-ide-3/versions/3.0.0-beta4/tarball"
+      }
+    },
+    "3.0.0-beta3": {
+      "name": "learn-ide-3",
+      "version": "3.0.0-beta3",
+      "atomVersion": "1.14.4",
+      "main": "./lib/learn-ide",
+      "urlMain": "./lib/url-handler",
+      "description": "THIS PACKAGE IS IN BETA, learn-ide is the stable release.",
+      "scripts": {
+        "postpublish": "./scripts/airbrake_deploy"
+      },
+      "keywords": [
+        "beta"
+      ],
+      "repository": "https://github.com/learn-co/learn-ide-3",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-socket": "0.0.9",
+        "atom-space-pen-views": "2.1.0",
+        "dotenv": "2.0.0",
+        "page-bus": "3.0.1",
+        "phoenix": "^1.3.0",
+        "register-protocol-win32": "1.0.0",
+        "semver": "5.3.0",
+        "stacktrace-parser": "0.1.4",
+        "xterm": "2.6.0"
+      },
+      "packageDependencies": {
+        "atom-material-syntax": "1.0.2",
+        "atom-material-syntax-dark": "0.2.7",
+        "atom-material-syntax-light": "0.4.6",
+        "learn-ide-material-ui": "1.3.15",
+        "learn-ide-3-notifications": "1.0.0",
+        "learn-ide-3-tree": "2.0.2"
+      },
+      "devDependencies": {
+        "decompress": "4.0.0",
+        "del": "2.2.2",
+        "gulp": "3.9.1",
+        "gulp-util": "3.0.7",
+        "request": "2.75.0",
+        "run-sequence": "1.2.2",
+        "shelljs": "0.7.3",
+        "ssh2": "0.5.0",
+        "underscore-plus": "^1.6.6"
+      },
+      "configSchema": {
+        "bleedingUpdates": {
+          "order": 0,
+          "type": "boolean",
+          "default": false,
+          "title": "Subscribe to Bleeding Updates",
+          "description": "Recieve update notifications as beta and early releases of the Learn IDE become available. Learn more on the [help center](https://learn.co/ide/bleeding)."
+        },
+        "notifier": {
+          "order": 1,
+          "type": "boolean",
+          "default": true,
+          "title": "Learn Status Notifications",
+          "description": "Receive desktop notifications that correspond to the lights on Learn.co."
+        },
+        "terminalColors": {
+          "order": 2,
+          "type": "object",
+          "properties": {
+            "basic": {
+              "order": 1,
+              "title": "Basic Colors",
+              "type": "object",
+              "properties": {
+                "foreground": {
+                  "order": 0,
+                  "type": "color",
+                  "default": "#7ea2b4",
+                  "title": "Foreground"
+                },
+                "background": {
+                  "order": 1,
+                  "type": "color",
+                  "default": "#1A2226",
+                  "title": "Background"
+                }
+              }
+            },
+            "ansi": {
+              "order": 2,
+              "title": "ANSI Colors",
+              "type": "object",
+              "properties": {
+                "0": {
+                  "order": 0,
+                  "type": "color",
+                  "default": "#161b1d",
+                  "title": "Black"
+                },
+                "1": {
+                  "order": 1,
+                  "type": "color",
+                  "default": "#d22d72",
+                  "title": "Red"
+                },
+                "2": {
+                  "order": 2,
+                  "type": "color",
+                  "default": "#568c3b",
+                  "title": "Green"
+                },
+                "3": {
+                  "order": 3,
+                  "type": "color",
+                  "default": "#8a8a0f",
+                  "title": "Yellow"
+                },
+                "4": {
+                  "order": 4,
+                  "type": "color",
+                  "default": "#257fad",
+                  "title": "Blue"
+                },
+                "5": {
+                  "order": 5,
+                  "type": "color",
+                  "default": "#5d5db1",
+                  "title": "Magenta"
+                },
+                "6": {
+                  "order": 6,
+                  "type": "color",
+                  "default": "#2d8f6f",
+                  "title": "Cyan"
+                },
+                "7": {
+                  "order": 7,
+                  "type": "color",
+                  "default": "#7ea2b4",
+                  "title": "White"
+                },
+                "8": {
+                  "order": 8,
+                  "type": "color",
+                  "default": "#5a7b8c",
+                  "title": "Bright Black"
+                },
+                "9": {
+                  "order": 9,
+                  "type": "color",
+                  "default": "#d22d72",
+                  "title": "Bright Red"
+                },
+                "10": {
+                  "order": 10,
+                  "type": "color",
+                  "default": "#568c3b",
+                  "title": "Bright Green"
+                },
+                "11": {
+                  "order": 11,
+                  "type": "color",
+                  "default": "#8a8a0f",
+                  "title": "Bright Yellow"
+                },
+                "12": {
+                  "order": 12,
+                  "type": "color",
+                  "default": "#257fad",
+                  "title": "Bright Blue"
+                },
+                "13": {
+                  "order": 13,
+                  "type": "color",
+                  "default": "#5d5db1",
+                  "title": "Bright Magenta"
+                },
+                "14": {
+                  "order": 14,
+                  "type": "color",
+                  "default": "#2d8f6f",
+                  "title": "Bright Cyan"
+                },
+                "15": {
+                  "order": 15,
+                  "type": "color",
+                  "default": "#ebf8ff",
+                  "title": "Bright White"
+                }
+              }
+            },
+            "json": {
+              "title": "JSON Color Scheme",
+              "order": 3,
+              "type": "string",
+              "default": "",
+              "description": "Import complete and customizable color schemes from [terminal.sexy](https://terminal.sexy/) by pasting a JSON export here. For more information, visit the [help center](http://help.learn.co/)."
+            }
+          }
+        },
+        "fontFamily": {
+          "title": "Font Family",
+          "order": 3,
+          "type": "string",
+          "default": "",
+          "description": "The name of the font family used in the terminal. Be sure to choose a monospaced font!"
+        },
+        "fontSize": {
+          "title": "Font Size",
+          "order": 4,
+          "type": "number",
+          "default": 14,
+          "minimum": 2,
+          "description": "The name of the font size used in the terminal."
+        },
+        "openOnHome": {
+          "order": 5,
+          "type": "boolean",
+          "default": false,
+          "title": "Set Home as the Default Project",
+          "description": "When the Learn IDE is opened without a lab, open the tree on the remote server's home directory rather than 'temporary' (your work will still NOT be persisted; in other words, it is still temporary, just in a different location)."
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/learn-ide-3/versions/3.0.0-beta3/tarball"
+      }
+    },
+    "3.0.0-beta2": {
+      "name": "learn-ide-3",
+      "version": "3.0.0-beta2",
+      "atomVersion": "1.14.4",
+      "main": "./lib/learn-ide",
+      "urlMain": "./lib/url-handler",
+      "description": "THIS PACKAGE IS IN BETA, learn-ide is the stable release.",
+      "scripts": {
+        "postpublish": "./scripts/airbrake_deploy"
+      },
+      "keywords": [
+        "beta"
+      ],
+      "repository": "https://github.com/learn-co/learn-ide-3",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-socket": "0.0.9",
+        "atom-space-pen-views": "2.1.0",
+        "dotenv": "2.0.0",
+        "page-bus": "3.0.1",
+        "phoenix": "^1.3.0",
+        "register-protocol-win32": "1.0.0",
+        "semver": "5.3.0",
+        "stacktrace-parser": "0.1.4",
+        "xterm": "2.6.0"
+      },
+      "packageDependencies": {
+        "atom-material-syntax": "1.0.2",
+        "atom-material-syntax-dark": "0.2.7",
+        "atom-material-syntax-light": "0.4.6",
+        "learn-ide-material-ui": "1.3.15",
+        "learn-ide-3-notifications": "1.0.0",
+        "learn-ide-3-tree": "2.0.1"
+      },
+      "devDependencies": {
+        "decompress": "4.0.0",
+        "del": "2.2.2",
+        "gulp": "3.9.1",
+        "gulp-util": "3.0.7",
+        "request": "2.75.0",
+        "run-sequence": "1.2.2",
+        "shelljs": "0.7.3",
+        "ssh2": "0.5.0",
+        "underscore-plus": "^1.6.6"
+      },
+      "configSchema": {
+        "bleedingUpdates": {
+          "order": 0,
+          "type": "boolean",
+          "default": false,
+          "title": "Subscribe to Bleeding Updates",
+          "description": "Recieve update notifications as beta and early releases of the Learn IDE become available. Learn more on the [help center](https://learn.co/ide/bleeding)."
+        },
+        "notifier": {
+          "order": 1,
+          "type": "boolean",
+          "default": true,
+          "title": "Learn Status Notifications",
+          "description": "Receive desktop notifications that correspond to the lights on Learn.co."
+        },
+        "terminalColors": {
+          "order": 2,
+          "type": "object",
+          "properties": {
+            "basic": {
+              "order": 1,
+              "title": "Basic Colors",
+              "type": "object",
+              "properties": {
+                "foreground": {
+                  "order": 0,
+                  "type": "color",
+                  "default": "#7ea2b4",
+                  "title": "Foreground"
+                },
+                "background": {
+                  "order": 1,
+                  "type": "color",
+                  "default": "#1A2226",
+                  "title": "Background"
+                }
+              }
+            },
+            "ansi": {
+              "order": 2,
+              "title": "ANSI Colors",
+              "type": "object",
+              "properties": {
+                "0": {
+                  "order": 0,
+                  "type": "color",
+                  "default": "#161b1d",
+                  "title": "Black"
+                },
+                "1": {
+                  "order": 1,
+                  "type": "color",
+                  "default": "#d22d72",
+                  "title": "Red"
+                },
+                "2": {
+                  "order": 2,
+                  "type": "color",
+                  "default": "#568c3b",
+                  "title": "Green"
+                },
+                "3": {
+                  "order": 3,
+                  "type": "color",
+                  "default": "#8a8a0f",
+                  "title": "Yellow"
+                },
+                "4": {
+                  "order": 4,
+                  "type": "color",
+                  "default": "#257fad",
+                  "title": "Blue"
+                },
+                "5": {
+                  "order": 5,
+                  "type": "color",
+                  "default": "#5d5db1",
+                  "title": "Magenta"
+                },
+                "6": {
+                  "order": 6,
+                  "type": "color",
+                  "default": "#2d8f6f",
+                  "title": "Cyan"
+                },
+                "7": {
+                  "order": 7,
+                  "type": "color",
+                  "default": "#7ea2b4",
+                  "title": "White"
+                },
+                "8": {
+                  "order": 8,
+                  "type": "color",
+                  "default": "#5a7b8c",
+                  "title": "Bright Black"
+                },
+                "9": {
+                  "order": 9,
+                  "type": "color",
+                  "default": "#d22d72",
+                  "title": "Bright Red"
+                },
+                "10": {
+                  "order": 10,
+                  "type": "color",
+                  "default": "#568c3b",
+                  "title": "Bright Green"
+                },
+                "11": {
+                  "order": 11,
+                  "type": "color",
+                  "default": "#8a8a0f",
+                  "title": "Bright Yellow"
+                },
+                "12": {
+                  "order": 12,
+                  "type": "color",
+                  "default": "#257fad",
+                  "title": "Bright Blue"
+                },
+                "13": {
+                  "order": 13,
+                  "type": "color",
+                  "default": "#5d5db1",
+                  "title": "Bright Magenta"
+                },
+                "14": {
+                  "order": 14,
+                  "type": "color",
+                  "default": "#2d8f6f",
+                  "title": "Bright Cyan"
+                },
+                "15": {
+                  "order": 15,
+                  "type": "color",
+                  "default": "#ebf8ff",
+                  "title": "Bright White"
+                }
+              }
+            },
+            "json": {
+              "title": "JSON Color Scheme",
+              "order": 3,
+              "type": "string",
+              "default": "",
+              "description": "Import complete and customizable color schemes from [terminal.sexy](https://terminal.sexy/) by pasting a JSON export here. For more information, visit the [help center](http://help.learn.co/)."
+            }
+          }
+        },
+        "fontFamily": {
+          "title": "Font Family",
+          "order": 3,
+          "type": "string",
+          "default": "",
+          "description": "The name of the font family used in the terminal. Be sure to choose a monospaced font!"
+        },
+        "fontSize": {
+          "title": "Font Size",
+          "order": 4,
+          "type": "number",
+          "default": 14,
+          "minimum": 2,
+          "description": "The name of the font size used in the terminal."
+        },
+        "openOnHome": {
+          "order": 5,
+          "type": "boolean",
+          "default": false,
+          "title": "Set Home as the Default Project",
+          "description": "When the Learn IDE is opened without a lab, open the tree on the remote server's home directory rather than 'temporary' (your work will still NOT be persisted; in other words, it is still temporary, just in a different location)."
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/learn-ide-3/versions/3.0.0-beta2/tarball"
+      }
+    },
+    "3.0.0-beta1": {
+      "name": "learn-ide-3",
+      "version": "3.0.0-beta1",
+      "atomVersion": "1.14.4",
+      "main": "./lib/learn-ide",
+      "urlMain": "./lib/url-handler",
+      "description": "THIS PACKAGE IS IN BETA, learn-ide is the stable release.",
+      "scripts": {
+        "postpublish": "./scripts/airbrake_deploy"
+      },
+      "keywords": [
+        "beta"
+      ],
+      "repository": "https://github.com/learn-co/learn-ide-3",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-socket": "0.0.9",
+        "atom-space-pen-views": "2.1.0",
+        "dotenv": "2.0.0",
+        "page-bus": "3.0.1",
+        "phoenix": "^1.2.1",
+        "register-protocol-win32": "1.0.0",
+        "semver": "5.3.0",
+        "stacktrace-parser": "0.1.4",
+        "xterm": "2.6.0"
+      },
+      "packageDependencies": {
+        "atom-material-syntax": "1.0.2",
+        "atom-material-syntax-dark": "0.2.7",
+        "atom-material-syntax-light": "0.4.6",
+        "learn-ide-material-ui": "1.3.15",
+        "learn-ide-3-notifications": "1.0.0",
+        "learn-ide-3-tree": "2.0.1"
+      },
+      "devDependencies": {
+        "decompress": "4.0.0",
+        "del": "2.2.2",
+        "gulp": "3.9.1",
+        "gulp-util": "3.0.7",
+        "request": "2.75.0",
+        "run-sequence": "1.2.2",
+        "shelljs": "0.7.3",
+        "ssh2": "0.5.0",
+        "underscore-plus": "^1.6.6"
+      },
+      "configSchema": {
+        "bleedingUpdates": {
+          "order": 0,
+          "type": "boolean",
+          "default": false,
+          "title": "Subscribe to Bleeding Updates",
+          "description": "Recieve update notifications as beta and early releases of the Learn IDE become available. Learn more on the [help center](https://learn.co/ide/bleeding)."
+        },
+        "notifier": {
+          "order": 1,
+          "type": "boolean",
+          "default": true,
+          "title": "Learn Status Notifications",
+          "description": "Receive desktop notifications that correspond to the lights on Learn.co."
+        },
+        "terminalColors": {
+          "order": 2,
+          "type": "object",
+          "properties": {
+            "basic": {
+              "order": 1,
+              "title": "Basic Colors",
+              "type": "object",
+              "properties": {
+                "foreground": {
+                  "order": 0,
+                  "type": "color",
+                  "default": "#7ea2b4",
+                  "title": "Foreground"
+                },
+                "background": {
+                  "order": 1,
+                  "type": "color",
+                  "default": "#1A2226",
+                  "title": "Background"
+                }
+              }
+            },
+            "ansi": {
+              "order": 2,
+              "title": "ANSI Colors",
+              "type": "object",
+              "properties": {
+                "0": {
+                  "order": 0,
+                  "type": "color",
+                  "default": "#161b1d",
+                  "title": "Black"
+                },
+                "1": {
+                  "order": 1,
+                  "type": "color",
+                  "default": "#d22d72",
+                  "title": "Red"
+                },
+                "2": {
+                  "order": 2,
+                  "type": "color",
+                  "default": "#568c3b",
+                  "title": "Green"
+                },
+                "3": {
+                  "order": 3,
+                  "type": "color",
+                  "default": "#8a8a0f",
+                  "title": "Yellow"
+                },
+                "4": {
+                  "order": 4,
+                  "type": "color",
+                  "default": "#257fad",
+                  "title": "Blue"
+                },
+                "5": {
+                  "order": 5,
+                  "type": "color",
+                  "default": "#5d5db1",
+                  "title": "Magenta"
+                },
+                "6": {
+                  "order": 6,
+                  "type": "color",
+                  "default": "#2d8f6f",
+                  "title": "Cyan"
+                },
+                "7": {
+                  "order": 7,
+                  "type": "color",
+                  "default": "#7ea2b4",
+                  "title": "White"
+                },
+                "8": {
+                  "order": 8,
+                  "type": "color",
+                  "default": "#5a7b8c",
+                  "title": "Bright Black"
+                },
+                "9": {
+                  "order": 9,
+                  "type": "color",
+                  "default": "#d22d72",
+                  "title": "Bright Red"
+                },
+                "10": {
+                  "order": 10,
+                  "type": "color",
+                  "default": "#568c3b",
+                  "title": "Bright Green"
+                },
+                "11": {
+                  "order": 11,
+                  "type": "color",
+                  "default": "#8a8a0f",
+                  "title": "Bright Yellow"
+                },
+                "12": {
+                  "order": 12,
+                  "type": "color",
+                  "default": "#257fad",
+                  "title": "Bright Blue"
+                },
+                "13": {
+                  "order": 13,
+                  "type": "color",
+                  "default": "#5d5db1",
+                  "title": "Bright Magenta"
+                },
+                "14": {
+                  "order": 14,
+                  "type": "color",
+                  "default": "#2d8f6f",
+                  "title": "Bright Cyan"
+                },
+                "15": {
+                  "order": 15,
+                  "type": "color",
+                  "default": "#ebf8ff",
+                  "title": "Bright White"
+                }
+              }
+            },
+            "json": {
+              "title": "JSON Color Scheme",
+              "order": 3,
+              "type": "string",
+              "default": "",
+              "description": "Import complete and customizable color schemes from [terminal.sexy](https://terminal.sexy/) by pasting a JSON export here. For more information, visit the [help center](http://help.learn.co/)."
+            }
+          }
+        },
+        "fontFamily": {
+          "title": "Font Family",
+          "order": 3,
+          "type": "string",
+          "default": "",
+          "description": "The name of the font family used in the terminal. Be sure to choose a monospaced font!"
+        },
+        "fontSize": {
+          "title": "Font Size",
+          "order": 4,
+          "type": "number",
+          "default": 14,
+          "minimum": 2,
+          "description": "The name of the font size used in the terminal."
+        },
+        "openOnHome": {
+          "order": 5,
+          "type": "boolean",
+          "default": false,
+          "title": "Set Home as the Default Project",
+          "description": "When the Learn IDE is opened without a lab, open the tree on the remote server's home directory rather than 'temporary' (your work will still NOT be persisted; in other words, it is still temporary, just in a different location)."
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/learn-ide-3/versions/3.0.0-beta1/tarball"
+      }
+    },
+    "3.0.0-beta0": {
+      "name": "learn-ide-3",
+      "version": "3.0.0-beta0",
+      "atomVersion": "1.14.4",
+      "main": "./lib/learn-ide",
+      "urlMain": "./lib/url-handler",
+      "description": "THIS PACKAGE IS IN BETA, learn-ide is the stable release.",
+      "scripts": {
+        "postpublish": "./scripts/airbrake_deploy"
+      },
+      "keywords": [
+        "beta"
+      ],
+      "repository": "https://github.com/learn-co/learn-ide-3",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dependencies": {
+        "atom-socket": "0.0.9",
+        "atom-space-pen-views": "2.1.0",
+        "dotenv": "2.0.0",
+        "page-bus": "3.0.1",
+        "phoenix": "^1.2.1",
+        "register-protocol-win32": "1.0.0",
+        "semver": "5.3.0",
+        "stacktrace-parser": "0.1.4",
+        "xterm": "2.6.0"
+      },
+      "packageDependencies": {
+        "atom-material-syntax": "1.0.2",
+        "atom-material-syntax-dark": "0.2.7",
+        "atom-material-syntax-light": "0.4.6",
+        "learn-ide-material-ui": "1.3.15",
+        "learn-ide-3-notifications": "1.0.0",
+        "learn-ide-3-tree": "2.0.0"
+      },
+      "devDependencies": {
+        "decompress": "4.0.0",
+        "del": "2.2.2",
+        "gulp": "3.9.1",
+        "gulp-util": "3.0.7",
+        "request": "2.75.0",
+        "run-sequence": "1.2.2",
+        "shelljs": "0.7.3",
+        "ssh2": "0.5.0",
+        "underscore-plus": "^1.6.6"
+      },
+      "configSchema": {
+        "bleedingUpdates": {
+          "order": 0,
+          "type": "boolean",
+          "default": false,
+          "title": "Subscribe to Bleeding Updates",
+          "description": "Recieve update notifications as beta and early releases of the Learn IDE become available. Learn more on the [help center](https://learn.co/ide/bleeding)."
+        },
+        "notifier": {
+          "order": 1,
+          "type": "boolean",
+          "default": true,
+          "title": "Learn Status Notifications",
+          "description": "Receive desktop notifications that correspond to the lights on Learn.co."
+        },
+        "terminalColors": {
+          "order": 2,
+          "type": "object",
+          "properties": {
+            "basic": {
+              "order": 1,
+              "title": "Basic Colors",
+              "type": "object",
+              "properties": {
+                "foreground": {
+                  "order": 0,
+                  "type": "color",
+                  "default": "#7ea2b4",
+                  "title": "Foreground"
+                },
+                "background": {
+                  "order": 1,
+                  "type": "color",
+                  "default": "#1A2226",
+                  "title": "Background"
+                }
+              }
+            },
+            "ansi": {
+              "order": 2,
+              "title": "ANSI Colors",
+              "type": "object",
+              "properties": {
+                "0": {
+                  "order": 0,
+                  "type": "color",
+                  "default": "#161b1d",
+                  "title": "Black"
+                },
+                "1": {
+                  "order": 1,
+                  "type": "color",
+                  "default": "#d22d72",
+                  "title": "Red"
+                },
+                "2": {
+                  "order": 2,
+                  "type": "color",
+                  "default": "#568c3b",
+                  "title": "Green"
+                },
+                "3": {
+                  "order": 3,
+                  "type": "color",
+                  "default": "#8a8a0f",
+                  "title": "Yellow"
+                },
+                "4": {
+                  "order": 4,
+                  "type": "color",
+                  "default": "#257fad",
+                  "title": "Blue"
+                },
+                "5": {
+                  "order": 5,
+                  "type": "color",
+                  "default": "#5d5db1",
+                  "title": "Magenta"
+                },
+                "6": {
+                  "order": 6,
+                  "type": "color",
+                  "default": "#2d8f6f",
+                  "title": "Cyan"
+                },
+                "7": {
+                  "order": 7,
+                  "type": "color",
+                  "default": "#7ea2b4",
+                  "title": "White"
+                },
+                "8": {
+                  "order": 8,
+                  "type": "color",
+                  "default": "#5a7b8c",
+                  "title": "Bright Black"
+                },
+                "9": {
+                  "order": 9,
+                  "type": "color",
+                  "default": "#d22d72",
+                  "title": "Bright Red"
+                },
+                "10": {
+                  "order": 10,
+                  "type": "color",
+                  "default": "#568c3b",
+                  "title": "Bright Green"
+                },
+                "11": {
+                  "order": 11,
+                  "type": "color",
+                  "default": "#8a8a0f",
+                  "title": "Bright Yellow"
+                },
+                "12": {
+                  "order": 12,
+                  "type": "color",
+                  "default": "#257fad",
+                  "title": "Bright Blue"
+                },
+                "13": {
+                  "order": 13,
+                  "type": "color",
+                  "default": "#5d5db1",
+                  "title": "Bright Magenta"
+                },
+                "14": {
+                  "order": 14,
+                  "type": "color",
+                  "default": "#2d8f6f",
+                  "title": "Bright Cyan"
+                },
+                "15": {
+                  "order": 15,
+                  "type": "color",
+                  "default": "#ebf8ff",
+                  "title": "Bright White"
+                }
+              }
+            },
+            "json": {
+              "title": "JSON Color Scheme",
+              "order": 3,
+              "type": "string",
+              "default": "",
+              "description": "Import complete and customizable color schemes from [terminal.sexy](https://terminal.sexy/) by pasting a JSON export here. For more information, visit the [help center](http://help.learn.co/)."
+            }
+          }
+        },
+        "fontFamily": {
+          "title": "Font Family",
+          "order": 3,
+          "type": "string",
+          "default": "",
+          "description": "The name of the font family used in the terminal. Be sure to choose a monospaced font!"
+        },
+        "fontSize": {
+          "title": "Font Size",
+          "order": 4,
+          "type": "number",
+          "default": 14,
+          "minimum": 2,
+          "description": "The name of the font size used in the terminal."
+        },
+        "openOnHome": {
+          "order": 5,
+          "type": "boolean",
+          "default": false,
+          "title": "Set Home as the Default Project",
+          "description": "When the Learn IDE is opened without a lab, open the tree on the remote server's home directory rather than 'temporary' (your work will still NOT be persisted; in other words, it is still temporary, just in a different location)."
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/learn-ide-3/versions/3.0.0-beta0/tarball"
+      }
+    }
+  },
+  "readme": "# Learn IDE 3\n\n[Learn IDE 3](https://learn.co/ide) is a fully featured text editor for [Learn](https://learn.co). It provides a remote development environment to allow users to get started coding using real tools without the pain of setting one up locally. It is built on top of Github's open source [Atom editor](https://atom.io/).\n\n## Project Structure\n\nThe Learn IDE client is a modified Atom build with two packages injected to provide functionality with a remote backend that provides a ready to go development environment for [Learn](https://learn.co) users.\n\n**Atom Packages:**\n\n- **[Learn IDE 3](https://github.com/learn-co/learn-ide-3)** - The main extension\n- **[Learn IDE 3 Tree](https://github.com/learn-co/learn-ide-3-tree)** - Our fork of Atom's [tree view](https://github.com/atom/tree-view). Intercepts Atom's file system events and instead performs them on our remote backend.\n- **[Learn IDE Material UI](https://github.com/learn-co/learn-ide-material-ui)** - Our fork of [atom-material-ui](https://github.com/atom-material/atom-material-ui) with our own set of default configurations.\n- **[Learn IDE 3 Notifications](https://github.com/learn-co/learn-ide-3-notifications)** - Our fork of Atom's [notifications](https://github.com/atom/notifications) with our own set of default configurations.\n\n**Related libraries:**\n\n- **[nsync-fs](https://github.com/learn-co/nsync-fs)** A virtual file system for keeping Atom synced with the remote server\n\n## Atom and Electron\n\nThe Learn IDE application currently uses [Atom at v1.14.4](https://github.com/atom/atom/tree/v1.14.4/docs), which runs [Electron at v1.3.13](https://github.com/electron/electron/tree/v1.3.13/docs). While developling, be sure that you are referring to the documentation that corresponds to these specific versions.\n\n## Getting Started\n\n1. Download [Atom](https://atom.io/)\n2. Clone the package repos:\n```shell\ngit clone https://github.com/learn-co/learn-ide-3.git\ngit clone https://github.com/learn-co/learn-ide-3-tree.git\ngit clone https://github.com/learn-co/learn-ide-3-notifications.git\n```\n3. Run `npm install` in each repo\n4. Run `apm link` inside each repo - This will create a sym link to your .atom directory, making the plugin available for use.\n5. Open Atom\n\n## Building the Learn IDE 3\n\n`gulp build` - Builds the Atom application with our packages injected ready for distribution and swaps out icons and names to brand it the Learn IDE. On Mac, this will automatically attempt to sign the application using Flatiron School's development certificate (which must be installed on your machine). On Windows, the installer must be signed manually.\n\n### `./scripts/build-linux`\n\nThis scripts will `ssh` onto a host that you give it, and output `.deb` and `.rpm` distros to a given location. It's useful if you are working on a mac, and have a dedicated linux build server. See the script itself for more info on usage.\n\n## Releasing\n\nEnsure the `packageDependencies` are up-to-date in `package.json`, then:\n\n1. **Publish**: `apm publish <major|minor|patch>` - bumps the package version according to the specified semver segment, tags it, and publishes the tag to apm\n2. **Build**: see [building](#building-the-learn-ide)\n3. **Release**: convert the tag to a release on Github, and attach the binaries you've built for each platform to the release\n\n### Beta Release\n1. Give the package a beta version in the `package.json`, e.g. the pre-release version for v2.5.0 would be `2.5.0-beta0`\n2. Commit that version change, and tag it as `v<version>`, e.g. `git commit -am \"prep v2.5.0-beta0\" && git tag v2.5.0-beta0`\n3. Push the commit and the tag: `git push && git push --tags`\n4. Publish the new tag on apm: `apm publish --tag <tag>`, e.g. `apm publish --tag v2.5.0-beta0`\n5. Build & release as described above, but be sure to check the box indicating that this is a pre-release when creating the release on Github\n\n## dotenv\n\nYou can configure the Learn IDE by creating a `.env` file either in Atom's home (e.g. `~/.atom/.env`) or wherever the package is being run (e.g. `~/development-stuff/learn-ide/.env`). The following keys can be used:\n\nKey              | Default Value      | Function\n---------------- | ------------------ | --------\nIDE_WS_HOST      | `ide.learn.co`     | The host used for websocket connections\nIDE_WS_PORT      | `443`              | The port used for websocket connections\nIDE_WS_TERM_PATH | `socket`      | The path used for websocket connections\nIDE_LEARN_CO     | `https://learn.co` | The location of learn to connect to\n\nThe `IDE_LEARN_CO` key is useful for developers and testers at Flatiron School, as it can be used to point the client to a local or QA environment; however, it does not change the IDE server's knowledge of Learn's location. In other words, you must sign in to the IDE with a production user, as the IDE servers will authenticate you against the Learn production environment.\n\n## License\n\nLearn IDE is [MIT licensed](LICENSE.md)\n",
+  "metadata": {
+    "name": "learn-ide-3",
+    "version": "3.0.0",
+    "atomVersion": "1.14.4",
+    "main": "./lib/learn-ide",
+    "urlMain": "./lib/url-handler",
+    "description": "A new way to work on Learn.co",
+    "scripts": {
+      "postpublish": "./scripts/airbrake_deploy"
+    },
+    "keywords": [
+      "beta"
+    ],
+    "repository": "https://github.com/learn-co/learn-ide-3",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "consumedServices": {
+      "status-bar": {
+        "versions": {
+          "^1.0.0": "consumeStatusBar"
+        }
+      }
+    },
+    "dependencies": {
+      "atom-socket": "0.0.9",
+      "atom-space-pen-views": "2.1.0",
+      "dotenv": "2.0.0",
+      "page-bus": "3.0.1",
+      "phoenix": "^1.3.0",
+      "register-protocol-win32": "1.0.0",
+      "semver": "5.3.0",
+      "stacktrace-parser": "0.1.4",
+      "xterm": "2.6.0"
+    },
+    "packageDependencies": {
+      "atom-material-syntax": "1.0.2",
+      "atom-material-syntax-dark": "0.2.7",
+      "atom-material-syntax-light": "0.4.6",
+      "learn-ide-material-ui": "1.3.15",
+      "learn-ide-3-notifications": "1.0.0",
+      "learn-ide-3-tree": "2.0.2"
+    },
+    "devDependencies": {
+      "decompress": "4.0.0",
+      "del": "2.2.2",
+      "gulp": "3.9.1",
+      "gulp-util": "3.0.7",
+      "request": "2.75.0",
+      "run-sequence": "1.2.2",
+      "shelljs": "0.7.3",
+      "ssh2": "0.5.0",
+      "underscore-plus": "^1.6.6"
+    },
+    "configSchema": {
+      "bleedingUpdates": {
+        "order": 0,
+        "type": "boolean",
+        "default": false,
+        "title": "Subscribe to Bleeding Updates",
+        "description": "Recieve update notifications as beta and early releases of the Learn IDE become available. Learn more on the [help center](https://learn.co/ide/bleeding)."
+      },
+      "notifier": {
+        "order": 1,
+        "type": "boolean",
+        "default": true,
+        "title": "Learn Status Notifications",
+        "description": "Receive desktop notifications that correspond to the lights on Learn.co."
+      },
+      "terminalColors": {
+        "order": 2,
+        "type": "object",
+        "properties": {
+          "basic": {
+            "order": 1,
+            "title": "Basic Colors",
+            "type": "object",
+            "properties": {
+              "foreground": {
+                "order": 0,
+                "type": "color",
+                "default": "#7ea2b4",
+                "title": "Foreground"
+              },
+              "background": {
+                "order": 1,
+                "type": "color",
+                "default": "#1A2226",
+                "title": "Background"
+              }
+            }
+          },
+          "ansi": {
+            "order": 2,
+            "title": "ANSI Colors",
+            "type": "object",
+            "properties": {
+              "0": {
+                "order": 0,
+                "type": "color",
+                "default": "#161b1d",
+                "title": "Black"
+              },
+              "1": {
+                "order": 1,
+                "type": "color",
+                "default": "#d22d72",
+                "title": "Red"
+              },
+              "2": {
+                "order": 2,
+                "type": "color",
+                "default": "#568c3b",
+                "title": "Green"
+              },
+              "3": {
+                "order": 3,
+                "type": "color",
+                "default": "#8a8a0f",
+                "title": "Yellow"
+              },
+              "4": {
+                "order": 4,
+                "type": "color",
+                "default": "#257fad",
+                "title": "Blue"
+              },
+              "5": {
+                "order": 5,
+                "type": "color",
+                "default": "#5d5db1",
+                "title": "Magenta"
+              },
+              "6": {
+                "order": 6,
+                "type": "color",
+                "default": "#2d8f6f",
+                "title": "Cyan"
+              },
+              "7": {
+                "order": 7,
+                "type": "color",
+                "default": "#7ea2b4",
+                "title": "White"
+              },
+              "8": {
+                "order": 8,
+                "type": "color",
+                "default": "#5a7b8c",
+                "title": "Bright Black"
+              },
+              "9": {
+                "order": 9,
+                "type": "color",
+                "default": "#d22d72",
+                "title": "Bright Red"
+              },
+              "10": {
+                "order": 10,
+                "type": "color",
+                "default": "#568c3b",
+                "title": "Bright Green"
+              },
+              "11": {
+                "order": 11,
+                "type": "color",
+                "default": "#8a8a0f",
+                "title": "Bright Yellow"
+              },
+              "12": {
+                "order": 12,
+                "type": "color",
+                "default": "#257fad",
+                "title": "Bright Blue"
+              },
+              "13": {
+                "order": 13,
+                "type": "color",
+                "default": "#5d5db1",
+                "title": "Bright Magenta"
+              },
+              "14": {
+                "order": 14,
+                "type": "color",
+                "default": "#2d8f6f",
+                "title": "Bright Cyan"
+              },
+              "15": {
+                "order": 15,
+                "type": "color",
+                "default": "#ebf8ff",
+                "title": "Bright White"
+              }
+            }
+          },
+          "json": {
+            "title": "JSON Color Scheme",
+            "order": 3,
+            "type": "string",
+            "default": "",
+            "description": "Import complete and customizable color schemes from [terminal.sexy](https://terminal.sexy/) by pasting a JSON export here. For more information, visit the [help center](http://help.learn.co/)."
+          }
+        }
+      },
+      "fontFamily": {
+        "title": "Font Family",
+        "order": 3,
+        "type": "string",
+        "default": "",
+        "description": "The name of the font family used in the terminal. Be sure to choose a monospaced font!"
+      },
+      "fontSize": {
+        "title": "Font Size",
+        "order": 4,
+        "type": "number",
+        "default": 14,
+        "minimum": 2,
+        "description": "The name of the font size used in the terminal."
+      },
+      "openOnHome": {
+        "order": 5,
+        "type": "boolean",
+        "default": false,
+        "title": "Set Home as the Default Project",
+        "description": "When the Learn IDE is opened without a lab, open the tree on the remote server's home directory rather than 'temporary' (your work will still NOT be persisted; in other words, it is still temporary, just in a different location)."
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "name": "atom-to-photoshop",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JavierAroche/atom-to-photoshop"
+  },
+  "downloads": 650,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "2.0.1"
+  },
+  "versions": {
+    "2.0.1": {
+      "name": "atom-to-photoshop",
+      "main": "./lib/atom-to-photoshop",
+      "version": "2.0.1",
+      "description": "Atom to Photoshop is an extension for Atom to execute a JSX file in Photoshop.",
+      "keywords": [],
+      "repository": "https://github.com/javieraroche/atom-to-photoshop",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-to-photoshop/versions/2.0.1/tarball"
+      }
+    },
+    "2.0.0": {
+      "name": "atom-to-photoshop",
+      "main": "./lib/atom-to-photoshop",
+      "version": "2.0.0",
+      "description": "Atom to Photoshop is an extension for Atom to execute a JSX file in Photoshop.",
+      "keywords": [],
+      "repository": "https://github.com/javieraroche/atom-to-photoshop",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-to-photoshop/versions/2.0.0/tarball"
+      }
+    }
+  },
+  "readme": "# Atom-to-Photoshop\n\n[![npm-image](https://img.shields.io/badge/atom%20to%20photoshop-v1.0.0-09bc00.svg)](https://github.com/JavierAroche/atom-to-photoshop)\n\n### Description\n---------\nAtom to Photoshop is an extension for [Atom](https://atom.io/) that allows you to execute a JSX file in Photoshop.\n\n### How to Install\n---------\nSearch for the **Atom-To-Photoshop** package in Atom.\n\n### Usage\n---------\nThis extension works on Atom's current document.\n\nIf your file is saved, the extension will execute the script using its local path, otherwise it will execute it through a temporary file.\n\nClick on the **atom-to-photoshop > Run** menu item, or hit the shortcut **ctrl-alt-shift-p** to execute your script.\n\nShortcuts:\n* Run - **ctrl-alt-shift-p**\n* Toggle Console - **ctrl-alt-shift-o**\n* Clear Console - **ctrl-alt-shift-c**\n\n### Include external files\n---------\nIf your script file is saved, the extension will load your script path and execute it. This makes it easier to use ExtendScript's #include to load relative external files.\n\n```\n#include \"~/Development/personal/descriptor-info/jsx/descriptor-info.jsx\"\n```\n\nIf your file is not saved, the extension will execute your script through a temporary file, making it impossible to load external relative files using #include. Absolute paths will always work.\n\n\n### Polyfills\n---------\natom-to-photoshop includes by default 3 JavaScript polyfills, which you can use in your code at any time.\n* JSON.stringify\n* JSON.parse\n* Array.forEach\n\n### Log to the console\n---------\nThis extension has an internal module that recreates JavaScript's console module, including a way to log a JSON.stringify response.\n\nYou can use functions in your code such as:\n```\nconsole.log( 'Hello' );\n// Returns: [log: 16:16:2.649] Hello\n\nconsole.info( 'Hello' );\n// Returns: [info: 16:16:23.823] Hello\n\nconsole.error( 'Hello' );\n// Returns: [error: 16:16:37.985] Hello\n\nconsole.stringify( { foo : 'bar' } );\n// Returns: [stringify: 16:16:50.185] {\n    \"foo\": \"bar\"\n}\n```\n\nThis extension also allows the use of ExtendScript's native $.write and $.writeln functions to log to the console using JSON.stringify.\n```\n$.writeln( \"Hello\" );\n// Returns: [log: 16:20:34.337] \"Hello\"\n\n$.write( \"Hello\" );\n// Returns: [log: 16:20:37.171] \"Hello\"\n```\n\n### Anatomy of a log\n---------\n**Successful execution**\n```\nfunction foo() {\n    return app.name;\n}\nfoo();\n// Returns: [11:10:02] Result: Adobe Photoshop\n```\nBreakdown:\n* **[11:10:02]** --> Time stamp of when the extension executed the script\n* **Result: Adobe Photoshop** --> Message received from the Adobe application mimicking ExtendScript's \"Result:\" log\n\n**console.log**\n```\nconsole.log( 'Hello' );\n// Returns: [log: 11:10:02.649] Hello\n```\nBreakdown:\n* **[log: 16:16:2.649]** --> Time stamp of when the console.log function was executed inside your script\n* **Hello** --> Message received from the Adobe application\n\n**Error in execution**\n```\nreturn app.name;\n// Returns: [11:10:02] 78:256: execution error: Adobe Photoshop CC 2015 got an error: General Photoshop error occurred. This functionality may not be available in this version of Photoshop.\n- Error 30: Illegal 'return' outside of a function body.\nLine: 1\n```\nBreakdown:\n* **[11:10:02]** --> Time stamp of when the extension executed the script through Node\n* **78:256: execution error: Adobe Photoshop CC 2015 got an error: General Photoshop error occurred. This functionality may not be available in this version of Photoshop.** --> Execution error received from Photoshop\n* **- Error 30: Illegal 'return' outside of a function body.** --> Descriptive error\n* **Line: 1** --> Line in your script that triggered the error\n\n\n### Console\n---------\nA console will show up at the bottom of your editor displaying any messages returned from the executed script. Errors will display in red.\n\n![atom-to-photoshop-console](https://raw.githubusercontent.com/JavierAroche/atom-to-photoshop/master/images/atom-to-photoshop-console.png)\n\n### Known Limitations\n---------\n* This extension uses Photoshop's AppleScript API, so it will only work for MacOS users at the moment.\n\n### Changelog\n---------\n[Atom to Photoshop Changelog](https://github.com/JavierAroche/atom-to-photoshop/blob/master/CHANGELOG.md)\n\n### License\n---------\nMIT © Javier Aroche\n",
+  "metadata": {
+    "name": "atom-to-photoshop",
+    "main": "./lib/atom-to-photoshop",
+    "version": "2.0.1",
+    "description": "Atom to Photoshop is an extension for Atom to execute a JSX file in Photoshop.",
+    "keywords": [],
+    "repository": "https://github.com/javieraroche/atom-to-photoshop",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {}
+  }
+}

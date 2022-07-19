@@ -1,0 +1,167 @@
+{
+  "name": "box-edit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mark-hahn/box-edit"
+  },
+  "downloads": 2889,
+  "stargazers_count": 7,
+  "releases": {
+    "latest": "0.1.3"
+  },
+  "versions": {
+    "0.1.3": {
+      "name": "box-edit",
+      "main": "./lib/box-edit",
+      "version": "0.1.3",
+      "description": "An Atom package to edit rectangular areas; supports short lines.",
+      "repository": "https://github.com/mark-hahn/box-edit",
+      "license": "MIT",
+      "engines": {
+        "atom": ">1.0.0"
+      },
+      "activationCommands": {
+        "atom-text-editor": [
+          "box-edit:toggle"
+        ]
+      },
+      "dependencies": {
+        "sub-atom": "^1.1.0",
+        "wordwrap": "^1.0.0"
+      },
+      "keywords": [
+        "box",
+        "column",
+        "rectangular",
+        "selection",
+        "atom",
+        "editor"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/box-edit/versions/0.1.3/tarball"
+      }
+    },
+    "0.1.2": {
+      "name": "box-edit",
+      "main": "./lib/box-edit",
+      "version": "0.1.2",
+      "description": "An Atom package to edit rectangular areas; supports short lines.",
+      "repository": "https://github.com/mark-hahn/box-edit",
+      "license": "MIT",
+      "engines": {
+        "atom": ">1.0.0"
+      },
+      "activationCommands": {
+        "atom-text-editor": [
+          "box-edit:toggle"
+        ]
+      },
+      "dependencies": {
+        "sub-atom": "^1.1.0",
+        "wordwrap": "^1.0.0"
+      },
+      "keywords": [
+        "box",
+        "column",
+        "rectangular",
+        "selection",
+        "atom",
+        "editor"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/box-edit/versions/0.1.2/tarball"
+      }
+    },
+    "0.1.1": {
+      "name": "box-edit",
+      "main": "./lib/box-edit",
+      "version": "0.1.1",
+      "description": "An Atom package to edit rectangular areas; supports short lines.",
+      "repository": "https://github.com/mark-hahn/box-edit",
+      "license": "MIT",
+      "engines": {
+        "atom": ">1.0.0"
+      },
+      "activationCommands": {
+        "atom-text-editor": [
+          "box-edit:toggle"
+        ]
+      },
+      "dependencies": {
+        "sub-atom": "^1.1.0",
+        "wordwrap": "^1.0.0"
+      },
+      "keywords": [
+        "box",
+        "column",
+        "rectangular",
+        "selection",
+        "atom",
+        "editor"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/box-edit/versions/0.1.1/tarball"
+      }
+    },
+    "0.1.0": {
+      "name": "box-edit",
+      "main": "./lib/box-edit",
+      "version": "0.1.0",
+      "description": "An Atom package to edit rectangular areas; supports short lines.",
+      "repository": "https://github.com/mark-hahn/box-edit",
+      "license": "MIT",
+      "engines": {
+        "atom": ">1.0.0"
+      },
+      "activationCommands": {
+        "atom-text-editor": [
+          "box-edit:toggle"
+        ]
+      },
+      "dependencies": {
+        "sub-atom": "^1.1.0",
+        "wordwrap": "^1.0.0"
+      },
+      "keywords": [
+        "box",
+        "column",
+        "rectangular",
+        "selection",
+        "atom",
+        "editor"
+      ],
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/box-edit/versions/0.1.0/tarball"
+      }
+    }
+  },
+  "readme": "\n## box-edit\n\nAn Atom package to edit rectangular areas; supports short lines.\n\n![box-edit-demo](https://cloud.githubusercontent.com/assets/811455/11103846/ea8676f2-8879-11e5-80fd-deb13f47cf89.gif)\n\nBox-edit provides for selecting and editing a box (rectangular area) of text in the Atom editor. When in box mode the Atom cursors disappear and a new red box cursor takes over.  You can cut, paste, insert, etc., on a box instead of character strings. Box-edit supports virtual spaces to the right of lines which solves a problem found in rectangular selection tools that use Atom cursors/selections.\n\n### Features\n\n- A box can be selected, cut, and pasted anywhere, even to the right of lines.\n- Supports wrapped lines properly.\n- The box can be filled with any character, such as a space, to blank an area.\n- The box mode supports basic editor commands such as cut, copy, paste, and undo/redo.\n- A box can be turned into a character-based editor (an html textarea) which allows typing wrapped text into a rectangle.  Useful for comments to the right of multiple lines.\n- When opening a box, Atom cursors are converted into a box, and when closing the box it is converted back into Atom selections. So by switching back and forth you can create Atom cursor-based rectangles like other packages do.\n\n## Usage\n\n**Installation** Install box-edit using `apm install box-edit`.  \n\n**Entering/Exiting Box Mode** The command to toggle box mode on and off is `box-edit:toggle` which by default is bound to `Alt-S`. You can tell you are in box mode when the Atom selections disappear and a red box appears (unless it is outside of the visible area).  The mouse cursor changes into a cross-hair.\n\n**Selecting** When in box mode you can create a box by clicking and dragging the mouse. The box will be shown as a red rectangle.  The support of arrow keys is planned for the future.  You may select anywhere in the editor pane including to the right of line endings.\n\n**Single Clicking** If you click without dragging then a zero-width box  will be created. This is useful before inserting a box.  You can also extend it to a bigger box using shift-click. \n\n**Extending Selection** Shift-click will move the second corner of a box to the new point. This allows extending/shrinking a selection. If you wish to create a box that is taller/wider than the current screen then you must select one corner with a single-click, scroll the pane, and then shift-click to set the second corner.\n\n**Atom Selection Matching** When you enter box-mode a new box will be created that surrounds all existing Atom selections.  When exiting box mode the box will be converted into multiple Atom selections that match the box.  This makes it easy to toggle back and forth while keeping the selection.\n\n**Rectangular Atom Selections**  If you enter box mode, select a box inside of text, and exit, you will have created a rectangular selection of Atom cursors. This mimics other Atom rectangular selection tools.\n\n**Selecting End Of Lines** You can put Atom cursors at the end of multiple lines by entering box mode, creating an empty box past the end of the lines, and exiting box mode.\n\n**Box Editing** You can perform rectangular editing without leaving box mode. The following commands are supported in box mode.  At this time you cannot customize these bindings.\n\n-  *Any Unicode Character:* Fill the box with the character.\n-  *Ctrl-C:*  Copy the enclosed text into the clipboard as lines.\n-  *Backspace or Delete:*  Delete the enclosed text and collapse the box.\n-  *Ctrl-X:* Copy the text and then delete it.\n-  *Ctrl-V:* Delete the text and insert the clipboard text.  The box will change width to match the longest line.\n-  *Ctrl-A:* Surround the entire editing area with the box.\n-  *Ctrl-Z:* Undo the last edit. Can only go back to when box mode was entered.\n-  *Ctrl-Y:* Redo an edit.\n-  *Enter:* Replace the red box with a green one that allows entering and editing wrapped text in a rectangle.  Uses an html textarea element.\n-  *Escape or Tab:* If editing text in a green box then close the editor and go back to the red box.  If in normal red box mode then exit box mode altogether.\n-  *Alt-S:* The command `box-edit:toggle` (not necessarily Alt-S) will close box mode.  It is useful in some situations to enter and exit quickly so pressing this key combo twice is an easy way to do it.\n                \n### Status: Beta\n\nThis has been used in my personal editor for a short while.  Use with caution.  Reports of satisfaction, good and bad, would be appreciated.  Email mark@hahnca.com or post problem reports to the issues section of https://github.com/mark-hahn/box-edit.\n    \n### Known Problems:\n\n- After exiting box mode the cursor doesn't change back until the mouse moves.\n    (apparently this is a chrome bug, a lot of people complain)\n\n### To-Do \n          \n- Add arrow-key support to allow keyboard-only selecting and editing.\n          \n### License\n\nCopyright Mark Hahn using the MIT license\n",
+  "metadata": {
+    "name": "box-edit",
+    "main": "./lib/box-edit",
+    "version": "0.1.3",
+    "description": "An Atom package to edit rectangular areas; supports short lines.",
+    "repository": "https://github.com/mark-hahn/box-edit",
+    "license": "MIT",
+    "engines": {
+      "atom": ">1.0.0"
+    },
+    "activationCommands": {
+      "atom-text-editor": [
+        "box-edit:toggle"
+      ]
+    },
+    "dependencies": {
+      "sub-atom": "^1.1.0",
+      "wordwrap": "^1.0.0"
+    },
+    "keywords": [
+      "box",
+      "column",
+      "rectangular",
+      "selection",
+      "atom",
+      "editor"
+    ]
+  }
+}

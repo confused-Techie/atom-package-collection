@@ -1,0 +1,174 @@
+{
+  "name": "related",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nick125/related"
+  },
+  "downloads": 12720,
+  "stargazers_count": 13,
+  "releases": {
+    "latest": "0.3.5"
+  },
+  "versions": {
+    "0.3.5": {
+      "name": "related",
+      "main": "./lib/related",
+      "version": "0.3.5",
+      "description": "Navigate quickly between files in your project, such as header/source files, based on a set of configurable rules",
+      "activationCommands": {
+        "atom-workspace": [
+          "related:show-related-files",
+          "related:edit-related-patterns"
+        ]
+      },
+      "repository": "https://github.com/nick125/related",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "fs-plus": "2.x",
+        "glob": "5.x",
+        "atom-space-pen-views": "2.x",
+        "season": "~5.1.0",
+        "q": "*"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/related/versions/0.3.5/tarball"
+      }
+    },
+    "0.3.3": {
+      "name": "related",
+      "main": "./lib/related",
+      "version": "0.3.3",
+      "description": "Navigate quickly between files in your project, such as header/source files, based on a set of configurable rules",
+      "activationCommands": {
+        "atom-workspace": [
+          "related:show-related-files",
+          "related:edit-related-patterns"
+        ]
+      },
+      "repository": "https://github.com/nick125/related",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "fs-plus": "2.x",
+        "glob": "5.x",
+        "atom-space-pen-views": "2.x",
+        "season": "~5.1.0",
+        "q": "*"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/related/versions/0.3.3/tarball"
+      }
+    },
+    "0.3.1": {
+      "name": "related",
+      "main": "./lib/related",
+      "version": "0.3.1",
+      "description": "Navigate quickly between related files in your project",
+      "activationCommands": {
+        "atom-workspace": [
+          "related:show-related-files",
+          "related:edit-related-patterns"
+        ]
+      },
+      "repository": "https://github.com/nick125/related",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "fs-plus": "2.x",
+        "glob": "5.x",
+        "atom-space-pen-views": "2.x",
+        "season": "~5.1.0",
+        "q": "*"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/related/versions/0.3.1/tarball"
+      }
+    },
+    "0.3.0": {
+      "name": "related",
+      "main": "./lib/related",
+      "version": "0.3.0",
+      "description": "Navigate quickly between related files in your project",
+      "activationCommands": {
+        "atom-workspace": [
+          "related:show-related-files",
+          "related:edit-related-patterns"
+        ]
+      },
+      "repository": "https://github.com/nick125/related",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "fs-plus": "2.x",
+        "glob": "5.x",
+        "atom-space-pen-views": "2.x",
+        "season": "~5.1.0",
+        "q": "*"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/related/versions/0.3.0/tarball"
+      }
+    },
+    "0.2.0": {
+      "name": "related",
+      "main": "./lib/related",
+      "version": "0.2.0",
+      "description": "Navigate quickly between related files in your project",
+      "activationCommands": {
+        "atom-workspace": [
+          "related:show-related-files",
+          "related:edit-related-patterns"
+        ]
+      },
+      "repository": "https://github.com/nick125/related",
+      "license": "MIT",
+      "engines": {
+        "atom": ">=0.174.0 <2.0.0"
+      },
+      "dependencies": {
+        "fs-plus": "2.x",
+        "glob": "5.x",
+        "atom-space-pen-views": "2.x",
+        "season": "~5.1.0",
+        "q": "*"
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/related/versions/0.2.0/tarball"
+      }
+    }
+  },
+  "readme": "# Related for Atom\nRelated is a port of the [sublime-related-files](https://github.com/fabiokr/sublime-related-files) plugin for Atom.\n\nRelated provides a quick way to access files that are \"related\" to the file currently opened. For example, Related includes\na set of patterns for switching between C/C++/Objective-C source and header files.\n\n![Related in action](https://raw.githubusercontent.com/nick125/related/master/related.gif)\n\n## What is a \"related\" file?\nThe relationship between files is defined through a set of **patterns**. For example,\n```cson\n\"lib/(.+).coffee\": [\n  \"spec/$1-spec.coffee\"\n]\n```\nprovides a mapping from a CoffeeScript file (through a **matcher**) in lib/ to a unit test in spec/ (through a **result**)\n-- that is, if I currently have the file lib/foo.coffee open and the file spec/foo-spec.coffee exists, Related\nwill show it as a file to jump to. Each pattern can have multiple results, and a single file\ncan match multiple patterns.\n\n### Creating files\nRelated allows you to optionally create related files by specifying the 'create' flag at the end of your result. For example,\nwith the currently open file \"lib/foo.coffee\",\n```cson\n\"lib/(.+).coffee\": [\n  \"spec/$1-spec.coffee#create\"\n]\n```\nwould prompt you to create \"spec/foo-spec.coffee\" if it doesn't already exist.\n\n## Keymapping\nBy default, Related uses ctrl+shift+r.\n\n## Configuration\nRelated includes a limited default pattern set, but there are some additional examples in the examples/ directory. To add a pattern,\nsee the \"Edit related patterns\" options under the Packages -> Related menu.\n\nRelated provides the following configuration options:\n * openSingleItemAutomatically - If only a single existing file matches the pattern, automatically open it instead of prompting\n * onlyShowCreateIfNoResults - Only offer to create files if there are no other existing results.\n",
+  "metadata": {
+    "name": "related",
+    "main": "./lib/related",
+    "version": "0.3.5",
+    "description": "Navigate quickly between files in your project, such as header/source files, based on a set of configurable rules",
+    "activationCommands": {
+      "atom-workspace": [
+        "related:show-related-files",
+        "related:edit-related-patterns"
+      ]
+    },
+    "repository": "https://github.com/nick125/related",
+    "license": "MIT",
+    "engines": {
+      "atom": ">=0.174.0 <2.0.0"
+    },
+    "dependencies": {
+      "fs-plus": "2.x",
+      "glob": "5.x",
+      "atom-space-pen-views": "2.x",
+      "season": "~5.1.0",
+      "q": "*"
+    }
+  }
+}

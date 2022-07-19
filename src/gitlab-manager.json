@@ -1,0 +1,156 @@
+{
+  "name": "gitlab-manager",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/T-Huelsken/gitlab-manager"
+  },
+  "downloads": 4988,
+  "stargazers_count": 3,
+  "releases": {
+    "latest": "0.2.2"
+  },
+  "versions": {
+    "0.2.2": {
+      "bundleDependencies": false,
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dependencies": {
+        "git-url-parse": "^11.1.1",
+        "request": "^2.88.0",
+        "request-promise-native": "^1.0.5",
+        "opn": "^4.0.2",
+        "unzipper": "^0.10.3"
+      },
+      "deprecated": false,
+      "description": "Control your gitlab pipelines/jobs and improve your overall workflow with gitlab.",
+      "devDependencies": {
+        "nock": "^10.0.4"
+      },
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "homepage": "https://github.com/T-Huelsken/gitlab-manager#readme",
+      "keywords": [
+        "ui",
+        "gitlab",
+        "git",
+        "pipeline",
+        "merge",
+        "workflow"
+      ],
+      "license": "MIT",
+      "main": "./lib/gitlab-manager",
+      "name": "gitlab-manager",
+      "deserializers": {
+        "gitlab-manager/tobiasGitlabRepository": "deserializeRepositoryView"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/T-Huelsken/gitlab-manager.git"
+      },
+      "version": "0.2.2",
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/gitlab-manager/versions/0.2.2/tarball"
+      }
+    },
+    "0.2.1": {
+      "bundleDependencies": false,
+      "consumedServices": {
+        "status-bar": {
+          "versions": {
+            "^1.0.0": "consumeStatusBar"
+          }
+        }
+      },
+      "dependencies": {
+        "git-url-parse": "^11.1.1",
+        "request": "^2.88.0",
+        "request-promise-native": "^1.0.5",
+        "opn": "^4.0.2",
+        "unzipper": "^0.10.3"
+      },
+      "deprecated": false,
+      "description": "Control your gitlab pipelines/jobs and improve your overall workflow with gitlab.",
+      "devDependencies": {
+        "nock": "^10.0.4"
+      },
+      "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+      },
+      "homepage": "https://github.com/T-Huelsken/gitlab-manager#readme",
+      "keywords": [
+        "ui",
+        "gitlab",
+        "git",
+        "pipeline",
+        "merge",
+        "workflow"
+      ],
+      "license": "MIT",
+      "main": "./lib/gitlab-manager",
+      "name": "gitlab-manager",
+      "deserializers": {
+        "gitlab-manager/tobiasGitlabRepository": "deserializeRepositoryView"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/T-Huelsken/gitlab-manager.git"
+      },
+      "version": "0.2.1",
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/gitlab-manager/versions/0.2.1/tarball"
+      }
+    }
+  },
+  "readme": "# Atom gitlab-manager package\n\nControl your gitlab pipelines/jobs and improve your overall workflow with gitlab.\n\n![Fullview](https://user-images.githubusercontent.com/54643607/63933230-1a151480-ca59-11e9-8dee-64eb9c9c8686.png)\n\n## Configuration\n\nMandatory:\n- Set your Gitlab personal access token, which is needed to perform all the needed calls on your behalf. It must at least have the `API` scope. The documentation to creeate one is at https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html.\n- Set your Gitlab user id. You will find this id at your User Profile -> Settings page.(https://gitlab.com/profile)\n\nOptional:\n- Set the polling period to your desired time. Since every project added in an atom window will be polled until the window is closed, it's recommended to not set this value to low to reduce network traffic/CPU utilization.\n- Set the download location if you dont' want to download the artifacts into your project but to the specified folder instead.\n- Disable the ssl certificate check if you are using a self hosted gitlab server with untrusted certificates.\n- Enable HTTP to always use http, if the  server doesn't support https.\n\n### Complementary plugins\n- Display your job logs with proper colours instead of ansi escape sequences: https://atom.io/packages/language-ansi-styles\n- Handling multiple different configurations (API token and user id) for different projects: https://atom.io/packages/atomic-management\n\n## Usage\nOnce the plugin has been installed and you have filled in the mandatory information restart your atom to let the configuration take effect.   \nIf you now open a gitlab project using `Add project folder` (ctrl + shift + a) and open a file in it, the plugin will be triggered and started. Once a project has been opened and loaded in a window you can also open files of other projects to view their pipeline statuses.\nIt will add the Gitlab icon as well as one icon for every pipeline stage with it's current status. The displayed pipeline is always the last pipeline of the currently checked out branch. From there on you will have the following options:\n- Click on a pipeline stage icon to open it's stage details.\n- Click on the pipeline icon (rocket) to open all pipeline stages at once.\n- Click on the gitlab icon to open the files tab of your current branch in your default browser.\n\nWhen you have opened a pipeline stage, you can click the corresponding stage icon to close it again. In the detailed view you have full control over your pipeline jobs. You can start/retry/cancel jobs as well as you can view it's jobs logs inside of atom or download it's contents which then will be unzipped automatically.\n\nFurthermore the following hotkeys are implemented:\n- Open a dock with `alt-i`. The dock contains a list of open merge requests assigned to you, issues assigned to you and merge requests where you an approver. It's items are clickable and will redirect you to the corresponding item in your browser. This view is not refreshed automatically and thus has be refreshed using the displayed buttons.\n- `ctrl-shift-m`: Create a new merge request on basis of your current branch. (opens Browser)\n- `ctrl-shift-j`: Compares your current branch to the master. (opens Browser)\n- `ctrl-shift-o`: Opens the projects open issues. (opens Browser)\n\n## Current limitations\n- Gitlab-Manager is incompatible with the plugin gitlab-integration, since gitlab-manager is a fork of it. Therefore you can only have one of them installed and active in atom. A restart after switching them might be required.\n- The projects must be root level elements. It's not possible to add some kind of root repository which contains several gitlab-projects at once.\n- Using multiple projects in one atom window might not always be working 100%. Additionally it's only supported for one gitlab host at once.\n- Gitlab-Manager uses the remote with the name `origin` for retrieving the gitlab host information. Therefore the remote upstream must be set correctly.\n\n## Plans for future\n- Adding tests\n- Adding more shortcuts or commands if requested\n- Fixing some styles and improving the look and feel\n- Adding new functionality (create MR in atom)\n- Improve logging to be more useful\n- Improve download job functionality to also handle artifacts which can't be unzipped\n- Improve performance\n- Refactoring of code\n\n## Further Advice\nThis is only a minimal viable product without real testing or similar. it was hacked in the spare time of a couple of weeks. Since it's also my first frontend project I advice you to not have a closer look into the code if not needed. If you dare to do so no reparations will be paid in case of heart attacks, getting ventilated about it, consuming an uncommon big amount of chocolate or alike.\n\n## Thanks\nThanks to blakawk whose implementation is the basis of this project. (https://atom.io/packages/gitlab-integration)\n\n## Contributing\nReporting issues and pull requests are welcome for this project. In case of errors provide console debug output and the steps to reproduce the error. You can enable the debug output in the settings\n",
+  "metadata": {
+    "bundleDependencies": false,
+    "consumedServices": {
+      "status-bar": {
+        "versions": {
+          "^1.0.0": "consumeStatusBar"
+        }
+      }
+    },
+    "dependencies": {
+      "git-url-parse": "^11.1.1",
+      "request": "^2.88.0",
+      "request-promise-native": "^1.0.5",
+      "opn": "^4.0.2",
+      "unzipper": "^0.10.3"
+    },
+    "deprecated": false,
+    "description": "Control your gitlab pipelines/jobs and improve your overall workflow with gitlab.",
+    "devDependencies": {
+      "nock": "^10.0.4"
+    },
+    "engines": {
+      "atom": ">=1.0.0 <2.0.0"
+    },
+    "homepage": "https://github.com/T-Huelsken/gitlab-manager#readme",
+    "keywords": [
+      "ui",
+      "gitlab",
+      "git",
+      "pipeline",
+      "merge",
+      "workflow"
+    ],
+    "license": "MIT",
+    "main": "./lib/gitlab-manager",
+    "name": "gitlab-manager",
+    "deserializers": {
+      "gitlab-manager/tobiasGitlabRepository": "deserializeRepositoryView"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/T-Huelsken/gitlab-manager.git"
+    },
+    "version": "0.2.2"
+  }
+}

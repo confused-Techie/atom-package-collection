@@ -1,0 +1,202 @@
+{
+  "name": "atom-github-syntax",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alhadis/Atom-GitHubSyntax"
+  },
+  "downloads": 57,
+  "stargazers_count": 0,
+  "releases": {
+    "latest": "1.0.0"
+  },
+  "versions": {
+    "1.0.0": {
+      "name": "atom-github-syntax",
+      "theme": "syntax",
+      "private": true,
+      "version": "1.0.0",
+      "homepage": "https://github.com/Alhadis/language-etc/blob/master/samples/lists/scope-previews.nanorc",
+      "description": "Up-to-date syntax colours that match GitHub's motif, including day/night mode.",
+      "repository": "https://github.com/Alhadis/Atom-GitHubSyntax",
+      "license": "ISC",
+      "eslintConfig": {
+        "extends": "@alhadis",
+        "overrides": [
+          {
+            "files": "index.js",
+            "globals": {
+              "atom": "readonly"
+            }
+          },
+          {
+            "files": "tools/extract-themes.mjs",
+            "rules": {
+              "prefer-rest-params": 0
+            }
+          }
+        ]
+      },
+      "engines": {
+        "atom": "*"
+      },
+      "configSchema": {
+        "colourMode": {
+          "order": 1,
+          "title": "Colour mode",
+          "description": "Which colour motif to use, if not derived from the system's appearance settings.",
+          "type": "string",
+          "default": "",
+          "enum": [
+            {
+              "value": "",
+              "description": "Sync with system"
+            },
+            {
+              "value": "dark",
+              "description": "Dark"
+            },
+            {
+              "value": "light",
+              "description": "Light"
+            }
+          ]
+        },
+        "theme": {
+          "order": 2,
+          "title": "Theme variant",
+          "description": "Select an alternate colour-palette.",
+          "type": "string",
+          "default": "",
+          "enum": [
+            {
+              "value": "",
+              "description": "None (default)"
+            },
+            {
+              "value": "high-contrast",
+              "description": "High contrast"
+            },
+            {
+              "value": "colour-blind",
+              "description": "Colour-blindness"
+            },
+            {
+              "value": "dimmed",
+              "description": "Dimmed (dark only)"
+            }
+          ]
+        },
+        "matchFont": {
+          "order": 3,
+          "title": "Match font",
+          "description": "Override user-configured editor settings to match the exact appearance of source-code on GitHub.",
+          "type": "boolean",
+          "default": true
+        },
+        "matchSize": {
+          "order": 4,
+          "title": "Match size",
+          "description": "Force the editor to use GitHub's text-size when the above setting is enabled.",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "dist": {
+        "tarball": "https://www.atom.io/api/packages/atom-github-syntax/versions/1.0.0/tarball"
+      }
+    }
+  },
+  "readme": "<!--*-tab-width:4;indent-tabs-mode:t;fill-column:80-*-#vi:se ts=4 noet tw=80:-->\nGitHub syntax theme for Atom\n============================\n\nThis is a syntax highlighting theme for [Atom](https://atom.io/) that replicates\nthe exact appearance of highlighted source-code on GitHub.com. It was created to\nfacilitate development of TextMate-compatible grammars [for use on GitHub][1].\n\n![Comparison between syntax theme and GitHub's styling (as of 2022-02-26)][2]\n\n\nFeatures\n--------\n*\tAutomatic dark-mode detected from system settings.\n*\tSupport for high-contrast and “dimmed” theme variants.\n*\tSupport for [colourblind users][3] (protanopia and deuteranopia)\n*\tPathologically-accurate highlighting (see next section)\n*\tAutomated styling updates; run `tools/update-styles.sh` to update CSS.\n\nTo-do list\n----------\n*\t[ ] Setup continuous integration\n*\t[ ] Write up contributor docs\n*\t[x] Add setting to enable manual dark/light-mode selection\n*\t[ ] Investigate supporting ChromeDriver for headless updates\n\n\nTextMate vs CSS\n---------------\n[TextMate Scope Selectors](https://macromates.com/manual/en/scope_selectors) are\nnot completely compatible with [CSS classes](http://mdn.io/CSS/Class_selectors),\ndespite sharing a superficial resemblance:\n\n\t.string.quoted.double      CSS\n\t string.quoted.double      TextMate\n\nIn CSS, the order in which classes are listed in a class selector is irrelevant:\n`.string.quoted.double` is behaves the same as `.double.quoted.string`. TextMate\nselectors, however, are sensitive to the order in which scopes are listed, which\nmeans  `string.quoted` matches `string.quoted.double` but *not* `quoted.string`,\n`string.foo.quoted`, or even `foo.string.quoted`.\n\n### Why is this relevant?\nGitHub uses TextMate selectors to map tokenised scope-lists onto CSS classes. In\nrare cases, a grammar might specify a scope-list that TextMate and CSS selectors\ninterpret differently. For example, consider the following pattern:\n\n~~~cson\nname: \"variable.global.other\"\nmatch: /\\$\\w+/\n~~~\n\nGitHub recognises both the `variable` and `variable.other` scopes, and assigns a\ndifferent colour to each. On GitHub, the aforementioned rule will be highlighted\nas the former (`variable`), whereas a naïve theme targeting `.variable.other` in\nCSS will see the latter.\n\n### The solution\nCSS provides no elegant way to implement an “order-dependent class selector”. An\nugly alternative is to use attribute selectors instead:\n\n~~~less\n// NB: This example omits the rebarbative `syntax--` prefix necessitated by Atom\n:is([class=\"string quoted double\"], [class^=\"string quoted double \"]){\n\t\n}\n~~~\n\nAstute authors will correctly note several limitations with this approach:\n\n1.\t**Classes must be separated by a single space (`U+0020`) only.**  \n\tMultiple spaces or other whitespace characters won't match.\n2.\t**`class` attributes cannot contain leading or trailing whitespace.**\n3.\t**Selectors must avoid matching more qualified scope-lists.**  \n\tE.g., `variable.other` should not inherit the styling applied to\n\t`variable`, or vice versa. This requires the inclusion of a `:not()`\n\tqualifier for every conflicting scope-list. For example:\n\t~~~less\n\t// Target \"string\" scope, but not more qualified selectors\n\t// such as \"string.quoted.double\" or \"string.quoted.single\"\n\t:is([class^=\"string \"]):not(\n\t\t[class^=\"string quoted double\"],\n\t\t[class^=\"string quoted single\"]\n\t){ }\n\t~~~\n4.\t**The list of supported scopes must be known ahead-of-time.**  \n\tThis is stipulated by the previous point.\n\nThankfully, each constraint is satisfied by Atom's [built-in use of Less][4] for\ngenerating stylesheets. A [script][5] is provided for regenerating the scope-map\nvariables listed in [`scope-map.less`](styles/includes/scope-map.less).\n\n### Related links\n*\t[Live preview of all TextMate scopes supported by GitHub][6]\n*\t[GitHub Lightshow](https://github-lightshow.herokuapp.com/), a webapp\n\tto preview the output of TextMate grammars on GitHub. Note that styling\n\tis not kept in-sync with the rest of the site, and is often outdated.\n*\t[`textmate(5)` man page][7] documenting the TextMate grammar format.\n\n\n<!-- Referenced links --------------------------------------------------------->\n[1]: https://github.com/github/linguist/blob/HEAD/CONTRIBUTING.md\n[2]: https://github.com/Alhadis/Atom-GitHubSyntax/blob/static/preview.svg?raw=1\n[3]: https://github.com/github/roadmap/issues/357\n[4]: https://flight-manual.atom.io/hacking-atom/sections/creating-a-theme/\n[5]: ./tools/build-scope-map.mjs\n[6]: https://git.io/Jf1IY\n[7]: https://github.com/Alhadis/.files/blob/HEAD/share/man/man5/textmate.5\n",
+  "metadata": {
+    "name": "atom-github-syntax",
+    "theme": "syntax",
+    "private": true,
+    "version": "1.0.0",
+    "homepage": "https://github.com/Alhadis/language-etc/blob/master/samples/lists/scope-previews.nanorc",
+    "description": "Up-to-date syntax colours that match GitHub's motif, including day/night mode.",
+    "repository": "https://github.com/Alhadis/Atom-GitHubSyntax",
+    "license": "ISC",
+    "eslintConfig": {
+      "extends": "@alhadis",
+      "overrides": [
+        {
+          "files": "index.js",
+          "globals": {
+            "atom": "readonly"
+          }
+        },
+        {
+          "files": "tools/extract-themes.mjs",
+          "rules": {
+            "prefer-rest-params": 0
+          }
+        }
+      ]
+    },
+    "engines": {
+      "atom": "*"
+    },
+    "configSchema": {
+      "colourMode": {
+        "order": 1,
+        "title": "Colour mode",
+        "description": "Which colour motif to use, if not derived from the system's appearance settings.",
+        "type": "string",
+        "default": "",
+        "enum": [
+          {
+            "value": "",
+            "description": "Sync with system"
+          },
+          {
+            "value": "dark",
+            "description": "Dark"
+          },
+          {
+            "value": "light",
+            "description": "Light"
+          }
+        ]
+      },
+      "theme": {
+        "order": 2,
+        "title": "Theme variant",
+        "description": "Select an alternate colour-palette.",
+        "type": "string",
+        "default": "",
+        "enum": [
+          {
+            "value": "",
+            "description": "None (default)"
+          },
+          {
+            "value": "high-contrast",
+            "description": "High contrast"
+          },
+          {
+            "value": "colour-blind",
+            "description": "Colour-blindness"
+          },
+          {
+            "value": "dimmed",
+            "description": "Dimmed (dark only)"
+          }
+        ]
+      },
+      "matchFont": {
+        "order": 3,
+        "title": "Match font",
+        "description": "Override user-configured editor settings to match the exact appearance of source-code on GitHub.",
+        "type": "boolean",
+        "default": true
+      },
+      "matchSize": {
+        "order": 4,
+        "title": "Match size",
+        "description": "Force the editor to use GitHub's text-size when the above setting is enabled.",
+        "type": "boolean",
+        "default": true
+      }
+    }
+  }
+}
