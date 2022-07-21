@@ -1,0 +1,112 @@
+{
+    "name": "rc-remote-ftp",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/UnknownCreationsDev/rc-remote-ftp"
+    },
+    "downloads": 523,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "1.1.0"
+    },
+    "versions": {
+        "1.1.0": {
+            "name": "rc-remote-ftp",
+            "main": "./lib/rc-remote-ftp",
+            "version": "1.1.0",
+            "description": "Enable browsing remote FTP/FTPS/SFTP just like the built-in Tree View. Requires a project.",
+            "activationCommands": [],
+            "repository": "https://github.com/UnknownCreationsDev/rc-remote-ftp",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.22.1 <2.0.0"
+            },
+            "consumedServices": {
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "@icetee/ftp": "^1.0.7",
+                "atom-space-pen-views": "^2.2.0",
+                "cson-parser": "^3.0.0",
+                "event-kit": "^2.5.3",
+                "fs-plus": "^3.1.1",
+                "ignore": "^4.0.6",
+                "ssh-config": "^3.0.0",
+                "ssh2": "^0.8.7",
+                "ssh2-streams": "^0.4.8",
+                "strip-json-comments": "^2.0.1",
+                "socket.io-client": "^4.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^4.19.1",
+                "eslint-config-airbnb": "^15.0.2",
+                "eslint-plugin-import": "^2.14.0",
+                "eslint-plugin-jsx-a11y": "^6.1.2",
+                "eslint-plugin-react": "^7.11.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/rc-remote-ftp/versions/1.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/UnknownCreationsDev/rc-remote-ftp/tarball/refs/tags/v1.1.0",
+            "sha": "4307630a88a5f706fe58d9409e317edfe80331a6"
+        }
+    },
+    "readme": "# Remote FTP\nFTP/FTPS/SFTP client for Atom.io\n\n![Screenshot](https://raw.githubusercontent.com/icetee/remote-ftp/master/screenshot.png \"Screenshot\")\n\n## Getting started\n\n1. **Open** an existing **project** or create a new one (File -> Open folder...)\n2. **Open** remote-ftp **sidebar** (Packages -> Remote FTP -> Toggle)\n3. **Create a configuration file** for your project (Packages -> Remote FTP -> Create (s)FTP config file)\n4. Once connected you should be seeing the content of the remote connection\n5. **All** basic **commands** (`connect`, `disconnect`, ...) are **available from** the **sidebar context menu** and the Command Palette\n\nTip: **Create an ignore file** to prevent your sensitive information from getting synced to your host (Packages -> Remote FTP -> Create ignore file)\n\n## Keyboard shortcuts\n\nWe all know that some handy commands can make our daily task easier, this are meant to do that, be aware that the action of any of them could overwrite or be over written by any other plugin.\n\n|            |     Windows      |       Mac        |\n|----------- | :--------------: | :--------------: |\n| Toggle     |  Ctrl + Alt + o  | Ctrl + Alt + o   |\n| Connect    |  Ctrl + Alt + c  | Ctrl + Alt + c   |\n| Disconnect |  Ctrl + Alt + d  | Ctrl + Alt + d   |\n| Upload     | Ctrl + Shift + u | Cmd + Shift + u  |\n\n## Package preferences\n\nThere are some settings hidden in the package preferences!\n\n![Screenshot of Settings](https://raw.githubusercontent.com/icetee/remote-ftp/master/screenshot-settings.png \"Screenshot-settings\")\n\n## Configuration in project's `.ftpconfig` file\n\n**SFTP Configuration Options**\n\n```\n{\n    \"protocol\": \"sftp\",\n    \"host\": \"example.com\", // string - Hostname or IP address of the server. Default: 'localhost'\n    \"port\": 22, // integer - Port number of the server. Default: 22\n    \"user\": \"user\", // string - Username for authentication. Default: (none)\n    \"pass\": \"pass\", // string - Password for password-based user authentication. Default: (none)\n    \"promptForPass\": false, // boolean - Set to true for enable password/passphrase dialog. This will prevent from using cleartext password/passphrase in this config. Default: false\n    \"remote\": \"/\", // try to use absolute paths starting with /\n    \"agent\": \"\", // string - Path to ssh-agent's UNIX socket for ssh-agent-based user authentication. Linux/Mac users can set \"env\" as a value to use env SSH_AUTH_SOCK variable. Windows users: set to 'pageant' for authenticating with Pageant or (actual) path to a cygwin \"UNIX socket.\" Default: (none)\n    \"privatekey\": \"\", // string - Absolute path to the private key file (in OpenSSH format). Default: (none)\n    \"passphrase\": \"\", // string - For an encrypted private key, this is the passphrase used to decrypt it. Default: (none)\n    \"hosthash\": \"\", // string - 'md5' or 'sha1'. The host's key is hashed using this method and passed to the hostVerifier function. Default: (none)\n    \"ignorehost\": true,\n    \"connTimeout\": 10000, // integer - How long (in milliseconds) to wait for the SSH handshake to complete. Default: 10000\n    \"keepalive\": 10000, // integer - How often (in milliseconds) to send SSH-level keepalive packets to the server (in a similar way as OpenSSH's ServerAliveInterval config option). Set to 0 to disable. Default: 10000\n    \"keyboardInteractive\": false, // boolean - Set to true for enable verifyCode dialog. Keyboard interaction authentication mechanism. For example using Google Authentication (Multi factor)\n    \"keyboardInteractiveForPass\": false, // boolean - Set to true for enable keyboard interaction and use pass options for password. No open dialog.\n    \"watch\":[ // array - Paths to files, directories, or glob patterns that are watched and when edited outside of the atom editor are uploaded. Default : []\n        \"dist/stylesheets/main.css\", // reference from the root of the project.\n        \"dist/stylesheets/\",\n        \"dist/stylesheets/*.css\"\n    ],\n    \"watchTimeout\":500, // integer - The duration ( in milliseconds ) from when the file was last changed for the upload to begin.\n    \"filePermissions\":\"0644\" // string - Permissions for uploaded files. WARNING: if this option is set, previously set permissions on the remote are overwritten!\n}\n```\n\n**FTP & FTPS Configuration Options**\n\n```\n{\n    \"protocol\": \"ftp\",\n    \"host\": \"example.com\", // string - The hostname or IP address of the FTP server. Default: 'localhost'\n    \"port\": 21, // integer - The port of the FTP server. Default: 21\n    \"user\": \"user\", // string - Username for authentication. Default: 'anonymous'\n    \"pass\": \"pass\", // string - Password for authentication. Default: 'anonymous@'\n    \"promptForPass\": false, // boolean - Set to true for enable password dialog. This will prevent from using cleartext password in this config. Default: false\n    \"remote\": \"/\",\n    \"secure\": false, // mixed - Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990) Default: false\n    \"secureOptions\": null, // object - Additional options to be passed to tls.connect(). Default: (null) see https://nodejs.org/api/tls.html#tls_tls_connect_options_callback\n    \"connTimeout\": 10000, // integer - How long (in milliseconds) to wait for the control connection to be established. Default: 10000\n    \"pasvTimeout\": 10000, // integer - How long (in milliseconds) to wait for a PASV data connection to be established. Default: 10000\n    \"keepalive\": 10000, // integer - How often (in milliseconds) to send a 'dummy' (NOOP) command to keep the connection alive. Default: 10000\\. If set to 0, keepalive is disabled.\n    \"watch\":[ // array - Paths to files, directories, or glob patterns that are watched and when edited outside of the atom editor are uploaded. Default : []\n        \"dist/stylesheets/main.css\", // reference from the root of the project.\n        \"dist/stylesheets/\",\n        \"dist/stylesheets/*.css\"\n    ],\n    \"watchTimeout\":500 // integer - The duration ( in milliseconds ) from when the file was last changed for the upload to begin.\n}\n```\n\n## How to use .ftpignore?\n\nThis package use the [ignore](https://www.npmjs.com/package/ignore) npm package. Which covers the operation of fully [gitignore](https://git-scm.com/docs/gitignore).\n\n## How use multiproject mode?\n\nIt is a very alpha / beta version. For the time being, only 1 project is supported at one time.\n\n## I'd like to support this project\n\nHelp us bring this project to the moon! Atom's rocket needs to get somewhere, right?\n\n- **Contribute!** I'll be happy to accept pull requests!\n- **Bug hunting!** [Report](https://github.com/icetee/remote-ftp/issues) them!\n- **Feature request?** [Please let me know](https://github.com/icetee/remote-ftp/issues) by filling an issue!\n- **Share the love!**\n\n  - Star this project on [Atom](https://atom.io/packages/remote-ftp), [Github](https://github.com/icetee/remote-ftp)\n  - Speak out on the [forum](https://discuss.atom.io/)\n\n## Contributors :package:\n\n:1st_place_medal: [@mgrenier](https://github.com/mgrenier) (Original owner)  \n:2nd_place_medal: [@jpxd](https://github.com/jpxd)  \n:3rd_place_medal: [@jimmaaay](https://github.com/jimmaaay)  \n\n[@pinguinjkeke](https://github.com/pinguinjkeke)\n[@miclaus](https://github.com/miclaus)\n[@phawxby](https://github.com/phawxby)\n[@wasikuss](https://github.com/wasikuss)\n[@garetmckinley](https://github.com/garetmckinley)\n[@zxwef](https://github.com/zxwef)\n[@MikeWillis](https://github.com/MikeWillis)\n[@maxsbelt](https://github.com/maxsbelt)\n[@kikoseijo](https://github.com/kikoseijo)\n[@gevatter](https://github.com/gevatter)\n[@morukutsu](https://github.com/morukutsu)\n[@wdacgrs](https://github.com/wdacgrs)\n[@coolhome](https://github.com/coolhome)\n[@samifouad](https://github.com/samifouad)\n[@JamesCoyle](https://github.com/JamesCoyle)\n[@dhyegofernando](https://github.com/dhyegofernando)\n[@DeanmvSG](https://github.com/DeanmvSG)\n[@nopjmp](https://github.com/nopjmp)\n[@prugel](https://github.com/prugel)\n[@StephenNeate](https://github.com/StephenNeate)\n[@dala00](https://github.com/dala00)\n[@ghoben](https://github.com/ghoben)\n[@inferst](https://github.com/inferst)\n[@dantman](https://github.com/dantman)\n[@UziTech](https://github.com/UziTech)\n[@jackalstomper](https://github.com/jackalstomper)\n[@Alhadis](https://github.com/Alhadis)\n[@QwertyZW](https://github.com/QwertyZW)\n[@ASnow](https://github.com/ASnow)\n[@evilangelmd](https://github.com/evilangelmd)\n[@kadirgun](https://github.com/kadirgun)\n[@nbdamian](https://github.com/nbdamian)\n[@thorstenhirsch](https://github.com/thorstenhirsch)\n[@ilessiivi](https://github.com/ilessiivi)\n[@lioutikov](https://github.com/lioutikov)\n[@zlibra](https://github.com/zlibra)  \n[@maxswjeon](https://github.com/maxswjeon)  \n",
+    "metadata": {
+        "name": "rc-remote-ftp",
+        "main": "./lib/rc-remote-ftp",
+        "version": "1.1.0",
+        "description": "Enable browsing remote FTP/FTPS/SFTP just like the built-in Tree View. Requires a project.",
+        "activationCommands": [],
+        "repository": "https://github.com/UnknownCreationsDev/rc-remote-ftp",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.22.1 <2.0.0"
+        },
+        "consumedServices": {
+            "file-icons.element-icons": {
+                "versions": {
+                    "1.0.0": "consumeElementIcons"
+                }
+            },
+            "status-bar": {
+                "versions": {
+                    "^1.0.0": "consumeStatusBar"
+                }
+            }
+        },
+        "dependencies": {
+            "@icetee/ftp": "^1.0.7",
+            "atom-space-pen-views": "^2.2.0",
+            "cson-parser": "^3.0.0",
+            "event-kit": "^2.5.3",
+            "fs-plus": "^3.1.1",
+            "ignore": "^4.0.6",
+            "ssh-config": "^3.0.0",
+            "ssh2": "^0.8.7",
+            "ssh2-streams": "^0.4.8",
+            "strip-json-comments": "^2.0.1",
+            "socket.io-client": "^4.0.0"
+        },
+        "devDependencies": {
+            "eslint": "^4.19.1",
+            "eslint-config-airbnb": "^15.0.2",
+            "eslint-plugin-import": "^2.14.0",
+            "eslint-plugin-jsx-a11y": "^6.1.2",
+            "eslint-plugin-react": "^7.11.1"
+        }
+    },
+    "created": 1658362239250,
+    "updated": 1658362239250,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

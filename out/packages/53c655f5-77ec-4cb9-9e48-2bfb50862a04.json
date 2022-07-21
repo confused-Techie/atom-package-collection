@@ -1,0 +1,114 @@
+{
+    "name": "apex-snippets",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ecollis6/atom-apex-snippets"
+    },
+    "downloads": 900,
+    "stargazers_count": 2,
+    "releases": {
+        "latest": "0.6.1"
+    },
+    "versions": {
+        "0.6.1": {
+            "name": "apex-snippets",
+            "main": "./lib/apex-snippets",
+            "version": "0.6.1",
+            "description": "A set of Apex snippets for SalesForce that follow best practice.",
+            "keywords": [],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/ecollis6/atom-apex-snippets"
+            },
+            "bugs": {
+                "url": "https://github.com/ecollis6/atom-apex-snippets/issues"
+            },
+            "readmeFilename": "README.md",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/apex-snippets/versions/0.6.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/ecollis6/atom-apex-snippets/tarball/refs/tags/v0.6.1",
+            "sha": "97faf8e2bf311958e47da3a69f2bdcea08124e5c"
+        },
+        "0.6.0": {
+            "name": "apex-snippets",
+            "main": "./lib/apex-snippets",
+            "version": "0.6.0",
+            "description": "A set of Apex snippets for SalesForce that follow best practice.",
+            "keywords": [],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/ecollis6/atom-apex-snippets"
+            },
+            "bugs": {
+                "url": "https://github.com/ecollis6/atom-apex-snippets/issues"
+            },
+            "readmeFilename": "README.md",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/apex-snippets/versions/0.6.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/ecollis6/atom-apex-snippets/tarball/refs/tags/v0.6.0",
+            "sha": "9856da3e9fa7594f734d065d519a651f0c1cd777"
+        },
+        "0.5.0": {
+            "name": "apex-snippets",
+            "main": "./lib/apex-snippets",
+            "version": "0.5.0",
+            "description": "A set of Apex snippets for SalesForce that follow best practice.",
+            "keywords": [],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/ecollis6/atom-apex-snippets"
+            },
+            "bugs": {
+                "url": "https://github.com/ecollis6/atom-apex-snippets/issues"
+            },
+            "readmeFilename": "README.md",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/apex-snippets/versions/0.5.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/ecollis6/atom-apex-snippets/tarball/refs/tags/v0.5.0",
+            "sha": "c332cdd3646daae60512a9a305134973cc157a81"
+        }
+    },
+    "readme": "#Atom Apex Snippets\nApex code snippets for Atom IDE. This is a work in progress. I will publish to APM regularly as I add new snippets.\n\n##Installation\nRun the following command to install:\n```\napm install apex-snippets\n```\n##Snippets\n###`apexclass`\n```\npublic class ClassName {\n\n}\n```\n###`apextrigger`\n```\ntrigger ObjectNameTrigger on ObjectApiName (\n  before insert, before update, before delete,\n  after insert, after update, after delete, after undelete) {\n\n    //Note: Use a separate trigger handler for best practice\n    //https://developer.salesforce.com/page/Trigger_Frameworks_and_Apex_Trigger_Best_Practices\n    //use the 'apextriggerhandler' snippet to create a trigger handler in another class\n\n    ObjectNameTriggerHandler handler = new ObjectNameTriggerHandler ();\n\n    //Before Insert\n    if (Trigger.isInsert && Trigger.isBefore) {\n        handler.OnBeforeInsert(Trigger.new);\n    }\n\n    //After Insert\n    else if (Trigger.isInsert && Trigger.isAfter) {\n        handler.OnAfterInsert(Trigger.new);\n    }\n\n    //Before Update\n    else if (Trigger.isUpdate && Trigger.isBefore) {\n        handler.OnBeforeUpdate(Trigger.old, Trigger.new, Trigger.newMap);\n    }\n\n    //After Update\n    else if (Trigger.isUpdate && Trigger.isAfter) {\n       handler.OnAfterUpdate(Trigger.old, Trigger.new, Trigger.newMap);\n    }\n\n    //Before Delete\n    else if (Trigger.isDelete && Trigger.isBefore) {\n        handler.OnBeforeDelete(Trigger.old, Trigger.oldMap);\n    }\n\n    //After Delete\n    else if(Trigger.isDelete && Trigger.isAfter) {\n        handler.OnAfterDelete(Trigger.old, Trigger.oldMap);\n    }\n\n    //After Undelete\n    else if (Trigger.isUndelete) {\n        handler.OnUnDelete(Trigger.new);\n    }\n\n\n}\n\n```\n###`apextriggerhandler`\n```\npublic with sharing class ObjectNameTriggerHandler {\n\n    // On Before Insert\n    public void OnBeforeInsert(List<ObjectApiName> newRecords) {\n\n    }\n\n    // On After Insert\n    public void OnAfterInsert(List<ObjectApiName> newRecords) {\n\n    }\n\n    // On Before Update\n    public void OnBeforeUpdate(List<ObjectApiName> oldRecords, List<ObjectApiName> newRecords, Map<Id, ObjectApiName> newRecordsMap) {\n\n    }\n\n    // After Update\n    public void OnAfterUpdate(List<ObjectApiName> oldRecords, List<ObjectApiName> newRecords, Map<Id, ObjectApiName> newRecordsMap) {\n\n    }\n\n    // On Before Delete\n    public void OnBeforeDelete(List<ObjectApiName> deletedRecords, Map<Id, ObjectApiName> deletedRecordsMap) {\n\n    }\n\n    // On After Delete\n    public void OnAfterDelete(List<ObjectApiName> deletedRecords, Map<Id, ObjectApiName> deletedRecordsMap) {\n\n    }\n\n    // On Undelete\n    public void OnUnDelete(List<ObjectApiName> undeletedRecords) {\n\n    }\n\n}\n```\n\n###`apextestclass`\n```\n@isTest(seeAllData=false)\npublic class TestClassName {\n\n    static testMethod void testMethodName() {\n\n         Profile p = [select id from profile where name='Standard User'];\n         User u = new User(alias = 'standt', email='standarduser@testorg.com',\n            emailencodingkey='UTF-8', lastname='Testing', languagelocalekey='en_US',\n            localesidkey='en_US', profileid = p.Id,\n            timezonesidkey='America/Los_Angeles', username='standarduser@testorg.com');\n\n        test.startTest();\n        system.runAs(u) {\n            //start writing your test\n        }\n        test.stopTest();\n\n    }\n\n}\n```\n##Contributing\nContributions are welcome! Please raise an issue or submit a pull request.\n",
+    "metadata": {
+        "name": "apex-snippets",
+        "main": "./lib/apex-snippets",
+        "version": "0.6.1",
+        "description": "A set of Apex snippets for SalesForce that follow best practice.",
+        "keywords": [],
+        "repository": {
+            "type": "git",
+            "url": "git+https://github.com/ecollis6/atom-apex-snippets"
+        },
+        "bugs": {
+            "url": "https://github.com/ecollis6/atom-apex-snippets/issues"
+        },
+        "readmeFilename": "README.md",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {}
+    },
+    "created": 1658331180571,
+    "updated": 1658331180571,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

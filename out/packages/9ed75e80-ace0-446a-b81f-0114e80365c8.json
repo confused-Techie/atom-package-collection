@@ -1,0 +1,68 @@
+{
+    "name": "sort-selected-elements",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/BlueSilverCat/sort-selected-elements"
+    },
+    "downloads": 9979,
+    "stargazers_count": 2,
+    "releases": {
+        "latest": "0.1.0"
+    },
+    "versions": {
+        "0.1.0": {
+            "name": "sort-selected-elements",
+            "main": "./lib/sort-selected-elements",
+            "version": "0.1.0",
+            "description": "Sort selected text in the Atom.",
+            "keywords": [
+                "sort"
+            ],
+            "activationCommands": {
+                "atom-workspace": [
+                    "sort-selected-elements:panel",
+                    "sort-selected-elements:sort",
+                    "sort-selected-elements:settings"
+                ]
+            },
+            "repository": "https://github.com/BlueSilverCat/sort-selected-elements.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.18.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/sort-selected-elements/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/BlueSilverCat/sort-selected-elements/tarball/refs/tags/v0.1.0",
+            "sha": "eece89d067012630e112f9250d4ddf28c9f5d2e3"
+        }
+    },
+    "readme": "# sort-selected-elements package\n\nSort selected text in the Atom.  \nYou can select the following items.\n\n-   Sort target\n    -   lines sort\n    -   inline sort\n-   Sort order\n    -   alphabetically\n    -   natural\n-   Sort direction\n    -   ascending\n    -   descending\n-   Sort case\n    -   case sensitive\n    -   case insensitive\n-   Sort filter\n    -   only unique element\n    -   no empty\n-   Lines sort priorities\n-   Sort separator\n\n![Demo](https://raw.githubusercontent.com/BlueSilverCat/sort-selected-elements/master/sort-selected-elements.gif?raw=true)\n\n# Basic usage\n\n1.  Select text in editor.\n2.  Open panel.\n    -   `Atom Command Palette` -> `sort-selected-elements: panel`\n    -   Push `sort-selected-elements: panel` key. default key is `ctrl-shift-alt-s`\n3.  Set conditions.\n4.  Push sortButton.\n5.  Sort by entered conditions.\n\nor\n\n1.  Select text in editor.\n2.  Execute sort command.\n    -   `Atom Command Palette` -> `sort-selected-elements: sort`\n    -   Push `sort-selected-elements: sort` key. default key is `ctrl-shift-s`\n3.  Sort by default conditions or last entered conditions.\n\n# Panel\n\n![Panel](https://raw.githubusercontent.com/BlueSilverCat/sort-selected-elements/master/panel.png?raw=true)\n\n-   `sort button` Sort selected elements.\n-   `sort order selector` Select sort order.\n    -   `alpah` Alphabetically sort.\n    -   `natural` Natural sort.\n-   `sort direction` Select sort direction.\n    -   `asc` Ascending order.\n    -   `descending` Descending order.\n-   `separator input`\n    Input separator. selected text is separated into elements by this string.\n-   `case sensitive checker` Indicates whether case sensitive or not.\n-   `save default button` Save all conditions except `lines sort priorities` to default value.\n-   `load default button` Load all conditions except `lines sort priorities` from default value.\n-   `close button` Close this panel.\n-   `lines sort checker` Indicates whether perform lines sort or not.\n-   `lines sort priorities` Input lines sort priorities. Indicates the priority of keys to be sorted. one-based array. negative value means descending order. If it is empty, it will be set to default value when sorting.  \n    e.g. it is \"3,-1,2\". It means that sort by the 3rd key, then sort in descending by the first key, then sort by the second key.\n-   `inline sort checker` Indicate whether perform inline sort or not.\n-   `unique filter checker` Indicate whether perform unique filter or not. If set it to true, duplicate elements are deleted.\n-   `no empty filter checker` Indicate whether perform no empty filter or not. If set it to true, empty elements are deleted.\n\n\n# About lines sort priorities\n\nSelected text is as below.\n\n```text\n009 fox green 350\n004 cat white 150\n003 dog gray 200\n006 cat yellow 200\n011 rat black 1000\n010 rat white 1500\n001 dog white 100\n007 fox white 300\n005 cat black 100\n008 fox black 300\n012 rat cyan 1250\n002 dog black 150\n```\n\nPerform sorting with all default values. (`lines sort priorities` is emputy)  \nThen the result is as below.  \nAnd `lines sort priorities` is set to \"1,2,3,4\".  \n\n```text\n001 dog white 100\n002 dog black 150\n003 dog gray 200\n004 cat white 150\n005 cat black 100\n006 cat yellow 200\n007 fox white 300\n008 fox black 300\n009 fox green 350\n010 rat white 1500\n011 rat black 1000\n012 rat cyan 1250\n```\n\nThis means that sort by the first key, then sort by the second key, and so on.  \nIf you want to sort by only 3rd key, set `lines sort priorities` to \"3\".  \nThen the result is as below.  \n**Caution: Currently, if you do not specify all the keys, the results may differ.**\n\n```text\n008 fox black 300\n005 cat black 100\n011 rat black 1000\n002 dog black 150\n012 rat cyan 1250\n003 dog gray 200\n009 fox green 350\n001 dog white 100\n004 cat white 150\n007 fox white 300\n010 rat white 1500\n006 cat yellow 200\n```\n\nIf set `lines sort priorities` to \"3,1\".  \nThen the result is as below.\n\n```text\n002 dog black 150\n005 cat black 100\n008 fox black 300\n011 rat black 1000\n012 rat cyan 1250\n003 dog gray 200\n009 fox green 350\n001 dog white 100\n004 cat white 150\n007 fox white 300\n010 rat white 1500\n006 cat yellow 200\n```\n\nYou can determine the direction of each key by specifying a negative number.  \nFor example, if you set `lines sort priorities` to \"-3,1\".  \nThen the result is as below.\n\n```text\n006 cat yellow 200\n001 dog white 100\n004 cat white 150\n007 fox white 300\n010 rat white 1500\n009 fox green 350\n003 dog gray 200\n012 rat cyan 1250\n002 dog black 150\n005 cat black 100\n008 fox black 300\n011 rat black 1000\n```\n\n# Default Keybindings\n\n| Keystroke        | Command                              | Selector                    | Description                                                           |\n| :--------------- | :----------------------------------- | :-------------------------- | :-------------------------------------------------------------------- |\n| ctrl-alt-shift-S | sort-selected-elements:panel         | atom-workspace              | Open/Close panel.  (Activate package)                                 |\n| ctrl-shift-S     | sort-selected-elements:sort          | atom-workspace              | Sort selected text by default or last conditions.  (Activate package) |\n| none             | sort-selected-elements:settings      | atom-workspace              | Open package settings. (Activate package)                             |\n| escape           | core:cancel                          | atom-workspace              | Close panel.                                                          |\n| tab              | sort-selected-elements:focusNext     | sort-selected-elements.root | Focus next.                                                           |\n| shift-tab        | sort-selected-elements:focusPrevious | sort-selected-elements.root | Focus previous.                                                       |\n",
+    "metadata": {
+        "name": "sort-selected-elements",
+        "main": "./lib/sort-selected-elements",
+        "version": "0.1.0",
+        "description": "Sort selected text in the Atom.",
+        "keywords": [
+            "sort"
+        ],
+        "activationCommands": {
+            "atom-workspace": [
+                "sort-selected-elements:panel",
+                "sort-selected-elements:sort",
+                "sort-selected-elements:settings"
+            ]
+        },
+        "repository": "https://github.com/BlueSilverCat/sort-selected-elements.git",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.18.0 <2.0.0"
+        },
+        "dependencies": {}
+    },
+    "created": 1658427712670,
+    "updated": 1658427712670,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

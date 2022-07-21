@@ -1,0 +1,72 @@
+{
+    "name": "cheatsheet",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/its0n/cheatsheet"
+    },
+    "downloads": 775,
+    "stargazers_count": 2,
+    "releases": {
+        "latest": "2.0.0"
+    },
+    "versions": {
+        "2.0.0": {
+            "name": "cheatsheet",
+            "main": "./lib/cheatsheet",
+            "version": "2.0.0",
+            "description": "Customizable CheatSheet panel for Atom",
+            "keywords": [
+                "cheatsheet",
+                "CheatSheet",
+                "cheat sheet",
+                "custom",
+                "commands",
+                "code",
+                "snippets"
+            ],
+            "activationCommands": {
+                "atom-workspace": "cheatsheet:toggle"
+            },
+            "repository": "https://github.com/its0n/cheatsheet",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cheatsheet/versions/2.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/its0n/cheatsheet/tarball/refs/tags/v2.0.0",
+            "sha": "125ff6d6c593d49498e0c1b65ea449063353c0c6"
+        }
+    },
+    "readme": "# CheatSheet\n\n## Features\n-   Copy content from the **CheatSheet** panel directly to your clipboard - Just click on it!\n-   Customize the **CheatSheet** panel with individual entries by creating your unique config file\n\n![screenshot-features](https://raw.githubusercontent.com/its0n/cheatsheet/master/screenshots/cheatsheet-features.gif?token=Asylm6wUUt_U2sOLCtTflYMAhL7RmR7Lks5cSInawA%3D%3D)\n\n## Commands\n-   To open **CheatSheet** type `cheatsheet:toggle` in the Atom command palette or press `ctrl-alt-#`\n-   To edit and create your custom **CheatSheet** type `cheatsheet:edit` in the Atom command palette\n-   To reload **CheatSheet** type `cheatsheet:reload` in the Atom command palette\n\nAll commands are also available via context menu --> Click the right mouse button on the visible **CheatSheet** panel\n\n## Configuration\n\n### Set a custom config file path\n\n**CheatSheet** stores all configuration parameters in a config file (support for \".coffee\" files only).\n`OPTIONAL` You have the possibility to set a custom config file path:\n\n1.   Go to package settings and insert your custom file path or use the default path\n2.   Type `cheatsheet:edit` in the Atom command palette -->\n     this will create a copy of the default **CheatSheet** file in your custom directory\n3.   Press `Edit Config` in the notification dialog -->\n     this will open your custom **CheatSheet**\n4.   Customize the file as you like and save the file\n5.   Type `cheatsheet:reload` in the Atom command palette to reload your config file and check if the change was saved successfully\n\n### Customize the config file\n\n![screenshot-edit](https://raw.githubusercontent.com/its0n/cheatsheet/master/screenshots/cheatsheet-edit.gif?token=Asylm50ghwfXFLkZtTqerwtrqc-9zW3Oks5cSIprwA%3D%3D)\n\n**CheatSheet** has five `type`s you can configure:\n`header`, `subheader`, `content` and `spacer`\n\n-   `header` creates a header\n\n    Example:\n\n    ```coffeescript\n    {\n      type: 'header'\n      text: 'Git'\n      icon: 'devicons devicons-git'\n    }\n    ```\n    - `text`: Add your custom header text\n    - `icon` `OPTIONAL`: Add a custom icon from the [Devicon](http://vorillaz.github.io/devicons/#/cheat) (`devicon`) icon-set;\n      Using the full CSS class is mandatory: `devicons devicons-ICONNAME`\n\n\n-   `subheader` creates a subheader\n\n    Example:\n\n    ```coffeescript\n    {\n      type: 'subheader'\n      text: 'Make Changes'\n    }\n    ```\n    `text`: Add your custom header text\n\n\n-   `content` creates the copy to clipboard element\n\n    Example:\n\n    ```coffeescript\n    {\n      type: \"content\"\n      text: 'git add .'\n      description: \"Add all files to commit\"\n      rows: 5\n    }\n    ```\n    - `text`: Add your custom **CheatSheet** content. `IMPORTANT`: If you are working under windows remember to use `\\\\` to escape `\\` to show paths correctly:\n      ```coffeescript\n      text: 'venv\\\\Scripts\\\\activate'\n      ```\n\n    - `description` `OPTIONAL`: Add a description for more details\n\n    - `rows` `OPTIONAL`: Number of rows define the height of the copy area to avoid scrolling\n\n-   `spacer` adds separators between **CheatSheet** elements\n\n\n\n#### .coffee Example (Default file)\n\n```coffeescript\n#http://vorillaz.github.io/devicons/#/cheat\nmodule.exports = [\n  {\n    type: 'header'\n    text: 'Git'\n    icon: 'devicons devicons-git'\n  }\n  {\n    type: 'content'\n    text: 'git init'\n    description: 'Initialize current directory as a repository'\n  }\n  {\n    type: 'content'\n    text: 'git add .'\n    description: 'Add all files to commit'\n  }\n  {\n    type: 'content'\n    text: 'git status'\n    description: 'Displays paths that have differences between the index file and the current HEAD commit'\n  }\n  {\n    type: 'content'\n    text: 'git commit -m [COMITT_NAME]'\n    description: 'Records file snapshots permanently in version history'\n  }\n  {\n    type: 'content'\n    text: 'git push origin master'\n    description: 'Push origin to master'\n  }\n  {\n    type: 'header'\n    text: 'Python Virtual Env'\n    icon: 'devicons devicons-python'\n  }\n  {\n    type: 'subheader'\n    text: 'Create and Activate'\n  }\n  {\n    type: 'content'\n    text: 'python -m virtualenv venv'\n    description: 'Create a new virtual enviroment'\n  }\n  {\n    type: 'content'\n    text: 'venv\\\\Scripts\\\\activate'\n    description: 'Activate a virtual enviroment on Windwos'\n  }\n  {\n    type: 'content'\n    text: 'source venv/bin/activate'\n    description: 'Activate a virtual enviroment on Unix/MacOS'\n  }\n  {\n    type: 'subheader'\n    text: 'Requirements'\n  }\n  {\n    type: 'content'\n    text: 'pip freeze > python-requirements.txt'\n    description: 'Create a requirements.txt file'\n  }\n  {\n    type: 'content'\n    text: 'pip install -r requirements.txt'\n    description: 'Install packages from requirements.txt'\n  }\n  {\n    type: 'spacer'\n  }\n  {\n    type: 'header'\n    text: 'HTML'\n    icon: 'devicons devicons-html5'\n  }\n  {\n    type: 'content'\n    text: '<!DOCTYPE html>\n          <html>\n          <head>\n          <title>Page Title</title>\n          </head>\n          <body>\n\n          <h1>This is a Heading</h1>\n          <p>This is a paragraph.</p>\n\n          </body>\n          </html>'\n    description: 'Basic HTML file structure'\n    rows: 5\n  }\n  {\n    type: 'header'\n    text: 'Atom'\n    icon: 'devicons devicons-atom'\n  }\n  {\n    type: 'content'\n    text: 'styleguide:show'\n    description: 'Show styleguide for atom'\n  }\n  {\n    type: 'content'\n    text: 'window:toggle-dev-tools'\n    description: 'Toggle dev tools for atom'\n  }\n]\n```\n\n## License\n\nMIT © [Fabian Arlt](https://github.com/its0n)\n",
+    "metadata": {
+        "name": "cheatsheet",
+        "main": "./lib/cheatsheet",
+        "version": "2.0.0",
+        "description": "Customizable CheatSheet panel for Atom",
+        "keywords": [
+            "cheatsheet",
+            "CheatSheet",
+            "cheat sheet",
+            "custom",
+            "commands",
+            "code",
+            "snippets"
+        ],
+        "activationCommands": {
+            "atom-workspace": "cheatsheet:toggle"
+        },
+        "repository": "https://github.com/its0n/cheatsheet",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {}
+    },
+    "created": 1658337363848,
+    "updated": 1658337363848,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

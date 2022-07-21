@@ -1,0 +1,76 @@
+{
+    "name": "atom-language-epo",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/octoshrimpy/atom-language-epo"
+    },
+    "downloads": 51,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "1.1.3"
+    },
+    "versions": {
+        "1.1.3": {
+            "name": "atom-language-epo",
+            "version": "1.1.3",
+            "description": "atom grammar for EnigmaPuzzle Organizer, a language designed to help make and solve puzzles.",
+            "main": "index.js",
+            "scripts": {
+                "test": "echo \"Error: no test specified\" && exit 1"
+            },
+            "author": "octoshrimpy",
+            "license": "ISC",
+            "repository": "https://github.com/octoshrimpy/atom-language-epo",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-language-epo/versions/1.1.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/octoshrimpy/atom-language-epo/tarball/refs/tags/v1.1.3",
+            "sha": "58307ceb1e866f4ab92be1bd4a74a1fccab84ce9"
+        },
+        "1.1.0": {
+            "name": "atom-language-epo",
+            "version": "1.1.0",
+            "description": "atom grammar for EnigmaPuzzle Organizer, a language designed to help make and solve puzzles.",
+            "main": "index.js",
+            "scripts": {
+                "test": "echo \"Error: no test specified\" && exit 1"
+            },
+            "author": "octoshrimpy",
+            "license": "ISC",
+            "repository": "https://github.com/octoshrimpy/atom-language-epo",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-language-epo/versions/1.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/octoshrimpy/atom-language-epo/tarball/refs/tags/v1.1.0",
+            "sha": "3690633ef3cdf86adbcfac3917a114fe94ba3431"
+        }
+    },
+    "readme": "Welcome to Epo, a human-friendly markup language designed specifically for making and solving cryptography puzzles and ARGs! Supported only within [Atom Text Editor](https://atom.io/) (at the moment). Please download [at the package's page](https://atom.io/packages/atom-language-epo) to use within Atom.\n\nBelow is an explanation of each element and how they work.\n\n# Can be used anywhere\nThese can be used anywhere in the document, no holds barred.\n\n### Line comment\n*Two forward slashes with an optional space, and then either content, or one of the keywords below.*\n\nLine comments help you keep track of what has and hasn't completed. Think of them as notes to self, or todo lists. When compiled, line comments will not show up at all. When making puzzles, you can use them to remind you of where you have bugs or hacks that need fixed.\n\n```\n// regular text like this\n//TODO\n//HACK\n//BUG\n//DONE\n//NOPE\n```\n\n![alt-text](https://i.imgur.com/17RA1kj.png)\n\n### Idea\n*Exclamation mark followed by a space, and then content.*\n\nAn idea is designed to help you quickly jot down thoughts you may want to flesh out or work on later.\n\n```\n! idea!\n```\n\n![alt-text](https://i.imgur.com/NDh7b4e.png)\n\n### Divider + Named divider\n*At least three dashes, or three equal signs.*\n\n*For a named divider, drop your name between two lines of dividers.*\n\nDividers are used to separate content visually. Maybe your puzzle came in two parts, and you need to remember which part goes to which section.\n\nThey will only work if the first line has no spaces before it. The first character in the middle line can be anything.\n\n```\n---\nor\n===\n\n====\n= this is a named divider\n====\n```\n\n![alt-text](https://i.imgur.com/KXaonyg.png)\n\n![alt-text](https://i.imgur.com/e7qM8yK.png)\n\n\n\n### Anchor Reference\n*A @ followed by the reference anchor name. Spaces in the name do not break it. Wrap it all with parentheses.*\n\nYou can reference specific anchor tags that exist throughout the document. These references will create a clickable link that will scroll the user to the proper anchor in the compiled document.\n\n```\n(@anchor 3)\n```\n\n![alt-text](https://i.imgur.com/Zq6JRDh.png)\n\n### Note\n*Left-pointing caret, followed by a space, and then content.*\n\nNotes exist to be left through the document, sort of like helper sticky notes.\n\n```\n> this is a note\n```\n\n![alt-text](https://i.imgur.com/545LKtl.png)\n\n### Multi-line note\n*right-pointing caret, followed by content and any amount of newlines, closed by a left-pointing caret.*\n\nA multi-line note is similar to the regular note, except it can be multiline.  \n\n```\n<\n    this note is multiline.\n    it will add wordbreak where you add them.\n>\n```\n\n![alt-text](https://i.imgur.com/mTYEFxf.png)\n\n\n---\n# Thought wrappers\n\nThought wrappers are useful to keep information together in one spot.\n\n### Snippet + Snippet resolution\n*Name of snippet, followed by an open parentheses, with an optional number or key for deciphering the clue and comma. Content is placed after that. A closing parentheses, followed by a set of curly brackets with the solved content immediately afer.*\n\nSnippets are used for keeping track of what was decoded, how it was decoded, and what the original text was. Name it whatever the main idea was for decoding it (caesar, vigenere, spectrogram), and then drop the original clue in the first section. The second section is for the solved section.\n\n```\ncaesar( 3,\n    SODBHU\n){\n    player\n}\n```\n\n![alt-text](https://i.imgur.com/4RSbVQr.png)\n\n### Puzzle + Solution\n*Open square bracket, optional space, name or number, space, and then a pipe ( | ). This optional will become an anchor automatically if it exists. Puzzle content follows after that, closed by a square bracket. Open parentheses immediately afterwards start the solution. Solution content goes within, followed by a matching closing parentheses.*\n\nPuzzles keep track of all your clues in one spot. You will be using a lot of these. They have an optional name that becomes an anchor tag automatically if present, and a solution that follows.\n\n```\n[ 1 |\n    this is a puzzle\n](\n    this is a solution\n)\n```\n\n### Released clue + Found solution\n*content wrapped by three backticks.*\n\nWithin a puzzle or a solution, you can have text that stands out. This will help you keep track of what was the original clue, and what the entire solution is.\n\n![alt-text](https://i.imgur.com/zXVrfaS.png)\n\n---\n# Can only be used within thought wrappers\n\n## Step + Numbered step\n*Star followed by a space, followed by content, or a number followed by a period and a space, and then content.*\n\nSteps help you keep track of what you have tried. They can be numbered or otherwise, and they can be indented within each other, however when parsed, they will not be indented (for now).\n\n```\n* this is a regular step\n\n1. steps can also use . - * in front of digits to\n2- create numbered steps. they do not have to be\n3* in any sort of order, and will be placed how they are written.\n```\n\n![alt-text](https://i.imgur.com/WgW5lap.png)\n\n---\n# Cannot be used within thought wrappers\n\n### Title\n*Caret followed by a space and then content.*\n\nWhen denoting individual sections, you can use a title to visually tell them apart.\n\n```\n^ This is my title\n```\n\n![alt-text](https://i.imgur.com/nEfmUvk.png)\n\n### Subtitle\n*Double carets followed by a space and then content.*\n\nSubtitles usually follow titles, as extra information.\n\n```\n^^ Subtitles usually follow titles\n```\n\n![alt-text](https://i.imgur.com/nEfmUvk.png)\n\n---\n# Modifiers and help\n\norder:\n1. anchor\n2. header\n3. CSS class\n\n### CSS classes\n*period followed by the class, immediately after the element's tag.*\n\nYou can add one CSS class to a handful of elements. Just add a `.classname` after the element tag.\n\n```\n!.danger foo\n\n>.helpful bar\n\n<.blue-3\n    baz\n>\n```\n\n![alt-text](https://i.imgur.com/2suu98n.png)\n\n### Headers\n*header text wrapped by parentheses, immediately after an element's tag.*\n\nNotes and ideas can have headers as well. They are darker, bigger text, smaller than a title, that sit inside the parent element.\n\n<!-- Colons and apostrophes are the only punctuation allowed within a header. -->\n\n```\n>(this is a header) notes can have short header.\n\n\n!(hey listen:) ideas can have headers too!\n```\n\n![alt-text](https://i.imgur.com/x9GBSjs.png)\n\n### Anchors\n*Add an asterisk after an element's  tag.*\n\nAnchors will drop an anchor tag in that specific element, for quickly navigating to it. They can be added to titles notes and ideas.\n\n```\n>#(anchors) notes can be anchor links as well.\n\n<#(anchors 2) and here is the \\n multiline version of it >\n\n!#(anchors here) ideas as an anchor tag too\n\n^# Titles can be anchors too, but the title is the main content.\n^^ subtitles cannot be anchor tags but they can hold (@anchor) tags\n```\n\n![alt-text](https://i.imgur.com/4h1Kgp5.png)\n---\n\n\n# //TODO:\n\n* refactor element descriptions with:\n    * tag\n    * modifiers available\n    * description\n    * example\n    * visual example\n\n\n* Add \"failed\" and \"success\" modifiers to steps and numbered steps, to keep track of what worked and what didn't.\n\n\n* Create parser to convert epo files into clean html documents.\n    * Add custom css to parser output.\n<!--  -->\n",
+    "metadata": {
+        "name": "atom-language-epo",
+        "version": "1.1.3",
+        "description": "atom grammar for EnigmaPuzzle Organizer, a language designed to help make and solve puzzles.",
+        "main": "index.js",
+        "scripts": {
+            "test": "echo \"Error: no test specified\" && exit 1"
+        },
+        "author": "octoshrimpy",
+        "license": "ISC",
+        "repository": "https://github.com/octoshrimpy/atom-language-epo",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {}
+    },
+    "created": 1658333000813,
+    "updated": 1658333000813,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

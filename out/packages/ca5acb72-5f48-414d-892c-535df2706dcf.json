@@ -1,0 +1,119 @@
+{
+    "name": "react-apollo-snippets",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/marcaaron/react-apollo-snippets"
+    },
+    "downloads": 291,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "0.2.1"
+    },
+    "versions": {
+        "0.2.1": {
+            "name": "react-apollo-snippets",
+            "version": "0.2.1",
+            "description": "React Apollo Snippets for Atom",
+            "scripts": {
+                "test": "echo \"Error: no test specified\" && exit 1"
+            },
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/marcaaron/react-apollo-snippets.git"
+            },
+            "keywords": [
+                "apollo",
+                "GraphQL",
+                "react",
+                "snippets",
+                "ES7",
+                "react-apollo",
+                "apollo-boost"
+            ],
+            "author": "Marc Aaron Glasser",
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/marcaaron/react-apollo-snippets/issues"
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "homepage": "https://github.com/marcaaron/react-apollo-snippets#readme",
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/react-apollo-snippets/versions/0.2.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/marcaaron/react-apollo-snippets/tarball/refs/tags/v0.2.1",
+            "sha": "db158e524df93e65a80a5f5c0fc513ea96359d66"
+        },
+        "0.2.0": {
+            "name": "react-apollo-snippets",
+            "version": "0.2.0",
+            "description": "React Apollo Snippets for Atom",
+            "scripts": {
+                "test": "echo \"Error: no test specified\" && exit 1"
+            },
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/marcaaron/react-apollo-snippets.git"
+            },
+            "keywords": [
+                "react-apollo",
+                "apollo-boost",
+                "react",
+                "ES7",
+                "snippets",
+                "graphql",
+                "apollo"
+            ],
+            "author": "Marc Aaron Glasser",
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/marcaaron/react-apollo-snippets/issues"
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "homepage": "https://github.com/marcaaron/react-apollo-snippets#readme",
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/react-apollo-snippets/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/marcaaron/react-apollo-snippets/tarball/refs/tags/v0.2.0",
+            "sha": "c089a783f5997b31be5b0e0ae4cd20bcbb0f266f"
+        }
+    },
+    "readme": "# React Apollo Snippet Library\n\nThis snippet library is currently geared at users of `apollo-boost`. If you're setting things up the old way and would like to add a snippet or two feel free to make suggestions or toss up a PR. If anyone has any suggestions whatsoever on anything I've done here let me know. I tried to create a few useful snippets for common React Apollo patterns I kept running into, but things can always be better :)\n\nMany of these snippets are based examples provided by the [Apollo docs](https://www.apollographql.com).\n\n# Commands\n## App Set Up\n\n### `abc` ( Apollo Boost Client )\n\n```javascript\nimport ApolloClient from \"apollo-boost\"\n\nconst client = new ApolloClient({\n  uri: \"endpoint\"\n});\n```\n\n### `abcc` (Apollo Boost Client w/ clientState)\n\n```javascript\nimport ApolloClient from \"apollo-boost\"\n\nconst client = new ApolloClient({\n  uri: \"endpoint\",\n  clientState: {\n    defaults,\n    resolvers,\n    typeDefs\n  }\n});\n```\n\n### `aba` (Apollo Boost App w/ Client)\n\n```javascript\nimport React from \"react\";\nimport { render } from \"react-dom\";\nimport { ApolloProvider } from \"react-apollo\";\nimport ApolloClient from \"apollo-boost\"\n\nconst client = new ApolloClient({\n\turi: \"endpoint\"\n});\n\nconst App = () =>\n  <ApolloProvider client={client}>\n    <div></div>\n  </ApolloProvider>\n\nrender(<App/>, document.getElementById(\"root\"));\n```\n\n## Elements / Pieces\n\n### `gql` ( GraphQL query/mutation variable )\n\n```javascript\nconst MY_QUERY = gql`\n\n`;\n```\n\n### `qc` ( Query Component )\n\n```javascript\n<Query\n  query={ MY_QUERY }\n  variables={{}}>\n  {({ data, loading, error, refetch, networkStatus }) => {\n      if (loading) return 'Loading';\n      if (error) return `Error!: ${error}`;\n      return (\n        <div> </div>\n      )\n  }}\n</Query>\n```\n### `mc` ( Mutation Component )\n```javascript\n<Mutation\n\tmutation={ MY_MUTATION }>\n  {(mutationFunc, { data, loading, called, error }) => {\n    return (\n      <div>\n        <button onClick={(e)=>{\n          e.preventDefault();\n          mutationFunc({\n            variables: { }\n          })\n        }}/>\n      </div>\n    )\n  }}\n</Mutation>\n```\n### `ac` ( ApolloConsumer Component )\n```javascript\n<ApolloConsumer>\n\t{ client => (\n\t  <div>\n\t    <button\n\t      onClick={async () => {\n\t        const { data } = await client.query({\n\t          query: MY_QUERY,\n\t          variables: { }\n\t        });\n\t      }}\n\t    />\n\t  </div>\n\t)}\n</ApolloConsumer>\n```\n### `or` ( optimisticResponse )\n```javascript\noptimisiticResponse: {\n\t__typeName: \"Mutation\",\n\tupdateThing: {\n\t  id: \"\",\n\t  __typeName: \"Thing\",\n\t  content: \"Lowered expectations\"\n\t}\n}\n```\n\n## Components\n### `qcc` ( React Class Component w/ Query )\n```javascript\nimport React, { Component } from \"react\";\nimport { Query } from \"react-apollo\";\nimport { gql } from 'apollo-boost';\n\nexport default class MyComponent extends Component {\n  render(){\n    return (\n      <Query\n        query={MY_QUERY}>\n        {({ data, loading, error, refetch, networkStatus }) => {\n          if (loading) return 'Loading';\n          if (error) return `Error!: ${error}`;\n          return (\n            <div> MyComponent </div>\n          )\n\t\t  }}\n\t  </Query>\n    )\n  }\n}\n\nconst MY_QUERY = gql`\n  query {\n\n  }\n`;\n```\n### `qcf` ( React Functional Component w/ Query )\n```javascript\nimport React from \"react\";\nimport { Query } from \"react-apollo\";\nimport { gql } from 'apollo-boost';\n\nconst MyComponent = (props) => {\n  return (\n    <Query\n      query={MY_QUERY}>\n      {({ data, loading, error, refetch, networkStatus }) => {\n        if (loading) return 'Loading';\n        if (error) return `Error!: ${error}`;\n        return (\n          <div> MyComponent </div>\n        )\n\t\t  }}\n  \t</Query>\n  )\n}\n\nconst MY_QUERY = gql`\n  query {\n\n  }\n`;\n```\n### `mcc` ( React Class Component w/ Mutation )\n```javascript\nimport React, { Component } from \"react\";\nimport { Mutation } from \"react-apollo\";\nimport { gql } from 'apollo-boost';\n\nexport default class MyComponent extends Component {\n  render(){\n    return (\n      <Mutation\n        mutation={MY_MUTATION}>\n        {(mutationFunc, { data, loading, called, error }) => {\n          return (\n            <div>\n              <button onClick={(e)=>{\n                e.preventDefault();\n                mutationFunc}({\n                  variables: { }\n                })\n              }}/>\n            </div>\n          )\n        }}\n      </Mutation>\n    )  \n  }\n}\n\nconst MY_MUTATION = gql`\n  mutation {\n\n  }\n`;\n```\n### `mcf` ( React Functional Component w/ Mutation )\n```javascript\nimport React from \"react\";\nimport { Mutation } from \"react-apollo\";\nimport { gql } from 'apollo-boost';\n\nconst MyComponent = (props) => {\n  return (\n    <Mutation\n      mutation={MY_MUTATION}>\n      {(mutationFunc, { data, loading, called, error }) => {\n        return (\n          <div>\n            <button onClick={(e)=>{\n              e.preventDefault();\n              mutationFunc}({\n                variables: { }\n              })\n            }}/>\n          </div>\n        )\n      }}\n    </Mutation>\n  )\n}\n\nconst MY_MUTATION = gql`\n  mutation {\n\n  }\n`;\n```\n### `acc` ( React Functional Component w/ ApolloConsumer )\n```javascript\nimport React from \"react\";\nimport { ApolloConsumer } from \"react-apollo\";\nimport { gql } from 'apollo-boost';\n\nconst MyComponent = (props) => {\n  return (\n    <ApolloConsumer>\n      { client => (\n        <div>\n          <button\n            onClick={async () => {\n              const { data } = await client.query({\n                query: MY_QUERY,\n                variables: { }\n              });\n            }}\n          />\n        </div>\n      )}\n    </ApolloConsumer>\n  )\n}\n\nexport default MyComponent;\n```\n### `acf` ( React Class Component w/ ApolloConsumer )\n```javascript\nimport React, { Component } from \"react\";\nimport { ApolloConsumer } from \"react-apollo\";\nimport { gql } from 'apollo-boost';\n\nexport default class MyComponent extends Component {\n  render(){\n    return (\n      <ApolloConsumer>\n        { client => (\n          <div>\n            <button\n              onClick={async () => {\n                const { data } = await client.query({\n                  query: MY_QUERY,\n                  variables: { }\n                });\n              }}\n            />\n          </div>\n        )}\n       </ApolloConsumer>\n    )\n  }\n}\n```\n## Imports\n### `igql` ( import gql )\n```javascript\nimport { gql } from \"apollo-boost\";\n```\n### `iqc` ( import Query component )\n```javascript\nimport { Query } from \"react-apollo\";\n```\n### `imc` ( import Mutation component )\n```javascript\nimport { Mutation } from \"react-apollo\"\n```\n### `iap` ( import ApolloProvider )\n```javascript\nimport { ApolloProvider } from \"react-apollo\"\n```\n### `icg` ( import compose, graphql )\n```javascript\nimport { compose, graphql } from \"react-apollo\";\n```\n### `ig` ( import graphql )\n```javascript\nimport { graphql } from \"react-apollo\";\n```\n## Exports\n### `edc` ( export default Compose, GraphQL )\n```javascript\nexport default compose(\n  graphql(MY_QUERY)\n)(MyComponent)\n```\n### `edg` ( export default GraphQL )\n```javascript\nexport default graphql(MY_QUERY)(MyComponent)\n```\n",
+    "metadata": {
+        "name": "react-apollo-snippets",
+        "version": "0.2.1",
+        "description": "React Apollo Snippets for Atom",
+        "scripts": {
+            "test": "echo \"Error: no test specified\" && exit 1"
+        },
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/marcaaron/react-apollo-snippets.git"
+        },
+        "keywords": [
+            "apollo",
+            "GraphQL",
+            "react",
+            "snippets",
+            "ES7",
+            "react-apollo",
+            "apollo-boost"
+        ],
+        "author": "Marc Aaron Glasser",
+        "license": "MIT",
+        "bugs": {
+            "url": "https://github.com/marcaaron/react-apollo-snippets/issues"
+        },
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "homepage": "https://github.com/marcaaron/react-apollo-snippets#readme"
+    },
+    "created": 1658362261049,
+    "updated": 1658362261049,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

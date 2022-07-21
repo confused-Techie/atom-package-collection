@@ -1,0 +1,128 @@
+{
+    "name": "css-skeleton-maker",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sympe/css-skeleton-maker"
+    },
+    "downloads": 3768,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "0.1.4"
+    },
+    "versions": {
+        "0.1.4": {
+            "name": "css-skeleton-maker",
+            "main": "./lib/my-package",
+            "version": "0.1.4",
+            "description": "It will automatically generate a css selector related to your html.",
+            "keywords": [
+                "css",
+                "skeleton",
+                "selector",
+                "maker"
+            ],
+            "activationCommands": {
+                "atom-workspace": "my-package:toggle"
+            },
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/sympe/css-skeleton-maker.git"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/css-skeleton-maker/versions/0.1.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/sympe/css-skeleton-maker/tarball/refs/tags/v0.1.4",
+            "sha": "f7ecabf6d002f072df3b1528dababf6fda416df6"
+        },
+        "0.1.2": {
+            "name": "css-skeleton-maker",
+            "main": "./lib/my-package",
+            "version": "0.1.2",
+            "description": "It will automatically generate a css skeleton related to your html.",
+            "keywords": [
+                "css",
+                "skeleton",
+                "maker"
+            ],
+            "activationCommands": {
+                "atom-workspace": "my-package:toggle"
+            },
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/sympe/css-skeleton-maker.git"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/css-skeleton-maker/versions/0.1.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/sympe/css-skeleton-maker/tarball/refs/tags/v0.1.2",
+            "sha": "c58ac4f73144615c93b219623e5f974e5fd0c7db"
+        },
+        "0.1.0": {
+            "name": "css-skeleton-maker",
+            "main": "./lib/my-package",
+            "version": "0.1.0",
+            "description": "It will automatically generate a css skeleton related to your html.",
+            "keywords": [
+                "css",
+                "skeleton",
+                "maker"
+            ],
+            "activationCommands": {
+                "atom-workspace": "my-package:toggle"
+            },
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/sympe/css-skeleton-maker.git"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/css-skeleton-maker/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/sympe/css-skeleton-maker/tarball/refs/tags/v0.1.0",
+            "sha": "6ced1ebd15d5e62c8d5b9d4ceddb4bbee42c8e16"
+        }
+    },
+    "readme": "css-skeleton-maker\n--\ncssのスケルトンを自動生成するパッケージ\n\n### 目的\ncssの無駄な肥大化。これらはHTMLが大きくなればなるほどcssも大きくなりどこにどのセレクタがあるのかわからなくなってしまい、作業の非効率化を招きます。肥大化する原因はネスト構造が考慮しきれなかったり、HTML内では消したタグがcssの方では残っているなど様々な場合が考えられます。css-skeleton-makerはcssの無駄を省き、多くのcssに悩む開発者を助けます。\n\n### 機能\n　css-skeleton-makerには以下の機能があります。\n  1. **セレクタの自動生成**　HTMLファイルを開いた状態でcss-skeleton-makerを起動するとHTMLを解析してcssのスケルトンを自動で作成します。これによってセレクタをいちいち書く手間が省けます。自動生成なのでセレクタを書く際のスペルミスもありません。セレクタ自動生成については同等の機能を持つ多くのWebサービスがありますが、エディタ内でできるという点が強みです。\n\n  2. **cssのスケルトンを編集しながら使える**　css-skeleton-makerでcssのスケルトンを作成したあとに、cssのセレクタ内にスタイルを書いて、その後にHTMLを編集することもあると思います。その際は、もともと書いてあったスタイルはそのままに、あたらしく追加したHTMLタグがある場合は対応するセレクタを追加し、HTMLタグを削除した場合はセレクタを削除して、cssを常に一番無駄のない状態に保ちます。\n\n  3. **ネストも考慮する**　HTMLのネスト構造を考慮したcssセレクタを作ります。これによってどの要素がどの要素と親子関係であるというのがcssを見ながらわかります。\n\n### 使い方\n　1. HTMLファイルのある__フォルダ__をATOMエディタで開きます。**(注意)**　HTMLファイルのみ開くと動作しません。HTMLファイルしか作成していない場合は、フォルダを作成しその中にHTMLファイルを入れて、必ずHTMLを含む__フォルダ__をATOMエディタで開いてください。\n\n　2. HTML内の`<head>`内にcssファイルを指定している`<link>`があるか確認してください。以下の例のように記述すると、フォルダ内のHTMLファイルと同じ場所にcssフォルダを作成し、**style.css** というcssファイルを作成します。\n```html\n<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n```\n　上記の例のようなcssの指定がない場合、HTMLファイルと同じ場所に**example.css**という名前のcssファイルを作成します。\n\n　3. cssを作成したいHTMLファイルを開いた状態で、右クリックかメニューバーの`pacakges`から`CSS Skeleton Maker`を選択すると、cssが作成されます。HTML以外を開いた状態では動作しないので注意してください。\n\n### その他注意\n1. 1つのhtmlファイルに関連するcssファイルは1つとする\n2. html内にコメントがある場合はコメントの箇所は無視する\n3. 閉じタグが要らないhtmlタグには閉じタグをつけない **(`<br>`を`<br />`と記述しない)**\n\n　閉じタグの要らないHTMLタグ\n\n　```\n<br>,<img>,<hr>,<meta>,<input>,<embed>,<area>,<base>,<col>,<keygen>,<param>,<source>\n　```\n\n　上記以外の閉じタグの必要なHTMLタグには必ず閉じタグをつける\n\n### ショートカットキー\n`ctrl + alt + l`\n",
+    "metadata": {
+        "name": "css-skeleton-maker",
+        "main": "./lib/my-package",
+        "version": "0.1.4",
+        "description": "It will automatically generate a css selector related to your html.",
+        "keywords": [
+            "css",
+            "skeleton",
+            "selector",
+            "maker"
+        ],
+        "activationCommands": {
+            "atom-workspace": "my-package:toggle"
+        },
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/sympe/css-skeleton-maker.git"
+        },
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {}
+    },
+    "created": 1658338708689,
+    "updated": 1658338708689,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

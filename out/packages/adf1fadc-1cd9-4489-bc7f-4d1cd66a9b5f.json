@@ -1,0 +1,117 @@
+{
+    "name": "compile-watch",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Arcath/compile-watch"
+    },
+    "downloads": 3376,
+    "stargazers_count": 5,
+    "releases": {
+        "latest": "0.1.4"
+    },
+    "versions": {
+        "0.1.4": {
+            "name": "compile-watch",
+            "main": "./lib/compile-watch",
+            "version": "0.1.4",
+            "description": "Watch and compile files with atom",
+            "repository": "https://github.com/arcath/compile-watch",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "atom-space-pen-views": "^0",
+                "coffee-script": "1.9.2",
+                "fs-plus": "^2.0.4",
+                "less": "2.5.0",
+                "livescript": "^1.4.0",
+                "node-sass": "^2.1.1",
+                "space-pen": "^4",
+                "underscore-plus": "1.x"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/compile-watch/versions/0.1.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Arcath/compile-watch/tarball/refs/tags/v0.1.4",
+            "sha": "d2cb4ccb22b89bfd2c9288b9809bce7262608949"
+        },
+        "0.1.3": {
+            "name": "compile-watch",
+            "main": "./lib/compile-watch",
+            "version": "0.1.3",
+            "description": "Watch and compile files with atom",
+            "repository": "https://github.com/arcath/compile-watch",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "atom-space-pen-views": "^0",
+                "coffee-script": "1.9.2",
+                "fs-plus": "^2.0.4",
+                "less": "2.5.0",
+                "livescript": "^1.4.0",
+                "node-sass": "^2.1.1",
+                "space-pen": "^4",
+                "underscore-plus": "1.x"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/compile-watch/versions/0.1.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Arcath/compile-watch/tarball/refs/tags/v0.1.3",
+            "sha": "3db51d292b6b51207edfd5bea836d1504cb11f19"
+        },
+        "0.1.0": {
+            "name": "compile-watch",
+            "main": "./lib/compile-watch",
+            "version": "0.1.0",
+            "description": "Watch and compile files with atom",
+            "repository": "https://github.com/arcath/compile-watch",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^2.0.4",
+                "node-sass": "^2.1.1",
+                "space-pen": "^4",
+                "atom-space-pen-views": "^0",
+                "underscore-plus": "1.x",
+                "coffee-script": "1.9.2",
+                "less": "2.5.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/compile-watch/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Arcath/compile-watch/tarball/refs/tags/v0.1.0",
+            "sha": "66e62833f987dfa5a4d956bb3e960093f7a59c16"
+        }
+    },
+    "readme": "# compile-watch [![Build Status](https://travis-ci.org/Arcath/compile-watch.svg)](https://travis-ci.org/Arcath/compile-watch)\n\nThe last compiler package you need to install.\n\n## Usage\n\nWatch a file and everytime you save it compile-watch will compile it to your desired output location. When you close a file compile-watch will stop watching it. See _Project Config_ for details on how to make compile-watch even faster.\n\n### Commands\n\n- `Ctrl-Shift-W`, `Compile Watch: Watch` Watches the current file. You will be asked where to save the output.\n\n### Project Config\n\ncompile-watch looks for a `.compile-watch.json` file in your projects root which allows you to:\n\n - Auto watch files\n - Pre-set the output of a file\n - Watch a parent file\n\nAn example config file:\n\n```json\n{\n  \"files\": {\n    \"scss/layout.scss\": {\n      \"output\": \"css/layout.css\",\n      \"format\": \"scss\"\n    },\n    \"scss/imported.scss\": {\n      \"parent\": \"scss/layout.scss\"\n    },\n    \"coffee/layout.coffee\": {\n      \"output\": \"js/layout.js\",\n      \"format\": \"coffee\"\n    }\n  },\n\n  \"autowatch\": [\n    \"scss/layout.scss\",\n    \"coffee/layout.coffee\"\n  ]\n}\n```\n\nThis config file defined 3 files,\n\n - __scss/layout.scss__ which is to be compiled to _css/layout.css_ using the _scss_ format.\n - __scss/imported.scss__ which is to trigger a compile of its parent (which must be defined in this file).\n - __coffee/layout.coffee__ which is be compiled to _js/layout.js_ using the _coffee_ format.\n\nIt then declares 2 auto watch files which will be watched automatically when you open them. (These entries must match keys in the files object).\n\n## Supported Languages\n\n - Coffee Script\n - LESS\n - SASS\n\n### Adding a Language\n\nAll the _formats_ are stored in `lib/formats` and should be written as there own class.\n\nThe Coffee format in `lib/formats/coffee.coffee` shows an example of compiling a file using an _internal_ library and writing the output to the destination file.\n\nThe SASS format in `lib/formats/sass.coffee` shows an example of running a child process to compile the source file to the destination file.\n\nThere is a guide on how to write a compiler [here](http://arcath.net/2015/04/27/creating-the-less-compiler-for-compile-watch.html).\n",
+    "metadata": {
+        "name": "compile-watch",
+        "main": "./lib/compile-watch",
+        "version": "0.1.4",
+        "description": "Watch and compile files with atom",
+        "repository": "https://github.com/arcath/compile-watch",
+        "license": "MIT",
+        "engines": {
+            "atom": "*"
+        },
+        "dependencies": {
+            "atom-space-pen-views": "^0",
+            "coffee-script": "1.9.2",
+            "fs-plus": "^2.0.4",
+            "less": "2.5.0",
+            "livescript": "^1.4.0",
+            "node-sass": "^2.1.1",
+            "space-pen": "^4",
+            "underscore-plus": "1.x"
+        }
+    },
+    "created": 1658338258498,
+    "updated": 1658338258498,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

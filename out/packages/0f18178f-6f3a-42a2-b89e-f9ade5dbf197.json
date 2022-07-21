@@ -1,0 +1,64 @@
+{
+    "name": "markdown-spreadsheet",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/klorenz/markdown-spreadsheet"
+    },
+    "downloads": 265,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "0.1.0"
+    },
+    "versions": {
+        "0.1.0": {
+            "name": "markdown-spreadsheet",
+            "main": "./lib/markdown-spreadsheet",
+            "version": "0.1.0",
+            "description": "Spreadsheet with markdown",
+            "keywords": [],
+            "repository": "https://github.com/klorenz/markdown-spreadsheet",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "author": "Kay-Uwe (Kiwi) Lorenz <kiwi@franka.dyndns.org>",
+            "dependencies": {
+                "gray-matter": "^2.0.2",
+                "handlebars": "^4.0.5",
+                "handlebars-helpers": "^0.7.5",
+                "just-handlebars-helpers": "^1.0.11",
+                "loophole": "^1.1.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/markdown-spreadsheet/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/klorenz/markdown-spreadsheet/tarball/refs/tags/v0.1.0",
+            "sha": "5602eb218d8de95117cbe4c283511c8b0921c8b2"
+        }
+    },
+    "readme": "# Markdown Spreadsheet\n\nThis is a very early release. Consider this in alpha state.\n\nIdea is: take a markdown page, preprocess it and then render it as usual.\n\nSample:\n\n```markdown\n---\nspreadsheet:\n  a: 10\n  b: 100\n---\n\na + b = {{= a + b}}\n```\n\nWhich should be rendered as\n\n> a + b = 110\n\n```markdown\n---coffee\nspreadsheet\n  helpers:\n    foo: (a,b) -> a + b\n    bar: (a,b) -> a + b\n\n---\n\n{{foo 10 10}} {{bar 10 10}}\n```\n\nIdea:\n\nSpecial names are `helpers` and `partials` and `context`.  If value is a string, \nit is interpreted as moduleName and is tried to be required.  If is Object, the value \nis taken as is.  A module is expected to export an object.  If it is a list, it may be\neither object or module name and may be mixed.\n\nWhat works:\n\n- Inline works, require does not yet work\n\n\n\n## Reference data\n\nData referencing works as described in handlebars documentation.\n\n## Interacting with the context\n\n```markdown\n---\nspreadsheet:\n  a: 100\n---\n\n{{set a 200}}\n\n{{a}}\n```\n\nresults in\n\n> 200\n\n## Predefined Helpers\n\n### set\n\n```\n{{set <var> [ '=' ] <expr> }}\n```\n",
+    "metadata": {
+        "name": "markdown-spreadsheet",
+        "main": "./lib/markdown-spreadsheet",
+        "version": "0.1.0",
+        "description": "Spreadsheet with markdown",
+        "keywords": [],
+        "repository": "https://github.com/klorenz/markdown-spreadsheet",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "author": "Kay-Uwe (Kiwi) Lorenz <kiwi@franka.dyndns.org>",
+        "dependencies": {
+            "gray-matter": "^2.0.2",
+            "handlebars": "^4.0.5",
+            "handlebars-helpers": "^0.7.5",
+            "just-handlebars-helpers": "^1.0.11",
+            "loophole": "^1.1.0"
+        }
+    },
+    "created": 1658357142613,
+    "updated": 1658357142613,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

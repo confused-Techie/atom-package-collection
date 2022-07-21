@@ -1,0 +1,1879 @@
+{
+    "name": "autocomplete-lua",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dapetcu21/atom-autocomplete-lua"
+    },
+    "downloads": 38870,
+    "stargazers_count": 12,
+    "releases": {
+        "latest": "0.9.2"
+    },
+    "versions": {
+        "0.9.2": {
+            "name": "autocomplete-lua",
+            "version": "0.9.2",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "configSchema": {
+                "luaVersion": {
+                    "order": 0,
+                    "type": "string",
+                    "default": "5.2",
+                    "enum": [
+                        "5.1",
+                        "5.2",
+                        "5.3",
+                        "luajit-2.0"
+                    ],
+                    "title": "Default Lua version",
+                    "description": "Can be overriden in .luacompleterc or by plugins"
+                },
+                "useSnippets": {
+                    "order": 1,
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Suggest snippets",
+                    "description": "Complete functions with snippets of their arguments"
+                },
+                "suggestUsedMembers": {
+                    "order": 2,
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Suggest used table members",
+                    "description": "Suggest table members that you've used in your code as opposed to just those you have explicitly set or defined"
+                },
+                "minCharsPrefix": {
+                    "order": 3,
+                    "type": "integer",
+                    "default": 2,
+                    "minimum": 1,
+                    "title": "Min chars to start completion",
+                    "description": "The minimum number of typed characters required to start a completion"
+                },
+                "completeModules": {
+                    "order": 3.5,
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Complete modules",
+                    "description": "Parse require()-d modules for type information"
+                },
+                "excludeLowerPriority": {
+                    "order": 4,
+                    "type": "boolean",
+                    "default": false,
+                    "title": "Override lower priority providers",
+                    "description": "Disable Atom's default keyword-based autocompletion provider and other lower priority providers"
+                },
+                "inclusionPriority": {
+                    "order": 5,
+                    "type": "integer",
+                    "default": 1,
+                    "minimum": 0,
+                    "title": "Provider inclusion priority",
+                    "description": "Priority relative to other autocomplete providers"
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "jsdom": "^9.7.1",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "dapetcu21-luaparse": "^0.2.1",
+                "jsonic": "^0.3.1",
+                "lodash.clonedeepwith": "^4.5.0",
+                "lodash.includes": "^4.3.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.9.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.9.2",
+            "sha": "3750361923ec70d65776449272d6f3715109fcdb"
+        },
+        "0.9.1": {
+            "name": "autocomplete-lua",
+            "version": "0.9.1",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "configSchema": {
+                "luaVersion": {
+                    "order": 0,
+                    "type": "string",
+                    "default": "5.2",
+                    "enum": [
+                        "5.1",
+                        "5.2",
+                        "5.3",
+                        "luajit-2.0"
+                    ],
+                    "title": "Default Lua version",
+                    "description": "Can be overriden in .luacompleterc or by plugins"
+                },
+                "useSnippets": {
+                    "order": 1,
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Suggest snippets",
+                    "description": "Complete functions with snippets of their arguments"
+                },
+                "suggestUsedMembers": {
+                    "order": 2,
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Suggest used table members",
+                    "description": "Suggest table members that you've used in your code as opposed to just those you have explicitly set or defined"
+                },
+                "minCharsPrefix": {
+                    "order": 3,
+                    "type": "integer",
+                    "default": 2,
+                    "minimum": 1,
+                    "title": "Min chars to start completion",
+                    "description": "The minimum number of typed characters required to start a completion"
+                },
+                "completeModules": {
+                    "order": 3.5,
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Complete modules",
+                    "description": "Parse require()-d modules for type information"
+                },
+                "excludeLowerPriority": {
+                    "order": 4,
+                    "type": "boolean",
+                    "default": false,
+                    "title": "Override lower priority providers",
+                    "description": "Disable Atom's default keyword-based autocompletion provider and other lower priority providers"
+                },
+                "inclusionPriority": {
+                    "order": 5,
+                    "type": "integer",
+                    "default": 1,
+                    "minimum": 0,
+                    "title": "Provider inclusion priority",
+                    "description": "Priority relative to other autocomplete providers"
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "jsdom": "^9.7.1",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeepwith": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "dapetcu21-luaparse": "^0.2.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.9.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.9.1",
+            "sha": "aed302def3896cf945e1661e333fe8898ce5261e"
+        },
+        "0.9.0": {
+            "name": "autocomplete-lua",
+            "version": "0.9.0",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "configSchema": {
+                "luaVersion": {
+                    "order": 0,
+                    "type": "string",
+                    "default": "5.2",
+                    "enum": [
+                        "5.1",
+                        "5.2",
+                        "5.3",
+                        "luajit-2.0"
+                    ],
+                    "title": "Default Lua version",
+                    "description": "Can be overriden in .luacompleterc or by plugins"
+                },
+                "useSnippets": {
+                    "order": 1,
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Suggest snippets",
+                    "description": "Complete functions with snippets of their arguments"
+                },
+                "suggestUsedMembers": {
+                    "order": 2,
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Suggest used table members",
+                    "description": "Suggest table members that you've used in your code as opposed to just those you have explicitly set or defined"
+                },
+                "minCharsPrefix": {
+                    "order": 3,
+                    "type": "integer",
+                    "default": 2,
+                    "minimum": 1,
+                    "title": "Min chars to start completion",
+                    "description": "The minimum number of typed characters required to start a completion"
+                },
+                "completeModules": {
+                    "order": 3.5,
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Complete modules",
+                    "description": "Parse require()-d modules for type information"
+                },
+                "excludeLowerPriority": {
+                    "order": 4,
+                    "type": "boolean",
+                    "default": false,
+                    "title": "Override lower priority providers",
+                    "description": "Disable Atom's default keyword-based autocompletion provider and other lower priority providers"
+                },
+                "inclusionPriority": {
+                    "order": 5,
+                    "type": "integer",
+                    "default": 1,
+                    "minimum": 0,
+                    "title": "Provider inclusion priority",
+                    "description": "Priority relative to other autocomplete providers"
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "jsdom": "^9.7.1",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeepwith": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.9.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.9.0",
+            "sha": "b792c7355555b7f34a9be869ec867dc7ee549e19"
+        },
+        "0.8.3": {
+            "name": "autocomplete-lua",
+            "version": "0.8.3",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "configSchema": {
+                "luaVersion": {
+                    "order": 0,
+                    "type": "string",
+                    "default": "5.2",
+                    "enum": [
+                        "5.1",
+                        "5.2",
+                        "5.3",
+                        "luajit-2.0"
+                    ],
+                    "title": "Default Lua version",
+                    "description": "Can be overriden in .luacompleterc or by plugins"
+                },
+                "useSnippets": {
+                    "order": 1,
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Suggest snippets",
+                    "description": "Complete functions with snippets of their arguments"
+                },
+                "suggestUsedMembers": {
+                    "order": 2,
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Suggest used table members",
+                    "description": "Suggest table members that you've used in your code as opposed to just those you have explicitly set or defined"
+                },
+                "minCharsPrefix": {
+                    "order": 3,
+                    "type": "integer",
+                    "default": 2,
+                    "minimum": 1,
+                    "title": "Min chars to start completion",
+                    "description": "The minimum number of typed characters required to start a completion"
+                },
+                "excludeLowerPriority": {
+                    "order": 4,
+                    "type": "boolean",
+                    "default": false,
+                    "title": "Override lower priority providers",
+                    "description": "Disable Atom's default keyword-based autocompletion provider and other lower priority providers"
+                },
+                "inclusionPriority": {
+                    "order": 5,
+                    "type": "integer",
+                    "default": 1,
+                    "minimum": 0,
+                    "title": "Provider inclusion priority",
+                    "description": "Priority relative to other autocomplete providers"
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "jsdom": "^9.7.1",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeepwith": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.8.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.8.3",
+            "sha": "da388c4b43dc12e412f2ed15726afc6c080ded6c"
+        },
+        "0.8.2": {
+            "name": "autocomplete-lua",
+            "version": "0.8.2",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "jsdom": "^9.7.1",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeepwith": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.8.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.8.2",
+            "sha": "7b7722904bc5c7b34183e7708c6afc0f055de379"
+        },
+        "0.8.1": {
+            "name": "autocomplete-lua",
+            "version": "0.8.1",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "jsdom": "^9.7.1",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeepwith": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.8.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.8.1",
+            "sha": "6ce7caa7495421b2ddbb946df5ff20d315224218"
+        },
+        "0.8.0": {
+            "name": "autocomplete-lua",
+            "version": "0.8.0",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "jsdom": "^9.7.1",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeepwith": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.8.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.8.0",
+            "sha": "cc77292a67694f94b5ea9a8776fecf7af2842512"
+        },
+        "0.7.3": {
+            "name": "autocomplete-lua",
+            "version": "0.7.3",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "jsdom": "^9.7.1",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeepwith": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.7.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.7.3",
+            "sha": "90388bda06bda47f152fb255954fd0f3ae322788"
+        },
+        "0.7.2": {
+            "name": "autocomplete-lua",
+            "version": "0.7.2",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "jsdom": "^9.7.1",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeepwith": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.7.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.7.2",
+            "sha": "acff2691edce0940cea0ddc511ae5a532906a612"
+        },
+        "0.7.1": {
+            "name": "autocomplete-lua",
+            "version": "0.7.1",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "jsdom": "^9.7.1",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.7.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.7.1",
+            "sha": "2f03b88f3add4ef680f516bf16bc330bcf3579e9"
+        },
+        "0.7.0": {
+            "name": "autocomplete-lua",
+            "version": "0.7.0",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "jsdom": "^9.7.1",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.7.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.7.0",
+            "sha": "bccf96a809ef27d7fff735e521001b78e14f9a46"
+        },
+        "0.6.2": {
+            "name": "autocomplete-lua",
+            "version": "0.6.2",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "jsdom": "^9.7.1",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.6.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.6.2",
+            "sha": "cc3be2985a28493aa7cbf9218ee9e31ade9ca621"
+        },
+        "0.6.1": {
+            "name": "autocomplete-lua",
+            "version": "0.6.1",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "jsdom": "^9.7.1",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.6.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.6.1",
+            "sha": "9b441dfd99e566106c1cea82f03105afd87df62f"
+        },
+        "0.6.0": {
+            "name": "autocomplete-lua",
+            "version": "0.6.0",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "jsdom": "^9.7.1",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.6.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.6.0",
+            "sha": "b02501deb80ef9a368c0e231b041e22caad9ae76"
+        },
+        "0.5.1": {
+            "name": "autocomplete-lua",
+            "version": "0.5.1",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.5.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.5.1",
+            "sha": "186b0cf6dfb8e6520f4b9cb0df7ceed5fa19029d"
+        },
+        "0.5.0": {
+            "name": "autocomplete-lua",
+            "version": "0.5.0",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.5.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.5.0",
+            "sha": "4e3fada03050e3d7fab75f90f35a620fea071bf8"
+        },
+        "0.4.3": {
+            "name": "autocomplete-lua",
+            "version": "0.4.3",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.4.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.4.3",
+            "sha": "f10cf6138cb12a8adf822c43d83a810ee581ae91"
+        },
+        "0.4.2": {
+            "name": "autocomplete-lua",
+            "version": "0.4.2",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.4.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.4.2",
+            "sha": "c74734b72c196be39dff5769f735ff5df3e4b7eb"
+        },
+        "0.4.1": {
+            "name": "autocomplete-lua",
+            "version": "0.4.1",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.4.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.4.1",
+            "sha": "113ebcf6fe90839004824f36052d9acdd1078cf5"
+        },
+        "0.4.0": {
+            "name": "autocomplete-lua",
+            "version": "0.4.0",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.4.0",
+            "sha": "72f16d9b919c453172ce22abb03bcec9604296f2"
+        },
+        "0.3.0": {
+            "name": "autocomplete-lua",
+            "version": "0.3.0",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                },
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "1.0.0": "getOptionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autocomplete-lua.options-provider": {
+                    "versions": {
+                        "^1.0.0": "onOptionProviders"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "lodash.includes": "^4.3.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.3.0",
+            "sha": "58b119091c80696e117f8144eaf6838d74ece797"
+        },
+        "0.2.3": {
+            "name": "autocomplete-lua",
+            "version": "0.2.3",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.2.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.2.3",
+            "sha": "ec1fdb352c656ab8feaee4da851790efb6cc7e1a"
+        },
+        "0.2.2": {
+            "name": "autocomplete-lua",
+            "version": "0.2.2",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.2.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.2.2",
+            "sha": "f83ff7acb76ce89cf3f407b895f320e321007a33"
+        },
+        "0.2.1": {
+            "name": "autocomplete-lua",
+            "version": "0.2.1",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.2.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.2.1",
+            "sha": "ef70d4d060884b9ec51aeb57fefb1f132949f688"
+        },
+        "0.2.0": {
+            "name": "autocomplete-lua",
+            "version": "0.2.0",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.2.0",
+            "sha": "c6bd080ebbd7585aef5e46b22f5dd994e2901105"
+        },
+        "0.1.2": {
+            "name": "autocomplete-lua",
+            "version": "0.1.2",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.1.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.1.2",
+            "sha": "8200c4a50bc958fe55b81208925b7c781915e484"
+        },
+        "0.1.1": {
+            "name": "autocomplete-lua",
+            "version": "0.1.1",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.1.1",
+            "sha": "dd2595905113d6ea983ecdd7839cc17bb18d099b"
+        },
+        "0.1.0": {
+            "name": "autocomplete-lua",
+            "version": "0.1.0",
+            "description": "Extensible autocomplete+ provider for Lua",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+            },
+            "bugs": {
+                "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+            },
+            "main": "lib/index.js",
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "getProvider"
+                    }
+                }
+            },
+            "author": "",
+            "license": "MIT",
+            "engines": {
+                "atom": "*"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "standard": "^8.3.0"
+            },
+            "standard": {
+                "parser": "babel-eslint",
+                "globals": [
+                    "__LOG__"
+                ]
+            },
+            "dependencies": {
+                "lodash.clonedeep": "^4.5.0",
+                "luaparse": "github:dapetcu21/luaparse#patch-1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-lua/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dapetcu21/atom-autocomplete-lua/tarball/refs/tags/v0.1.0",
+            "sha": "dff13bd3cf42a62056e1cb3ea5cb6d86c55d1212"
+        }
+    },
+    "readme": "# atom-autocomplete-lua\n\n[![](https://img.shields.io/apm/dm/autocomplete-lua.svg)](http://atom.io/packages/autocomplete-lua) [![](https://img.shields.io/badge/liberapay-donate-yellow.svg)](https://liberapay.com/dapetcu21/donate) [![](https://img.shields.io/badge/paypal-donate-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KRJ4ZRJNU76Y2)\n\nAtom Autocomplete+ provider for Lua.\n\nThis package aims to parse Lua files with [oxyc/luaparse](https://github.com/oxyc/luaparse) and generate scope and type-aware completions with syntactic analysis.\n\n![](https://cloud.githubusercontent.com/assets/428060/19417900/ebb20426-93c0-11e6-98ef-c90b66fbf109.png)\n\n## Features\n\n* Limited type inference mechanism\n* Scope-aware variable name suggestions\n* Table member completions on `.` and `:`\n* Snippets for function call arguments\n* Aware of `setmetatable()` and function return types\n* Completion for the Lua standard library\n* `.luacompleterc` file to define additional globals\n* Doc-strings in `.luacompleterc`\n* Configuration service for other packages to programmatically define globals\n* Autocomplete `require`d modules\n\n## Available Providers\n\n- [Defold IDE](http://atom.io/packages/defold-ide) - Adds hot reloading, autocompletion and in-line API docs for the [Defold](http://www.defold.com/) game engine.\n- [LÖVE Atom](https://github.com/rm-code/love-atom) - Smart autocompletion for the [LÖVE](https://love2d.org/) framework in Atom.\n\n## Configuration\n\nBesides what you can configure in Atom preferences, `atom-autocomplete-lua`\nlooks for a `.luacompleterc` file in the parent directories of the current file.\n\nIf you need to define additional global symbols for your specific Lua environment,\nplace a `.luacompleterc` file in your project root. It's a JSON file with roughly\nthe following structure:\n\n```javascript\n{\n  \"global\": {\n    \"type\": \"table\",\n    \"fields\": {\n      \"my_global_var\": { /* type definition */ },\n      /* ... */\n    }\n  },\n  \"namedTypes\": {\n    \"my_named_type\": { /* type definition */ },\n    /* ... */\n  }\n  \"luaVersion\": \"5.2\",\n  \"packagePath\": \"./?.lua\",\n  \"cwd\": \"path/to/lua/module/root\"\n}\n```\n\nAll options are optional. Here's what each option does:\n\n| Option | Default | Description |\n|--------|---------|-------------|\n|`global`|`{ type: 'table', fields: {} }`|The type definition of the global environment. Define additional fields on this table to declare globals available in your Lua environment. Read the [Type definitions](#type-definitions) section for more info.\n|`namedTypes`|`{}`|To avoid deep nesting and allow multiple places to reference a single type, you can define named types. Read the [Named types](#named-types) section for more info.\n|`luaVersion`|`\"5.2\"`|The version of Lua your code is targeting. Valid values are `\"5.1\"`, `\"5.2\"`, `\"5.3\"` and `\"luajit-2.0\"`.\n|`packagePath`|`\"./?.lua\"`|The value of `LUA_PATH` used when resolving required modules.\n|`cwd`|`.`|The current directory used to resolve relative paths in `packagePath`. If `cwd` is relative, it's considered relative to the parent directory of `.luacompleterc`.\n\n\n## Type definitions\n\nThe general format of a type definition is:\n\n```javascript\n{\n  \"type\": \"type_name\", // one of \"function\", \"table\", \"number\", \"boolean\", \"string\" or \"unknown\", \"ref\"\n  \"description\": \"Optional short Markdown description of your symbol\",\n  \"descriptionPlain\": \"Optional short plain text description of your symbol (if you don't want Markdown for some reason)\",\n  \"link\": \"http://optional.link/to/full/api/docs\"\n}\n```\n\n### Tables\n\nTables (`\"type\": \"table\"`) have 2 more properties:\n  * `fields`: *Required.* An object mapping table fields to their corresponding type definition. Even though Lua allows indexing tables with any value, only string keys are supported for autocompletion purposes.\n  * `metatable`: *Optional.* The type definition of the metatable of this table, if it has one. `autocomplete-lua` is aware of keys like `__index` in this metatable and uses them for completion. If present, the `type` of the metatable must be `\"table\"`.\n\n**Example:**\n```javascript\n{ // Type definition for a student\n  \"type\": \"table\",\n  \"fields\": {\n    \"name\": { type: \"string\" },\n    \"surname\": { type: \"string\" },\n    \"height\": { type: \"number\" },\n  },\n  \"metatable\": {\n    \"type\": \"table\",\n    \"fields\": {\n      \"__index\": {\n        \"type\": \"table\",\n        \"fields\": { \"skip_rope\": { \"type\": \"function\" } }\n      }\n    }\n  }\n}\n```\n\n### Functions\n\nFunctions (`\"type\": \"function\"`) can have a few more optional properties:\n  * `returnTypes`: An array of type definitions describing the types of the function's return values.\n  * `args`: An array of argument name definitions (see below).\n  * `argsDisplay`: In case you want your arguments to be displayed in the autocomplete dropdown in a custom way, you can provide a string of the argument list here.\n  * `argsDisplayOmitSelf`: Same as above, but displayed when completing method calls with `:`. You should provide the same arg list string, but with the first argument removed. Defaults to `argsDisplay`.\n  * `argTypes`: An array of argument type definitions (or `null` when type is unknown).\n\nArgument names are of the form `{ \"name\": \"arg_name\", \"displayName\": \"display_name\" }`,\nwhere `displayName` is optional.\n\n`displayName` will be displayed in the\nautocomplete dropdown, while `name` will be part of the inserted snippet.\nThis is useful for things like optional arguments:\n\n```javascript\n{\n  \"type\": \"function\",\n  \"args\": [{ \"name\": \"arg1\" }, { \"name\": \"arg2\", \"displayName\": \"[arg2]\" }],\n}\n```\n\nwill produce `f(arg1, [arg2])` in the dropdown and `f(arg1, arg2)` after being inserted.\n\nIn rare cases, `displayName` might be unsuitable for you. `argsDisplay` and `argsDisplayOmitSelf` can be used to manually specify the comma-separated list of\narguments.\n\nFor example, you can use it to customize comma placement in relation to `[`:\n\n```javascript\n{\n  \"type\": \"function\",\n  \"args\": [{ \"name\": \"self\" }, { \"name\": \"arg1\" }, { \"name\": \"arg2\" }],\n  \"argsDisplay\": \"self[, arg1[, arg2]]\",\n  \"argsDisplayOmitSelf\": \"[arg1[, arg2]]\"\n}\n```\n\nThis will produce `f(self[, arg1[, arg2]])` in the dropdown and `f(self, arg1, arg2)`\nafter being inserted.\n\n### Function variants\n\nSometimes, you may have polymorphic functions which can be called with a number\nof different argument configurations. You might want to show all of these\nversions separately in the autocomplete dropdown.\n\nYou can provide multiple versions of the same function by moving `link`,\n`description`, `args`, `argsDisplay` and `argsDisplayOmitSelf` inside a\n`variants` array like so:\n\n```javascript\n{ // Type definition for a get(url_or_filename) function\n  \"type\": \"function\",\n  \"variants\": [{\n    \"args\": [{ name: \"url\" }],\n    \"description\": \"Fetches an URL and returns a string with the contents\"\n  }, {\n    \"args\": [{ name: \"filename\" }],\n    \"description\": \"Read the file at filename and returns a string with the contents\"\n  }]\n}\n```\n\nThe autocomplete dropdown will show both `get(url)` and `get(filename)` with their\ncorresponding descriptions.\n\n### Named types\n\nThere are often cases where you want to use the same type definition in\nmultiple places. In these situations, you can use named types in your `.luacompleterc`.\n\nJust use `{ \"type\": \"ref\", \"name\": \"my_named_type\" }` instead of your type\ndefinition and define `my_named_type` in `namedTypes`.\n\n**Example .luacompleterc:**\n```javascript\n{\n  \"global\": {\n    \"type\": \"table\",\n    \"fields\": {\n      \"make_a_cat\": {\n        \"type\": \"function\",\n        \"returnTypes\": [{ \"type\": \"ref\", \"name\": \"cat\" }]\n      },\n      \"make_a_cat_somehow_else\": {\n        \"type\": \"function\",\n        \"returnTypes\": [{ \"type\": \"ref\", \"name\": \"cat\" }]\n      },\n    }\n  },\n  \"namedTypes\": {\n    \"cat\": {\n      \"type\": \"table\",\n      \"fields\": {\n        \"color\": { \"type\": \"string\" },\n        \"is_fluffy\": { \"type\": \"boolean\" }\n      }\n    }\n  }\n}\n```\n\n## Option providers\n\nAll the options provided in a `.luacompleterc` can be programmatically provided\nby plugin packages (like [Defold IDE](http://atom.io/packages/defold-ide)).\n\nStart by adding this to your `package.json`:\n\n```json\n\"providedServices\": {\n  \"autocomplete-lua.options-provider\": {\n    \"versions\": {\n      \"1.0.0\": \"getOptionProvider\"\n    }\n  }\n}\n```\n\nThen, in your package's JS object:\n\n```javascript\ngetOptionProvider () {\n  return myProvider; // You can also return an array of providers if you have more\n}\n```\n\nThe provider is an object (or a class) with the following interface:\n\n```javascript\nconst myProvider = {\n  priority: 20,\n\n  getOptions (request, getPreviousOptions, utils, cache) {\n    // Just return the options from the previous provider\n    return getPreviousOptions().then(previousOptions => {\n      return { options: previousOptions }\n    })\n  }\n\n  dispose () {\n    // Destroy stuff\n  }\n}\n```\n\n### `priority` and `getPreviousOptions()`\n\nEach time a completion is needed (roughly at each keystroke), `autocomplete-lua`\nsorts all the option providers by their priority and calls the `getOptions()`\nmethod of the highest priority option provider.\n\nThe option provider can choose to call the next-highest-in-priority provider\nby calling `getPreviousOptions()`. `getPreviousOptions()` returns a promise\nto the options object provided by the next-in-line provider.\n\nThere are 3 option providers that come with `autocomplete-lua`:\n  * **[StdLibProvider]**. *Priority 100.* Adds Lua's standard library functions to the options.\n  * **[LuaCompleteRcProvider]**. *Priority 10.* Adds the contents of `.luacompleterc` to the options.\n  * **[EmptyProvider]**. *Priority 0.* Just returns an empty options object. Acts as fallback for `getPreviousOptions()`.\n\n[StdLibProvider]:https://github.com/dapetcu21/atom-autocomplete-lua/blob/master/lib/options/stdlib.js\n[LuaCompleteRcProvider]:https://github.com/dapetcu21/atom-autocomplete-lua/blob/master/lib/options/luacompleterc.js\n[EmptyProvider]:https://github.com/dapetcu21/atom-autocomplete-lua/blob/master/lib/options/empty.js\n\n### `dispose()`\n\nOptional function. `dispose()` is called when your provider is not needed anymore.\n\n### `getOptions(request, getPreviousOptions, utils, cache)`\n\nThis function is called when your provider is expected to return a new set of options.\n\n`request` comes [directly from Autocomplete+](https://github.com/atom/autocomplete-plus/wiki/Provider-API#the-suggestion-requests-options-object),\nwith the addition of `request.filePath`, the absolute path to the current file.\n\nThe return value is an object of the form `{ options }`. The same object is passed\nto `getOptions()` as `cache` the next time the function is called on the same file,\nso you can store additional arbitrary properties on it that you'd like to receive\nin `cache`. Returning a promise to this object is also supported.\n\nIt's strongly encouraged to always return the same `options` object if nothing\nchanged from the last call. Read on about `utils.mergeOptionsCached()` for\na simple way to do this.\n\n### `utils.reviveOptions(options)`\n\nTakes an options object and resolves all references to named types. (Replaces `{ type: 'ref', name: 'myRef' }` with `namedTypes.myRef`). This should be called after you read the\noptions object from permanent storage.\n\nReturns the same `options` object.\n\n### `utils.mergeOptions(previousOptions, newOptions)`\n\nTakes 2 options objects, merges them and returns the result.\n\nFields in `newOptions` overwrite fields in `previousOptions`. The `global` fields are deeply merged.\n\n### `utils.mergeOptionsCached(previousOptions, newOptions, cache[, merger])`\n\nUses `mergeOptions()` to merge `previousOptions` and `newOptions` if any of the\ntwo are different from `cache.previousOptions` and `cache.newOptions`, else\nreturns `cache.options`.\n\nIf the merge takes place, `merger(mergedOptions, previousOptions, newOptions)`\nis called on the newly merged object to do additional custom merging work.\n\nReturns an object `{ options, previousOptions, newOptions }` suitable for returning\nas the cache object from `getOptions()`.\n\nA recommended pattern is the following:\n\n```javascript\ngetOptions = async (request, getPreviousOptions, utils, cache) => {\n  if (providerIsNotApplicableToTheCurrentFile) {\n    return { options: await getPreviousOptions() }\n  }\n  const newOptions = conjureABunchOfNewOptions()\n  const previousOptions = await getPreviousOptions()\n  return utils.mergeOptionsCached(previousOptions, newOptions, cache, mergedOptions => {\n    mergedOptions.oneMoreThing = 'this thing'\n  })\n}\n```\n\n### `util.<typename>New()`\n\nCreates a new type definition for a `<typename>`. Available functions are:\n`tableNew()`, `booleanNew()`, `functionNew()`, `numberNew()`, `unknownNew()`, `nilNew()`\n\n### `util.tableSet(table, key, value)`\n\nSets the field identified by `key` in the table type definition `table` to the\ntype definition `value`.\n\n### `util.tableGet(table, key)`\n\nGets the type definition corresponding to the field identified by `key` in the\ntable type definition `table`.\n\n### `util.tableSetMetatable(table, metatable)`\n\nSets the metatable type definition in the table type definition `table` to the\ntype definition `metatable`.\n\n### `util.tableGetMetatable(table)`\n\nGets the type definition of the metatable of the table type definition `table`.\n",
+    "metadata": {
+        "name": "autocomplete-lua",
+        "version": "0.9.2",
+        "description": "Extensible autocomplete+ provider for Lua",
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/dapetcu21/atom-autocomplete-lua.git"
+        },
+        "bugs": {
+            "url": "https://github.com/dapetcu21/atom-autocomplete-lua/issues"
+        },
+        "main": "lib/index.js",
+        "configSchema": {
+            "luaVersion": {
+                "order": 0,
+                "type": "string",
+                "default": "5.2",
+                "enum": [
+                    "5.1",
+                    "5.2",
+                    "5.3",
+                    "luajit-2.0"
+                ],
+                "title": "Default Lua version",
+                "description": "Can be overriden in .luacompleterc or by plugins"
+            },
+            "useSnippets": {
+                "order": 1,
+                "type": "boolean",
+                "default": true,
+                "title": "Suggest snippets",
+                "description": "Complete functions with snippets of their arguments"
+            },
+            "suggestUsedMembers": {
+                "order": 2,
+                "type": "boolean",
+                "default": true,
+                "title": "Suggest used table members",
+                "description": "Suggest table members that you've used in your code as opposed to just those you have explicitly set or defined"
+            },
+            "minCharsPrefix": {
+                "order": 3,
+                "type": "integer",
+                "default": 2,
+                "minimum": 1,
+                "title": "Min chars to start completion",
+                "description": "The minimum number of typed characters required to start a completion"
+            },
+            "completeModules": {
+                "order": 3.5,
+                "type": "boolean",
+                "default": true,
+                "title": "Complete modules",
+                "description": "Parse require()-d modules for type information"
+            },
+            "excludeLowerPriority": {
+                "order": 4,
+                "type": "boolean",
+                "default": false,
+                "title": "Override lower priority providers",
+                "description": "Disable Atom's default keyword-based autocompletion provider and other lower priority providers"
+            },
+            "inclusionPriority": {
+                "order": 5,
+                "type": "integer",
+                "default": 1,
+                "minimum": 0,
+                "title": "Provider inclusion priority",
+                "description": "Priority relative to other autocomplete providers"
+            }
+        },
+        "providedServices": {
+            "autocomplete.provider": {
+                "versions": {
+                    "2.0.0": "getProvider"
+                }
+            },
+            "autocomplete-lua.options-provider": {
+                "versions": {
+                    "1.0.0": "getOptionProviders"
+                }
+            }
+        },
+        "consumedServices": {
+            "autocomplete-lua.options-provider": {
+                "versions": {
+                    "^1.0.0": "onOptionProviders"
+                }
+            }
+        },
+        "author": "",
+        "license": "MIT",
+        "engines": {
+            "atom": "*"
+        },
+        "devDependencies": {
+            "babel-eslint": "^7.0.0",
+            "jsdom": "^9.7.1",
+            "standard": "^8.3.0"
+        },
+        "standard": {
+            "parser": "babel-eslint",
+            "globals": [
+                "__LOG__"
+            ]
+        },
+        "dependencies": {
+            "dapetcu21-luaparse": "^0.2.1",
+            "jsonic": "^0.3.1",
+            "lodash.clonedeepwith": "^4.5.0",
+            "lodash.includes": "^4.3.0"
+        }
+    },
+    "created": 1658335358194,
+    "updated": 1658335358194,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

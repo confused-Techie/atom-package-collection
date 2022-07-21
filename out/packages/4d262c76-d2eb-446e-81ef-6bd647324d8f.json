@@ -1,0 +1,134 @@
+{
+    "name": "test-runner",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/go2sh/test-runner"
+    },
+    "downloads": 3840,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "1.0.1"
+    },
+    "versions": {
+        "1.0.1": {
+            "name": "test-runner",
+            "main": "./dist/package.js",
+            "version": "1.0.1",
+            "description": "Generic test runner interface for atom.",
+            "keywords": [
+                "test-runner",
+                "testing",
+                "tests",
+                "ui"
+            ],
+            "repository": "https://github.com/go2sh/test-runner",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "scripts": {
+                "build": "webpack --config webpack.conf.js"
+            },
+            "consumedServices": {
+                "test-runner-service": {
+                    "versions": {
+                        "^1.0.0": "consumeService"
+                    }
+                }
+            },
+            "dependencies": {
+                "event-kit": "^2.2.0",
+                "jquery": "^3.1.1",
+                "js-yaml": "^3.6.1",
+                "vue": "^2.0.0",
+                "vue-template-compiler": "^2.0.8",
+                "vuex": "^2.0.0",
+                "xterm": "^2.1.0"
+            },
+            "devDependencies": {
+                "babel-core": "^6.18.2",
+                "babel-helper-vue-jsx-merge-props": "^2.0.2",
+                "babel-loader": "^6.2.8",
+                "babel-plugin-syntax-jsx": "^6.18.0",
+                "babel-plugin-transform-object-rest-spread": "^6.19.0",
+                "babel-plugin-transform-vue-jsx": "^3.2.0",
+                "babel-preset-es2015": "^6.18.0",
+                "coffee-loader": "^0.7.2",
+                "coffee-script": "^1.11.1",
+                "cross-env": "^3.1.3",
+                "css-loader": "^0.26.0",
+                "file-loader": "^0.9.0",
+                "less": "^2.7.1",
+                "less-loader": "^2.2.3",
+                "style-loader": "^0.13.1",
+                "vue-loader": "^10.0.0",
+                "webpack": "^1.13.3"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/test-runner/versions/1.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/go2sh/test-runner/tarball/refs/tags/v1.0.1",
+            "sha": "c0ed598a1b2f09293d73ab7e56c2977b4c6ff40d"
+        }
+    },
+    "readme": "# Atom Test Runner\n\nThe atom test-runner package provides a Test Runner interface for atom. It uses\na service to load test runners from other packages.\n\n## Design\nThe package use [vuejs](https://vuejs.org/) as libary for rendering components\nand [vuex](https://vuex.vuejs.org/en/) for state management. This descision has\nbeen made since atom will drop support for the space-pen library some time. The\ncode is then transpilied with webpack to a single file CommonJS2 module.\nSee the [install section](#installation).\n\n### Configuration file\nThe test runner looks for a `.ttrc` at the project root. This is a simple yaml\nfile with the test runner configuration for this project. A example file looks\nlike this:\n``` yaml\n- name: Python Unit Tests\n  runner: pytest\n  package: example.tests.unit\n- name: Python Integration Tests\n  runner: pytest\n  package: example.tests.integration\n```\nThis example has two test configurations for the not yet existing pytest runner.\nThe `runner` key is used to find the corrisponding provider and the `name` is\nshown in the list. Everything else is passed into the runner as options.\n\n## Installation\nYou can install the test runner through the atom package manager. Or clone this\nrepository and run `yarn` or `npm install`.\n\n## Debugging\nIn order debug the changes you'll just have to run webpack in scanner mode and\nreload atom once your changes are saved. For example:\n`webpack --config webpack.config.js -s`\n\n\n## Adding a Test Runner\nTo add a test runner simply create a package that provides a test runner\nservice.\n```\n\"providedServices\": {\n  \"test-runner-service\": {\n    \"versions\": {\n      \"1.0.0\": \"provideTestRunner\"\n    }\n  }\n}\n```\nThe function has to return an object with a key used to identify the runner and\nrunner as class/constructor function. The interface and an example class is\nlocated under lib/model.js. Alternatively you can use the runner in the\n`test-runner-vunit` package as an example.\n\n## Report a bug\nYou can report bugs or feature requests at the [project page](https://github.com/go2sh/test-runner).\n\n## License\nCopyright (c) 2016 Christoph Seitz\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\"Software\"), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\nNONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\nLIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\nOF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\nWITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n",
+    "metadata": {
+        "name": "test-runner",
+        "main": "./dist/package.js",
+        "version": "1.0.1",
+        "description": "Generic test runner interface for atom.",
+        "keywords": [
+            "test-runner",
+            "testing",
+            "tests",
+            "ui"
+        ],
+        "repository": "https://github.com/go2sh/test-runner",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "scripts": {
+            "build": "webpack --config webpack.conf.js"
+        },
+        "consumedServices": {
+            "test-runner-service": {
+                "versions": {
+                    "^1.0.0": "consumeService"
+                }
+            }
+        },
+        "dependencies": {
+            "event-kit": "^2.2.0",
+            "jquery": "^3.1.1",
+            "js-yaml": "^3.6.1",
+            "vue": "^2.0.0",
+            "vue-template-compiler": "^2.0.8",
+            "vuex": "^2.0.0",
+            "xterm": "^2.1.0"
+        },
+        "devDependencies": {
+            "babel-core": "^6.18.2",
+            "babel-helper-vue-jsx-merge-props": "^2.0.2",
+            "babel-loader": "^6.2.8",
+            "babel-plugin-syntax-jsx": "^6.18.0",
+            "babel-plugin-transform-object-rest-spread": "^6.19.0",
+            "babel-plugin-transform-vue-jsx": "^3.2.0",
+            "babel-preset-es2015": "^6.18.0",
+            "coffee-loader": "^0.7.2",
+            "coffee-script": "^1.11.1",
+            "cross-env": "^3.1.3",
+            "css-loader": "^0.26.0",
+            "file-loader": "^0.9.0",
+            "less": "^2.7.1",
+            "less-loader": "^2.2.3",
+            "style-loader": "^0.13.1",
+            "vue-loader": "^10.0.0",
+            "webpack": "^1.13.3"
+        }
+    },
+    "created": 1658429181918,
+    "updated": 1658429181918,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

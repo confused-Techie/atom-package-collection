@@ -1,0 +1,86 @@
+{
+    "name": "submode",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/t9md/atom-submode"
+    },
+    "downloads": 46,
+    "stargazers_count": 3,
+    "releases": {
+        "latest": "0.1.1"
+    },
+    "versions": {
+        "0.1.1": {
+            "name": "submode",
+            "main": "./lib/main",
+            "version": "0.1.1",
+            "description": "activate granular scope for keymap by trigger command",
+            "license": "MIT",
+            "private": true,
+            "repository": "https://github.com/t9md/atom-submode",
+            "engines": {
+                "atom": "^1.15.0"
+            },
+            "configSchema": {
+                "debug": {
+                    "order": 0,
+                    "default": false,
+                    "type": "boolean"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/submode/versions/0.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-submode/tarball/refs/tags/v0.1.1",
+            "sha": "e5e9ce3793e57bf2d9537e451c62fac96063bc51"
+        },
+        "0.1.0": {
+            "name": "submode",
+            "main": "./lib/main",
+            "version": "0.1.0",
+            "description": "activate granular keymap by trigger command",
+            "license": "MIT",
+            "private": true,
+            "repository": "https://github.com/t9md/atom-submode",
+            "engines": {
+                "atom": "^1.15.0"
+            },
+            "configSchema": {
+                "debug": {
+                    "order": 0,
+                    "default": false,
+                    "type": "boolean"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/submode/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-submode/tarball/refs/tags/v0.1.0",
+            "sha": "f18baef31ee3ca21b12260d071cc31aca4b0d8a6"
+        }
+    },
+    "readme": "# atom-submode\n\nactivate granular CSS scope for keymap by trigger command\n\n# Development status\n\nalpha\n\n# What's this?\n\n- This package provides basic mechanism so that you can easily define submode.\n- By adding predefined CSS class name to target element when trigger command was executed.\n- When non-trigger command was executed, remove added CSS class name from target element.\n- Currently target must be one of `atom-workspace`, `atom-text-editor` or `atom-pane`.\n\n# How to use\n\n#### 1. Set configuration in your `config.cson`\n\n- Unlike normal atom packages, you must **directly edit** `config.cson` to add configuration.\n- define each submode spec under `submode.submode` object.\n- when submode is split by `.` and each segment classname is added to target element.\n  - E.g. For `after-save` submode, `atom.workspace.getElement().classList.add(\"after-save\")`\n  - E.g. For `after.move` submode, `atom.workspace.getActiveTextEditor().element.classList(\"after\", \"move\")`\n\n```coffeescript\n  submode:\n    submode:\n      \"after-save\": # submode name\n        target: \"atom-workspace\", # Must be one of [\"atom-workspace\", \"atom-text-editor\", \"atom-pane\"]\n        commands: [\n          \"core:save\" # List of commands which trigger this submode\n        ],\n      \"after.move\":\n        target: \"atom-text-editor\",\n        commands: [\n          \"core:move-up\"\n          \"core:move-down\"\n          \"core:move-right\"\n          \"core:move-left\"\n        ]\n```\n\n#### 2. Define keymap to use defined submode in your `keymap.cson`\n\n```coffeescript\n# after you invoke `core:save`, you can invoke `some:command` by keystroke `a`\n'atom-workspace.after-save':\n  \"a\": \"some:command\"\n\n# after you invoke `core:move-up/down/right/left`, you can invoke `some:command` by keystroke `a`\n'atom-text-editor.after.move':\n  \"a\": \"some:command\"\n```\n\n# Practical example\n\n- If you are [vim-mode-plus](https://atom.io/packages/vim-mode-plus) user\n- And you want to select next tabs by `g t t t t`...(each `t` select `next-tab`).\n- And you want to select previous tabs by `g T T T T`...(each `T` select `previous-tab`).\n- You can do that with following `config.cson` and `keymap.cson`.\n\n`config.cson`\n\n```coffeescript\n  submode:\n    submode:\n      \"gt-mode\":\n        target: \"atom-pane\"\n        commands: [\n          \"vim-mode-plus:next-tab\" # `g t`\n          \"vim-mode-plus:previous-tab\" # `g T`\n        ]\n```\n\n`keymap.cson`\n\n```coffeescript\n'atom-pane.gt-mode':\n  't': 'vim-mode-plus:next-tab'\n  'T': 'vim-mode-plus:previous-tab'\n\n# To win over default `t`(vim-mode-plus:till) in text-editor scope.\n'atom-pane.gt-mode atom-text-editor.vim-mode-plus':\n  't': 'vim-mode-plus:next-tab'\n  'T': 'vim-mode-plus:previous-tab'\n```\n",
+    "metadata": {
+        "name": "submode",
+        "main": "./lib/main",
+        "version": "0.1.1",
+        "description": "activate granular scope for keymap by trigger command",
+        "license": "MIT",
+        "private": true,
+        "repository": "https://github.com/t9md/atom-submode",
+        "engines": {
+            "atom": "^1.15.0"
+        },
+        "configSchema": {
+            "debug": {
+                "order": 0,
+                "default": false,
+                "type": "boolean"
+            }
+        }
+    },
+    "created": 1658428368349,
+    "updated": 1658428368349,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

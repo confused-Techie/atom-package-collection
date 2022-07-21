@@ -1,0 +1,187 @@
+{
+    "name": "atom-sbt-client",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/laughedelic/atom-sbt-client"
+    },
+    "downloads": 1021,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "0.2.0"
+    },
+    "versions": {
+        "0.2.0": {
+            "name": "atom-sbt-client",
+            "main": "./lib/main",
+            "version": "0.2.0",
+            "description": "sbt server support for Atom IDE",
+            "author": {
+                "name": "Alexey Alekhin",
+                "email": "laughedelic@gmail.com",
+                "url": "https://github.com/laughedelic"
+            },
+            "keywords": [
+                "build",
+                "scala",
+                "sbt",
+                "ide",
+                "language-server",
+                "language-server-protocol"
+            ],
+            "repository": "https://github.com/laughedelic/atom-sbt-client",
+            "bugs": "https://github.com/laughedelic/atom-sbt-client/issues",
+            "license": "MPL-2.0",
+            "engines": {
+                "atom": ">=1.21.0 <2.0.0"
+            },
+            "enhancedScopes": [
+                "source.scala"
+            ],
+            "dependencies": {
+                "atom-languageclient": "0.8.2",
+                "atom-package-deps": "4.6.1"
+            },
+            "package-deps": [
+                "language-scala",
+                "atom-ide-ui"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                }
+            },
+            "providedServices": {
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "hyperclick": {
+                    "versions": {
+                        "0.1.0": "provideHyperclick"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-sbt-client/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/laughedelic/atom-sbt-client/tarball/refs/tags/v0.2.0",
+            "sha": "af4928e88b84633e8455f5e770d02cdf29c88dc6"
+        },
+        "0.1.0": {
+            "name": "atom-sbt-client",
+            "main": "./lib/main",
+            "version": "0.1.0",
+            "description": "Atom IDE plugin for the sbt language server",
+            "author": {
+                "name": "Alexey Alekhin",
+                "email": "laughedelic@gmail.com",
+                "url": "https://github.com/laughedelic"
+            },
+            "keywords": [
+                "build",
+                "scala",
+                "sbt",
+                "ide",
+                "language-server",
+                "language-server-protocol"
+            ],
+            "repository": "https://github.com/laughedelic/atom-sbt-client",
+            "bugs": "https://github.com/laughedelic/atom-sbt-client/issues",
+            "license": "LGPL-3.0+",
+            "engines": {
+                "atom": ">=1.21.0 <2.0.0"
+            },
+            "enhancedScopes": [
+                "source.scala"
+            ],
+            "dependencies": {
+                "atom-languageclient": "0.6.7"
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-sbt-client/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/laughedelic/atom-sbt-client/tarball/refs/tags/v0.1.0",
+            "sha": "7020aa69f7636e68eb0c9c7385a4ff161ec205d7"
+        }
+    },
+    "readme": "# Atom sbt client\n\n[![](https://img.shields.io/github/release/laughedelic/atom-sbt-client/all.svg)](https://github.com/laughedelic/atom-sbt-client/releases/latest)\n[![](https://img.shields.io/badge/license-MPL--2.0-blue.svg)](https://www.tldrlegal.com/l/mpl-2.0)\n[![](https://img.shields.io/badge/contact-gitter_chat-dd1054.svg)](https://gitter.im/laughedelic/atom-sbt-client)\n\nThis is an Atom plugin integrating [sbt server](https://developer.lightbend.com/blog/2017-11-30-sbt-1-1-0-RC1-sbt-server/#sbt-server) with the [Atom IDE](https://ide.atom.io) interface.\n\nIt connects to a running sbt instance and communicates with it using [Language Server Protocol](https://github.com/Microsoft/language-server-protocol). Atom sends event notifications to sbt (like `didSave`), in response sbt recompiles the project and sends back information about warnings and errors which are displayed in Atom:\n\n<img src=\"https://user-images.githubusercontent.com/766656/32409435-015c59b0-c1ac-11e7-9de7-c3c45ae5e44e.png\">\n\n## Installation\n\nYou can install it using Atom interface or by running this command:\n\n```\napm install atom-sbt-client\n```\n\nOn the first launch it will automatically install its dependencies if needed:\n+ [language-scala](https://github.com/atom-community/language-scala) for basic Scala syntax highlighting\n+ [atom-ide-ui](https://github.com/facebook-atom/atom-ide-ui) for the Atom IDE interface\n\n\n## Usage\n\n1. Go to a Scala project and launch sbt (`project/build.properties` should set sbt version to 1.1.0 or higher)\n2. Open this project in Atom, open any Scala file and save it.\n\nIt should trigger compilation and if there are any errors, you should see them in the gutter and in the diagnostics panel.\n\nAnother feature is jump-to-definition, which works for _some_ types in the project.\n\nNote that despite the debug logging in the sbt shell, you can still use it directly. It's just a normal sbt shell which additionally communicates with Atom.\n\n## Related links\n\n* sbt server support in other editors:\n    + [VS Code](https://developer.lightbend.com/blog/2017-11-30-sbt-1-1-0-RC1-sbt-server/#vs-code-extension)\n    + [Sublime Text 3](http://eed3si9n.com/sbt-server-with-sublime-text3)\n    + [Neovim](http://eed3si9n.com/sbt-server-with-neovim)\n* [atom-ide-scala](https://github.com/laughedelic/atom-ide-scala) is a similar plugin integrating Atom IDE UI with the [metals](https://github.com/scalameta/metals) language server\n",
+    "metadata": {
+        "name": "atom-sbt-client",
+        "main": "./lib/main",
+        "version": "0.2.0",
+        "description": "sbt server support for Atom IDE",
+        "author": {
+            "name": "Alexey Alekhin",
+            "email": "laughedelic@gmail.com",
+            "url": "https://github.com/laughedelic"
+        },
+        "keywords": [
+            "build",
+            "scala",
+            "sbt",
+            "ide",
+            "language-server",
+            "language-server-protocol"
+        ],
+        "repository": "https://github.com/laughedelic/atom-sbt-client",
+        "bugs": "https://github.com/laughedelic/atom-sbt-client/issues",
+        "license": "MPL-2.0",
+        "engines": {
+            "atom": ">=1.21.0 <2.0.0"
+        },
+        "enhancedScopes": [
+            "source.scala"
+        ],
+        "dependencies": {
+            "atom-languageclient": "0.8.2",
+            "atom-package-deps": "4.6.1"
+        },
+        "package-deps": [
+            "language-scala",
+            "atom-ide-ui"
+        ],
+        "consumedServices": {
+            "linter-indie": {
+                "versions": {
+                    "2.0.0": "consumeLinterV2"
+                }
+            },
+            "atom-ide-busy-signal": {
+                "versions": {
+                    "0.1.0": "consumeBusySignal"
+                }
+            }
+        },
+        "providedServices": {
+            "definitions": {
+                "versions": {
+                    "0.1.0": "provideDefinitions"
+                }
+            },
+            "hyperclick": {
+                "versions": {
+                    "0.1.0": "provideHyperclick"
+                }
+            }
+        }
+    },
+    "created": 1658333921933,
+    "updated": 1658333921933,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

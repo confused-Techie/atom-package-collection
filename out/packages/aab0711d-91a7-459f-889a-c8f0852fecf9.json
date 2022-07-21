@@ -1,0 +1,92 @@
+{
+    "name": "persistent-grammars",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/SiriusStarr/persistent-grammars"
+    },
+    "downloads": 122,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "1.0.0"
+    },
+    "versions": {
+        "1.0.0": {
+            "name": "persistent-grammars",
+            "main": "./lib/persistent-grammars",
+            "version": "1.0.0",
+            "description": "An Atom package for remembering custom grammars.",
+            "activationEvents": [],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/SiriusStarr/persistent-grammars.git"
+            },
+            "bugs": {
+                "url": "https://github.com/SiriusStarr/persistent-grammars/issues"
+            },
+            "licenses": [
+                {
+                    "type": "MIT",
+                    "url": "https://github.com/SiriusStarr/persistent-grammars/raw/master/LICENSE.md"
+                }
+            ],
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "keywords": [
+                "grammar",
+                "grammars",
+                "remember",
+                "persistent",
+                "custom"
+            ],
+            "dependencies": {
+                "fs-plus": ">=3.0.0",
+                "xregexp": "^2.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/persistent-grammars/versions/1.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/SiriusStarr/persistent-grammars/tarball/refs/tags/v1.0.0",
+            "sha": "4b8fdf0eb59955e56f75ae74494128ed6933b478"
+        }
+    },
+    "readme": "# persistent-grammars package\n\nThis simple Atom package makes Atom remember custom grammars you set for files through them being closed/reopened, rather than having to set them every time you open the file.\n\n## Installation\n\n1. `apm install persistent-grammars`\n\n## Function\n\nCustom grammars are saved in a file named `.atomgrammars` in the folder they reside in.  As such, it may be worth adding this file to your `.gitignore` or equivalent if you use this package.\n\n## Usage\n\n\n## Settings\n\nProvided through Atom's interface.  You may set a custom name for the `.atomgrammars` file if you so desire; this comes with a number of downsides described in the **Known Issues** section below, however, and is not recommended.\n\n## Known Issues\n\nGrammar files get moved a lot while typing in a custom name.  This seems to be an unavoidable aspect of `atom.config.onDidChange`, since it calls an update on every single change rather than waiting for the field to lose focus or any such thing.\n\nExtant files will (thankfully) not be clobbered by moving the grammar file storage location.  They will get moved out of the way, however.  You will receive a warning about this, so it's not catastrophic.\n\nIf you change the location that persistent-grammars stores its info, grammar files will only be moved for open projects.  Any projects that are closed will need to have their files moved manually, unless they were using the default name.  This probably will not be fixed, since it'd require remembering all past custom names used.  As such, we do not recommend you mess around with custom names for the `.atomgrammars` if you've extensively used the package already.\n\nIf the `.atomgrammars` file appears to have invalid entries in it, `persistent-grammars` will disable itself.  This is to avoid possible data loss, as ignoring the invalid line and then updating it would lead to overwriting the file, which if it were not a grammar file but some other file would be a bad thing.  If you run into this issue and there is **not** a non-grammar file at the location, please report the issue and include the contents of the file.\n",
+    "metadata": {
+        "name": "persistent-grammars",
+        "main": "./lib/persistent-grammars",
+        "version": "1.0.0",
+        "description": "An Atom package for remembering custom grammars.",
+        "activationEvents": [],
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/SiriusStarr/persistent-grammars.git"
+        },
+        "bugs": {
+            "url": "https://github.com/SiriusStarr/persistent-grammars/issues"
+        },
+        "licenses": [
+            {
+                "type": "MIT",
+                "url": "https://github.com/SiriusStarr/persistent-grammars/raw/master/LICENSE.md"
+            }
+        ],
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "keywords": [
+            "grammar",
+            "grammars",
+            "remember",
+            "persistent",
+            "custom"
+        ],
+        "dependencies": {
+            "fs-plus": ">=3.0.0",
+            "xregexp": "^2.0.0"
+        }
+    },
+    "created": 1658360648725,
+    "updated": 1658360648725,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

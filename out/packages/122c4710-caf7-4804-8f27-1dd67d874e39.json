@@ -1,0 +1,2012 @@
+{
+    "name": "ide-java",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/atom/ide-java"
+    },
+    "downloads": 372369,
+    "stargazers_count": 81,
+    "releases": {
+        "latest": "0.9.1"
+    },
+    "versions": {
+        "0.9.1": {
+            "name": "ide-java",
+            "main": "./lib/main",
+            "version": "0.9.1",
+            "description": "Java language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-java",
+            "license": "MIT",
+            "scripts": {
+                "test": "atom --test test"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javaHome": {
+                    "order": 10,
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path to Java 8 or later home folder used to launch the Java language server."
+                },
+                "virtualMachine": {
+                    "order": 20,
+                    "type": "object",
+                    "properties": {
+                        "extraArgs": {
+                            "type": "string",
+                            "default": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication",
+                            "description": "Extra arguments passed to the Java VM when launching the Java Language Server. Eg. use `-noverify -Xmx1G  -XX:+UseG1GC -XX:+UseStringDeduplication` to bypass class verification, increase the heap size to 1GB and enable String deduplication with the G1 Garbage collector."
+                        }
+                    }
+                },
+                "server": {
+                    "order": 30,
+                    "type": "object",
+                    "title": "Language Server",
+                    "description": "Settings that control language server functionality.",
+                    "properties": {
+                        "configuration": {
+                            "type": "object",
+                            "title": "Project Configuration",
+                            "properties": {
+                                "updateBuildConfiguration": {
+                                    "type": "string",
+                                    "title": "Update Build Configuration",
+                                    "enum": [
+                                        {
+                                            "value": "disabled",
+                                            "description": "Never"
+                                        },
+                                        {
+                                            "value": "interactive",
+                                            "description": "Ask every time"
+                                        },
+                                        {
+                                            "value": "automatic",
+                                            "description": "Always"
+                                        }
+                                    ],
+                                    "default": "interactive",
+                                    "description": "Whether to automatically update the project configuration when build files change."
+                                }
+                            }
+                        },
+                        "signatureHelp": {
+                            "type": "object",
+                            "title": "Signature Help",
+                            "properties": {
+                                "enabled": {
+                                    "type": "boolean",
+                                    "title": "Enabled",
+                                    "default": true,
+                                    "description": "Controls whether signature help is enabled."
+                                }
+                            }
+                        },
+                        "errors": {
+                            "type": "object",
+                            "title": "Warnings and Errors",
+                            "properties": {
+                                "incompleteClasspath": {
+                                    "type": "object",
+                                    "title": "Incomplete Classpath",
+                                    "properties": {
+                                        "severity": {
+                                            "type": "string",
+                                            "title": "Incomplete Classpath Severity",
+                                            "enum": [
+                                                "ignore",
+                                                "info",
+                                                "warning",
+                                                "error"
+                                            ],
+                                            "default": "warning",
+                                            "description": "Severity of the message when the classpath is incomplete for a Java file."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "atomTestRunner": "./test/runner",
+            "dependencies": {
+                "atom-languageclient": "0.9.9",
+                "atom-select-list": "^0.7.1",
+                "decompress": "^4.2.0"
+            },
+            "devDependencies": {
+                "atom-mocha-test-runner": "^1.0.1",
+                "chai": "^3.5.0",
+                "chai-as-promised": "^5.3.0",
+                "mocha": "^3.4.2",
+                "mocha-appveyor-reporter": "^0.4.0",
+                "mocha-junit-and-console-reporter": "^1.6.0"
+            },
+            "enhancedScopes": [
+                "source.java"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-java/versions/0.9.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-java/tarball/refs/tags/v0.9.1",
+            "sha": "c0379efa55d5273773d9d5e1b67790dbb784f34d"
+        },
+        "0.9.0": {
+            "name": "ide-java",
+            "main": "./lib/main",
+            "version": "0.9.0",
+            "description": "Java language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-java",
+            "license": "MIT",
+            "scripts": {
+                "test": "atom --test test"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javaHome": {
+                    "order": 10,
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path to Java 8 or later home folder used to launch the Java language server."
+                },
+                "virtualMachine": {
+                    "order": 20,
+                    "type": "object",
+                    "properties": {
+                        "extraArgs": {
+                            "type": "string",
+                            "default": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication",
+                            "description": "Extra arguments passed to the Java VM when launching the Java Language Server. Eg. use `-noverify -Xmx1G  -XX:+UseG1GC -XX:+UseStringDeduplication` to bypass class verification, increase the heap size to 1GB and enable String deduplication with the G1 Garbage collector."
+                        }
+                    }
+                },
+                "errors": {
+                    "order": 30,
+                    "type": "object",
+                    "title": "Warnings and Errors",
+                    "properties": {
+                        "incompleteClasspathSeverity": {
+                            "type": "string",
+                            "title": "Incomplete Classpath Severity",
+                            "enum": [
+                                "ignore",
+                                "info",
+                                "warning",
+                                "error"
+                            ],
+                            "default": "warning",
+                            "description": "Severity of the message when the classpath is incomplete for a Java file."
+                        }
+                    }
+                }
+            },
+            "atomTestRunner": "./test/runner",
+            "dependencies": {
+                "atom-languageclient": "0.9.5",
+                "atom-select-list": "^0.7.1",
+                "decompress": "^4.2.0"
+            },
+            "devDependencies": {
+                "atom-mocha-test-runner": "^1.0.1",
+                "chai": "^3.5.0",
+                "chai-as-promised": "^5.3.0",
+                "mocha": "^3.4.2",
+                "mocha-appveyor-reporter": "^0.4.0",
+                "mocha-junit-and-console-reporter": "^1.6.0"
+            },
+            "enhancedScopes": [
+                "source.java"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-java/versions/0.9.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-java/tarball/refs/tags/v0.9.0",
+            "sha": "cd64351a1be1090ce3c85ad319632776eb6f18cb"
+        },
+        "0.8.3": {
+            "name": "ide-java",
+            "main": "./lib/main",
+            "version": "0.8.3",
+            "description": "Java language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-java",
+            "license": "MIT",
+            "scripts": {
+                "test": "atom --test test"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javaHome": {
+                    "order": 10,
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path to Java 8 or later home folder used to launch the Java language server."
+                },
+                "virtualMachine": {
+                    "order": 20,
+                    "type": "object",
+                    "properties": {
+                        "extraArgs": {
+                            "type": "string",
+                            "default": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication",
+                            "description": "Extra arguments passed to the Java VM when launching the Java Language Server. Eg. use `-noverify -Xmx1G  -XX:+UseG1GC -XX:+UseStringDeduplication` to bypass class verification, increase the heap size to 1GB and enable String deduplication with the G1 Garbage collector."
+                        }
+                    }
+                },
+                "errors": {
+                    "order": 30,
+                    "type": "object",
+                    "title": "Warnings and Errors",
+                    "properties": {
+                        "incompleteClasspathSeverity": {
+                            "type": "string",
+                            "title": "Incomplete Classpath Severity",
+                            "enum": [
+                                "ignore",
+                                "info",
+                                "warning",
+                                "error"
+                            ],
+                            "default": "warning",
+                            "description": "Severity of the message when the classpath is incomplete for a Java file."
+                        }
+                    }
+                }
+            },
+            "atomTestRunner": "./test/runner",
+            "dependencies": {
+                "atom-languageclient": "0.9.5",
+                "atom-select-list": "^0.7.1",
+                "decompress": "^4.2.0"
+            },
+            "devDependencies": {
+                "atom-mocha-test-runner": "^1.0.1",
+                "chai": "^3.5.0",
+                "chai-as-promised": "^5.3.0",
+                "mocha": "^3.4.2",
+                "mocha-appveyor-reporter": "^0.4.0",
+                "mocha-junit-and-console-reporter": "^1.6.0"
+            },
+            "enhancedScopes": [
+                "source.java"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-java/versions/0.8.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-java/tarball/refs/tags/v0.8.3",
+            "sha": "f92dfa907fd7ae7d71a917ebe14d671625581b43"
+        },
+        "0.8.2": {
+            "name": "ide-java",
+            "main": "./lib/main",
+            "version": "0.8.2",
+            "description": "Java language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-java",
+            "license": "MIT",
+            "scripts": {
+                "test": "atom --test test"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javaHome": {
+                    "order": 10,
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path to Java 8 or later home folder used to launch the Java language server."
+                },
+                "virtualMachine": {
+                    "order": 20,
+                    "type": "object",
+                    "properties": {
+                        "extraArgs": {
+                            "type": "string",
+                            "default": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication",
+                            "description": "Extra arguments passed to the Java VM when launching the Java Language Server. Eg. use `-noverify -Xmx1G  -XX:+UseG1GC -XX:+UseStringDeduplication` to bypass class verification, increase the heap size to 1GB and enable String deduplication with the G1 Garbage collector."
+                        }
+                    }
+                },
+                "errors": {
+                    "order": 30,
+                    "type": "object",
+                    "title": "Warnings and Errors",
+                    "properties": {
+                        "incompleteClasspathSeverity": {
+                            "type": "string",
+                            "title": "Incomplete Classpath Severity",
+                            "enum": [
+                                "ignore",
+                                "info",
+                                "warning",
+                                "error"
+                            ],
+                            "default": "warning",
+                            "description": "Severity of the message when the classpath is incomplete for a Java file."
+                        }
+                    }
+                }
+            },
+            "atomTestRunner": "./test/runner",
+            "dependencies": {
+                "atom-languageclient": "0.9.3",
+                "decompress": "^4.2.0"
+            },
+            "devDependencies": {
+                "atom-mocha-test-runner": "^1.0.1",
+                "chai": "^3.5.0",
+                "chai-as-promised": "^5.3.0",
+                "mocha": "^3.4.2",
+                "mocha-appveyor-reporter": "^0.4.0",
+                "mocha-junit-and-console-reporter": "^1.6.0"
+            },
+            "enhancedScopes": [
+                "source.java"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-java/versions/0.8.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-java/tarball/refs/tags/v0.8.2",
+            "sha": "9e71d25fdfeabca16158a35eff4ab27ec107bacf"
+        },
+        "0.8.1": {
+            "name": "ide-java",
+            "main": "./lib/main",
+            "version": "0.8.1",
+            "description": "Java language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-java",
+            "license": "MIT",
+            "scripts": {
+                "test": "atom --test test"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javaHome": {
+                    "order": 10,
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path to Java 8 or later home folder used to launch the Java language server."
+                },
+                "virtualMachine": {
+                    "order": 20,
+                    "type": "object",
+                    "properties": {
+                        "extraArgs": {
+                            "type": "string",
+                            "default": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication",
+                            "description": "Extra arguments passed to the Java VM when launching the Java Language Server. Eg. use `-noverify -Xmx1G  -XX:+UseG1GC -XX:+UseStringDeduplication` to bypass class verification, increase the heap size to 1GB and enable String deduplication with the G1 Garbage collector."
+                        }
+                    }
+                },
+                "errors": {
+                    "order": 30,
+                    "type": "object",
+                    "title": "Warnings and Errors",
+                    "properties": {
+                        "incompleteClasspathSeverity": {
+                            "type": "string",
+                            "title": "Incomplete Classpath Severity",
+                            "enum": [
+                                "ignore",
+                                "info",
+                                "warning",
+                                "error"
+                            ],
+                            "default": "warning",
+                            "description": "Severity of the message when the classpath is incomplete for a Java file."
+                        }
+                    }
+                }
+            },
+            "atomTestRunner": "./test/runner",
+            "dependencies": {
+                "atom-languageclient": "0.9.1",
+                "decompress": "^4.2.0"
+            },
+            "devDependencies": {
+                "atom-mocha-test-runner": "^1.0.1",
+                "chai": "^3.5.0",
+                "chai-as-promised": "^5.3.0",
+                "mocha": "^3.4.2",
+                "mocha-appveyor-reporter": "^0.4.0",
+                "mocha-junit-and-console-reporter": "^1.6.0"
+            },
+            "enhancedScopes": [
+                "source.java"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-java/versions/0.8.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-java/tarball/refs/tags/v0.8.1",
+            "sha": "7462aaaaa288233d353ec11702a5837f41b75f5a"
+        },
+        "0.8.0": {
+            "name": "ide-java",
+            "main": "./lib/main",
+            "version": "0.8.0",
+            "description": "Java language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-java",
+            "license": "MIT",
+            "scripts": {
+                "test": "atom --test test"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javaHome": {
+                    "order": 10,
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path to Java 8 or later home folder used to launch the Java language server."
+                },
+                "virtualMachine": {
+                    "order": 20,
+                    "type": "object",
+                    "properties": {
+                        "extraArgs": {
+                            "type": "string",
+                            "default": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication",
+                            "description": "Extra arguments passed to the Java VM when launching the Java Language Server. Eg. use `-noverify -Xmx1G  -XX:+UseG1GC -XX:+UseStringDeduplication` to bypass class verification, increase the heap size to 1GB and enable String deduplication with the G1 Garbage collector."
+                        }
+                    }
+                },
+                "errors": {
+                    "order": 30,
+                    "type": "object",
+                    "title": "Warnings and Errors",
+                    "properties": {
+                        "incompleteClasspathSeverity": {
+                            "type": "string",
+                            "title": "Incomplete Classpath Severity",
+                            "enum": [
+                                "ignore",
+                                "info",
+                                "warning",
+                                "error"
+                            ],
+                            "default": "warning",
+                            "description": "Severity of the message when the classpath is incomplete for a Java file."
+                        }
+                    }
+                }
+            },
+            "atomTestRunner": "./test/runner",
+            "dependencies": {
+                "atom-languageclient": "0.9.0",
+                "decompress": "^4.2.0"
+            },
+            "devDependencies": {
+                "atom-mocha-test-runner": "^1.0.1",
+                "chai": "^3.5.0",
+                "chai-as-promised": "^5.3.0",
+                "mocha": "^3.4.2",
+                "mocha-appveyor-reporter": "^0.4.0",
+                "mocha-junit-and-console-reporter": "^1.6.0"
+            },
+            "enhancedScopes": [
+                "source.java"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-java/versions/0.8.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-java/tarball/refs/tags/v0.8.0",
+            "sha": "178b3fcdf42edd89e829fd92bd4355741b5b349f"
+        },
+        "0.7.0": {
+            "name": "ide-java",
+            "main": "./lib/main",
+            "version": "0.7.0",
+            "description": "Java language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-java",
+            "license": "MIT",
+            "scripts": {
+                "test": "atom --test test"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javaHome": {
+                    "order": 10,
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path to Java 8 or later home folder used to launch the Java language server."
+                },
+                "virtualMachine": {
+                    "order": 20,
+                    "type": "object",
+                    "properties": {
+                        "extraArgs": {
+                            "type": "string",
+                            "default": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication",
+                            "description": "Extra arguments passed to the Java VM when launching the Java Language Server. Eg. use `-noverify -Xmx1G  -XX:+UseG1GC -XX:+UseStringDeduplication` to bypass class verification, increase the heap size to 1GB and enable String deduplication with the G1 Garbage collector."
+                        }
+                    }
+                },
+                "errors": {
+                    "order": 30,
+                    "type": "object",
+                    "title": "Warnings and Errors",
+                    "properties": {
+                        "incompleteClasspathSeverity": {
+                            "type": "string",
+                            "title": "Incomplete Classpath Severity",
+                            "enum": [
+                                "ignore",
+                                "info",
+                                "warning",
+                                "error"
+                            ],
+                            "default": "warning",
+                            "description": "Severity of the message when the classpath is incomplete for a Java file."
+                        }
+                    }
+                }
+            },
+            "atomTestRunner": "./test/runner",
+            "dependencies": {
+                "atom-languageclient": "^0.7.0",
+                "decompress": "^4.2.0"
+            },
+            "devDependencies": {
+                "atom-mocha-test-runner": "^1.0.1",
+                "chai": "^3.5.0",
+                "chai-as-promised": "^5.3.0",
+                "mocha": "^3.4.2",
+                "mocha-appveyor-reporter": "^0.4.0",
+                "mocha-junit-and-console-reporter": "^1.6.0"
+            },
+            "enhancedScopes": [
+                "source.java"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-java/versions/0.7.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-java/tarball/refs/tags/v0.7.0",
+            "sha": "3952d6a8d5fb725b7dd8d165817076bc15496221"
+        },
+        "0.6.8": {
+            "name": "ide-java",
+            "main": "./lib/main",
+            "version": "0.6.8",
+            "description": "Java language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-java",
+            "license": "MIT",
+            "scripts": {
+                "test": "atom --test test"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javaHome": {
+                    "order": 10,
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path to Java 8 or later home folder used to launch the Java language server."
+                },
+                "virtualMachine": {
+                    "order": 20,
+                    "type": "object",
+                    "properties": {
+                        "extraArgs": {
+                            "type": "string",
+                            "default": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication",
+                            "description": "Extra arguments passed to the Java VM when launching the Java Language Server. Eg. use `-noverify -Xmx1G  -XX:+UseG1GC -XX:+UseStringDeduplication` to bypass class verification, increase the heap size to 1GB and enable String deduplication with the G1 Garbage collector."
+                        }
+                    }
+                },
+                "errors": {
+                    "order": 30,
+                    "type": "object",
+                    "title": "Warnings and Errors",
+                    "properties": {
+                        "incompleteClasspathSeverity": {
+                            "type": "string",
+                            "title": "Incomplete Classpath Severity",
+                            "enum": [
+                                "ignore",
+                                "info",
+                                "warning",
+                                "error"
+                            ],
+                            "default": "warning",
+                            "description": "Severity of the message when the classpath is incomplete for a Java file."
+                        }
+                    }
+                }
+            },
+            "atomTestRunner": "./test/runner",
+            "dependencies": {
+                "atom-languageclient": "^0.6.5",
+                "decompress": "^4.2.0"
+            },
+            "devDependencies": {
+                "atom-mocha-test-runner": "^1.0.1",
+                "chai": "^3.5.0",
+                "chai-as-promised": "^5.3.0",
+                "mocha": "^3.4.2",
+                "mocha-appveyor-reporter": "^0.4.0",
+                "mocha-junit-and-console-reporter": "^1.6.0"
+            },
+            "enhancedScopes": [
+                "source.java"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-java/versions/0.6.8/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-java/tarball/refs/tags/v0.6.8",
+            "sha": "99cc9b686a14e4c5ea0401e25ae508e7be60a779"
+        },
+        "0.6.7": {
+            "name": "ide-java",
+            "main": "./lib/main",
+            "version": "0.6.7",
+            "description": "Java language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-java",
+            "license": "MIT",
+            "scripts": {
+                "test": "atom --test test"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javaHome": {
+                    "order": 10,
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path to Java 8 or later home folder used to launch the Java language server."
+                },
+                "virtualMachine": {
+                    "order": 20,
+                    "type": "object",
+                    "properties": {
+                        "extraArgs": {
+                            "type": "string",
+                            "default": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication",
+                            "description": "Extra arguments passed to the Java VM when launching the Java Language Server. Eg. use `-noverify -Xmx1G  -XX:+UseG1GC -XX:+UseStringDeduplication` to bypass class verification, increase the heap size to 1GB and enable String deduplication with the G1 Garbage collector."
+                        }
+                    }
+                },
+                "errors": {
+                    "order": 30,
+                    "type": "object",
+                    "title": "Warnings and Errors",
+                    "properties": {
+                        "incompleteClasspathSeverity": {
+                            "type": "string",
+                            "title": "Incomplete Classpath Severity",
+                            "enum": [
+                                "ignore",
+                                "info",
+                                "warning",
+                                "error"
+                            ],
+                            "default": "warning",
+                            "description": "Severity of the message when the classpath is incomplete for a Java file."
+                        }
+                    }
+                }
+            },
+            "atomTestRunner": "./test/runner",
+            "dependencies": {
+                "atom-languageclient": "^0.6.5",
+                "decompress": "^4.2.0"
+            },
+            "devDependencies": {
+                "atom-mocha-test-runner": "^1.0.1",
+                "chai": "^3.5.0",
+                "chai-as-promised": "^5.3.0",
+                "mocha": "^3.4.2",
+                "mocha-appveyor-reporter": "^0.4.0",
+                "mocha-junit-and-console-reporter": "^1.6.0"
+            },
+            "enhancedScopes": [
+                "source.java"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-java/versions/0.6.7/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-java/tarball/refs/tags/v0.6.7",
+            "sha": "949f8a336d7f853ffec7d727cc0b1d04294b5736"
+        },
+        "0.6.6": {
+            "name": "ide-java",
+            "main": "./lib/main",
+            "version": "0.6.6",
+            "description": "Java language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-java",
+            "license": "MIT",
+            "scripts": {
+                "test": "atom --test test"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javaHome": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path to Java 8 or later home folder used to launch the Java language server."
+                }
+            },
+            "atomTestRunner": "./test/runner",
+            "dependencies": {
+                "atom-languageclient": "^0.6.5",
+                "decompress": "^4.2.0"
+            },
+            "devDependencies": {
+                "atom-mocha-test-runner": "^1.0.1",
+                "chai": "^3.5.0",
+                "chai-as-promised": "^5.3.0",
+                "mocha": "^3.4.2",
+                "mocha-appveyor-reporter": "^0.4.0",
+                "mocha-junit-and-console-reporter": "^1.6.0"
+            },
+            "enhancedScopes": [
+                "source.java"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-java/versions/0.6.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-java/tarball/refs/tags/v0.6.6",
+            "sha": "4c926a8eeb81d11dea17e75481adc10b1ade8653"
+        },
+        "0.6.5": {
+            "name": "ide-java",
+            "main": "./lib/main",
+            "version": "0.6.5",
+            "description": "Java language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-java",
+            "license": "MIT",
+            "scripts": {
+                "test": "atom --test test"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javaHome": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path to Java 8 or later home folder used to launch the Java language server."
+                }
+            },
+            "atomTestRunner": "./test/runner",
+            "dependencies": {
+                "atom-languageclient": "^0.6.4",
+                "decompress": "^4.2.0"
+            },
+            "devDependencies": {
+                "atom-mocha-test-runner": "^1.0.1",
+                "chai": "^3.5.0",
+                "chai-as-promised": "^5.3.0",
+                "mocha": "^3.4.2",
+                "mocha-appveyor-reporter": "^0.4.0",
+                "mocha-junit-and-console-reporter": "^1.6.0"
+            },
+            "enhancedScopes": [
+                "source.java"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-java/versions/0.6.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-java/tarball/refs/tags/v0.6.5",
+            "sha": "77851199271e94d83eadfff01fc414972555389a"
+        },
+        "0.6.4": {
+            "name": "ide-java",
+            "main": "./lib/main",
+            "version": "0.6.4",
+            "description": "Java language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-java",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javaHome": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path to Java 8 home folder used to launch the Java language server."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.4",
+                "decompress": "^4.2.0"
+            },
+            "enhancedScopes": [
+                "source.java"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-java/versions/0.6.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-java/tarball/refs/tags/v0.6.4",
+            "sha": "c6ab8392be52c15b9adfc43525347e405eb84a8e"
+        },
+        "0.6.3": {
+            "name": "ide-java",
+            "main": "./lib/main",
+            "version": "0.6.3",
+            "description": "Java language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-java",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javaHome": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path to Java 8 home folder used to launch the Java language server."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.4",
+                "decompress": "^4.2.0"
+            },
+            "enhancedScopes": [
+                "source.java"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-java/versions/0.6.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-java/tarball/refs/tags/v0.6.3",
+            "sha": "0dc0dc0e7328e49432f7441c6401d07e240e5038"
+        },
+        "0.6.2": {
+            "name": "ide-java",
+            "main": "./lib/main",
+            "version": "0.6.2",
+            "description": "Java language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-java",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javaHome": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path to Java 8 home folder used to launch the Java language server."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.4",
+                "decompress": "^4.2.0"
+            },
+            "enhancedScopes": [
+                "source.java"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-java/versions/0.6.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-java/tarball/refs/tags/v0.6.2",
+            "sha": "db0652f1e1ddbcb2e02adaa092007d08e99c96f2"
+        },
+        "0.6.1": {
+            "name": "ide-java",
+            "main": "./lib/main",
+            "version": "0.6.1",
+            "description": "Java language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-java",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javaHome": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path to Java 8 home folder used to launch the Java language server."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.4",
+                "decompress": "^4.2.0"
+            },
+            "enhancedScopes": [
+                "source.java"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-java/versions/0.6.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-java/tarball/refs/tags/v0.6.1",
+            "sha": "90e1f97b90fad7cca8cc30ce25ba0814b52e1af8"
+        },
+        "0.6.0": {
+            "name": "ide-java",
+            "main": "./lib/main",
+            "version": "0.6.0",
+            "description": "Java language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-java",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javaHome": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path to Java 8 home folder used to launch the Java language server."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.1",
+                "decompress": "^4.2.0"
+            },
+            "enhancedScopes": [
+                "source.java"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-java/versions/0.6.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-java/tarball/refs/tags/v0.6.0",
+            "sha": "68381e506ed5ef0615ad7e958013a0d62ff079b1"
+        }
+    },
+    "readme": "# IDE-Java package\n[![macOS Build Status](https://travis-ci.org/atom/ide-java.svg?branch=master)](https://travis-ci.org/atom/id4e-java) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/1jvknxt9jhykgrxo?svg=true)](https://ci.appveyor.com/project/Atom/ide-java/branch/master) [![Dependency Status](https://david-dm.org/atom/ide-java.svg)](https://david-dm.org/atom/ide-java)\n\nJava language support for Atom-IDE, powered by the [Eclipse JDT language server](https://github.com/eclipse/eclipse.jdt.ls).\n\n![Screenshot of IDE-Java](https://user-images.githubusercontent.com/118951/30291233-0b6e04ac-96e7-11e7-9aa8-3cc6143537c1.png)\n\n## Early access\nThis package is currently an early access release.  You should also install the [atom-ide-ui](https://atom.io/packages/atom-ide-ui) package to expose the functionality within Atom.\n\n## Features\n\n* Auto completion\n* Code format\n* Diagnostics (errors & warnings)\n* Document outline\n* Find references\n* Go to definition\n* Hover\n* Reference highlighting\n* Signature help\n\n## Contributing\nAlways feel free to help out!  Whether it's [filing bugs and feature requests](https://github.com/atom/languageserver-java/issues/new) or working on some of the [open issues](https://github.com/atom/languageserver-java/issues), Atom's [contributing guide](https://github.com/atom/atom/blob/master/CONTRIBUTING.md) will help get you started while the [guide for contributing to packages](https://github.com/atom/atom/blob/master/docs/contributing-to-packages.md) has some extra information.\n\n## License\nMIT License.  See [the license](LICENSE.md) for more details.\n",
+    "metadata": {
+        "name": "ide-java",
+        "main": "./lib/main",
+        "version": "0.9.1",
+        "description": "Java language support for Atom-IDE.",
+        "repository": "https://github.com/atom/ide-java",
+        "license": "MIT",
+        "scripts": {
+            "test": "atom --test test"
+        },
+        "engines": {
+            "atom": ">=1.21.0"
+        },
+        "configSchema": {
+            "javaHome": {
+                "order": 10,
+                "type": "string",
+                "default": "",
+                "description": "Absolute path to Java 8 or later home folder used to launch the Java language server."
+            },
+            "virtualMachine": {
+                "order": 20,
+                "type": "object",
+                "properties": {
+                    "extraArgs": {
+                        "type": "string",
+                        "default": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication",
+                        "description": "Extra arguments passed to the Java VM when launching the Java Language Server. Eg. use `-noverify -Xmx1G  -XX:+UseG1GC -XX:+UseStringDeduplication` to bypass class verification, increase the heap size to 1GB and enable String deduplication with the G1 Garbage collector."
+                    }
+                }
+            },
+            "server": {
+                "order": 30,
+                "type": "object",
+                "title": "Language Server",
+                "description": "Settings that control language server functionality.",
+                "properties": {
+                    "configuration": {
+                        "type": "object",
+                        "title": "Project Configuration",
+                        "properties": {
+                            "updateBuildConfiguration": {
+                                "type": "string",
+                                "title": "Update Build Configuration",
+                                "enum": [
+                                    {
+                                        "value": "disabled",
+                                        "description": "Never"
+                                    },
+                                    {
+                                        "value": "interactive",
+                                        "description": "Ask every time"
+                                    },
+                                    {
+                                        "value": "automatic",
+                                        "description": "Always"
+                                    }
+                                ],
+                                "default": "interactive",
+                                "description": "Whether to automatically update the project configuration when build files change."
+                            }
+                        }
+                    },
+                    "signatureHelp": {
+                        "type": "object",
+                        "title": "Signature Help",
+                        "properties": {
+                            "enabled": {
+                                "type": "boolean",
+                                "title": "Enabled",
+                                "default": true,
+                                "description": "Controls whether signature help is enabled."
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "object",
+                        "title": "Warnings and Errors",
+                        "properties": {
+                            "incompleteClasspath": {
+                                "type": "object",
+                                "title": "Incomplete Classpath",
+                                "properties": {
+                                    "severity": {
+                                        "type": "string",
+                                        "title": "Incomplete Classpath Severity",
+                                        "enum": [
+                                            "ignore",
+                                            "info",
+                                            "warning",
+                                            "error"
+                                        ],
+                                        "default": "warning",
+                                        "description": "Severity of the message when the classpath is incomplete for a Java file."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "atomTestRunner": "./test/runner",
+        "dependencies": {
+            "atom-languageclient": "0.9.9",
+            "atom-select-list": "^0.7.1",
+            "decompress": "^4.2.0"
+        },
+        "devDependencies": {
+            "atom-mocha-test-runner": "^1.0.1",
+            "chai": "^3.5.0",
+            "chai-as-promised": "^5.3.0",
+            "mocha": "^3.4.2",
+            "mocha-appveyor-reporter": "^0.4.0",
+            "mocha-junit-and-console-reporter": "^1.6.0"
+        },
+        "enhancedScopes": [
+            "source.java"
+        ],
+        "consumedServices": {
+            "linter-indie": {
+                "versions": {
+                    "2.0.0": "consumeLinterV2"
+                }
+            },
+            "atom-ide-busy-signal": {
+                "versions": {
+                    "0.1.0": "consumeBusySignal"
+                }
+            },
+            "console": {
+                "versions": {
+                    "0.1.0": "consumeConsole"
+                }
+            },
+            "datatip": {
+                "versions": {
+                    "0.1.0": "consumeDatatip"
+                }
+            },
+            "signature-help": {
+                "versions": {
+                    "0.1.0": "consumeSignatureHelp"
+                }
+            },
+            "status-bar": {
+                "versions": {
+                    "^1.0.0": "consumeStatusBar"
+                }
+            }
+        },
+        "providedServices": {
+            "autocomplete.provider": {
+                "versions": {
+                    "2.0.0": "provideAutocomplete"
+                }
+            },
+            "code-format.range": {
+                "versions": {
+                    "0.1.0": "provideCodeFormat"
+                }
+            },
+            "code-highlight": {
+                "versions": {
+                    "0.1.0": "provideCodeHighlight"
+                }
+            },
+            "definitions": {
+                "versions": {
+                    "0.1.0": "provideDefinitions"
+                }
+            },
+            "find-references": {
+                "versions": {
+                    "0.1.0": "provideFindReferences"
+                }
+            },
+            "outline-view": {
+                "versions": {
+                    "0.1.0": "provideOutlines"
+                }
+            },
+            "code-actions": {
+                "versions": {
+                    "0.1.0": "provideCodeActions"
+                }
+            }
+        }
+    },
+    "created": 1658343965926,
+    "updated": 1658343965926,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

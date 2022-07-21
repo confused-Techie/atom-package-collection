@@ -1,0 +1,234 @@
+{
+    "name": "haskell",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/moodmosaic/atom-haskell"
+    },
+    "downloads": 10941,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "0.1.0"
+    },
+    "versions": {
+        "0.1.0": {
+            "name": "haskell",
+            "main": "./lib/haskellLanguageClient",
+            "version": "0.1.0",
+            "description": "Haskell language support for Atom, powered by Haskell Language Server.",
+            "keywords": [
+                "Haskell",
+                "Language Server Protocol",
+                "LSP",
+                "haskell-language-server"
+            ],
+            "repository": "https://github.com/moodmosaic/atom-haskell",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.9.9"
+            },
+            "configSchema": {
+                "exec": {
+                    "title": "The actual command to run.",
+                    "order": 1,
+                    "type": "string",
+                    "default": "haskell-language-server-wrapper",
+                    "description": "<b>Hint</b>: If you use Nix you may want to enter <code>nix-shell</code> instead."
+                },
+                "args": {
+                    "title": "Arguments as comma-separated values.",
+                    "order": 2,
+                    "type": "string",
+                    "default": "--lsp",
+                    "description": "<b>Hint</b>: If you use Nix you may want to enter <code>--run, ghcide --lsp</code> instead."
+                }
+            },
+            "consumedServices": {
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "hyperclick": {
+                    "versions": {
+                        "0.1.0": "provideHyperclick"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/haskell/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/moodmosaic/atom-haskell/tarball/refs/tags/v0.1.0",
+            "sha": "759f54e2295e262d453b4e90bf469df14b418324"
+        }
+    },
+    "readme": "Haskell language support for Atom, powered by [haskell-language-server](https://github.com/haskell/haskell-language-server).\n\n```bash\n$ apm install language-haskell atom-ide-ui haskell\n```\n\nThe idea is that *if or when* haskell-language-server exports a feature, and that feature is supported by the Language Server Protocol support for Atom, it should work without having to release a new version of this Atom package.\n\n---\n\n## Features\n\n### Display type and source module of values\n![](https://github.com/moodmosaic/ide-haskell-ghcide-media/raw/master/57d79670-20ef-11ea-978f-2e728ce88125.png)\n\n### Display type and source module of values (and pin them also)\n![](https://github.com/moodmosaic/ide-haskell-ghcide-media/raw/master/57d79671-20ef-11ea-978f-2e728ce88125.png)\n\n### Display error messages (parse errors, typecheck errors, etc.) and enabled warnings\n![](https://github.com/moodmosaic/ide-haskell-ghcide-media/raw/master/57d79672-20ef-11ea-978f-2e728ce88125.png)\n![](https://github.com/moodmosaic/ide-haskell-ghcide-media/raw/master/57d79673-20ef-11ea-978f-2e728ce88125.png)\n\n### Replace suggested typos for values and module imports\n![](https://github.com/moodmosaic/ide-haskell-ghcide-media/raw/master/57d79674-20ef-11ea-978f-2e728ce88125.png)\n\n### nix-shell, ghcide? It's all supported\n\nIf just `haskell-language-server-wrapper` isn't your cup of tea, you can go to the Settings page and specify the actual command to run, and any arguments as comma-separated values:\n\n```\nexec: nix-shell\nargs: --run, haskell-language-server-wrapper --lsp\n```\n\n## Style Tweaks\n\nIf you want to apply styling changes, you can add styles to the `styles.less` file in your `%USERPROFILE%\\.atom` directory. You can also open this file inside Atom from the *File > Stylesheet* menu.\n\n### Styles used in the screenshots above\n```less\n.datatip-marked-container {\n  font-size: 114%;\n  font-family:inherit;\n}\n\n.datatip-marked-container pre code {\n  font-size: 124%;\n  font-family: inherit;\n}\n\n.datatip-marked-container p {\n  word-break: break-all;\n}\n\n.datatip-marked-container p br {\n  display: none;\n}\n\n.diagnostics-code-action-button.btn.btn-xs span {\n  font-size: 124%;\n}\n\n.diagnostics-popup {\n  overflow-y: auto;\n\n  .diagnostics-popup-header {\n    margin-right: 10px;\n    display: inline-block;\n  }\n\n  .diagnostics-popup-message {\n    display: inline-block;\n    font-size: 114%;\n  }\n}\n\n.diagnostics-ui {\n  font-size: 104%;\n}\n```\n",
+    "metadata": {
+        "name": "haskell",
+        "main": "./lib/haskellLanguageClient",
+        "version": "0.1.0",
+        "description": "Haskell language support for Atom, powered by Haskell Language Server.",
+        "keywords": [
+            "Haskell",
+            "Language Server Protocol",
+            "LSP",
+            "haskell-language-server"
+        ],
+        "repository": "https://github.com/moodmosaic/atom-haskell",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {
+            "atom-languageclient": "^0.9.9"
+        },
+        "configSchema": {
+            "exec": {
+                "title": "The actual command to run.",
+                "order": 1,
+                "type": "string",
+                "default": "haskell-language-server-wrapper",
+                "description": "<b>Hint</b>: If you use Nix you may want to enter <code>nix-shell</code> instead."
+            },
+            "args": {
+                "title": "Arguments as comma-separated values.",
+                "order": 2,
+                "type": "string",
+                "default": "--lsp",
+                "description": "<b>Hint</b>: If you use Nix you may want to enter <code>--run, ghcide --lsp</code> instead."
+            }
+        },
+        "consumedServices": {
+            "console": {
+                "versions": {
+                    "0.1.0": "consumeConsole"
+                }
+            },
+            "datatip": {
+                "versions": {
+                    "0.1.0": "consumeDatatip"
+                }
+            },
+            "linter-indie": {
+                "versions": {
+                    "2.0.0": "consumeLinterV2"
+                }
+            },
+            "signature-help": {
+                "versions": {
+                    "0.1.0": "consumeSignatureHelp"
+                }
+            },
+            "status-bar": {
+                "versions": {
+                    "^1.0.0": "consumeStatusBar"
+                }
+            }
+        },
+        "providedServices": {
+            "autocomplete.provider": {
+                "versions": {
+                    "2.0.0": "provideAutocomplete"
+                }
+            },
+            "code-actions": {
+                "versions": {
+                    "0.1.0": "provideCodeActions"
+                }
+            },
+            "code-format.range": {
+                "versions": {
+                    "0.1.0": "provideCodeFormat"
+                }
+            },
+            "code-highlight": {
+                "versions": {
+                    "0.1.0": "provideCodeHighlight"
+                }
+            },
+            "definitions": {
+                "versions": {
+                    "0.1.0": "provideDefinitions"
+                }
+            },
+            "find-references": {
+                "versions": {
+                    "0.1.0": "provideFindReferences"
+                }
+            },
+            "hyperclick": {
+                "versions": {
+                    "0.1.0": "provideHyperclick"
+                }
+            },
+            "outline-view": {
+                "versions": {
+                    "0.1.0": "provideOutlines"
+                }
+            }
+        }
+    },
+    "created": 1658343155479,
+    "updated": 1658343155479,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

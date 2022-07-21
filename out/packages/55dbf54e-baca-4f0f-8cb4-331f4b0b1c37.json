@@ -1,0 +1,175 @@
+{
+    "name": "pug-autocompile",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dopustim/atom-pug-autocompile"
+    },
+    "downloads": 1850,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "1.0.0"
+    },
+    "versions": {
+        "1.0.0": {
+            "name": "pug-autocompile",
+            "version": "1.0.0",
+            "description": "Compile HTML from Pug with options and notifications",
+            "keywords": [
+                "dopustim",
+                "pug",
+                "autocompile",
+                "compile",
+                "html",
+                "template"
+            ],
+            "author": "DopustimVladimir",
+            "license": "MIT",
+            "repository": "https://github.com/dopustim/atom-pug-autocompile",
+            "main": "./lib/main",
+            "dependencies": {
+                "js-beautify": "^1.14.0",
+                "pug": "^3.0.2"
+            },
+            "devDependencies": {
+                "@dopustim/eslint-config": "^1.0.0",
+                "eslint": "^8.4.1"
+            },
+            "eslintConfig": {
+                "extends": "@dopustim/eslint-config",
+                "env": {
+                    "atomtest": true,
+                    "jasmine": true,
+                    "es2020": true,
+                    "node": true
+                },
+                "parserOptions": {
+                    "sourceType": "module",
+                    "ecmaVersion": 2020
+                },
+                "rules": {
+                    "max-len": [
+                        1,
+                        {
+                            "code": 100
+                        }
+                    ]
+                }
+            },
+            "engines": {
+                "atom": ">=1.30.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/pug-autocompile/versions/1.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dopustim/atom-pug-autocompile/tarball/refs/tags/v1.0.0",
+            "sha": "fbf23218df400fce30317c7315a264663ce0097b"
+        },
+        "0.1.0": {
+            "name": "pug-autocompile",
+            "main": "./lib/pug-autocompile",
+            "version": "0.1.0",
+            "description": "Compile Pug files to HTML",
+            "keywords": [
+                "autocompile",
+                "compile",
+                "dopustim",
+                "html",
+                "pug",
+                "template"
+            ],
+            "repository": "https://github.com/DopustimVladimir/atom-pug-autocompile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.30.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "pug": "^2.0.0",
+                "pretty": "^2.0.0",
+                "mkdirp": "^0.5.0"
+            },
+            "devDependencies": {
+                "eslint": "^5.5.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/pug-autocompile/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dopustim/atom-pug-autocompile/tarball/refs/tags/v0.1.0",
+            "sha": "2d525b5d3b30f46862c7e388c29fdb815253147d"
+        }
+    },
+    "readme": "\n# Pug Autocompile for Atom\n\nThis plugin makes it easy to compile HTML from Pug with options and notifications.\n\n[![Atom Package](https://img.shields.io/apm/dm/pug-autocompile.svg?style=flat-square)](https://atom.io/packages/pug-autocompile)\n\n## Installation\n\nVia Atom: Settings ➔ Install ➔ Search for \"pug-autocompile\"\n\nVia command line:\n\n```sh\napm install pug-autocompile\n```\n\n## Usage\n\nVia menu: Packages ➔ Pug Autocompile ➔ Compile ...\n\nVia context menu: Right Click ➔ Compile ...\n\n## Keymaps\n\nWorks only with \".pug\" files!\n\n**Windows / Linux**\n\n| Command | Description |\n| --- | --- |\n| `Ctrl+ Shift+ C` then `D` | compile selection |\n| `Ctrl+ Shift+ C` then `F` | compile file |\n\n**macOS**\n\n| Command | Description |\n| --- | --- |\n| `Cmd+ Shift+ C` then `D` | compile selection |\n| `Cmd+ Shift+ C` then `F` | compile file |\n\n## Options Line\n\nThe options line should be the first. The output file will be minified (default behaviour). Always start the options line with comment `//-` and separate options by comma `, `.\n\n| Parameter | Description |\n| --- | --- |\n| `out: path/to/output.html` | path to output (target) HTML file |\n| `main: path/to/main.pug` | path to main (parent) Pug file |\n| `pretty: true` | makes HTML pretty (`false` to vice versa) |\n\n## Example\n\n**index.pug**\n\n```pug\n//- out: build/index.html, pretty: true\nextends layout.pug\n\nblock content\n    h1 Hello from Pug :)\n```\n\n**layout.pug**\n\n```pug\n//- main: index.pug\ndoctype html\nhtml(lang=\"en\")\n    include includes/head.pug\n    body\n        block content\n```\n\n**includes/head.pug**\n\n```pug\n//- main: ../index.pug\nhead\n    title Demo\n    link(href=\"/assets/css/main.css\")\n```\n\n**build/index.html**\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <title>Demo</title>\n    <link href=\"/assets/css/main.css\">\n</head>\n<body>\n    <h1>Hello from Pug :)</h1>\n</body>\n</html>\n```\n",
+    "metadata": {
+        "name": "pug-autocompile",
+        "version": "1.0.0",
+        "description": "Compile HTML from Pug with options and notifications",
+        "keywords": [
+            "dopustim",
+            "pug",
+            "autocompile",
+            "compile",
+            "html",
+            "template"
+        ],
+        "author": "DopustimVladimir",
+        "license": "MIT",
+        "repository": "https://github.com/dopustim/atom-pug-autocompile",
+        "main": "./lib/main",
+        "dependencies": {
+            "js-beautify": "^1.14.0",
+            "pug": "^3.0.2"
+        },
+        "devDependencies": {
+            "@dopustim/eslint-config": "^1.0.0",
+            "eslint": "^8.4.1"
+        },
+        "eslintConfig": {
+            "extends": "@dopustim/eslint-config",
+            "env": {
+                "atomtest": true,
+                "jasmine": true,
+                "es2020": true,
+                "node": true
+            },
+            "parserOptions": {
+                "sourceType": "module",
+                "ecmaVersion": 2020
+            },
+            "rules": {
+                "max-len": [
+                    1,
+                    {
+                        "code": 100
+                    }
+                ]
+            }
+        },
+        "engines": {
+            "atom": ">=1.30.0 <2.0.0"
+        },
+        "consumedServices": {
+            "status-bar": {
+                "versions": {
+                    "^1.0.0": "consumeStatusBar"
+                }
+            }
+        }
+    },
+    "created": 1658361542410,
+    "updated": 1658361542410,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

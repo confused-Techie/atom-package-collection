@@ -1,0 +1,200 @@
+{
+    "name": "atom-devreplay",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/devreplay/atom-devreplay"
+    },
+    "downloads": 32,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "0.2.0"
+    },
+    "versions": {
+        "0.2.0": {
+            "name": "atom-devreplay",
+            "main": "./lib/main",
+            "version": "0.2.0",
+            "description": "Devreplay support for Atom-IDE",
+            "keywords": [
+                "atom-ide",
+                "lsp",
+                "linters",
+                "language-client"
+            ],
+            "activationHooks": [
+                "source.ts:root-scope-used",
+                "source.tsx:root-scope-used",
+                "source.js:root-scope-used",
+                "source.js.jsx:root-scope-used",
+                "source.python:root-scope-used"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/devreplay/atom-devreplay.git"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.9.9",
+                "devreplay-server": "^0.1.5"
+            },
+            "enhancedScopes": [
+                "source.js",
+                "source.js.jsx",
+                "text.html.vue",
+                "source.python",
+                "source.java",
+                "source.json",
+                "text.html.markdown"
+            ],
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-devreplay/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/devreplay/atom-devreplay/tarball/refs/tags/v0.2.0",
+            "sha": "357b76d06dc0541b8c0efd57d120991b9b75d3cc"
+        },
+        "0.1.0": {
+            "name": "atom-devreplay",
+            "main": "./lib/main",
+            "version": "0.1.0",
+            "description": "Devreplay support for Atom-IDE",
+            "keywords": [
+                "atom-ide",
+                "lsp",
+                "linters",
+                "language-client"
+            ],
+            "activationHooks": [
+                "source.ts:root-scope-used",
+                "source.tsx:root-scope-used",
+                "source.js:root-scope-used",
+                "source.js.jsx:root-scope-used",
+                "source.python:root-scope-used"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/devreplay/atom-devreplay.git"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.9.9",
+                "devreplay-server": "^0.1.5"
+            },
+            "enhancedScopes": [
+                "source.js",
+                "source.js.jsx",
+                "text.html.vue",
+                "source.python",
+                "source.java",
+                "source.json",
+                "text.html.markdown"
+            ],
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-devreplay/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/devreplay/atom-devreplay/tarball/refs/tags/v0.1.0",
+            "sha": "5bbe28d3bbf54e558c43a656d83fa9deab92ccfc"
+        }
+    },
+    "readme": "# DevReplay for Atom\n\nA Visual Studio Code extension with that will suggest source code fix based on your own rule file.\n\n* [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=Ikuyadeu.devreplay)\n* [Other Editors Support (Language Server)](https://www.npmjs.com/package/devreplay-server)\n* [Command Line version](https://www.npmjs.com/package/devreplay)\n* [GitHub Application](https://github.com/marketplace/dev-replay)\n* [Auto pattern generator](https://github.com/devreplay/review_pattern_gen)\n\n## Quick start\n\n0. Install this extension!\n1. Create your own programming pattern(`devreplay.json`) on the root like bellow\n\n```json\n[\n    {\n        \"condition\": [\n            \"tmp = $1\",\n            \"$1 = $2\",\n            \"$2 = tmp\"\n        ],\n        \"consequent\": [\n            \"$1, $2 = $2, $1\"\n        ]\n    },\n]\n```\nor\n```json\n[\n    {\n        \"extends\": [\"python\"]\n    }\n]\n```\nor\nUse [Review Pattern Generator](https://github.com/Ikuyadeu/review_pattern_gen) that generate your rule file automatically\n\nIf you write the following code,\n```python\ntmp = a\na = b\nb = tmp\n```\nit will be\n```python\na, b = b, a\n```\n\n\n## Supported Language\n\n* JavsScript\n* Python\n* TypeScript\n\n\n## Thanks\n\nDevReplay is supported by 2019 Exploratory IT Human Resources Project <a href=\"https://www.ipa.go.jp/jinzai/mitou/portal_index.html\">The MITOU Program</a>, Support Center for Advanced Telecommunications (SCAT) Technology Research, Foundation, JSPS KAKENHI Grant Numbers JP18H03222, JP17H00731, JP15H02683, and JP18KT0013.",
+    "metadata": {
+        "name": "atom-devreplay",
+        "main": "./lib/main",
+        "version": "0.2.0",
+        "description": "Devreplay support for Atom-IDE",
+        "keywords": [
+            "atom-ide",
+            "lsp",
+            "linters",
+            "language-client"
+        ],
+        "activationHooks": [
+            "source.ts:root-scope-used",
+            "source.tsx:root-scope-used",
+            "source.js:root-scope-used",
+            "source.js.jsx:root-scope-used",
+            "source.python:root-scope-used"
+        ],
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/devreplay/atom-devreplay.git"
+        },
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.21.0"
+        },
+        "dependencies": {
+            "atom-languageclient": "^0.9.9",
+            "devreplay-server": "^0.1.5"
+        },
+        "enhancedScopes": [
+            "source.js",
+            "source.js.jsx",
+            "text.html.vue",
+            "source.python",
+            "source.java",
+            "source.json",
+            "text.html.markdown"
+        ],
+        "providedServices": {
+            "linter": {
+                "versions": {
+                    "1.0.0": "provideLinter"
+                }
+            },
+            "intentions:list": {
+                "versions": {
+                    "1.0.0": "provideIntentions"
+                }
+            },
+            "code-actions": {
+                "versions": {
+                    "0.1.0": "provideCodeActions"
+                }
+            }
+        }
+    },
+    "created": 1658332139958,
+    "updated": 1658332139958,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

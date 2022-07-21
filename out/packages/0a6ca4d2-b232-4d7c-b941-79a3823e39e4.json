@@ -1,0 +1,342 @@
+{
+    "name": "ide-powershell",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/daviwil/ide-powershell"
+    },
+    "downloads": 32230,
+    "stargazers_count": 7,
+    "releases": {
+        "latest": "0.1.0"
+    },
+    "versions": {
+        "0.1.0": {
+            "name": "ide-powershell",
+            "version": "0.1.0",
+            "description": "PowerShell language support for Atom-IDE.",
+            "author": "David Wilson",
+            "license": "MIT",
+            "main": "./lib/main",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "scripts": {
+                "test": "echo \"Error: no test specified\" && exit 1"
+            },
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/daviwil/ide-powershell.git"
+            },
+            "keywords": [
+                "powershell",
+                "atom",
+                "atom-ide"
+            ],
+            "bugs": {
+                "url": "https://github.com/daviwil/ide-powershell/issues"
+            },
+            "homepage": "https://github.com/daviwil/ide-powershell#readme",
+            "package-deps": [
+                "language-powershell",
+                "terminal-tab-service",
+                "atom-ide-ui"
+            ],
+            "dependencies": {
+                "@types/atom": "^1.21.8",
+                "@types/node": "^8.0.41",
+                "atom-languageclient": "^0.7.3",
+                "atom-ts-transpiler": "^1.2.4",
+                "atom-package-deps": "^4.6.1",
+                "typescript": "^2.6.1",
+                "decompress": "^4.2.0"
+            },
+            "enhancedScopes": [
+                "source.powershell"
+            ],
+            "configSchema": {
+                "enableProfileLoading": {
+                    "type": "boolean",
+                    "title": "Enable loading PowerShell profiles",
+                    "default": true
+                },
+                "developer": {
+                    "type": "object",
+                    "properties": {
+                        "editorServicesLogLevel": {
+                            "type": "string",
+                            "default": "Verbose",
+                            "title": "PowerShell Editor Services Log Level",
+                            "description": "Sets the logging verbosity level for the PowerShell Editor Services host executable.",
+                            "enum": [
+                                {
+                                    "value": "Normal",
+                                    "description": "Normal"
+                                },
+                                {
+                                    "value": "Warning",
+                                    "description": "Warning"
+                                },
+                                {
+                                    "value": "Error",
+                                    "description": "Error"
+                                },
+                                {
+                                    "value": "Verbose",
+                                    "description": "Verbose"
+                                },
+                                {
+                                    "value": "Diagnostic",
+                                    "description": "Diagnostic"
+                                }
+                            ]
+                        },
+                        "bundledModulesPath": {
+                            "type": "string",
+                            "default": "",
+                            "description": "Specifies an alternate path to the folder containing modules that are required for the ide-powershell package (i.e. PowerShell Editor Services, PSScriptAnalyzer, Plaster)"
+                        },
+                        "featureFlags": {
+                            "type": "array",
+                            "default": [],
+                            "description": "An comma-delimited list of names that enable experimental features in the package.",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "consumedServices": {
+                "terminal-tab": {
+                    "versions": {
+                        ">= 0.1.0": "consumeTerminalTabService"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomTranspilers": [
+                {
+                    "transpiler": "atom-ts-transpiler",
+                    "glob": "{!(node_modules)/**/,}lib/*.ts?(x)",
+                    "options": {
+                        "compilerOptions": {},
+                        "cacheKeyFiles": [
+                            "tsconfig.json"
+                        ],
+                        "verbose": false
+                    }
+                }
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-powershell/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/daviwil/ide-powershell/tarball/refs/tags/v0.1.0",
+            "sha": "10296b1045d1aa27d24791c342b3572b901b8777"
+        }
+    },
+    "readme": "# ide-powershell\n\nExperimental [PowerShell](https://github.com/powershell/powershell) language support\nfor [Atom](https://atom.io)\n\n## Overview\n\nThis project leverages [atom-languageclient](https://github.com/atom/atom-languageclient)\nand [PowerShell Editor Services](https://github.com/PowerShell/PowerShellEditorServices)\nto provide rich PowerShell language features in the Atom editor.\n\n**DISCLAIMER:** I am developing this as a side project in my free time, so please\nconsider contributing if you want to help it get better faster!\n\n## Platform Support\n\n- **Windows** with PowerShell v5.1 and PowerShell Core v6\n- **Linux** with PowerShell Core v6 (all PowerShell-supported distributions)\n- **macOS and OS X** with PowerShell Core v6\n\nThis package may work well with machines running PowerShell v3 and v4 but\nthey are not officially supported by this package at this time.\n\n## Prerequisites\n\nTo use this package, you must first install its dependencies.  There are some\n[build dependencies for node-gyp](https://github.com/nodejs/node-gyp#on-unix) that\nmust be installed first depending on your platform.\n\n> NOTE: This is a temporary measure until precompiled binaries for `node-pty` can\n> be included with the `terminal-tab` package.\n\nOnce the build dependencies have been installed, you can install the `ide-powershell`\npackage!\n\n## Installation\n\nYou can easily install this package using the following command\n\n```\napm install ide-powershell\n```\n\nYou can also find this package in Atom by running the command \"Settings View: Install\nPackages and Themes\" and then search for and install `ide-powershell`\n\n## Development\n\n1. Follow the instructions in the Prerequisites section above\n\n2. Fork this repo, clone it to a local folder, and go to that folder in a terminal\n\n3. Run `apm install` install dependencies and build the package\n\n4. Run `apm link` to wire up the package in Atom\n\n5. Open or restart Atom and then try loading a .ps1 file\n\n6. Change some code in this repo, run the \"Reload Window\" command, then try your changes!\n\n## Maintainers\n\n- [David Wilson](https://github.com/daviwil) - [@daviwil](http://twitter.com/daviwil)\n- [Patrick Meinecke](https://github.com/SeeminglyScience) - [@SeeminglyScienc](http://twitter.com/SeeminglyScienc)\n\n## License\n\nThis project is licensed under the [MIT License](LICENSE).  Some portions of the\ncode are based on the [PowerShell extension](https://github.com/PowerShell/vscode-powershell/)\nfor Visual Studio Code, also under the [MIT License](https://github.com/PowerShell/vscode-powershell/blob/master/LICENSE.txt).\n",
+    "metadata": {
+        "name": "ide-powershell",
+        "version": "0.1.0",
+        "description": "PowerShell language support for Atom-IDE.",
+        "author": "David Wilson",
+        "license": "MIT",
+        "main": "./lib/main",
+        "engines": {
+            "atom": ">=1.21.0"
+        },
+        "scripts": {
+            "test": "echo \"Error: no test specified\" && exit 1"
+        },
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/daviwil/ide-powershell.git"
+        },
+        "keywords": [
+            "powershell",
+            "atom",
+            "atom-ide"
+        ],
+        "bugs": {
+            "url": "https://github.com/daviwil/ide-powershell/issues"
+        },
+        "homepage": "https://github.com/daviwil/ide-powershell#readme",
+        "package-deps": [
+            "language-powershell",
+            "terminal-tab-service",
+            "atom-ide-ui"
+        ],
+        "dependencies": {
+            "@types/atom": "^1.21.8",
+            "@types/node": "^8.0.41",
+            "atom-languageclient": "^0.7.3",
+            "atom-ts-transpiler": "^1.2.4",
+            "atom-package-deps": "^4.6.1",
+            "typescript": "^2.6.1",
+            "decompress": "^4.2.0"
+        },
+        "enhancedScopes": [
+            "source.powershell"
+        ],
+        "configSchema": {
+            "enableProfileLoading": {
+                "type": "boolean",
+                "title": "Enable loading PowerShell profiles",
+                "default": true
+            },
+            "developer": {
+                "type": "object",
+                "properties": {
+                    "editorServicesLogLevel": {
+                        "type": "string",
+                        "default": "Verbose",
+                        "title": "PowerShell Editor Services Log Level",
+                        "description": "Sets the logging verbosity level for the PowerShell Editor Services host executable.",
+                        "enum": [
+                            {
+                                "value": "Normal",
+                                "description": "Normal"
+                            },
+                            {
+                                "value": "Warning",
+                                "description": "Warning"
+                            },
+                            {
+                                "value": "Error",
+                                "description": "Error"
+                            },
+                            {
+                                "value": "Verbose",
+                                "description": "Verbose"
+                            },
+                            {
+                                "value": "Diagnostic",
+                                "description": "Diagnostic"
+                            }
+                        ]
+                    },
+                    "bundledModulesPath": {
+                        "type": "string",
+                        "default": "",
+                        "description": "Specifies an alternate path to the folder containing modules that are required for the ide-powershell package (i.e. PowerShell Editor Services, PSScriptAnalyzer, Plaster)"
+                    },
+                    "featureFlags": {
+                        "type": "array",
+                        "default": [],
+                        "description": "An comma-delimited list of names that enable experimental features in the package.",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "consumedServices": {
+            "terminal-tab": {
+                "versions": {
+                    ">= 0.1.0": "consumeTerminalTabService"
+                }
+            },
+            "linter-indie": {
+                "versions": {
+                    "2.0.0": "consumeLinterV2"
+                }
+            },
+            "datatip": {
+                "versions": {
+                    "0.1.0": "consumeDatatip"
+                }
+            }
+        },
+        "providedServices": {
+            "autocomplete.provider": {
+                "versions": {
+                    "2.0.0": "provideAutocomplete"
+                }
+            },
+            "code-format.range": {
+                "versions": {
+                    "0.1.0": "provideCodeFormat"
+                }
+            },
+            "code-highlight": {
+                "versions": {
+                    "0.1.0": "provideCodeHighlight"
+                }
+            },
+            "definitions": {
+                "versions": {
+                    "0.1.0": "provideDefinitions"
+                }
+            },
+            "find-references": {
+                "versions": {
+                    "0.1.0": "provideFindReferences"
+                }
+            },
+            "outline-view": {
+                "versions": {
+                    "0.1.0": "provideOutlines"
+                }
+            }
+        },
+        "atomTranspilers": [
+            {
+                "transpiler": "atom-ts-transpiler",
+                "glob": "{!(node_modules)/**/,}lib/*.ts?(x)",
+                "options": {
+                    "compilerOptions": {},
+                    "cacheKeyFiles": [
+                        "tsconfig.json"
+                    ],
+                    "verbose": false
+                }
+            }
+        ]
+    },
+    "created": 1658344005546,
+    "updated": 1658344005546,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

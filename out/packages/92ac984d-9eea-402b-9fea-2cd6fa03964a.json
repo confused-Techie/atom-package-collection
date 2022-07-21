@@ -1,0 +1,60 @@
+{
+    "name": "voxa-framework-snippets",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/wuelcas/atom-voxa-framework-snippets"
+    },
+    "downloads": 63,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "1.0.0"
+    },
+    "versions": {
+        "1.0.0": {
+            "name": "voxa-framework-snippets",
+            "version": "1.0.0",
+            "description": "Code snippets to speed up your Alexa skill development using the Voxa framework",
+            "keywords": [
+                "Voxa",
+                "Alexa",
+                "Skill",
+                "Google Home",
+                "Action",
+                "Echo"
+            ],
+            "repository": "https://github.com/wuelcas/atom-voxa-framework-snippets",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/voxa-framework-snippets/versions/1.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/wuelcas/atom-voxa-framework-snippets/tarball/refs/tags/v1.0.0",
+            "sha": "74233492dfdde955960a2f0b2dddab1ed5cf9657"
+        }
+    },
+    "readme": "# Voxa Framework Snippets\n\nThis extension provides you code snippets for [Atom](https://atom.io/) to speed up your Alexa skills development using the [Voxa Framework](http://voxa.ai/) made by [RAIN](https://rain.agency/).\n\n## Installation\n\nSearch for \"Voxa Framework Snippets\" in the atom package repository.\n\n## Snippets\n\nEvery space inside `{ }` means that this is pushed into next line.\n\n`$` represent each step after `tab`.\n\n## State and Intent\n\n|  Prefix               | Method                                                                   |\n| --------------------: | ------------------------------------------------------------------------ |\n|       `onintentVoxa→` | `$1:skill.onIntent('$2', ($3:alexaEvent) => { $4 });`                    |\n|   `launchintentVoxa→` | `$1:skill.onIntent('LaunchIntent', ($2:alexaEvent) => { $3 });`          |\n|     `helpintentVoxa→` | `$1:skill.onIntent('AMAZON.HelpIntent', ($2:alexaEvent) => { $3 });`     |\n|   `repeatintentVoxa→` | `$1:skill.onIntent('AMAZON.RepeatIntent', ($2:alexaEvent) => { $3 });`   |\n|`startoverintentVoxa→` | `$1:skill.onIntent('AMAZON.StartOverIntent', ($2:alexaEvent) => { $3 });`|\n|        `onstateVoxa→` | `$1:skill.onState('$2', ($3:alexaEvent) => { $4 });`                     |\n|          `entryVoxa→` | `$1:skill.onState('entry', { $2 });`                                     |\n|          `replyVoxa→` | `return { reply: '$1', to: '$2' };`                                      |\n|             `toVoxa→` | `return { to: '$1' };`                                                   |\n|          `ifyesVoxa→` | `if (alexaEvent.intent.name === 'AMAZON.YesIntent') { $1 }`              |\n|           `ifnoVoxa→` | `if (alexaEvent.intent.name === 'AMAZON.NoIntent') { $1 }`               |\n|   `ifintentnameVoxa→` | `if (alexaEvent.intent.name === '$1') { $2 }`                            |\n\n## Boilerplate code for files\n\n### `viewsVoxa`\n\n```js\nconst views = (function views() {\n  return {\n    $1\n  };\n}());\n```\n\n### `askVoxa`\n\n```js\n$1:ResponseName: {\n  ask: '$2',\n  reprompt: '$3',\n},\n```\n\n### `tellVoxa`\n\n```js\n$1:ResponseName: {\n  tell: '$2',\n},\n```\n\n### `sayVoxa`\n\n```js\n$1:ResponseName: {\n  say: '$2',\n},\n```\n\n### `variablesVoxa`\n\n```js\nmodule.exports = {\n  $1:variableName: model => model.$1:variableName,\n},\n```\n\n### `registerVoxa`\n\n```js\nexports.register = function register(skill) {\n  $1\n};\n```\n\n### `mainstatemachineVoxa`\n\n```js\nconst Voxa = require('voxa');\nconst views = require('${1:./views}');\nconst variables = require('${2:./variables}');\nconst states = require('${3:./states}');\n\nconst skill = new Voxa({ variables, views });\nstates.register(skill);\n\nmodule.exports = skill;\n```\n\n### `serverVoxa`\n\n```js\nconst skill = require('${1:./skill/MainStateMachine}');\nconst config = require('${2:./config}');\n\nskill.startServer(config.server.port);\n```\n\n### `lambdaVoxa`\n\n```js\nconst skill = require('${1:./skill/MainStateMachine}');\n\nexports.handler = skill.lambda();\n```\n",
+    "metadata": {
+        "name": "voxa-framework-snippets",
+        "version": "1.0.0",
+        "description": "Code snippets to speed up your Alexa skill development using the Voxa framework",
+        "keywords": [
+            "Voxa",
+            "Alexa",
+            "Skill",
+            "Google Home",
+            "Action",
+            "Echo"
+        ],
+        "repository": "https://github.com/wuelcas/atom-voxa-framework-snippets",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {}
+    },
+    "created": 1658431306302,
+    "updated": 1658431306302,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

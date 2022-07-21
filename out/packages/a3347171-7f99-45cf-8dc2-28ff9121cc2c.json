@@ -1,0 +1,116 @@
+{
+    "name": "package-manager-commands",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Zren/atom-package-manager-commands"
+    },
+    "downloads": 1050,
+    "stargazers_count": 15,
+    "releases": {
+        "latest": "2.0.3"
+    },
+    "versions": {
+        "2.0.3": {
+            "name": "package-manager-commands",
+            "main": "./lib/main",
+            "version": "2.0.3",
+            "description": "Adds commands to enable/disable/reload a package from the command palette.",
+            "repository": "https://github.com/Zren/atom-package-manager-commands",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.190.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/package-manager-commands/versions/2.0.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Zren/atom-package-manager-commands/tarball/refs/tags/v2.0.3",
+            "sha": "7360651c392b655f04a30866a5265b4eeb929c62"
+        },
+        "2.0.1": {
+            "name": "package-manager-commands",
+            "main": "./lib/main",
+            "version": "2.0.1",
+            "description": "Adds commands to enable/disable/reload a package from the command palette.",
+            "repository": "https://github.com/Zren/atom-package-manager-commands",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.148.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/package-manager-commands/versions/2.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Zren/atom-package-manager-commands/tarball/refs/tags/v2.0.1",
+            "sha": "f3ec059627cfa353547a30c49e695b3ebb15075f"
+        },
+        "2.0.0": {
+            "name": "package-manager-commands",
+            "main": "./lib/main",
+            "version": "2.0.0",
+            "description": "Adds commands to enable/disable/reload a package from the command palette.",
+            "repository": "https://github.com/Zren/atom-package-manager-commands",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.148.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/package-manager-commands/versions/2.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Zren/atom-package-manager-commands/tarball/refs/tags/v2.0.0",
+            "sha": "b248893aee036bc4d5358f1139317bc9335df9ef"
+        },
+        "1.1.0": {
+            "name": "package-manager-commands",
+            "main": "./lib/main",
+            "version": "1.1.0",
+            "description": "Adds commands to enable/disable/reload a package from the command palette.",
+            "repository": "https://github.com/Zren/atom-package-manager-commands",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/package-manager-commands/versions/1.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Zren/atom-package-manager-commands/tarball/refs/tags/v1.1.0",
+            "sha": "c865a818e9b4bca688a187a229165d7345e3879c"
+        },
+        "1.0.0": {
+            "name": "package-manager-commands",
+            "main": "./lib/main",
+            "version": "1.0.0",
+            "description": "Adds commands to enable/disable/reload a package from the command palette.",
+            "repository": "https://github.com/Zren/atom-package-manager-commands",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/package-manager-commands/versions/1.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Zren/atom-package-manager-commands/tarball/refs/tags/v1.0.0",
+            "sha": "b121a2d557710ea08ea89b1210b54e1f007ac6c2"
+        }
+    },
+    "readme": "Package Manager Commands\n========================\n\nAdds commands to enable/disable/reload a package from the command palette.\n\nCommands\n--------\n\n* **Package Manager: Enabled Package**\n  Lists all disabled packages to enable.  \n  `package-manager:enable-package`\n* **Package Manager: Disable Package**\n  Lists all enabled packages to disable.  \n  `package-manager:disable-package`\n* **Package Manager: Reload Package**\n  Lists all loaded packages to reload.  \n  `package-manager:reload-package`\n* **Package Manager: Package Settings**\n  List all packages to open the settings page for that particular package.  \n  `package-manager:package-settings`\n* **Package Manager: Reload Project Package**\n  Quick access to reload the current package being worked on. This command is only visible if the project root matches the package path.  \n  `package-manager:reload-project-package`\n\nHow Does Reloading Work?\n------------------------\n\n* We first deactivate the package if it's activated.\n* Then we unload it.\n* We delete all modules in `require.cache` and `Module._cache` that start with the `package.path`.\n* Load the package.\n* Activate the package only if it was activated beforehand.\n\nTips\n----\n\n* Bind `Ctrl+R` to `package-manager:reload-project-package` by going to `File > Open Your Keymap` and pasting the following. It will overload the [symbols-view](https://github.com/atom/symbols-view/blob/master/keymaps/symbols-view.cson) keymappings.\n  ```coffeescript\n  '.platform-darwin .editor':\n    'cmd-r': 'package-manager:reload-project-package'\n\n  '.platform-win32 .editor':\n    'ctrl-r': 'package-manager:reload-project-package'\n\n  '.platform-linux .editor':\n    'ctrl-r': 'package-manager:reload-project-package'\n\n  '.platform-darwin':\n    'cmd-R': 'package-manager:reload-project-package'\n\n  '.platform-win32, .platform-linux':\n    'ctrl-R': 'package-manager:reload-project-package'\n  ```\n",
+    "metadata": {
+        "name": "package-manager-commands",
+        "main": "./lib/main",
+        "version": "2.0.3",
+        "description": "Adds commands to enable/disable/reload a package from the command palette.",
+        "repository": "https://github.com/Zren/atom-package-manager-commands",
+        "license": "MIT",
+        "engines": {
+            "atom": ">0.190.0"
+        },
+        "dependencies": {}
+    },
+    "created": 1658360209504,
+    "updated": 1658360209504,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

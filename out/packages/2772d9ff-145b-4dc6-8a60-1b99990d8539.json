@@ -1,0 +1,116 @@
+{
+    "name": "stacktrace",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/smashwilson/stacktrace"
+    },
+    "downloads": 2158,
+    "stargazers_count": 42,
+    "releases": {
+        "latest": "0.0.2"
+    },
+    "versions": {
+        "0.0.2": {
+            "name": "stacktrace",
+            "main": "./lib/main",
+            "version": "0.0.2",
+            "description": "Navigate stacktraces within Atom.",
+            "activationCommands": {
+                "atom-workspace": [
+                    "stacktrace:paste",
+                    "stacktrace:from-selection"
+                ]
+            },
+            "repository": "https://github.com/smashwilson/stacktrace",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.185.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-space-pen-views": "^2.0.5",
+                "emissary": "^1.2.1",
+                "event-kit": "^0.7.2",
+                "jssha": "^1.5.0",
+                "line-chomper": "^0.4.5",
+                "underscore-plus": "^1.5.1"
+            },
+            "providedServices": {
+                "stacktrace:trace-handler": {
+                    "description": "Parse all stack traces recognized in sample of text and open a StacktraceView on each.",
+                    "versions": {
+                        "1.0.0": "traceHandlerV1"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/stacktrace/versions/0.0.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/smashwilson/stacktrace/tarball/refs/tags/v0.0.2",
+            "sha": "7c8b753bc2f02fce8120ea7df58293554172e8ac"
+        },
+        "0.0.1": {
+            "name": "stacktrace",
+            "main": "./lib/main",
+            "version": "0.0.1",
+            "description": "Navigate stacktraces within Atom.",
+            "activationEvents": [
+                "stacktrace:paste",
+                "stacktrace:from-selection"
+            ],
+            "repository": "https://github.com/smashwilson/stacktrace",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "dependencies": {
+                "emissary": "^1.2.1",
+                "jssha": "^1.5.0",
+                "line-chomper": "^0.4.5",
+                "underscore-plus": "^1.5.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/stacktrace/versions/0.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/smashwilson/stacktrace/tarball/refs/tags/v0.0.1",
+            "sha": "0c6fc666146cfad8ae0bcd82c44fbae411995e3c"
+        }
+    },
+    "readme": "# Stacktrace for Atom\n\n*Navigate stacktraces within Atom!*\n\n[![Build Status](https://travis-ci.org/smashwilson/stacktrace.svg?branch=master)](https://travis-ci.org/smashwilson/stacktrace?branch=master)\n\nGiven a stacktrace from a supported language, this package gives you:\n\n * A mile-high view of the full trace, with a few lines of context on each stack\n   frame;\n * Highlighting and navigation tools to walk up and down the stack while you're\n   looking at the full files.\n * *[planned]* Intelligent mappings from paths from other systems to yours. If it looks like\n   a ruby gem path, it'll map into your `${GEM_HOME}`; if it looks like a\n   virtualenv path, it'll map into your virtualenv.\n\n## Installation\n\n```apm install stacktrace```\n\n## Obligatory Animated Gif\n\n![walkthrough](https://cloud.githubusercontent.com/assets/17565/4100060/aa761e90-307e-11e4-83c8-e4bf04c20d95.gif)\n\n## Commands\n\nStacktrace is a **Bring Your Own Keybinding** :tm: package. Rather than try to guess a set of bindings that won't collide with any other package, or that aren't six-key chords, I'm not providing any default keybindings.\n\nTo set hotkeys for stacktrace commands, invoke `Application: Open Your Keymap` from the command palette, and add a section like this one:\n\n```coffee\n'.workspace':\n  'alt-s enter': 'stacktrace:from-selection'\n  'alt-s p': 'stacktrace:paste'\n  'alt-s up': 'stacktrace:to-caller'\n  'alt-s down': 'stacktrace:follow-call'\n```\n\n## Language Support\n\nStacktraces are currently recognized in the following languages:\n\n * Ruby\n * (Java|Coffee)script\n\n## Countdown to 1.0\n\nIn the true spirit of README-driven development, these are the features that I'd\nlike to see in place before I mark it 1.0.\n\n- [x] Accept stacktraces pasted into a dialog you call up from the command\n  palette.\n- [x] Present a view that gives you bits of context around each frame of a\n  specific stack.\n- [x] Pluggable stacktrace recognition and parsing code.\n- [ ] Map parsed frames to source files on the local filesystem.\n- [x] While a stacktrace is active, highlight individual lines from the trace\n  in open editors.\n- [x] Provide commands for next-frame, previous-frame, and turning it off.\n- [x] Show a stacktrace navigation view as a bottom panel with next, previous\n  and stop buttons.\n",
+    "metadata": {
+        "name": "stacktrace",
+        "main": "./lib/main",
+        "version": "0.0.2",
+        "description": "Navigate stacktraces within Atom.",
+        "activationCommands": {
+            "atom-workspace": [
+                "stacktrace:paste",
+                "stacktrace:from-selection"
+            ]
+        },
+        "repository": "https://github.com/smashwilson/stacktrace",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=0.185.0 <2.0.0"
+        },
+        "dependencies": {
+            "atom-space-pen-views": "^2.0.5",
+            "emissary": "^1.2.1",
+            "event-kit": "^0.7.2",
+            "jssha": "^1.5.0",
+            "line-chomper": "^0.4.5",
+            "underscore-plus": "^1.5.1"
+        },
+        "providedServices": {
+            "stacktrace:trace-handler": {
+                "description": "Parse all stack traces recognized in sample of text and open a StacktraceView on each.",
+                "versions": {
+                    "1.0.0": "traceHandlerV1"
+                }
+            }
+        }
+    },
+    "created": 1658428089466,
+    "updated": 1658428089466,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

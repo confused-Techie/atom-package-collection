@@ -1,0 +1,86 @@
+{
+    "name": "atom-inline-messenger-example",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mdgriffith/atom-inline-messenger-example"
+    },
+    "downloads": 93,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "1.1.1"
+    },
+    "versions": {
+        "1.1.1": {
+            "name": "atom-inline-messenger-example",
+            "main": "./lib/inline-messenger",
+            "version": "1.1.1",
+            "description": "Sample App for Inline Messaging in the Atom Editor",
+            "repository": "https://github.com/mdgriffith/atom-inline-messenger-example",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {},
+            "consumedServices": {
+                "inline-messaging": {
+                    "versions": {
+                        "^1.0.0": "consumeInlineMessenger"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-inline-messenger-example/versions/1.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/mdgriffith/atom-inline-messenger-example/tarball/refs/tags/v1.1.1",
+            "sha": "716dfd1022d6e95397b100ba1ae2184d9ca46f8c"
+        },
+        "1.1.0": {
+            "name": "atom-inline-messenger-example",
+            "main": "./lib/inline-messenger",
+            "version": "1.1.0",
+            "description": "Sample App for Inline Messaging in the Atom Editor",
+            "repository": "https://github.com/mdgriffith/atom-inline-messenger-example",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {},
+            "consumedServices": {
+                "inline-messaging": {
+                    "versions": {
+                        "^1.0.0": "consumeInlineMessenger"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-inline-messenger-example/versions/1.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/mdgriffith/atom-inline-messenger-example/tarball/refs/tags/v1.1.0",
+            "sha": "20c82a7ea0493940f0e10983e96cb007e7506a63"
+        }
+    },
+    "readme": "## Getting Started\n\nThis package has example usage of the [inline messenger](https://github.com/mdgriffith/atom-inline-messenger) package.\n\nAfter installing this package, hit `cmd-alt-+`.  A new page will be created with some example messages and a code suggestion.\nUse `alt-up` or `alt-down` to scroll through the messages, and `cmd-shift-a` to accept the suggestion.\n\nInline messenger provides a service for use in other Atom projects. With it, a package can show messages next to the relevant, highlighted code,  and optionally make a code suggestion for the selected text. To use it, include `inline-messenger` in the `consumedServices` section of your `package.json`:\n\n```json\n{\n  \"name\": \"my-package\",\n  \"consumedServices\": {\n    \"inline-messenger\": {\n      \"versions\": {\n        \"^1.0.0\": \"consumeInlineMessenger\"\n      }\n    }\n  }\n}\n```\n\nThen call methods on the service in your package's main module.\n\nThe `message` creates a message in the active editor.\n\n```coffee\nmodule.exports =\n  activate: ->\n    @messages = []\n\n  consumeInlineMessenger: (messenger) ->\n    @messenger = messenger\n\n    @messages.push @messenger.message\n              range: [[22,0], [25,8]]\n              text: \"A New Message\"\n              severity: \"warning\"\n\n    @messages.push @messenger.message\n              range: [[35,0], [35,8]]\n              text: \"A New Code Suggestion\"\n              suggestion: \"myNewCodeSuggestion();\"\n\n  deactivate: ->\n    @messages.map (msg) -> msg.destroy()\n    @messages = []\n```\n\n## The Message Command\n\nThe message method takes the following parameters\n  * `range` - The range to highlight in the editor\n  * `text` - The text to display in the message\n  * `severity` - Can be any of the following: info, warning, error, suggestion.  This will affect the coloring of the message.\n  * `suggestion` - Provide a code suggestion to replace the highlighted text.\n\n\n## Commands\n  * `next-message` -> Jumps to the next message.  The default keyboard shortcut is alt-down\n  * `prev-message` -> Jumps to the previous message.  The default keyboard shortcut is alt-up\n  * `accept-suggestion` -> If the current message is a code suggestion, this command will make the suggested changes for you.  The default is cmd-shift-a\n\n\n## Settings\n  * `Message Positioning` - For messages that span multiple lines, show them either below the highlighted code or to the right.  Defaults to below.\n  * `Show Keyboard Shortcut For Suggestions` - Show keyboard shortcut reminder at the bottom of a suggestion.  Defaults to true.\n  * `Accept Suggestion Animation` - Show a small highlight flash when suggested code is accepted.  Defaults to true.\n",
+    "metadata": {
+        "name": "atom-inline-messenger-example",
+        "main": "./lib/inline-messenger",
+        "version": "1.1.1",
+        "description": "Sample App for Inline Messaging in the Atom Editor",
+        "repository": "https://github.com/mdgriffith/atom-inline-messenger-example",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=0.174.0 <2.0.0"
+        },
+        "dependencies": {},
+        "consumedServices": {
+            "inline-messaging": {
+                "versions": {
+                    "^1.0.0": "consumeInlineMessenger"
+                }
+            }
+        }
+    },
+    "created": 1658332786520,
+    "updated": 1658332786520,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

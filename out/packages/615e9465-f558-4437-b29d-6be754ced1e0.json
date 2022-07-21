@@ -1,0 +1,3641 @@
+{
+    "name": "linter-markdown",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AtomLinter/linter-markdown"
+    },
+    "downloads": 144055,
+    "stargazers_count": 208,
+    "releases": {
+        "latest": "5.2.11"
+    },
+    "versions": {
+        "5.2.11": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "5.2.11",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/linter-markdown.git"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "5.1.0",
+                "remark": "11.0.2",
+                "remark-frontmatter": "1.3.2",
+                "remark-preset-lint-consistent": "2.0.3",
+                "remark-preset-lint-markdown-style-guide": "2.1.3",
+                "remark-preset-lint-recommended": "3.0.3",
+                "unified-engine-atom": "8.0.0"
+            },
+            "devDependencies": {
+                "@commitlint/cli": "8.2.0",
+                "@commitlint/config-conventional": "8.2.0",
+                "@commitlint/travis-cli": "8.2.0",
+                "@semantic-release/apm-config": "6.0.2",
+                "eslint": "6.7.2",
+                "eslint-config-airbnb-base": "14.0.0",
+                "eslint-plugin-import": "2.19.1",
+                "husky": "3.1.0",
+                "jasmine-fix": "1.3.1",
+                "remark-cli": "7.0.1",
+                "semantic-release": "15.13.31"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "yamlWithoutConfig": {
+                    "title": "Support YAML frontmatter",
+                    "description": "Support YAML [frontmatter](https://github.com/wooorm/remark-frontmatter) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetStyleGuideWithoutConfig": {
+                    "title": "Strict markdown style guide by default",
+                    "description": "Use [remark-preset-lint-markdown-style-guide](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "semanticCommits": true,
+                "rangeStrategy": "pin",
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    },
+                    {
+                        "packagePatterns": [
+                            "^remark"
+                        ],
+                        "groupName": "Remark packages"
+                    }
+                ]
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "husky": {
+                "hooks": {
+                    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+                }
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/5.2.11/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v5.2.11",
+            "sha": "c7bdb63c09cec6940ba486bc8e4d8fe11abbe5cf"
+        },
+        "5.2.10": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "5.2.10",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/linter-markdown.git"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "5.1.0",
+                "remark": "11.0.1",
+                "remark-frontmatter": "1.3.2",
+                "remark-preset-lint-consistent": "2.0.3",
+                "remark-preset-lint-markdown-style-guide": "2.1.3",
+                "remark-preset-lint-recommended": "3.0.3",
+                "unified-engine-atom": "8.0.0"
+            },
+            "devDependencies": {
+                "@commitlint/cli": "8.2.0",
+                "@commitlint/config-conventional": "8.2.0",
+                "@commitlint/travis-cli": "8.2.0",
+                "@semantic-release/apm-config": "6.0.1",
+                "eslint": "6.4.0",
+                "eslint-config-airbnb-base": "14.0.0",
+                "eslint-plugin-import": "2.18.2",
+                "husky": "3.0.5",
+                "jasmine-fix": "1.3.1",
+                "remark-cli": "7.0.0",
+                "semantic-release": "15.13.24"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "yamlWithoutConfig": {
+                    "title": "Support YAML frontmatter",
+                    "description": "Support YAML [frontmatter](https://github.com/wooorm/remark-frontmatter) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetStyleGuideWithoutConfig": {
+                    "title": "Strict markdown style guide by default",
+                    "description": "Use [remark-preset-lint-markdown-style-guide](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "semanticCommits": true,
+                "rangeStrategy": "pin",
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    },
+                    {
+                        "packagePatterns": [
+                            "^remark"
+                        ],
+                        "groupName": "Remark packages"
+                    }
+                ]
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "husky": {
+                "hooks": {
+                    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+                }
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/5.2.10/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v5.2.10",
+            "sha": "75f9d063ffbde5b2b52fb45e51e6be2e719f866a"
+        },
+        "5.2.9": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "5.2.9",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/linter-markdown.git"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "5.1.0",
+                "remark": "10.0.1",
+                "remark-frontmatter": "1.3.2",
+                "remark-preset-lint-consistent": "2.0.3",
+                "remark-preset-lint-markdown-style-guide": "2.1.3",
+                "remark-preset-lint-recommended": "3.0.3",
+                "unified-engine-atom": "7.0.1"
+            },
+            "devDependencies": {
+                "@commitlint/cli": "8.0.0",
+                "@commitlint/config-conventional": "8.0.0",
+                "@commitlint/travis-cli": "8.0.0",
+                "@semantic-release/apm-config": "6.0.1",
+                "husky": "2.4.1",
+                "semantic-release": "15.13.16",
+                "eslint": "5.16.0",
+                "eslint-config-airbnb-base": "13.1.0",
+                "eslint-plugin-import": "2.17.3",
+                "jasmine-fix": "1.3.1",
+                "remark-cli": "6.0.1"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "yamlWithoutConfig": {
+                    "title": "Support YAML frontmatter",
+                    "description": "Support YAML [frontmatter](https://github.com/wooorm/remark-frontmatter) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetStyleGuideWithoutConfig": {
+                    "title": "Strict markdown style guide by default",
+                    "description": "Use [remark-preset-lint-markdown-style-guide](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "semanticCommits": true,
+                "rangeStrategy": "pin",
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    },
+                    {
+                        "packagePatterns": [
+                            "^remark"
+                        ],
+                        "groupName": "Remark packages"
+                    }
+                ]
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "husky": {
+                "hooks": {
+                    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+                }
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/5.2.9/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v5.2.9",
+            "sha": "524857b1966877940fc016f1e5fa2c377bceea31"
+        },
+        "5.2.8": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "5.2.8",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/linter-markdown.git"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "5.1.0",
+                "remark": "10.0.1",
+                "remark-frontmatter": "1.3.2",
+                "remark-preset-lint-consistent": "2.0.2",
+                "remark-preset-lint-markdown-style-guide": "2.1.2",
+                "remark-preset-lint-recommended": "3.0.2",
+                "unified-engine-atom": "7.0.1"
+            },
+            "devDependencies": {
+                "@commitlint/cli": "8.0.0",
+                "@commitlint/config-conventional": "8.0.0",
+                "@commitlint/travis-cli": "8.0.0",
+                "@semantic-release/apm-config": "6.0.1",
+                "husky": "2.4.1",
+                "semantic-release": "15.13.16",
+                "eslint": "5.16.0",
+                "eslint-config-airbnb-base": "13.1.0",
+                "eslint-plugin-import": "2.17.3",
+                "jasmine-fix": "1.3.1",
+                "remark-cli": "6.0.1"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "yamlWithoutConfig": {
+                    "title": "Support YAML frontmatter",
+                    "description": "Support YAML [frontmatter](https://github.com/wooorm/remark-frontmatter) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetStyleGuideWithoutConfig": {
+                    "title": "Strict markdown style guide by default",
+                    "description": "Use [remark-preset-lint-markdown-style-guide](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "semanticCommits": true,
+                "rangeStrategy": "pin",
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    },
+                    {
+                        "packagePatterns": [
+                            "^remark"
+                        ],
+                        "groupName": "Remark packages"
+                    }
+                ]
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "husky": {
+                "hooks": {
+                    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+                }
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/5.2.8/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v5.2.8",
+            "sha": "a277b58b64942ad7ee7136bee6ca9b96e7ab19ac"
+        },
+        "5.2.7": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "5.2.7",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/linter-markdown.git"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "5.1.0",
+                "remark": "10.0.1",
+                "remark-frontmatter": "1.3.1",
+                "remark-preset-lint-consistent": "2.0.2",
+                "remark-preset-lint-markdown-style-guide": "2.1.2",
+                "remark-preset-lint-recommended": "3.0.2",
+                "unified-engine-atom": "7.0.1"
+            },
+            "devDependencies": {
+                "@commitlint/cli": "7.5.2",
+                "@commitlint/config-conventional": "7.5.0",
+                "@commitlint/travis-cli": "7.5.2",
+                "@semantic-release/apm-config": "6.0.1",
+                "husky": "1.3.1",
+                "semantic-release": "15.13.3",
+                "eslint": "5.16.0",
+                "eslint-config-airbnb-base": "13.1.0",
+                "eslint-plugin-import": "2.17.2",
+                "jasmine-fix": "1.3.1",
+                "remark-cli": "6.0.1"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "yamlWithoutConfig": {
+                    "title": "Support YAML frontmatter",
+                    "description": "Support YAML [frontmatter](https://github.com/wooorm/remark-frontmatter) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetStyleGuideWithoutConfig": {
+                    "title": "Strict markdown style guide by default",
+                    "description": "Use [remark-preset-lint-markdown-style-guide](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "semanticCommits": true,
+                "rangeStrategy": "pin",
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    },
+                    {
+                        "packagePatterns": [
+                            "^remark"
+                        ],
+                        "groupName": "Remark packages"
+                    }
+                ]
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "husky": {
+                "hooks": {
+                    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+                }
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/5.2.7/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v5.2.7",
+            "sha": "7c07520ef103644e6e3a52773253c946f2bbed4c"
+        },
+        "5.2.6": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "5.2.6",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/linter-markdown.git"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "5.0.0",
+                "remark": "10.0.1",
+                "remark-frontmatter": "1.3.1",
+                "remark-preset-lint-consistent": "2.0.2",
+                "remark-preset-lint-markdown-style-guide": "2.1.2",
+                "remark-preset-lint-recommended": "3.0.2",
+                "unified-engine-atom": "7.0.1"
+            },
+            "devDependencies": {
+                "@commitlint/cli": "7.5.2",
+                "@commitlint/config-conventional": "7.5.0",
+                "@commitlint/travis-cli": "7.5.2",
+                "@semantic-release/apm-config": "6.0.1",
+                "husky": "1.3.1",
+                "semantic-release": "15.13.3",
+                "eslint": "5.13.0",
+                "eslint-config-airbnb-base": "13.1.0",
+                "eslint-plugin-import": "2.16.0",
+                "jasmine-fix": "1.3.1",
+                "remark-cli": "6.0.1"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "yamlWithoutConfig": {
+                    "title": "Support YAML frontmatter",
+                    "description": "Support YAML [frontmatter](https://github.com/wooorm/remark-frontmatter) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetStyleGuideWithoutConfig": {
+                    "title": "Strict markdown style guide by default",
+                    "description": "Use [remark-preset-lint-markdown-style-guide](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "semanticCommits": true,
+                "rangeStrategy": "pin",
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    },
+                    {
+                        "packagePatterns": [
+                            "^remark"
+                        ],
+                        "groupName": "Remark packages"
+                    }
+                ]
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "husky": {
+                "hooks": {
+                    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+                }
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/5.2.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v5.2.6",
+            "sha": "81ca8855d4a8c66a85c7737089ecd9c886634007"
+        },
+        "5.2.5": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "5.2.5",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/linter-markdown.git"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "5.0.0",
+                "remark": "9.0.0",
+                "remark-frontmatter": "1.3.1",
+                "remark-preset-lint-consistent": "2.0.2",
+                "remark-preset-lint-markdown-style-guide": "2.1.2",
+                "remark-preset-lint-recommended": "3.0.2",
+                "unified-engine-atom": "7.0.1"
+            },
+            "devDependencies": {
+                "@commitlint/cli": "7.5.2",
+                "@commitlint/config-conventional": "7.5.0",
+                "@commitlint/travis-cli": "7.5.2",
+                "@semantic-release/apm-config": "6.0.1",
+                "husky": "1.3.1",
+                "semantic-release": "15.13.3",
+                "eslint": "4.19.1",
+                "eslint-config-airbnb-base": "12.1.0",
+                "eslint-plugin-import": "2.16.0",
+                "jasmine-fix": "1.3.1",
+                "remark-cli": "5.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "yamlWithoutConfig": {
+                    "title": "Support YAML frontmatter",
+                    "description": "Support YAML [frontmatter](https://github.com/wooorm/remark-frontmatter) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetStyleGuideWithoutConfig": {
+                    "title": "Strict markdown style guide by default",
+                    "description": "Use [remark-preset-lint-markdown-style-guide](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "semanticCommits": true,
+                "rangeStrategy": "pin",
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    },
+                    {
+                        "packagePatterns": [
+                            "^remark"
+                        ],
+                        "groupName": "Remark packages"
+                    }
+                ]
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "husky": {
+                "hooks": {
+                    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+                }
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/5.2.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v5.2.5",
+            "sha": "999ac0412eaed6f540af73b5b13d905b822029e5"
+        },
+        "5.2.4": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "5.2.4",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "commitmsg": "commitlint -e $GIT_PARAMS",
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/linter-markdown.git"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "4.6.2",
+                "remark": "9.0.0",
+                "remark-frontmatter": "1.3.1",
+                "remark-preset-lint-consistent": "2.0.2",
+                "remark-preset-lint-markdown-style-guide": "2.1.2",
+                "remark-preset-lint-recommended": "3.0.2",
+                "unified-engine-atom": "7.0.1"
+            },
+            "devDependencies": {
+                "@commitlint/cli": "6.2.0",
+                "@commitlint/config-conventional": "6.1.3",
+                "@commitlint/travis-cli": "6.2.0",
+                "@semantic-release/apm-config": "2.0.1",
+                "husky": "0.14.3",
+                "semantic-release": "15.13.3",
+                "eslint": "4.19.1",
+                "eslint-config-airbnb-base": "12.1.0",
+                "eslint-plugin-import": "2.16.0",
+                "jasmine-fix": "1.3.1",
+                "remark-cli": "5.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "yamlWithoutConfig": {
+                    "title": "Support YAML frontmatter",
+                    "description": "Support YAML [frontmatter](https://github.com/wooorm/remark-frontmatter) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetStyleGuideWithoutConfig": {
+                    "title": "Strict markdown style guide by default",
+                    "description": "Use [remark-preset-lint-markdown-style-guide](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "semanticCommits": true,
+                "rangeStrategy": "pin",
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    },
+                    {
+                        "packagePatterns": [
+                            "^remark"
+                        ],
+                        "groupName": "Remark packages"
+                    }
+                ]
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/5.2.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v5.2.4",
+            "sha": "46d7d3179855696b662ba56b7ca47179eee640aa"
+        },
+        "5.2.3": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "5.2.3",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "commitmsg": "commitlint -e $GIT_PARAMS",
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/linter-markdown.git"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "4.6.2",
+                "remark": "9.0.0",
+                "remark-frontmatter": "1.2.0",
+                "remark-preset-lint-consistent": "2.0.1",
+                "remark-preset-lint-markdown-style-guide": "2.1.1",
+                "remark-preset-lint-recommended": "3.0.1",
+                "unified-engine-atom": "7.0.1"
+            },
+            "devDependencies": {
+                "@commitlint/cli": "6.2.0",
+                "@commitlint/config-conventional": "6.1.3",
+                "@commitlint/travis-cli": "6.2.0",
+                "@semantic-release/apm-config": "2.0.1",
+                "husky": "0.14.3",
+                "semantic-release": "15.13.3",
+                "eslint": "4.19.1",
+                "eslint-config-airbnb-base": "12.1.0",
+                "eslint-plugin-import": "2.16.0",
+                "jasmine-fix": "1.3.1",
+                "remark-cli": "5.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "yamlWithoutConfig": {
+                    "title": "Support YAML frontmatter",
+                    "description": "Support YAML [frontmatter](https://github.com/wooorm/remark-frontmatter) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetStyleGuideWithoutConfig": {
+                    "title": "Strict markdown style guide by default",
+                    "description": "Use [remark-preset-lint-markdown-style-guide](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "semanticCommits": true,
+                "rangeStrategy": "pin",
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    },
+                    {
+                        "packagePatterns": [
+                            "^remark"
+                        ],
+                        "groupName": "Remark packages"
+                    }
+                ]
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/5.2.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v5.2.3",
+            "sha": "b30ca5e00e44191ab1afa9014fdaddf6ed6edba9"
+        },
+        "5.2.2": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "5.2.2",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "commitmsg": "commitlint -e $GIT_PARAMS",
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/linter-markdown.git"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.6.0",
+                "remark": "9.0.0",
+                "remark-frontmatter": "^1.1.0",
+                "remark-preset-lint-consistent": "^2.0.0",
+                "remark-preset-lint-markdown-style-guide": "^2.0.0",
+                "remark-preset-lint-recommended": "^3.0.0",
+                "unified-engine-atom": "^7.0.0"
+            },
+            "devDependencies": {
+                "@commitlint/cli": "^6.1.3",
+                "@commitlint/config-conventional": "^6.1.3",
+                "@commitlint/travis-cli": "^6.1.3",
+                "@semantic-release/apm-config": "^2.0.1",
+                "husky": "^0.14.3",
+                "semantic-release": "^15.1.7",
+                "eslint": "^4.6.0",
+                "eslint-config-airbnb-base": "^12.0.0",
+                "eslint-plugin-import": "^2.7.0",
+                "jasmine-fix": "^1.0.1",
+                "remark-cli": "^5.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "yamlWithoutConfig": {
+                    "title": "Support YAML frontmatter",
+                    "description": "Support YAML [frontmatter](https://github.com/wooorm/remark-frontmatter) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetStyleGuideWithoutConfig": {
+                    "title": "Strict markdown style guide by default",
+                    "description": "Use [remark-preset-lint-markdown-style-guide](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/5.2.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v5.2.2",
+            "sha": "2b94a2c77e2e62822f933c88a09d9f8e223c9194"
+        },
+        "5.2.1": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "5.2.1",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "commitmsg": "commitlint -e $GIT_PARAMS",
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/linter-markdown.git"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.6.0",
+                "remark": "9.0.0",
+                "remark-frontmatter": "^1.1.0",
+                "remark-preset-lint-consistent": "^2.0.0",
+                "remark-preset-lint-markdown-style-guide": "^2.0.0",
+                "remark-preset-lint-recommended": "^3.0.0",
+                "unified-engine-atom": "^5.0.0"
+            },
+            "devDependencies": {
+                "@commitlint/cli": "^6.1.3",
+                "@commitlint/config-conventional": "^6.1.3",
+                "@commitlint/travis-cli": "^6.1.3",
+                "@semantic-release/apm-config": "^2.0.1",
+                "husky": "^0.14.3",
+                "semantic-release": "^15.1.7",
+                "eslint": "^4.6.0",
+                "eslint-config-airbnb-base": "^12.0.0",
+                "eslint-plugin-import": "^2.7.0",
+                "jasmine-fix": "^1.0.1",
+                "remark-cli": "^5.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "yamlWithoutConfig": {
+                    "title": "Support YAML frontmatter",
+                    "description": "Support YAML [frontmatter](https://github.com/wooorm/remark-frontmatter) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetStyleGuideWithoutConfig": {
+                    "title": "Strict markdown style guide by default",
+                    "description": "Use [remark-preset-lint-markdown-style-guide](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/5.2.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v5.2.1",
+            "sha": "53ab7a9f24da71c0b43cc9c1c51ccf9b9fee77bf"
+        },
+        "5.2.0": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "5.2.0",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.6.0",
+                "remark": "8.0.0",
+                "remark-frontmatter": "^1.1.0",
+                "remark-preset-lint-consistent": "^2.0.0",
+                "remark-preset-lint-markdown-style-guide": "^2.0.0",
+                "remark-preset-lint-recommended": "^3.0.0",
+                "unified-engine-atom": "^5.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^4.3.0",
+                "eslint-config-airbnb-base": "^11.3.1",
+                "eslint-plugin-import": "^2.7.0",
+                "jasmine-fix": "^1.0.1",
+                "remark-cli": "^4.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "yamlWithoutConfig": {
+                    "title": "Support YAML frontmatter",
+                    "description": "Support YAML [frontmatter](https://github.com/wooorm/remark-frontmatter) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetStyleGuideWithoutConfig": {
+                    "title": "Strict markdown style guide by default",
+                    "description": "Use [remark-preset-lint-markdown-style-guide](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/5.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v5.2.0",
+            "sha": "0026a9ce6589796a818cf1e7dbce84b6c1f4a68d"
+        },
+        "5.1.0": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "5.1.0",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.6.0",
+                "remark": "8.0.0",
+                "remark-preset-lint-consistent": "^2.0.0",
+                "remark-preset-lint-markdown-style-guide": "^2.0.0",
+                "remark-preset-lint-recommended": "^3.0.0",
+                "unified-engine-atom": "^5.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^4.3.0",
+                "eslint-config-airbnb-base": "^11.3.1",
+                "eslint-plugin-import": "^2.7.0",
+                "jasmine-fix": "^1.0.1",
+                "remark-cli": "^4.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetStyleGuideWithoutConfig": {
+                    "title": "Strict markdown style guide by default",
+                    "description": "Use [remark-preset-lint-markdown-style-guide](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/5.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v5.1.0",
+            "sha": "c35e58074bf5debb320a54e84f85bf8aabc9249a"
+        },
+        "5.0.0": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "5.0.0",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.6.0",
+                "remark": "8.0.0",
+                "remark-preset-lint-consistent": "^2.0.0",
+                "remark-preset-lint-markdown-style-guide": "^1.0.0",
+                "remark-preset-lint-recommended": "^2.0.0",
+                "unified-engine-atom": "^5.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^3.13.0",
+                "eslint-config-airbnb-base": "^11.0.1",
+                "eslint-plugin-import": "^2.2.0",
+                "jasmine-fix": "^1.0.1",
+                "remark-cli": "^4.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetStyleGuideWithoutConfig": {
+                    "title": "Strict markdown style guide by default",
+                    "description": "Use [remark-preset-lint-markdown-style-guide](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/5.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v5.0.0",
+            "sha": "db8f4f4e27b67f9ded69483ecd5f46c3ae53fad8"
+        },
+        "4.1.0": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "4.1.0",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.6.0",
+                "remark": "7.0.1",
+                "remark-preset-lint-consistent": "^2.0.0",
+                "remark-preset-lint-markdown-style-guide": "^1.0.0",
+                "remark-preset-lint-recommended": "^2.0.0",
+                "unified-engine-atom": "^5.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^3.13.0",
+                "eslint-config-airbnb-base": "^11.0.1",
+                "eslint-plugin-import": "^2.2.0",
+                "jasmine-fix": "^1.0.1",
+                "remark-cli": "^3.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetStyleGuideWithoutConfig": {
+                    "title": "Strict markdown style guide by default",
+                    "description": "Use [remark-preset-lint-markdown-style-guide](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/4.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v4.1.0",
+            "sha": "f02d01c68ad9b17b2267fcf6412f9b41c83db9a9"
+        },
+        "4.0.1": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "4.0.1",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.6.0",
+                "remark": "7.0.1",
+                "remark-preset-lint-consistent": "^2.0.0",
+                "remark-preset-lint-recommended": "^2.0.0",
+                "unified-engine-atom": "^5.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^3.13.0",
+                "eslint-config-airbnb-base": "^11.0.1",
+                "eslint-plugin-import": "^2.2.0",
+                "jasmine-fix": "^1.0.1",
+                "remark-cli": "^3.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/4.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v4.0.1",
+            "sha": "c04b0dd5f3c7ec2c84882f14a85786cc6ed5eec7"
+        },
+        "4.0.0": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "4.0.0",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.6.0",
+                "remark": "7.0.0",
+                "remark-preset-lint-consistent": "^2.0.0",
+                "remark-preset-lint-recommended": "^2.0.0",
+                "unified-engine-atom": "^5.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^3.13.0",
+                "eslint-config-airbnb-base": "^11.0.1",
+                "eslint-plugin-import": "^2.2.0",
+                "jasmine-fix": "^1.0.1",
+                "remark-cli": "^3.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/4.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v4.0.0",
+            "sha": "7fb21483779eab46339f2aae42bbb8c14e3e8b40"
+        },
+        "3.1.1": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "3.1.1",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.0.1",
+                "remark": "6.2.0",
+                "remark-preset-lint-consistent": "^1.0.0",
+                "remark-preset-lint-recommended": "^1.0.0",
+                "unified-engine-atom": "^2.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^3.13.0",
+                "eslint-config-airbnb-base": "^11.0.1",
+                "eslint-plugin-import": "^2.2.0",
+                "jasmine-fix": "^1.0.1",
+                "remark-cli": "^3.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        "error",
+                        "never"
+                    ],
+                    "global-require": "off",
+                    "no-console": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/3.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v3.1.1",
+            "sha": "2db6f955c0dbc04580ef1746ab03aad3f323fad1"
+        },
+        "3.1.0": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "3.1.0",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.0.1",
+                "remark": "6.2.0",
+                "remark-preset-lint-consistent": "^1.0.0",
+                "remark-preset-lint-recommended": "^1.0.0",
+                "unified-engine-atom": "^2.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^3.13.0",
+                "eslint-config-airbnb-base": "^11.0.1",
+                "eslint-plugin-import": "^2.2.0",
+                "remark-cli": "^2.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        2,
+                        "never"
+                    ],
+                    "global-require": 0,
+                    "no-console": 0
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/3.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v3.1.0",
+            "sha": "e7116571ef1099e49497741ac9415a4a544375a7"
+        },
+        "3.0.2": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "3.0.2",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.0.1",
+                "remark": "6.0.1",
+                "remark-preset-lint-consistent": "^1.0.0",
+                "remark-preset-lint-recommended": "^1.0.0",
+                "unified-engine-atom": "^2.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^3.5.0",
+                "eslint-config-airbnb-base": "^7.1.0",
+                "eslint-plugin-import": "^1.14.0",
+                "remark-cli": "^2.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        2,
+                        "never"
+                    ],
+                    "global-require": 0,
+                    "no-console": 0
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/3.0.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v3.0.2",
+            "sha": "3ecff0952fb4d3bed671fde382dd632acdcd0deb"
+        },
+        "3.0.1": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "3.0.1",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.0.1",
+                "remark": "6.0.1",
+                "remark-preset-lint-consistent": "^1.0.0",
+                "remark-preset-lint-recommended": "^1.0.0",
+                "unified-engine-atom": "^2.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^3.4.0",
+                "eslint-config-airbnb-base": "^7.0.0",
+                "eslint-plugin-import": "^1.14.0",
+                "remark-cli": "^2.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        2,
+                        "never"
+                    ],
+                    "global-require": 0,
+                    "no-console": 0
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/3.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v3.0.1",
+            "sha": "94813d239efda6ef6a4eca293d2657cfce8fc78e"
+        },
+        "3.0.0": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "3.0.0",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.0.1",
+                "remark": "6.0.0",
+                "remark-preset-lint-consistent": "^1.0.0",
+                "remark-preset-lint-recommended": "^1.0.0",
+                "unified-engine-atom": "^2.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^3.1.1",
+                "eslint-config-airbnb-base": "^5.0.0",
+                "eslint-plugin-import": "^1.10.2",
+                "remark-cli": "^2.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        2,
+                        "never"
+                    ],
+                    "global-require": 0,
+                    "no-console": 0
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "configSchema": {
+                "detectIgnore": {
+                    "title": "Ignore files",
+                    "description": "Use `.remarkignore` files.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetRecommendedWithoutConfig": {
+                    "title": "Bug-free by default",
+                    "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "presetConsistentWithoutConfig": {
+                    "title": "Consistency by default",
+                    "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "source.gfm",
+                        "source.pfm",
+                        "text.md"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/3.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v3.0.0",
+            "sha": "14414149ef92b67a9ebab605aef6cd614cbc22f4"
+        },
+        "2.0.1": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "2.0.1",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark -u remark-lint README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.0.1",
+                "remark": "5.1.0",
+                "remark-lint": "4.1.0",
+                "unified-engine-atom": "^1.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^3.1.1",
+                "eslint-config-airbnb-base": "^5.0.0",
+                "eslint-plugin-import": "^1.10.2",
+                "remark-cli": "^1.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        2,
+                        "never"
+                    ],
+                    "global-require": 0,
+                    "no-console": 0
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/2.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v2.0.1",
+            "sha": "5d53793d7ccdac59f58d2b7a9bedc6ef6948613a"
+        },
+        "2.0.0": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "2.0.0",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark -u remark-lint README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.0.1",
+                "remark": "5.1.0",
+                "remark-lint": "4.1.0",
+                "unified-engine-atom": "^1.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^3.1.1",
+                "eslint-config-airbnb-base": "^5.0.0",
+                "eslint-plugin-import": "^1.10.2",
+                "remark-cli": "^1.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        2,
+                        "never"
+                    ],
+                    "global-require": 0,
+                    "no-console": 0
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/2.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v2.0.0",
+            "sha": "b8673dc13cd2028bb4f1b39d21cb1f52d694f4b9"
+        },
+        "1.5.2": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "1.5.2",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark -u remark-lint README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.0.1",
+                "load-plugin": "^1.0.0",
+                "remark": "^4.0.0",
+                "remark-lint": "^3.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^2.9.0",
+                "eslint-config-airbnb-base": "^3.0.1",
+                "eslint-plugin-import": "^1.7.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        2,
+                        "never"
+                    ],
+                    "global-require": 0,
+                    "no-console": 0
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/1.5.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v1.5.2",
+            "sha": "346bc81ac6c83461d1ea25bb3228c4f0d6775e4a"
+        },
+        "1.5.1": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "1.5.1",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark -u remark-lint README.md LICENSE.md && eslint lib spec",
+                "test": "apm test"
+            },
+            "keywords": [
+                "lint",
+                "linter",
+                "remark",
+                "remark-lint",
+                "markdown"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.0.1",
+                "load-plugin": "^1.0.0",
+                "remark": "^4.0.0",
+                "remark-lint": "^3.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^2.9.0",
+                "eslint-config-airbnb-base": "^3.0.1",
+                "eslint-plugin-import": "^1.7.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        2,
+                        "never"
+                    ],
+                    "global-require": 0,
+                    "no-console": 0
+                },
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/1.5.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v1.5.1",
+            "sha": "acd51d51d91de4ef4914a3779cfc8e6e38402412"
+        },
+        "1.5.0": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "1.5.0",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark -u remark-lint README.md LICENSE.md"
+            },
+            "keywords": [],
+            "activationCommands": {},
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.0.0"
+            },
+            "dependencies": {
+                "remark": "^4.0.0",
+                "remark-lint": "^3.0.0",
+                "atom-package-deps": "^3.0.7"
+            },
+            "devDependencies": {
+                "eslint": "^1.10.3",
+                "babel-eslint": "^4.1.6",
+                "eslint-config-airbnb": "^5.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        2,
+                        "never"
+                    ],
+                    "no-console": 0
+                },
+                "extends": "airbnb/base",
+                "parser": "babel-eslint",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/1.5.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v1.5.0",
+            "sha": "5c8a5e533e577a36f6d88ef798ea7970e2fb6c67"
+        },
+        "1.4.2": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "1.4.2",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark -u remark-lint README.md LICENSE.md"
+            },
+            "keywords": [],
+            "activationCommands": {},
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.0.0"
+            },
+            "dependencies": {
+                "remark": "^3.2.2",
+                "remark-lint": "^2.2.1",
+                "atom-package-deps": "^3.0.7"
+            },
+            "devDependencies": {
+                "eslint": "^1.10.3",
+                "babel-eslint": "^4.1.6",
+                "eslint-config-airbnb": "^5.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        2,
+                        "never"
+                    ],
+                    "no-console": 0
+                },
+                "extends": "airbnb/base",
+                "parser": "babel-eslint",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/1.4.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v1.4.2",
+            "sha": "8ae9da4acfaf01a6b4dd7ee35148e5ed99e21e63"
+        },
+        "1.4.1": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "1.4.1",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark -u remark-lint README.md LICENSE.md"
+            },
+            "keywords": [],
+            "activationCommands": {},
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.0.0"
+            },
+            "dependencies": {
+                "remark": "^3.2.2",
+                "remark-lint": "^2.2.1",
+                "atom-package-deps": "^3.0.7"
+            },
+            "devDependencies": {
+                "eslint": "^1.10.3",
+                "babel-eslint": "^4.1.6",
+                "eslint-config-airbnb": "^5.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        2,
+                        "never"
+                    ],
+                    "no-console": 0
+                },
+                "extends": "airbnb/base",
+                "parser": "babel-eslint",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/1.4.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v1.4.1",
+            "sha": "aed178b053d493ebb587858de1981a7886d16941"
+        },
+        "1.4.0": {
+            "name": "linter-markdown",
+            "main": "lib/index.js",
+            "version": "1.4.0",
+            "description": "Lint markdown on the fly, using remark-lint",
+            "scripts": {
+                "lint": "remark -u remark-lint README.md LICENSE.md"
+            },
+            "keywords": [],
+            "activationCommands": {},
+            "repository": "https://github.com/AtomLinter/linter-markdown",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.0.0"
+            },
+            "dependencies": {
+                "remark": "^3.2.2",
+                "remark-lint": "^2.2.1",
+                "atom-package-deps": "^3.0.7"
+            },
+            "devDependencies": {
+                "eslint": "^1.10.3",
+                "babel-eslint": "^4.1.6",
+                "eslint-config-airbnb": "^5.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "comma-dangle": [
+                        2,
+                        "never"
+                    ],
+                    "no-console": 0
+                },
+                "extends": "airbnb/base",
+                "parser": "babel-eslint",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-markdown/versions/1.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-markdown/tarball/refs/tags/v1.4.0",
+            "sha": "c3ff74773f88f59519b3951f663552616f9bf50b"
+        }
+    },
+    "readme": "# linter-markdown\n\n[![Build Status](https://travis-ci.org/AtomLinter/linter-markdown.svg?branch=master)](https://travis-ci.org/AtomLinter/linter-markdown)\n[![Circle CI](https://circleci.com/gh/AtomLinter/linter-markdown/tree/master.svg?style=shield)](https://circleci.com/gh/AtomLinter/linter-markdown/tree/master)\n[![Build status](https://ci.appveyor.com/api/projects/status/owck145l404p4f7k/branch/master?svg=true)](https://ci.appveyor.com/project/SpainTrain/linter-markdown/branch/master)\n\n[![bitHound Overalll Score](https://www.bithound.io/github/AtomLinter/linter-markdown/badges/score.svg)](https://www.bithound.io/github/AtomLinter/linter-markdown)\n[![bitHound Dependencies](https://www.bithound.io/github/AtomLinter/linter-markdown/badges/dependencies.svg)](https://www.bithound.io/github/AtomLinter/linter-markdown/master/dependencies/npm)\n[![Plugin installs!](https://img.shields.io/apm/dm/linter-markdown.svg)](https://atom.io/packages/linter-markdown)\n[![Package version!](https://img.shields.io/apm/v/linter-markdown.svg?style=flat)](https://atom.io/packages/linter-markdown)\n\nLint markdown files using [remark-lint][remark-lint] and the\n[linter][linter] package for atom.\n\nIf there is no configuration found for **remark-lint**, this linter runs [remark-preset-lint-consistent][consistent] and\n[remark-preset-lint-recommended][recommended] (both can be turned off).\nYou can a also turn on [remark-preset-lint-markdown-style-guide][styleguide].\nBy default, [YAML frontmatter][yaml] is supported, but you can turn that off.\n\nIf there *is* configuration for **remark-lint**, through `.remarkrc` files\nor `remarkConfig` in `package.json`s, this linter works just like\n[remark-cli][cli].\n\nYou should probably install modules referenced in `.remarkrc` files locally\n(`npm install` without the `-g` or `--global` flag). If you do install modules\nglobally, you must either use [nvm][], or have\na [`prefix` in your `.npmrc`][prefix].\n\nSee [this tutorial][set-up] on how to set-up npm to work without sudo, which\nis good practise, and comes with the added benefit that `linter-markdown`\ncan pick up on globally installed modules.\n\nRead more about configuring [remark-lint][configuration] on its README.\n\nA similar linter, [linter-remark][], runs all remark plugins, but only\nwhen they are configured to run.\n\nWe also maintain a [changelog][changelog] containing recent changes.\n\n![Screenshot of linter-markdown in action][screenshot]\n\n[remark-lint]: https://github.com/wooorm/remark-lint\n[changelog]: https://github.com/AtomLinter/linter-markdown/blob/master/CHANGELOG.md\n[configuration]: https://github.com/wooorm/remark-lint#configuring-remark-lint\n[linter]: https://atom.io/packages/linter\n[screenshot]: https://raw.githubusercontent.com/AtomLinter/linter-markdown/master/assets/screenshot.png\n[cli]: https://github.com/wooorm/remark/tree/master/packages/remark-cli\n[yaml]: https://github.com/wooorm/remark-frontmatter\n[consistent]: https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent\n[recommended]: https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended\n[styleguide]: https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide\n[linter-remark]: https://github.com/wooorm/linter-remark\n[nvm]: https://github.com/creationix/nvm\n[prefix]: https://docs.npmjs.com/misc/config#prefix\n[set-up]: https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md\n",
+    "metadata": {
+        "name": "linter-markdown",
+        "main": "lib/index.js",
+        "version": "5.2.11",
+        "description": "Lint markdown on the fly, using remark-lint",
+        "scripts": {
+            "lint": "remark README.md LICENSE.md && eslint lib spec",
+            "test": "apm test"
+        },
+        "keywords": [
+            "lint",
+            "linter",
+            "remark",
+            "remark-lint",
+            "markdown"
+        ],
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/AtomLinter/linter-markdown.git"
+        },
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.7.0 <2.0.0"
+        },
+        "package-deps": [
+            "linter"
+        ],
+        "dependencies": {
+            "atom-package-deps": "5.1.0",
+            "remark": "11.0.2",
+            "remark-frontmatter": "1.3.2",
+            "remark-preset-lint-consistent": "2.0.3",
+            "remark-preset-lint-markdown-style-guide": "2.1.3",
+            "remark-preset-lint-recommended": "3.0.3",
+            "unified-engine-atom": "8.0.0"
+        },
+        "devDependencies": {
+            "@commitlint/cli": "8.2.0",
+            "@commitlint/config-conventional": "8.2.0",
+            "@commitlint/travis-cli": "8.2.0",
+            "@semantic-release/apm-config": "6.0.2",
+            "eslint": "6.7.2",
+            "eslint-config-airbnb-base": "14.0.0",
+            "eslint-plugin-import": "2.19.1",
+            "husky": "3.1.0",
+            "jasmine-fix": "1.3.1",
+            "remark-cli": "7.0.1",
+            "semantic-release": "15.13.31"
+        },
+        "eslintConfig": {
+            "rules": {
+                "comma-dangle": [
+                    "error",
+                    "never"
+                ],
+                "global-require": "off",
+                "no-console": "off",
+                "import/no-unresolved": [
+                    "error",
+                    {
+                        "ignore": [
+                            "atom"
+                        ]
+                    }
+                ]
+            },
+            "extends": "airbnb-base",
+            "globals": {
+                "atom": true
+            },
+            "env": {
+                "node": true,
+                "browser": true
+            }
+        },
+        "providedServices": {
+            "linter": {
+                "versions": {
+                    "2.0.0": "provideLinter"
+                }
+            }
+        },
+        "configSchema": {
+            "detectIgnore": {
+                "title": "Ignore files",
+                "description": "Use `.remarkignore` files.",
+                "type": "boolean",
+                "default": true
+            },
+            "yamlWithoutConfig": {
+                "title": "Support YAML frontmatter",
+                "description": "Support YAML [frontmatter](https://github.com/wooorm/remark-frontmatter) if no **remark-lint** config is found.",
+                "type": "boolean",
+                "default": true
+            },
+            "presetRecommendedWithoutConfig": {
+                "title": "Bug-free by default",
+                "description": "Use [remark-preset-lint-recommended](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-recommended) if no **remark-lint** config is found.",
+                "type": "boolean",
+                "default": true
+            },
+            "presetConsistentWithoutConfig": {
+                "title": "Consistency by default",
+                "description": "Use [remark-preset-lint-consistent](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-consistent) if no **remark-lint** config is found.",
+                "type": "boolean",
+                "default": true
+            },
+            "presetStyleGuideWithoutConfig": {
+                "title": "Strict markdown style guide by default",
+                "description": "Use [remark-preset-lint-markdown-style-guide](https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide) if no **remark-lint** config is found.",
+                "type": "boolean",
+                "default": false
+            },
+            "scopes": {
+                "title": "Scopes",
+                "description": "List of scopes for languages which will be checked (run `Editor: Log Cursor Scope` to determine the scopes for a file).",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "default": [
+                    "source.gfm",
+                    "source.pfm",
+                    "text.md"
+                ]
+            }
+        },
+        "renovate": {
+            "extends": [
+                "config:base"
+            ],
+            "semanticCommits": true,
+            "rangeStrategy": "pin",
+            "packageRules": [
+                {
+                    "packagePatterns": [
+                        "^eslint"
+                    ],
+                    "groupName": "ESLint packages"
+                },
+                {
+                    "packagePatterns": [
+                        "^remark"
+                    ],
+                    "groupName": "Remark packages"
+                }
+            ]
+        },
+        "release": {
+            "extends": "@semantic-release/apm-config"
+        },
+        "husky": {
+            "hooks": {
+                "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+            }
+        },
+        "commitlint": {
+            "extends": [
+                "@commitlint/config-conventional"
+            ]
+        }
+    },
+    "created": 1658351206624,
+    "updated": 1658351206624,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

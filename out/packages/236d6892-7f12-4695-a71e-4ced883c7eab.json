@@ -1,0 +1,863 @@
+{
+    "name": "ide-haskell-hls",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/atom-haskell/ide-haskell-hls"
+    },
+    "downloads": 1302,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "0.0.6"
+    },
+    "versions": {
+        "0.0.6": {
+            "name": "ide-haskell-hls",
+            "main": "./lib/main",
+            "version": "0.0.6",
+            "description": "(Alpha) Provides Haskell Language Server powered backend for ide-haskell",
+            "keywords": [
+                "ide-haskell",
+                "ide",
+                "haskell",
+                "haskell-language-server",
+                "HLS",
+                "backend"
+            ],
+            "repository": "https://github.com/atom-haskell/ide-haskell-hls",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.55.0 <2.0.0"
+            },
+            "scripts": {
+                "build": "tsc -p .",
+                "prettier": "prettier --write 'src/**/*.ts?(x)' 'spec/**/*.ts?(x)'",
+                "prettier-check": "prettier -l 'src/**/*.ts?(x)' 'spec/**/*.ts?(x)'",
+                "typecheck": "tsc --noEmit -p . && tsc --noEmit -p spec",
+                "lint": "tslint --project . && tslint --project spec",
+                "test": "npm run typecheck && npm run lint && npm run prettier-check"
+            },
+            "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+            "activationHooks": [
+                "language-haskell:grammar-used"
+            ],
+            "dependencies": {
+                "atom-languageclient": "^1.4.0",
+                "atom-package-deps": "7.2.3"
+            },
+            "package-deps": [
+                {
+                    "name": "language-haskell"
+                },
+                {
+                    "name": "ide-haskell"
+                },
+                {
+                    "name": "ide-haskell-hoogle"
+                },
+                {
+                    "name": "atom-ide-markdown-service"
+                },
+                {
+                    "name": "atom-ide-definitions"
+                },
+                {
+                    "name": "atom-ide-outline"
+                }
+            ],
+            "consumedServices": {
+                "ide-haskell-upi": {
+                    "description": "Uses ide-haskell's unified pluggable interface",
+                    "versions": {
+                        "^0.3.2": "consumeUPI"
+                    }
+                },
+                "markdown-renderer": {
+                    "versions": {
+                        "^1.0.0": "consumeMarkdownRenderer"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideRangeCodeFormat"
+                    }
+                },
+                "code-format.file": {
+                    "versions": {
+                        "0.1.0": "provideFileCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "devDependencies": {
+                "@types/atom": "~1.40.10",
+                "@types/chai": "^4.2.15",
+                "@types/mocha": "^8.2.1",
+                "@types/node": "^12",
+                "atom-haskell-tslint-rules": "^0.2.2",
+                "atom-ts-spec-runner": "^1.1.1",
+                "chai": "^4.3.4",
+                "prettier": "^2.2.1",
+                "tslint": "^6.1.3",
+                "typescript": "~4.2.3"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-haskell-hls/versions/0.0.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom-haskell/ide-haskell-hls/tarball/refs/tags/v0.0.6",
+            "sha": "8d13172cd7bbe735135a12015d40f83c0e762f7b"
+        },
+        "0.0.5": {
+            "name": "ide-haskell-hls",
+            "main": "./lib/main",
+            "version": "0.0.5",
+            "description": "(Alpha) Provides Haskell Language Server powered backend for ide-haskell",
+            "keywords": [
+                "ide-haskell",
+                "ide",
+                "haskell",
+                "haskell-language-server",
+                "HLS",
+                "backend"
+            ],
+            "repository": "https://github.com/atom-haskell/ide-haskell-hls",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.55.0 <2.0.0"
+            },
+            "scripts": {
+                "build": "tsc -p .",
+                "prettier": "prettier --write 'src/**/*.ts?(x)' 'spec/**/*.ts?(x)'",
+                "prettier-check": "prettier -l 'src/**/*.ts?(x)' 'spec/**/*.ts?(x)'",
+                "typecheck": "tsc --noEmit -p . && tsc --noEmit -p spec",
+                "lint": "tslint --project . && tslint --project spec",
+                "test": "npm run typecheck && npm run lint && npm run prettier-check"
+            },
+            "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+            "activationHooks": [
+                "language-haskell:grammar-used"
+            ],
+            "dependencies": {
+                "atom-languageclient": "^1.4.0"
+            },
+            "consumedServices": {
+                "ide-haskell-upi": {
+                    "description": "Uses ide-haskell's unified pluggable interface",
+                    "versions": {
+                        "^0.3.2": "consumeUPI"
+                    }
+                },
+                "markdown-renderer": {
+                    "versions": {
+                        "^1.0.0": "consumeMarkdownRenderer"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideRangeCodeFormat"
+                    }
+                },
+                "code-format.file": {
+                    "versions": {
+                        "0.1.0": "provideFileCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "devDependencies": {
+                "@types/atom": "~1.40.10",
+                "@types/chai": "^4.2.15",
+                "@types/mocha": "^8.2.1",
+                "@types/node": "^12",
+                "atom-haskell-tslint-rules": "^0.2.2",
+                "atom-ts-spec-runner": "^1.1.1",
+                "chai": "^4.3.4",
+                "prettier": "^2.2.1",
+                "tslint": "^6.1.3",
+                "typescript": "~4.2.3"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-haskell-hls/versions/0.0.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom-haskell/ide-haskell-hls/tarball/refs/tags/v0.0.5",
+            "sha": "8e6f7ed181f42eaa6d1e1faa0c9c4d5599c43ed6"
+        },
+        "0.0.4": {
+            "name": "ide-haskell-hls",
+            "main": "./lib/main",
+            "version": "0.0.4",
+            "description": "(Alpha) Provides Haskell Language Server powered backend for ide-haskell",
+            "keywords": [
+                "ide-haskell",
+                "ide",
+                "haskell",
+                "haskell-language-server",
+                "HLS",
+                "backend"
+            ],
+            "repository": "https://github.com/atom-haskell/ide-haskell-hls",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.55.0 <2.0.0"
+            },
+            "scripts": {
+                "build": "tsc -p .",
+                "prettier": "prettier --write 'src/**/*.ts?(x)' 'spec/**/*.ts?(x)'",
+                "prettier-check": "prettier -l 'src/**/*.ts?(x)' 'spec/**/*.ts?(x)'",
+                "typecheck": "tsc --noEmit -p . && tsc --noEmit -p spec",
+                "lint": "tslint --project . && tslint --project spec",
+                "test": "npm run typecheck && npm run lint && npm run prettier-check"
+            },
+            "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+            "activationHooks": [
+                "language-haskell:grammar-used"
+            ],
+            "dependencies": {
+                "atom-languageclient": "^1.2.2"
+            },
+            "consumedServices": {
+                "ide-haskell-upi": {
+                    "description": "Uses ide-haskell's unified pluggable interface",
+                    "versions": {
+                        "^0.3.2": "consumeUPI"
+                    }
+                },
+                "markdown-renderer": {
+                    "versions": {
+                        "1.0.0": "consumeMarkdownRenderer"
+                    }
+                },
+                "busy-signal": {
+                    "versions": {
+                        "1.0.0": "consumeBusySignal"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideRangeCodeFormat"
+                    }
+                },
+                "code-format.file": {
+                    "versions": {
+                        "0.1.0": "provideFileCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "devDependencies": {
+                "@types/atom": "~1.40.9",
+                "@types/chai": "^4.2.15",
+                "@types/mocha": "^8.2.1",
+                "@types/node": "^12",
+                "atom-haskell-tslint-rules": "^0.2.2",
+                "atom-ts-spec-runner": "^1.1.1",
+                "chai": "^4.3.4",
+                "prettier": "^2.2.1",
+                "tslint": "^6.1.3",
+                "typescript": "~4.2.3"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-haskell-hls/versions/0.0.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom-haskell/ide-haskell-hls/tarball/refs/tags/v0.0.4",
+            "sha": "ad0b55f57c3dbd74fb31c60b2f51e5ede4bdc0a0"
+        },
+        "0.0.3": {
+            "name": "ide-haskell-hls",
+            "main": "./lib/main",
+            "version": "0.0.3",
+            "description": "(Alpha) Provides Haskell Language Server powered backend for ide-haskell",
+            "keywords": [
+                "ide-haskell",
+                "ide",
+                "haskell",
+                "haskell-language-server",
+                "HLS",
+                "backend"
+            ],
+            "repository": "https://github.com/atom-haskell/ide-haskell-hls",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.55.0 <2.0.0"
+            },
+            "scripts": {
+                "build": "tsc -p .",
+                "prettier": "prettier --write 'src/**/*.ts?(x)' 'spec/**/*.ts?(x)'",
+                "prettier-check": "prettier -l 'src/**/*.ts?(x)' 'spec/**/*.ts?(x)'",
+                "typecheck": "tsc --noEmit -p . && tsc --noEmit -p spec",
+                "lint": "tslint --project . && tslint --project spec",
+                "test": "npm run typecheck && npm run lint && npm run prettier-check"
+            },
+            "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+            "activationHooks": [
+                "language-haskell:grammar-used"
+            ],
+            "dependencies": {
+                "atom-languageclient": "^1.2.2"
+            },
+            "consumedServices": {
+                "ide-haskell-upi": {
+                    "description": "Uses ide-haskell's unified pluggable interface",
+                    "versions": {
+                        "^0.3.2": "consumeUPI"
+                    }
+                },
+                "markdown-renderer": {
+                    "versions": {
+                        "1.0.0": "consumeMarkdownRenderer"
+                    }
+                },
+                "busy-signal": {
+                    "versions": {
+                        "1.0.0": "consumeBusySignal"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideRangeCodeFormat"
+                    }
+                },
+                "code-format.file": {
+                    "versions": {
+                        "0.1.0": "provideFileCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "devDependencies": {
+                "@types/atom": "~1.40.9",
+                "@types/chai": "^4.2.15",
+                "@types/mocha": "^8.2.1",
+                "@types/node": "^12",
+                "atom-haskell-tslint-rules": "^0.2.2",
+                "atom-ts-spec-runner": "^1.1.1",
+                "chai": "^4.3.4",
+                "prettier": "^2.2.1",
+                "tslint": "^6.1.3",
+                "typescript": "~4.2.3"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-haskell-hls/versions/0.0.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom-haskell/ide-haskell-hls/tarball/refs/tags/v0.0.3",
+            "sha": "f7135a19e846f5dd937077e30acf658a085765ee"
+        },
+        "0.0.2": {
+            "name": "ide-haskell-hls",
+            "main": "./lib/main",
+            "version": "0.0.2",
+            "description": "(Alpha) Provides Haskell Language Server powered backend for ide-haskell",
+            "keywords": [
+                "ide-haskell",
+                "ide",
+                "haskell",
+                "haskell-language-server",
+                "HLS",
+                "backend"
+            ],
+            "repository": "https://github.com/atom-haskell/ide-haskell-hls",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.55.0 <2.0.0"
+            },
+            "scripts": {
+                "build": "tsc -p .",
+                "prettier": "prettier --write 'src/**/*.ts?(x)' 'spec/**/*.ts?(x)'",
+                "prettier-check": "prettier -l 'src/**/*.ts?(x)' 'spec/**/*.ts?(x)'",
+                "typecheck": "tsc --noEmit -p . && tsc --noEmit -p spec",
+                "lint": "tslint --project . && tslint --project spec",
+                "test": "npm run typecheck && npm run lint && npm run prettier-check"
+            },
+            "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+            "activationHooks": [
+                "language-haskell:grammar-used"
+            ],
+            "dependencies": {
+                "atom-languageclient": "^1.2.2"
+            },
+            "consumedServices": {
+                "ide-haskell-upi": {
+                    "description": "Uses ide-haskell's unified pluggable interface",
+                    "versions": {
+                        "^0.3.2": "consumeUPI"
+                    }
+                },
+                "markdown-renderer": {
+                    "versions": {
+                        "1.0.0": "consumeMarkdownRenderer"
+                    }
+                },
+                "busy-signal": {
+                    "versions": {
+                        "1.0.0": "consumeBusySignal"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideRangeCodeFormat"
+                    }
+                },
+                "code-format.file": {
+                    "versions": {
+                        "0.1.0": "provideFileCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "devDependencies": {
+                "@types/atom": "~1.40.9",
+                "@types/chai": "^4.2.15",
+                "@types/mocha": "^8.2.1",
+                "@types/node": "^12",
+                "atom-haskell-tslint-rules": "^0.2.2",
+                "atom-ts-spec-runner": "^1.1.1",
+                "chai": "^4.3.4",
+                "prettier": "^2.2.1",
+                "tslint": "^6.1.3",
+                "typescript": "~4.2.3"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-haskell-hls/versions/0.0.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom-haskell/ide-haskell-hls/tarball/refs/tags/v0.0.2",
+            "sha": "3da04edf0ec3748903f8574e026ba0ce5c7d4897"
+        },
+        "0.0.1": {
+            "name": "ide-haskell-hls",
+            "main": "./lib/main",
+            "version": "0.0.1",
+            "description": "(Alpha) Provides Haskell Language Server powered backend for ide-haskell",
+            "keywords": [
+                "ide-haskell",
+                "ide",
+                "haskell",
+                "haskell-language-server",
+                "HLS",
+                "backend"
+            ],
+            "repository": "https://github.com/atom-haskell/ide-haskell-hls",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.55.0 <2.0.0"
+            },
+            "scripts": {
+                "build": "tsc -p .",
+                "prettier": "prettier --write 'src/**/*.ts?(x)' 'spec/**/*.ts?(x)'",
+                "prettier-check": "prettier -l 'src/**/*.ts?(x)' 'spec/**/*.ts?(x)'",
+                "typecheck": "tsc --noEmit -p . && tsc --noEmit -p spec",
+                "lint": "tslint --project . && tslint --project spec",
+                "test": "npm run typecheck && npm run lint && npm run prettier-check"
+            },
+            "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+            "activationHooks": [
+                "language-haskell:grammar-used"
+            ],
+            "dependencies": {
+                "atom-languageclient": "^1.2.2"
+            },
+            "consumedServices": {
+                "ide-haskell-upi": {
+                    "description": "Uses ide-haskell's unified pluggable interface",
+                    "versions": {
+                        "^0.3.2": "consumeUPI"
+                    }
+                },
+                "markdown-renderer": {
+                    "versions": {
+                        "1.0.0": "consumeMarkdownRenderer"
+                    }
+                },
+                "busy-signal": {
+                    "versions": {
+                        "1.0.0": "consumeBusySignal"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideRangeCodeFormat"
+                    }
+                },
+                "code-format.file": {
+                    "versions": {
+                        "0.1.0": "provideFileCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                }
+            },
+            "devDependencies": {
+                "@types/atom": "~1.40.9",
+                "@types/chai": "^4.2.15",
+                "@types/mocha": "^8.2.1",
+                "@types/node": "^12",
+                "atom-haskell-tslint-rules": "^0.2.2",
+                "atom-ts-spec-runner": "^1.1.1",
+                "chai": "^4.3.4",
+                "prettier": "^2.2.1",
+                "tslint": "^6.1.3",
+                "typescript": "~4.2.3"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-haskell-hls/versions/0.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom-haskell/ide-haskell-hls/tarball/refs/tags/v0.0.1",
+            "sha": "558c048a2893c7469bcf8bb938e9d6c3c1c6f794"
+        }
+    },
+    "readme": "# ide-haskell-hls\n\nThis package is primarily intended as backend for [ide-haskell](https://atom.io/packages/ide-haskell).\n\nRefer to documentation site [atom-haskell.github.io](https://atom-haskell.github.io/extra-packages/ide-haskell-hls/) for setup and usage instructions.\n",
+    "metadata": {
+        "name": "ide-haskell-hls",
+        "main": "./lib/main",
+        "version": "0.0.6",
+        "description": "(Alpha) Provides Haskell Language Server powered backend for ide-haskell",
+        "keywords": [
+            "ide-haskell",
+            "ide",
+            "haskell",
+            "haskell-language-server",
+            "HLS",
+            "backend"
+        ],
+        "repository": "https://github.com/atom-haskell/ide-haskell-hls",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.55.0 <2.0.0"
+        },
+        "scripts": {
+            "build": "tsc -p .",
+            "prettier": "prettier --write 'src/**/*.ts?(x)' 'spec/**/*.ts?(x)'",
+            "prettier-check": "prettier -l 'src/**/*.ts?(x)' 'spec/**/*.ts?(x)'",
+            "typecheck": "tsc --noEmit -p . && tsc --noEmit -p spec",
+            "lint": "tslint --project . && tslint --project spec",
+            "test": "npm run typecheck && npm run lint && npm run prettier-check"
+        },
+        "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+        "activationHooks": [
+            "language-haskell:grammar-used"
+        ],
+        "dependencies": {
+            "atom-languageclient": "^1.4.0",
+            "atom-package-deps": "7.2.3"
+        },
+        "package-deps": [
+            {
+                "name": "language-haskell"
+            },
+            {
+                "name": "ide-haskell"
+            },
+            {
+                "name": "ide-haskell-hoogle"
+            },
+            {
+                "name": "atom-ide-markdown-service"
+            },
+            {
+                "name": "atom-ide-definitions"
+            },
+            {
+                "name": "atom-ide-outline"
+            }
+        ],
+        "consumedServices": {
+            "ide-haskell-upi": {
+                "description": "Uses ide-haskell's unified pluggable interface",
+                "versions": {
+                    "^0.3.2": "consumeUPI"
+                }
+            },
+            "markdown-renderer": {
+                "versions": {
+                    "^1.0.0": "consumeMarkdownRenderer"
+                }
+            },
+            "console": {
+                "versions": {
+                    "0.1.0": "consumeConsole"
+                }
+            },
+            "signature-help": {
+                "versions": {
+                    "0.1.0": "consumeSignatureHelp"
+                }
+            }
+        },
+        "providedServices": {
+            "autocomplete.provider": {
+                "versions": {
+                    "2.0.0": "provideAutocomplete"
+                }
+            },
+            "code-format.range": {
+                "versions": {
+                    "0.1.0": "provideRangeCodeFormat"
+                }
+            },
+            "code-format.file": {
+                "versions": {
+                    "0.1.0": "provideFileCodeFormat"
+                }
+            },
+            "code-highlight": {
+                "versions": {
+                    "0.1.0": "provideCodeHighlight"
+                }
+            },
+            "definitions": {
+                "versions": {
+                    "0.1.0": "provideDefinitions"
+                }
+            },
+            "find-references": {
+                "versions": {
+                    "0.1.0": "provideFindReferences"
+                }
+            },
+            "outline-view": {
+                "versions": {
+                    "0.1.0": "provideOutlines"
+                }
+            }
+        },
+        "devDependencies": {
+            "@types/atom": "~1.40.10",
+            "@types/chai": "^4.2.15",
+            "@types/mocha": "^8.2.1",
+            "@types/node": "^12",
+            "atom-haskell-tslint-rules": "^0.2.2",
+            "atom-ts-spec-runner": "^1.1.1",
+            "chai": "^4.3.4",
+            "prettier": "^2.2.1",
+            "tslint": "^6.1.3",
+            "typescript": "~4.2.3"
+        }
+    },
+    "created": 1658343937774,
+    "updated": 1658343937774,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

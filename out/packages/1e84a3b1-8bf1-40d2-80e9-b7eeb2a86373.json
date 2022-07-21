@@ -1,0 +1,1420 @@
+{
+    "name": "cursor-history",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/t9md/atom-cursor-history"
+    },
+    "downloads": 27865,
+    "stargazers_count": 112,
+    "releases": {
+        "latest": "0.14.0"
+    },
+    "versions": {
+        "0.14.0": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.14.0",
+            "description": "Cursor position history manager",
+            "keywords": [
+                "jumplist",
+                "history",
+                "navigation"
+            ],
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.19.0"
+            },
+            "configSchema": {
+                "max": {
+                    "default": 100,
+                    "minimum": 1,
+                    "description": "number of history to keep",
+                    "order": 0,
+                    "type": "integer"
+                },
+                "rowDeltaToRemember": {
+                    "default": 4,
+                    "minimum": 0,
+                    "description": "Save history when row delta was greater than this value",
+                    "order": 1,
+                    "type": "integer"
+                },
+                "columnDeltaToRemember": {
+                    "default": 9999,
+                    "minimum": 0,
+                    "description": "Save history when cursor moved within same row and column delta was greater than this value",
+                    "order": 2,
+                    "type": "integer"
+                },
+                "excludeClosedBuffer": {
+                    "default": false,
+                    "description": "Don't open closed Buffer on history excursion",
+                    "order": 3,
+                    "type": "boolean"
+                },
+                "keepSingleEntryPerBuffer": {
+                    "default": false,
+                    "description": "Keep latest entry only per buffer",
+                    "order": 4,
+                    "type": "boolean"
+                },
+                "searchAllPanes": {
+                    "default": true,
+                    "description": "Search existing buffer from all panes before opening new editor",
+                    "order": 5,
+                    "type": "boolean"
+                },
+                "openInPendingState": {
+                    "default": false,
+                    "description": "If the target location is not currently opened, open editor in pending-state (preview mode)",
+                    "order": 6,
+                    "type": "boolean"
+                },
+                "flashOnLand": {
+                    "default": true,
+                    "description": "flash cursor on land",
+                    "order": 7,
+                    "type": "boolean"
+                },
+                "ignoreCommands": {
+                    "default": [
+                        "command-palette:toggle"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "list of commands to exclude from history tracking.",
+                    "order": 8,
+                    "type": "array"
+                },
+                "debug": {
+                    "default": false,
+                    "order": 9,
+                    "type": "boolean"
+                }
+            },
+            "scripts": {
+                "test": "apm test",
+                "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+                "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+                "lint": "standard lib/*.js spec/*.js"
+            },
+            "dependencies": {},
+            "devDependencies": {
+                "prettier": "^1.10.2",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures/*"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.14.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.14.0",
+            "sha": "0f384cd0042df3de113ade558c0cf807eb1b6336"
+        },
+        "0.13.2": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.13.2",
+            "description": "Cursor position history manager",
+            "keywords": [
+                "jumplist",
+                "history",
+                "navigation"
+            ],
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.19.0"
+            },
+            "configSchema": {
+                "max": {
+                    "default": 100,
+                    "minimum": 1,
+                    "description": "number of history to keep",
+                    "order": 0,
+                    "type": "integer"
+                },
+                "rowDeltaToRemember": {
+                    "default": 4,
+                    "minimum": 0,
+                    "description": "Save history when row delta was greater than this value",
+                    "order": 1,
+                    "type": "integer"
+                },
+                "columnDeltaToRemember": {
+                    "default": 9999,
+                    "minimum": 0,
+                    "description": "Save history when cursor moved within same row and column delta was greater than this value",
+                    "order": 2,
+                    "type": "integer"
+                },
+                "excludeClosedBuffer": {
+                    "default": false,
+                    "description": "Don't open closed Buffer on history excursion",
+                    "order": 3,
+                    "type": "boolean"
+                },
+                "keepSingleEntryPerBuffer": {
+                    "default": false,
+                    "description": "Keep latest entry only per buffer",
+                    "order": 4,
+                    "type": "boolean"
+                },
+                "searchAllPanes": {
+                    "default": true,
+                    "description": "Search existing buffer from all panes before opening new editor",
+                    "order": 5,
+                    "type": "boolean"
+                },
+                "flashOnLand": {
+                    "default": true,
+                    "description": "flash cursor on land",
+                    "order": 6,
+                    "type": "boolean"
+                },
+                "ignoreCommands": {
+                    "default": [
+                        "command-palette:toggle"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "list of commands to exclude from history tracking.",
+                    "order": 7,
+                    "type": "array"
+                },
+                "debug": {
+                    "default": false,
+                    "order": 8,
+                    "type": "boolean"
+                }
+            },
+            "scripts": {
+                "test": "apm test",
+                "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+                "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+                "lint": "standard lib/*.js spec/*.js"
+            },
+            "dependencies": {},
+            "devDependencies": {
+                "prettier": "^1.10.2",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures/*"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.13.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.13.2",
+            "sha": "678786c44d8e9f00ff679082ca23a4b4b3a02894"
+        },
+        "0.13.1": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.13.1",
+            "description": "Cursor position history manager",
+            "keywords": [
+                "jumplist",
+                "history",
+                "navigation"
+            ],
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.19.0"
+            },
+            "configSchema": {
+                "max": {
+                    "default": 100,
+                    "minimum": 1,
+                    "description": "number of history to keep",
+                    "order": 0,
+                    "type": "integer"
+                },
+                "rowDeltaToRemember": {
+                    "default": 4,
+                    "minimum": 0,
+                    "description": "Save history when row delta was greater than this value",
+                    "order": 1,
+                    "type": "integer"
+                },
+                "columnDeltaToRemember": {
+                    "default": 9999,
+                    "minimum": 0,
+                    "description": "Save history when cursor moved within same row and column delta was greater than this value",
+                    "order": 2,
+                    "type": "integer"
+                },
+                "excludeClosedBuffer": {
+                    "default": false,
+                    "description": "Don't open closed Buffer on history excursion",
+                    "order": 3,
+                    "type": "boolean"
+                },
+                "keepSingleEntryPerBuffer": {
+                    "default": false,
+                    "description": "Keep latest entry only per buffer",
+                    "order": 4,
+                    "type": "boolean"
+                },
+                "searchAllPanes": {
+                    "default": true,
+                    "description": "Search existing buffer from all panes before opening new editor",
+                    "order": 5,
+                    "type": "boolean"
+                },
+                "flashOnLand": {
+                    "default": true,
+                    "description": "flash cursor on land",
+                    "order": 6,
+                    "type": "boolean"
+                },
+                "ignoreCommands": {
+                    "default": [
+                        "command-palette:toggle"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "list of commands to exclude from history tracking.",
+                    "order": 7,
+                    "type": "array"
+                },
+                "debug": {
+                    "default": false,
+                    "order": 8,
+                    "type": "boolean"
+                }
+            },
+            "scripts": {
+                "test": "apm test",
+                "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+                "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+                "lint": "standard lib/*.js spec/*.js"
+            },
+            "dependencies": {},
+            "devDependencies": {
+                "prettier": "^1.10.2",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures/*"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.13.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.13.1",
+            "sha": "fb521cb9ac2460212dc5657de8052168f2b31c43"
+        },
+        "0.13.0": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.13.0",
+            "description": "Cursor position history manager",
+            "keywords": [
+                "jumplist",
+                "history",
+                "navigation"
+            ],
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.19.0"
+            },
+            "configSchema": {
+                "max": {
+                    "default": 100,
+                    "minimum": 1,
+                    "description": "number of history to keep",
+                    "order": 0,
+                    "type": "integer"
+                },
+                "rowDeltaToRemember": {
+                    "default": 4,
+                    "minimum": 0,
+                    "description": "Save history when row delta was greater than this value",
+                    "order": 1,
+                    "type": "integer"
+                },
+                "columnDeltaToRemember": {
+                    "default": 9999,
+                    "minimum": 0,
+                    "description": "Save history when cursor moved within same row and column delta was greater than this value",
+                    "order": 2,
+                    "type": "integer"
+                },
+                "excludeClosedBuffer": {
+                    "default": false,
+                    "description": "Don't open closed Buffer on history excursion",
+                    "order": 3,
+                    "type": "boolean"
+                },
+                "keepSingleEntryPerBuffer": {
+                    "default": false,
+                    "description": "Keep latest entry only per buffer",
+                    "order": 4,
+                    "type": "boolean"
+                },
+                "searchAllPanes": {
+                    "default": true,
+                    "description": "Search existing buffer from all panes before opening new editor",
+                    "order": 5,
+                    "type": "boolean"
+                },
+                "flashOnLand": {
+                    "default": true,
+                    "description": "flash cursor on land",
+                    "order": 6,
+                    "type": "boolean"
+                },
+                "ignoreCommands": {
+                    "default": [
+                        "command-palette:toggle"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "list of commands to exclude from history tracking.",
+                    "order": 7,
+                    "type": "array"
+                },
+                "debug": {
+                    "default": false,
+                    "order": 8,
+                    "type": "boolean"
+                }
+            },
+            "scripts": {
+                "test": "apm test",
+                "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+                "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+                "lint": "standard lib/*.js spec/*.js"
+            },
+            "dependencies": {},
+            "devDependencies": {
+                "prettier": "^1.10.2",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures/*"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.13.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.13.0",
+            "sha": "71de93409e1017d514cfc8b0022f626919c29b5e"
+        },
+        "0.12.0": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.12.0",
+            "description": "Cursor position history manager",
+            "keywords": [
+                "jumplist",
+                "history",
+                "navigation"
+            ],
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.19.0"
+            },
+            "configSchema": {
+                "max": {
+                    "default": 100,
+                    "minimum": 1,
+                    "description": "number of history to keep",
+                    "order": 0,
+                    "type": "integer"
+                },
+                "rowDeltaToRemember": {
+                    "default": 4,
+                    "minimum": 0,
+                    "description": "Save history when row delta was greater than this value",
+                    "order": 1,
+                    "type": "integer"
+                },
+                "columnDeltaToRemember": {
+                    "default": 9999,
+                    "minimum": 0,
+                    "description": "Save history when cursor moved within same row and column delta was greater than this value",
+                    "order": 2,
+                    "type": "integer"
+                },
+                "excludeClosedBuffer": {
+                    "default": false,
+                    "description": "Don't open closed Buffer on history excursion",
+                    "order": 3,
+                    "type": "boolean"
+                },
+                "keepSingleEntryPerBuffer": {
+                    "default": false,
+                    "description": "Keep latest entry only per buffer",
+                    "order": 4,
+                    "type": "boolean"
+                },
+                "searchAllPanes": {
+                    "default": true,
+                    "description": "Search existing buffer from all panes before opening new editor",
+                    "order": 5,
+                    "type": "boolean"
+                },
+                "flashOnLand": {
+                    "default": true,
+                    "description": "flash cursor on land",
+                    "order": 6,
+                    "type": "boolean"
+                },
+                "ignoreCommands": {
+                    "default": [
+                        "command-palette:toggle"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "list of commands to exclude from history tracking.",
+                    "order": 7,
+                    "type": "array"
+                },
+                "debug": {
+                    "default": false,
+                    "order": 8,
+                    "type": "boolean"
+                }
+            },
+            "scripts": {
+                "test": "apm test",
+                "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+                "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'"
+            },
+            "dependencies": {},
+            "devDependencies": {
+                "prettier": "^1.5.3"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.12.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.12.0",
+            "sha": "d6bdbcbfb76bbeee27a4eb33583ab959ed53e125"
+        },
+        "0.11.1": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.11.1",
+            "description": "Cursor position history manager",
+            "keywords": [
+                "jumplist",
+                "history",
+                "navigation"
+            ],
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "configSchema": {
+                "max": {
+                    "default": 100,
+                    "minimum": 1,
+                    "description": "number of history to keep",
+                    "order": 0,
+                    "type": "integer"
+                },
+                "rowDeltaToRemember": {
+                    "default": 4,
+                    "minimum": 0,
+                    "description": "Save history when row delta was greater than this value",
+                    "order": 1,
+                    "type": "integer"
+                },
+                "columnDeltaToRemember": {
+                    "default": 9999,
+                    "minimum": 0,
+                    "description": "Save history when cursor moved within same row and column delta was greater than this value",
+                    "order": 2,
+                    "type": "integer"
+                },
+                "excludeClosedBuffer": {
+                    "default": false,
+                    "description": "Don't open closed Buffer on history excursion",
+                    "order": 3,
+                    "type": "boolean"
+                },
+                "keepSingleEntryPerBuffer": {
+                    "default": false,
+                    "description": "Keep latest entry only per buffer",
+                    "order": 4,
+                    "type": "boolean"
+                },
+                "searchAllPanes": {
+                    "default": true,
+                    "description": "Search existing buffer from all panes before opening new editor",
+                    "order": 5,
+                    "type": "boolean"
+                },
+                "flashOnLand": {
+                    "default": true,
+                    "description": "flash cursor on land",
+                    "order": 6,
+                    "type": "boolean"
+                },
+                "ignoreCommands": {
+                    "default": [
+                        "command-palette:toggle"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "list of commands to exclude from history tracking.",
+                    "order": 7,
+                    "type": "array"
+                },
+                "debug": {
+                    "default": false,
+                    "order": 8,
+                    "type": "boolean"
+                }
+            },
+            "dependencies": {},
+            "devDependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.11.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.11.1",
+            "sha": "f6bd124bfa5fe7ecd1f284fddad584f65441a2f2"
+        },
+        "0.11.0": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.11.0",
+            "description": "Cursor position history manager",
+            "keywords": [
+                "jumplist",
+                "history",
+                "navigation"
+            ],
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "configSchema": {
+                "max": {
+                    "default": 100,
+                    "minimum": 1,
+                    "description": "number of history to keep",
+                    "order": 0,
+                    "type": "integer"
+                },
+                "rowDeltaToRemember": {
+                    "default": 4,
+                    "minimum": 0,
+                    "description": "Save history when row delta was greater than this value",
+                    "order": 1,
+                    "type": "integer"
+                },
+                "columnDeltaToRemember": {
+                    "default": 9999,
+                    "minimum": 0,
+                    "description": "Save history when cursor moved within same row and column delta was greater than this value",
+                    "order": 2,
+                    "type": "integer"
+                },
+                "excludeClosedBuffer": {
+                    "default": false,
+                    "description": "Don't open closed Buffer on history excursion",
+                    "order": 3,
+                    "type": "boolean"
+                },
+                "keepSingleEntryPerBuffer": {
+                    "default": false,
+                    "description": "Keep latest entry only per buffer",
+                    "order": 4,
+                    "type": "boolean"
+                },
+                "searchAllPanes": {
+                    "default": true,
+                    "description": "Search existing buffer from all panes before opening new editor",
+                    "order": 5,
+                    "type": "boolean"
+                },
+                "flashOnLand": {
+                    "default": true,
+                    "description": "flash cursor on land",
+                    "order": 6,
+                    "type": "boolean"
+                },
+                "ignoreCommands": {
+                    "default": [
+                        "command-palette:toggle"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "list of commands to exclude from history tracking.",
+                    "order": 7,
+                    "type": "array"
+                },
+                "debug": {
+                    "default": false,
+                    "order": 8,
+                    "type": "boolean"
+                }
+            },
+            "dependencies": {},
+            "devDependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.11.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.11.0",
+            "sha": "41a5877f7aacddc6242184049a23994cecbef0ec"
+        },
+        "0.10.1": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.10.1",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "configSchema": {
+                "max": {
+                    "default": 100,
+                    "minimum": 1,
+                    "description": "number of history to keep",
+                    "order": 0,
+                    "type": "integer"
+                },
+                "rowDeltaToRemember": {
+                    "default": 4,
+                    "minimum": 0,
+                    "description": "Save history when row delta was greater than this value",
+                    "order": 1,
+                    "type": "integer"
+                },
+                "columnDeltaToRemember": {
+                    "default": 9999,
+                    "minimum": 0,
+                    "description": "Save history when cursor moved within same row and column delta was greater than this value",
+                    "order": 2,
+                    "type": "integer"
+                },
+                "excludeClosedBuffer": {
+                    "default": false,
+                    "description": "Don't open closed Buffer on history excursion",
+                    "order": 3,
+                    "type": "boolean"
+                },
+                "keepSingleEntryPerBuffer": {
+                    "default": false,
+                    "description": "Keep latest entry only per buffer",
+                    "order": 4,
+                    "type": "boolean"
+                },
+                "searchAllPanes": {
+                    "default": true,
+                    "description": "Search existing buffer from all panes before opening new editor",
+                    "order": 5,
+                    "type": "boolean"
+                },
+                "flashOnLand": {
+                    "default": true,
+                    "description": "flash cursor on land",
+                    "order": 6,
+                    "type": "boolean"
+                },
+                "ignoreCommands": {
+                    "default": [
+                        "command-palette:toggle"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "list of commands to exclude from history tracking.",
+                    "order": 7,
+                    "type": "array"
+                },
+                "debug": {
+                    "default": false,
+                    "order": 8,
+                    "type": "boolean"
+                }
+            },
+            "dependencies": {},
+            "devDependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.10.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.10.1",
+            "sha": "8796853b05c522dcbfe8337892a03e3ed441c132"
+        },
+        "0.10.0": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.10.0",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "configSchema": {
+                "max": {
+                    "default": 100,
+                    "minimum": 1,
+                    "description": "number of history to keep",
+                    "order": 0,
+                    "type": "integer"
+                },
+                "rowDeltaToRemember": {
+                    "default": 4,
+                    "minimum": 0,
+                    "description": "Save history when row delta was greater than this value",
+                    "order": 1,
+                    "type": "integer"
+                },
+                "columnDeltaToRemember": {
+                    "default": 9999,
+                    "minimum": 0,
+                    "description": "Save history when cursor moved within same row and column delta was greater than this value",
+                    "order": 2,
+                    "type": "integer"
+                },
+                "excludeClosedBuffer": {
+                    "default": false,
+                    "description": "Don't open closed Buffer on history excursion",
+                    "order": 3,
+                    "type": "boolean"
+                },
+                "keepSingleEntryPerBuffer": {
+                    "default": false,
+                    "description": "Keep latest entry only per buffer",
+                    "order": 4,
+                    "type": "boolean"
+                },
+                "searchAllPanes": {
+                    "default": true,
+                    "description": "Search existing buffer from all panes before opening new editor",
+                    "order": 5,
+                    "type": "boolean"
+                },
+                "flashOnLand": {
+                    "default": true,
+                    "description": "flash cursor on land",
+                    "order": 6,
+                    "type": "boolean"
+                },
+                "ignoreCommands": {
+                    "default": [
+                        "command-palette:toggle"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "list of commands to exclude from history tracking.",
+                    "order": 7,
+                    "type": "array"
+                },
+                "debug": {
+                    "default": false,
+                    "order": 8,
+                    "type": "boolean"
+                }
+            },
+            "dependencies": {},
+            "devDependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.10.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.10.0",
+            "sha": "fe15b9292cbb795dbeafc28ae55832ae1b3aba28"
+        },
+        "0.9.1": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.9.1",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "devDependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.9.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.9.1",
+            "sha": "139b127bfd45b5510d5f4ba6a4cd587233021ca0"
+        },
+        "0.9.0": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.9.0",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "devDependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.9.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.9.0",
+            "sha": "6f47578cb848f60e2374505a9518580b1dc843f2"
+        },
+        "0.8.1": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.8.1",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "devDependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.8.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.8.1",
+            "sha": "b9a6f93cbdd366811860d350ea000786a562d30a"
+        },
+        "0.8.0": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.8.0",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "devDependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.8.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.8.0",
+            "sha": "3c699cd7438cfcfecca2d6dc6c53d1bd5191e713"
+        },
+        "0.7.0": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.7.0",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.1.0 <2.0.0"
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "devDependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.7.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.7.0",
+            "sha": "92d976c45c5b1ecb9deaab7017764aededbc7ada"
+        },
+        "0.6.1": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.6.1",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.1.0 <2.0.0"
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "devDependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.6.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.6.1",
+            "sha": "d5641cdd144e1fa7095ea7ab50c598f4a3502dbe"
+        },
+        "0.5.9": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.5.9",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.1.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-config-plus": "^0.1.2",
+                "underscore-plus": "^1.6.6"
+            },
+            "devDependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.5.9/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.5.9",
+            "sha": "d210ea4f1d4103fb6602b541084bbdfbdadffe6b"
+        },
+        "0.5.8": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.5.8",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.1.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-config-plus": "^0.1.2",
+                "underscore-plus": "^1.6.6"
+            },
+            "devDependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.5.8/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.5.8",
+            "sha": "7c25e659c8d2f8151c67119dc97c7375170866d1"
+        },
+        "0.5.6": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.5.6",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.8 <2.0.0"
+            },
+            "dependencies": {
+                "atom-config-plus": "^0.1.2",
+                "underscore-plus": "^1.6.6"
+            },
+            "devDependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.5.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.5.6",
+            "sha": "ce6fc6a91053a874562ef5c65ce5138e621b59f9"
+        },
+        "0.5.5": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.5.5",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-config-plus": "^0.1.2",
+                "underscore-plus": "^1.6.6"
+            },
+            "devDependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.5.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.5.5",
+            "sha": "81894f74a17bc9b0c800bebf4a5784eab632d0ec"
+        },
+        "0.5.4": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.5.4",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-config-plus": "^0.1.2",
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.5.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.5.4",
+            "sha": "ef90ba965cc46979b8199eedf7f80eccccf54afc"
+        },
+        "0.5.3": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.5.3",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-config-plus": "^0.1.2",
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.5.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.5.3",
+            "sha": "20257157d6be3fa51dc6f51d9b7e09ddfd81924f"
+        },
+        "0.5.2": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.5.2",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-config-plus": "^0.1.2",
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.5.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.5.2",
+            "sha": "52ebbc877d8e812980f93881a783a2772267c9bb"
+        },
+        "0.5.1": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.5.1",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-config-plus": "^0.1.2",
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.5.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.5.1",
+            "sha": "3da6ea2b2231b93aeed9ad45818568ed88c6c2f2"
+        },
+        "0.5.0": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.5.0",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-config-plus": "^0.1.2",
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.5.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.5.0",
+            "sha": "6fbc38ea6d823c80636eb0fb555a8029f82fba90"
+        },
+        "0.4.18": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.4.18",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-config-plus": "^0.1.2",
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.4.18/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.4.18",
+            "sha": "17f5761640b21f6474d8390c6381b7b387492a97"
+        },
+        "0.4.17": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.4.17",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-config-plus": "^0.1.2",
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.4.17/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.4.17",
+            "sha": "20a7489a65b073f5beefae1fe40aa6008e44b87d"
+        },
+        "0.4.16": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.4.16",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-config-plus": "^0.1.2",
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.4.16/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.4.16",
+            "sha": "823c826d08395799349a479606068a73c7791911"
+        },
+        "0.4.15": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.4.15",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-config-plus": "^0.1.2",
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.4.15/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.4.15",
+            "sha": "48740887bed0c95bbbcd13fbec72c5808ada44e1"
+        },
+        "0.4.14": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.4.14",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-config-plus": "^0.1.2",
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.4.14/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-cursor-history/tarball/refs/tags/v0.4.14",
+            "sha": "3b8b79f888728f697ffd84ec635e55d2d2099f8c"
+        },
+        "0.4.13": {
+            "name": "cursor-history",
+            "main": "./lib/main",
+            "version": "0.4.13",
+            "description": "Cursor position history manager",
+            "repository": "https://github.com/t9md/atom-cursor-history",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-config-plus": "^0.1.2",
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/cursor-history/versions/0.4.13/tarball"
+            }
+        }
+    },
+    "readme": "# cursor-history [![Build Status](https://travis-ci.org/t9md/atom-cursor-history.svg)](https://travis-ci.org/t9md/atom-cursor-history)\n\nLike browser's Go and Back button, like `ctrl-i`, `ctrl-o` in Vim.\nYou can go/back to cursor position history.\n\n![gif](https://raw.githubusercontent.com/t9md/t9md/3d4a0bd38ac9571510d5ba52aa5361897b123218/img/atom-cursor-history.gif)\n\n# Keymap\n\nNo default keymap. You need to set by yourself.  \n\n* e.g.\n\n```coffeescript\n'atom-workspace':\n  'ctrl-i': 'cursor-history:next'\n  'ctrl-o': 'cursor-history:prev'\n  'ctrl-cmd-i': 'cursor-history:next-within-editor'\n  'ctrl-cmd-o': 'cursor-history:prev-within-editor'\n```\n\n# Commands\n\n- `cursor-history:next`: Go to next point in history.\n- `cursor-history:prev`: Go to previous point in history.\n- `cursor-history:next-within-editor`: Go to next point in history within current editor.\n- `cursor-history:prev-within-editor`: Go to previous point in history within current editor.\n- `cursor-history:clear`: Clear history.\n\n# Features\n\n- Go and Back to previous/next position of cursor history including closed buffer(can exclude closed buffer with config option).\n- Flash cursor line on land.\n- Vim like history concatenation (Never save same line per file. This allow you to jump specific line only once).\n\n# When cursor history saved?\n\n- When editor lost focus.\n- When cursor moved and row delta exceeds `rowDeltaToRemember`(default 4).\n- When cursor moved within same row and column delta exceeds `columnDeltaToRemember`(default 9999).\n\n# Customize flashing effects.\n\nWhen you enabled `flashOnLand`(default `false`), it flashes cursor line when move around history position.  \nYou can customize flashing effect in your `style.less` based on following example.  \n\n```less\n@keyframes cursor-history-flash {\n  from { background-color: red; }\n}\natom-text-editor.editor .line.cursor-history-flash-line {\n  animation-duration: 1s;\n}\n```\n",
+    "metadata": {
+        "name": "cursor-history",
+        "main": "./lib/main",
+        "version": "0.14.0",
+        "description": "Cursor position history manager",
+        "keywords": [
+            "jumplist",
+            "history",
+            "navigation"
+        ],
+        "repository": "https://github.com/t9md/atom-cursor-history",
+        "license": "MIT",
+        "engines": {
+            "atom": "^1.19.0"
+        },
+        "configSchema": {
+            "max": {
+                "default": 100,
+                "minimum": 1,
+                "description": "number of history to keep",
+                "order": 0,
+                "type": "integer"
+            },
+            "rowDeltaToRemember": {
+                "default": 4,
+                "minimum": 0,
+                "description": "Save history when row delta was greater than this value",
+                "order": 1,
+                "type": "integer"
+            },
+            "columnDeltaToRemember": {
+                "default": 9999,
+                "minimum": 0,
+                "description": "Save history when cursor moved within same row and column delta was greater than this value",
+                "order": 2,
+                "type": "integer"
+            },
+            "excludeClosedBuffer": {
+                "default": false,
+                "description": "Don't open closed Buffer on history excursion",
+                "order": 3,
+                "type": "boolean"
+            },
+            "keepSingleEntryPerBuffer": {
+                "default": false,
+                "description": "Keep latest entry only per buffer",
+                "order": 4,
+                "type": "boolean"
+            },
+            "searchAllPanes": {
+                "default": true,
+                "description": "Search existing buffer from all panes before opening new editor",
+                "order": 5,
+                "type": "boolean"
+            },
+            "openInPendingState": {
+                "default": false,
+                "description": "If the target location is not currently opened, open editor in pending-state (preview mode)",
+                "order": 6,
+                "type": "boolean"
+            },
+            "flashOnLand": {
+                "default": true,
+                "description": "flash cursor on land",
+                "order": 7,
+                "type": "boolean"
+            },
+            "ignoreCommands": {
+                "default": [
+                    "command-palette:toggle"
+                ],
+                "items": {
+                    "type": "string"
+                },
+                "description": "list of commands to exclude from history tracking.",
+                "order": 8,
+                "type": "array"
+            },
+            "debug": {
+                "default": false,
+                "order": 9,
+                "type": "boolean"
+            }
+        },
+        "scripts": {
+            "test": "apm test",
+            "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+            "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+            "lint": "standard lib/*.js spec/*.js"
+        },
+        "dependencies": {},
+        "devDependencies": {
+            "prettier": "^1.10.2",
+            "standard": "^10.0.3"
+        },
+        "standard": {
+            "env": {
+                "atomtest": true,
+                "browser": true,
+                "jasmine": true,
+                "node": true
+            },
+            "globals": [
+                "atom"
+            ],
+            "ignore": [
+                "spec/fixtures/*"
+            ]
+        }
+    },
+    "created": 1658338812101,
+    "updated": 1658338812101,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

@@ -1,0 +1,169 @@
+{
+    "name": "rester",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pjdietz/rester-atom"
+    },
+    "downloads": 2673,
+    "stargazers_count": 10,
+    "releases": {
+        "latest": "1.1.1"
+    },
+    "versions": {
+        "1.1.1": {
+            "name": "rester",
+            "main": "./lib/rester",
+            "version": "1.1.1",
+            "description": "Text-based HTTP client",
+            "keywords": [
+                "HTTP",
+                "REST",
+                "client",
+                "request",
+                "form"
+            ],
+            "activationCommands": {
+                "atom-workspace": [
+                    "rester:request"
+                ]
+            },
+            "repository": "https://github.com/pjdietz/rester-atom",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "rester-client": "^1.0.3"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/rester/versions/1.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/pjdietz/rester-atom/tarball/refs/tags/v1.1.1",
+            "sha": "e27584adca0d43f2de92baf1a23fc8e5be35fa13"
+        },
+        "1.0.2": {
+            "name": "rester",
+            "main": "./lib/rester",
+            "version": "1.0.2",
+            "description": "Text-based HTTP client",
+            "keywords": [
+                "HTTP",
+                "REST",
+                "client",
+                "request",
+                "form"
+            ],
+            "activationCommands": {
+                "atom-workspace": [
+                    "rester:request"
+                ]
+            },
+            "repository": "https://github.com/pjdietz/rester-atom",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "rester-client": "^1.0.2"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/rester/versions/1.0.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/pjdietz/rester-atom/tarball/refs/tags/v1.0.2",
+            "sha": "6fcceef135f45fa84db4944c6be609c270f44685"
+        },
+        "1.0.1": {
+            "name": "rester",
+            "main": "./lib/rester",
+            "version": "1.0.1",
+            "description": "Text-based HTTP client",
+            "keywords": [
+                "HTTP",
+                "REST",
+                "client",
+                "request",
+                "form"
+            ],
+            "activationCommands": {
+                "atom-workspace": [
+                    "rester:request"
+                ]
+            },
+            "repository": "https://github.com/pjdietz/rester-atom",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "rester-client": "^1.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/rester/versions/1.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/pjdietz/rester-atom/tarball/refs/tags/v1.0.1",
+            "sha": "a2d84789719973a2b4a172042546dc857dcace37"
+        },
+        "1.0.0": {
+            "name": "rester",
+            "main": "./lib/rester",
+            "version": "1.0.0",
+            "description": "Text-based HTTP client",
+            "keywords": [
+                "HTTP",
+                "REST",
+                "client",
+                "request",
+                "form"
+            ],
+            "activationCommands": {
+                "atom-workspace": [
+                    "rester:request"
+                ]
+            },
+            "repository": "https://github.com/pjdietz/rester-atom",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "rester-client": "^1.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/rester/versions/1.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/pjdietz/rester-atom/tarball/refs/tags/1.0.0",
+            "sha": "4fb3bcd55e2f40580d3042e897c823c7083e737d"
+        }
+    },
+    "readme": "# RESTer for Atom\n\n[![Travis](https://img.shields.io/travis/pjdietz/rester-atom.svg?label=travis&style=flat-square)](https://travis-ci.org/pjdietz/rester-atom)\n[![AppVeyor](https://img.shields.io/appveyor/ci/pjdietz/rester-atom.svg?label=appveyor&style=flat-square)](https://ci.appveyor.com/project/pjdietz/rester-atom)\n[![GitHub license](https://img.shields.io/github/license/pjdietz/rester-atom.svg?style=flat-square)](LICENSE.md)\n\nRESTer is a text-based HTTP client that allows you to make HTTP requests in Atom and view the responses in a new tab.\n\n![Demo](https://raw.githubusercontent.com/pjdietz/rester-atom/master/demo.gif)\n\n## Using\n\nA request can be as simple as a URI:\n\n```\nhttp://localhost:8080/path\n```\n\nOr, you can send headers and a body:\n\n```\nPUT /my-endpoint HTTP/1.1\nHost: api.my-example-site.com\nAccept: text/plain\nAccept-Charset: utf-8\nX-custom-header: whatever you want\n\nHere is the payload for the PUT request. The body is anything that follows the first empty line.\n```\n\nTo run the request, open the Command Palette and run the `Rester: Request` command or press ⌥-⌘-r. The response will appear in a new tab.\n\n## Making Requests\n\n### The Request Line\n\nThe first non-empty, non-comment (`//` or `#`) line is the \"request line\". RESTer parses this to determine the method, URI, and protocol.\n\nYou may include the hostname in the request line, but RESTer does not require it. If omitted, be sure to include a Host header.\n\nHere are some example request lines (some with Host headers):\n\n```\nGET /my-endpoint HTTP/1.1\nHost: api.my-example-site.com\n```\n\n```\nGET /my-endpoint\nHost: api.my-example-site.com\n```\n\n```\nGET http://api.my-example-site.com/my-endpoint\n```\n\n```\nhttp://api.my-example-site.com/my-endpoint\n```\n\nBecause GET is the default method, each of these will have the same effect.\n\n### Headers\n\nRESTer parses the lines immediately following the request line up to the first empty line as headers. Use the standard field-name: field-value format.\n\n```\nGET /path HTTP/1.1\nHost: localhost:8080\nCache-control: no-cache\nIf-Modified-Since: Mon, 8 Sept 2014 13:0:0 GMT\n```\n\n### Query Parameters\n\nFor requests with many query parameters, you may want to spread your query across a number of lines. RESTer will parse any lines in the headers section that begin with `?` or `&` as query parameters. You may use `=` or `:` to separate the key from the value.\n\nThe following example requests are equivalent:\n\nAll in the URI:\n\n```\nhttp://api.my-example-site.com/?cat=molly&dog=bear\n```\n\nWith new lines:\n\n```\nhttp://api.my-example-site.com/\n?cat=molly\n&dog=bear\n```\n\nIndented, using colons, and only using `?`:\n\n```\nhttp://api.my-example-site.com/\n    ? cat: molly\n    ? dog: bear\n```\n\nPercent Encoding\n\nRESTer assumes that anything you place directly in the request line is the way you want it, but query parameters added on individual lines are assumed to be in plain text. So, values of query parameters added on individual lines will be percent encoded.\n\nThese requests are equivalent:\n\n```\nhttp://api.my-example-site.com/?item=I%20like%20spaces\n```\n\n```\nhttp://api.my-example-site.com/\n    ? item: I like spaces\n```\n\n### Comments\n\nInclude comments in your request by adding lines in the headers section that begin with `#` or `//`. RESTer will ignore these lines.\n\n```\nGET /my-endpoint HTTP/1.1\nHost: /api.my-example-site.com\n# This is a comment.\n// This is also a comment.\nCache-control: no-cache\n```\n\n### Body\n\nTo supply a message body for POST and PUT requests, add an empty line after the last header. RESTer will treat all content that follows the blank line as the request body.\n\nHere's an example of adding a new cat representation by supplying JSON:\n\n```\nPOST http://api.my-example-site.com/cats/\nContent-type: application/json\n\n{\n    \"name\": \"Molly\",\n    \"color\": \"Calico\",\n    \"nickname\": \"Mrs. Puff\"\n}\n```\n\n#### Forms\n\nTo submit a form (i.e., `application/x-www-form-urlencoded`), include the `@form` option in the header section. This option instructs RESTer to add the appropriate `Content-type` header and encode the body as a form.\n\nInclude the key-value pairs on separate lines. You may use `=` or `:` to separate the key from the value. As with query parameters, whitespace around the key and value is ignored.\n\nExamples:\n\n```\nPOST http://api.my-example-site.com/cats/\n@form\n\nname=Molly\ncolor=Calico\nnickname=Mrs. Puff\n```\n\n```\nPOST http://api.my-example-site.com/cats/\n@form\n\n      name: Molly\n     color: Calico\n  nickname: Mrs. Puff\n```\n\n#### Multiline Values\n\nUse delimiters to mark the boundaries of multiline field values. By default, the delimiters are `\"\"\"`. You may customize these in the settings for the package.\n\nHere's an example of a request using mixed single- and multiline fields.\n\n```\nPOST http://api.my-example-site.com/cats/\n@form\n\nname: Molly\ncolor: Calico\nnickname: Mrs. Puff\nextra: \"\"\"{\n    \"id\": 2,\n    \"description\": \"This JSON snippet is wrapped in delimiters because it has multiple lines.\"\n}\"\"\"\n```\n\n### Options\n\nTo customize RESTer's behavior for a single request, include options in the header section. An option begins with `@` and may or may not include a value. For example, to instruct RESTer to include redirect responses in the output, include `@showRedirects` like this:\n\n```\nGET http://localhost:8080/path-that-redirects\n@showRedirects: true\n```\n\nBoolean `true` options can also be expressed with a shorthand syntax by including the option key without the `:` and value. This is equivalent:\n\n```\nGET http://localhost:8080/path-that-redirects\n@showRedirects\n```\n\nSome options accept strings or arrays as values. For example:\n\n```\nGET http://localhost:8080/path-that-redirects\n@hideHeaders\n@responseGrammar: JSON\n@responseCommands: [\"jsonpp:jsonpp\"]\n```\n\nThe following is a list of options that RESTer expects:\n\n| Option               | Type    | Description                                                                    |\n|:---------------------|:--------|:-------------------------------------------------------------------------------|\n| @auth                | string  | Auth segment for the request (e.g., \"user\", \"user:password\")                   |\n| @followRedirects     | boolean | Allow RESTer to automatically follow redirects                                 |\n| @form                | boolean | Parse the body as a form and include the appropriate `Content-type` header     |\n| @hideHeaders         | boolean | Alias for `@showHeaders: false`                                                |\n| @hideRedirects       | boolean | Alias for `@showRedirects: false`                                              |\n| @hostname            | string  | Hostname for the request (e.g., \"localhost\")                                   |\n| @port                | int     | Port for the request (e.g., 8080)                                              |\n| @protocol            | string  | Protocol for the request. Must be \"http\" or \"https\"                            |\n| @redirectStatusCodes | array   | List of status codes to automatically follow redirects for                     |\n| @responseCommands    | array   | List of Atom commands to run on the response body after receiving the response |\n| @responseGrammar     | string  | Name of the grammar to use to when displaying the response                     |\n| @showHeaders         | boolean | Include status line and headers in the responses                               |\n| @showRedirects       | boolean | Include intermediate responses in the output for requests with redirects       |\n\n## Grammar\n\nRESTEr provides a grammar named \"HTTP Message\" that indicates the various portions of an HTTP request or response, as well as some RESTer-specific elements like comments and options. To use this grammar for your requests, name your files with the `.http` or `.rester` extension, or select \"HTTP Message\" as the grammar.\n\n## Multiple Requests Per File\n\nYou may want to group numerous requests in the same file. RESTer recognizes any line containing three or more hyphens (and no other characters) as a delimiter between requests. Place the cursor anywhere on a request, and RESTer will invoke only the request between these delimiters.\n\nExample syntax:\n\n```\nGET http://localhost:8080/cats\n\n---\n\nPOST http://localhost:8080/cats\nContent-type: application/json\n\n{\n    \"name\": \"Molly\"\n}\n\n------------------------------------\n\nDELETE http://localhost:8080/cats/1\n```\n\n## Contributing\n\nIf you're interested in contributing to RESTer, please note that heart of RESTer exists as its own Node.js package [RESTer Client](https://github.com/pjdietz/rester-client). This package contains the logic for parsing, issuing, and responding to requests. I've split this out as a separate project with the intent of releasing other clients (CLI, Sublime Text, etc.) based on the same core code base. So, depending on the feature you wish to add or modify, you may want to look at [this repository](https://github.com/pjdietz/rester-atom) or the core [RESTer Client](https://github.com/pjdietz/rester-client) repository.\n\n## Author\n\n**PJ Dietz**\n\n- [http://pjdietz.com](http://pjdietz.com)\n- [http://github.com/pjdietz](http://github.com/pjdietz)\n- [http://twitter.com/pjdietz](http://twitter.com/pjdietz)\n\n## Copyright and license\n\nCopyright 2016 by PJ Dietz\n\n[MIT License](LICENSE)\n",
+    "metadata": {
+        "name": "rester",
+        "main": "./lib/rester",
+        "version": "1.1.1",
+        "description": "Text-based HTTP client",
+        "keywords": [
+            "HTTP",
+            "REST",
+            "client",
+            "request",
+            "form"
+        ],
+        "activationCommands": {
+            "atom-workspace": [
+                "rester:request"
+            ]
+        },
+        "repository": "https://github.com/pjdietz/rester-atom",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {
+            "rester-client": "^1.0.3"
+        }
+    },
+    "created": 1658362757585,
+    "updated": 1658362757585,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

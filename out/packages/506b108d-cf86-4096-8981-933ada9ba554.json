@@ -1,0 +1,106 @@
+{
+    "name": "context-menu-remove",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/UziTech/context-menu-remove"
+    },
+    "downloads": 642,
+    "stargazers_count": 5,
+    "releases": {
+        "latest": "0.2.1"
+    },
+    "versions": {
+        "0.2.1": {
+            "name": "context-menu-remove",
+            "main": "./lib/main",
+            "version": "0.2.1",
+            "description": "Remove some unwanted context menu items",
+            "keywords": [
+                "context"
+            ],
+            "repository": "https://github.com/UziTech/context-menu-remove",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.13.0 <2.0.0"
+            },
+            "dependencies": {
+                "clear-cut": "^2.0.1",
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/context-menu-remove/versions/0.2.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/UziTech/context-menu-remove/tarball/refs/tags/v0.2.1",
+            "sha": "bb957e770052abc5c62e15b573b03d9ca37147da"
+        },
+        "0.2.0": {
+            "name": "context-menu-remove",
+            "main": "./lib/main",
+            "version": "0.2.0",
+            "description": "Remove some unwanted context menu items",
+            "keywords": [
+                "context"
+            ],
+            "repository": "https://github.com/UziTech/context-menu-remove",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.13.0 <2.0.0"
+            },
+            "dependencies": {
+                "clear-cut": "^2.0.1",
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/context-menu-remove/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/UziTech/context-menu-remove/tarball/refs/tags/v0.2.0",
+            "sha": "c40d3087adeb7b55244135e9ef29146a0aa29bce"
+        },
+        "0.1.0": {
+            "name": "context-menu-remove",
+            "main": "./lib/main",
+            "version": "0.1.0",
+            "description": "Remove some unwanted context menu items",
+            "keywords": [
+                "context"
+            ],
+            "repository": "https://github.com/UziTech/context-menu-remove",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.13.0 <2.0.0"
+            },
+            "dependencies": {
+                "clear-cut": "^2.0.1",
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/context-menu-remove/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/UziTech/context-menu-remove/tarball/refs/tags/v0.1.0",
+            "sha": "caa7d70ea8d1df1516827aa9726ba0715cfdee5c"
+        }
+    },
+    "readme": "This package adds a few methods to [atom.contextMenu](https://atom.io/docs/api/latest/ContextMenuManager) and allows you to specify commands to remove from the context menu in a similar way to adding commands\n\n## Usage\n\nThere are two ways you can remove context menu items with this package:\n\n1. Use `atom.contextMenu.remove()` in your init script\n\n  ```coffeescript\n   atom.contextMenu.remove {\n     \"atom-text-editor\": [\n       \"Undo\",\n       \"Redo\",\n       {\n         label: \"Tabs to spaces\",\n         submenu: [\n           \"Tabify\",\n           \"Untabify\",\n           \"Untabify All\"\n         ]\n       }\n     ]\n   }\n  ```\n\n2. Add the object to your config file under the \"remove\" setting\n\n  ```coffeescript\n   \"*\":\n     \"context-menu-remove\":\n       remove:\n         \"atom-text-editor\": [\n           \"Undo\",\n           \"Redo\",\n           {\n             label: \"Tabs to spaces\",\n             submenu: [\n               \"Tabify\",\n               \"Untabify\",\n               \"Untabify All\"\n             ]\n           }\n         ]\n  ```\n\n## Format\n\nThe format is similar to [atom.contextMenu.add](https://atom.io/docs/api/v1.13.1/ContextMenuManager#instance-add) with a few exceptions.\n\nThe only properties that are used are `label` and `submenu`.\n\nIf the item does not have a submenu then you can use the `label` property or just use a string.\n```coffeescript\n{ label: \"Undo\" } === \"Undo\"\n```\n\nIf the you want to remove an item that has a submenu you must list all submenu items.\n```coffeescript\n{\n  label: \"Tabs to spaces\",\n  submenu: [\n    #\"Tabify\", #leave Tabify in menu\n    \"Untabify\",\n    \"Untabify All\"\n  ]\n}\n```\n\n## Methods\n\nThese are the extra methods that are added to `atom.contextMenu`\n\n### .remove(itemsBySelector)\n\nThis will remove items from the context menu using the format described above.\n\n### .SelectorsForLabel(label)\n\nThis will list the selectors that have a label as a top level or submenu item. This is good for debugging.\n\n### .labelsFromElement(element)\n\nThis will list the items for a given element. This helps when removing multiple items from an element's context menu.\n",
+    "metadata": {
+        "name": "context-menu-remove",
+        "main": "./lib/main",
+        "version": "0.2.1",
+        "description": "Remove some unwanted context menu items",
+        "keywords": [
+            "context"
+        ],
+        "repository": "https://github.com/UziTech/context-menu-remove",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.13.0 <2.0.0"
+        },
+        "dependencies": {
+            "clear-cut": "^2.0.1",
+            "underscore-plus": "^1.6.6"
+        }
+    },
+    "created": 1658338341799,
+    "updated": 1658338341799,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

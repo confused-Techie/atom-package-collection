@@ -1,0 +1,82 @@
+{
+    "name": "language-newlisp",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cormullion/language-newlisp"
+    },
+    "downloads": 841,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "0.3.0"
+    },
+    "versions": {
+        "0.3.0": {
+            "name": "language-newlisp",
+            "version": "0.3.0",
+            "private": false,
+            "description": "newLISP (not Lisp) package for Atom editor (atom.io)",
+            "repository": "https://github.com/cormullion/language-newlisp",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/language-newlisp/versions/0.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/cormullion/language-newlisp/tarball/refs/tags/v0.3.0",
+            "sha": "b85067c5d1942a69f4dcd18e9123a327d5591498"
+        },
+        "0.2.0": {
+            "name": "language-newlisp",
+            "version": "0.2.0",
+            "private": false,
+            "description": "newLISP (not Lisp) package for Atom editor (atom.io)",
+            "repository": "https://github.com/cormullion/language-newlisp",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/language-newlisp/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/cormullion/language-newlisp/tarball/refs/tags/v0.2.0",
+            "sha": "103bc5cd3f5db06f15f90006c710a1843dc8ddc8"
+        },
+        "0.1.0": {
+            "name": "language-newlisp",
+            "version": "0.1.0",
+            "private": false,
+            "description": "newLISP (not Lisp) package for Atom editor (atom.io)",
+            "repository": "https://github.com/cormullion/language-newlisp",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/language-newlisp/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/cormullion/language-newlisp/tarball/refs/tags/v0.1.0",
+            "sha": "64b56cf755b90754f8d86c34fdf98fdeb852a07d"
+        }
+    },
+    "readme": "# language-newlisp: newLISP (not Lisp) language support in Atom\n\nversion of 1st September 2018\n\nThis package adds snippets and syntax highlighting for newLISP.\n\nContributions are greatly appreciated. Please fork this repository and open a\npull request to add snippets, make grammar tweaks, etc.\n\n### The grammar\n\nThe file 'grammars/newlisp.cson' more or less defines newLISP syntax using regular expressions. These split the language up into *scopes*, which can then be styled separately by the editor, using the stylesheets.\n\nThere is much scope for improvement...\n\n### The snippets\n\nI'm not sure which approach to use for snippets. At the moment I'm thinking that I want to type a newLISP function only check the syntax/order of arguments, rather than to fill out a template. So you'll see every alternative syntax for a function, separated by '§' characters. So the snippet does not create working code:\n\n(append list-1 [list-2 ... ]) § (append array-1 [array-2 ... ]) § (append str-1 [str-2 ... ]))\n\nAs of version 0.70, I'm currently fighting with the automatic parenthesis-closing (which I don't like, but which is part of the 'bracket matching' package, which I do like). At the moment, what happens is:\n\n1  you type an opening parenthesis (and delete the automatically added closing parenthesis if necessary), followed by the name of a newLISP function\n\n2  you press TAB\n\n3  the syntax of that function (as in the newLISP manual) appears in the text.\n\n4  the closing parenthesis is added\n\n![animation](https://raw.github.com/cormullion/language-newlisp/master/animation1.gif)\n\nBut if you started typing inside an automatically-closed pair:\n\n    ( )\n\nthen you'll have too many final parentheses when the expansion of the snippet has finished.\n\n![animation](https://raw.github.com/cormullion/language-newlisp/master/animation.gif)\n\nIn other words, the snippet doesn't realise you've started with an opening parenthesis so isn't smart enough to not add an unwanted closing parenthesis.\n\nAn alternative approach is to use templates with slots, but I haven't done this yet.\n\n### The stylesheets\n\nBecause all the syntax highlighing is using CSS (or something akin to CSS), it's easy - and extremely tempting - to specify the colors of different scopes over and above the coloring provided by the current Atom theme.\n\nI've added a few of them to the file 'stylesheet/styles.less':\n\n    .entity.paren.newlisp - color, opacity etc. of parentheses\n    .invalid.deprecated.newlisp - files listed as 'deprecated' in grammars/newlisp.cson\n    .string.quoted.braced.newlisp - {strings}\n    .string.quoted.tagged.newlisp - [text]strings[/text]\n    .string.quoted.double.newlisp - \"strings\"\n    .punctuation.definition.string - the \", {, or [text] bit...\n\n## Tips for working with newLISP in Atom\n\nCurrently, two packages are available for installing that will let you run newLISP scripts directly.\n\nThe *runner* package requires you to add the following to your ~/.atom/config.cson - you don't have to edit the package at all, just download it. This will do:\n\n    'runner':\n      'scopes':\n        'coffee': 'coffee'\n        'js': 'node'\n        'ruby': 'ruby'\n        'python': 'python'\n        'go': 'go run'\n        'newlisp': 'newlisp'\n      'extensions':\n        'spec.coffee': 'jasmine-node --coffee'\n        'lsp': 'newlisp\n\nCommand-R (Mac) will run the file pointed to by the current window.\n\nThe *script* package has already been modified to recognise newLISP 'out of the box'. Command-I (Mac) will run the file pointed to by the current window.\n",
+    "metadata": {
+        "name": "language-newlisp",
+        "version": "0.3.0",
+        "private": false,
+        "description": "newLISP (not Lisp) package for Atom editor (atom.io)",
+        "repository": "https://github.com/cormullion/language-newlisp",
+        "license": "MIT",
+        "engines": {
+            "atom": ">0.50.0"
+        },
+        "dependencies": {}
+    },
+    "created": 1658348412130,
+    "updated": 1658348412130,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

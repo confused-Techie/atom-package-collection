@@ -1,0 +1,152 @@
+{
+    "name": "linter-po-util",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nrobinson2000/linter-po-util"
+    },
+    "downloads": 193,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "1.4.0"
+    },
+    "versions": {
+        "1.4.0": {
+            "name": "linter-po-util",
+            "main": "./lib/main",
+            "version": "1.4.0",
+            "description": "Lint Particle projects using po-util",
+            "keywords": [
+                "lint",
+                "linter",
+                "c",
+                "c++",
+                "gcc",
+                "g++",
+                "error"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/nrobinson2000/linter-po-util"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "consumeLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^4.3.3",
+                "atom-package-deps": "^2.0.1",
+                "shelljs": "^0.5.0",
+                "fs-extra": "^0.26.1",
+                "tempfile": "^1.1.0",
+                "split-string": "^0.1.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "devDependencies": {
+                "eslint": "latest"
+            },
+            "eslintConfig": {
+                "env": {
+                    "es6": true,
+                    "browser": true,
+                    "node": true
+                },
+                "ecmaFeatures": {
+                    "modules": true
+                },
+                "globals": {
+                    "atom": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-po-util/versions/1.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/nrobinson2000/linter-po-util/tarball/refs/tags/v1.4.0",
+            "sha": "8df029752b16e33b0a531f9af03d29472c961701"
+        }
+    },
+    "readme": "# linter-gcc\n\n[![Join the chat at https://gitter.im/linter-gcc/Lobby](https://badges.gitter.im/linter-gcc/Lobby.svg)](https://gitter.im/linter-gcc/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n[![Travis](https://img.shields.io/travis/hebaishi/linter-gcc.svg?style=flat-square)](https://travis-ci.org/hebaishi/linter-gcc) [![apm](https://img.shields.io/apm/dm/linter-gcc.svg?style=flat-square)](https://atom.io/packages/linter-gcc)\n[![Paypal](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=44GUEE2BT7XVG)\n\nLinter plugin for [Linter](https://github.com/AtomLinter/Linter), provides an interface to gcc/g++.\n\nUsed with files with grammar \"C\", \"C++\" and [\"C++14\"](https://atom.io/packages/language-cpp14).\n\nNow with linting **on-the-fly**! This is a new feature so please open an issue if you encounter any problems.\n\n## Important info for Mac OSX users!\nIf you have XCode installed on OSX, the `gcc/g++` commands will both link to `clang`. This can cause issues with the `-fmax-errors` option used by linter-gcc, which isn't recognised by clang. To properly install GCC, you need to install it with Homebrew (instructions [here](https://github.com/hebaishi/linter-gcc/issues/62)).\n\n## Linter in action!\n\n![linter-gcc screenshot](https://raw.githubusercontent.com/hebaishi/images/master/lintergcc_onthefly.gif)\n\n## Using CMake compile settings\nlinter-gcc can take compile settings from CMake. Using my gtf2tab project as an example, this is what you need to do:\n\n```bash\ngit clone https://github.com/hebaishi/gtf2tab\ncd gtf2tab\nmkdir build\ncd build\ncmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..\n```\n\nRunning ```cmake``` with the ```-DCMAKE_EXPORT_COMPILE_COMMANDS``` flag generates a ```compile_commands.json``` file which linter-gcc can get the compile settings from. Then you simply open the project in Atom, and enter ```./build/compile_commands.json``` in the Compile Commands File setting of linter-gcc. Note that if you supply a valid ```compile_commands.json``` file, your include paths and compile flags configuration settings (described below) are ignored.\n\n## File/Project-Specific settings\n\nAssuming you have the a file called ```sample.cpp``` open, linter-gcc performs the following actions:\n\n1. Looks for file called ```sample.cpp.gcc-flags.json``` in the same directory as your source file (file-specific settings)\n2. Looks for a file called ```.gcc-flags.json``` in every subdirectory from the current up to your project root (subdirectory/project-specific settings)\n3. If no ```.gcc-flags.json``` is found, the settings in your configuration page are used.\n\nThe package takes its settings from the first configuration file that is found.\n\nYou can specify your settings in ```.gcc-flags.json```, at any level (file/subdirectory/project) using the following syntax:\n\n```json\n{\n  \"execPath\": \"/usr/bin/g++\",\n  \"gccDefaultCFlags\": \"-Wall\",\n  \"gccDefaultCppFlags\": \"-Wall -std=c++11\",\n  \"gccErrorLimit\": 15,\n  \"gccIncludePaths\": \".,./include,./path\",\n  \"gccSuppressWarnings\": true\n}\n```\n\nNote that the include paths need to be separated by commas. If this file is present, it will replace the settings you specified in the settings window. Relative paths (starting with ```.``` or ```..```) are expanded with respect to the root folder. Both ```execPath``` and ```gccIncludePaths``` are expanded.\n\nIn order to avoid unwanted behavior associated with having multiple projects open, only the paths within the first project are used, and the package limits its search to 30 levels when looking for a configuration file. You can work with multiple projects, as long as each is open in a separate window. Additionally, within each project, you may have as many file/directory-specific configuration files as you wish.\n\n### Usage notes:\n* Add ```-fsyntax-only``` to your C/C++ compilation flags to prevent the generation of ```.gch``` files when linting headers\n* Add ```-c``` to your flags to avoid linking errors.\n\n### Plugin installation\nPress ctrl and ',' or cmd and ',' , click on 'Packages', search 'linter gcc', or:\n```\n$ apm install linter-gcc\n```\n### Reporting Issues\n\nPlease read the [Wiki](https://github.com/hebaishi/linter-gcc/wiki/) before reporting any issues.\n",
+    "metadata": {
+        "name": "linter-po-util",
+        "main": "./lib/main",
+        "version": "1.4.0",
+        "description": "Lint Particle projects using po-util",
+        "keywords": [
+            "lint",
+            "linter",
+            "c",
+            "c++",
+            "gcc",
+            "g++",
+            "error"
+        ],
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/nrobinson2000/linter-po-util"
+        },
+        "license": "MIT",
+        "engines": {
+            "atom": ">0.50.0"
+        },
+        "providedServices": {
+            "linter": {
+                "versions": {
+                    "1.0.0": "provideLinter"
+                }
+            }
+        },
+        "consumedServices": {
+            "linter-indie": {
+                "versions": {
+                    "1.0.0": "consumeLinter"
+                }
+            }
+        },
+        "dependencies": {
+            "atom-linter": "^4.3.3",
+            "atom-package-deps": "^2.0.1",
+            "shelljs": "^0.5.0",
+            "fs-extra": "^0.26.1",
+            "tempfile": "^1.1.0",
+            "split-string": "^0.1.0"
+        },
+        "package-deps": [
+            "linter"
+        ],
+        "devDependencies": {
+            "eslint": "latest"
+        },
+        "eslintConfig": {
+            "env": {
+                "es6": true,
+                "browser": true,
+                "node": true
+            },
+            "ecmaFeatures": {
+                "modules": true
+            },
+            "globals": {
+                "atom": true
+            }
+        }
+    },
+    "created": 1658356173662,
+    "updated": 1658356173662,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

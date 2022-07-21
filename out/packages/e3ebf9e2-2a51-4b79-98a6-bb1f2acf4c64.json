@@ -1,0 +1,86 @@
+{
+    "name": "linter-patch-errors-singleline",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lydell/linter-patch-errors-singleline"
+    },
+    "downloads": 1076,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "1.0.1"
+    },
+    "versions": {
+        "1.0.1": {
+            "name": "linter-patch-errors-singleline",
+            "main": "./lib/index",
+            "version": "1.0.1",
+            "description": "Patches the 'linter' package to make all errors singleline.",
+            "keywords": [],
+            "repository": "https://github.com/lydell/linter-patch-errors-singleline",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "scripts": {
+                "test": "npm run lint && apm test",
+                "lint": "eslint .",
+                "lint:fix": "eslint . --fix",
+                "flow": "flow",
+                "flow-typed": "flow-typed"
+            },
+            "dependencies": {},
+            "devDependencies": {
+                "babel-eslint": "8.0.1",
+                "eslint": "4.8.0",
+                "eslint-config-lydell": "2.0.1",
+                "eslint-plugin-flowtype": "2.39.1",
+                "eslint-plugin-flowtype-errors": "3.3.2",
+                "eslint-plugin-prettier": "2.3.1",
+                "flow-bin": "0.56.0",
+                "flow-typed": "^2.2.0",
+                "prettier": "1.7.4"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-patch-errors-singleline/versions/1.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/lydell/linter-patch-errors-singleline/tarball/refs/tags/v1.0.1",
+            "sha": "0e4170737e05704881fcffbaee1344c7b8b88898"
+        }
+    },
+    "readme": "# linter-patch-errors-singleline package [![Build Status][travis-badge]][travis]\n\nPatches the [linter] package to make all errors singleline.\n\n> Intimidated by all those red squigglies? No more!\n\n| Before | After |\n|--------|-------|\n|![Several lines of unreachable code are highlighted in red.][image-before]|![Only the first line of unreachable code is highlighted in red.][image-after]|\n\n## Installation\n\n1. Install the [linter] package.\n\n2. Install this package, either from the Settings View in Atom, or from the command line:\n\n```bash\napm install linter-patch-errors-singleline\n```\n\n## Questions & Answers\n\n### How does this work?\n\nIt's a hack.\n\nThis package `require()`:s a file in the [linter] package and monkey-patches a method on a class in there. The monkey-patched version of the method mutates all messages reported by linters, changing the range ends so that all errors and warnings appear to be singleline.\n\n### Why hacking instead of forking?\n\n#### Pros\n\nYou can always install the latest official versions without having to wait for me to update.\n\n#### Cons\n\nThis package may break unexpectedly if [linter] is refactored. However, the monkey-patch is very small, so it should be easy to fix.\n\n### Why not monkey-patch [linter-ui-default] instead?\n\nIt makes sense for [linter] to report the full ranges for errors, and leave it up to UI packages to decide how to display them. I tried to do this, but ended up having to mutate the ranges anyway. Then I could just as well monkey-patch [linter] itself, which was easier. It also means that this package works with any UI package.\n\n### Why isn't this an option of the official packages?\n\nSee [steelbrain/linter-ui-default#398 (comment)][linter-ui-default-issue] and onwards.\n\n[image-after]: https://cdn.rawgit.com/lydell/linter-patch-errors-singleline/15c97055/images/after.png\n[image-before]: https://cdn.rawgit.com/lydell/linter-patch-errors-singleline/15c97055/images/before.png\n[linter-ui-default-issue]: https://github.com/steelbrain/linter-ui-default/issues/398#issuecomment-331632791\n[linter-ui-default]: https://github.com/steelbrain/linter-ui-default\n[linter]: https://github.com/steelbrain/linter\n[travis-badge]: https://travis-ci.org/lydell/linter-patch-errors-singleline.svg?branch=master\n[travis]: https://travis-ci.org/lydell/linter-patch-errors-singleline\n",
+    "metadata": {
+        "name": "linter-patch-errors-singleline",
+        "main": "./lib/index",
+        "version": "1.0.1",
+        "description": "Patches the 'linter' package to make all errors singleline.",
+        "keywords": [],
+        "repository": "https://github.com/lydell/linter-patch-errors-singleline",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "scripts": {
+            "test": "npm run lint && apm test",
+            "lint": "eslint .",
+            "lint:fix": "eslint . --fix",
+            "flow": "flow",
+            "flow-typed": "flow-typed"
+        },
+        "dependencies": {},
+        "devDependencies": {
+            "babel-eslint": "8.0.1",
+            "eslint": "4.8.0",
+            "eslint-config-lydell": "2.0.1",
+            "eslint-plugin-flowtype": "2.39.1",
+            "eslint-plugin-flowtype-errors": "3.3.2",
+            "eslint-plugin-prettier": "2.3.1",
+            "flow-bin": "0.56.0",
+            "flow-typed": "^2.2.0",
+            "prettier": "1.7.4"
+        }
+    },
+    "created": 1658351270089,
+    "updated": 1658351270089,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

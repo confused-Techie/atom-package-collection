@@ -1,0 +1,82 @@
+{
+    "name": "quickmenu",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/spywhere/AtomQuickMenu"
+    },
+    "downloads": 275,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "0.2.2"
+    },
+    "versions": {
+        "0.2.2": {
+            "name": "QuickMenu",
+            "main": "./lib/atom-quick-menu-main",
+            "version": "0.2.2",
+            "private": true,
+            "description": "A quick panel utility for Atom packages",
+            "activationEvents": [
+                "atom-quick-menu:example-code",
+                "atom-quick-menu:demo",
+                "atom-quick-menu:submenu-dialogs",
+                "atom-quick-menu:submenu-items",
+                "atom-quick-menu:submenu-commands",
+                "atom-quick-menu:select-item-2-on-commands-menu",
+                "atom-quick-menu:command-hello,-world!"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/spywhere/AtomQuickMenu"
+            },
+            "bugs": {
+                "url": "https://github.com/spywhere/AtomQuickMenu/issue"
+            },
+            "homepage": "https://github.com/spywhere/AtomQuickMenu",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quickmenu/versions/0.2.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/spywhere/AtomQuickMenu/tarball/refs/tags/v0.2.2",
+            "sha": "2bc6d15f653057db863fc32499764ca37a0a6276"
+        }
+    },
+    "readme": "## Atom QuickMenu\n\nA quick panel utility for Atom packages\n\n[This will be a screenshot for Atom QuickMenu]\n\n### Features\n * Submenu, Redirecting items\n * Dynamic menu system\n\n### Installation and Package Integration\nUnder development...\n\n### Setup Menus\nTo setup a menu, you will need a menu and variable to store an instance of QuickMenu.\n\n```\nqm = None\n```\n\nTo create a menu just using Dict with one element with your menu name as a key with a list of item inside.\n\n```\nmenu = {\n  \"<Menu Name>\": {\n    \"items\": <List of item you want to display>\n  }\n}\n```\n\nand when you are ready to show it just using...\n\n```\nunless @qm?\n  @qm = new QuickMenu(@menu)\n@qm show(atom.workspace)\n```\n\n**IMPORTANT: Every menu must have \"main\" as a startup menu**\n\n### Setup Menu Interaction\nOnce you have a menu to display, you will need some interactions with it, like go to submenu or run commands. To make items interactible, add a new list named \"actions\" into your menu.\n\n```\nmenu = {\n  \"<Menu Name>\": {\n    \"items\": <List of items you want to display>\n    \"actions\": [<List of actions order by item's index>]\n  }\n}\n```\n\nand then add an action order by your item's index. (Action format see below)\n\n### Action Format\nItem action can be use in many ways. These are all possible actions can be used by your items...\n\n* Open a submenu\n* Select an item from other submenu (redirect)\n* Show a message dialog\n* Show an error dialog\n* Run command (with arguments)\n\n#### Submenu\nTo make items go to a submenu, use a Dict with string named \"name\"...\n\n```\n{\n  \"name\": \"<Menu Name>\"\n}\n```\n\n#### Redirecting\nTo make items redirect itself to another item on the same or different submenu, use a Dict with following format...\n\n```\n{\n  \"name\": \"<Menu Name>\",\n  \"item\": <A index of item starts from 1>\n}\n```\n\n#### Message Dialog\nTo make items show a message dialog, use a Dict with following format...\n\n```\n{\n  \"command\": \"message_dialog\",\n  \"args\": \"<Your text goes here>\"\n}\n```\n\n#### Error Dialog\nTo make items show an error dialog, use a Dict with following format...\n\n```\n{\n  \"command\": \"error_dialog\",\n  \"args\": \"<Your text goes here>\"\n}\n```\n\n#### Run Command\nTo make items run a command, use a Dict with following format...\n\n```\n{\n  \"command\": \"<Your command goes here>\",\n  \"args\": <A Dict of arguments>\n}\n```\n\n### Example\nYou can see and try an example of QuickMenu within file named \"atom-quick-menu-main.coffee\" or type `QuickMenu: Example Code` in command palette.\n\n### API\nUnder development... It would be similar to QuickMenu for Sublime API\n",
+    "metadata": {
+        "name": "QuickMenu",
+        "main": "./lib/atom-quick-menu-main",
+        "version": "0.2.2",
+        "private": true,
+        "description": "A quick panel utility for Atom packages",
+        "activationEvents": [
+            "atom-quick-menu:example-code",
+            "atom-quick-menu:demo",
+            "atom-quick-menu:submenu-dialogs",
+            "atom-quick-menu:submenu-items",
+            "atom-quick-menu:submenu-commands",
+            "atom-quick-menu:select-item-2-on-commands-menu",
+            "atom-quick-menu:command-hello,-world!"
+        ],
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/spywhere/AtomQuickMenu"
+        },
+        "bugs": {
+            "url": "https://github.com/spywhere/AtomQuickMenu/issue"
+        },
+        "homepage": "https://github.com/spywhere/AtomQuickMenu",
+        "license": "MIT",
+        "engines": {
+            "atom": ">0.50.0"
+        },
+        "dependencies": {}
+    },
+    "created": 1658361921455,
+    "updated": 1658361921455,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

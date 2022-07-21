@@ -1,0 +1,124 @@
+{
+    "name": "monto",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/inkytonik/atom-monto"
+    },
+    "downloads": 87,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "0.1.0"
+    },
+    "versions": {
+        "0.1.0": {
+            "name": "monto",
+            "description": "Atom support for Monto Disintegrated Development Environment",
+            "version": "0.1.0",
+            "author": {
+                "name": "Anthony Sloane",
+                "email": "inkytonik@gmail.com"
+            },
+            "license": "GPL-3.0",
+            "main": "./lib/monto",
+            "keywords": [
+                "development",
+                "disintegrated",
+                "environment",
+                "IDE",
+                "monto"
+            ],
+            "homepage": "https://atom.io/packages/monto",
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/inkytonik/atom-monto.git"
+            },
+            "bugs": {
+                "url": "https://github.com/inkytonik/atom-monto/issues"
+            },
+            "engines": {
+                "atom": ">=1.0.0"
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.6.0",
+                "atom-select-list": "^0.2.0",
+                "atom-space-pen-views": "^2.2.0",
+                "fs-plus": "^3.0.1",
+                "loophole": "^1.1.0",
+                "zmq": "^2.15.3"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeIndie"
+                    }
+                }
+            },
+            "deserializers": {
+                "HTMLView": "createHTMLView"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/monto/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/inkytonik/atom-monto/tarball/refs/tags/v0.1.0",
+            "sha": "5abcc2de574d2a91256933b5595e77f92469f8c5"
+        }
+    },
+    "readme": "### Monto Disintegrated Development Environment\n\nThis package allows you to use Atom with other components from the [Monto\nDisintegrated Development Environment](https://bitbucket.org/inkytonik/monto).\n\n#### Author\n\ninkytonik, Anthony Sloane ([inkytonik@gmail.com](mailto:inkytonik@gmail.com))\n\n### Overview\n\nThe Monto architecture consists of background *server processes* that listen for versions of files to be published by *source processes*.\nIn response to version messages, servers asynchronously respond with *products* that contain some derived information (e.g., an outline view).\nProducts are consumed by *client processes* that typically display the information to a user.\nCommunication between sources, servers and clients is facilitated by a single broker process.\nA more detailed description of the Monto architecture can be found on the [Monto project wiki](https://bitbucket.org/inkytonik/monto/src/default/wiki/architecture.md).\n\nThis package allows Atom to play the role of source and client in the Monto architecture.\nEach time a change is made to a file in the editor the package publishes a version of that file.\nThe editor user can use the package to create product views that display products as they arrive.\n\n### Running a Monto broker and servers\n\nThe easiest way to run a Monto broker and associated servers is to use the [reference Python implementation](https://bitbucket.org/inkytonik/monto/src/default/wiki/python.md) which contains a simple management script.\nPlease refer to the reference implementation instructions for details on how to install that implementation and configure it.\n\nThe reference implementation includes some simple sources and servers that can be useful for experimentation.\n\nWe assume in the following that you are successfully running the Monto broker and at least the \"reflect\" server that simply bounces version messages back as products.\n\n### Specifying products you wish to use\n\nMonto products are identified by names such as \"reflect\".\nSince the choice of products is highly user-specific and typing them in manually is error-prone, the package has a \"Product List\" setting in which you can specify a comma-separated list of the names of the products you wish to use.\nThe setting is used to populate a list from which you can choose when creating a product view (see below).\n\nBy default, the setting contains some products used by the reference Monto implementation (including the \"reflect\" product) so you can use it as-is for testing.\nOnce you are familiar with using this package you should adjust the setting so it contains the products you wish to use.\n\n### Creating textual product views\n\nYou can create product views in Atom using the `Monto: Open Text View` command (bound to `alt-m v` by default).\nThis command displays a list of the products that you have listed in the \"Product List\" setting and allows you to select from the list in the same manner as the main Atom command palette.\n\nSelecting a product causes a view on that product to be created in a pane next to the active editor.\nWhen messages containing that product arrive the content of the message will be displayed in the product view.\n\nFor example, try running a broker with the \"reflect\" server and then create a \"reflect\" product view.\nYou will then be able to edit any file and see the changes to those files reflected in the product.\n\n### Creating HTML product views\n\nThe `Monto: Open HTML View` command (bound to `alt-m h` by default) can be used to create a HTML product view.\nSuch a view will display a product written in language \"html\" as the rendered HTML.\nFor example, if you are running the \"reflect\" server you can open a HTML view on the \"reflect\" product, then edit a `.html` file to see the rendered HTML of the file in the product view as you edit.\n",
+    "metadata": {
+        "name": "monto",
+        "description": "Atom support for Monto Disintegrated Development Environment",
+        "version": "0.1.0",
+        "author": {
+            "name": "Anthony Sloane",
+            "email": "inkytonik@gmail.com"
+        },
+        "license": "GPL-3.0",
+        "main": "./lib/monto",
+        "keywords": [
+            "development",
+            "disintegrated",
+            "environment",
+            "IDE",
+            "monto"
+        ],
+        "homepage": "https://atom.io/packages/monto",
+        "repository": {
+            "type": "git",
+            "url": "git+https://github.com/inkytonik/atom-monto.git"
+        },
+        "bugs": {
+            "url": "https://github.com/inkytonik/atom-monto/issues"
+        },
+        "engines": {
+            "atom": ">=1.0.0"
+        },
+        "dependencies": {
+            "atom-package-deps": "^4.6.0",
+            "atom-select-list": "^0.2.0",
+            "atom-space-pen-views": "^2.2.0",
+            "fs-plus": "^3.0.1",
+            "loophole": "^1.1.0",
+            "zmq": "^2.15.3"
+        },
+        "package-deps": [
+            "linter"
+        ],
+        "consumedServices": {
+            "linter-indie": {
+                "versions": {
+                    "2.0.0": "consumeIndie"
+                }
+            }
+        },
+        "deserializers": {
+            "HTMLView": "createHTMLView"
+        }
+    },
+    "created": 1658358213978,
+    "updated": 1658358213978,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

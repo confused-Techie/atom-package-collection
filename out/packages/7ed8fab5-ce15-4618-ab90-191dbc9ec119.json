@@ -1,0 +1,154 @@
+{
+    "name": "atom-ncvlog-linter",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/andy-benson/atom-ncvlog-linter"
+    },
+    "downloads": 94,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "0.3.0"
+    },
+    "versions": {
+        "0.3.0": {
+            "name": "atom-ncvlog-linter",
+            "main": "lib/atom-ncvlog-linter.js",
+            "version": "0.3.0",
+            "repository": "https://github.com/andy-benson/atom-ncvlog-linter",
+            "description": "system verilog atom-linter using ncvlog (Cadence Incisive)",
+            "keywords": [
+                "linter",
+                "ncvlog",
+                "verilog",
+                "systemverilog",
+                "hdl"
+            ],
+            "engines": {
+                "atom": ">=1.4.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^8.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-ncvlog-linter/versions/0.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/andy-benson/atom-ncvlog-linter/tarball/refs/tags/v0.3.0",
+            "sha": "dc9aaf5989c62c53f75972aeb5d89f4ef6608bb2"
+        },
+        "0.2.0": {
+            "name": "atom-ncvlog-linter",
+            "main": "lib/atom-ncvlog-linter.js",
+            "version": "0.2.0",
+            "repository": "https://github.com/andy-benson/atom-ncvlog-linter",
+            "description": "system verilog atom-linter using ncvlog (Cadence Incisive)",
+            "keywords": [
+                "linter",
+                "ncvlog",
+                "verilog",
+                "systemverilog",
+                "hdl"
+            ],
+            "engines": {
+                "atom": ">=1.4.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^8.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-ncvlog-linter/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/andy-benson/atom-ncvlog-linter/tarball/refs/tags/v0.2.0",
+            "sha": "bd470ee12a87a0acdcc5964e84987da69a49c866"
+        },
+        "0.1.0": {
+            "name": "atom-ncvlog-linter",
+            "main": "lib/atom-ncvlog-linter.js",
+            "version": "0.1.0",
+            "repository": "https://github.com/andy-benson/atom-ncvlog-linter",
+            "description": "system verilog atom-linter using ncvlog (Cadence Incisive)",
+            "keywords": [
+                "linter",
+                "ncvlog",
+                "verilog",
+                "systemverilog",
+                "hdl"
+            ],
+            "engines": {
+                "atom": ">=1.4.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^8.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-ncvlog-linter/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/andy-benson/atom-ncvlog-linter/tarball/refs/tags/v0.1.0",
+            "sha": "02cf2df841a8521232bd7e86c96c904a9ee6d5ce"
+        }
+    },
+    "readme": "## ncvlog-linter package\n\n\nSystemVerilog linter using 'ncvlog' (Cadence Incisive) \n\nOnly compiles the file being linted which keeps run time super speedy, so can work in-line during editing  (you might want https://atom.io/packages/autosave-onchange)\n\nThis downside to this approach, is that project-wide dependencies such as  'include filepaths , and module instantiations may give false positives / false negatives.\n\nforked from :  https://github.com/KoenGoe/atom-vcs-linter)\n\n### Dependencies :\n\n1. 'ncvlog' available in your path\n1. https://atom.io/packages/linter\n\n### Under the hood\n\natom-ncvlog-linter runs the following command line each time the current file is saved (i.e. lint_test.v)\n\n```\nncvlog -sv +incdir+. -logfile /tmp/logfile lint_test.v\n```\n\nEach of the error messages are then parsed , and reformatted before being passed back to the linter package. I.e. :  \n\n* Output from ncvlog \n\n```\nncvlog: 15.20-s060: (c) Copyright 1995-2018 Cadence Design Systems, Inc.\nendmodule \n        |\nncvlog: *E,EXPLPA (lint_test.v,6|8): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].\n```\n\n* input to Atom linter\n\n```\nlint_test.sv:6:Error:expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].\n```\n\n* linter message in Atom\n\n![ncvlog-linter-screenshot](https://user-images.githubusercontent.com/68588485/91172343-ed2f2800-e6d3-11ea-8c56-accab977e416.png)\n\n### ToDo\n\n1. refactor to be single \"init.coffee file, simplier solution and will clean up temp file issue. i.e. fork from https://atom.io/packages/linter-verilator\n1. Add menu item so that additional command line options can be passed to ncvlog, such as additional files or include directories.\n\n### Done \n1. Clean up INCA_libs\n1. System level alert if ncvlog not found on command line\n",
+    "metadata": {
+        "name": "atom-ncvlog-linter",
+        "main": "lib/atom-ncvlog-linter.js",
+        "version": "0.3.0",
+        "repository": "https://github.com/andy-benson/atom-ncvlog-linter",
+        "description": "system verilog atom-linter using ncvlog (Cadence Incisive)",
+        "keywords": [
+            "linter",
+            "ncvlog",
+            "verilog",
+            "systemverilog",
+            "hdl"
+        ],
+        "engines": {
+            "atom": ">=1.4.0 <2.0.0"
+        },
+        "package-deps": [
+            "linter"
+        ],
+        "providedServices": {
+            "linter": {
+                "versions": {
+                    "2.0.0": "provideLinter"
+                }
+            }
+        },
+        "dependencies": {
+            "atom-linter": "^8.0.0"
+        }
+    },
+    "created": 1658333439248,
+    "updated": 1658333439248,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

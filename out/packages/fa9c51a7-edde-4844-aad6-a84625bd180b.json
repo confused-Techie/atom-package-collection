@@ -1,0 +1,721 @@
+{
+    "name": "atom-aframe",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mkungla/atom-aframe"
+    },
+    "downloads": 804,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "1.0.0"
+    },
+    "versions": {
+        "1.0.0": {
+            "name": "atom-aframe",
+            "productName": "A-Frame",
+            "description": "Atom A-Frame Support",
+            "main": "./src/index",
+            "version": "1.0.0",
+            "license": "MIT",
+            "keywords": [
+                "aframe",
+                "vr"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/mkungla/atom-aframe.git"
+            },
+            "bugs": {
+                "url": "https://github.com/mkungla/atom-aframe/issues"
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "scripts": {
+                "lint": "eslint .",
+                "update": "node ./scripts/update.js"
+            },
+            "devDependencies": {
+                "eslint": "^7.30.0",
+                "eslint-config-standard": "^16.0.3",
+                "eslint-plugin-import": "^2.23.4",
+                "eslint-plugin-node": "^11.1.0",
+                "eslint-plugin-promise": "^5.1.0"
+            },
+            "eslintConfig": {
+                "extends": "standard",
+                "env": {
+                    "atomtest": true,
+                    "jasmine": true,
+                    "mocha": true
+                },
+                "globals": {
+                    "atom": true
+                }
+            },
+            "dependencies": {
+                "semver": "^7.3.5"
+            },
+            "atomTestRunner": "./tests/runner",
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                }
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "configSchema": {
+                "project": {
+                    "type": "object",
+                    "order": 1,
+                    "title": "A-Frame project configuration",
+                    "properties": {
+                        "checkPackageJson": {
+                            "title": "Check A-Frame dependency in package.json",
+                            "description": "Checks A-Frame dependency in projects package.json, id present uses that dependency version to generate autocomplet suggestions and documentation URL's",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 1
+                        },
+                        "versionWarning": {
+                            "title": "Warn if project uses EOL version of A-Frame",
+                            "description": "Show warning if project depends on End-of-life A-Frame version",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 2
+                        },
+                        "versionNotify": {
+                            "title": "Notify for newer version of A-Frame",
+                            "description": "Show notification when there is newer version of A-Frame available for update.",
+                            "type": "boolean",
+                            "default": false,
+                            "order": 3
+                        },
+                        "defaultAframeVersion": {
+                            "title": "Default A-Frame version",
+                            "description": "Set Default A-Frame version used when not watching package.json or project has no dependency in package.json.",
+                            "type": "string",
+                            "default": "1.2.0",
+                            "order": 4
+                        },
+                        "attributeDefaults": {
+                            "title": "Automatically Set Attribute Default value",
+                            "description": "Automatically set value for attribute or get default value from mapped component property.",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 5
+                        },
+                        "componentDefaults": {
+                            "title": "Automatically Set Component Defaults",
+                            "description": "Automatically insert all component properties with defaults",
+                            "type": "boolean",
+                            "default": false,
+                            "order": 6
+                        }
+                    }
+                },
+                "package": {
+                    "type": "object",
+                    "order": 2,
+                    "title": "Atom A-Frame package configuration",
+                    "properties": {
+                        "notifOnActivationFailure": {
+                            "title": "Warn when this atom package is unable to activate",
+                            "description": "Show warning when this atom package can not be activate (e.g to old Atom)",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 1
+                        }
+                    }
+                },
+                "devel": {
+                    "type": "object",
+                    "order": 3,
+                    "title": "Development only! Changing these options may break this package.",
+                    "properties": {
+                        "atomMinVer": {
+                            "title": "Minimum Atom version",
+                            "type": "string",
+                            "default": "1.14.0",
+                            "order": 1
+                        },
+                        "docsBaseURL": {
+                            "title": "Documentation base url",
+                            "description": "Documentation base url used to generate links. You can set that also to localhost when working on A-Frame documentation",
+                            "type": "string",
+                            "default": "https://aframe.io/docs",
+                            "order": 2
+                        },
+                        "website": {
+                            "title": "A-Frame website",
+                            "description": "You can set that also to localhost when working on A-Frame site",
+                            "type": "string",
+                            "default": "https://aframe.io",
+                            "order": 3
+                        },
+                        "github": {
+                            "title": "A-Frame Github",
+                            "description": "You can set that also to your own fork",
+                            "type": "string",
+                            "default": "https://github.com/aframevr/aframe",
+                            "order": 4
+                        },
+                        "npmapi": {
+                            "title": "NPM API uri for A-Frame",
+                            "description": "NPM API identifier from where atom-aframe fetches versions",
+                            "type": "string",
+                            "default": "https://registry.npmjs.org/aframe",
+                            "order": 5
+                        },
+                        "deprecatedConf": {
+                            "title": "Deprecated configuration options",
+                            "type": "array",
+                            "default": [
+                                "global"
+                            ],
+                            "items": {
+                                "type": "string"
+                            },
+                            "order": 6
+                        }
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-aframe/versions/1.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/mkungla/atom-aframe/tarball/refs/tags/v1.0.0",
+            "sha": "be1fec679df61bc7a374025559efa79a221c5b0e"
+        },
+        "0.1.3": {
+            "name": "atom-aframe",
+            "productName": "A-Frame",
+            "description": "Atom A-Frame Support",
+            "main": "./src/index",
+            "version": "0.1.3",
+            "license": "MIT",
+            "keywords": [
+                "aframe",
+                "vr"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/mkungla/atom-aframe.git"
+            },
+            "bugs": {
+                "url": "https://github.com/mkungla/atom-aframe/issues"
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "scripts": {
+                "lint": "eslint .",
+                "update": "node ./scripts/update.js"
+            },
+            "devDependencies": {
+                "eslint": "^4.11.0",
+                "eslint-config-standard": "^10.2.1",
+                "eslint-plugin-import": "^2.8.0",
+                "eslint-plugin-node": "^5.2.1",
+                "eslint-plugin-promise": "^3.6.0",
+                "eslint-plugin-standard": "^3.0.1",
+                "request": "^2.83.0"
+            },
+            "eslintConfig": {
+                "extends": "standard",
+                "env": {
+                    "atomtest": true,
+                    "jasmine": true,
+                    "mocha": true
+                },
+                "globals": {
+                    "atom": true
+                }
+            },
+            "dependencies": {
+                "semver": "^5.4.1"
+            },
+            "atomTestRunner": "./tests/runner",
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                }
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "configSchema": {
+                "project": {
+                    "type": "object",
+                    "order": 1,
+                    "title": "A-Frame project configuration",
+                    "properties": {
+                        "checkPackageJson": {
+                            "title": "Check A-Frame dependency in package.json",
+                            "description": "Checks A-Frame dependency in projects package.json, id present uses that dependency version to generate autocomplet suggestions and documentation URL's",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 1
+                        },
+                        "versionWarning": {
+                            "title": "Warn if project uses EOL version of A-Frame",
+                            "description": "Show warning if project depends on End-of-life A-Frame version",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 2
+                        },
+                        "versionNotify": {
+                            "title": "Notify for newer version of A-Frame",
+                            "description": "Show notification when there is newer version of A-Frame available for update.",
+                            "type": "boolean",
+                            "default": false,
+                            "order": 3
+                        },
+                        "defaultAframeVersion": {
+                            "title": "Default A-Frame version",
+                            "description": "Set Default A-Frame version used when not watching package.json or project has no dependency in package.json.",
+                            "type": "string",
+                            "default": "0.7.1",
+                            "order": 4
+                        },
+                        "attributeDefaults": {
+                            "title": "Automatically Set Attribute Default value",
+                            "description": "Automatically set value for attribute or get default value from mapped component property.",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 5
+                        },
+                        "componentDefaults": {
+                            "title": "Automatically Set Component Defaults",
+                            "description": "Automatically insert all component properties with defaults",
+                            "type": "boolean",
+                            "default": false,
+                            "order": 6
+                        }
+                    }
+                },
+                "package": {
+                    "type": "object",
+                    "order": 2,
+                    "title": "Atom A-Frame package configuration",
+                    "properties": {
+                        "notifOnActivationFailure": {
+                            "title": "Warn when this atom package is unable to activate",
+                            "description": "Show warning when this atom package can not be activate (e.g to old Atom)",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 1
+                        }
+                    }
+                },
+                "devel": {
+                    "type": "object",
+                    "order": 3,
+                    "title": "Development only! Changing these options may break this package.",
+                    "properties": {
+                        "atomMinVer": {
+                            "title": "Minimum Atom version",
+                            "type": "string",
+                            "default": "1.14.0",
+                            "order": 1
+                        },
+                        "docsBaseURL": {
+                            "title": "Documentation base url",
+                            "description": "Documentation base url used to generate links. You can set that also to localhost when working on A-Frame documentation",
+                            "type": "string",
+                            "default": "https://aframe.io/docs",
+                            "order": 2
+                        },
+                        "website": {
+                            "title": "A-Frame website",
+                            "description": "You can set that also to localhost when working on A-Frame site",
+                            "type": "string",
+                            "default": "https://aframe.io",
+                            "order": 3
+                        },
+                        "github": {
+                            "title": "A-Frame Github",
+                            "description": "You can set that also to your own fork",
+                            "type": "string",
+                            "default": "https://github.com/aframevr/aframe",
+                            "order": 4
+                        },
+                        "npmapi": {
+                            "title": "NPM API uri for A-Frame",
+                            "description": "NPM API identifier from where atom-aframe fetches versions",
+                            "type": "string",
+                            "default": "https://registry.npmjs.org/aframe",
+                            "order": 5
+                        },
+                        "deprecatedConf": {
+                            "title": "Deprecated configuration options",
+                            "type": "array",
+                            "default": [
+                                "global"
+                            ],
+                            "items": {
+                                "type": "string"
+                            },
+                            "order": 6
+                        }
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-aframe/versions/0.1.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/mkungla/atom-aframe/tarball/refs/tags/v0.1.3",
+            "sha": "e6f9a81840ace117b26b9e4c9b5ca39803eb6375"
+        },
+        "0.1.2": {
+            "name": "atom-aframe",
+            "productName": "A-Frame",
+            "description": "Atom A-Frame Support",
+            "main": "./src/index",
+            "version": "0.1.2",
+            "license": "MIT",
+            "keywords": [
+                "aframe",
+                "vr"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/mkungla/atom-aframe.git"
+            },
+            "bugs": {
+                "url": "https://github.com/mkungla/atom-aframe/issues"
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "scripts": {
+                "lint": "eslint ."
+            },
+            "devDependencies": {
+                "aframe": "^0.7.1",
+                "eslint": "^4.11.0",
+                "eslint-config-standard": "^10.2.1",
+                "eslint-plugin-import": "^2.8.0",
+                "eslint-plugin-node": "^5.2.1",
+                "eslint-plugin-promise": "^3.6.0",
+                "eslint-plugin-standard": "^3.0.1"
+            },
+            "eslintConfig": {
+                "extends": "standard",
+                "env": {
+                    "atomtest": true,
+                    "jasmine": true,
+                    "mocha": true
+                },
+                "globals": {
+                    "atom": true
+                }
+            },
+            "dependencies": {
+                "semver": "^5.4.1"
+            },
+            "atomTestRunner": "./tests/runner",
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "aframeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "aframeAutocompleteProvider"
+                    }
+                }
+            },
+            "configSchema": {
+                "global": {
+                    "type": "object",
+                    "order": 1,
+                    "title": "Global Atom A-Frame package configuration",
+                    "properties": {
+                        "notifOnActivationFailure": {
+                            "title": "Warn when this atom package is unable to activate",
+                            "description": "Show warning this atom package can not be activate (e.g to old Atom)",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 1
+                        }
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-aframe/versions/0.1.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/mkungla/atom-aframe/tarball/refs/tags/v0.1.2",
+            "sha": "22af5c023e051caec1c276bbb281410c6a0549a3"
+        },
+        "0.1.1": {
+            "name": "atom-aframe",
+            "productName": "A-Frame",
+            "description": "Atom A-Frame Support",
+            "main": "./lib/main",
+            "version": "0.1.1",
+            "license": "MIT",
+            "keywords": [
+                "aframe",
+                "vr"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/mkungla/atom-aframe.git"
+            },
+            "bugs": {
+                "url": "https://github.com/mkungla/atom-aframe/issues"
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "scripts": {
+                "lint": "eslint ."
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "aframeStatusBar"
+                    }
+                }
+            },
+            "devDependencies": {
+                "aframe": "^0.7.1",
+                "eslint": "^4.11.0",
+                "eslint-config-standard": "^10.2.1",
+                "eslint-plugin-import": "^2.8.0",
+                "eslint-plugin-node": "^5.2.1",
+                "eslint-plugin-promise": "^3.6.0",
+                "eslint-plugin-standard": "^3.0.1"
+            },
+            "eslintConfig": {
+                "extends": "standard",
+                "env": {
+                    "atomtest": true,
+                    "jasmine": true,
+                    "mocha": true
+                },
+                "globals": {
+                    "atom": true
+                }
+            },
+            "dependencies": {
+                "semver": "^5.4.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-aframe/versions/0.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/mkungla/atom-aframe/tarball/refs/tags/v0.1.1",
+            "sha": "08acd03ca37a3c923f3b9944a6872bd1b4eae8be"
+        }
+    },
+    "readme": "# Atom A-Frame Support\n\n[![CircleCI][circleci-img]][circleci-link]\n[![Code Climate][codeclimate-img]][codeclimate-link]\n[![Installs!][apm-installs-img]][apm-installs-link]\n[![Version!][apm-version-img]][apm-version-link]\n\n<!-- resources -->\n[circleci-img]: https://circleci.com/gh/mkungla/atom-aframe.svg?style=svg\n[circleci-link]: https://circleci.com/gh/mkungla/atom-aframe\n\n[codeclimate-img]: https://codeclimate.com/github/mkungla/atom-aframe.svg\n[codeclimate-link]: https://codeclimate.com/github/mkungla/atom-aframe\n\n[apm-installs-img]: https://img.shields.io/apm/dm/atom-aframe.svg?style=flat-square\n[apm-installs-link]:https://atom.io/packages/atom-aframe\n\n[apm-version-img]: https://img.shields.io/apm/v/atom-aframe.svg?style=flat-square\n[apm-version-link]:https://atom.io/packages/atom-aframe\n",
+    "metadata": {
+        "name": "atom-aframe",
+        "productName": "A-Frame",
+        "description": "Atom A-Frame Support",
+        "main": "./src/index",
+        "version": "1.0.0",
+        "license": "MIT",
+        "keywords": [
+            "aframe",
+            "vr"
+        ],
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/mkungla/atom-aframe.git"
+        },
+        "bugs": {
+            "url": "https://github.com/mkungla/atom-aframe/issues"
+        },
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "scripts": {
+            "lint": "eslint .",
+            "update": "node ./scripts/update.js"
+        },
+        "devDependencies": {
+            "eslint": "^7.30.0",
+            "eslint-config-standard": "^16.0.3",
+            "eslint-plugin-import": "^2.23.4",
+            "eslint-plugin-node": "^11.1.0",
+            "eslint-plugin-promise": "^5.1.0"
+        },
+        "eslintConfig": {
+            "extends": "standard",
+            "env": {
+                "atomtest": true,
+                "jasmine": true,
+                "mocha": true
+            },
+            "globals": {
+                "atom": true
+            }
+        },
+        "dependencies": {
+            "semver": "^7.3.5"
+        },
+        "atomTestRunner": "./tests/runner",
+        "consumedServices": {
+            "status-bar": {
+                "versions": {
+                    "^1.0.0": "consumeStatusBar"
+                }
+            }
+        },
+        "providedServices": {
+            "autocomplete.provider": {
+                "versions": {
+                    "2.0.0": "provideAutocomplete"
+                }
+            }
+        },
+        "activationHooks": [
+            "core:loaded-shell-environment"
+        ],
+        "configSchema": {
+            "project": {
+                "type": "object",
+                "order": 1,
+                "title": "A-Frame project configuration",
+                "properties": {
+                    "checkPackageJson": {
+                        "title": "Check A-Frame dependency in package.json",
+                        "description": "Checks A-Frame dependency in projects package.json, id present uses that dependency version to generate autocomplet suggestions and documentation URL's",
+                        "type": "boolean",
+                        "default": true,
+                        "order": 1
+                    },
+                    "versionWarning": {
+                        "title": "Warn if project uses EOL version of A-Frame",
+                        "description": "Show warning if project depends on End-of-life A-Frame version",
+                        "type": "boolean",
+                        "default": true,
+                        "order": 2
+                    },
+                    "versionNotify": {
+                        "title": "Notify for newer version of A-Frame",
+                        "description": "Show notification when there is newer version of A-Frame available for update.",
+                        "type": "boolean",
+                        "default": false,
+                        "order": 3
+                    },
+                    "defaultAframeVersion": {
+                        "title": "Default A-Frame version",
+                        "description": "Set Default A-Frame version used when not watching package.json or project has no dependency in package.json.",
+                        "type": "string",
+                        "default": "1.2.0",
+                        "order": 4
+                    },
+                    "attributeDefaults": {
+                        "title": "Automatically Set Attribute Default value",
+                        "description": "Automatically set value for attribute or get default value from mapped component property.",
+                        "type": "boolean",
+                        "default": true,
+                        "order": 5
+                    },
+                    "componentDefaults": {
+                        "title": "Automatically Set Component Defaults",
+                        "description": "Automatically insert all component properties with defaults",
+                        "type": "boolean",
+                        "default": false,
+                        "order": 6
+                    }
+                }
+            },
+            "package": {
+                "type": "object",
+                "order": 2,
+                "title": "Atom A-Frame package configuration",
+                "properties": {
+                    "notifOnActivationFailure": {
+                        "title": "Warn when this atom package is unable to activate",
+                        "description": "Show warning when this atom package can not be activate (e.g to old Atom)",
+                        "type": "boolean",
+                        "default": true,
+                        "order": 1
+                    }
+                }
+            },
+            "devel": {
+                "type": "object",
+                "order": 3,
+                "title": "Development only! Changing these options may break this package.",
+                "properties": {
+                    "atomMinVer": {
+                        "title": "Minimum Atom version",
+                        "type": "string",
+                        "default": "1.14.0",
+                        "order": 1
+                    },
+                    "docsBaseURL": {
+                        "title": "Documentation base url",
+                        "description": "Documentation base url used to generate links. You can set that also to localhost when working on A-Frame documentation",
+                        "type": "string",
+                        "default": "https://aframe.io/docs",
+                        "order": 2
+                    },
+                    "website": {
+                        "title": "A-Frame website",
+                        "description": "You can set that also to localhost when working on A-Frame site",
+                        "type": "string",
+                        "default": "https://aframe.io",
+                        "order": 3
+                    },
+                    "github": {
+                        "title": "A-Frame Github",
+                        "description": "You can set that also to your own fork",
+                        "type": "string",
+                        "default": "https://github.com/aframevr/aframe",
+                        "order": 4
+                    },
+                    "npmapi": {
+                        "title": "NPM API uri for A-Frame",
+                        "description": "NPM API identifier from where atom-aframe fetches versions",
+                        "type": "string",
+                        "default": "https://registry.npmjs.org/aframe",
+                        "order": 5
+                    },
+                    "deprecatedConf": {
+                        "title": "Deprecated configuration options",
+                        "type": "array",
+                        "default": [
+                            "global"
+                        ],
+                        "items": {
+                            "type": "string"
+                        },
+                        "order": 6
+                    }
+                }
+            }
+        }
+    },
+    "created": 1658331480150,
+    "updated": 1658331480150,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

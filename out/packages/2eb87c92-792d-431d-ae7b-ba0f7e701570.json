@@ -1,0 +1,92 @@
+{
+    "name": "auto-run",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/aki77/atom-auto-run"
+    },
+    "downloads": 4844,
+    "stargazers_count": 2,
+    "releases": {
+        "latest": "0.2.1"
+    },
+    "versions": {
+        "0.2.1": {
+            "name": "auto-run",
+            "main": "./lib/main",
+            "version": "0.2.1",
+            "description": "When Atom finishes loading, it will dispatch.",
+            "keywords": [],
+            "repository": "https://github.com/aki77/atom-auto-run",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {},
+            "providedServices": {
+                "auto-run": {
+                    "description": "",
+                    "versions": {
+                        "0.1.0": "provideAutoRun"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/auto-run/versions/0.2.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/aki77/atom-auto-run/tarball/refs/tags/v0.2.1",
+            "sha": "cc814b5320103ee537f664fd281e3adabe4a0bf8"
+        },
+        "0.2.0": {
+            "name": "auto-run",
+            "main": "./lib/main",
+            "version": "0.2.0",
+            "description": "When Atom finishes loading, it will dispatch.",
+            "keywords": [],
+            "repository": "https://github.com/aki77/atom-auto-run",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {},
+            "providedServices": {
+                "auto-run": {
+                    "description": "",
+                    "versions": {
+                        "0.1.0": "provideAutoRun"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/auto-run/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/aki77/atom-auto-run/tarball/refs/tags/v0.2.0",
+            "sha": "6307c07f9dd6da24bc509cf97f5bb3135aa7f8c2"
+        }
+    },
+    "readme": "# auto-run package\n\nWhen Atom finishes loading, it will dispatch.\n[![Build Status](https://travis-ci.org/aki77/atom-auto-run.svg)](https://travis-ci.org/aki77/atom-auto-run)\n\n## Settings\n\n* `commands` (default: [])\n* `devCommands` (default: [])\n\n[![Gyazo](http://i.gyazo.com/31adbe6b7752f58b80fa72eb1d18bae9.png)](http://gyazo.com/31adbe6b7752f58b80fa72eb1d18bae9)\n\n## API\n\nThis package provides a service that you can use in other Atom packages.\n\nThen, in your package's main module, call methods on the service:\n\n```coffee\nmodule.exports =\n  config:\n    autoRun:\n      type: 'boolean'\n      default: false\n      description: 'Requirement: auto-run package'\n\n  activate: ->\n    @subscriptions = new CompositeDisposable\n    @subscriptions.add atom.commands.add 'atom-workspace',\n      'my-package:start': => @start()\n\n  activateConfig: ->\n    pack = atom.packages.getActivePackage('auto-run')\n    return unless pack\n\n    autoRun = pack.mainModule.provideAutoRun()\n    autoRun.registerCommand(\n      keyPath: 'my-package.autoRun'\n      command: 'my-package:start'\n    )\n```\n\n`package.json`\n\n```json\n{\n  \"name\": \"my-package\",\n  \"activationCommands\": {\n    \"atom-workspace\": [\"my-package:start\"]\n  }\n}\n```\n",
+    "metadata": {
+        "name": "auto-run",
+        "main": "./lib/main",
+        "version": "0.2.1",
+        "description": "When Atom finishes loading, it will dispatch.",
+        "keywords": [],
+        "repository": "https://github.com/aki77/atom-auto-run",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=0.174.0 <2.0.0"
+        },
+        "dependencies": {},
+        "providedServices": {
+            "auto-run": {
+                "description": "",
+                "versions": {
+                    "0.1.0": "provideAutoRun"
+                }
+            }
+        }
+    },
+    "created": 1658335073684,
+    "updated": 1658335073684,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

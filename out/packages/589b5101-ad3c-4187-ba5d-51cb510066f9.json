@@ -1,0 +1,756 @@
+{
+    "name": "linter-yalafi",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mfbehrens99/linter-yalafi"
+    },
+    "downloads": 70,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "0.3.0"
+    },
+    "versions": {
+        "0.3.0": {
+            "name": "linter-yalafi",
+            "main": "./lib/linter-yalafi",
+            "version": "0.3.0",
+            "description": "This package is linting LaTeX files for spelling and grammar errors",
+            "keywords": [
+                "latex",
+                "yalafi",
+                "languagetool",
+                "lint",
+                "linter"
+            ],
+            "repository": "https://github.com/mfbehrens99/linter-yalafi",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "configSchema": {
+                "language": {
+                    "type": "string",
+                    "default": "en-GB",
+                    "description": "Specify the language of your LaTeX file. (en-GB, de-DE, fr-FR)",
+                    "order": 1
+                },
+                "server": {
+                    "title": "Select LanguageTool instance",
+                    "type": "string",
+                    "default": "lt",
+                    "description": "YaLafi offers different servers that can be used to check your LaTeX files",
+                    "enum": [
+                        {
+                            "value": "lt",
+                            "description": "languagetool.org (Public LanguageTool server)"
+                        },
+                        {
+                            "value": "my",
+                            "description": "localhost (Private LanguageTool server)"
+                        }
+                    ],
+                    "order": 2
+                },
+                "yalafi": {
+                    "title": "YaLafi Settings",
+                    "collapsed": true,
+                    "type": "object",
+                    "order": 3,
+                    "properties": {
+                        "executablePath": {
+                            "type": "string",
+                            "default": "python",
+                            "description": "Command or full path to python.",
+                            "order": 2
+                        },
+                        "options": {
+                            "type": "array",
+                            "description": "Comma separated list of arguments that are passed to YaLafi. For example `--simple-equations`. If the argument takes a value, you need to place a `=` between argument and value.",
+                            "default": [],
+                            "items": {
+                                "type": "string"
+                            },
+                            "order": 1
+                        }
+                    }
+                },
+                "lt": {
+                    "title": "LanguageTool Settings",
+                    "collapsed": true,
+                    "type": "object",
+                    "order": 4,
+                    "properties": {
+                        "disabledRules": {
+                            "title": "Ignored LanguageTool rules",
+                            "type": "string",
+                            "default": "",
+                            "description": "Comma-separated list of LanguageTool rules that should be ignored. If you change this, you may want to add `WHITESPACE_RULE` which is the YaLafi default value.",
+                            "order": 2
+                        },
+                        "serverOptions": {
+                            "title": "LanguageTool server options",
+                            "type": "string",
+                            "default": "",
+                            "description": "Additional options passed to the local LanguageTool server. The path for n-gram data is added automatically if given.",
+                            "order": 4
+                        },
+                        "nGramDataPath": {
+                            "title": "LanguageTool path for n-gram data",
+                            "type": "string",
+                            "default": "",
+                            "description": "Path to n-gram data for the LanguageTool server. For more information about n-gram data visit https://dev.languagetool.org/finding-errors-using-n-gram-data.html and look into the README.",
+                            "order": 3
+                        },
+                        "path": {
+                            "title": "LanguageTool path",
+                            "type": "string",
+                            "default": "",
+                            "description": "Path to LanguageTool directory",
+                            "order": 5
+                        }
+                    }
+                },
+                "showContextInLinterMessage": {
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Show the YaLafi output in the linter message to see if an error is due to the conversion YaLafi has done.",
+                    "order": 5
+                },
+                "disableCRLFWarning": {
+                    "title": "Disable CRLF conversion warning",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "It can cause problems if the end of line mode is set to CRLF. To prevent problems linter-YaLafi notifies you and gives you the option to automatically convert from CRLF to LF",
+                    "order": 6
+                },
+                "disableTimeout": {
+                    "title": "Disable Execution Timeout",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "By default processes running longer than 30 seconds will be automatically terminated. Enable this option if you are getting messages about process execution timing out.",
+                    "order": 7
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "10.0.0",
+                "atom-package-deps": "5.1.0",
+                "lazy-req": "2.0.0"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-yalafi/versions/0.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/mfbehrens99/linter-yalafi/tarball/refs/tags/v0.3.0",
+            "sha": "e69af002edb514a155a1464a12c909f035255114"
+        },
+        "0.2.0": {
+            "name": "linter-yalafi",
+            "main": "./lib/linter-yalafi",
+            "version": "0.2.0",
+            "description": "This package is linting LaTeX files for spelling and grammar errors",
+            "keywords": [
+                "latex",
+                "yalafi",
+                "languagetool",
+                "lint",
+                "linter"
+            ],
+            "repository": "https://github.com/mfbehrens99/linter-yalafi",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "configSchema": {
+                "language": {
+                    "type": "string",
+                    "default": "en-GB",
+                    "description": "Specify the language of your LaTeX file. (en-GB, de-DE, fr-FR)",
+                    "order": 1
+                },
+                "server": {
+                    "title": "Select LanguageTool instance",
+                    "type": "string",
+                    "default": "lt",
+                    "description": "YaLafi offers different servers that can be used to check your LaTeX files",
+                    "enum": [
+                        {
+                            "value": "lt",
+                            "description": "languagetool.org (Public LanguageTool server)"
+                        },
+                        {
+                            "value": "my",
+                            "description": "localhost (Private LanguageTool server)"
+                        }
+                    ],
+                    "order": 2
+                },
+                "disabledRules": {
+                    "title": "Ignored LanguageTool rules",
+                    "type": "string",
+                    "default": "WHITESPACE_RULE",
+                    "description": "Comma-separated list of LanguageTool rules that should be ignored",
+                    "order": 3
+                },
+                "executablePath": {
+                    "type": "string",
+                    "default": "python",
+                    "description": "Command or full path to python.",
+                    "order": 4
+                },
+                "yalafiOptions": {
+                    "type": "array",
+                    "description": "Comma separated list of arguments that are passed to YaLafi. For example `--simple-equations`. If the argument takes a value, you need to place a `=` between argument and value.",
+                    "default": [],
+                    "items": {
+                        "type": "string"
+                    },
+                    "order": 5
+                },
+                "languageToolPath": {
+                    "title": "LanguageTool path",
+                    "type": "string",
+                    "default": "",
+                    "description": "Path to LanguageTool directory",
+                    "order": 6
+                },
+                "languageToolnGramDataPath": {
+                    "title": "LanguageTool path for n-gram data",
+                    "type": "string",
+                    "default": "",
+                    "description": "Path to n-gram data for the LanguageTool server. For more information about n-gram data visit https://dev.languagetool.org/finding-errors-using-n-gram-data.html and look into the README.",
+                    "order": 7
+                },
+                "languageToolServerOptions": {
+                    "title": "LanguageTool server options",
+                    "type": "string",
+                    "default": "",
+                    "description": "Additional options passed to the local LanguageTool server. The path for n-gram data is added automatically if given.",
+                    "order": 8
+                },
+                "showContextInLinterMessage": {
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Show the YaLafi output in the linter message to see if an error is due to the conversion YaLafi has done.",
+                    "order": 3
+                },
+                "disableTimeout": {
+                    "title": "Disable Execution Timeout",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "By default processes running longer than 30 seconds will be automatically terminated. Enable this option if you are getting messages about process execution timing out.",
+                    "order": 9
+                },
+                "disableCRLFWarning": {
+                    "title": "Disable CRLF conversion warning",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "It can cause problems if the end of line mode is set to CRLF. To prevent problems linter-YaLafi notifies you and gives you the option to automatically convert from CRLF to LF",
+                    "order": 10
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "10.0.0",
+                "atom-package-deps": "5.1.0",
+                "lazy-req": "2.0.0"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-yalafi/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/mfbehrens99/linter-yalafi/tarball/refs/tags/v0.2.0",
+            "sha": "6a58b11d1ff7919c68d400ffd42cb5e53bc05882"
+        },
+        "0.1.3": {
+            "name": "linter-yalafi",
+            "main": "./lib/linter-yalafi",
+            "version": "0.1.3",
+            "description": "This package is linting LaTeX files for spelling and grammar errors",
+            "keywords": [
+                "latex",
+                "yalafi",
+                "languagetool",
+                "lint",
+                "linter"
+            ],
+            "repository": "https://github.com/mfbehrens99/linter-yalafi",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "configSchema": {
+                "language": {
+                    "type": "string",
+                    "default": "en-GB",
+                    "description": "Specify the language of your LaTeX file. (en-GB, de-DE, fr-FR)",
+                    "order": 1
+                },
+                "server": {
+                    "title": "Select LanguageTool instance",
+                    "type": "string",
+                    "default": "lt",
+                    "description": "YaLafi offers different servers that can be used to check your LaTeX files",
+                    "enum": [
+                        {
+                            "value": "lt",
+                            "description": "languagetool.org (Public LanguageTool server)"
+                        },
+                        {
+                            "value": "my",
+                            "description": "localhost (Private LanguageTool server)"
+                        }
+                    ],
+                    "order": 2
+                },
+                "executablePath": {
+                    "type": "string",
+                    "default": "python",
+                    "description": "Command or full path to python.",
+                    "order": 3
+                },
+                "disableTimeout": {
+                    "title": "Disable Execution Timeout",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "By default processes running longer than 30 seconds will be automatically terminated. Enable this option if you are getting messages about process execution timing out.",
+                    "order": 4
+                },
+                "disableCRLFWarning": {
+                    "title": "Disable CRLF conversion warning",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "It can cause problems if the end of line mode is set to CRLF. To prevent problems linter-YaLafi notifies you and gives you the option to automatically convert from CRLF to LF",
+                    "order": 5
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "10.0.0",
+                "atom-package-deps": "5.1.0",
+                "lazy-req": "2.0.0"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-yalafi/versions/0.1.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/mfbehrens99/linter-yalafi/tarball/refs/tags/v0.1.3",
+            "sha": "99b1eece636468f78960b718fbb6a46ffb5492de"
+        },
+        "0.1.2": {
+            "name": "linter-yalafi",
+            "main": "./lib/linter-yalafi",
+            "version": "0.1.2",
+            "description": "This package is linting LaTeX files for spelling and grammar errors",
+            "keywords": [
+                "latex",
+                "yalafi",
+                "languagetool",
+                "lint",
+                "linter"
+            ],
+            "repository": "https://github.com/mfbehrens99/linter-yalafi",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "configSchema": {
+                "language": {
+                    "type": "string",
+                    "default": "en-GB",
+                    "description": "Specify the language of your LaTeX file. (en-GB, de-DE, fr-FR)",
+                    "order": 1
+                },
+                "server": {
+                    "title": "Select LanguageTool instance",
+                    "type": "string",
+                    "default": "lt",
+                    "description": "YaLafi offers different servers that can be used to check your LaTeX files",
+                    "enum": [
+                        {
+                            "value": "lt",
+                            "description": "languagetool.org (Public LanguageTool server)"
+                        },
+                        {
+                            "value": "my",
+                            "description": "localhost (Private LanguageTool server)"
+                        }
+                    ],
+                    "order": 2
+                },
+                "executablePath": {
+                    "type": "string",
+                    "default": "python",
+                    "description": "Command or full path to python.",
+                    "order": 3
+                },
+                "disableTimeout": {
+                    "title": "Disable Execution Timeout",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "By default processes running longer than 30 seconds will be automatically terminated. Enable this option if you are getting messages about process execution timing out.",
+                    "order": 4
+                },
+                "disableCRLFWarning": {
+                    "title": "Disable CRLF conversion warning",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "It can cause problems if the end of line mode is set to CRLF. To prevent problems linter-YaLafi notifies you and gives you the option to automatically convert from CRLF to LF",
+                    "order": 5
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "10.0.0",
+                "atom-package-deps": "5.1.0",
+                "lazy-req": "2.0.0"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-yalafi/versions/0.1.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/mfbehrens99/linter-yalafi/tarball/refs/tags/v0.1.2",
+            "sha": "1cd570f61efa2fe55d6932a9d69c47c669d4986e"
+        },
+        "0.1.1": {
+            "name": "linter-yalafi",
+            "main": "./lib/linter-yalafi",
+            "version": "0.1.1",
+            "description": "This package is linting LaTeX files for spelling and grammar errors",
+            "keywords": [
+                "latex",
+                "yalafi",
+                "languagetool",
+                "lint",
+                "linter"
+            ],
+            "repository": "https://github.com/mfbehrens99/linter-yalafi",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "configSchema": {
+                "language": {
+                    "type": "string",
+                    "default": "en-GB",
+                    "description": "Specify the language of your LaTeX file. (en-GB, de-DE, fr-FR)",
+                    "order": 1
+                },
+                "server": {
+                    "title": "Select LanguageTool instance",
+                    "type": "string",
+                    "default": "lt",
+                    "description": "YaLafi offers different servers that can be used to check your LaTeX files",
+                    "enum": [
+                        {
+                            "value": "lt",
+                            "description": "languagetool.org (Public LanguageTool server)"
+                        },
+                        {
+                            "value": "my",
+                            "description": "localhost (Private LanguageTool server)"
+                        }
+                    ],
+                    "order": 2
+                },
+                "executablePath": {
+                    "type": "string",
+                    "default": "yalafi",
+                    "description": "Command or full path to python.",
+                    "order": 3
+                },
+                "disableTimeout": {
+                    "title": "Disable Execution Timeout",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "By default processes running longer than 30 seconds will be automatically terminated. Enable this option if you are getting messages about process execution timing out.",
+                    "order": 4
+                },
+                "disableCRLFWarning": {
+                    "title": "Disable CRLF conversion warning",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "It can cause problems if the end of line mode is set to CRLF. To prevent problems linter-YaLafi notifies you and gives you the option to automatically convert from CRLF to LF",
+                    "order": 5
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "10.0.0",
+                "atom-package-deps": "5.1.0",
+                "lazy-req": "2.0.0"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-yalafi/versions/0.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/mfbehrens99/linter-yalafi/tarball/refs/tags/v0.1.1",
+            "sha": "9a454f11e61650c2cdc7b5796063ee0888225a2a"
+        },
+        "0.1.0": {
+            "name": "linter-yalafi",
+            "main": "./lib/linter-yalafi",
+            "version": "0.1.0",
+            "description": "This package is linting LaTeX files for spelling and grammar errors",
+            "keywords": [
+                "latex",
+                "yalafi",
+                "languagetool",
+                "lint",
+                "linter"
+            ],
+            "repository": "https://github.com/mfbehrens99/linter-yalafi",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "configSchema": {
+                "language": {
+                    "type": "string",
+                    "default": "en-GB",
+                    "description": "Specify the language of your LaTeX file. (en-GB, de-DE, fr-FR)",
+                    "order": 1
+                },
+                "server": {
+                    "title": "Select LanguageTool instance",
+                    "type": "string",
+                    "default": "lt",
+                    "description": "YaLafi offers different servers that can be used to check your LaTeX files",
+                    "enum": [
+                        {
+                            "value": "lt",
+                            "description": "languagetool.org (Public LanguageTool server)"
+                        },
+                        {
+                            "value": "my",
+                            "description": "localhost (Private LanguageTool server)"
+                        }
+                    ],
+                    "order": 2
+                },
+                "executablePath": {
+                    "type": "string",
+                    "default": "yalafi",
+                    "description": "Command or full path to python.",
+                    "order": 3
+                },
+                "disableTimeout": {
+                    "title": "Disable Execution Timeout",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "By default processes running longer than 30 seconds will be automatically terminated. Enable this option if you are getting messages about process execution timing out.",
+                    "order": 4
+                },
+                "disableCRLFWarning": {
+                    "title": "Disable CRLF conversion warning",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "It can cause problems if the end of line mode is set to CRLF. To prevent problems linter-YaLafi notifies you and gives you the option to automatically convert from CRLF to LF",
+                    "order": 5
+                }
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "10.0.0",
+                "atom-package-deps": "5.1.0",
+                "lazy-req": "2.0.0"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-yalafi/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/mfbehrens99/linter-yalafi/tarball/refs/tags/v0.1.0",
+            "sha": "8911e04451031ebbc92bb855069fd6ff6b6757f6"
+        }
+    },
+    "readme": "# `linter-yalafi` - Checks your LaTeX documents\n\n`linter-yalafi` is an [Atom](https://atom.io) package that lints LaTeX documents with respect to grammar and spelling using [LanguageTool](https://languagetool.org). To filter any LaTeX commands [YaLafi](https://github.com/matze-dd/YaLafi) is used.\n\n# Installation\nUsing the Atom package manager:\n\n`apm install lint-yalafi`\n\nYou also have to install [linter](https://atom.io/packages/linter):\n\n`apm install linter`\n\nSince this is an interface to YaLafi it also has to be installed. The easiest way is to use `pip`:\n\n`pip install yalafi`\n\n## Using a local LanguageTool Server\n\nIf you do not want to use the LanguageTool online server you also need to install Java and  LanguageTool.\nMore information on how to install LanguageTool can be found [here](https://github.com/matze-dd/YaLafi#installation).\n\nThen you can set the 'LanguageTool path' in the settings.\nIt should point to the directory containing e.g. 'languagetool-server.jar'.\nThis package will then start the server if it is not already running.\nYou can also start the server manually by invoking YaLafi yourself, e.g. with `python -m yalafi.shell --lt-server my file.tex`.\n\n\nFor even better spell-checking one can use n-gram data to find errors with words that are often confused.\nMore information and the n-gram data can be found [here](https://dev.languagetool.org/finding-errors-using-n-gram-data.html).\nAfter downloading and unzipping, you have to set the 'LanguageTool path for n-gram data' in the settings.\n\n__Important:__ The 'LanguageTool server options' and also the n-gram data path is only used at first server startup.\nJust changing the settings will not give you any results unless you manually kill the server.\n",
+    "metadata": {
+        "name": "linter-yalafi",
+        "main": "./lib/linter-yalafi",
+        "version": "0.3.0",
+        "description": "This package is linting LaTeX files for spelling and grammar errors",
+        "keywords": [
+            "latex",
+            "yalafi",
+            "languagetool",
+            "lint",
+            "linter"
+        ],
+        "repository": "https://github.com/mfbehrens99/linter-yalafi",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "configSchema": {
+            "language": {
+                "type": "string",
+                "default": "en-GB",
+                "description": "Specify the language of your LaTeX file. (en-GB, de-DE, fr-FR)",
+                "order": 1
+            },
+            "server": {
+                "title": "Select LanguageTool instance",
+                "type": "string",
+                "default": "lt",
+                "description": "YaLafi offers different servers that can be used to check your LaTeX files",
+                "enum": [
+                    {
+                        "value": "lt",
+                        "description": "languagetool.org (Public LanguageTool server)"
+                    },
+                    {
+                        "value": "my",
+                        "description": "localhost (Private LanguageTool server)"
+                    }
+                ],
+                "order": 2
+            },
+            "yalafi": {
+                "title": "YaLafi Settings",
+                "collapsed": true,
+                "type": "object",
+                "order": 3,
+                "properties": {
+                    "executablePath": {
+                        "type": "string",
+                        "default": "python",
+                        "description": "Command or full path to python.",
+                        "order": 2
+                    },
+                    "options": {
+                        "type": "array",
+                        "description": "Comma separated list of arguments that are passed to YaLafi. For example `--simple-equations`. If the argument takes a value, you need to place a `=` between argument and value.",
+                        "default": [],
+                        "items": {
+                            "type": "string"
+                        },
+                        "order": 1
+                    }
+                }
+            },
+            "lt": {
+                "title": "LanguageTool Settings",
+                "collapsed": true,
+                "type": "object",
+                "order": 4,
+                "properties": {
+                    "disabledRules": {
+                        "title": "Ignored LanguageTool rules",
+                        "type": "string",
+                        "default": "",
+                        "description": "Comma-separated list of LanguageTool rules that should be ignored. If you change this, you may want to add `WHITESPACE_RULE` which is the YaLafi default value.",
+                        "order": 2
+                    },
+                    "serverOptions": {
+                        "title": "LanguageTool server options",
+                        "type": "string",
+                        "default": "",
+                        "description": "Additional options passed to the local LanguageTool server. The path for n-gram data is added automatically if given.",
+                        "order": 4
+                    },
+                    "nGramDataPath": {
+                        "title": "LanguageTool path for n-gram data",
+                        "type": "string",
+                        "default": "",
+                        "description": "Path to n-gram data for the LanguageTool server. For more information about n-gram data visit https://dev.languagetool.org/finding-errors-using-n-gram-data.html and look into the README.",
+                        "order": 3
+                    },
+                    "path": {
+                        "title": "LanguageTool path",
+                        "type": "string",
+                        "default": "",
+                        "description": "Path to LanguageTool directory",
+                        "order": 5
+                    }
+                }
+            },
+            "showContextInLinterMessage": {
+                "type": "boolean",
+                "default": "false",
+                "description": "Show the YaLafi output in the linter message to see if an error is due to the conversion YaLafi has done.",
+                "order": 5
+            },
+            "disableCRLFWarning": {
+                "title": "Disable CRLF conversion warning",
+                "type": "boolean",
+                "default": false,
+                "description": "It can cause problems if the end of line mode is set to CRLF. To prevent problems linter-YaLafi notifies you and gives you the option to automatically convert from CRLF to LF",
+                "order": 6
+            },
+            "disableTimeout": {
+                "title": "Disable Execution Timeout",
+                "type": "boolean",
+                "default": false,
+                "description": "By default processes running longer than 30 seconds will be automatically terminated. Enable this option if you are getting messages about process execution timing out.",
+                "order": 7
+            }
+        },
+        "providedServices": {
+            "linter": {
+                "versions": {
+                    "2.0.0": "provideLinter"
+                }
+            }
+        },
+        "dependencies": {
+            "atom-linter": "10.0.0",
+            "atom-package-deps": "5.1.0",
+            "lazy-req": "2.0.0"
+        },
+        "package-deps": [
+            "linter:2.0.0"
+        ]
+    },
+    "created": 1658356498065,
+    "updated": 1658356498065,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

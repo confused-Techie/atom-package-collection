@@ -1,0 +1,1204 @@
+{
+    "name": "molecule",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alanzanattadev/atom-molecule-dev-environment"
+    },
+    "downloads": 407,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "1.1.0"
+    },
+    "versions": {
+        "1.1.0": {
+            "name": "molecule",
+            "main": "./build/babel/molecule-dev-environment.js",
+            "version": "1.1.0",
+            "description": "Molecule IDE for Atom.io",
+            "keywords": [
+                "ide",
+                "molecule",
+                "atom"
+            ],
+            "scripts": {
+                "eslint": "eslint ./",
+                "flow": "flow check --show-all-errors",
+                "jest:watch": "jest --watch",
+                "test": "jest && yarn eslint",
+                "babel:build": "babel lib --out-dir ./build/babel/ --source-maps",
+                "babel:watch": "babel lib --out-dir ./build/babel/ --source-maps --watch",
+                "postinstall": "yarn babel:build"
+            },
+            "repository": "https://github.com/alanzanattadev/atom-molecule-dev-environment",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.27.0",
+                "node": ">=7.9.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeIndie"
+                    }
+                }
+            },
+            "dependencies": {
+                "ansi-to-html": "^0.6.3",
+                "babel-cli": "^6.26.0",
+                "babel-core": "^6.26.0",
+                "babel-eslint": "^8.0.2",
+                "babel-jest": "^21.2.0",
+                "babel-loader": "^7.1.2",
+                "babel-plugin-add-module-exports": "^0.2.1",
+                "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+                "babel-plugin-transform-do-expressions": "^6.22.0",
+                "babel-plugin-transform-object-rest-spread": "^6.26.0",
+                "babel-polyfill": "^6.26.0",
+                "babel-preset-env": "^1.6.1",
+                "babel-preset-flow": "^6.23.0",
+                "babel-preset-react": "^6.23.0",
+                "babel-register": "^6.26.0",
+                "classnames": "^2.2.5",
+                "color-hash": "^1.0.3",
+                "fb-watchman": "^2.0.0",
+                "flow-language-server": "^0.5.0",
+                "immutable": "^3.8.1",
+                "jest-cli": "^23.1.0",
+                "js-yaml": "^3.12.0",
+                "less": "^3.0.4",
+                "mocha": "^5.1.1",
+                "moment": "^2.19.2",
+                "nightwatch": "^0.9.12",
+                "nightwatch-html-reporter": "^2.0.0",
+                "nuclide-prebuilt-libs": "^0.5.2",
+                "nullthrows": "^1.0.1",
+                "radium": "^0.23.0",
+                "react": "^16.4.0",
+                "react-dom": "^16.4.0",
+                "react-forms-state": "github:alanzanattadev/react-forms-state",
+                "react-image-fallback": "^7.0.1",
+                "react-motion": "^0.5.2",
+                "react-redux": "^5.0.7",
+                "recompose": "^0.25.1",
+                "redux": "^3.6.0",
+                "redux-observable": "^0.14.1",
+                "redux-thunk": "^2.1.0",
+                "remote-redux-devtools": "^0.5.7",
+                "rxjs": "^5.4.3",
+                "stream-buffers": "^3.0.1",
+                "stream-splitter": "^0.3.2",
+                "styled-components": "^3.2.6",
+                "tree-kill": "^1.2.0",
+                "vscode-jsonrpc": "^3.6.1",
+                "vscode-uri": "^1.0.1",
+                "xterm": "3.7.0"
+            },
+            "devDependencies": {
+                "enzyme": "^3.7.0",
+                "enzyme-adapter-react-16": "^1.6.0",
+                "enzyme-to-json": "^3.3.4",
+                "eslint": "^5.8.0",
+                "eslint-config-prettier": "^3.1.0",
+                "eslint-plugin-flowtype": "^3.2.0",
+                "eslint-plugin-prettier": "^3.0.0",
+                "eslint-plugin-react": "^7.11.1",
+                "flow-bin": "^0.85.0",
+                "prettier": "^1.15.1",
+                "react-devtools": "^3.4.2",
+                "react-test-renderer": "^16.6.1",
+                "redux-mock-store": "^1.5.3",
+                "redux-mock-store-await-actions": "^2.1.0"
+            },
+            "babel": {
+                "presets": [
+                    [
+                        "env",
+                        {
+                            "targets": {
+                                "electron": "1.6"
+                            }
+                        }
+                    ],
+                    "react",
+                    "flow"
+                ],
+                "plugins": [
+                    "add-module-exports",
+                    "transform-object-rest-spread",
+                    "transform-do-expressions"
+                ]
+            },
+            "jest": {
+                "moduleNameMapper": {
+                    "electron": "<rootDir>/lib/ExecutionControlEpic/PlanConfigurationFeature/Fake/fakeElectron.js"
+                },
+                "snapshotSerializers": [
+                    "enzyme-to-json/serializer"
+                ],
+                "testPathIgnorePatterns": [
+                    "<rootDir>/build/",
+                    "<rootDir>/node_modules/",
+                    "<rootDir>/testsData/",
+                    "<rootDir>/testsUI/"
+                ]
+            },
+            "eslintConfig": {
+                "env": {
+                    "browser": true,
+                    "es6": true,
+                    "jest": true,
+                    "node": true
+                },
+                "parser": "babel-eslint",
+                "parserOptions": {
+                    "ecmaVersion": 8,
+                    "ecmaFeatures": {
+                        "jsx": true,
+                        "experimentalObjectRestSpread": true
+                    },
+                    "sourceType": "module"
+                },
+                "plugins": [
+                    "flowtype",
+                    "prettier",
+                    "react"
+                ],
+                "extends": [
+                    "eslint:recommended",
+                    "plugin:flowtype/recommended",
+                    "plugin:react/recommended",
+                    "prettier",
+                    "prettier/flowtype",
+                    "prettier/react"
+                ],
+                "settings": {
+                    "react": {
+                        "version": "16.4",
+                        "flowVersion": "0.85"
+                    }
+                },
+                "rules": {
+                    "no-console": [
+                        "warn",
+                        {
+                            "allow": [
+                                "warn",
+                                "error"
+                            ]
+                        }
+                    ],
+                    "no-unused-vars": [
+                        "warn",
+                        {
+                            "argsIgnorePattern": "helperAPI|taskAPI|dirname|packagePath|directory|resolve|reject"
+                        }
+                    ],
+                    "prettier/prettier": [
+                        "error",
+                        {
+                            "trailingComma": "all"
+                        }
+                    ],
+                    "react/no-find-dom-node": "warn"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/molecule/versions/1.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/alanzanattadev/atom-molecule-dev-environment/tarball/refs/tags/v1.1.0",
+            "sha": "fc2bc52305d21c0f94389de7a5425cff6973d376"
+        },
+        "1.0.4": {
+            "name": "molecule",
+            "main": "./build/babel/molecule-dev-environment.js",
+            "version": "1.0.4",
+            "description": "Molecule IDE for Atom.io",
+            "keywords": [
+                "ide",
+                "molecule",
+                "atom"
+            ],
+            "scripts": {
+                "eslint": "eslint ./",
+                "flow": "flow check --show-all-errors",
+                "jest:watch": "jest --watch",
+                "storybook": "start-storybook -p 9001 -c .storybook -s ./.storybook/public/",
+                "test": "jest && npm run eslint",
+                "babel:build": "babel lib --out-dir ./build/babel/ --source-maps",
+                "babel:watch": "babel lib --out-dir ./build/babel/ --source-maps --watch",
+                "postinstall": "npm run babel:build",
+                "test:e2e": "mocha testsUI/"
+            },
+            "repository": "https://github.com/alanzanattadev/atom-molecule-dev-environment",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.17.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeIndie"
+                    }
+                }
+            },
+            "dependencies": {
+                "ansi-to-html": "^0.6.3",
+                "babel-cli": "^6.26.0",
+                "babel-core": "^6.26.0",
+                "babel-eslint": "^8.0.2",
+                "babel-jest": "^21.2.0",
+                "babel-loader": "^7.1.2",
+                "babel-plugin-add-module-exports": "^0.2.1",
+                "babel-polyfill": "^6.26.0",
+                "babel-preset-env": "^1.6.1",
+                "babel-preset-flow": "^6.23.0",
+                "babel-preset-react": "^6.23.0",
+                "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+                "babel-plugin-transform-do-expressions": "^6.22.0",
+                "babel-plugin-transform-object-rest-spread": "^6.26.0",
+                "babel-register": "^6.26.0",
+                "classnames": "^2.2.5",
+                "color-hash": "^1.0.3",
+                "fb-watchman": "^2.0.0",
+                "flow-language-server": "^0.5.0",
+                "immutable": "^3.8.1",
+                "jest-cli": "^22.4.4",
+                "less": "^3.0.4",
+                "mocha": "^5.1.1",
+                "moment": "^2.19.2",
+                "nightwatch": "^0.9.12",
+                "nightwatch-html-reporter": "^2.0.0",
+                "nuclide-prebuilt-libs": "^0.5.1",
+                "nullthrows": "^1.0.1",
+                "radium": "^0.23.0",
+                "react": "^16.4.0",
+                "react-dnd": "^2.6.0",
+                "react-dnd-html5-backend": "^2.6.0",
+                "react-dom": "^16.4.0",
+                "react-forms-state": "github:alanzanattadev/react-forms-state",
+                "react-image-fallback": "^7.0.1",
+                "react-motion": "^0.5.2",
+                "react-redux": "^5.0.7",
+                "recompose": "^0.25.1",
+                "redux": "^3.6.0",
+                "redux-observable": "^0.14.1",
+                "redux-thunk": "^2.1.0",
+                "remote-redux-devtools": "^0.5.7",
+                "rxjs": "^5.4.3",
+                "stream-buffers": "^3.0.1",
+                "styled-components": "^3.2.6",
+                "tree-kill": "^1.2.0",
+                "vscode-jsonrpc": "^3.6.1",
+                "vscode-uri": "^1.0.1",
+                "xterm": "^2.9.2"
+            },
+            "devDependencies": {
+                "enzyme": "^3.3.0",
+                "enzyme-adapter-react-16": "^1.1.1",
+                "enzyme-to-json": "^3.3.3",
+                "eslint": "^4.11.0",
+                "eslint-config-prettier": "^2.7.0",
+                "eslint-plugin-flowtype": "^2.39.1",
+                "eslint-plugin-prettier": "^2.3.1",
+                "eslint-plugin-react": "^7.4.0",
+                "flow-bin": "^0.72.0",
+                "flow-typed": "^2.4.0",
+                "jest": "^22.4.4",
+                "prettier": "^1.12.1",
+                "react-test-renderer": "^16.2.0",
+                "redux-mock-store": "^1.3.0",
+                "spectron": "^3.8.0",
+                "webpack": "^3.12.0"
+            },
+            "babel": {
+                "presets": [
+                    [
+                        "env",
+                        {
+                            "targets": {
+                                "electron": "1.6"
+                            }
+                        }
+                    ],
+                    "react",
+                    "flow"
+                ],
+                "plugins": [
+                    "add-module-exports",
+                    "transform-object-rest-spread",
+                    "transform-do-expressions"
+                ]
+            },
+            "jest": {
+                "moduleNameMapper": {
+                    "electron": "<rootDir>/lib/ExecutionControlEpic/PlanConfigurationFeature/Fake/fakeElectron.js"
+                },
+                "snapshotSerializers": [
+                    "enzyme-to-json/serializer"
+                ],
+                "testPathIgnorePatterns": [
+                    "<rootDir>/build/",
+                    "<rootDir>/node_modules/",
+                    "<rootDir>/testsUI/"
+                ]
+            },
+            "eslintConfig": {
+                "env": {
+                    "browser": true,
+                    "es6": true,
+                    "jest": true,
+                    "node": true
+                },
+                "parser": "babel-eslint",
+                "parserOptions": {
+                    "ecmaVersion": 8,
+                    "ecmaFeatures": {
+                        "jsx": true,
+                        "experimentalObjectRestSpread": true
+                    },
+                    "sourceType": "module"
+                },
+                "plugins": [
+                    "flowtype",
+                    "prettier",
+                    "react"
+                ],
+                "extends": [
+                    "eslint:recommended",
+                    "plugin:flowtype/recommended",
+                    "plugin:react/recommended",
+                    "prettier",
+                    "prettier/flowtype",
+                    "prettier/react"
+                ],
+                "rules": {
+                    "no-console": [
+                        "warn",
+                        {
+                            "allow": [
+                                "warn",
+                                "error"
+                            ]
+                        }
+                    ],
+                    "no-unused-vars": [
+                        "warn",
+                        {
+                            "argsIgnorePattern": "helperAPI|taskAPI|dirname|packageName|resolve|reject|directory"
+                        }
+                    ],
+                    "prettier/prettier": [
+                        "error",
+                        {
+                            "trailingComma": "all"
+                        }
+                    ],
+                    "react/no-find-dom-node": "warn"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/molecule/versions/1.0.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/alanzanattadev/atom-molecule-dev-environment/tarball/refs/tags/v1.0.4",
+            "sha": "50f738df83a298db84c6ad9a6e9b16a45dfda1aa"
+        },
+        "1.0.3": {
+            "name": "molecule",
+            "main": "./build/babel/molecule-dev-environment.js",
+            "version": "1.0.3",
+            "description": "Molecule IDE for Atom.io",
+            "keywords": [
+                "ide",
+                "molecule",
+                "atom"
+            ],
+            "scripts": {
+                "eslint": "eslint ./",
+                "flow": "flow check --show-all-errors",
+                "jest:watch": "jest --watch",
+                "storybook": "start-storybook -p 9001 -c .storybook -s ./.storybook/public/",
+                "test": "jest && npm run eslint",
+                "babel:build": "babel lib --out-dir ./build/babel/ --source-maps",
+                "babel:watch": "babel lib --out-dir ./build/babel/ --source-maps --watch",
+                "postinstall": "npm run babel:build",
+                "test:e2e": "mocha testsUI/"
+            },
+            "repository": "https://github.com/alanzanattadev/atom-molecule-dev-environment",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.17.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeIndie"
+                    }
+                }
+            },
+            "dependencies": {
+                "ansi-to-html": "^0.6.3",
+                "babel-cli": "^6.26.0",
+                "babel-core": "^6.26.0",
+                "babel-eslint": "^8.0.2",
+                "babel-jest": "^21.2.0",
+                "babel-loader": "^7.1.2",
+                "babel-plugin-add-module-exports": "^0.2.1",
+                "babel-polyfill": "^6.26.0",
+                "babel-preset-env": "^1.6.1",
+                "babel-preset-flow": "^6.23.0",
+                "babel-preset-react": "^6.23.0",
+                "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+                "babel-plugin-transform-do-expressions": "^6.22.0",
+                "babel-plugin-transform-object-rest-spread": "^6.26.0",
+                "babel-register": "^6.26.0",
+                "classnames": "^2.2.5",
+                "color-hash": "^1.0.3",
+                "fb-watchman": "^2.0.0",
+                "flow-language-server": "^0.5.0",
+                "immutable": "^3.8.1",
+                "jest-cli": "^22.4.4",
+                "less": "^3.0.4",
+                "mocha": "^5.1.1",
+                "moment": "^2.19.2",
+                "nightwatch": "^0.9.12",
+                "nightwatch-html-reporter": "^2.0.0",
+                "nuclide-prebuilt-libs": "^0.5.1",
+                "nullthrows": "^1.0.1",
+                "radium": "^0.23.0",
+                "react": "^16.4.0",
+                "react-dnd": "^2.6.0",
+                "react-dnd-html5-backend": "^2.6.0",
+                "react-dom": "^16.4.0",
+                "react-forms-state": "github:alanzanattadev/react-forms-state",
+                "react-image-fallback": "^7.0.1",
+                "react-motion": "^0.5.2",
+                "react-redux": "^5.0.7",
+                "recompose": "^0.25.1",
+                "redux": "^3.6.0",
+                "redux-observable": "^0.14.1",
+                "redux-thunk": "^2.1.0",
+                "remote-redux-devtools": "^0.5.7",
+                "rxjs": "^5.4.3",
+                "stream-buffers": "^3.0.1",
+                "styled-components": "^3.2.6",
+                "tree-kill": "^1.2.0",
+                "vscode-jsonrpc": "^3.6.1",
+                "vscode-uri": "^1.0.1",
+                "xterm": "^2.9.2"
+            },
+            "devDependencies": {
+                "enzyme": "^3.3.0",
+                "enzyme-adapter-react-16": "^1.1.1",
+                "enzyme-to-json": "^3.3.3",
+                "eslint": "^4.11.0",
+                "eslint-config-prettier": "^2.7.0",
+                "eslint-plugin-flowtype": "^2.39.1",
+                "eslint-plugin-prettier": "^2.3.1",
+                "eslint-plugin-react": "^7.4.0",
+                "flow-bin": "^0.72.0",
+                "flow-typed": "^2.4.0",
+                "jest": "^22.4.4",
+                "prettier": "^1.12.1",
+                "react-test-renderer": "^16.2.0",
+                "redux-mock-store": "^1.3.0",
+                "spectron": "^3.8.0",
+                "webpack": "^3.12.0"
+            },
+            "babel": {
+                "presets": [
+                    [
+                        "env",
+                        {
+                            "targets": {
+                                "electron": "1.6"
+                            }
+                        }
+                    ],
+                    "react",
+                    "flow"
+                ],
+                "plugins": [
+                    "add-module-exports",
+                    "transform-object-rest-spread",
+                    "transform-do-expressions"
+                ]
+            },
+            "jest": {
+                "moduleNameMapper": {
+                    "electron": "<rootDir>/lib/ExecutionControlEpic/PlanConfigurationFeature/Fake/fakeElectron.js"
+                },
+                "snapshotSerializers": [
+                    "enzyme-to-json/serializer"
+                ],
+                "testPathIgnorePatterns": [
+                    "<rootDir>/build/",
+                    "<rootDir>/node_modules/",
+                    "<rootDir>/testsUI/"
+                ]
+            },
+            "eslintConfig": {
+                "env": {
+                    "browser": true,
+                    "es6": true,
+                    "jest": true,
+                    "node": true
+                },
+                "parser": "babel-eslint",
+                "parserOptions": {
+                    "ecmaVersion": 8,
+                    "ecmaFeatures": {
+                        "jsx": true,
+                        "experimentalObjectRestSpread": true
+                    },
+                    "sourceType": "module"
+                },
+                "plugins": [
+                    "flowtype",
+                    "prettier",
+                    "react"
+                ],
+                "extends": [
+                    "eslint:recommended",
+                    "plugin:flowtype/recommended",
+                    "plugin:react/recommended",
+                    "prettier",
+                    "prettier/flowtype",
+                    "prettier/react"
+                ],
+                "rules": {
+                    "no-console": [
+                        "warn",
+                        {
+                            "allow": [
+                                "warn",
+                                "error"
+                            ]
+                        }
+                    ],
+                    "no-unused-vars": [
+                        "warn",
+                        {
+                            "argsIgnorePattern": "helperAPI|taskAPI|dirname|packageName|resolve|reject|directory"
+                        }
+                    ],
+                    "prettier/prettier": [
+                        "error",
+                        {
+                            "trailingComma": "all"
+                        }
+                    ],
+                    "react/no-find-dom-node": "warn"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/molecule/versions/1.0.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/alanzanattadev/atom-molecule-dev-environment/tarball/refs/tags/v1.0.3",
+            "sha": "3c09ca128f3b92db506d1950df81e10c76b265ee"
+        },
+        "1.0.2": {
+            "name": "molecule",
+            "main": "./build/babel/molecule-dev-environment.js",
+            "version": "1.0.2",
+            "description": "Molecule IDE for Atom.io",
+            "keywords": [
+                "ide",
+                "molecule",
+                "atom"
+            ],
+            "scripts": {
+                "eslint": "eslint ./",
+                "flow": "flow check --show-all-errors",
+                "jest:watch": "jest --watch",
+                "storybook": "start-storybook -p 9001 -c .storybook -s ./.storybook/public/",
+                "test": "jest && npm run eslint",
+                "babel:build": "babel lib --out-dir ./build/babel/ --source-maps",
+                "babel:watch": "babel lib --out-dir ./build/babel/ --source-maps --watch",
+                "postinstall": "npm run babel:build",
+                "test:e2e": "mocha testsUI/"
+            },
+            "repository": "https://github.com/alanzanattadev/atom-molecule-dev-environment",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.17.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeIndie"
+                    }
+                }
+            },
+            "dependencies": {
+                "ansi-to-html": "^0.6.3",
+                "babel-cli": "^6.26.0",
+                "babel-core": "^6.26.0",
+                "babel-eslint": "^8.0.2",
+                "babel-jest": "^21.2.0",
+                "babel-loader": "^7.1.2",
+                "babel-plugin-add-module-exports": "^0.2.1",
+                "babel-polyfill": "^6.26.0",
+                "babel-preset-env": "^1.6.1",
+                "babel-preset-flow": "^6.23.0",
+                "babel-preset-react": "^6.23.0",
+                "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+                "babel-plugin-transform-do-expressions": "^6.22.0",
+                "babel-plugin-transform-object-rest-spread": "^6.26.0",
+                "babel-register": "^6.26.0",
+                "classnames": "^2.2.5",
+                "color-hash": "^1.0.3",
+                "fb-watchman": "^2.0.0",
+                "flow-language-server": "^0.5.0",
+                "immutable": "^3.8.1",
+                "jest-cli": "^22.4.4",
+                "less": "^3.0.4",
+                "mocha": "^5.1.1",
+                "moment": "^2.19.2",
+                "nightwatch": "^0.9.12",
+                "nightwatch-html-reporter": "^2.0.0",
+                "nuclide-prebuilt-libs": "^0.5.1",
+                "nullthrows": "^1.0.1",
+                "radium": "^0.23.0",
+                "react": "^16.4.0",
+                "react-dnd": "^2.6.0",
+                "react-dnd-html5-backend": "^2.6.0",
+                "react-dom": "^16.4.0",
+                "react-forms-state": "github:alanzanattadev/react-forms-state",
+                "react-image-fallback": "^7.0.1",
+                "react-motion": "^0.5.2",
+                "react-redux": "^5.0.7",
+                "recompose": "^0.25.1",
+                "redux": "^3.6.0",
+                "redux-observable": "^0.14.1",
+                "redux-thunk": "^2.1.0",
+                "remote-redux-devtools": "^0.5.7",
+                "rxjs": "^5.4.3",
+                "stream-buffers": "^3.0.1",
+                "styled-components": "^3.2.6",
+                "tree-kill": "^1.2.0",
+                "vscode-jsonrpc": "^3.6.1",
+                "vscode-uri": "^1.0.1",
+                "xterm": "^2.9.2"
+            },
+            "devDependencies": {
+                "enzyme": "^3.3.0",
+                "enzyme-adapter-react-16": "^1.1.1",
+                "enzyme-to-json": "^3.3.3",
+                "eslint": "^4.11.0",
+                "eslint-config-prettier": "^2.7.0",
+                "eslint-plugin-flowtype": "^2.39.1",
+                "eslint-plugin-prettier": "^2.3.1",
+                "eslint-plugin-react": "^7.4.0",
+                "flow-bin": "^0.72.0",
+                "flow-typed": "^2.4.0",
+                "jest": "^22.4.4",
+                "prettier": "^1.12.1",
+                "react-test-renderer": "^16.2.0",
+                "redux-mock-store": "^1.3.0",
+                "spectron": "^3.8.0",
+                "webpack": "^3.12.0"
+            },
+            "babel": {
+                "presets": [
+                    [
+                        "env",
+                        {
+                            "targets": {
+                                "electron": "1.6"
+                            }
+                        }
+                    ],
+                    "react",
+                    "flow"
+                ],
+                "plugins": [
+                    "add-module-exports",
+                    "transform-object-rest-spread",
+                    "transform-do-expressions"
+                ]
+            },
+            "jest": {
+                "moduleNameMapper": {
+                    "electron": "<rootDir>/lib/ExecutionControlEpic/PlanConfigurationFeature/Fake/fakeElectron.js"
+                },
+                "snapshotSerializers": [
+                    "enzyme-to-json/serializer"
+                ],
+                "testPathIgnorePatterns": [
+                    "<rootDir>/build/",
+                    "<rootDir>/node_modules/",
+                    "<rootDir>/testsUI/"
+                ]
+            },
+            "eslintConfig": {
+                "env": {
+                    "browser": true,
+                    "es6": true,
+                    "jest": true,
+                    "node": true
+                },
+                "parser": "babel-eslint",
+                "parserOptions": {
+                    "ecmaVersion": 8,
+                    "ecmaFeatures": {
+                        "jsx": true,
+                        "experimentalObjectRestSpread": true
+                    },
+                    "sourceType": "module"
+                },
+                "plugins": [
+                    "flowtype",
+                    "prettier",
+                    "react"
+                ],
+                "extends": [
+                    "eslint:recommended",
+                    "plugin:flowtype/recommended",
+                    "plugin:react/recommended",
+                    "prettier",
+                    "prettier/flowtype",
+                    "prettier/react"
+                ],
+                "rules": {
+                    "no-console": [
+                        "warn",
+                        {
+                            "allow": [
+                                "warn",
+                                "error"
+                            ]
+                        }
+                    ],
+                    "no-unused-vars": [
+                        "warn",
+                        {
+                            "argsIgnorePattern": "helperAPI|taskAPI|dirname|packageName|resolve|reject|directory"
+                        }
+                    ],
+                    "prettier/prettier": [
+                        "error",
+                        {
+                            "trailingComma": "all"
+                        }
+                    ],
+                    "react/no-find-dom-node": "warn"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/molecule/versions/1.0.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/alanzanattadev/atom-molecule-dev-environment/tarball/refs/tags/v1.0.2",
+            "sha": "b0e4c20f4f9131a7234d69b0b00b0027a13ffd8d"
+        },
+        "1.0.1": {
+            "name": "molecule",
+            "main": "./build/babel/molecule-dev-environment.js",
+            "version": "1.0.1",
+            "description": "Molecule IDE for Atom.io",
+            "keywords": [
+                "ide",
+                "molecule",
+                "atom"
+            ],
+            "scripts": {
+                "eslint": "eslint ./",
+                "flow": "flow check --show-all-errors",
+                "jest:watch": "jest --watch",
+                "storybook": "start-storybook -p 9001 -c .storybook -s ./.storybook/public/",
+                "test": "jest && npm run eslint",
+                "babel:build": "babel lib --out-dir ./build/babel/ --source-maps",
+                "babel:watch": "babel lib --out-dir ./build/babel/ --source-maps --watch",
+                "postinstall": "npm run babel:build",
+                "test:e2e": "mocha testsUI/"
+            },
+            "repository": "https://github.com/alanzanattadev/atom-molecule-dev-environment",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.17.0 <2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeIndie"
+                    }
+                }
+            },
+            "dependencies": {
+                "ansi-to-html": "^0.6.3",
+                "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+                "babel-plugin-transform-do-expressions": "^6.22.0",
+                "babel-plugin-transform-object-rest-spread": "^6.26.0",
+                "babel-register": "^6.26.0",
+                "classnames": "^2.2.5",
+                "color-hash": "^1.0.3",
+                "fb-watchman": "^2.0.0",
+                "flow-language-server": "^0.5.0",
+                "immutable": "^3.8.1",
+                "jest-cli": "^22.4.4",
+                "less": "^3.0.4",
+                "mocha": "^5.1.1",
+                "moment": "^2.19.2",
+                "nightwatch": "^0.9.12",
+                "nightwatch-html-reporter": "^2.0.0",
+                "nuclide-prebuilt-libs": "^0.5.1",
+                "nullthrows": "^1.0.1",
+                "radium": "^0.23.0",
+                "react": "^16.4.0",
+                "react-dnd": "^2.6.0",
+                "react-dnd-html5-backend": "^2.6.0",
+                "react-dom": "^16.4.0",
+                "react-forms-state": "github:alanzanattadev/react-forms-state",
+                "react-image-fallback": "^7.0.1",
+                "react-motion": "^0.5.2",
+                "react-redux": "^5.0.7",
+                "recompose": "^0.25.1",
+                "redux": "^3.6.0",
+                "redux-observable": "^0.14.1",
+                "redux-thunk": "^2.1.0",
+                "remote-redux-devtools": "^0.5.7",
+                "rxjs": "^5.4.3",
+                "stream-buffers": "^3.0.1",
+                "styled-components": "^3.2.6",
+                "tree-kill": "^1.2.0",
+                "vscode-jsonrpc": "^3.6.1",
+                "vscode-uri": "^1.0.1",
+                "xterm": "^2.9.2"
+            },
+            "devDependencies": {
+                "babel-cli": "^6.26.0",
+                "babel-core": "^6.26.0",
+                "babel-eslint": "^8.0.2",
+                "babel-jest": "^21.2.0",
+                "babel-loader": "^7.1.2",
+                "babel-plugin-add-module-exports": "^0.2.1",
+                "babel-polyfill": "^6.26.0",
+                "babel-preset-env": "^1.6.1",
+                "babel-preset-flow": "^6.23.0",
+                "babel-preset-react": "^6.23.0",
+                "enzyme": "^3.3.0",
+                "enzyme-adapter-react-16": "^1.1.1",
+                "enzyme-to-json": "^3.3.3",
+                "eslint": "^4.11.0",
+                "eslint-config-prettier": "^2.7.0",
+                "eslint-plugin-flowtype": "^2.39.1",
+                "eslint-plugin-prettier": "^2.3.1",
+                "eslint-plugin-react": "^7.4.0",
+                "flow-bin": "^0.72.0",
+                "flow-typed": "^2.4.0",
+                "jest": "^22.4.4",
+                "prettier": "^1.12.1",
+                "react-test-renderer": "^16.2.0",
+                "redux-mock-store": "^1.3.0",
+                "spectron": "^3.8.0",
+                "webpack": "^3.12.0"
+            },
+            "babel": {
+                "presets": [
+                    [
+                        "env",
+                        {
+                            "targets": {
+                                "electron": "1.6"
+                            }
+                        }
+                    ],
+                    "react",
+                    "flow"
+                ],
+                "plugins": [
+                    "add-module-exports",
+                    "transform-object-rest-spread",
+                    "transform-do-expressions"
+                ]
+            },
+            "jest": {
+                "moduleNameMapper": {
+                    "electron": "<rootDir>/lib/ExecutionControlEpic/PlanConfigurationFeature/Fake/fakeElectron.js"
+                },
+                "snapshotSerializers": [
+                    "enzyme-to-json/serializer"
+                ],
+                "testPathIgnorePatterns": [
+                    "<rootDir>/build/",
+                    "<rootDir>/node_modules/",
+                    "<rootDir>/testsUI/"
+                ]
+            },
+            "eslintConfig": {
+                "env": {
+                    "browser": true,
+                    "es6": true,
+                    "jest": true,
+                    "node": true
+                },
+                "parser": "babel-eslint",
+                "parserOptions": {
+                    "ecmaVersion": 8,
+                    "ecmaFeatures": {
+                        "jsx": true,
+                        "experimentalObjectRestSpread": true
+                    },
+                    "sourceType": "module"
+                },
+                "plugins": [
+                    "flowtype",
+                    "prettier",
+                    "react"
+                ],
+                "extends": [
+                    "eslint:recommended",
+                    "plugin:flowtype/recommended",
+                    "plugin:react/recommended",
+                    "prettier",
+                    "prettier/flowtype",
+                    "prettier/react"
+                ],
+                "rules": {
+                    "no-console": [
+                        "warn",
+                        {
+                            "allow": [
+                                "warn",
+                                "error"
+                            ]
+                        }
+                    ],
+                    "no-unused-vars": [
+                        "warn",
+                        {
+                            "argsIgnorePattern": "helperAPI|taskAPI|dirname|packageName|resolve|reject|directory"
+                        }
+                    ],
+                    "prettier/prettier": [
+                        "error",
+                        {
+                            "trailingComma": "all"
+                        }
+                    ],
+                    "react/no-find-dom-node": "warn"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/molecule/versions/1.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/alanzanattadev/atom-molecule-dev-environment/tarball/refs/tags/v1.0.1",
+            "sha": "cac86bc73581818d57b7a41dbf4e8ba452f2ce61"
+        }
+    },
+    "readme": "Molecule IDE\n============\n\nMolecule is a package that transforms [Atom](https://atom.io/) into a full-blown [Integrated Development Environment](https://en.wikipedia.org/wiki/Integrated_development_environment)\n(or IDE).\n\nLearn more [on our website](http://www.molecule.sh/) or read\n[our documentation](http://www.molecule.sh/docs/getting-started-introduction.html)\nto get started!\n\n![Hello there, xkcd readers!](images/molecule-showcase.png)\n\nFeatures\n--------\n\nWhile keeping Atom's intuitive, customizable approach, Molecule adds the\nexpected features of an IDE to Atom:\n\n* In-editor compilation\n* Code analysis\n* Error diagnostics\n\nThe key advantage of Molecule over monolithic IDEs is its potential for\nadaptation: where most IDEs are only valid for a few programming langages or\nenvironments, developers can easily add plug-ins to Molecule (as Atom packages).\nUsers are able to download the plug-ins to adapt to new langages, without having\nto change their IDE, habits, settings, keybindings, etc.\n\n**Warning:** Molecule is still in a beta stage. The current state still has bugs\nand UI problems, and features are still being implemented. We are working hard\non this project, and we welcome all the [feedback](#feedback) you can give us!\n\nInstallation\n------------\n\n1.  **[Install Atom](http://flight-manual.atom.io/getting-started/sections/installing-atom/) version 1.17.0 or higher**\n\n2.  **Install [Watchman](https://facebook.github.io/watchman/)**\n\n3.  **Install Molecule**\n\n  Molecule is available on `apm` (the official tool for downloading Atom\n  packages). Run `apm install molecule`, or install Molecule from your package\n  browser (`ctrl-shift-p Install Packages And Themes`).\n\n![Your screen shoud look roughly like this](images/molecule-start.png)\n\nMolecule should then be installed the next time you start Atom.\n\nContribute\n----------\n\n### Feedback\n\nWe are open to any kind of feedback you could give us. From bug fixes to\nrecommandations and feature requests, we would love to hear what you think of\nMolecule.\n\nCreate a\n[GitHub issue](https://github.com/alanzanattadev/atom-molecule-dev-environment)\nto communicate with the Molecule team.\n\nWe love discussing with our users!\n\n### Make a plugin\n\nConsult the\n[Plugin API](http://www.molecule.sh/docs/plugin-creator-create-plugin.html)\nfor details.\n\n### Help develop Molecule\n\n[Comment]: # (TODO - ADD LINK TO DEVELOPER DOC)\n\nIn order to contribute to Molecule, you need to clone the latest version of this\nrepository and install it in\n[development mode](https://flight-manual.atom.io/hacking-atom/sections/hacking-on-atom-core/#running-in-development-mode),\nusing the `apm` command line.\n\n```\ngit clone https://github.com/alanzanattadev/atom-molecule-dev-environment.git\ncd atom-molecule-dev-environment\nnpm install\napm link -d\n```\n",
+    "metadata": {
+        "name": "molecule",
+        "main": "./build/babel/molecule-dev-environment.js",
+        "version": "1.1.0",
+        "description": "Molecule IDE for Atom.io",
+        "keywords": [
+            "ide",
+            "molecule",
+            "atom"
+        ],
+        "scripts": {
+            "eslint": "eslint ./",
+            "flow": "flow check --show-all-errors",
+            "jest:watch": "jest --watch",
+            "test": "jest && yarn eslint",
+            "babel:build": "babel lib --out-dir ./build/babel/ --source-maps",
+            "babel:watch": "babel lib --out-dir ./build/babel/ --source-maps --watch",
+            "postinstall": "yarn babel:build"
+        },
+        "repository": "https://github.com/alanzanattadev/atom-molecule-dev-environment",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.27.0",
+            "node": ">=7.9.0"
+        },
+        "package-deps": [
+            "linter"
+        ],
+        "consumedServices": {
+            "linter-indie": {
+                "versions": {
+                    "2.0.0": "consumeIndie"
+                }
+            }
+        },
+        "dependencies": {
+            "ansi-to-html": "^0.6.3",
+            "babel-cli": "^6.26.0",
+            "babel-core": "^6.26.0",
+            "babel-eslint": "^8.0.2",
+            "babel-jest": "^21.2.0",
+            "babel-loader": "^7.1.2",
+            "babel-plugin-add-module-exports": "^0.2.1",
+            "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+            "babel-plugin-transform-do-expressions": "^6.22.0",
+            "babel-plugin-transform-object-rest-spread": "^6.26.0",
+            "babel-polyfill": "^6.26.0",
+            "babel-preset-env": "^1.6.1",
+            "babel-preset-flow": "^6.23.0",
+            "babel-preset-react": "^6.23.0",
+            "babel-register": "^6.26.0",
+            "classnames": "^2.2.5",
+            "color-hash": "^1.0.3",
+            "fb-watchman": "^2.0.0",
+            "flow-language-server": "^0.5.0",
+            "immutable": "^3.8.1",
+            "jest-cli": "^23.1.0",
+            "js-yaml": "^3.12.0",
+            "less": "^3.0.4",
+            "mocha": "^5.1.1",
+            "moment": "^2.19.2",
+            "nightwatch": "^0.9.12",
+            "nightwatch-html-reporter": "^2.0.0",
+            "nuclide-prebuilt-libs": "^0.5.2",
+            "nullthrows": "^1.0.1",
+            "radium": "^0.23.0",
+            "react": "^16.4.0",
+            "react-dom": "^16.4.0",
+            "react-forms-state": "github:alanzanattadev/react-forms-state",
+            "react-image-fallback": "^7.0.1",
+            "react-motion": "^0.5.2",
+            "react-redux": "^5.0.7",
+            "recompose": "^0.25.1",
+            "redux": "^3.6.0",
+            "redux-observable": "^0.14.1",
+            "redux-thunk": "^2.1.0",
+            "remote-redux-devtools": "^0.5.7",
+            "rxjs": "^5.4.3",
+            "stream-buffers": "^3.0.1",
+            "stream-splitter": "^0.3.2",
+            "styled-components": "^3.2.6",
+            "tree-kill": "^1.2.0",
+            "vscode-jsonrpc": "^3.6.1",
+            "vscode-uri": "^1.0.1",
+            "xterm": "3.7.0"
+        },
+        "devDependencies": {
+            "enzyme": "^3.7.0",
+            "enzyme-adapter-react-16": "^1.6.0",
+            "enzyme-to-json": "^3.3.4",
+            "eslint": "^5.8.0",
+            "eslint-config-prettier": "^3.1.0",
+            "eslint-plugin-flowtype": "^3.2.0",
+            "eslint-plugin-prettier": "^3.0.0",
+            "eslint-plugin-react": "^7.11.1",
+            "flow-bin": "^0.85.0",
+            "prettier": "^1.15.1",
+            "react-devtools": "^3.4.2",
+            "react-test-renderer": "^16.6.1",
+            "redux-mock-store": "^1.5.3",
+            "redux-mock-store-await-actions": "^2.1.0"
+        },
+        "babel": {
+            "presets": [
+                [
+                    "env",
+                    {
+                        "targets": {
+                            "electron": "1.6"
+                        }
+                    }
+                ],
+                "react",
+                "flow"
+            ],
+            "plugins": [
+                "add-module-exports",
+                "transform-object-rest-spread",
+                "transform-do-expressions"
+            ]
+        },
+        "jest": {
+            "moduleNameMapper": {
+                "electron": "<rootDir>/lib/ExecutionControlEpic/PlanConfigurationFeature/Fake/fakeElectron.js"
+            },
+            "snapshotSerializers": [
+                "enzyme-to-json/serializer"
+            ],
+            "testPathIgnorePatterns": [
+                "<rootDir>/build/",
+                "<rootDir>/node_modules/",
+                "<rootDir>/testsData/",
+                "<rootDir>/testsUI/"
+            ]
+        },
+        "eslintConfig": {
+            "env": {
+                "browser": true,
+                "es6": true,
+                "jest": true,
+                "node": true
+            },
+            "parser": "babel-eslint",
+            "parserOptions": {
+                "ecmaVersion": 8,
+                "ecmaFeatures": {
+                    "jsx": true,
+                    "experimentalObjectRestSpread": true
+                },
+                "sourceType": "module"
+            },
+            "plugins": [
+                "flowtype",
+                "prettier",
+                "react"
+            ],
+            "extends": [
+                "eslint:recommended",
+                "plugin:flowtype/recommended",
+                "plugin:react/recommended",
+                "prettier",
+                "prettier/flowtype",
+                "prettier/react"
+            ],
+            "settings": {
+                "react": {
+                    "version": "16.4",
+                    "flowVersion": "0.85"
+                }
+            },
+            "rules": {
+                "no-console": [
+                    "warn",
+                    {
+                        "allow": [
+                            "warn",
+                            "error"
+                        ]
+                    }
+                ],
+                "no-unused-vars": [
+                    "warn",
+                    {
+                        "argsIgnorePattern": "helperAPI|taskAPI|dirname|packagePath|directory|resolve|reject"
+                    }
+                ],
+                "prettier/prettier": [
+                    "error",
+                    {
+                        "trailingComma": "all"
+                    }
+                ],
+                "react/no-find-dom-node": "warn"
+            }
+        }
+    },
+    "created": 1658357896964,
+    "updated": 1658357896964,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

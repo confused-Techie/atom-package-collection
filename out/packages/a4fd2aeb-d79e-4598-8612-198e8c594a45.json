@@ -1,0 +1,1881 @@
+{
+    "name": "build-sassc",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-build-sassc"
+    },
+    "downloads": 924,
+    "stargazers_count": 3,
+    "releases": {
+        "latest": "0.12.0"
+    },
+    "versions": {
+        "0.12.0": {
+            "name": "build-sassc",
+            "version": "0.12.0",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.56.0 <2.0.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {},
+            "devDependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "@babel/core": "^7.14.6",
+                "@babel/eslint-parser": "^7.14.7",
+                "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+                "atom-package-deps": "^7.2.3",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "cross-env": "^7.0.3",
+                "esbuild": "^0.12.15",
+                "eslint": "^7.31.0",
+                "eslint-plugin-json": "^3.0.0",
+                "husky": ">=4 <5",
+                "lint-staged": "^11.0.1",
+                "log-symbols": "^5.0.0",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "which": "^2.0.2"
+            },
+            "scripts": {
+                "build": "node ./tools/build.mjs",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "volta": {
+                "node": "14.17.0",
+                "yarn": "1.22.10"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.12.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.12.0",
+            "sha": "985a33168ecc8aff5988522e78612f5072544316"
+        },
+        "0.11.0": {
+            "name": "build-sassc",
+            "version": "0.11.0",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <1.56.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {},
+            "devDependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "@babel/core": "^7.14.6",
+                "@babel/eslint-parser": "^7.14.7",
+                "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+                "atom-package-deps": "^7.2.3",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "cross-env": "^7.0.3",
+                "esbuild": "^0.12.11",
+                "eslint": "^7.29.0",
+                "eslint-plugin-json": "^3.0.0",
+                "husky": ">=4 <5",
+                "lint-staged": "^11.0.0",
+                "log-symbols": "^5.0.0",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "which": "^2.0.2"
+            },
+            "scripts": {
+                "build": "node ./tools/build.mjs",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "volta": {
+                "node": "14.17.0",
+                "yarn": "1.22.10"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.11.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.11.0",
+            "sha": "b920f2b1dbb3db1cf6420d2e57aed53daae8780b"
+        },
+        "0.10.0": {
+            "name": "build-sassc",
+            "version": "0.10.0",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {},
+            "devDependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "@babel/core": "^7.14.3",
+                "@babel/eslint-parser": "^7.14.3",
+                "@babel/plugin-proposal-optional-chaining": "^7.14.2",
+                "atom-package-deps": "^7.2.3",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "cross-env": "^7.0.3",
+                "esbuild": "^0.12.1",
+                "eslint": "^7.26.0",
+                "eslint-plugin-json": "^3.0.0",
+                "husky": ">=4 <5",
+                "lint-staged": "^11.0.0",
+                "log-symbols": "^5.0.0",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "which": "^2.0.2"
+            },
+            "scripts": {
+                "build": "node ./tools/build.mjs",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "volta": {
+                "node": "14.17.0",
+                "yarn": "1.22.10"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.10.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.10.0",
+            "sha": "b122388392b078b3e09926f85a4894e630f99951"
+        },
+        "0.9.1": {
+            "name": "build-sassc",
+            "version": "0.9.1",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "scripts": {
+                "build": "npm run clean && rollup --config",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "rollup --watch --config",
+                "test": "npm run lint"
+            },
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                {
+                    "name": "build"
+                }
+            ],
+            "dependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "atom-package-deps": "^7.0.1",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "which": "^2.0.2"
+            },
+            "devDependencies": {
+                "@babel/core": "^7.13.16",
+                "@babel/eslint-parser": "^7.13.10",
+                "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+                "@rollup/plugin-babel": "^5.3.0",
+                "@rollup/plugin-commonjs": "^17.1.0",
+                "@rollup/plugin-json": "^4.1.0",
+                "@rollup/plugin-node-resolve": "^11.2.0",
+                "eslint": "^7.2.2",
+                "eslint-plugin-json": "^2.1.2",
+                "husky": ">=4 <5",
+                "lint-staged": "^10.5.4",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "rollup": "^2.42.0",
+                "rollup-plugin-terser": "^7.0.2"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.9.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.9.1",
+            "sha": "627c8924e40aaba7ca7dc488d2906ff95107d22b"
+        },
+        "0.9.0": {
+            "name": "build-sassc",
+            "version": "0.9.0",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "scripts": {
+                "build": "npm run clean && rollup --config",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "rollup --watch --config",
+                "test": "npm run lint"
+            },
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                {
+                    "name": "build"
+                }
+            ],
+            "dependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "atom-package-deps": "^7.0.1",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "which": "^2.0.2"
+            },
+            "devDependencies": {
+                "@babel/core": "^7.13.16",
+                "@babel/eslint-parser": "^7.13.10",
+                "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+                "@rollup/plugin-babel": "^5.3.0",
+                "@rollup/plugin-commonjs": "^17.1.0",
+                "@rollup/plugin-json": "^4.1.0",
+                "@rollup/plugin-node-resolve": "^11.2.0",
+                "eslint": "^7.2.2",
+                "eslint-plugin-json": "^2.1.2",
+                "husky": ">=4 <5",
+                "lint-staged": "^10.5.4",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "rollup": "^2.42.0",
+                "rollup-plugin-terser": "^7.0.2"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.9.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.9.0",
+            "sha": "8317b819493086e3284a55a437ad17990effa594"
+        },
+        "0.8.2": {
+            "name": "build-sassc",
+            "version": "0.8.2",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.2.3",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.19.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.1.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.1",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.8.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.8.2",
+            "sha": "451fbeacca6aec4eb59e5d67fd34e373e11c7607"
+        },
+        "0.8.1": {
+            "name": "build-sassc",
+            "version": "0.8.1",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.8.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.8.1",
+            "sha": "ca072e335e9c5af3bb77e65c48c4e2fc5c2bb9f3"
+        },
+        "0.8.0": {
+            "name": "build-sassc",
+            "version": "0.8.0",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.8.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.8.0",
+            "sha": "9764cfa63a57c1a453acd9d9af7f7f315c98dce9"
+        },
+        "0.7.0": {
+            "name": "build-sassc",
+            "version": "0.7.0",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.7.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.7.0",
+            "sha": "f1bbc0dfb3b14a99c8c40ad1bc3d11f5658c9319"
+        },
+        "0.6.0": {
+            "name": "build-sassc",
+            "version": "0.6.0",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^2.1.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.6.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.6.0",
+            "sha": "8c20938a4c42fe37ac035f68bbfd053b7cc4f96b"
+        },
+        "0.5.3": {
+            "name": "build-sassc",
+            "version": "0.5.3",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.5.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.5.3",
+            "sha": "300c482ba57b85e166a00b7d653c092632752a25"
+        },
+        "0.5.2": {
+            "name": "build-sassc",
+            "version": "0.5.2",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.5.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.5.2",
+            "sha": "26040783849dbcf49a77b7cb5e2985031b6822d9"
+        },
+        "0.5.1": {
+            "name": "build-sassc",
+            "version": "0.5.1",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build-provider",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.5.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.5.1",
+            "sha": "fd87381a4db7162ea4922fa45804330efae50cf1"
+        },
+        "0.5.0": {
+            "name": "build-sassc",
+            "version": "0.5.0",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.5.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.5.0",
+            "sha": "666a10a1aede733596e12c8c8d1e0a55fbe943a1"
+        },
+        "0.4.2": {
+            "name": "build-sassc",
+            "version": "0.4.2",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.4.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.4.2",
+            "sha": "784619e07de3781af37cbc55d0246726305c4396"
+        },
+        "0.4.1": {
+            "name": "build-sassc",
+            "version": "0.4.1",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.4.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.4.1",
+            "sha": "13dc9792a57ffb3e05a34dc6b3ffa16ef7ebd98f"
+        },
+        "0.4.0": {
+            "name": "build-sassc",
+            "version": "0.4.0",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.4.0",
+            "sha": "ccbb5cea24bd8d8661daee24dbd2473db8107cb0"
+        },
+        "0.3.10": {
+            "name": "build-sassc",
+            "version": "0.3.10",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.3.10/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.3.10",
+            "sha": "2ea4650b4b5ec981f4187147feee92bc95cb3ca0"
+        },
+        "0.3.9": {
+            "name": "build-sassc",
+            "version": "0.3.9",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.3.9/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.3.9",
+            "sha": "40f8efc6d228e060776aada5a3d7669c1131b3a7"
+        },
+        "0.3.8": {
+            "name": "build-sassc",
+            "version": "0.3.8",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.6.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.3.8/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.3.8",
+            "sha": "181a74827a1ceed9080f882f02760b4dedc7179f"
+        },
+        "0.3.7": {
+            "name": "build-sassc",
+            "version": "0.3.7",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.5.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.3.7/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.3.7",
+            "sha": "1d5a47c14f3ac178d4784b429c49402b7430f3ea"
+        },
+        "0.3.6": {
+            "name": "build-sassc",
+            "version": "0.3.6",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.5.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.3.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.3.6",
+            "sha": "062500442df820d4199d781d21e7895b9223054a"
+        },
+        "0.3.5": {
+            "name": "build-sassc",
+            "version": "0.3.5",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.5.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.3.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.3.5",
+            "sha": "437c087cf18101e15ff218d1dece403242ec5305"
+        },
+        "0.3.4": {
+            "name": "build-sassc",
+            "version": "0.3.4",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.2.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.3.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.3.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.3.4",
+            "sha": "fba3ed45d13a467f426e0b55dd8c7325adce158a"
+        },
+        "0.3.3": {
+            "name": "build-sassc",
+            "version": "0.3.3",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.2.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.3.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.3.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.3.3",
+            "sha": "0aea1502d1291cf40580f8150e502809b8187672"
+        },
+        "0.3.2": {
+            "name": "build-sassc",
+            "version": "0.3.2",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.0.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.1.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.2"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.3.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.3.2",
+            "sha": "972340ba49076d22451120c5b7304f1b342aaa45"
+        },
+        "0.3.1": {
+            "name": "build-sassc",
+            "version": "0.3.1",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.0.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.1.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.2"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.3.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.3.1",
+            "sha": "74eb6846425f2c15793e3157298abd0afceb22e8"
+        },
+        "0.3.0": {
+            "name": "build-sassc",
+            "version": "0.3.0",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.0.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.1.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.2"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.3.0",
+            "sha": "52a1316922c773ed5bdb25ee9b6eb88244af395d"
+        },
+        "0.2.0": {
+            "name": "build-sassc",
+            "version": "0.2.0",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.1.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.2"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.2.0",
+            "sha": "1ffc7e06dcd28aeb0563b8548d04ce3a1766e3ae"
+        },
+        "0.1.4": {
+            "name": "build-sassc",
+            "version": "0.1.4",
+            "description": "Atom Build provider for sassc, compiles Sass",
+            "repository": "https://github.com/idleberg/atom-build-sassc",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "sassc",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.1.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.2"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sassc/versions/0.1.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sassc/tarball/refs/tags/v0.1.4",
+            "sha": "d217b6e440305f0e9ac35ae3cab57fb334b034d9"
+        }
+    },
+    "readme": "# build-sassc\n\n[![apm](https://flat.badgen.net/apm/license/build-sassc)](https://atom.io/packages/build-sassc)\n[![apm](https://flat.badgen.net/apm/v/build-sassc)](https://atom.io/packages/build-sassc)\n[![apm](https://flat.badgen.net/apm/dl/build-sassc)](https://atom.io/packages/build-sassc)\n[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-build-sassc)](https://circleci.com/gh/idleberg/atom-build-sassc)\n[![David](https://flat.badgen.net/david/dev/idleberg/atom-build-sassc)](https://david-dm.org/idleberg/atom-build-sassc?type=dev)\n\n[Atom Build](https://atombuild.github.io/) provider for `sassc`, compiles Sass into CSS. Supports the [linter](https://atom.io/packages/linter) package for error highlighting.\n\nIf you prefer Ruby Sass, take note of the separate [build-sass](https://atom.io/packages/build-sass) package. When in doubt, consult the [Sass Compatibility](http://sass-compatibility.github.io/) chart.\n\n![Screenshot](https://raw.githubusercontent.com/idleberg/atom-build-sassc/master/screenshot.png)\n\n*See the linter in action*\n\n## Installation\n\n### apm\n\nInstall `build-sassc` from Atom's [Package Manager](http://flight-manual.atom.io/using-atom/sections/atom-packages/) or the command-line equivalent:\n\n`$ apm install build-sassc`\n\n### Using Git\n\nChange to your Atom packages directory:\n\n```bash\n# Windows\n$ cd %USERPROFILE%\\.atom\\packages\n\n# Linux & macOS\n$ cd ~/.atom/packages/\n```\n\nClone repository as `build-sassc`:\n\n```bash\n$ git clone https://github.com/idleberg/atom-build-sassc build-sassc\n```\n\nInside the cloned directory, install Node dependencies:\n\n```bash\n$ yarn || npm install\n```\n\nYou should now be setup to build the package:\n\n```bash\n$ yarn build || npm run build\n```\n\n## Usage\n\n### Build\n\nBefore you can build, select an active target with your preferred build option.\n\nAvailable targets:\n\n* `Sass [compact|compressed|expanded|user]`\n\n### Shortcuts\n\nHere's a reminder of the default shortcuts you can use with this package:\n\n**Select active target**\n\n<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> or <kbd>F7</kbd>\n\n**Build script**\n\n<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>B</kbd> or <kbd>F9</kbd>\n\n**Jump to error**\n\n<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>G</kbd> or <kbd>F4</kbd>\n\n**Toggle build panel**\n\n<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>V</kbd> or <kbd>F8</kbd>\n\n## License\n\nThis work is licensed under the [The MIT License](LICENSE.md).\n",
+    "metadata": {
+        "name": "build-sassc",
+        "version": "0.12.0",
+        "description": "Atom Build provider for sassc, compiles Sass",
+        "repository": "https://github.com/idleberg/atom-build-sassc",
+        "license": "MIT",
+        "keywords": [
+            "buildprovider",
+            "compile",
+            "sass",
+            "sassc",
+            "css",
+            "linter",
+            "lint"
+        ],
+        "main": "lib/provider.js",
+        "engines": {
+            "atom": ">=1.56.0 <2.0.0"
+        },
+        "activationHooks": [
+            "core:loaded-shell-environment"
+        ],
+        "providedServices": {
+            "builder": {
+                "description": "Compiles Sass",
+                "versions": {
+                    "2.0.0": "provideBuilder"
+                }
+            }
+        },
+        "package-deps": [
+            [
+                {
+                    "name": "buildium"
+                },
+                {
+                    "name": "build"
+                }
+            ]
+        ],
+        "dependencies": {},
+        "devDependencies": {
+            "@atxm/developer-console": "^0.5.0",
+            "@babel/core": "^7.14.6",
+            "@babel/eslint-parser": "^7.14.7",
+            "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+            "atom-package-deps": "^7.2.3",
+            "atom-satisfy-dependencies": "^0.3.0",
+            "cross-env": "^7.0.3",
+            "esbuild": "^0.12.15",
+            "eslint": "^7.31.0",
+            "eslint-plugin-json": "^3.0.0",
+            "husky": ">=4 <5",
+            "lint-staged": "^11.0.1",
+            "log-symbols": "^5.0.0",
+            "npm-run-all": "^4.1.5",
+            "remark-cli": "^9.0.0",
+            "rimraf": "^3.0.2",
+            "which": "^2.0.2"
+        },
+        "scripts": {
+            "build": "node ./tools/build.mjs",
+            "clean": "rimraf ./lib",
+            "dev": "npm run start",
+            "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+            "lint:js": "eslint ./src --ignore-path .gitignore",
+            "lint": "npm-run-all --parallel lint:*",
+            "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+            "test": "npm run lint"
+        },
+        "husky": {
+            "hooks": {
+                "pre-commit": "lint-staged"
+            }
+        },
+        "lint-staged": {
+            "*.js": "eslint --cache --fix"
+        },
+        "volta": {
+            "node": "14.17.0",
+            "yarn": "1.22.10"
+        }
+    },
+    "created": 1658336954870,
+    "updated": 1658336954870,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

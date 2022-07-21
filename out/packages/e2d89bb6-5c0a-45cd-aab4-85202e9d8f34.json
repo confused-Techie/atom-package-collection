@@ -1,0 +1,1818 @@
+{
+    "name": "coffee-compile",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/adrianlee44/atom-coffee-compile"
+    },
+    "downloads": 37995,
+    "stargazers_count": 65,
+    "releases": {
+        "latest": "0.34.0"
+    },
+    "versions": {
+        "0.34.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.34.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript 1 or 2 in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.9.0"
+            },
+            "dependencies": {
+                "coffee-script": "1.12.7",
+                "coffeescript": "2.5.1",
+                "resolve": "^1.20.0",
+                "season": "^6.0.2"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "configSchema": {
+                "split": {
+                    "type": "string",
+                    "default": "Right",
+                    "title": "Split pane direction",
+                    "enum": [
+                        "Right",
+                        "Left",
+                        "Down",
+                        "Up"
+                    ]
+                },
+                "noTopLevelFunctionWrapper": {
+                    "type": "boolean",
+                    "title": "Disable top-level function wrapper",
+                    "description": "Compile without top-level function safety wrapper",
+                    "default": true
+                },
+                "compileOnSave": {
+                    "type": "boolean",
+                    "title": "Compile on save",
+                    "description": "Compile to JS file on save when preview pane is shown",
+                    "default": false
+                },
+                "compileOnSaveWithoutPreview": {
+                    "type": "boolean",
+                    "title": "Compile on save without preview",
+                    "description": "Compile to JS file on save without requiring preview pane",
+                    "default": false
+                },
+                "focusEditorAfterCompile": {
+                    "type": "boolean",
+                    "description": "Keep focus on original editor when showing preview pane",
+                    "default": false
+                },
+                "flatten": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remove all path parts"
+                },
+                "cwd": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "cwd",
+                    "description": "All sources are relative to this path"
+                },
+                "destination": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "Destination filepath",
+                    "description": "Relative to project root"
+                },
+                "source": {
+                    "type": "array",
+                    "default": [
+                        "."
+                    ],
+                    "title": "Source filepath(s)",
+                    "description": "Source folder, relative to cwd",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "coffeescriptVersion": {
+                    "type": "string",
+                    "default": "1.12.7",
+                    "title": "Coffeescript version to compile with",
+                    "enum": [
+                        "1.12.7",
+                        "2.5.1"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.34.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.34.0",
+            "sha": "44d90bebf53a5215d042c1ce9e0f439ac29342d9"
+        },
+        "0.33.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.33.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript 1 or 2 in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "git@github.com:adrianlee44/atom-coffee-compile.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.9.0"
+            },
+            "dependencies": {
+                "coffee-script": "1.12.7",
+                "coffeescript": "2.5.1",
+                "resolve": "^1.11.1",
+                "season": "^6.0.2"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "configSchema": {
+                "split": {
+                    "type": "string",
+                    "default": "Right",
+                    "title": "Split pane direction",
+                    "enum": [
+                        "Right",
+                        "Left",
+                        "Down",
+                        "Up"
+                    ]
+                },
+                "noTopLevelFunctionWrapper": {
+                    "type": "boolean",
+                    "title": "Disable top-level function wrapper",
+                    "description": "Compile without top-level function safety wrapper",
+                    "default": true
+                },
+                "compileOnSave": {
+                    "type": "boolean",
+                    "title": "Compile on save",
+                    "description": "Compile to JS file on save when preview pane is shown",
+                    "default": false
+                },
+                "compileOnSaveWithoutPreview": {
+                    "type": "boolean",
+                    "title": "Compile on save without preview",
+                    "description": "Compile to JS file on save without requiring preview pane",
+                    "default": false
+                },
+                "focusEditorAfterCompile": {
+                    "type": "boolean",
+                    "description": "Keep focus on original editor when showing preview pane",
+                    "default": false
+                },
+                "flatten": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remove all path parts"
+                },
+                "cwd": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "cwd",
+                    "description": "All sources are relative to this path"
+                },
+                "destination": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "Destination filepath",
+                    "description": "Relative to project root"
+                },
+                "source": {
+                    "type": "array",
+                    "default": [
+                        "."
+                    ],
+                    "title": "Source filepath(s)",
+                    "description": "Source folder, relative to cwd",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "coffeescriptVersion": {
+                    "type": "string",
+                    "default": "1.12.7",
+                    "title": "Coffeescript version to compile with",
+                    "enum": [
+                        "1.12.7",
+                        "2.5.1"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.33.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.33.0",
+            "sha": "2c722c2628e145895f57f8efb5c6c991288f375a"
+        },
+        "0.32.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.32.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript 1 or 2 in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "git@github.com:adrianlee44/atom-coffee-compile.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.9.0"
+            },
+            "dependencies": {
+                "coffee-script": "1.12.7",
+                "coffeescript": "2.4.1",
+                "resolve": "^1.1.7",
+                "season": "^6.0.2"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "configSchema": {
+                "split": {
+                    "type": "string",
+                    "default": "Right",
+                    "title": "Split pane direction",
+                    "enum": [
+                        "Right",
+                        "Left",
+                        "Down",
+                        "Up"
+                    ]
+                },
+                "noTopLevelFunctionWrapper": {
+                    "type": "boolean",
+                    "title": "Disable top-level function wrapper",
+                    "description": "Compile without top-level function safety wrapper",
+                    "default": true
+                },
+                "compileOnSave": {
+                    "type": "boolean",
+                    "title": "Compile on save",
+                    "description": "Compile to JS file on save when preview pane is shown",
+                    "default": false
+                },
+                "compileOnSaveWithoutPreview": {
+                    "type": "boolean",
+                    "title": "Compile on save without preview",
+                    "description": "Compile to JS file on save without requiring preview pane",
+                    "default": false
+                },
+                "focusEditorAfterCompile": {
+                    "type": "boolean",
+                    "description": "Keep focus on original editor when showing preview pane",
+                    "default": false
+                },
+                "flatten": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remove all path parts"
+                },
+                "cwd": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "cwd",
+                    "description": "All sources are relative to this path"
+                },
+                "destination": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "Destination filepath",
+                    "description": "Relative to project root"
+                },
+                "source": {
+                    "type": "array",
+                    "default": [
+                        "."
+                    ],
+                    "title": "Source filepath(s)",
+                    "description": "Source folder, relative to cwd",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "coffeescriptVersion": {
+                    "type": "string",
+                    "default": "1.12.7",
+                    "title": "Coffeescript version to compile with",
+                    "enum": [
+                        "1.12.7",
+                        "2.4.1"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.32.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.32.0",
+            "sha": "47166a926ce5406d1b46982b5222c483f43beca5"
+        },
+        "0.31.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.31.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript 1 or 2 in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "git@github.com:adrianlee44/atom-coffee-compile.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.9.0"
+            },
+            "dependencies": {
+                "coffee-script": "1.12.7",
+                "coffeescript": "2.3.1",
+                "resolve": "^1.1.7",
+                "season": "^6.0.2"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "configSchema": {
+                "split": {
+                    "type": "string",
+                    "default": "Right",
+                    "title": "Split pane direction",
+                    "enum": [
+                        "Right",
+                        "Left",
+                        "Down",
+                        "Up"
+                    ]
+                },
+                "noTopLevelFunctionWrapper": {
+                    "type": "boolean",
+                    "title": "Disable top-level function wrapper",
+                    "description": "Compile without top-level function safety wrapper",
+                    "default": true
+                },
+                "compileOnSave": {
+                    "type": "boolean",
+                    "title": "Compile on save",
+                    "description": "Compile to JS file on save when preview pane is shown",
+                    "default": false
+                },
+                "compileOnSaveWithoutPreview": {
+                    "type": "boolean",
+                    "title": "Compile on save without preview",
+                    "description": "Compile to JS file on save without requiring preview pane",
+                    "default": false
+                },
+                "focusEditorAfterCompile": {
+                    "type": "boolean",
+                    "description": "Keep focus on original editor when showing preview pane",
+                    "default": false
+                },
+                "flatten": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remove all path parts"
+                },
+                "cwd": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "cwd",
+                    "description": "All sources are relative to this path"
+                },
+                "destination": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "Destination filepath",
+                    "description": "Relative to project root"
+                },
+                "source": {
+                    "type": "array",
+                    "default": [
+                        "."
+                    ],
+                    "title": "Source filepath(s)",
+                    "description": "Source folder, relative to cwd",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "coffeescriptVersion": {
+                    "type": "string",
+                    "default": "1.12.7",
+                    "title": "Coffeescript version to compile with",
+                    "enum": [
+                        "1.12.7",
+                        "2.3.1"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.31.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.31.0",
+            "sha": "a40dfe493d2239fc157542cf480aac8b1a6b013b"
+        },
+        "0.30.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.30.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript 1 or 2 in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "git@github.com:adrianlee44/atom-coffee-compile.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.9.0"
+            },
+            "dependencies": {
+                "coffee-script": "1.12.7",
+                "coffeescript": "2.3.0",
+                "resolve": "^1.1.7",
+                "season": "^6.0.2"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "configSchema": {
+                "split": {
+                    "type": "string",
+                    "default": "Right",
+                    "title": "Split pane direction",
+                    "enum": [
+                        "Right",
+                        "Left",
+                        "Down",
+                        "Up"
+                    ]
+                },
+                "noTopLevelFunctionWrapper": {
+                    "type": "boolean",
+                    "title": "Disable top-level function wrapper",
+                    "description": "Compile without top-level function safety wrapper",
+                    "default": true
+                },
+                "compileOnSave": {
+                    "type": "boolean",
+                    "title": "Compile on save",
+                    "description": "Compile to JS file on save when preview pane is shown",
+                    "default": false
+                },
+                "compileOnSaveWithoutPreview": {
+                    "type": "boolean",
+                    "title": "Compile on save without preview",
+                    "description": "Compile to JS file on save without requiring preview pane",
+                    "default": false
+                },
+                "focusEditorAfterCompile": {
+                    "type": "boolean",
+                    "description": "Keep focus on original editor when showing preview pane",
+                    "default": false
+                },
+                "flatten": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remove all path parts"
+                },
+                "cwd": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "cwd",
+                    "description": "All sources are relative to this path"
+                },
+                "destination": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "Destination filepath",
+                    "description": "Relative to project root"
+                },
+                "source": {
+                    "type": "array",
+                    "default": [
+                        "."
+                    ],
+                    "title": "Source filepath(s)",
+                    "description": "Source folder, relative to cwd",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "coffeescriptVersion": {
+                    "type": "string",
+                    "default": "1.12.7",
+                    "title": "Coffeescript version to compile with",
+                    "enum": [
+                        "1.12.7",
+                        "2.0.2"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.30.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.30.0",
+            "sha": "de9f860699982eef866006e70a9b4efbbc630378"
+        },
+        "0.29.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.29.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript 1 or 2 in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "git@github.com:adrianlee44/atom-coffee-compile.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.9.0"
+            },
+            "dependencies": {
+                "coffee-script": "1.12.7",
+                "coffeescript": "2.0.2",
+                "resolve": "^1.1.7",
+                "season": "^6.0.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "configSchema": {
+                "split": {
+                    "type": "string",
+                    "default": "Right",
+                    "title": "Split pane direction",
+                    "enum": [
+                        "Right",
+                        "Left",
+                        "Down",
+                        "Up"
+                    ]
+                },
+                "noTopLevelFunctionWrapper": {
+                    "type": "boolean",
+                    "title": "Disable top-level function wrapper",
+                    "description": "Compile without top-level function safety wrapper",
+                    "default": true
+                },
+                "compileOnSave": {
+                    "type": "boolean",
+                    "title": "Compile on save",
+                    "description": "Compile to JS file on save when preview pane is shown",
+                    "default": false
+                },
+                "compileOnSaveWithoutPreview": {
+                    "type": "boolean",
+                    "title": "Compile on save without preview",
+                    "description": "Compile to JS file on save without requiring preview pane",
+                    "default": false
+                },
+                "focusEditorAfterCompile": {
+                    "type": "boolean",
+                    "description": "Keep focus on original editor when showing preview pane",
+                    "default": false
+                },
+                "flatten": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remove all path parts"
+                },
+                "cwd": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "cwd",
+                    "description": "All sources are relative to this path"
+                },
+                "destination": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "Destination filepath",
+                    "description": "Relative to project root"
+                },
+                "source": {
+                    "type": "array",
+                    "default": [
+                        "."
+                    ],
+                    "title": "Source filepath(s)",
+                    "description": "Source folder, relative to cwd",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "coffeescriptVersion": {
+                    "type": "string",
+                    "default": "1.12.7",
+                    "title": "Coffeescript version to compile with",
+                    "enum": [
+                        "1.12.7",
+                        "2.0.2"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.29.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.29.0",
+            "sha": "0b07edee204436ad4851c1efc380341315ae5014"
+        },
+        "0.28.1": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.28.1",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript 1 or 2 in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.9.0"
+            },
+            "dependencies": {
+                "coffee-script": "1.12.7",
+                "coffeescript": "2.0.2",
+                "resolve": "^1.1.7",
+                "season": "^6.0.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "configSchema": {
+                "split": {
+                    "type": "string",
+                    "default": "Right",
+                    "title": "Split pane direction",
+                    "enum": [
+                        "Right",
+                        "Left",
+                        "Down",
+                        "Up"
+                    ]
+                },
+                "noTopLevelFunctionWrapper": {
+                    "type": "boolean",
+                    "title": "Disable top-level function wrapper",
+                    "description": "Compile without top-level function safety wrapper",
+                    "default": true
+                },
+                "compileOnSave": {
+                    "type": "boolean",
+                    "title": "Compile on save",
+                    "description": "Compile to JS file on save when preview pane is shown",
+                    "default": false
+                },
+                "compileOnSaveWithoutPreview": {
+                    "type": "boolean",
+                    "title": "Compile on save without preview",
+                    "description": "Compile to JS file on save without requiring preview pane",
+                    "default": false
+                },
+                "focusEditorAfterCompile": {
+                    "type": "boolean",
+                    "description": "Keep focus on original editor when showing preview pane",
+                    "default": false
+                },
+                "flatten": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remove all path parts"
+                },
+                "cwd": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "cwd",
+                    "description": "All sources are relative to this path"
+                },
+                "destination": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "Destination filepath",
+                    "description": "Relative to project root"
+                },
+                "source": {
+                    "type": "array",
+                    "default": [
+                        "."
+                    ],
+                    "title": "Source filepath(s)",
+                    "description": "Source folder, relative to cwd",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "coffeescriptVersion": {
+                    "type": "string",
+                    "default": "1.12.7",
+                    "title": "Coffeescript version to compile with",
+                    "enum": [
+                        "1.12.7",
+                        "2.0.2"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.28.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.28.1",
+            "sha": "f2ff7a676467c2762c90077bb40de9f599787fc6"
+        },
+        "0.28.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.28.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript 1 or 2 in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.9.0"
+            },
+            "dependencies": {
+                "resolve": "^1.1.7",
+                "season": "^6.0.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "configSchema": {
+                "split": {
+                    "type": "string",
+                    "default": "Right",
+                    "title": "Split pane direction",
+                    "enum": [
+                        "Right",
+                        "Left",
+                        "Down",
+                        "Up"
+                    ]
+                },
+                "noTopLevelFunctionWrapper": {
+                    "type": "boolean",
+                    "title": "Disable top-level function wrapper",
+                    "description": "Compile without top-level function safety wrapper",
+                    "default": true
+                },
+                "compileOnSave": {
+                    "type": "boolean",
+                    "title": "Compile on save",
+                    "description": "Compile to JS file on save when preview pane is shown",
+                    "default": false
+                },
+                "compileOnSaveWithoutPreview": {
+                    "type": "boolean",
+                    "title": "Compile on save without preview",
+                    "description": "Compile to JS file on save without requiring preview pane",
+                    "default": false
+                },
+                "focusEditorAfterCompile": {
+                    "type": "boolean",
+                    "description": "Keep focus on original editor when showing preview pane",
+                    "default": false
+                },
+                "flatten": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remove all path parts"
+                },
+                "cwd": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "cwd",
+                    "description": "All sources are relative to this path"
+                },
+                "destination": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "Destination filepath",
+                    "description": "Relative to project root"
+                },
+                "source": {
+                    "type": "array",
+                    "default": [
+                        "."
+                    ],
+                    "title": "Source filepath(s)",
+                    "description": "Source folder, relative to cwd",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "coffeescriptVersion": {
+                    "type": "string",
+                    "default": "1.12.7",
+                    "title": "Coffeescript version to compile with",
+                    "enum": [
+                        "1.12.7",
+                        "2.0.2"
+                    ]
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.28.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.28.0",
+            "sha": "96af0b55e376d5c06fd54a2bd07ce79100fbf499"
+        },
+        "0.27.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.27.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.9.0"
+            },
+            "dependencies": {
+                "coffee-script": "1.12.7",
+                "resolve": "^1.1.7",
+                "season": "^6.0.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "configSchema": {
+                "split": {
+                    "type": "string",
+                    "default": "Right",
+                    "title": "Split pane direction",
+                    "enum": [
+                        "Right",
+                        "Left",
+                        "Down",
+                        "Up"
+                    ]
+                },
+                "noTopLevelFunctionWrapper": {
+                    "type": "boolean",
+                    "title": "Disable top-level function wrapper",
+                    "description": "Compile without top-level function safety wrapper",
+                    "default": true
+                },
+                "compileOnSave": {
+                    "type": "boolean",
+                    "title": "Compile on save",
+                    "description": "Compile to JS file on save when preview pane is shown",
+                    "default": false
+                },
+                "compileOnSaveWithoutPreview": {
+                    "type": "boolean",
+                    "title": "Compile on save without preview",
+                    "description": "Compile to JS file on save without requiring preview pane",
+                    "default": false
+                },
+                "focusEditorAfterCompile": {
+                    "type": "boolean",
+                    "description": "Keep focus on original editor when showing preview pane",
+                    "default": false
+                },
+                "flatten": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remove all path parts"
+                },
+                "cwd": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "cwd",
+                    "description": "All sources are relative to this path"
+                },
+                "destination": {
+                    "type": "string",
+                    "default": ".",
+                    "title": "Destination filepath",
+                    "description": "Relative to project root"
+                },
+                "source": {
+                    "type": "array",
+                    "default": [
+                        "."
+                    ],
+                    "title": "Source filepath(s)",
+                    "description": "Source folder, relative to cwd",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.27.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.27.0",
+            "sha": "4ad4ae0c40ba5bde466238ea51a1c73aa09f68d2"
+        },
+        "0.26.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.26.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.9.0"
+            },
+            "dependencies": {
+                "coffee-script": "1.12.6",
+                "resolve": "^1.1.7",
+                "season": "^6.0.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.26.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.26.0",
+            "sha": "99739304bb8faafe6a266cd20e412a71eb54e46c"
+        },
+        "0.25.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.25.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.9.0"
+            },
+            "dependencies": {
+                "coffee-script": "1.12.4",
+                "resolve": "^1.1.7",
+                "season": "^6.0.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.25.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.25.0",
+            "sha": "bc452e4f6b5c9cd79c2d8ea1d9e340bd9d019b2b"
+        },
+        "0.24.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.24.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.9.0"
+            },
+            "dependencies": {
+                "coffee-script": "1.11.1",
+                "resolve": "^1.1.7",
+                "season": "^5.4.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.24.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.24.0",
+            "sha": "d104f30025d19197da2e3eb8936e0e9f2b1e1acf"
+        },
+        "0.23.1": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.23.1",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.9.0"
+            },
+            "dependencies": {
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.10.0",
+                "resolve": "^1.1.7",
+                "season": "^5.3.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.23.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.23.1",
+            "sha": "8268b297090e4aed9e64be5cf7a4bb3d057aeff8"
+        },
+        "0.23.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.23.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.9.0"
+            },
+            "dependencies": {
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.10.0",
+                "resolve": "^1.1.7",
+                "season": "^5.3.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.23.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.23.0",
+            "sha": "3fd7fc4c264d88d7599c76e1dad5c2da16ec5941"
+        },
+        "0.22.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.22.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.9.0"
+            },
+            "dependencies": {
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.10.0",
+                "season": "^5.3.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.22.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.22.0",
+            "sha": "ea7f0454febe38e26b7ddf3862672cf3099d4d3a"
+        },
+        "0.21.1": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.21.1",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.2.0"
+            },
+            "dependencies": {
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.10.0",
+                "season": "^5.3.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.21.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.21.1",
+            "sha": "135f75645a7a04fc8a21527f1f25284a83dbabf7"
+        },
+        "0.21.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.21.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.2.0"
+            },
+            "dependencies": {
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.10.0",
+                "season": "^5.3.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.21.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.21.0",
+            "sha": "26ec026d4b44030a170e9a93915de86f7e20caeb"
+        },
+        "0.20.1": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.20.1",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.2.0"
+            },
+            "dependencies": {
+                "atom-space-pen-views": "^2.1.0",
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.9.2",
+                "season": "^5.3.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.20.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.20.1",
+            "sha": "fe8ea32ce1fd744021a1ab6cc459c3c9944a242d"
+        },
+        "0.20.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.20.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.2.0"
+            },
+            "dependencies": {
+                "atom-space-pen-views": "^2.1.0",
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.9.2",
+                "season": "^5.3.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.20.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.20.0",
+            "sha": "28005451da4c03ec5f302491170235ee0fcd0799"
+        },
+        "0.19.2": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.19.2",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.124.0"
+            },
+            "dependencies": {
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.9.2",
+                "season": "^5.3.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.19.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.19.2",
+            "sha": "098ea7c978c658dcd144213a4a76477cf4cef768"
+        },
+        "0.19.1": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.19.1",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.124.0"
+            },
+            "dependencies": {
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.9.2",
+                "season": "^5.3.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.19.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.19.1",
+            "sha": "89b3f672be933660074d3c621f90a14dcc31cfe4"
+        },
+        "0.19.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.19.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.124.0"
+            },
+            "dependencies": {
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.9.2",
+                "season": "^5.3.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.19.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.19.0",
+            "sha": "c8c065e671b5df29e117c82479d463d4ed8d69eb"
+        },
+        "0.18.1": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.18.1",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "keywords": [
+                "preview",
+                "compile",
+                "coffeescript",
+                "javascript"
+            ],
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.124.0"
+            },
+            "dependencies": {
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.9.2",
+                "season": "^5.3.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.18.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.18.1",
+            "sha": "a39786d2dda5cc8f5bf1352a45b927980167821b"
+        },
+        "0.18.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.18.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.124.0"
+            },
+            "dependencies": {
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.9.2",
+                "season": "^5.3.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.18.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.18.0",
+            "sha": "a92f75c1b848bcbf4f093f0d2efce7e79cddf1ea"
+        },
+        "0.17.3": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.17.3",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.124.0"
+            },
+            "dependencies": {
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.9.2"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.17.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.17.3",
+            "sha": "3b7adc234b2833c913ca17df8e174435e3f6b30d"
+        },
+        "0.17.2": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.17.2",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.124.0"
+            },
+            "dependencies": {
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.9.2"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.17.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.17.2",
+            "sha": "13664b97d716eb8fdebbaeffbceefb9fd764e01e"
+        },
+        "0.17.1": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.17.1",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.124.0"
+            },
+            "dependencies": {
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.9.2",
+                "mkdirp": "^0.5.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.17.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.17.1",
+            "sha": "fb59cf3e86e72297dbfdf0733595b2e70c5d14c1"
+        },
+        "0.17.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.17.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.124.0"
+            },
+            "dependencies": {
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.9.2",
+                "mkdirp": "^0.5.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.17.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.17.0",
+            "sha": "dd8a7180e35194cf0b7878022eaeeae50bc98730"
+        },
+        "0.16.1": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.16.1",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.124.0"
+            },
+            "dependencies": {
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.9.2",
+                "mkdirp": "^0.5.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.16.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.16.1",
+            "sha": "dbb03aa345c8091879ec0d140417cc9d163f01af"
+        },
+        "0.16.0": {
+            "name": "coffee-compile",
+            "main": "./lib/main",
+            "version": "0.16.0",
+            "private": true,
+            "description": "Preview, compile and/or save CoffeeScript in editor to Javascript",
+            "repository": "https://github.com/adrianlee44/atom-coffee-compile",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.124.0"
+            },
+            "dependencies": {
+                "coffee-react-transform": "3.1.0",
+                "coffee-script": "1.9.2",
+                "mkdirp": "^0.5.0"
+            },
+            "consumedServices": {
+                "coffee-compile.provider": {
+                    "description": "A package for compiling coffeescript",
+                    "versions": {
+                        "1.0.0": "registerProviders"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/coffee-compile/versions/0.16.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/adrianlee44/atom-coffee-compile/tarball/refs/tags/v0.16.0",
+            "sha": "3e64253623f4d630ef6251395e25fbc9acb5c2ac"
+        }
+    },
+    "readme": "# coffee-compile package [![CI](https://github.com/adrianlee44/atom-coffee-compile/actions/workflows/ci.yml/badge.svg)](https://github.com/adrianlee44/atom-coffee-compile/actions/workflows/ci.yml)\n\nPreview, compile and/or save CoffeeScript 1 or 2 in editor to Javascript\n- Mac: `cmd+shift+c`\n- Linux/Windows: `ctrl-alt-c`\n\n## Options\n- `Compile on save` (default: false)\n- `Compile on save without preview` (default: false)\n- `Split pane direction` (default: 'Right')\n- `Destination filepath` (default: '.')\n- `Flatten` (default: false)\n- `cwd` - All sources are relative to this path (default: '.')\n- `Source(s)` - Source folders to compile, relative to cwd (default: '.')\n- `Disable top level function wrapper` (default: true)\n- `Focus editor after compile` (default: false)\n- `Coffeescript version to compile with` (default: 1.12.7)\n\n### Project based configuration\nAdd `coffee-compile.cson` to the project root\n\nSee [wiki](https://github.com/adrianlee44/atom-coffee-compile/wiki/Project-based-configuration) for more details\n\n![](https://raw.github.com/adrianlee44/atom-coffee-compile/master/screenshot.png)\n\n## Changelog\nSee [changelog](https://github.com/adrianlee44/atom-coffee-compile/blob/master/CHANGELOG.md) for more information\n",
+    "metadata": {
+        "name": "coffee-compile",
+        "main": "./lib/main",
+        "version": "0.34.0",
+        "private": true,
+        "description": "Preview, compile and/or save CoffeeScript 1 or 2 in editor to Javascript",
+        "keywords": [
+            "preview",
+            "compile",
+            "coffeescript",
+            "javascript"
+        ],
+        "repository": "https://github.com/adrianlee44/atom-coffee-compile.git",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.9.0"
+        },
+        "dependencies": {
+            "coffee-script": "1.12.7",
+            "coffeescript": "2.5.1",
+            "resolve": "^1.20.0",
+            "season": "^6.0.2"
+        },
+        "consumedServices": {
+            "coffee-compile.provider": {
+                "description": "A package for compiling coffeescript",
+                "versions": {
+                    "1.0.0": "registerProviders"
+                }
+            }
+        },
+        "configSchema": {
+            "split": {
+                "type": "string",
+                "default": "Right",
+                "title": "Split pane direction",
+                "enum": [
+                    "Right",
+                    "Left",
+                    "Down",
+                    "Up"
+                ]
+            },
+            "noTopLevelFunctionWrapper": {
+                "type": "boolean",
+                "title": "Disable top-level function wrapper",
+                "description": "Compile without top-level function safety wrapper",
+                "default": true
+            },
+            "compileOnSave": {
+                "type": "boolean",
+                "title": "Compile on save",
+                "description": "Compile to JS file on save when preview pane is shown",
+                "default": false
+            },
+            "compileOnSaveWithoutPreview": {
+                "type": "boolean",
+                "title": "Compile on save without preview",
+                "description": "Compile to JS file on save without requiring preview pane",
+                "default": false
+            },
+            "focusEditorAfterCompile": {
+                "type": "boolean",
+                "description": "Keep focus on original editor when showing preview pane",
+                "default": false
+            },
+            "flatten": {
+                "type": "boolean",
+                "default": false,
+                "description": "Remove all path parts"
+            },
+            "cwd": {
+                "type": "string",
+                "default": ".",
+                "title": "cwd",
+                "description": "All sources are relative to this path"
+            },
+            "destination": {
+                "type": "string",
+                "default": ".",
+                "title": "Destination filepath",
+                "description": "Relative to project root"
+            },
+            "source": {
+                "type": "array",
+                "default": [
+                    "."
+                ],
+                "title": "Source filepath(s)",
+                "description": "Source folder, relative to cwd",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "coffeescriptVersion": {
+                "type": "string",
+                "default": "1.12.7",
+                "title": "Coffeescript version to compile with",
+                "enum": [
+                    "1.12.7",
+                    "2.5.1"
+                ]
+            }
+        }
+    },
+    "created": 1658337995440,
+    "updated": 1658337995440,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

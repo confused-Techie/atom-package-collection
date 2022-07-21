@@ -1,0 +1,1890 @@
+{
+    "name": "build-python",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-build-python"
+    },
+    "downloads": 126860,
+    "stargazers_count": 12,
+    "releases": {
+        "latest": "0.17.0"
+    },
+    "versions": {
+        "0.17.0": {
+            "name": "build-python",
+            "version": "0.17.0",
+            "description": "Atom Build provider for python/python3/py, runs Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.56.0 <2.0.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Runs PowerShell scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {},
+            "devDependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "@babel/core": "^7.14.6",
+                "@babel/eslint-parser": "^7.14.7",
+                "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+                "atom-package-deps": "^7.2.3",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "cross-env": "^7.0.3",
+                "esbuild": "^0.12.15",
+                "eslint": "^7.31.0",
+                "eslint-plugin-json": "^3.0.0",
+                "husky": ">=4 <5",
+                "lint-staged": "^11.0.1",
+                "log-symbols": "^5.0.0",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "which": "^2.0.2"
+            },
+            "scripts": {
+                "build": "node ./tools/build.mjs",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "volta": {
+                "node": "14.17.0",
+                "yarn": "1.22.10"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.17.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.17.0",
+            "sha": "664c58fa1efe110fd7991d8dbd96fc47e4ddb95d"
+        },
+        "0.16.0": {
+            "name": "build-python",
+            "version": "0.16.0",
+            "description": "Atom Build provider for python/python3/py, runs Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <1.56.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Runs PowerShell scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {},
+            "devDependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "@babel/core": "^7.14.6",
+                "@babel/eslint-parser": "^7.14.7",
+                "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+                "atom-package-deps": "^7.2.3",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "cross-env": "^7.0.3",
+                "esbuild": "^0.12.11",
+                "eslint": "^7.29.0",
+                "eslint-plugin-json": "^3.0.0",
+                "husky": ">=4 <5",
+                "lint-staged": "^11.0.0",
+                "log-symbols": "^5.0.0",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "which": "^2.0.2"
+            },
+            "scripts": {
+                "build": "node ./tools/build.mjs",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "volta": {
+                "node": "14.17.0",
+                "yarn": "1.22.10"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.16.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.16.0",
+            "sha": "71056b08ab8386155c498517807f7aa0288bef7f"
+        },
+        "0.15.0": {
+            "name": "build-python",
+            "version": "0.15.0",
+            "description": "Atom Build provider for python/python3/py, runs Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Runs PowerShell scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {},
+            "devDependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "@babel/core": "^7.14.3",
+                "@babel/eslint-parser": "^7.14.3",
+                "@babel/plugin-proposal-optional-chaining": "^7.14.2",
+                "atom-package-deps": "^7.2.3",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "cross-env": "^7.0.3",
+                "esbuild": "^0.12.1",
+                "eslint": "^7.26.0",
+                "eslint-plugin-json": "^3.0.0",
+                "husky": ">=4 <5",
+                "lint-staged": "^11.0.0",
+                "log-symbols": "^5.0.0",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "which": "^2.0.2"
+            },
+            "scripts": {
+                "build": "node ./tools/build.mjs",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "volta": {
+                "node": "14.17.0",
+                "yarn": "1.22.10"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.15.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.15.0",
+            "sha": "bd6728f077d51db562764f63f1acb5b30198224f"
+        },
+        "0.14.0": {
+            "name": "build-python",
+            "version": "0.14.0",
+            "description": "Atom Build provider for python/python3/py, runs Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "scripts": {
+                "build": "npm run clean && rollup --config",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "rollup --watch --config",
+                "test": "npm run lint"
+            },
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Runs PowerShell scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "atom-package-deps": "^7.2.2",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "which": "^2.0.2"
+            },
+            "devDependencies": {
+                "@babel/core": "^7.13.16",
+                "@babel/eslint-parser": "^7.13.10",
+                "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+                "@rollup/plugin-babel": "^5.3.0",
+                "@rollup/plugin-commonjs": "^17.1.0",
+                "@rollup/plugin-json": "^4.1.0",
+                "@rollup/plugin-node-resolve": "^11.2.0",
+                "eslint": "^7.2.2",
+                "eslint-plugin-json": "^2.1.2",
+                "husky": ">=4 <5",
+                "lint-staged": "^10.5.4",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "rollup": "^2.42.0",
+                "rollup-plugin-terser": "^7.0.2"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.14.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.14.0",
+            "sha": "0c13a020f91a33c6d9a0f41b59227117e2ece5a3"
+        },
+        "0.13.0": {
+            "name": "build-python",
+            "version": "0.13.0",
+            "description": "Atom Build provider for python/python3/py, runs Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "scripts": {
+                "build": "webpack --mode production",
+                "dev": "npm run start",
+                "lint": "eslint ./src --ignore-path .gitignore",
+                "start": "webpack --mode none --watch",
+                "test": "npm run lint"
+            },
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "activationHooks": [
+                "language-python:grammar-used"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Runs Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "buildium"
+            ],
+            "dependencies": {
+                "atom-satisfy-dependencies": "^0.3.0"
+            },
+            "devDependencies": {
+                "@babel/core": "^7.8.4",
+                "@babel/eslint-parser": "^7.13.10",
+                "babel-loader": "^8.0.6",
+                "eslint": "^7.22.0",
+                "husky": ">=4.3.0 <5.0.0",
+                "lint-staged": ">=10",
+                "webpack": "^5.26.3",
+                "webpack-cli": "^4.5.0"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.13.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.13.0",
+            "sha": "66ec3feb9666ccc45797b75b495e681dadd56b45"
+        },
+        "0.12.1": {
+            "name": "build-python",
+            "version": "0.12.1",
+            "description": "Atom Build provider for python/python3/py, runs Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "scripts": {
+                "build": "webpack --mode production",
+                "dev": "webpack --mode none --watch",
+                "lint": "eslint ./src",
+                "test": "npm run lint"
+            },
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "activationHooks": [
+                "language-python:grammar-used"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Runs Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-satisfy-dependencies": "^0.2.1"
+            },
+            "devDependencies": {
+                "@babel/core": "^7.8.4",
+                "babel-eslint": "^10.0.3",
+                "babel-loader": "^8.0.6",
+                "eslint": "^6.8.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "husky": "^4.2.1",
+                "webpack": "^4.41.5",
+                "webpack-cli": "^3.3.10"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "npm run lint"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.12.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.12.1",
+            "sha": "c79e454f433183d5a7c7fbaf464edf03686e207a"
+        },
+        "0.12.0": {
+            "name": "build-python",
+            "version": "0.12.0",
+            "description": "Atom Build provider for python/python3/py, runs Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "scripts": {
+                "build": "webpack --mode production",
+                "dev": "webpack --mode none --watch",
+                "lint": "eslint ./src",
+                "test": "npm run lint"
+            },
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "activationHooks": [
+                "language-python:grammar-used"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Runs Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^5.1.0",
+                "atom-satisfy-dependencies": "^0.2.1"
+            },
+            "devDependencies": {
+                "@babel/core": "^7.8.4",
+                "babel-eslint": "^10.0.3",
+                "babel-loader": "^8.0.6",
+                "eslint": "^6.8.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "husky": "^4.2.1",
+                "webpack": "^4.41.5",
+                "webpack-cli": "^3.3.10"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "npm run lint"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.12.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.12.0",
+            "sha": "a3cc51aeb1c22a49fd062b5db173077dd887f813"
+        },
+        "0.11.0": {
+            "name": "build-python",
+            "version": "0.11.0",
+            "description": "Atom Build provider for python/python3/py, runs Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "scripts": {
+                "build": "webpack --mode production",
+                "dev": "webpack --mode none --watch",
+                "lint": "eslint ./src",
+                "test": "npm run lint"
+            },
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "activationHooks": [
+                "language-python:grammar-used"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Runs Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^5.1.0"
+            },
+            "devDependencies": {
+                "@babel/core": "^7.5.4",
+                "babel-eslint": "^10.0.2",
+                "babel-loader": "^8.0.6",
+                "eslint": "^6.0.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "husky": "^3.0.0",
+                "webpack": "^4.35.3",
+                "webpack-cli": "^3.3.5"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "npm run lint"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.11.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.11.0",
+            "sha": "5e704d873d3957d037396818ce65fc4f11bf4975"
+        },
+        "0.10.0": {
+            "name": "build-python",
+            "version": "0.10.0",
+            "description": "Atom Build provider for python/python3/py, runs Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "scripts": {
+                "build": "webpack --mode production",
+                "dev": "webpack --mode none --watch",
+                "lint": "eslint ./src",
+                "test": "npm run lint"
+            },
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "activationHooks": [
+                "language-python:grammar-used"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Runs Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^5.1.0"
+            },
+            "devDependencies": {
+                "@babel/core": "^7.4.5",
+                "babel-eslint": "^10.0.2",
+                "babel-loader": "^8.0.6",
+                "eslint": "^6.0.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "husky": "^3.0.0",
+                "webpack": "^4.35.0",
+                "webpack-cli": "^3.3.5"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "npm run lint"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.10.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.10.0",
+            "sha": "c2d536bd4bf53d9b3309cb3f5baf0c7f5578387c"
+        },
+        "0.9.3": {
+            "name": "build-python",
+            "version": "0.9.3",
+            "description": "Atom Build provider for python/python3/py, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^8.0.2",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^4.11.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.1.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^4.0.0",
+                "jshint": "^2.9.5"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.9.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.9.3",
+            "sha": "88edf295271077bf69b4983ac7a7d08cc08023aa"
+        },
+        "0.9.2": {
+            "name": "build-python",
+            "version": "0.9.2",
+            "description": "Atom Build provider for python/python3/py, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.2.3",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.19.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.1.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.1",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.9.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.9.2",
+            "sha": "97a36acef30f10fd703a16152b29cfa64e393811"
+        },
+        "0.9.1": {
+            "name": "build-python",
+            "version": "0.9.1",
+            "description": "Atom Build provider for python/python3/py, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.9.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.9.1",
+            "sha": "49ec4b0ceb89d2016c6585d556ee20ed16fa1ef3"
+        },
+        "0.9.0": {
+            "name": "build-python",
+            "version": "0.9.0",
+            "description": "Atom Build provider for python/python3/py, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.9.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.9.0",
+            "sha": "6841303c3347e1ea17b8b92637babfc4affb3985"
+        },
+        "0.8.1": {
+            "name": "build-python",
+            "version": "0.8.1",
+            "description": "Atom Build provider for python/python3/py, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.8.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.8.1",
+            "sha": "50ced794d4b20cd0d87c794b79f01978d990ed1a"
+        },
+        "0.8.0": {
+            "name": "build-python",
+            "version": "0.8.0",
+            "description": "Atom Build provider for python/python3/py, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.8.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.8.0",
+            "sha": "fddd0eee94f7c6f2eb2793900bca1d194d4f595a"
+        },
+        "0.7.0": {
+            "name": "build-python",
+            "version": "0.7.0",
+            "description": "Atom Build provider for python/python3/py, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^2.1.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.7.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.7.0",
+            "sha": "21f5002304d508e3022a8cef2e6fc949b875e0b4"
+        },
+        "0.6.3": {
+            "name": "build-python",
+            "version": "0.6.3",
+            "description": "Atom Build provider for python/python3, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^2.1.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.6.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.6.3",
+            "sha": "0292981c90b0720decbe047e108f33f63c1414a6"
+        },
+        "0.6.2": {
+            "name": "build-python",
+            "version": "0.6.2",
+            "description": "Atom Build provider for python/python3, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.6.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.6.2",
+            "sha": "85889d1021ad823f9278e1faf28fb135faca6f7e"
+        },
+        "0.6.1": {
+            "name": "build-python",
+            "version": "0.6.1",
+            "description": "Atom Build provider for python/python3, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "build-provider",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.6.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.6.1",
+            "sha": "a2fbcc3324829bf982e55337e6f5be385c9e7139"
+        },
+        "0.6.0": {
+            "name": "build-python",
+            "version": "0.6.0",
+            "description": "Atom Build provider for python/python3, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.6.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.6.0",
+            "sha": "814e5030fc08bc130c3686e3a93b8f5043a69a01"
+        },
+        "0.5.2": {
+            "name": "build-python",
+            "version": "0.5.2",
+            "description": "Atom Build provider for python/python3, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.5.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.5.2",
+            "sha": "994f2b93d903c26c7cabd4440e0640788e4a317f"
+        },
+        "0.5.1": {
+            "name": "build-python",
+            "version": "0.5.1",
+            "description": "Atom Build provider for python/python3, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.5.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.5.1",
+            "sha": "6867d60b17d330e114e4bee27d272be2e05484ce"
+        },
+        "0.5.0": {
+            "name": "build-python",
+            "version": "0.5.0",
+            "description": "Atom Build provider for python/python3, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.5.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.5.0",
+            "sha": "57606551d565d971a2d81b01b3b3217ca15326a9"
+        },
+        "0.4.2": {
+            "name": "build-python",
+            "version": "0.4.2",
+            "description": "Atom Build provider for python/python3, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "python",
+                "python3",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.4.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.4.2",
+            "sha": "91f82db7a32549c930c3b5136116c61eae6563f8"
+        },
+        "0.4.1": {
+            "name": "build-python",
+            "version": "0.4.1",
+            "description": "Atom Build provider for python, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "python",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.4.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.4.1",
+            "sha": "2d0195581f1950ad20c65974b1307bc7c5d9336a"
+        },
+        "0.4.0": {
+            "name": "build-python",
+            "version": "0.4.0",
+            "description": "Atom Build provider for python, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "python",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.4.0",
+            "sha": "5fb86f1adc5242c71645f5a6aa59405f2d05ae86"
+        },
+        "0.3.1": {
+            "name": "build-python",
+            "version": "0.3.1",
+            "description": "Atom Build provider for python, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "python",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.3.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.3.1",
+            "sha": "db87467e23b2fc0b4f02d830956ad8a211dd9811"
+        },
+        "0.3.0": {
+            "name": "build-python",
+            "version": "0.3.0",
+            "description": "Atom Build provider for python, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "python",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.3.0",
+            "sha": "54b2096dc0547c9ad213b8c985541772e121ec99"
+        },
+        "0.2.3": {
+            "name": "build-python",
+            "version": "0.2.3",
+            "description": "Atom Build provider for python, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "python",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.2.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-python/tarball/refs/tags/v0.2.3",
+            "sha": "7948d91c237f8f2ed12900ef6a3d15f5cea895a4"
+        },
+        "0.2.2": {
+            "name": "build-python",
+            "version": "0.2.2",
+            "description": "Atom Build provider for python, compiles Python",
+            "repository": "https://github.com/idleberg/atom-build-python",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "python",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Python",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-python/versions/0.2.2/tarball"
+            }
+        }
+    },
+    "readme": "# build-python\n\n[![apm](https://flat.badgen.net/apm/license/build-python)](https://atom.io/packages/build-python)\n[![apm](https://flat.badgen.net/apm/v/build-python)](https://atom.io/packages/build-python)\n[![apm](https://flat.badgen.net/apm/dl/build-python)](https://atom.io/packages/build-python)\n[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-build-python)](https://circleci.com/gh/idleberg/atom-build-python)\n[![David](https://flat.badgen.net/david/dev/idleberg/atom-build-python)](https://david-dm.org/idleberg/atom-build-python?type=dev)\n\n[Atom Build](https://atombuild.github.io/) provider for `python`/`python3`/`py`, runs Python. Supports the [linter](https://atom.io/packages/linter) package for error highlighting.\n\n## Installation\n\n### apm\n\nInstall `build-python` from Atom's [Package Manager](http://flight-manual.atom.io/using-atom/sections/atom-packages/) or the command-line equivalent:\n\n`$ apm install build-python`\n\n### Using Git\n\nChange to your Atom packages directory:\n\n**Windows**\n\n```powershell\n# Powershell\n$ cd $Env:USERPROFILE\\.atom\\packages\n```\n\n```cmd\n:: Command Prompt\n$ cd %USERPROFILE%\\.atom\\packages\n```\n\n**Linux & macOS**\n\n```bash\n$ cd ~/.atom/packages/\n```\n\nClone repository as `build-python`:\n\n```bash\n$ git clone https://github.com/idleberg/atom-build-python build-python\n```\n\nInside the cloned directory, install Node dependencies:\n\n```bash\n$ yarn || npm install\n```\n\nYou should now be setup to build the package:\n\n```bash\n$ yarn build || npm run build\n```\n\n## Usage\n\n### Build\n\nBefore you can build, select an active target with your preferred build option.\n\nAvailable targets:\n\n* `Python` — compile script\n* `Python (compileall)` — compile script with `-m compileall`\n* `Python (compileall, optimized)` — compile script with `-O -m compileall`\n* `Python (user)` — compile script with custom settings (interpreter and/or arguments)\n\n### Shortcuts\n\nHere's a reminder of the default shortcuts you can use with this package:\n\n**Select active target**\n\n<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> or <kbd>F7</kbd>\n\n**Build script**\n\n<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>B</kbd> or <kbd>F9</kbd>\n\n**Jump to error**\n\n<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>G</kbd> or <kbd>F4</kbd>\n\n**Toggle build panel**\n\n<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>V</kbd> or <kbd>F8</kbd>\n\n## License\n\nThis work is licensed under the [The MIT License](LICENSE).\n",
+    "metadata": {
+        "name": "build-python",
+        "version": "0.17.0",
+        "description": "Atom Build provider for python/python3/py, runs Python",
+        "repository": "https://github.com/idleberg/atom-build-python",
+        "license": "MIT",
+        "keywords": [
+            "buildprovider",
+            "compile",
+            "python",
+            "python3",
+            "linter",
+            "lint"
+        ],
+        "main": "lib/provider.js",
+        "engines": {
+            "atom": ">=1.56.0 <2.0.0"
+        },
+        "activationHooks": [
+            "core:loaded-shell-environment"
+        ],
+        "providedServices": {
+            "builder": {
+                "description": "Runs PowerShell scripts",
+                "versions": {
+                    "2.0.0": "provideBuilder"
+                }
+            }
+        },
+        "package-deps": [
+            [
+                {
+                    "name": "buildium"
+                },
+                {
+                    "name": "build"
+                }
+            ]
+        ],
+        "dependencies": {},
+        "devDependencies": {
+            "@atxm/developer-console": "^0.5.0",
+            "@babel/core": "^7.14.6",
+            "@babel/eslint-parser": "^7.14.7",
+            "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+            "atom-package-deps": "^7.2.3",
+            "atom-satisfy-dependencies": "^0.3.0",
+            "cross-env": "^7.0.3",
+            "esbuild": "^0.12.15",
+            "eslint": "^7.31.0",
+            "eslint-plugin-json": "^3.0.0",
+            "husky": ">=4 <5",
+            "lint-staged": "^11.0.1",
+            "log-symbols": "^5.0.0",
+            "npm-run-all": "^4.1.5",
+            "remark-cli": "^9.0.0",
+            "rimraf": "^3.0.2",
+            "which": "^2.0.2"
+        },
+        "scripts": {
+            "build": "node ./tools/build.mjs",
+            "clean": "rimraf ./lib",
+            "dev": "npm run start",
+            "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+            "lint:js": "eslint ./src --ignore-path .gitignore",
+            "lint": "npm-run-all --parallel lint:*",
+            "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+            "test": "npm run lint"
+        },
+        "husky": {
+            "hooks": {
+                "pre-commit": "lint-staged"
+            }
+        },
+        "lint-staged": {
+            "*.js": "eslint --cache --fix"
+        },
+        "volta": {
+            "node": "14.17.0",
+            "yarn": "1.22.10"
+        }
+    },
+    "created": 1658336940912,
+    "updated": 1658336940912,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

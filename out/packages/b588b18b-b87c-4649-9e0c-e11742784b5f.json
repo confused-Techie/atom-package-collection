@@ -1,0 +1,966 @@
+{
+    "name": "atom-deepscan",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/deepscan/atom-deepscan"
+    },
+    "downloads": 578,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "1.6.5"
+    },
+    "versions": {
+        "1.6.5": {
+            "name": "atom-deepscan",
+            "main": "./src/main.js",
+            "version": "1.6.5",
+            "description": "Detect bugs and quality issues in JavaScript, TypeScript, React and Vue.js more precisely",
+            "repository": "https://github.com/deepscan/atom-deepscan.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.13.0 <2.0.0"
+            },
+            "configSchema": {
+                "enable": {
+                    "title": "Enable",
+                    "description": "Controls whether DeepScan inspection should be enabled",
+                    "type": "boolean",
+                    "default": false,
+                    "order": 1
+                },
+                "server": {
+                    "title": "Server",
+                    "description": "Configures the DeepScan server url",
+                    "type": "string",
+                    "default": "https://deepscan.io",
+                    "order": 2
+                },
+                "proxy": {
+                    "title": "Proxy",
+                    "description": "Configures the proxy. If not set will be taken from the http_proxy environment variable.",
+                    "type": "string",
+                    "default": "",
+                    "order": 3
+                },
+                "ignoreConfirmWarning": {
+                    "title": "Controls whether you allow transferring your code to the DeepScan server without prompt. Transferred code is completely deleted right after the inspection.",
+                    "description": "",
+                    "type": "boolean",
+                    "default": false,
+                    "order": 4
+                },
+                "ignoreRules": {
+                    "title": "Rules to be ignored",
+                    "description": "Configures the rules to be ignored. e.g., UNUSED_DECL, BAD_WITH_STATEMENT",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [],
+                    "order": 5
+                },
+                "showDecorators": {
+                    "title": "Show inline decorators",
+                    "description": "Controls whether the problem of the code should be shown along with the code",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 6
+                },
+                "showFullDescription": {
+                    "title": "Show full description",
+                    "description": "Controls whether the full description of the issue should be shown when you hover it. Applied after reopening the file.",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 7
+                }
+            },
+            "scripts": {
+                "test": "apm test"
+            },
+            "keywords": [
+                "javascript",
+                "jsx",
+                "typescript",
+                "react",
+                "linters",
+                "vuejs"
+            ],
+            "dependencies": {
+                "atom-babel6-transpiler": "^1.2.0",
+                "atom-package-deps": "^5.1.0",
+                "babel-preset-env": "^1.7.0",
+                "atom-linter": "^10.0.0",
+                "crypto-random-string": "^1.0.0",
+                "marked": "^1.1.1",
+                "dompurify": "^2.0.12",
+                "axios": "^0.19.2",
+                "form-data": "^3.0.0"
+            },
+            "devDependencies": {},
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "atomTranspilers": [
+                {
+                    "glob": "{src,spec}/*.js",
+                    "transpiler": "atom-babel6-transpiler",
+                    "options": {
+                        "setBabelEnv": false,
+                        "babel": {
+                            "presets": [
+                                [
+                                    "env",
+                                    {
+                                        "targets": {
+                                            "node": "current"
+                                        }
+                                    }
+                                ]
+                            ],
+                            "sourceMaps": "inline",
+                            "babelrc": false
+                        },
+                        "cacheKeyFiles": [
+                            "package.json"
+                        ]
+                    }
+                }
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-deepscan/versions/1.6.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/deepscan/atom-deepscan/tarball/refs/tags/v1.6.5",
+            "sha": "0586cac330f4bde3f5befa3844b4dd0e056612de"
+        },
+        "1.6.4": {
+            "name": "atom-deepscan",
+            "main": "./src/main.js",
+            "version": "1.6.4",
+            "description": "Detect bugs and quality issues in JavaScript, TypeScript, React and Vue.js more precisely",
+            "repository": "https://github.com/deepscan/atom-deepscan.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.13.0 <2.0.0"
+            },
+            "configSchema": {
+                "enable": {
+                    "title": "Enable",
+                    "description": "Controls whether DeepScan inspection should be enabled",
+                    "type": "boolean",
+                    "default": false,
+                    "order": 1
+                },
+                "server": {
+                    "title": "Server",
+                    "description": "Configures the DeepScan server url",
+                    "type": "string",
+                    "default": "https://deepscan.io",
+                    "order": 2
+                },
+                "proxy": {
+                    "title": "Proxy",
+                    "description": "Configures the proxy. If not set will be taken from the http_proxy environment variable.",
+                    "type": "string",
+                    "default": "",
+                    "order": 3
+                },
+                "ignoreConfirmWarning": {
+                    "title": "Controls whether you allow transferring your code to the DeepScan server without prompt. Transferred code is completely deleted right after the inspection.",
+                    "description": "",
+                    "type": "boolean",
+                    "default": false,
+                    "order": 4
+                },
+                "ignoreRules": {
+                    "title": "Rules to be ignored",
+                    "description": "Configures the rules to be ignored. e.g., UNUSED_DECL, BAD_WITH_STATEMENT",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [],
+                    "order": 5
+                },
+                "showDecorators": {
+                    "title": "Show inline decorators",
+                    "description": "Controls whether the problem of the code should be shown along with the code",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 6
+                },
+                "showFullDescription": {
+                    "title": "Show full description",
+                    "description": "Controls whether the full description of the issue should be shown when you hover it. Applied after reopening the file.",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 7
+                }
+            },
+            "scripts": {
+                "test": "apm test"
+            },
+            "keywords": [
+                "javascript",
+                "jsx",
+                "typescript",
+                "react",
+                "linters",
+                "vuejs"
+            ],
+            "dependencies": {
+                "atom-babel6-transpiler": "^1.2.0",
+                "atom-package-deps": "^5.1.0",
+                "babel-preset-env": "^1.7.0",
+                "atom-linter": "^10.0.0",
+                "crypto-random-string": "^1.0.0",
+                "marked": "^1.1.1",
+                "dompurify": "^2.0.12",
+                "axios": "^0.19.2",
+                "form-data": "^3.0.0"
+            },
+            "devDependencies": {},
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "atomTranspilers": [
+                {
+                    "glob": "{src,spec}/*.js",
+                    "transpiler": "atom-babel6-transpiler",
+                    "options": {
+                        "setBabelEnv": false,
+                        "babel": {
+                            "presets": [
+                                [
+                                    "env",
+                                    {
+                                        "targets": {
+                                            "node": "current"
+                                        }
+                                    }
+                                ]
+                            ],
+                            "sourceMaps": "inline",
+                            "babelrc": false
+                        },
+                        "cacheKeyFiles": [
+                            "package.json"
+                        ]
+                    }
+                }
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-deepscan/versions/1.6.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/deepscan/atom-deepscan/tarball/refs/tags/v1.6.4",
+            "sha": "eda2f257afc98cd054af8dfd322ae12a3b5e1348"
+        },
+        "1.6.3": {
+            "name": "atom-deepscan",
+            "main": "./src/main.js",
+            "version": "1.6.3",
+            "description": "Detect bugs and quality issues in JavaScript, TypeScript, React and Vue.js more precisely",
+            "repository": "https://github.com/deepscan/atom-deepscan.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.13.0 <2.0.0"
+            },
+            "configSchema": {
+                "enable": {
+                    "title": "Enable",
+                    "description": "Controls whether DeepScan inspection should be enabled",
+                    "type": "boolean",
+                    "default": false,
+                    "order": 1
+                },
+                "server": {
+                    "title": "Server",
+                    "description": "Configures the DeepScan server url",
+                    "type": "string",
+                    "default": "https://deepscan.io",
+                    "order": 2
+                },
+                "proxy": {
+                    "title": "Proxy",
+                    "description": "Configures the proxy. If not set will be taken from the http_proxy environment variable.",
+                    "type": "string",
+                    "default": "",
+                    "order": 3
+                },
+                "ignoreConfirmWarning": {
+                    "title": "Controls whether you allow transferring your code to the DeepScan server without prompt. Transferred code is completely deleted right after the inspection.",
+                    "description": "",
+                    "type": "boolean",
+                    "default": false,
+                    "order": 4
+                },
+                "ignoreRules": {
+                    "title": "Rules to be ignored",
+                    "description": "Configures the rules to be ignored. e.g., UNUSED_DECL, BAD_WITH_STATEMENT",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [],
+                    "order": 5
+                },
+                "showDecorators": {
+                    "title": "Show inline decorators",
+                    "description": "Controls whether the problem of the code should be shown along with the code",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 6
+                },
+                "showFullDescription": {
+                    "title": "Show full description",
+                    "description": "Controls whether the full description of the issue should be shown when you hover it. Applied after reopening the file.",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 7
+                }
+            },
+            "scripts": {
+                "test": "apm test"
+            },
+            "keywords": [
+                "javascript",
+                "jsx",
+                "typescript",
+                "react",
+                "linters",
+                "vuejs"
+            ],
+            "dependencies": {
+                "atom-babel6-transpiler": "^1.2.0",
+                "atom-package-deps": "^5.1.0",
+                "babel-preset-env": "^1.7.0",
+                "atom-linter": "^10.0.0",
+                "crypto-random-string": "^1.0.0",
+                "marked": "^1.1.1",
+                "dompurify": "^2.0.12",
+                "axios": "^0.19.2",
+                "form-data": "^3.0.0"
+            },
+            "devDependencies": {},
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "atomTranspilers": [
+                {
+                    "glob": "{src,spec}/*.js",
+                    "transpiler": "atom-babel6-transpiler",
+                    "options": {
+                        "setBabelEnv": false,
+                        "babel": {
+                            "presets": [
+                                [
+                                    "env",
+                                    {
+                                        "targets": {
+                                            "node": "current"
+                                        }
+                                    }
+                                ]
+                            ],
+                            "sourceMaps": "inline",
+                            "babelrc": false
+                        },
+                        "cacheKeyFiles": [
+                            "package.json"
+                        ]
+                    }
+                }
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-deepscan/versions/1.6.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/deepscan/atom-deepscan/tarball/refs/tags/v1.6.3",
+            "sha": "5b1934ca4215fbf09276783f64335567c83d6bce"
+        },
+        "1.6.2": {
+            "name": "atom-deepscan",
+            "main": "./src/main.js",
+            "version": "1.6.2",
+            "description": "Detect bugs and quality issues in JavaScript, TypeScript, React and Vue.js more precisely",
+            "repository": "https://github.com/deepscan/atom-deepscan.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.13.0 <2.0.0"
+            },
+            "configSchema": {
+                "enable": {
+                    "title": "Enable",
+                    "description": "Controls whether DeepScan inspection should be enabled",
+                    "type": "boolean",
+                    "default": false,
+                    "order": 1
+                },
+                "server": {
+                    "title": "Server",
+                    "description": "Configures the DeepScan server url",
+                    "type": "string",
+                    "default": "https://deepscan.io",
+                    "order": 2
+                },
+                "proxy": {
+                    "title": "Proxy",
+                    "description": "Configures the proxy. If not set will be taken from the http_proxy environment variable.",
+                    "type": "string",
+                    "default": "",
+                    "order": 3
+                },
+                "ignoreConfirmWarning": {
+                    "title": "Controls whether you allow transferring your code to the DeepScan server without prompt. Transferred code is completely deleted right after the inspection.",
+                    "description": "",
+                    "type": "boolean",
+                    "default": false,
+                    "order": 4
+                },
+                "ignoreRules": {
+                    "title": "Rules to be ignored",
+                    "description": "Configures the rules to be ignored. e.g., UNUSED_DECL, BAD_WITH_STATEMENT",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [],
+                    "order": 5
+                },
+                "showDecorators": {
+                    "title": "Show inline decorators",
+                    "description": "Controls whether the problem of the code should be shown along with the code",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 6
+                },
+                "showFullDescription": {
+                    "title": "Show full description",
+                    "description": "Controls whether the full description of the issue should be shown when you hover it. Applied after reopening the file.",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 7
+                }
+            },
+            "scripts": {
+                "test": "apm test"
+            },
+            "keywords": [
+                "javascript",
+                "jsx",
+                "typescript",
+                "react",
+                "linters",
+                "vuejs"
+            ],
+            "dependencies": {
+                "atom-babel6-transpiler": "^1.2.0",
+                "atom-package-deps": "^5.1.0",
+                "babel-preset-env": "^1.7.0",
+                "atom-linter": "^10.0.0",
+                "crypto-random-string": "^1.0.0",
+                "marked": "^1.1.1",
+                "dompurify": "^2.0.12",
+                "axios": "^0.19.2",
+                "form-data": "^3.0.0"
+            },
+            "devDependencies": {},
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "atomTranspilers": [
+                {
+                    "glob": "{src,spec}/*.js",
+                    "transpiler": "atom-babel6-transpiler",
+                    "options": {
+                        "setBabelEnv": false,
+                        "babel": {
+                            "presets": [
+                                [
+                                    "env",
+                                    {
+                                        "targets": {
+                                            "node": "current"
+                                        }
+                                    }
+                                ]
+                            ],
+                            "sourceMaps": "inline",
+                            "babelrc": false
+                        },
+                        "cacheKeyFiles": [
+                            "package.json"
+                        ]
+                    }
+                }
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-deepscan/versions/1.6.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/deepscan/atom-deepscan/tarball/refs/tags/v1.6.2",
+            "sha": "a7c16a7d2da7b96eabe7d0e23ea3958ed5f93cc7"
+        },
+        "1.6.1": {
+            "name": "atom-deepscan",
+            "main": "./src/main.js",
+            "version": "1.6.1",
+            "description": "Detect bugs and quality issues in JavaScript, TypeScript, React and Vue.js more precisely",
+            "repository": "https://github.com/deepscan/atom-deepscan.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.13.0 <2.0.0"
+            },
+            "configSchema": {
+                "enable": {
+                    "title": "Enable",
+                    "description": "Controls whether DeepScan inspection should be enabled",
+                    "type": "boolean",
+                    "default": false,
+                    "order": 1
+                },
+                "server": {
+                    "title": "Server",
+                    "description": "Configures the DeepScan server url",
+                    "type": "string",
+                    "default": "https://deepscan.io",
+                    "order": 2
+                },
+                "proxy": {
+                    "title": "Proxy",
+                    "description": "Configures the proxy. If not set will be taken from the http_proxy environment variable.",
+                    "type": "string",
+                    "default": "",
+                    "order": 3
+                },
+                "ignoreConfirmWarning": {
+                    "title": "Controls whether you allow transferring your code to the DeepScan server without prompt. Transferred code is completely deleted right after the inspection.",
+                    "description": "",
+                    "type": "boolean",
+                    "default": false,
+                    "order": 4
+                },
+                "ignoreRules": {
+                    "title": "Rules to be ignored",
+                    "description": "Configures the rules to be ignored. e.g., UNUSED_DECL, BAD_WITH_STATEMENT",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [],
+                    "order": 5
+                },
+                "showDecorators": {
+                    "title": "Show inline decorators",
+                    "description": "Controls whether the problem of the code should be shown along with the code",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 6
+                },
+                "showFullDescription": {
+                    "title": "Show full description",
+                    "description": "Controls whether the full description of the issue should be shown when you hover it. Applied after reopening the file.",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 7
+                }
+            },
+            "scripts": {
+                "test": "apm test"
+            },
+            "keywords": [
+                "javascript",
+                "jsx",
+                "typescript",
+                "react",
+                "linters",
+                "vuejs"
+            ],
+            "dependencies": {
+                "atom-babel6-transpiler": "^1.2.0",
+                "atom-package-deps": "^5.1.0",
+                "babel-preset-env": "^1.7.0",
+                "atom-linter": "^10.0.0",
+                "crypto-random-string": "^1.0.0",
+                "marked": "^1.1.1",
+                "dompurify": "^2.0.12",
+                "axios": "^0.19.2",
+                "form-data": "^3.0.0"
+            },
+            "devDependencies": {},
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "atomTranspilers": [
+                {
+                    "glob": "{src,spec}/*.js",
+                    "transpiler": "atom-babel6-transpiler",
+                    "options": {
+                        "setBabelEnv": false,
+                        "babel": {
+                            "presets": [
+                                [
+                                    "env",
+                                    {
+                                        "targets": {
+                                            "node": "current"
+                                        }
+                                    }
+                                ]
+                            ],
+                            "sourceMaps": "inline",
+                            "babelrc": false
+                        },
+                        "cacheKeyFiles": [
+                            "package.json"
+                        ]
+                    }
+                }
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-deepscan/versions/1.6.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/deepscan/atom-deepscan/tarball/refs/tags/v1.6.1",
+            "sha": "c8df3a73def445bbf5f0d84165580a33e3c786d1"
+        },
+        "1.6.0": {
+            "name": "atom-deepscan",
+            "main": "./src/main.js",
+            "version": "1.6.0",
+            "description": "Detect bugs and quality issues in JavaScript, TypeScript, React and Vue.js more precisely",
+            "repository": "https://github.com/deepscan/atom-deepscan.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.13.0 <2.0.0"
+            },
+            "configSchema": {
+                "enable": {
+                    "title": "Enable",
+                    "description": "Controls whether DeepScan inspection should be enabled",
+                    "type": "boolean",
+                    "default": false,
+                    "order": 1
+                },
+                "server": {
+                    "title": "Server",
+                    "description": "Configures the DeepScan server url",
+                    "type": "string",
+                    "default": "https://deepscan.io",
+                    "order": 2
+                },
+                "proxy": {
+                    "title": "Proxy",
+                    "description": "Configures the proxy. If not set will be taken from the http_proxy environment variable.",
+                    "type": "string",
+                    "default": "",
+                    "order": 3
+                },
+                "ignoreConfirmWarning": {
+                    "title": "Controls whether you allow transferring your code to the DeepScan server without prompt. Transferred code is completely deleted right after the inspection.",
+                    "description": "",
+                    "type": "boolean",
+                    "default": false,
+                    "order": 4
+                },
+                "ignoreRules": {
+                    "title": "Rules to be ignored",
+                    "description": "Configures the rules to be ignored. e.g., UNUSED_DECL, BAD_WITH_STATEMENT",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [],
+                    "order": 5
+                },
+                "showDecorators": {
+                    "title": "Show inline decorators",
+                    "description": "Controls whether the problem of the code should be shown along with the code",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 6
+                },
+                "showFullDescription": {
+                    "title": "Show full description",
+                    "description": "Controls whether the full description of the issue should be shown when you hover it. Applied after reopening the file.",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 7
+                }
+            },
+            "scripts": {
+                "test": "apm test"
+            },
+            "keywords": [
+                "javascript",
+                "jsx",
+                "typescript",
+                "react",
+                "linters",
+                "vuejs"
+            ],
+            "dependencies": {
+                "atom-babel6-transpiler": "^1.2.0",
+                "atom-package-deps": "^5.1.0",
+                "babel-preset-env": "^1.7.0",
+                "atom-linter": "^10.0.0",
+                "crypto-random-string": "^1.0.0",
+                "marked": "^1.1.1",
+                "dompurify": "^2.0.12",
+                "axios": "^0.19.2",
+                "form-data": "^3.0.0"
+            },
+            "devDependencies": {},
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "atomTranspilers": [
+                {
+                    "glob": "{src,spec}/*.js",
+                    "transpiler": "atom-babel6-transpiler",
+                    "options": {
+                        "setBabelEnv": false,
+                        "babel": {
+                            "presets": [
+                                [
+                                    "env",
+                                    {
+                                        "targets": {
+                                            "node": "current"
+                                        }
+                                    }
+                                ]
+                            ],
+                            "sourceMaps": "inline",
+                            "babelrc": false
+                        },
+                        "cacheKeyFiles": [
+                            "package.json"
+                        ]
+                    }
+                }
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atom-deepscan/versions/1.6.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/deepscan/atom-deepscan/tarball/refs/tags/v1.6.0",
+            "sha": "9f2c55b9468f34a37a33e4352a8b06354171b841"
+        }
+    },
+    "readme": "# atom-deepscan\n\n[![Version](https://img.shields.io/apm/v/atom-deepscan.svg?style=flat-square)](https://atom.io/packages/atom-deepscan)\n[![DeepScan Grade](https://deepscan.io/api/projects/337/branches/538/badge/grade.svg)](https://deepscan.io/dashboard/#view=project&pid=337&bid=538)\n\nAtom package to detect bugs and quality issues in JavaScript, TypeScript, React and Vue.js. Works with [DeepScan](https://deepscan.io).\n\nDeepScan is a cutting-edge JavaScript code inspection tool that helps you to find bugs and quality issues more precisely by data-flow analysis. You can also use it for React and Vue.js because DeepScan delivers [React specialized rules](https://deepscan.io/docs/rules/#react) and [Vue.js specialized rules](https://deepscan.io/docs/rules/#vue).\n\n> **Note:**\n> To use this extension, you should confirm that your code is transferred to the DeepScan server for inspection when you save your changes.\n> You can confirm it by pressing the Confirm button that appears when restarting Atom after the installation.\n>\n> Note that your code is completely deleted from the server right after the inspection.\n\n![Navigation](https://github.com/deepscan/atom-deepscan/raw/master/resources/preview.png)\n\n## Installation\n\n```ShellSession\napm install atom-deepscan\n```\n\n## How it works\n\n- You need [Linter](https://atom.io/packages/linter) package. Once Linter package is installed, just restart Atom.\n- Report issues in the Linter view when you open a `*.js`, `*.jsx`, `*.mjs`, `*.ts`, `*.tsx`, and `*.vue` file and save it.\n- Highlight issues in the code.\n- For support of `.jsx` file, include a grammar of [atom-react](https://github.com/orktes/atom-react).\n- For support of `.ts` and `.tsx` file, include a grammar of [language-typescript-grammars-only](https://github.com/tcarlsen/language-typescript-grammars-only).\n- For support of `.vue` file, include a grammar of [atom-vue](https://github.com/hedefalk/atom-vue).\n\n## Settings Options\n\nThis plugin contributes the following variables to the settings:\n\n- `enable`: Enable/disable DeepScan inspection. Disabled by default. Enabled when you confirm.\n- `server`: Set a URL of DeepScan server. \"https://deepscan.io\" by default.\n- `proxy`: Set a URL of proxy server. When you do not have/want a system-wide `http_proxy` environment variable, you can set the proxy server's URL here.\n- `ignoreRules`: Set an array of rules to exclude.\n- `showDecorators`: Controls whether the problem of the code should be shown along with the code.\n- `showFullDescription`: Controls whether the full description of the issue should be shown when you hover it. Applied after reopening the file.\n\n![Settings](https://github.com/deepscan/atom-deepscan/raw/master/resources/settings.png)\n\n### Disabling Rules with Inline Comments\n\nWhile you can exclude rules project wide via `deepscan.ignoreRules` option, you can also disable a rule in a file using inline comment.\n```javascript\nconst x = 0;\nx = 1; x + 1; // deepscan-disable-line UNUSED_EXPR\n```\n\nRead more about it [here](https://deepscan.io/docs/get-started/disabling-rules/).\n\n## Using behind a proxy\n\nTo do an inspection, this extension requires a connection with the DeepScan server. But this connection cannot be established when you are behind a proxy.\n\nFor this case, you can try one of the following:\n\n* Set `http_proxy` environment variable: `http_proxy` [is respected](https://www.npmjs.com/package/axios#request-config), if any.\n* Set **Proxy** option: When you do not have/want a system-wide `http_proxy` environment variable, you can set the proxy server's URL in the **Proxy** option.\n",
+    "metadata": {
+        "name": "atom-deepscan",
+        "main": "./src/main.js",
+        "version": "1.6.5",
+        "description": "Detect bugs and quality issues in JavaScript, TypeScript, React and Vue.js more precisely",
+        "repository": "https://github.com/deepscan/atom-deepscan.git",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.13.0 <2.0.0"
+        },
+        "configSchema": {
+            "enable": {
+                "title": "Enable",
+                "description": "Controls whether DeepScan inspection should be enabled",
+                "type": "boolean",
+                "default": false,
+                "order": 1
+            },
+            "server": {
+                "title": "Server",
+                "description": "Configures the DeepScan server url",
+                "type": "string",
+                "default": "https://deepscan.io",
+                "order": 2
+            },
+            "proxy": {
+                "title": "Proxy",
+                "description": "Configures the proxy. If not set will be taken from the http_proxy environment variable.",
+                "type": "string",
+                "default": "",
+                "order": 3
+            },
+            "ignoreConfirmWarning": {
+                "title": "Controls whether you allow transferring your code to the DeepScan server without prompt. Transferred code is completely deleted right after the inspection.",
+                "description": "",
+                "type": "boolean",
+                "default": false,
+                "order": 4
+            },
+            "ignoreRules": {
+                "title": "Rules to be ignored",
+                "description": "Configures the rules to be ignored. e.g., UNUSED_DECL, BAD_WITH_STATEMENT",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "default": [],
+                "order": 5
+            },
+            "showDecorators": {
+                "title": "Show inline decorators",
+                "description": "Controls whether the problem of the code should be shown along with the code",
+                "type": "boolean",
+                "default": true,
+                "order": 6
+            },
+            "showFullDescription": {
+                "title": "Show full description",
+                "description": "Controls whether the full description of the issue should be shown when you hover it. Applied after reopening the file.",
+                "type": "boolean",
+                "default": true,
+                "order": 7
+            }
+        },
+        "scripts": {
+            "test": "apm test"
+        },
+        "keywords": [
+            "javascript",
+            "jsx",
+            "typescript",
+            "react",
+            "linters",
+            "vuejs"
+        ],
+        "dependencies": {
+            "atom-babel6-transpiler": "^1.2.0",
+            "atom-package-deps": "^5.1.0",
+            "babel-preset-env": "^1.7.0",
+            "atom-linter": "^10.0.0",
+            "crypto-random-string": "^1.0.0",
+            "marked": "^1.1.1",
+            "dompurify": "^2.0.12",
+            "axios": "^0.19.2",
+            "form-data": "^3.0.0"
+        },
+        "devDependencies": {},
+        "package-deps": [
+            "linter:2.0.0"
+        ],
+        "providedServices": {
+            "linter": {
+                "versions": {
+                    "2.0.0": "provideLinter"
+                }
+            }
+        },
+        "consumedServices": {
+            "status-bar": {
+                "versions": {
+                    "^1.0.0": "consumeStatusBar"
+                }
+            }
+        },
+        "atomTranspilers": [
+            {
+                "glob": "{src,spec}/*.js",
+                "transpiler": "atom-babel6-transpiler",
+                "options": {
+                    "setBabelEnv": false,
+                    "babel": {
+                        "presets": [
+                            [
+                                "env",
+                                {
+                                    "targets": {
+                                        "node": "current"
+                                    }
+                                }
+                            ]
+                        ],
+                        "sourceMaps": "inline",
+                        "babelrc": false
+                    },
+                    "cacheKeyFiles": [
+                        "package.json"
+                    ]
+                }
+            }
+        ]
+    },
+    "created": 1658332117017,
+    "updated": 1658332117017,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

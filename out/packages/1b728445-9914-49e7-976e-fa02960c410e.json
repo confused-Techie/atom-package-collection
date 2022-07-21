@@ -1,0 +1,2186 @@
+{
+    "name": "ide-ruby",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kwerle/ide-ruby"
+    },
+    "downloads": 64605,
+    "stargazers_count": 22,
+    "releases": {
+        "latest": "0.5.2"
+    },
+    "versions": {
+        "0.5.2": {
+            "name": "ide-ruby",
+            "version": "0.5.2",
+            "description": "Atom-IDE support for ruby language.  Requires docker.  Most of the functionality comes from https://github.com/kwerle/ruby_language_server",
+            "main": "src/main.js",
+            "scripts": {
+                "lint": "eslint src/",
+                "test": "npm run lint"
+            },
+            "repository": "https://github.com/kwerle/ide-ruby.git",
+            "keywords": [
+                "ruby",
+                "rubocop",
+                "ruby-parsing",
+                "ide",
+                "language-server-protocol",
+                "languageserver",
+                "outline-view"
+            ],
+            "author": {
+                "name": "Kurt Werle"
+            },
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/kwerle/ide-ruby/issues"
+            },
+            "homepage": "https://github.com/kwerle/ide-ruby#readme",
+            "devDependencies": {
+                "eslint": ">=4.7.1"
+            },
+            "dependencies": {
+                "atom-package-deps": ">=4.6.0",
+                "atom-languageclient": ">=0.9.5"
+            },
+            "package-deps": [
+                "atom-ide-ui"
+            ],
+            "non-dependencies": {
+                "ruby-language-server": ">=0.0.1"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "dockerPath": {
+                    "type": "string",
+                    "default": "/usr/local/bin/docker",
+                    "description": "Absolute path to the docker command (restart for effect)"
+                },
+                "imageName": {
+                    "type": "string",
+                    "default": "kwerle/ruby_language_server:latest",
+                    "description": "Ruby language server docker image to run (was mtsmfm/language_server - restart for effect)"
+                },
+                "additionalGems": {
+                    "type": "string",
+                    "default": "",
+                    "description": "If you use additional gems with rubocop - like rubocop-rspec, you should list them comma separated here.  Note that this will cause these gems to get installed (in the docker image) every time you open a project..."
+                },
+                "lintLevel": {
+                    "type": "string",
+                    "default": "4",
+                    "description": "What level of lint do you want to see (restart for effect)?",
+                    "enum": [
+                        {
+                            "value": "0",
+                            "description": "None"
+                        },
+                        {
+                            "value": "1",
+                            "description": "Just errors"
+                        },
+                        {
+                            "value": "2",
+                            "description": "Warnings"
+                        },
+                        {
+                            "value": "3",
+                            "description": "Information"
+                        },
+                        {
+                            "value": "4",
+                            "description": "Everything including hints"
+                        }
+                    ]
+                }
+            },
+            "enhancedScopes": [
+                "source.ruby"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomRequirements": [
+                "language-ruby"
+            ],
+            "atomCommands": {
+                "ide-ruby:help": "Provides help information and descriptions of commands."
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-ruby/versions/0.5.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kwerle/ide-ruby/tarball/refs/tags/v0.5.2",
+            "sha": "230e2017f7b2d02ec3918388e8c040ccbb2d2cc5"
+        },
+        "0.5.0": {
+            "name": "ide-ruby",
+            "version": "0.5.0",
+            "description": "Atom-IDE support for ruby language.  Requires docker.  Most of the functionality comes from https://github.com/kwerle/ruby_language_server",
+            "main": "src/main.js",
+            "scripts": {
+                "lint": "eslint src/",
+                "test": "npm run lint"
+            },
+            "repository": "https://github.com/kwerle/ide-ruby.git",
+            "keywords": [
+                "ruby",
+                "rubocop",
+                "ruby-parsing",
+                "ide",
+                "language-server-protocol",
+                "languageserver",
+                "outline-view"
+            ],
+            "author": {
+                "name": "Kurt Werle"
+            },
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/kwerle/ide-ruby/issues"
+            },
+            "homepage": "https://github.com/kwerle/ide-ruby#readme",
+            "devDependencies": {
+                "eslint": ">=4.7.1"
+            },
+            "dependencies": {
+                "atom-package-deps": ">=4.6.0",
+                "atom-languageclient": ">=0.9.5"
+            },
+            "package-deps": [
+                "atom-ide-ui"
+            ],
+            "non-dependencies": {
+                "ruby-language-server": ">=0.0.1"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "dockerPath": {
+                    "type": "string",
+                    "default": "/usr/local/bin/docker",
+                    "description": "Absolute path to the docker command (restart for effect)"
+                },
+                "imageName": {
+                    "type": "string",
+                    "default": "kwerle/ruby_language_server:latest",
+                    "description": "Ruby language server docker image to run (was mtsmfm/language_server - restart for effect)"
+                },
+                "additionalGems": {
+                    "type": "string",
+                    "default": "",
+                    "description": "If you use additional gems with rubocop - like rubocop-rspec, you should list them comma separated here.  Note that this will cause these gems to get installed (in the docker image) every time you open a project..."
+                },
+                "lintLevel": {
+                    "type": "string",
+                    "default": "4",
+                    "description": "What level of lint do you want to see (restart for effect)?",
+                    "enum": [
+                        {
+                            "value": "0",
+                            "description": "None"
+                        },
+                        {
+                            "value": "1",
+                            "description": "Just errors"
+                        },
+                        {
+                            "value": "2",
+                            "description": "Warnings"
+                        },
+                        {
+                            "value": "3",
+                            "description": "Information"
+                        },
+                        {
+                            "value": "4",
+                            "description": "Everything including hints"
+                        }
+                    ]
+                }
+            },
+            "enhancedScopes": [
+                "source.ruby"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomRequirements": [
+                "language-ruby"
+            ],
+            "atomCommands": {
+                "ide-ruby:help": "Provides help information and descriptions of commands."
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-ruby/versions/0.5.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kwerle/ide-ruby/tarball/refs/tags/0.5.0",
+            "sha": "c826db689d229878980fede6477b2e016c6fdca7"
+        },
+        "0.4.0": {
+            "name": "ide-ruby",
+            "version": "0.4.0",
+            "description": "Atom-IDE support for ruby language.  Requires docker.  Most of the functionality comes from https://github.com/kwerle/ruby_language_server",
+            "main": "src/main.js",
+            "scripts": {
+                "lint": "eslint src/",
+                "test": "npm run lint"
+            },
+            "repository": "https://github.com/kwerle/ide-ruby.git",
+            "keywords": [
+                "ruby",
+                "rubocop",
+                "ruby-parsing",
+                "ide",
+                "language-server-protocol",
+                "languageserver",
+                "outline-view"
+            ],
+            "author": {
+                "name": "Kurt Werle"
+            },
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/kwerle/ide-ruby/issues"
+            },
+            "homepage": "https://github.com/kwerle/ide-ruby#readme",
+            "devDependencies": {
+                "eslint": ">=4.7.1"
+            },
+            "dependencies": {
+                "atom-package-deps": ">=4.6.0",
+                "atom-languageclient": ">=0.9.5"
+            },
+            "package-deps": [
+                "atom-ide-ui"
+            ],
+            "non-dependencies": {
+                "ruby-language-server": ">=0.0.1"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "dockerPath": {
+                    "type": "string",
+                    "default": "/usr/local/bin/docker",
+                    "description": "Absolute path to the docker command (restart for effect)"
+                },
+                "imageName": {
+                    "type": "string",
+                    "default": "kwerle/ruby_language_server:latest",
+                    "description": "Ruby language server docker image to run (was mtsmfm/language_server - restart for effect)"
+                },
+                "additionalGems": {
+                    "type": "string",
+                    "default": "",
+                    "description": "If you use additional gems with rubocop - like rubocop-rspec, you should list them comma separated here.  Note that this will cause these gems to get installed (in the docker image) every time you open a project..."
+                },
+                "lintLevel": {
+                    "type": "string",
+                    "default": "4",
+                    "description": "What level of lint do you want to see (restart for effect)?",
+                    "enum": [
+                        {
+                            "value": "0",
+                            "description": "None"
+                        },
+                        {
+                            "value": "1",
+                            "description": "Just errors"
+                        },
+                        {
+                            "value": "2",
+                            "description": "Warnings"
+                        },
+                        {
+                            "value": "3",
+                            "description": "Information"
+                        },
+                        {
+                            "value": "4",
+                            "description": "Everything including hints"
+                        }
+                    ]
+                }
+            },
+            "enhancedScopes": [
+                "source.ruby"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomRequirements": [
+                "language-ruby"
+            ],
+            "atomCommands": {
+                "ide-ruby:help": "Provides help information and descriptions of commands."
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-ruby/versions/0.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kwerle/ide-ruby/tarball/refs/tags/0.4.0",
+            "sha": "96fb4129b8ad3b27a7618121a9d5488a3cdae523"
+        },
+        "0.3.0": {
+            "name": "ide-ruby",
+            "version": "0.3.0",
+            "description": "Atom-IDE support for ruby language.  Requires docker.  Most of the functionality comes from https://github.com/kwerle/ruby_language_server",
+            "main": "src/main.js",
+            "scripts": {
+                "lint": "eslint src/",
+                "test": "npm run lint"
+            },
+            "repository": "https://github.com/kwerle/ide-ruby.git",
+            "keywords": [
+                "ruby",
+                "rubocop",
+                "ruby-parsing",
+                "ide",
+                "language-server-protocol",
+                "outline-view"
+            ],
+            "author": {
+                "name": "Kurt Werle"
+            },
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/kwerle/ide-ruby/issues"
+            },
+            "homepage": "https://github.com/kwerle/ide-ruby#readme",
+            "devDependencies": {
+                "eslint": "^4.7.1"
+            },
+            "dependencies": {
+                "atom-package-deps": "4.6.0",
+                "atom-languageclient": "^0.9.5"
+            },
+            "package-deps": [
+                "atom-ide-ui"
+            ],
+            "non-dependencies": {
+                "ruby-language-server": "^0.0.1"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "dockerPath": {
+                    "type": "string",
+                    "default": "/usr/local/bin/docker",
+                    "description": "Absolute path to the docker command (restart for effect)"
+                },
+                "imageName": {
+                    "type": "string",
+                    "default": "kwerle/ruby_language_server:latest",
+                    "description": "Ruby language server docker image to run (was mtsmfm/language_server - restart for effect)"
+                },
+                "additionalGems": {
+                    "type": "string",
+                    "default": "",
+                    "description": "If you use additional gems with rubocop - like rubocop-rspec, you should list them comma separated here.  Note that this will cause these gems to get installed (in the docker image) every time you open a project..."
+                },
+                "lintLevel": {
+                    "type": "string",
+                    "default": "4",
+                    "description": "What level of lint do you want to see (restart for effect)?",
+                    "enum": [
+                        {
+                            "value": "0",
+                            "description": "None"
+                        },
+                        {
+                            "value": "1",
+                            "description": "Just errors"
+                        },
+                        {
+                            "value": "2",
+                            "description": "Warnings"
+                        },
+                        {
+                            "value": "3",
+                            "description": "Information"
+                        },
+                        {
+                            "value": "4",
+                            "description": "Everything including hints"
+                        }
+                    ]
+                }
+            },
+            "enhancedScopes": [
+                "source.ruby"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomRequirements": [
+                "language-ruby"
+            ],
+            "atomCommands": {
+                "ide-ruby:help": "Provides help information and descriptions of commands."
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-ruby/versions/0.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kwerle/ide-ruby/tarball/refs/tags/0.3.0",
+            "sha": "28e5b71336c2280e948e774de4436db6552efaef"
+        },
+        "0.2.2": {
+            "name": "ide-ruby",
+            "version": "0.2.2",
+            "description": "Atom-IDE support for ruby language.  Requires docker.  Most of the functionality comes from https://github.com/kwerle/ruby_language_server",
+            "main": "src/main.js",
+            "scripts": {
+                "lint": "eslint src/",
+                "test": "npm run lint"
+            },
+            "repository": "https://github.com/kwerle/ide-ruby.git",
+            "keywords": [
+                "ruby",
+                "rubocop",
+                "ruby-parsing",
+                "ide",
+                "language-server-protocol",
+                "outline-view"
+            ],
+            "author": {
+                "name": "Kurt Werle"
+            },
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/kwerle/ide-ruby/issues"
+            },
+            "homepage": "https://github.com/kwerle/ide-ruby#readme",
+            "devDependencies": {
+                "eslint": "^4.7.1"
+            },
+            "dependencies": {
+                "atom-package-deps": "4.6.0",
+                "atom-languageclient": "^0.9.5"
+            },
+            "package-deps": [
+                "atom-ide-ui"
+            ],
+            "non-dependencies": {
+                "ruby-language-server": "^0.0.1"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "dockerPath": {
+                    "type": "string",
+                    "default": "/usr/local/bin/docker",
+                    "description": "Absolute path to the docker command (restart for effect)"
+                },
+                "imageName": {
+                    "type": "string",
+                    "default": "kwerle/ruby_language_server:latest",
+                    "description": "Ruby language server docker image to run (was mtsmfm/language_server - restart for effect)"
+                },
+                "lintLevel": {
+                    "type": "string",
+                    "default": "4",
+                    "description": "What level of lint do you want to see (restart for effect)?",
+                    "enum": [
+                        {
+                            "value": "0",
+                            "description": "None"
+                        },
+                        {
+                            "value": "1",
+                            "description": "Just errors"
+                        },
+                        {
+                            "value": "2",
+                            "description": "Warnings"
+                        },
+                        {
+                            "value": "3",
+                            "description": "Information"
+                        },
+                        {
+                            "value": "4",
+                            "description": "Everything including hints"
+                        }
+                    ]
+                }
+            },
+            "enhancedScopes": [
+                "source.ruby"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomRequirements": [
+                "language-ruby"
+            ],
+            "atomCommands": {
+                "ide-ruby:help": "Provides help information and descriptions of commands."
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-ruby/versions/0.2.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kwerle/ide-ruby/tarball/refs/tags/0.2.2",
+            "sha": "962d3238d47989327a9115ce9821b3f462459301"
+        },
+        "0.2.1": {
+            "name": "ide-ruby",
+            "version": "0.2.1",
+            "description": "Atom-IDE support for ruby language.  Requires docker.  Most of the functionality comes from https://github.com/kwerle/ruby_language_server",
+            "main": "src/main.js",
+            "scripts": {
+                "lint": "eslint src/",
+                "test": "npm run lint"
+            },
+            "repository": "https://github.com/kwerle/ide-ruby.git",
+            "keywords": [
+                "ruby",
+                "rubocop",
+                "ruby-parsing",
+                "ide",
+                "language-server-protocol",
+                "outline-view"
+            ],
+            "author": {
+                "name": "Kurt Werle"
+            },
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/kwerle/ide-ruby/issues"
+            },
+            "homepage": "https://github.com/kwerle/ide-ruby#readme",
+            "devDependencies": {
+                "eslint": "^4.7.1"
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.9.5"
+            },
+            "non-dependencies": {
+                "ruby-language-server": "^0.0.1"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "dockerPath": {
+                    "type": "string",
+                    "default": "/usr/local/bin/docker",
+                    "description": "Absolute path to the docker command (restart for effect)"
+                },
+                "imageName": {
+                    "type": "string",
+                    "default": "kwerle/ruby_language_server:latest",
+                    "description": "Ruby language server docker image to run (was mtsmfm/language_server - restart for effect)"
+                },
+                "lintLevel": {
+                    "type": "string",
+                    "default": "4",
+                    "description": "What level of lint do you want to see (restart for effect)?",
+                    "enum": [
+                        {
+                            "value": "0",
+                            "description": "None"
+                        },
+                        {
+                            "value": "1",
+                            "description": "Just errors"
+                        },
+                        {
+                            "value": "2",
+                            "description": "Warnings"
+                        },
+                        {
+                            "value": "3",
+                            "description": "Information"
+                        },
+                        {
+                            "value": "4",
+                            "description": "Everything including hints"
+                        }
+                    ]
+                }
+            },
+            "enhancedScopes": [
+                "source.ruby"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomRequirements": [
+                "language-ruby"
+            ],
+            "atomCommands": {
+                "ide-ruby:help": "Provides help information and descriptions of commands."
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-ruby/versions/0.2.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kwerle/ide-ruby/tarball/refs/tags/0.2.1",
+            "sha": "87f27c7018ca696384ff1c42d875e7069a0cd11d"
+        },
+        "0.2.0": {
+            "name": "ide-ruby",
+            "version": "0.2.0",
+            "description": "Atom-IDE support for ruby language.  Most of the functionality comes from https://github.com/kwerle/ruby_language_server",
+            "main": "src/main.js",
+            "scripts": {
+                "lint": "eslint src/",
+                "test": "npm run lint"
+            },
+            "repository": "https://github.com/kwerle/ide-ruby.git",
+            "keywords": [
+                "ruby",
+                "ruby-parsing",
+                "ide",
+                "language-server-protocol",
+                "outline-view"
+            ],
+            "author": {
+                "name": "Kurt Werle"
+            },
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/kwerle/ide-ruby/issues"
+            },
+            "homepage": "https://github.com/kwerle/ide-ruby#readme",
+            "devDependencies": {
+                "eslint": "^4.7.1"
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.4"
+            },
+            "non-dependencies": {
+                "ruby-language-server": "^0.0.1"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "dockerPath": {
+                    "type": "string",
+                    "default": "/usr/local/bin/docker",
+                    "description": "Absolute path to the docker command (restart for effect)"
+                },
+                "imageName": {
+                    "type": "string",
+                    "default": "kwerle/ruby_language_server:latest",
+                    "description": "Ruby language server docker image to run (was mtsmfm/language_server - restart for effect)"
+                },
+                "lintLevel": {
+                    "type": "string",
+                    "default": "4",
+                    "description": "What level of lint do you want to see (restart for effect)?",
+                    "enum": [
+                        {
+                            "value": "0",
+                            "description": "None"
+                        },
+                        {
+                            "value": "1",
+                            "description": "Just errors"
+                        },
+                        {
+                            "value": "2",
+                            "description": "Warnings"
+                        },
+                        {
+                            "value": "3",
+                            "description": "Information"
+                        },
+                        {
+                            "value": "4",
+                            "description": "Everything including hints"
+                        }
+                    ]
+                }
+            },
+            "enhancedScopes": [
+                "source.ruby"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomRequirements": [
+                "atom-ide-ui",
+                "language-ruby"
+            ],
+            "atomCommands": {
+                "ide-ruby:help": "Provides help information and descriptions of commands."
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-ruby/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kwerle/ide-ruby/tarball/refs/tags/0.2.0",
+            "sha": "857c502cb5cf91ec26cbb0f666ade1d58b1d7e01"
+        },
+        "0.1.10": {
+            "name": "ide-ruby",
+            "version": "0.1.10",
+            "description": "Atom-IDE support for ruby language.  Most of the functionality comes from https://github.com/kwerle/ruby_language_server",
+            "main": "src/main.js",
+            "scripts": {
+                "lint": "eslint src/",
+                "test": "npm run lint"
+            },
+            "repository": "https://github.com/kwerle/ide-ruby.git",
+            "keywords": [
+                "ruby",
+                "ruby-parsing",
+                "ide",
+                "language-server-protocol",
+                "outline-view"
+            ],
+            "author": {
+                "name": "Kurt Werle"
+            },
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/kwerle/ide-ruby/issues"
+            },
+            "homepage": "https://github.com/kwerle/ide-ruby#readme",
+            "devDependencies": {
+                "eslint": "^4.7.1"
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.4"
+            },
+            "non-dependencies": {
+                "ruby-language-server": "^0.0.1"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "dockerPath": {
+                    "type": "string",
+                    "default": "/usr/local/bin/docker",
+                    "description": "Absolute path to the docker command (restart for effect)"
+                },
+                "imageName": {
+                    "type": "string",
+                    "default": "kwerle/ruby_language_server:latest",
+                    "description": "Ruby language server docker image to run (was mtsmfm/language_server - restart for effect)"
+                },
+                "lintLevel": {
+                    "type": "string",
+                    "default": "4",
+                    "description": "What level of lint do you want to see (restart for effect)?",
+                    "enum": [
+                        {
+                            "value": "0",
+                            "description": "None"
+                        },
+                        {
+                            "value": "1",
+                            "description": "Just errors"
+                        },
+                        {
+                            "value": "2",
+                            "description": "Warnings"
+                        },
+                        {
+                            "value": "3",
+                            "description": "Information"
+                        },
+                        {
+                            "value": "4",
+                            "description": "Everything including hints"
+                        }
+                    ]
+                }
+            },
+            "enhancedScopes": [
+                "source.ruby"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomRequirements": [
+                "atom-ide-ui",
+                "language-ruby"
+            ],
+            "atomCommands": {
+                "ide-ruby:help": "Provides help information and descriptions of commands."
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-ruby/versions/0.1.10/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kwerle/ide-ruby/tarball/refs/tags/0.1.10",
+            "sha": "baeec40067186c023bd6d10331ee3285618fee0a"
+        },
+        "0.1.9": {
+            "name": "ide-ruby",
+            "version": "0.1.9",
+            "description": "Atom-IDE support for ruby language.  Most of the functionality comes from https://github.com/kwerle/ruby_language_server",
+            "main": "src/main.js",
+            "scripts": {
+                "lint": "eslint src/",
+                "test": "npm run lint"
+            },
+            "repository": "https://github.com/kwerle/ide-ruby.git",
+            "keywords": [
+                "ruby",
+                "ruby-parsing",
+                "ide",
+                "language-server-protocol",
+                "outline-view"
+            ],
+            "author": {
+                "name": "Kurt Werle"
+            },
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/kwerle/ide-ruby/issues"
+            },
+            "homepage": "https://github.com/kwerle/ide-ruby#readme",
+            "devDependencies": {
+                "eslint": "^4.7.1"
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.4"
+            },
+            "non-dependencies": {
+                "ruby-language-server": "^0.0.1"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "dockerPath": {
+                    "type": "string",
+                    "default": "/usr/local/bin/docker",
+                    "description": "Absolute path to the docker command (restart for effect)"
+                },
+                "imageName": {
+                    "type": "string",
+                    "default": "kwerle/ruby_language_server:latest",
+                    "description": "Ruby language server docker image to run (was mtsmfm/language_server - restart for effect)"
+                },
+                "lintLevel": {
+                    "type": "string",
+                    "default": "4",
+                    "description": "What level of lint do you want to see (restart for effect)?",
+                    "enum": [
+                        {
+                            "value": "0",
+                            "description": "None"
+                        },
+                        {
+                            "value": "1",
+                            "description": "Just errors"
+                        },
+                        {
+                            "value": "2",
+                            "description": "Warnings"
+                        },
+                        {
+                            "value": "3",
+                            "description": "Information"
+                        },
+                        {
+                            "value": "4",
+                            "description": "Everything including hints"
+                        }
+                    ]
+                }
+            },
+            "enhancedScopes": [
+                "source.ruby"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomRequirements": [
+                "atom-ide-ui",
+                "language-ruby"
+            ],
+            "atomCommands": {
+                "ide-ruby:help": "Provides help information and descriptions of commands."
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-ruby/versions/0.1.9/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kwerle/ide-ruby/tarball/refs/tags/v0.1.9",
+            "sha": "c3674fbe30c2a4abe944acee97c797afe9fec048"
+        },
+        "0.1.7": {
+            "name": "ide-ruby",
+            "version": "0.1.7",
+            "description": "Atom-IDE support for ruby language.  Most of the functionality comes from https://github.com/kwerle/ruby_language_server",
+            "main": "src/main.js",
+            "scripts": {
+                "lint": "eslint src/",
+                "test": "npm run lint"
+            },
+            "repository": "https://github.com/kwerle/ide-ruby.git",
+            "keywords": [
+                "ruby",
+                "ruby-parsing",
+                "ide",
+                "language-server-protocol",
+                "outline-view"
+            ],
+            "author": {
+                "name": "Kurt Werle"
+            },
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/kwerle/ide-ruby/issues"
+            },
+            "homepage": "https://github.com/kwerle/ide-ruby#readme",
+            "devDependencies": {
+                "eslint": "^4.7.1"
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.4"
+            },
+            "non-dependencies": {
+                "ruby-language-server": "^0.0.1"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "dockerPath": {
+                    "type": "string",
+                    "default": "/usr/local/bin/docker",
+                    "description": "Absolute path to the docker command (restart for effect)"
+                },
+                "imageName": {
+                    "type": "string",
+                    "default": "kwerle/ruby_language_server:latest",
+                    "description": "Ruby language server docker image to run (was mtsmfm/language_server - restart for effect)"
+                },
+                "lintLevel": {
+                    "type": "string",
+                    "default": "4",
+                    "description": "What level of lint do you want to see (restart for effect)?",
+                    "enum": [
+                        {
+                            "value": "0",
+                            "description": "None"
+                        },
+                        {
+                            "value": "1",
+                            "description": "Just errors"
+                        },
+                        {
+                            "value": "2",
+                            "description": "Warnings"
+                        },
+                        {
+                            "value": "3",
+                            "description": "Information"
+                        },
+                        {
+                            "value": "4",
+                            "description": "Everything including hints"
+                        }
+                    ]
+                }
+            },
+            "enhancedScopes": [
+                "source.ruby"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomRequirements": [
+                "atom-ide-ui",
+                "language-ruby"
+            ],
+            "atomCommands": {
+                "ide-ruby:help": "Provides help information and descriptions of commands."
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-ruby/versions/0.1.7/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kwerle/ide-ruby/tarball/refs/tags/0.1.7",
+            "sha": "08cb5c61fce382c74c8a821b2a5cb5a9d4467c62"
+        },
+        "0.1.6": {
+            "name": "ide-ruby",
+            "version": "0.1.6",
+            "description": "Atom-IDE support for ruby language.  Most of the functionality comes from https://github.com/kwerle/ruby_language_server",
+            "main": "src/main.js",
+            "scripts": {
+                "lint": "eslint src/",
+                "test": "npm run lint"
+            },
+            "repository": "https://github.com/kwerle/ide-ruby.git",
+            "keywords": [
+                "ruby",
+                "ruby-parsing",
+                "ide",
+                "language-server-protocol",
+                "outline-view"
+            ],
+            "author": {
+                "name": "Kurt Werle"
+            },
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/kwerle/ide-ruby/issues"
+            },
+            "homepage": "https://github.com/kwerle/ide-ruby#readme",
+            "devDependencies": {
+                "eslint": "^4.7.1"
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.4"
+            },
+            "non-dependencies": {
+                "ruby-language-server": "^0.0.1"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "dockerPath": {
+                    "type": "string",
+                    "default": "/usr/local/bin/docker",
+                    "description": "Absolute path to the docker command (restart for effect)"
+                },
+                "imageName": {
+                    "type": "string",
+                    "default": "kwerle/ruby_language_server:latest",
+                    "description": "Ruby language server docker image to run (was mtsmfm/language_server - restart for effect)"
+                },
+                "lintLevel": {
+                    "type": "string",
+                    "default": "4",
+                    "description": "What level of lint do you want to see (restart for effect)?",
+                    "enum": [
+                        {
+                            "value": "0",
+                            "description": "None"
+                        },
+                        {
+                            "value": "1",
+                            "description": "Just errors"
+                        },
+                        {
+                            "value": "2",
+                            "description": "Warnings"
+                        },
+                        {
+                            "value": "3",
+                            "description": "Information"
+                        },
+                        {
+                            "value": "4",
+                            "description": "Everything including hints"
+                        }
+                    ]
+                }
+            },
+            "enhancedScopes": [
+                "source.ruby"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomRequirements": [
+                "atom-ide-ui",
+                "language-ruby"
+            ],
+            "atomCommands": {
+                "ide-ruby:help": "Provides help information and descriptions of commands."
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-ruby/versions/0.1.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kwerle/ide-ruby/tarball/refs/tags/0.1.6",
+            "sha": "6cbf9ce381ae10dd5036ee9ba712acafa7333cfb"
+        },
+        "0.1.4": {
+            "name": "ide-ruby",
+            "version": "0.1.4",
+            "description": "Atom-IDE support for ruby language.  Most of the functionality comes from https://github.com/kwerle/ruby_language_server",
+            "main": "src/main.js",
+            "scripts": {
+                "lint": "eslint src/",
+                "test": "npm run lint"
+            },
+            "repository": "https://github.com/kwerle/ide-ruby.git",
+            "keywords": [
+                "ruby",
+                "ruby-parsing",
+                "ide",
+                "language-server-protocol",
+                "outline-view"
+            ],
+            "author": {
+                "name": "Kurt Werle"
+            },
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/kwerle/ide-ruby/issues"
+            },
+            "homepage": "https://github.com/kwerle/ide-ruby#readme",
+            "devDependencies": {
+                "eslint": "^4.7.1"
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.4"
+            },
+            "non-dependencies": {
+                "ruby-language-server": "^0.0.1"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "dockerPath": {
+                    "type": "string",
+                    "default": "/usr/local/bin/docker",
+                    "description": "Absolute path to the docker command (restart for effect)"
+                },
+                "imageName": {
+                    "type": "string",
+                    "default": "kwerle/ruby_language_server:latest",
+                    "description": "Ruby language server docker image to run (was mtsmfm/language_server - restart for effect)"
+                },
+                "lintLevel": {
+                    "type": "string",
+                    "default": "4",
+                    "description": "What level of lint do you want to see (restart for effect)?",
+                    "enum": [
+                        {
+                            "value": "0",
+                            "description": "None"
+                        },
+                        {
+                            "value": "1",
+                            "description": "Just errors"
+                        },
+                        {
+                            "value": "2",
+                            "description": "Warnings"
+                        },
+                        {
+                            "value": "3",
+                            "description": "Information"
+                        },
+                        {
+                            "value": "4",
+                            "description": "Everything including hints"
+                        }
+                    ]
+                }
+            },
+            "enhancedScopes": [
+                "source.ruby"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomRequirements": [
+                "atom-ide-ui",
+                "language-ruby"
+            ],
+            "atomCommands": {
+                "ide-ruby:help": "Provides help information and descriptions of commands."
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-ruby/versions/0.1.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kwerle/ide-ruby/tarball/refs/tags/v0.1.4",
+            "sha": "b3734740e12f42940652c325778ccf7234185043"
+        },
+        "0.1.3": {
+            "name": "ide-ruby",
+            "version": "0.1.3",
+            "description": "Atom-IDE support for ruby language.  Most of the functionality comes from https://github.com/kwerle/ruby_language_server",
+            "main": "src/main.js",
+            "scripts": {
+                "lint": "eslint src/",
+                "test": "npm run lint"
+            },
+            "repository": "https://github.com/kwerle/ide-ruby.git",
+            "keywords": [
+                "ruby",
+                "ruby-parsing",
+                "ide",
+                "language-server-protocol",
+                "outline-view"
+            ],
+            "author": {
+                "name": "Kurt Werle"
+            },
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/kwerle/ide-ruby/issues"
+            },
+            "homepage": "https://github.com/kwerle/ide-ruby#readme",
+            "devDependencies": {
+                "eslint": "^4.7.1"
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.4"
+            },
+            "non-dependencies": {
+                "ruby-language-server": "^0.0.1"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "dockerPath": {
+                    "type": "string",
+                    "default": "/usr/local/bin/docker",
+                    "description": "Absolute path to the docker command"
+                },
+                "imageName": {
+                    "type": "string",
+                    "default": "kwerle/ruby_language_server:latest",
+                    "description": "Ruby language server docker image to run (was mtsmfm/language_server)"
+                }
+            },
+            "enhancedScopes": [
+                "source.ruby"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomRequirements": [
+                "atom-ide-ui",
+                "language-ruby"
+            ],
+            "atomCommands": {
+                "ide-ruby:help": "Provides help information and descriptions of commands."
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-ruby/versions/0.1.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kwerle/ide-ruby/tarball/refs/tags/v0.1.3",
+            "sha": "ee948b686029598e2ac112051fafc86aa2144d6e"
+        },
+        "0.1.2": {
+            "name": "ide-ruby",
+            "version": "0.1.2",
+            "description": "Atom-IDE support for ruby language.  Most of the functionality comes from https://github.com/kwerle/ruby_language_server",
+            "main": "src/main.js",
+            "scripts": {
+                "lint": "eslint src/",
+                "test": "npm run lint"
+            },
+            "repository": "https://github.com/kwerle/ide-ruby.git",
+            "keywords": [
+                "ruby",
+                "ruby-parsing",
+                "ide",
+                "language-server-protocol",
+                "outline-view"
+            ],
+            "author": {
+                "name": "Kurt Werle"
+            },
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/kwerle/ide-ruby/issues"
+            },
+            "homepage": "https://github.com/kwerle/ide-ruby#readme",
+            "devDependencies": {
+                "eslint": "^4.7.1"
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.4"
+            },
+            "non-dependencies": {
+                "ruby-language-server": "^0.0.1"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "dockerPath": {
+                    "type": "string",
+                    "default": "/usr/local/bin/docker",
+                    "description": "Absolute path to the docker command"
+                },
+                "imageName": {
+                    "type": "string",
+                    "default": "kwerle/ruby_language_server:latest",
+                    "description": "Ruby language server docker image to run (was mtsmfm/language_server)"
+                }
+            },
+            "enhancedScopes": [
+                "source.ruby"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomRequirements": [
+                "atom-ide-ui",
+                "language-ruby"
+            ],
+            "atomCommands": {
+                "ide-ruby:help": "Provides help information and descriptions of commands."
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-ruby/versions/0.1.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kwerle/ide-ruby/tarball/refs/tags/v0.1.2",
+            "sha": "d2868fcc5b8d2fa251ad8d436a4509f81d66f49b"
+        },
+        "0.1.0": {
+            "name": "ide-ruby",
+            "version": "0.1.0",
+            "description": "Atom-IDE support for ruby language",
+            "main": "src/main.js",
+            "scripts": {
+                "lint": "eslint src/",
+                "test": "npm run lint"
+            },
+            "repository": "https://github.com/kwerle/ide-ruby.git",
+            "keywords": [
+                "ruby",
+                "ruby-parsing",
+                "ide",
+                "language-server-protocol",
+                "outline-view"
+            ],
+            "author": {
+                "name": "Kurt Werle"
+            },
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/kwerle/ide-ruby/issues"
+            },
+            "homepage": "https://github.com/kwerle/ide-ruby#readme",
+            "devDependencies": {
+                "eslint": "^4.7.1"
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.4"
+            },
+            "non-dependencies": {
+                "ruby-language-server": "^0.0.1"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "dockerPath": {
+                    "type": "string",
+                    "default": "/usr/local/bin/docker",
+                    "description": "Absolute path to the docker command"
+                },
+                "imageName": {
+                    "type": "string",
+                    "default": "mtsmfm/language_server-ruby:latest",
+                    "description": "Ruby language server docker image to run"
+                }
+            },
+            "enhancedScopes": [
+                "source.rb"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomRequirements": [
+                "atom-ide-ui",
+                "language-ruby"
+            ],
+            "atomCommands": {
+                "ide-ruby:help": "Provides help information and descriptions of commands."
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-ruby/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kwerle/ide-ruby/tarball/refs/tags/v0.1.0",
+            "sha": "fd7056ac0d0e29927c4652ee6e9f117309fc3bc4"
+        },
+        "0.0.3": {
+            "name": "ide-ruby",
+            "version": "0.0.3",
+            "description": "Atom-IDE support for ruby language.  Most of the functionality comes from https://github.com/kwerle/ruby_language_server",
+            "main": "src/main.js",
+            "scripts": {
+                "lint": "eslint src/",
+                "test": "npm run lint"
+            },
+            "repository": "https://github.com/kwerle/ide-ruby.git",
+            "keywords": [
+                "ruby",
+                "ruby-parsing",
+                "ide",
+                "language-server-protocol",
+                "outline-view"
+            ],
+            "author": {
+                "name": "Kurt Werle"
+            },
+            "license": "MIT",
+            "bugs": {
+                "url": "https://github.com/kwerle/ide-ruby/issues"
+            },
+            "homepage": "https://github.com/kwerle/ide-ruby#readme",
+            "devDependencies": {
+                "eslint": "^4.7.1"
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.4"
+            },
+            "non-dependencies": {
+                "ruby-language-server": "^0.0.1"
+            },
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "dockerPath": {
+                    "type": "string",
+                    "default": "/usr/local/bin/docker",
+                    "description": "Absolute path to the docker command"
+                },
+                "imageName": {
+                    "type": "string",
+                    "default": "kwerle/ruby_language_server:latest",
+                    "description": "Ruby language server docker image to run (was mtsmfm/language_server)"
+                }
+            },
+            "enhancedScopes": [
+                "source.ruby"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "atomRequirements": [
+                "atom-ide-ui",
+                "language-ruby"
+            ],
+            "atomCommands": {
+                "ide-ruby:help": "Provides help information and descriptions of commands."
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-ruby/versions/0.0.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kwerle/ide-ruby/tarball/refs/tags/v0.0.3",
+            "sha": "953b6d7f980434f3f5a00bdc221eb36c1493a322"
+        }
+    },
+    "readme": "## Overview\n\nI no longer use Atom, and it seems like MS no longer updates it.  It seems the last update was 3 years ago.  I will not continue to maintain this package.\n\nImplementation of the [language server protocol](https://microsoft.github.io/language-server-protocol/) for [Ruby](https://www.ruby-lang.org/en/) on [Atom](https://atom.io/).\n\nVirtually all the functionality of this package comes from [ruby_language_server](https://github.com/kwerle/ruby_language_server).\n\nThe first time this fires up (and any time you clear your docker images), the docker image will need to be downloaded - and that may take a few minutes.\n\nInstall it, check out a ruby file, and do Outline View: Toggle (alt-o for me).\nAlso View -> Toggle Diagnostics (alt-shift-d)\n\n## Requirements\n\n  - You must have [docker](https://www.docker.com/) installed\n  - You must have really low expectations or be willing to help add features\n\n## Features\n\n  - Completion suggestions\n  - Outline view\n  - Jump to definition\n  - Linting using rubocop\n\n## FAQ\n\n> Why bother?\n\nI'm just trying to get the ball rolling.  \n\n> Why does this crash?\n\nDo you have docker installed?  Is the path /usr/local/bin/docker?  You can tweak that in the settings.\n\n## License\n\n[MIT License](https://liuderchi.mit-license.org/)\n",
+    "metadata": {
+        "name": "ide-ruby",
+        "version": "0.5.2",
+        "description": "Atom-IDE support for ruby language.  Requires docker.  Most of the functionality comes from https://github.com/kwerle/ruby_language_server",
+        "main": "src/main.js",
+        "scripts": {
+            "lint": "eslint src/",
+            "test": "npm run lint"
+        },
+        "repository": "https://github.com/kwerle/ide-ruby.git",
+        "keywords": [
+            "ruby",
+            "rubocop",
+            "ruby-parsing",
+            "ide",
+            "language-server-protocol",
+            "languageserver",
+            "outline-view"
+        ],
+        "author": {
+            "name": "Kurt Werle"
+        },
+        "license": "MIT",
+        "bugs": {
+            "url": "https://github.com/kwerle/ide-ruby/issues"
+        },
+        "homepage": "https://github.com/kwerle/ide-ruby#readme",
+        "devDependencies": {
+            "eslint": ">=4.7.1"
+        },
+        "dependencies": {
+            "atom-package-deps": ">=4.6.0",
+            "atom-languageclient": ">=0.9.5"
+        },
+        "package-deps": [
+            "atom-ide-ui"
+        ],
+        "non-dependencies": {
+            "ruby-language-server": ">=0.0.1"
+        },
+        "engines": {
+            "atom": ">=1.21.0"
+        },
+        "configSchema": {
+            "dockerPath": {
+                "type": "string",
+                "default": "/usr/local/bin/docker",
+                "description": "Absolute path to the docker command (restart for effect)"
+            },
+            "imageName": {
+                "type": "string",
+                "default": "kwerle/ruby_language_server:latest",
+                "description": "Ruby language server docker image to run (was mtsmfm/language_server - restart for effect)"
+            },
+            "additionalGems": {
+                "type": "string",
+                "default": "",
+                "description": "If you use additional gems with rubocop - like rubocop-rspec, you should list them comma separated here.  Note that this will cause these gems to get installed (in the docker image) every time you open a project..."
+            },
+            "lintLevel": {
+                "type": "string",
+                "default": "4",
+                "description": "What level of lint do you want to see (restart for effect)?",
+                "enum": [
+                    {
+                        "value": "0",
+                        "description": "None"
+                    },
+                    {
+                        "value": "1",
+                        "description": "Just errors"
+                    },
+                    {
+                        "value": "2",
+                        "description": "Warnings"
+                    },
+                    {
+                        "value": "3",
+                        "description": "Information"
+                    },
+                    {
+                        "value": "4",
+                        "description": "Everything including hints"
+                    }
+                ]
+            }
+        },
+        "enhancedScopes": [
+            "source.ruby"
+        ],
+        "consumedServices": {
+            "linter-indie": {
+                "versions": {
+                    "2.0.0": "consumeLinterV2"
+                }
+            },
+            "datatip": {
+                "versions": {
+                    "0.1.0": "consumeDatatip"
+                }
+            }
+        },
+        "providedServices": {
+            "autocomplete.provider": {
+                "versions": {
+                    "2.0.0": "provideAutocomplete"
+                }
+            },
+            "code-format.range": {
+                "versions": {
+                    "0.1.0": "provideCodeFormat"
+                }
+            },
+            "definitions": {
+                "versions": {
+                    "0.1.0": "provideDefinitions"
+                }
+            },
+            "find-references": {
+                "versions": {
+                    "0.1.0": "provideFindReferences"
+                }
+            },
+            "outline-view": {
+                "versions": {
+                    "0.1.0": "provideOutlines"
+                }
+            }
+        },
+        "atomRequirements": [
+            "language-ruby"
+        ],
+        "atomCommands": {
+            "ide-ruby:help": "Provides help information and descriptions of commands."
+        }
+    },
+    "created": 1658344033423,
+    "updated": 1658344033423,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

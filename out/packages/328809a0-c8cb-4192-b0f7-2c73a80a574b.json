@@ -1,0 +1,148 @@
+{
+    "name": "syfi",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/hendricha/syfi"
+    },
+    "downloads": 689,
+    "stargazers_count": 2,
+    "releases": {
+        "latest": "0.5.1"
+    },
+    "versions": {
+        "0.5.1": {
+            "name": "syfi",
+            "main": "./lib/syfi",
+            "version": "0.5.1",
+            "description": "Find stuff in a Symfony project",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "syfi:find"
+            },
+            "repository": "https://github.com/hendricha/syfi",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "underscore": "*"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/syfi/versions/0.5.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/hendricha/syfi/tarball/refs/tags/v0.5.1",
+            "sha": "d8f80b5d43b5efd6b7b05b34e55916f78b83eea8"
+        },
+        "0.5.0": {
+            "name": "syfi",
+            "main": "./lib/syfi",
+            "version": "0.5.0",
+            "description": "Find stuff in a Symfony project",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "syfi:find"
+            },
+            "repository": "https://github.com/hendricha/syfi",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "underscore": "*"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/syfi/versions/0.5.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/hendricha/syfi/tarball/refs/tags/v0.5.0",
+            "sha": "5ddb6f2a9f442f30fe564fdd4050e08404440498"
+        },
+        "0.4.0": {
+            "name": "syfi",
+            "main": "./lib/syfi",
+            "version": "0.4.0",
+            "description": "Find stuff in a Symfony project",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "syfi:find"
+            },
+            "repository": "https://github.com/hendricha/syfi",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "underscore": "*"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/syfi/versions/0.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/hendricha/syfi/tarball/refs/tags/v0.4.0",
+            "sha": "6901273e373f0bc4fc475b4b9dc3b479b9c9e541"
+        },
+        "0.3.0": {
+            "name": "syfi",
+            "main": "./lib/syfi",
+            "version": "0.3.0",
+            "description": "Find stuff in a Symfony project",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "syfi:find"
+            },
+            "repository": "https://github.com/hendricha/syfi",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/syfi/versions/0.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/hendricha/syfi/tarball/refs/tags/v0.3.0",
+            "sha": "713c629f45c3795e378022d9b035beb82ac4bd0a"
+        },
+        "0.2.0": {
+            "name": "syfi",
+            "main": "./lib/syfi",
+            "version": "0.2.0",
+            "description": "Find in a symfony project",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "syfi:find"
+            },
+            "repository": "https://github.com/hendricha/syfi",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/syfi/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/hendricha/syfi/tarball/refs/tags/v0.2.0",
+            "sha": "8a5c6809cc1f9f843b52ada904f4281e69be53c9"
+        }
+    },
+    "readme": "# syfi package\n\nFind and open a file belonging to the following in a Symfony project:\n* service id\n* class\n* resource (eg. @AppBundle/Resources/config/services.yml)\n* twig template shorthand (eg. AppBundle:Layout:index.html.twig)\n* doctrine entity model shorthand (eg. AppBundle:User)\n\nJust select one of the above in your symfony project, press alt+ctrl+o or choose\n\"Find in Symfony project\" from the context menu and the file will be opened in a\nnew tab.\n\n## How it works?\n\nIt executes a simple php script that loads tha AppKernel and bootstrap cache\nfrom your symfony project, and then attempts to find the service by id in the\ncontainer, the file of the class through ReflectionClass, the resource by\ncalling locateResource() on the kernel, or twig template and doctrine through\nsome asumed default services (doctrine's entity manager and templating).\n\nThis command line tool can be used without atom if wants to. Just smylink it to\n*~/bin* or whatever and use it like this from your Symfony application root:\n```bash\n$ syfi-cli [some class id/classname/resource]\n```\nThe output would be the filename belonging to the search string.\n\n## Limitations\n\nThe package assumes that the first opened project in Atom is set to a Symfony\napplication root. So app/bootstrap.php.cache and app/AppKernel.php should exist.\nFor doctrine model or twig template parsing to work, those services should also\nbe present and correctly configured.\n\nThe package obviously also requires a working configured php cli environment\non your machine.\n\nIf a single string is selected that is not obviously a class (does not containe\na backslash), not a twig template (does not end with .twig), is not a doctrine\nmodel (it does not have a single colon in it) and can not be accessed through\nthe service container the script searches for the first php file named like the\nstring and opens that.\n\nThere might be some OS specific limitations too, because I personally only\ntested it in Linux. Please feel free to add issues if you find OS X/Windows\nbugs.\n",
+    "metadata": {
+        "name": "syfi",
+        "main": "./lib/syfi",
+        "version": "0.5.1",
+        "description": "Find stuff in a Symfony project",
+        "keywords": [],
+        "activationCommands": {
+            "atom-workspace": "syfi:find"
+        },
+        "repository": "https://github.com/hendricha/syfi",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {
+            "underscore": "*"
+        }
+    },
+    "created": 1658428587068,
+    "updated": 1658428587068,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

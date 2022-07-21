@@ -1,0 +1,206 @@
+{
+    "name": "autoimport",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/hendrikniemann/atom-autoimport"
+    },
+    "downloads": 3920,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "0.3.0"
+    },
+    "versions": {
+        "0.3.0": {
+            "name": "autoimport",
+            "main": "./lib/autoimport",
+            "version": "0.3.0",
+            "description": "Import unresolved identifiers using flow",
+            "keywords": [
+                "flow"
+            ],
+            "activationCommands": {
+                "atom-workspace": "autoimport:import"
+            },
+            "repository": "https://github.com/hendrikniemann/atom-autoimport",
+            "license": "MIT",
+            "scripts": {
+                "prepublish": "npm run build",
+                "watch": "babel --watch src/ -d lib/",
+                "build": "npm run build:clean && npm run build:babel",
+                "build:clean": "rimraf lib",
+                "build:babel": "babel src/ -d lib/",
+                "build:flow": "flow-copy-source -v src lib"
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "@babel/generator": "^7.0.0-beta.38",
+                "@babel/types": "^7.0.0-beta.38",
+                "atom-linter": "^10.0.0",
+                "babylon": "^6.18.0",
+                "camelcase": "^4.1.0",
+                "find-package": "^1.0.0",
+                "flow-bin": "^0.66.0",
+                "glob": "^7.1.2"
+            },
+            "devDependencies": {
+                "@babel/cli": "^7.0.0-beta.38",
+                "@babel/core": "^7.0.0-beta.38",
+                "@babel/preset-env": "^7.0.0-beta.38",
+                "@babel/preset-flow": "^7.0.0-beta.38",
+                "rimraf": "^2.6.2"
+            },
+            "babel": {
+                "plugins": [
+                    "./dev/use-babel-plugin"
+                ],
+                "presets": [
+                    [
+                        "@babel/preset-env",
+                        {
+                            "targets": {
+                                "electron": "1.6.15"
+                            },
+                            "modules": false
+                        }
+                    ],
+                    "@babel/preset-flow"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autoimport/versions/0.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/hendrikniemann/atom-autoimport/tarball/refs/tags/v0.3.0",
+            "sha": "47d9791234160f413d2b1f3b36def2848c7a1a5a"
+        },
+        "0.2.0": {
+            "name": "autoimport",
+            "main": "./lib/autoimport",
+            "version": "0.2.0",
+            "description": "Import unresolved identifiers using flow",
+            "keywords": [
+                "flow"
+            ],
+            "activationCommands": {
+                "atom-workspace": "autoimport:import"
+            },
+            "repository": "https://github.com/hendrikniemann/atom-autoimport",
+            "license": "MIT",
+            "scripts": {
+                "prepublish": "npm run build",
+                "watch": "babel --watch src/ -d lib/",
+                "build": "npm run build:clean && npm run build:babel",
+                "build:clean": "rimraf lib",
+                "build:babel": "babel src/ -d lib/",
+                "build:flow": "flow-copy-source -v src lib"
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "@babel/generator": "^7.0.0-beta.38",
+                "@babel/types": "^7.0.0-beta.38",
+                "atom-linter": "^10.0.0",
+                "babylon": "^6.18.0",
+                "camelcase": "^4.1.0",
+                "find-package": "^1.0.0",
+                "flow-bin": "^0.66.0",
+                "glob": "^7.1.2"
+            },
+            "devDependencies": {
+                "@babel/cli": "^7.0.0-beta.38",
+                "@babel/core": "^7.0.0-beta.38",
+                "@babel/preset-env": "^7.0.0-beta.38",
+                "@babel/preset-flow": "^7.0.0-beta.38",
+                "rimraf": "^2.6.2"
+            },
+            "babel": {
+                "plugins": [
+                    "./dev/use-babel-plugin"
+                ],
+                "presets": [
+                    [
+                        "@babel/preset-env",
+                        {
+                            "targets": {
+                                "electron": "1.6.15"
+                            },
+                            "modules": false
+                        }
+                    ],
+                    "@babel/preset-flow"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autoimport/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/hendrikniemann/atom-autoimport/tarball/refs/tags/v0.2.0",
+            "sha": "0651ad7e59e7fe2013abf4af19026243f8402e1d"
+        }
+    },
+    "readme": "# Atom auto import plugin\n\n## Introduction\n\nI love the new ES2015 module system and so do you. But writing imports at the beginning of your file is tiring. You have to jump around in your code and most of the time the import statement is very trivial. Why is there no editor plugin that writes these imports for me? Look no further, powered by [flow](https://github.com/facebook/flow) this plugin should be able to write 98% of the imports for you!\n\n## Requirements\n\nThis plugin uses [flow](https://github.com/facebook/flow) to find unresolved identifiers in your code and add them to the import section of your file. This project is in an early stage and does not offer a lot of configuration. Instead it assumes a standard JavaScript project setup.\n\n### Checklist\n\n* You will need a project structure like this\n  ```\n  project/\n    node_modules/\n      .bin/\n        flow # Flow executable exists in node_modules\n    src/ # This is where you write your JavaScript and run the import plugin on files\n    package.json # This file contains your dependencies\n    .flowconfig # This\n  ```\n  Where project is your root directory that flow will be executed in.\n* You have `flow-bin@>0.66.0` installed as a devDependency or dependency and you use it to type-check your code\n\nThis repository is setup in that manner and can be used as a reference.\n\n## Installation and usage\n\nInstall the `autoimport` package using the settings or use the cli:\n\n```\napm install autoimport\n```\n\nTo execute the `autoimport:import` command use `CMD` `CTRL` `o` on Mac or execute the command manually.\n",
+    "metadata": {
+        "name": "autoimport",
+        "main": "./lib/autoimport",
+        "version": "0.3.0",
+        "description": "Import unresolved identifiers using flow",
+        "keywords": [
+            "flow"
+        ],
+        "activationCommands": {
+            "atom-workspace": "autoimport:import"
+        },
+        "repository": "https://github.com/hendrikniemann/atom-autoimport",
+        "license": "MIT",
+        "scripts": {
+            "prepublish": "npm run build",
+            "watch": "babel --watch src/ -d lib/",
+            "build": "npm run build:clean && npm run build:babel",
+            "build:clean": "rimraf lib",
+            "build:babel": "babel src/ -d lib/",
+            "build:flow": "flow-copy-source -v src lib"
+        },
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {
+            "@babel/generator": "^7.0.0-beta.38",
+            "@babel/types": "^7.0.0-beta.38",
+            "atom-linter": "^10.0.0",
+            "babylon": "^6.18.0",
+            "camelcase": "^4.1.0",
+            "find-package": "^1.0.0",
+            "flow-bin": "^0.66.0",
+            "glob": "^7.1.2"
+        },
+        "devDependencies": {
+            "@babel/cli": "^7.0.0-beta.38",
+            "@babel/core": "^7.0.0-beta.38",
+            "@babel/preset-env": "^7.0.0-beta.38",
+            "@babel/preset-flow": "^7.0.0-beta.38",
+            "rimraf": "^2.6.2"
+        },
+        "babel": {
+            "plugins": [
+                "./dev/use-babel-plugin"
+            ],
+            "presets": [
+                [
+                    "@babel/preset-env",
+                    {
+                        "targets": {
+                            "electron": "1.6.15"
+                        },
+                        "modules": false
+                    }
+                ],
+                "@babel/preset-flow"
+            ]
+        }
+    },
+    "created": 1658335558749,
+    "updated": 1658335558749,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

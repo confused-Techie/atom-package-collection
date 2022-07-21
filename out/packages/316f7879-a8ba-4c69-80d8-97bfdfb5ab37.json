@@ -1,0 +1,2807 @@
+{
+    "name": "ide-typescript",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/atom/ide-typescript"
+    },
+    "downloads": 356033,
+    "stargazers_count": 172,
+    "releases": {
+        "latest": "0.9.5"
+    },
+    "versions": {
+        "0.9.5": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.9.5",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "diagnosticsEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the TypeScript language server to provide diagnostics and warnings."
+                },
+                "typeScriptServer": {
+                    "title": "TypeScript server",
+                    "type": "object",
+                    "properties": {
+                        "path": {
+                            "title": "TypeScript server path",
+                            "type": "string",
+                            "default": "node_modules/typescript/lib/tsserver.js",
+                            "description": "Path to a TypeScript `tsserver.js` the language server will use to process TypeScript. Defaults to the bundled version."
+                        }
+                    }
+                },
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "ignoreFlow": {
+                    "type": "boolean",
+                    "title": "Ignore Flow project folders",
+                    "default": true,
+                    "description": "Ignore project folders that contain a Flow `.flowconfig` file."
+                },
+                "autocompleteResultsFirst": {
+                    "type": "boolean",
+                    "title": "Show autocomplete results first",
+                    "default": true,
+                    "description": "Suggestions will be placed before the rest of autocomplete results (e.g. snippets etc). Requires restart to take effect."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "0.9.9",
+                "typescript": "~3.6.4",
+                "typescript-language-server": "~0.4.0"
+            },
+            "activationHooks": [
+                "source.ts:root-scope-used",
+                "source.tsx:root-scope-used",
+                "source.js:root-scope-used",
+                "source.js.jsx:root-scope-used"
+            ],
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.9.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.9.5",
+            "sha": "593e0806077eac475726900131ac42291f48ef18"
+        },
+        "0.9.4": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.9.4",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "diagnosticsEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the TypeScript language server to provide diagnostics and warnings."
+                },
+                "typeScriptServer": {
+                    "title": "TypeScript server",
+                    "type": "object",
+                    "properties": {
+                        "path": {
+                            "title": "TypeScript server path",
+                            "type": "string",
+                            "default": "node_modules/typescript/lib/tsserver.js",
+                            "description": "Path to a TypeScript `tsserver.js` the language server will use to process TypeScript. Defaults to the bundled version."
+                        }
+                    }
+                },
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "ignoreFlow": {
+                    "type": "boolean",
+                    "title": "Ignore Flow project folders",
+                    "default": true,
+                    "description": "Ignore project folders that contain a Flow `.flowconfig` file."
+                },
+                "autocompleteResultsFirst": {
+                    "type": "boolean",
+                    "title": "Show autocomplete results first",
+                    "default": true,
+                    "description": "Suggestions will be placed before the rest of autocomplete results (e.g. snippets etc). Requires restart to take effect."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "0.9.9",
+                "typescript": "~3.6.4",
+                "typescript-language-server": "~0.4.0"
+            },
+            "activationHooks": [
+                "source.ts:root-scope-used",
+                "source.tsx:root-scope-used",
+                "source.js:root-scope-used",
+                "source.js.jsx:root-scope-used"
+            ],
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.9.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.9.4",
+            "sha": "51c2675cc971493c436e6a82eee7ea29d0c00477"
+        },
+        "0.9.2": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.9.2",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "diagnosticsEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the TypeScript language server to provide diagnostics and warnings."
+                },
+                "typeScriptServer": {
+                    "title": "TypeScript server",
+                    "type": "object",
+                    "properties": {
+                        "path": {
+                            "title": "TypeScript server path",
+                            "type": "string",
+                            "default": "node_modules/typescript/lib/tsserver.js",
+                            "description": "Path to a TypeScript `tsserver.js` the language server will use to process TypeScript. Defaults to the bundled version."
+                        }
+                    }
+                },
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "ignoreFlow": {
+                    "type": "boolean",
+                    "title": "Ignore Flow project folders",
+                    "default": true,
+                    "description": "Ignore project folders that contain a Flow `.flowconfig` file."
+                },
+                "autocompleteResultsFirst": {
+                    "type": "boolean",
+                    "title": "Show autocomplete results first",
+                    "default": true,
+                    "description": "Suggestions will be placed before the rest of autocomplete results (e.g. snippets etc). Requires restart to take effect."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "0.9.9",
+                "typescript": "~3.6.4",
+                "typescript-language-server": "~0.4.0"
+            },
+            "activationHooks": [
+                "source.ts:root-scope-used",
+                "source.tsx:root-scope-used",
+                "source.js:root-scope-used",
+                "source.js.jsx:root-scope-used"
+            ],
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.9.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.9.2",
+            "sha": "f36ab3ede26e042470c5b2d9ef847a2aee1a3768"
+        },
+        "0.9.1": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.9.1",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "diagnosticsEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the TypeScript language server to provide diagnostics and warnings."
+                },
+                "typeScriptServer": {
+                    "title": "TypeScript server",
+                    "type": "object",
+                    "properties": {
+                        "path": {
+                            "title": "TypeScript server path",
+                            "type": "string",
+                            "default": "node_modules/typescript/lib/tsserver.js",
+                            "description": "Path to a TypeScript `tsserver.js` the language server will use to process TypeScript. Defaults to the bundled version."
+                        }
+                    }
+                },
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "ignoreFlow": {
+                    "type": "boolean",
+                    "title": "Ignore Flow project folders",
+                    "default": true,
+                    "description": "Ignore project folders that contain a Flow `.flowconfig` file."
+                },
+                "autocompleteResultsFirst": {
+                    "type": "boolean",
+                    "title": "Show autocomplete results first",
+                    "default": true,
+                    "description": "Suggestions will be placed before the rest of autocomplete results (e.g. snippets etc). Requires restart to take effect."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "0.9.9",
+                "typescript": "~3.1.6",
+                "typescript-language-server": "0.3.7"
+            },
+            "activationHooks": [
+                "source.ts:root-scope-used",
+                "source.tsx:root-scope-used",
+                "source.js:root-scope-used",
+                "source.js.jsx:root-scope-used"
+            ],
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.9.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.9.1",
+            "sha": "962f06acb1a463e86e406299a835516d48f87756"
+        },
+        "0.9.0": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.9.0",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "diagnosticsEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the TypeScript language server to provide diagnostics and warnings."
+                },
+                "typeScriptServer": {
+                    "title": "TypeScript server",
+                    "type": "object",
+                    "properties": {
+                        "path": {
+                            "title": "TypeScript server path",
+                            "type": "string",
+                            "default": "node_modules/typescript/lib/tsserver.js",
+                            "description": "Path to a TypeScript `tsserver.js` the language server will use to process TypeScript. Defaults to the bundled version."
+                        }
+                    }
+                },
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "ignoreFlow": {
+                    "type": "boolean",
+                    "title": "Ignore Flow project folders",
+                    "default": true,
+                    "description": "Ignore project folders that contain a Flow `.flowconfig` file."
+                },
+                "autocompleteResultsFirst": {
+                    "type": "boolean",
+                    "title": "Show autocomplete results first",
+                    "default": true,
+                    "description": "Suggestions will be placed before the rest of autocomplete results (e.g. snippets etc). Requires restart to take effect."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "0.9.9",
+                "typescript": "~3.1.6",
+                "typescript-language-server": "0.3.7"
+            },
+            "activationHooks": [
+                "language-typescript:grammar-used",
+                "language-javascript:grammar-used"
+            ],
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.9.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.9.0",
+            "sha": "4daf89286088d2560fda1a897144e2b46840de23"
+        },
+        "0.8.0": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.8.0",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "diagnosticsEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the TypeScript language server to provide diagnostics and warnings."
+                },
+                "typeScriptServer": {
+                    "title": "TypeScript server",
+                    "type": "object",
+                    "properties": {
+                        "path": {
+                            "title": "TypeScript server path",
+                            "type": "string",
+                            "default": "node_modules/typescript/lib/tsserver.js",
+                            "description": "Path to a TypeScript `tsserver.js` the language server will use to process TypeScript. Defaults to the bundled version."
+                        }
+                    }
+                },
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "ignoreFlow": {
+                    "type": "boolean",
+                    "title": "Ignore Flow project folders",
+                    "default": true,
+                    "description": "Ignore project folders that contain a Flow `.flowconfig` file."
+                },
+                "autocompleteResultsFirst": {
+                    "type": "boolean",
+                    "title": "Show autocomplete results first",
+                    "default": true,
+                    "description": "Suggestions will be placed before the rest of autocomplete results (e.g. snippets etc). Requires restart to take effect."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "0.9.9",
+                "typescript": "~3.1.6",
+                "typescript-language-server": "0.3.7"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.8.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.8.0",
+            "sha": "b29cab6a725b6b4d5ac5400b878bc97e19d84fe0"
+        },
+        "0.7.9": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.7.9",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "diagnosticsEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the TypeScript language server to provide diagnostics and warnings."
+                },
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "ignoreFlow": {
+                    "type": "boolean",
+                    "title": "Ignore Flow project folders",
+                    "default": true,
+                    "description": "Ignore project folders that contain a Flow `.flowconfig` file."
+                },
+                "autocompleteResultsFirst": {
+                    "type": "boolean",
+                    "title": "Show autocomplete results first",
+                    "default": true,
+                    "description": "Suggestions will be placed before the rest of autocomplete results (e.g. snippets etc). Requires restart to take effect."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "0.9.7",
+                "javascript-typescript-langserver": "^2.7.0"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.7.9/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.7.9",
+            "sha": "da46cc76e0ae91113720ef11634bbcd0e25ca4a2"
+        },
+        "0.7.8": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.7.8",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "diagnosticsEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the TypeScript language server to provide diagnostics and warnings."
+                },
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "ignoreFlow": {
+                    "type": "boolean",
+                    "title": "Ignore Flow project folders",
+                    "default": true,
+                    "description": "Ignore project folders that contain a Flow `.flowconfig` file."
+                },
+                "autocompleteResultsFirst": {
+                    "type": "boolean",
+                    "title": "Show autocomplete results first",
+                    "default": true,
+                    "description": "Suggestions will be placed before the rest of autocomplete results (e.g. snippets etc). Requires restart to take effect."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "0.9.7",
+                "javascript-typescript-langserver": "^2.7.0"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.7.8/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.7.8",
+            "sha": "5dd037262787803601eb60b5673d420a06272f64"
+        },
+        "0.7.7": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.7.7",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "diagnosticsEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the TypeScript language server to provide diagnostics and warnings."
+                },
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "ignoreFlow": {
+                    "type": "boolean",
+                    "title": "Ignore Flow project folders",
+                    "default": true,
+                    "description": "Ignore project folders that contain a Flow `.flowconfig` file."
+                },
+                "autocompleteResultsFirst": {
+                    "type": "boolean",
+                    "title": "Show autocomplete results first",
+                    "default": true,
+                    "description": "Suggestions will be placed before the rest of autocomplete results (e.g. snippets etc). Requires restart to take effect."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "0.9.7",
+                "javascript-typescript-langserver": "^2.7.0"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.7.7/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.7.7",
+            "sha": "dce4f0ccaa2e97f4845f85bc8a179b97ac34463d"
+        },
+        "0.7.6": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.7.6",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "diagnosticsEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the TypeScript language server to provide diagnostics and warnings."
+                },
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "0.9.1",
+                "javascript-typescript-langserver": "^2.7.0"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.7.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.7.6",
+            "sha": "2ca665df1fbd25d5aa5c39a79b99dd51acbc6827"
+        },
+        "0.7.5": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.7.5",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "diagnosticsEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the TypeScript language server to provide diagnostics and warnings."
+                },
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "0.9.1",
+                "fuzzaldrin-plus": "^0.6.0",
+                "javascript-typescript-langserver": "^2.7.0"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.7.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.7.5",
+            "sha": "dff86d1eff59a850b135279359e2d2e3fd06abd2"
+        },
+        "0.7.4": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.7.4",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "diagnosticsEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the TypeScript language server to provide diagnostics and warnings."
+                },
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "0.9.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "javascript-typescript-langserver": "^2.7.0"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.7.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.7.4",
+            "sha": "6fca8310909e9ea71c9bcae9a563b6f587a1ed94"
+        },
+        "0.7.3": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.7.3",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "diagnosticsEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the TypeScript language server to provide diagnostics and warnings."
+                },
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.8.3",
+                "fuzzaldrin-plus": "^0.6.0",
+                "javascript-typescript-langserver": "^2.7.0"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.7.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.7.3",
+            "sha": "61d6d9f513bd5061ea2fe63f1ef913f86c6b3ffc"
+        },
+        "0.7.2": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.7.2",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "diagnosticsEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the TypeScript language server to provide diagnostics and warnings."
+                },
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.7.3",
+                "fuzzaldrin-plus": "^0.6.0",
+                "javascript-typescript-langserver": "^2.5.5"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.7.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.7.2",
+            "sha": "1e75857fe9292e50c9d827900caff345c25580aa"
+        },
+        "0.7.1": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.7.1",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "diagnosticsEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the TypeScript language server to provide diagnostics and warnings."
+                },
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.7.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "javascript-typescript-langserver": "^2.5.5"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-actions": {
+                    "versions": {
+                        "0.1.0": "provideCodeActions"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.7.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.7.1",
+            "sha": "fbf3853640b208af936ce980bfe4773a73c05e1f"
+        },
+        "0.7.0": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.7.0",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.7",
+                "fuzzaldrin-plus": "^0.5.0",
+                "javascript-typescript-langserver": "^2.5.4"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.7.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.7.0",
+            "sha": "c0cf02579991c8ccfd41bfd2ef58d05f91194284"
+        },
+        "0.6.2": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.6.2",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.4",
+                "fuzzaldrin-plus": "^0.5.0",
+                "javascript-typescript-langserver": "^2.4.0"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.6.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.6.2",
+            "sha": "366f7f1bfd9052e014221ae62ca310dce9170ca2"
+        },
+        "0.6.1": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.6.1",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.0",
+                "fuzzaldrin-plus": "^0.4.1",
+                "javascript-typescript-langserver": "^2.3.1"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.6.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.6.1",
+            "sha": "b1da81d2744e21f68c32fa591134e9190a2f0240"
+        },
+        "0.6.0": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.6.0",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.21.0"
+            },
+            "configSchema": {
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.6.0",
+                "fuzzaldrin-plus": "^0.4.1",
+                "javascript-typescript-langserver": "^2.3.1"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.tsx",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.6.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.6.0",
+            "sha": "298fd7eef7bde84b8f185fbcd59098745e47f44d"
+        },
+        "0.1.6": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.1.6",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.19.0"
+            },
+            "configSchema": {
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (like other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (like source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.4.0",
+                "fuzzaldrin-plus": "^0.4.1",
+                "javascript-typescript-langserver": "^2.2.1"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.1.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.1.6",
+            "sha": "50de24d54135c7305bad5406b3a0cf6abfdcd3b5"
+        },
+        "0.1.5": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.1.5",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.19.0"
+            },
+            "configSchema": {
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                },
+                "returnTypeInAutocomplete": {
+                    "type": "string",
+                    "default": "left",
+                    "enum": [
+                        {
+                            "value": "left",
+                            "description": "On their own to the left (as per other languages)"
+                        },
+                        {
+                            "value": "right",
+                            "description": "Following parameters to the right (as per source code)"
+                        }
+                    ],
+                    "description": "Where return types are shown in AutoComplete."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.4.0",
+                "fuzzaldrin-plus": "^0.4.1",
+                "javascript-typescript-langserver": "^2.1.0"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.1.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.1.5",
+            "sha": "4ba1e025c1256bdde6bbb53079bd15fe1fcb0f09"
+        },
+        "0.1.4": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.1.4",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.19.0"
+            },
+            "configSchema": {
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.4.0",
+                "fuzzaldrin-plus": "^0.4.1",
+                "javascript-typescript-langserver": "^2.1.0"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.1.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.1.4",
+            "sha": "6e2a1bb7ac879b1311c11573663064c401cf84d1"
+        },
+        "0.1.3": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.1.3",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.19.0"
+            },
+            "configSchema": {
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.4.0",
+                "fuzzaldrin-plus": "^0.4.1",
+                "javascript-typescript-langserver": "^2.1.0"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.1.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.1.3",
+            "sha": "39ed2e7faa485305d68da0405333481230713c1d"
+        },
+        "0.1.2": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.1.2",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.19.0"
+            },
+            "configSchema": {
+                "javascriptSupport": {
+                    "type": "boolean",
+                    "title": "JavaScript support",
+                    "default": true,
+                    "description": "Use the TypeScript language server to also provide services for JavaScript."
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.4.0",
+                "fuzzaldrin-plus": "^0.4.1",
+                "javascript-typescript-langserver": "^2.1.0"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.1.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.1.2",
+            "sha": "6ca80028d077982b29c5b07d511d3af4aefb6441"
+        },
+        "0.1.1": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.1.1",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.19.0"
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.4.0",
+                "fuzzaldrin-plus": "^0.4.1",
+                "javascript-typescript-langserver": "^2.1.0"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.1.1",
+            "sha": "b93c763cc0715e0def234cea2760ea4562672dc0"
+        },
+        "0.1.0": {
+            "name": "ide-typescript",
+            "main": "./lib/main",
+            "version": "0.1.0",
+            "description": "TypeScript and JavaScript language support for Atom-IDE.",
+            "repository": "https://github.com/atom/ide-typescript",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.19.0"
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.4.0",
+                "javascript-typescript-langserver": "^2.1.0"
+            },
+            "enhancedScopes": [
+                "source.ts",
+                "source.js",
+                "source.js.jsx"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-typescript/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/ide-typescript/tarball/refs/tags/v0.1.0",
+            "sha": "ae0fa58fc10d8d9f0f9776de95d698344aad3726"
+        }
+    },
+    "readme": "# IDE-TypeScript package\n[![CI](https://github.com/atom/ide-typescript/actions/workflows/ci.yml/badge.svg)](https://github.com/atom/ide-typescript/actions/workflows/ci.yml)\n\nTypeScript and JavaScript language support for Atom-IDE, powered by the [Theia TypeScript Language Server](https://github.com/theia-ide/typescript-language-server).\n\n![Screen shot of IDE-TypeScript](https://user-images.githubusercontent.com/118951/30306800-37e3c506-972f-11e7-805c-ba5a45a6bc3c.png)\n\n## Early access\n\nThis package is currently an early access release.  You should also install the [atom-ide-ui](https://atom.io/packages/atom-ide-ui) package to expose the functionality within Atom.\n\n## Features\n\n* Auto completion\n* Diagnostics (errors & warnings, with autofixes)\n* Document outline\n* Find references\n* Go to definition\n* Hover\n* Signature help\n* Format code\n\n## Contributing\nAlways feel free to help out!  Whether it's [filing bugs and feature requests](https://github.com/atom/languageserver-typescript/issues/new) or working on some of the [open issues](https://github.com/atom/languageserver-typescript/issues), Atom's [contributing guide](https://github.com/atom/atom/blob/master/CONTRIBUTING.md) will help get you started while the [guide for contributing to packages](https://github.com/atom/atom/blob/master/docs/contributing-to-packages.md) has some extra information.\n\n## License\nMIT License.  See [the license](LICENSE.md) for more details.\n",
+    "metadata": {
+        "name": "ide-typescript",
+        "main": "./lib/main",
+        "version": "0.9.5",
+        "description": "TypeScript and JavaScript language support for Atom-IDE.",
+        "repository": "https://github.com/atom/ide-typescript",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.21.0"
+        },
+        "configSchema": {
+            "diagnosticsEnabled": {
+                "type": "boolean",
+                "default": true,
+                "description": "Use the TypeScript language server to provide diagnostics and warnings."
+            },
+            "typeScriptServer": {
+                "title": "TypeScript server",
+                "type": "object",
+                "properties": {
+                    "path": {
+                        "title": "TypeScript server path",
+                        "type": "string",
+                        "default": "node_modules/typescript/lib/tsserver.js",
+                        "description": "Path to a TypeScript `tsserver.js` the language server will use to process TypeScript. Defaults to the bundled version."
+                    }
+                }
+            },
+            "javascriptSupport": {
+                "type": "boolean",
+                "title": "JavaScript support",
+                "default": true,
+                "description": "Use the TypeScript language server to also provide services for JavaScript."
+            },
+            "ignoreFlow": {
+                "type": "boolean",
+                "title": "Ignore Flow project folders",
+                "default": true,
+                "description": "Ignore project folders that contain a Flow `.flowconfig` file."
+            },
+            "autocompleteResultsFirst": {
+                "type": "boolean",
+                "title": "Show autocomplete results first",
+                "default": true,
+                "description": "Suggestions will be placed before the rest of autocomplete results (e.g. snippets etc). Requires restart to take effect."
+            },
+            "returnTypeInAutocomplete": {
+                "type": "string",
+                "default": "left",
+                "enum": [
+                    {
+                        "value": "left",
+                        "description": "On their own to the left (like other languages)"
+                    },
+                    {
+                        "value": "right",
+                        "description": "Following parameters to the right (like source code)"
+                    }
+                ],
+                "description": "Where return types are shown in AutoComplete."
+            }
+        },
+        "dependencies": {
+            "atom-languageclient": "0.9.9",
+            "typescript": "~3.6.4",
+            "typescript-language-server": "~0.4.0"
+        },
+        "activationHooks": [
+            "source.ts:root-scope-used",
+            "source.tsx:root-scope-used",
+            "source.js:root-scope-used",
+            "source.js.jsx:root-scope-used"
+        ],
+        "enhancedScopes": [
+            "source.ts",
+            "source.tsx",
+            "source.js",
+            "source.js.jsx"
+        ],
+        "consumedServices": {
+            "console": {
+                "versions": {
+                    "0.1.0": "consumeConsole"
+                }
+            },
+            "datatip": {
+                "versions": {
+                    "0.1.0": "consumeDatatip"
+                }
+            },
+            "linter-indie": {
+                "versions": {
+                    "2.0.0": "consumeLinterV2"
+                }
+            },
+            "signature-help": {
+                "versions": {
+                    "0.1.0": "consumeSignatureHelp"
+                }
+            }
+        },
+        "providedServices": {
+            "autocomplete.provider": {
+                "versions": {
+                    "2.0.0": "provideAutocomplete"
+                }
+            },
+            "code-actions": {
+                "versions": {
+                    "0.1.0": "provideCodeActions"
+                }
+            },
+            "code-format.range": {
+                "versions": {
+                    "0.1.0": "provideCodeFormat"
+                }
+            },
+            "definitions": {
+                "versions": {
+                    "0.1.0": "provideDefinitions"
+                }
+            },
+            "find-references": {
+                "versions": {
+                    "0.1.0": "provideFindReferences"
+                }
+            },
+            "outline-view": {
+                "versions": {
+                    "0.1.0": "provideOutlines"
+                }
+            }
+        }
+    },
+    "created": 1658344065570,
+    "updated": 1658344065570,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

@@ -1,0 +1,143 @@
+{
+    "name": "linter-terraform-semantics",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/awilkins/linter-terraform-semantics"
+    },
+    "downloads": 7085,
+    "stargazers_count": 4,
+    "releases": {
+        "latest": "0.2.0"
+    },
+    "versions": {
+        "0.2.0": {
+            "name": "linter-terraform-semantics",
+            "main": "./lib/linter-terraform-semantics",
+            "version": "0.2.0",
+            "description": "Linting for things in Terraform",
+            "keywords": [
+                "atom-linter",
+                "terraform",
+                "lint",
+                "tags"
+            ],
+            "activationCommands": {},
+            "repository": "https://github.com/awilkins/linter-terraform-semantics.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^10.0.0",
+                "atom-package-deps": "^4.4.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "devDependencies": {
+                "babel-eslint": "^7.2.3",
+                "eslint": "^3.19.0",
+                "eslint-plugin-flowtype": "^2.32.1",
+                "flow-bin": "^0.45.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-terraform-semantics/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/awilkins/linter-terraform-semantics/tarball/refs/tags/v0.2.0",
+            "sha": "3e157dcd406247cdf10ebd06eda7b19910cf42ce"
+        },
+        "0.1.1": {
+            "name": "linter-terraform-semantics",
+            "main": "./lib/linter-terraform-semantics",
+            "version": "0.1.1",
+            "description": "Linting for things in Terraform",
+            "keywords": [
+                "atom-linter",
+                "terraform",
+                "lint",
+                "tags"
+            ],
+            "activationCommands": {},
+            "repository": "https://github.com/awilkins/linter-terraform-semantics.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^10.0.0",
+                "atom-package-deps": "^4.4.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "devDependencies": {
+                "babel-eslint": "^7.2.3",
+                "eslint": "^3.19.0",
+                "eslint-plugin-flowtype": "^2.32.1",
+                "flow-bin": "^0.45.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-terraform-semantics/versions/0.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/awilkins/linter-terraform-semantics/tarball/refs/tags/v0.1.1",
+            "sha": "4c4174356de4e1dca26b8deec4aa05e0f00d518b"
+        }
+    },
+    "readme": "# Linter for things in Terraform\n\nInitially this is supposed to do one thing :\n\n* Check taggable AWS resources to see if they have tags conforming to standards\n\nYou'll need to install this by copying a release onto your path : \n\n* [json2hcl](https://github.com/kvz/json2hcl)\n\n## Configuration\n\nCreate a `.tflint.json` file in the root of your project.\n\nThis should have a single object in it, with one item, `tags`.\n\nThe subkeys of `tags` should be regex patterns that match resource types. Note that only AWS resource types that Terraform can apply tags to will be matched at all.\n\nThe subkeys of each pattern should have a value that is a regex that matches the values you consider acceptable for those tags. Non-string values in tags will be converted to strings before matching.\n\n*NB backslash is an escape char in Javascript as well as regex so you'll have to escape it to use it - JSON doesn't permit literal regex values*\n\ne.g. here we have a config where :\n\n* **All** taggable resource should get a `Name` tag that's allowed to contain anything\n* `aws_ami` resources should get a `version` tag composed solely of digits\n* All `aws_db` resources should get a `securityClassification` tag that's one of\n  * `official`\n  * `secret`\n  * `topsecret`\n\n```json\n{\n  \"tags\": {\n    \".*\": {\n      \"Name\": \"^.*$\"\n    },\n    \"aws_ami\": {\n      \"version\": \"^\\\\d+$\"\n    },\n    \"aws_db_.*\": {\n      \"securityClassification\": \"^(official|secret|topsecret)$\"\n    }\n  }\n}\n```\n\n## Development notes\n\n### Getting list of taggable resources\n\nYou can get the list of taggable resources that Terraform supports\nby looking in the source for items that put it in their schema\n\n```\n# In the builtin/providers/aws folder of Terraform sources\ngrep -R '\"tags\".*tagsSchema\\b' -l | egrep -o 'aws_[^\\.]+' | sort\n```\n",
+    "metadata": {
+        "name": "linter-terraform-semantics",
+        "main": "./lib/linter-terraform-semantics",
+        "version": "0.2.0",
+        "description": "Linting for things in Terraform",
+        "keywords": [
+            "atom-linter",
+            "terraform",
+            "lint",
+            "tags"
+        ],
+        "activationCommands": {},
+        "repository": "https://github.com/awilkins/linter-terraform-semantics.git",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "providedServices": {
+            "linter": {
+                "versions": {
+                    "2.0.0": "provideLinter"
+                }
+            }
+        },
+        "dependencies": {
+            "atom-linter": "^10.0.0",
+            "atom-package-deps": "^4.4.1"
+        },
+        "package-deps": [
+            "linter"
+        ],
+        "devDependencies": {
+            "babel-eslint": "^7.2.3",
+            "eslint": "^3.19.0",
+            "eslint-plugin-flowtype": "^2.32.1",
+            "flow-bin": "^0.45.0"
+        }
+    },
+    "created": 1658356427552,
+    "updated": 1658356427552,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

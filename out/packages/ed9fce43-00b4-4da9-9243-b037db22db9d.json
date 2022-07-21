@@ -1,0 +1,352 @@
+{
+    "name": "vue-fmt",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/voodeng/vue-fmt"
+    },
+    "downloads": 37219,
+    "stargazers_count": 3,
+    "releases": {
+        "latest": "0.1.1"
+    },
+    "versions": {
+        "0.1.1": {
+            "name": "vue-fmt",
+            "main": "./lib/vue-fmt",
+            "version": "0.1.1",
+            "description": "A Vue file beautify & format tools",
+            "keywords": [
+                "vue",
+                "vue-fmt",
+                "vue-format",
+                "vue-indent",
+                "format",
+                "beautify",
+                "sort"
+            ],
+            "configSchema": {
+                "useEslint": {
+                    "type": "boolean",
+                    "title": "Use prettier-eslint",
+                    "default": false,
+                    "order": 0
+                },
+                "format": {
+                    "type": "object",
+                    "title": "Code Format Setting",
+                    "description": "<template> tag format use `jsbeautify`, other use `prettier`",
+                    "properties": {
+                        "htmlWrapAttr": {
+                            "title": "Html wrap_attributes",
+                            "type": "string",
+                            "default": "aligned",
+                            "enum": [
+                                "auto",
+                                "force",
+                                "force-aligned",
+                                "force-expand-multiline",
+                                "aligned"
+                            ],
+                            "order": 0
+                        },
+                        "htmlWrapLine": {
+                            "type": "integer",
+                            "title": "Html wrap_line_length",
+                            "default": 120,
+                            "minimum": 0,
+                            "order": 0
+                        },
+                        "useTabs": {
+                            "title": "Use Tab",
+                            "type": "boolean",
+                            "default": false,
+                            "order": 2
+                        },
+                        "tabWidth": {
+                            "title": "Tab/Space Size",
+                            "type": "integer",
+                            "default": 2,
+                            "minimum": 0,
+                            "order": 2
+                        },
+                        "printWidth": {
+                            "title": "Wrap Line Length",
+                            "type": "integer",
+                            "default": 120,
+                            "minimum": 0,
+                            "order": 1
+                        },
+                        "semi": {
+                            "title": "Semicolons",
+                            "type": "boolean",
+                            "default": false,
+                            "order": 4
+                        },
+                        "singleQuote": {
+                            "title": "Single Quote",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 5
+                        },
+                        "trailingComma": {
+                            "title": "Trailing Commas",
+                            "type": "string",
+                            "default": "none",
+                            "enum": [
+                                "none",
+                                "es5",
+                                "all"
+                            ]
+                        },
+                        "bracketSpacing": {
+                            "title": "Bracket Spacing",
+                            "type": "boolean",
+                            "default": true
+                        },
+                        "arrowParens": {
+                            "title": "Arrow Function Parentheses",
+                            "type": "string",
+                            "default": "avoid",
+                            "enum": [
+                                "avoid",
+                                "always"
+                            ]
+                        }
+                    }
+                },
+                "sort": {
+                    "type": "object",
+                    "title": "Sort root tags",
+                    "properties": {
+                        "enable": {
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "sortOrder": {
+                            "type": "array",
+                            "title": "Sort order",
+                            "default": [
+                                "script",
+                                "template",
+                                "style"
+                            ],
+                            "description": "resort `template, script, style` area after formated"
+                        }
+                    }
+                },
+                "extra": {
+                    "type": "object",
+                    "title": "Extra",
+                    "properties": {
+                        "rootIndent": {
+                            "type": "boolean",
+                            "title": "add Indent to root tags",
+                            "default": true
+                        },
+                        "rootNewline": {
+                            "type": "boolean",
+                            "title": "add newline between root tags",
+                            "default": true
+                        }
+                    }
+                }
+            },
+            "activationCommands": {
+                "atom-workspace": "vue-fmt:format"
+            },
+            "repository": "https://github.com/voodeng/vue-fmt",
+            "author": {
+                "name": "Voodeng",
+                "url": "https://github.com/voodeng",
+                "email": "voodeng@gmail.com"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "indent-string": "^3.2.0",
+                "prettier": "^1.10.2",
+                "prettier-eslint": "^8.8.1"
+            },
+            "devDependencies": {
+                "eslint": "^4.16.0",
+                "eslint-plugin-vue": "^4.2.2"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/vue-fmt/versions/0.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/voodeng/vue-fmt/tarball/refs/tags/v0.1.1",
+            "sha": "2d7c714a31badc273eea6b6b9c840e828b2c2b3a"
+        }
+    },
+    "readme": "# [vue-fmt](https://github.com/voodeng/vue-fmt)\r\n  A Vue format & beautify tool.\r\n  \r\n  it use customed `jsbeautify` to format `<template>`  \r\n  use `prettier` & `prettier-eslint` to format `<span>` `<style>`\r\n  \r\n  can Indent and Sort root tags\r\n\r\n\r\n## Feature\r\n- *Sort Your Root Tags*\r\n- *Indent Root Tags*\r\n- *Newline between Root Tags*\r\n- *Align `<template>` Html Attr*\r\n\r\n![feature](http://ww1.sinaimg.cn/large/87c01ec7gy1fo30g5rh4ug20qe0owwzu.gif)\r\n\r\n\r\n## Install\r\n\r\n```bash\r\napm install vue-fmt\r\n\r\n# or\r\n\r\ncd ~/.atom/package\r\ngit clone https://github.com/voodeng/vue-fmt && cd vue-fmt\r\nnpm install\r\n```\r\n\r\n## Language Support\r\n\r\n- [x] Vue File, Components, the scope is `text.html.vue`\r\n  - [x] template, only html\r\n  - [ ] pug & other late..\r\n  - [x] style, `sass,scss,less,postcss` use `prettier` parser `postcss`\r\n  - [x] script, javascript and typescript\r\n- [ ] editorConfig\r\n\r\n## Custom Setting\r\n\r\nKeymaps\r\n```coffeescript\r\n'.editor':\r\n  'alt-l': 'vue-format:format'\r\n```\r\n\r\n### Tips\r\n`Setting -> Sort -> Sort enable`\r\n\r\n*! it will delete other tags*\r\n\r\nif enable, will resort your code by `sortOrder` after formated,  \r\nonly `template, script, style` 3 tags name support,  \r\nif only input 1 or 2, it will merged with origin code Sort\r\n\r\n\r\n## License\r\n  `vue-fmt` is MIT-licensed\r\n  \r\n  by [Voodeng](https://github.com/voodeng)\r\n",
+    "metadata": {
+        "name": "vue-fmt",
+        "main": "./lib/vue-fmt",
+        "version": "0.1.1",
+        "description": "A Vue file beautify & format tools",
+        "keywords": [
+            "vue",
+            "vue-fmt",
+            "vue-format",
+            "vue-indent",
+            "format",
+            "beautify",
+            "sort"
+        ],
+        "configSchema": {
+            "useEslint": {
+                "type": "boolean",
+                "title": "Use prettier-eslint",
+                "default": false,
+                "order": 0
+            },
+            "format": {
+                "type": "object",
+                "title": "Code Format Setting",
+                "description": "<template> tag format use `jsbeautify`, other use `prettier`",
+                "properties": {
+                    "htmlWrapAttr": {
+                        "title": "Html wrap_attributes",
+                        "type": "string",
+                        "default": "aligned",
+                        "enum": [
+                            "auto",
+                            "force",
+                            "force-aligned",
+                            "force-expand-multiline",
+                            "aligned"
+                        ],
+                        "order": 0
+                    },
+                    "htmlWrapLine": {
+                        "type": "integer",
+                        "title": "Html wrap_line_length",
+                        "default": 120,
+                        "minimum": 0,
+                        "order": 0
+                    },
+                    "useTabs": {
+                        "title": "Use Tab",
+                        "type": "boolean",
+                        "default": false,
+                        "order": 2
+                    },
+                    "tabWidth": {
+                        "title": "Tab/Space Size",
+                        "type": "integer",
+                        "default": 2,
+                        "minimum": 0,
+                        "order": 2
+                    },
+                    "printWidth": {
+                        "title": "Wrap Line Length",
+                        "type": "integer",
+                        "default": 120,
+                        "minimum": 0,
+                        "order": 1
+                    },
+                    "semi": {
+                        "title": "Semicolons",
+                        "type": "boolean",
+                        "default": false,
+                        "order": 4
+                    },
+                    "singleQuote": {
+                        "title": "Single Quote",
+                        "type": "boolean",
+                        "default": true,
+                        "order": 5
+                    },
+                    "trailingComma": {
+                        "title": "Trailing Commas",
+                        "type": "string",
+                        "default": "none",
+                        "enum": [
+                            "none",
+                            "es5",
+                            "all"
+                        ]
+                    },
+                    "bracketSpacing": {
+                        "title": "Bracket Spacing",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "arrowParens": {
+                        "title": "Arrow Function Parentheses",
+                        "type": "string",
+                        "default": "avoid",
+                        "enum": [
+                            "avoid",
+                            "always"
+                        ]
+                    }
+                }
+            },
+            "sort": {
+                "type": "object",
+                "title": "Sort root tags",
+                "properties": {
+                    "enable": {
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "sortOrder": {
+                        "type": "array",
+                        "title": "Sort order",
+                        "default": [
+                            "script",
+                            "template",
+                            "style"
+                        ],
+                        "description": "resort `template, script, style` area after formated"
+                    }
+                }
+            },
+            "extra": {
+                "type": "object",
+                "title": "Extra",
+                "properties": {
+                    "rootIndent": {
+                        "type": "boolean",
+                        "title": "add Indent to root tags",
+                        "default": true
+                    },
+                    "rootNewline": {
+                        "type": "boolean",
+                        "title": "add newline between root tags",
+                        "default": true
+                    }
+                }
+            }
+        },
+        "activationCommands": {
+            "atom-workspace": "vue-fmt:format"
+        },
+        "repository": "https://github.com/voodeng/vue-fmt",
+        "author": {
+            "name": "Voodeng",
+            "url": "https://github.com/voodeng",
+            "email": "voodeng@gmail.com"
+        },
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {
+            "indent-string": "^3.2.0",
+            "prettier": "^1.10.2",
+            "prettier-eslint": "^8.8.1"
+        },
+        "devDependencies": {
+            "eslint": "^4.16.0",
+            "eslint-plugin-vue": "^4.2.2"
+        }
+    },
+    "created": 1658431359929,
+    "updated": 1658431359929,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

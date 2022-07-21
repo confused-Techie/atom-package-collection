@@ -1,0 +1,88 @@
+{
+    "name": "debug-service",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/paulpflug/debug-service"
+    },
+    "downloads": 342,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "0.0.1"
+    },
+    "versions": {
+        "0.0.1": {
+            "name": "debug-service",
+            "main": "./lib/debug-service",
+            "version": "0.0.1",
+            "description": "provides a debugger as a service for other atom packages",
+            "keywords": [
+                "atom",
+                "debug",
+                "service"
+            ],
+            "repository": "https://github.com/paulpflug/debug-service",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "providedServices": {
+                "debug": {
+                    "description": "debugs in dev-mode",
+                    "versions": {
+                        "0.0.1": "provideDebug"
+                    }
+                }
+            },
+            "consumedServices": {
+                "autoreload": {
+                    "versions": {
+                        "^0.0.1": "consumeAutoreload"
+                    }
+                }
+            },
+            "readmeFilename": "README.md",
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/debug-service/versions/0.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/paulpflug/debug-service/tarball/refs/tags/v0.0.1",
+            "sha": "81bef0890e204e7cc085a4964bc42557fbc94194"
+        }
+    },
+    "readme": "# Debug service\n\nprovides a debugger as a service for other atom packages.\n\n![debug service](https://cloud.githubusercontent.com/assets/1881921/8181891/0c83fbae-142a-11e5-9436-6148fe26d6c2.png)\n\n#### Only works in dev mode!\n\n## Usage\n\npackage.json\n```json\n{\n  \"otherStuff\": \"otherData\",\n  \"consumedServices\": {\n    \"debug\": {\n      \"versions\": {\n        \"^0.0.1\": \"consumeDebug\"\n      }\n    }\n  }\n}\n```\n\nyour package:\n```coffee\n  # in your package declaration\n  # so debugging is invisible to users and you can disable debugging on single packages\n  config:\n    debug:\n      type: \"integer\"\n      default: 0\n      minimum: 0\n  #in main module\n  consumeDebug: (debugSetup) =>\n    debug = debugSetup(pkg: \"yourPackageName\", nsp: \"someNamespace\")\n\n    # if in dev mode, and debug variable in config of your package is at least 2\n    # will print \"yourPackageName.someNamespace: debug service consumed\"\n    debug \"debug service consumed\", 2\n\n    # the level is optional, this will work also:\n    debug \"somethingSomething\"\n\n    # you can defer nsp setting for later\n    debugCreator = debugSetup(pkg: \"yourPackageName\")\n    debugNSP1 = debugCreator(\"NSP1\")\n    debugNSP2 = debugCreator(\"NSP2\")\n```\n\n## License\nCopyright (c) 2015 Paul Pflugradt\nLicensed under the MIT license.\n",
+    "metadata": {
+        "name": "debug-service",
+        "main": "./lib/debug-service",
+        "version": "0.0.1",
+        "description": "provides a debugger as a service for other atom packages",
+        "keywords": [
+            "atom",
+            "debug",
+            "service"
+        ],
+        "repository": "https://github.com/paulpflug/debug-service",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=0.174.0 <2.0.0"
+        },
+        "providedServices": {
+            "debug": {
+                "description": "debugs in dev-mode",
+                "versions": {
+                    "0.0.1": "provideDebug"
+                }
+            }
+        },
+        "consumedServices": {
+            "autoreload": {
+                "versions": {
+                    "^0.0.1": "consumeAutoreload"
+                }
+            }
+        },
+        "readmeFilename": "README.md"
+    },
+    "created": 1658339292098,
+    "updated": 1658339292098,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

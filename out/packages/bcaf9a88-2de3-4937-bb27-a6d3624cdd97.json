@@ -1,0 +1,196 @@
+{
+    "name": "linter-hadolint",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AtomLinter/linter-hadolint"
+    },
+    "downloads": 1165,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "1.0.0"
+    },
+    "versions": {
+        "1.0.0": {
+            "name": "linter-hadolint",
+            "version": "1.0.0",
+            "description": "Lint Docker files using Hadolint",
+            "private": true,
+            "main": "./lib/main.js",
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/linter-hadolint.git"
+            },
+            "keywords": [
+                "atom",
+                "docker",
+                "linter",
+                "hadolint"
+            ],
+            "license": "MIT",
+            "configSchema": {
+                "executablePath": {
+                    "type": "string",
+                    "default": "hadolint",
+                    "description": "Semicolon separated list of paths to search for the hadolint binary (e.g. `/usr/local/bin/hadolint`). Use `$PROJECT` or `$PROJECT_NAME` substitutions for project specific paths e.g. `$PROJECT/bin/hadolint` or `$PROJECT_NAME/bin/hadolint`"
+                },
+                "ignoreErrorCodes": {
+                    "title": "Ignored Error Codes",
+                    "type": "array",
+                    "default": [],
+                    "description": "For a list of code visit https://github.com/lukasmartinelli/hadolint/wiki"
+                },
+                "showRuleIdInMessage": {
+                    "title": "Show Rule ID in Messages",
+                    "type": "boolean",
+                    "default": true
+                }
+            },
+            "engines": {
+                "atom": ">=1.13.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-linter": "^10.0.0",
+                "atom-package-deps": "^4.6.0",
+                "fs-plus": "^3.0.1"
+            },
+            "devDependencies": {
+                "eslint": "^4.5.0",
+                "eslint-config-airbnb-base": "^11.3.2",
+                "eslint-plugin-import": "^2.7.0",
+                "jasmine-fix": "^1.3.0"
+            },
+            "package-deps": [
+                "linter:2.0.0",
+                "language-docker"
+            ],
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-hadolint/versions/1.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-hadolint/tarball/refs/tags/v1.0.0",
+            "sha": "43dcf7feb025c2d9471b669ea2e29a3a6c615cf8"
+        }
+    },
+    "readme": "# linter-hadolint\n\n[![Build Status](https://travis-ci.org/AtomLinter/linter-hadolint.svg)](https://travis-ci.org/AtomLinter/linter-hadolint)\n[![Dependency Status](https://david-dm.org/AtomLinter/linter-hadolint.svg)](https://david-dm.org/AtomLinter/linter-hadolint)\n\n\nThis linter plugin for [Linter](https://github.com/AtomLinter/Linter) provides\nan interface to [hadolint](https://github.com/lukasmartinelli/hadolint).\nIt will be used with files that have the \"source.dockerfile\" syntax.\n\n## Installation\n\n### Hadolint installation\n\nYou must have [hadolint](https://github.com/lukasmartinelli/hadolint) installed\nto use this plugin.\n\n### Plugin installation\n\n```ShellSession\napm install linter-hadolint\n```\n\nNote that if you do not have the `linter` package installed it will be\ninstalled for you.\n\n## Contributing\n\nSee the [contributing guidelines](./CONTRIBUTING.md) to get started.\n\n## Settings\n\nYou can configure linter-hadolint from the settings menu:\n\n*   **executablePath** Path to your hadolint executable. By default it will\n    use `hadolint` as the executable.\n\n*   **ignoreErrorCodes** A list of error codes to ignore.\n\n    Example: To ignore `DL3000` and `DL3002` you would enter something\n    like this:\n\n    ```\n    DL3000, DL3002\n    ```\n",
+    "metadata": {
+        "name": "linter-hadolint",
+        "version": "1.0.0",
+        "description": "Lint Docker files using Hadolint",
+        "private": true,
+        "main": "./lib/main.js",
+        "scripts": {
+            "test": "apm test",
+            "lint": "eslint ."
+        },
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/AtomLinter/linter-hadolint.git"
+        },
+        "keywords": [
+            "atom",
+            "docker",
+            "linter",
+            "hadolint"
+        ],
+        "license": "MIT",
+        "configSchema": {
+            "executablePath": {
+                "type": "string",
+                "default": "hadolint",
+                "description": "Semicolon separated list of paths to search for the hadolint binary (e.g. `/usr/local/bin/hadolint`). Use `$PROJECT` or `$PROJECT_NAME` substitutions for project specific paths e.g. `$PROJECT/bin/hadolint` or `$PROJECT_NAME/bin/hadolint`"
+            },
+            "ignoreErrorCodes": {
+                "title": "Ignored Error Codes",
+                "type": "array",
+                "default": [],
+                "description": "For a list of code visit https://github.com/lukasmartinelli/hadolint/wiki"
+            },
+            "showRuleIdInMessage": {
+                "title": "Show Rule ID in Messages",
+                "type": "boolean",
+                "default": true
+            }
+        },
+        "engines": {
+            "atom": ">=1.13.0 <2.0.0"
+        },
+        "dependencies": {
+            "atom-linter": "^10.0.0",
+            "atom-package-deps": "^4.6.0",
+            "fs-plus": "^3.0.1"
+        },
+        "devDependencies": {
+            "eslint": "^4.5.0",
+            "eslint-config-airbnb-base": "^11.3.2",
+            "eslint-plugin-import": "^2.7.0",
+            "jasmine-fix": "^1.3.0"
+        },
+        "package-deps": [
+            "linter:2.0.0",
+            "language-docker"
+        ],
+        "providedServices": {
+            "linter": {
+                "versions": {
+                    "2.0.0": "provideLinter"
+                }
+            }
+        },
+        "eslintConfig": {
+            "extends": "airbnb-base",
+            "rules": {
+                "global-require": "off",
+                "import/no-unresolved": [
+                    "error",
+                    {
+                        "ignore": [
+                            "atom"
+                        ]
+                    }
+                ]
+            },
+            "globals": {
+                "atom": true
+            },
+            "env": {
+                "node": true,
+                "browser": true
+            }
+        }
+    },
+    "created": 1658351049740,
+    "updated": 1658351049740,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

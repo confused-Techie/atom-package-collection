@@ -1,0 +1,146 @@
+{
+    "name": "go-postfix",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mikeynap/go-postfix"
+    },
+    "downloads": 1202,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "0.3.0"
+    },
+    "versions": {
+        "0.3.0": {
+            "name": "go-postfix",
+            "main": "./lib/go-postfix",
+            "version": "0.3.0",
+            "description": "Golang Postfix Expansion.",
+            "keywords": [
+                "go",
+                "golang",
+                "postfix",
+                "must",
+                "expansion",
+                "ternary",
+                "map",
+                "reduce",
+                "apply"
+            ],
+            "repository": "https://github.com/mikeynap/go-postfix",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provide"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/go-postfix/versions/0.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/mikeynap/go-postfix/tarball/refs/tags/v0.3.0",
+            "sha": "eaf4c81b19f04acfabcaf8e71d11566139be3987"
+        },
+        "0.2.0": {
+            "name": "go-postfix",
+            "main": "./lib/go-postfix",
+            "version": "0.2.0",
+            "description": "Golang Postfix Expansion.",
+            "keywords": [
+                "go",
+                "golang",
+                "postfix",
+                "must",
+                "expansion",
+                "ternary",
+                "map",
+                "reduce",
+                "apply"
+            ],
+            "repository": "https://github.com/mikeynap/go-postfix",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provide"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/go-postfix/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/mikeynap/go-postfix/tarball/refs/tags/v0.2.0",
+            "sha": "09d23673a1abfb9de062a609863aeea4db46b263"
+        },
+        "0.1.0": {
+            "name": "go-postfix",
+            "main": "./lib/go-postfix",
+            "version": "0.1.0",
+            "description": "Golang Postfix Expansion.",
+            "keywords": [
+                "go",
+                "golang",
+                "postfix",
+                "must",
+                "expansion"
+            ],
+            "activationCommands": {
+                "atom-workspace": "go-postfix:expand"
+            },
+            "repository": "https://github.com/mikeynap/go-postfix",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/go-postfix/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/mikeynap/go-postfix/tarball/refs/tags/v0.1.0",
+            "sha": "6f8df84f7041cd2b0cc72fa42fc0e8af6389108a"
+        }
+    },
+    "readme": "# go-postfix package\n\nGolang Postfix Expansion for Atom.\n\nSuggestions appear in autocomplete-go or can be manually triggered.\n\n## Postfix Operators\n\n### .must\nMust checks for nil and returns if expression != nil.\n\n\n`myErr.must()`\n```\nif myErr != nil {\n  return nil, myErr\n}\n```\n\n`myErr.Error().must(nil)`\n```\nif err := myErr.Error(); err != nil {\n  return nil, err\n}\n```\n\nThe behavior changes slightly if the must is in an assignment.\n`blah, err := someFunc().must()``\n```\nblah, err := someFunc()\nif err != nil {\n  return err\n}\n```\n\n`blah, err := someFunc().must(blah)`\n```\nblah, err := someFunc()\nif err != nil {\n  return blah2, err\n}\n```\n\n### .tern(condition, valIfTrue, valIfFalse)\n`c.tern(methodReturningBool(),2,3)`\n```\nc := 2\nif methodReturningBool() {\n  c = 3\n}\n```\n\n### val := (condition ? valIfTrue, valIfFalse)\n`c := (methodReturningBool() ? \"trueString\" : \"falseString\")`\n```\nc := \"trueString\"\nif methodReturningBool() {\n  c = \"falseString\"\n}\n```\n\n### .ife(v), .ifne(v)\nThese functions place the cursor in the resulting if block.\n\n`myVal.ife(true)`\n```\nif myVal == true {\n\n}\n```\n\n### .nil, .nnil, .nilr(rVal)\nThese functions place the cursor in the resulting if block.\n\n`myVal.nil`\n```\nif myVal == nil {\n\n}\n```\n\n\n`myVal.nnil`\n```\nif myVal != nil {\n\n}\n```\n\n`myVal.nilr`\n```\nif myVal == nil {\n  return myVal\n}\n```\n\n`myVal.nilr(-1)`\n```\nif myVal == nil {\n  return -1\n}\n```\n\n### .for, .for(k,v)\nThese functions place the cursor in the resulting for block.\n\n`myCollection.for`\n```\nfor i := range myCollection {\n\n}\n```\n\n`myCollection.for(_,v)`\n```\nfor _, v := range myCollection {\n\n}\n```\n\n### .try, .catch\nTry and Catch work identically except for the condition check. try tests for nil equality, catch tests for not nil.\n\n`someFunc().try`\n```\nif err := someFunc(); err == nil {\n\n}\n```\n\n`someFunc().catch(v,_)`\n```\nif v, _, err := someFunc(); err != nil {\n\n}\n```\nThe behavior changes slightly if the try/catch is in an assignment.\n\n`\ta,b := someFunc().try`\n```\na,b := someFunc()\nif b == nil {\n\n}\n```\n\n`a, b := someFunc().catch()`\n```\na, b := someFunc()\nif b != nil {\n\n}\n```\n\n### .catchPrint, .tryPrint\nFunctionally a .catch with a Printf inside the body. The printer defaults to fmt.Print(f/ln), but a different base can be specified in the settings.\n\n`f().catchPrint(v1, _)`\n```\nif v1, _, err := f(); err != nil {\n  fmt.Printf(\"v1: %v, err: %v\\n\",v1, err)\n}\n```\n\n\n### .print, .printf(fmtString)\n`expr.print`\n```\nfmt.Println(expr)\n```\n\n`a,b := thing().print`\n```\na,b := thing()\nfmt.Printf(\"a: %v, b: %v\\n\", a, b)\n```\n\n`expr.printf`\n```\nfmt.Printf(\"%+v\\n\", expr)\n```\n\n`expr.printf(\"expr is: %v\\n\")`\n```\nfmt.Printf(\"expr is %v\\n\", expr)\n```\n\n### .len\n`myArray.len`\n```\nlen(myArray)\n```\n\n### .error\n`\"Some Error String\".error`\n```\nerrors.New(\"Some Error String\")\n```\n\n### apply\n`myCollection.apply(fmt.Println)`\n```\nfor i := range myCollection {\n  fmt.Println(myCollection[i])\n}\n```\n\n### map\n`myCollection.map(someFunction)`\n```\nfor i := range myCollection {\n  myCollection[i] = someFunction(myCollection[i])\n}\n```\n\n### reduce\n`arr.reduce(0,f)`\n```\nresult := 0\nfor i := range arr {\n  result = f(arr[i], result)\n}\n```\n\n`val := arr.reduce(10,f)`\n```\nval := 10\nfor i := range arr {\n  val = f(arr[i], val)\n}\n```\n\n\n`arr.reduce(1, func(v, acc int) int { return v + acc })`\n```\nres := 1\nreduceFunc := func(v,acc int) int { return v + acc }\nfor i := range arr {\n\tres = reduceFunc(arr[i], res)\n}\n```\n",
+    "metadata": {
+        "name": "go-postfix",
+        "main": "./lib/go-postfix",
+        "version": "0.3.0",
+        "description": "Golang Postfix Expansion.",
+        "keywords": [
+            "go",
+            "golang",
+            "postfix",
+            "must",
+            "expansion",
+            "ternary",
+            "map",
+            "reduce",
+            "apply"
+        ],
+        "repository": "https://github.com/mikeynap/go-postfix",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {},
+        "providedServices": {
+            "autocomplete.provider": {
+                "versions": {
+                    "2.0.0": "provide"
+                }
+            }
+        }
+    },
+    "created": 1658342626163,
+    "updated": 1658342626163,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

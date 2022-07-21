@@ -1,0 +1,2913 @@
+{
+    "name": "linter",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/steelbrain/linter"
+    },
+    "downloads": 9863242,
+    "stargazers_count": 4757,
+    "releases": {
+        "latest": "3.4.0"
+    },
+    "versions": {
+        "3.4.0": {
+            "name": "linter",
+            "main": "./dist/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "3.4.0",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter",
+                "base linter"
+            ],
+            "private": true,
+            "scripts": {
+                "format": "prettier --write .",
+                "test.format": "prettier . --check",
+                "lint": "eslint . --fix",
+                "test.lint": "eslint .",
+                "test.only": "atom --test spec",
+                "test": "npm run tsc.build && npm run build && npm run test.only",
+                "clean": "shx rm -rf dist",
+                "get.ui-types": "node ./scripts/get-ui-types.js",
+                "tsc.types": "(tsc -p ./lib/tsconfig.json --emitDeclarationOnly || echo done)",
+                "tsc.dev": "npm run clean && cross-env NODE_ENV=development tsc --watch -p lib/tsconfig.json || echo done",
+                "tsc.build": "npm run clean && cross-env NODE_ENV=production tsc -p lib/tsconfig.json || echo done",
+                "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+                "build.bundle": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+                "build": "npm run tsc.types && npm run build.bundle",
+                "build-commit": "npm run clean && build-commit -o dist",
+                "prepare": "npm run get.ui-types && npm run clean && npm run build",
+                "prepublishOnly": "npm run build-commit"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^7.2.3",
+                "atom-select-list": "^0.8.1",
+                "lodash": "^4.17.21",
+                "minimatch": "^3.0.4"
+            },
+            "devDependencies": {
+                "@types/atom": "^1.40.10",
+                "@types/jasmine": "^3.7.7",
+                "@types/lodash": "^4.14.170",
+                "@types/minimatch": "^3.0.4",
+                "@types/node": "^15.12.2",
+                "@types/requestidlecallback": "^0.3.1",
+                "atom-ide-base": "^3.1.1",
+                "build-commit": "0.1.4",
+                "cross-env": "^7.0.3",
+                "eslint": "^7.28.0",
+                "eslint-config-atomic": "^1.16.1",
+                "fs-plus": "^3.1.1",
+                "gitly": "^2.1.1",
+                "jasmine-fix": "^1.3.1",
+                "prettier-config-atomic": "^2.0.5",
+                "rollup": "^2.52.1",
+                "rollup-plugin-atomic": "^2.3.2",
+                "shx": "^0.3.3",
+                "solid-js": "^0.26.5",
+                "temp": "^0.9.4",
+                "typescript": "^4.3.4"
+            },
+            "package-deps": [
+                {
+                    "name": "linter-ui-default",
+                    "minimumVersion": "3.3.1"
+                }
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 1
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 4
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 5
+                },
+                "disabledProviders": {
+                    "title": "Disabled providers",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of disabled linter providers",
+                    "default": [],
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/3.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v3.4.0",
+            "sha": "9266747c372a88eaefe0689f8d0df44a5a859415"
+        },
+        "3.3.1": {
+            "name": "linter",
+            "main": "./dist/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "3.3.1",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter",
+                "base linter"
+            ],
+            "private": true,
+            "scripts": {
+                "format": "prettier --write .",
+                "test.format": "prettier . --check",
+                "lint": "eslint . --fix",
+                "test.lint": "eslint .",
+                "test.only": "atom --test spec",
+                "test": "npm run tsc.build && npm run build && npm run test.only",
+                "clean": "shx rm -rf dist",
+                "tsc.dev": "npm run clean && cross-env NODE_ENV=development tsc --watch -p lib/tsconfig.json || echo done",
+                "tsc.build": "npm run clean && cross-env NODE_ENV=production tsc -p lib/tsconfig.json || echo done",
+                "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+                "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+                "build-commit": "npm run clean && build-commit -o dist",
+                "prepare": "npm run clean && npm run build",
+                "prepublishOnly": "npm run build-commit"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^7.2.3",
+                "atom-select-list": "^0.8.0",
+                "lodash": "^4.17.21",
+                "minimatch": "^3.0.4"
+            },
+            "devDependencies": {
+                "@types/atom": "^1.40.10",
+                "@types/jasmine": "^3.6.7",
+                "@types/lodash": "^4.14.168",
+                "@types/minimatch": "^3.0.3",
+                "@types/node": "^14.14.35",
+                "build-commit": "0.1.4",
+                "cross-env": "^7.0.3",
+                "eslint": "^7.22.0",
+                "eslint-config-atomic": "^1.12.4",
+                "fs-plus": "^3.1.1",
+                "jasmine-fix": "^1.3.1",
+                "prettier-config-atomic": "^1.0.1",
+                "rollup": "^2.42.3",
+                "rollup-plugin-atomic": "^2.1.1",
+                "shx": "^0.3.3",
+                "temp": "^0.9.4",
+                "typescript": "^4.2.3"
+            },
+            "package-deps": [
+                {
+                    "name": "linter-ui-default",
+                    "minimumVersion": "3.3.1"
+                }
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 1
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 4
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 5
+                },
+                "disabledProviders": {
+                    "title": "Disabled providers",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of disabled linter providers",
+                    "default": [],
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/3.3.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v3.3.1",
+            "sha": "fadd462914ef0a8ed5b73a489f662a9393bdbe9f"
+        },
+        "3.3.0": {
+            "name": "linter",
+            "main": "./dist/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "3.3.0",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter",
+                "base linter"
+            ],
+            "private": true,
+            "scripts": {
+                "format": "prettier --write .",
+                "lint": "eslint .",
+                "lint:fix": "eslint . --fix && npm run format",
+                "test.only": "atom --test spec",
+                "test": "npm run tsc.build && npm run build && npm run test.only",
+                "clean": "shx rm -rf dist",
+                "tsc.dev": "npm run clean && cross-env NODE_ENV=development tsc --watch -p lib/tsconfig.json || echo done",
+                "tsc.build": "npm run clean && cross-env NODE_ENV=production tsc -p lib/tsconfig.json || echo done",
+                "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+                "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+                "build-commit": "npm run clean && build-commit -o dist",
+                "prepare": "npm run clean && npm run build",
+                "prepublishOnly": "npm run build-commit"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^6.0.0",
+                "atom-select-list": "^0.7.2",
+                "lodash": "^4.17.20",
+                "minimatch": "^3.0.4"
+            },
+            "devDependencies": {
+                "@types/atom": "^1.40.7",
+                "@types/jasmine": "^3.6.3",
+                "@types/lodash": "^4.14.168",
+                "@types/minimatch": "^3.0.3",
+                "@types/node": "^14.14.22",
+                "build-commit": "0.1.4",
+                "cross-env": "^7.0.3",
+                "eslint": "^7.18.0",
+                "eslint-config-atomic": "^1.5.1",
+                "eslint-plugin-react": "^7.22.0",
+                "fs-plus": "^3.1.1",
+                "jasmine-fix": "^1.3.1",
+                "prettier": "^2",
+                "rollup": "^2.38.0",
+                "rollup-plugin-atomic": "^2.0.1",
+                "shx": "^0.3.3",
+                "temp": "^0.9.4",
+                "typescript": "^4.1.3"
+            },
+            "package-deps": [
+                "linter-ui-default:2.0.1"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 1
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 4
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 5
+                },
+                "disabledProviders": {
+                    "title": "Disabled providers",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of disabled linter providers",
+                    "default": [],
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/3.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v3.3.0",
+            "sha": "3be77da8394c26ed6c15dc01e09184dca52babda"
+        },
+        "3.2.3": {
+            "name": "linter",
+            "main": "./dist/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "3.2.3",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter",
+                "base linter"
+            ],
+            "private": true,
+            "scripts": {
+                "format": "prettier --write .",
+                "lint": "eslint .",
+                "lint:fix": "eslint . --fix && npm run format",
+                "test.only": "atom --test spec",
+                "test": "npm run tsc.build && npm run build && npm run test.only",
+                "clean": "shx rm -rf dist",
+                "tsc.dev": "npm run clean && cross-env NODE_ENV=development tsc --watch -p lib/tsconfig.json || echo done",
+                "tsc.build": "npm run clean && cross-env NODE_ENV=production tsc -p lib/tsconfig.json || echo done",
+                "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+                "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+                "build-commit": "npm run clean && build-commit -o dist",
+                "prepare": "npm run clean && npm run build",
+                "prepublishOnly": "npm run build-commit"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^6.0.0",
+                "atom-select-list": "^0.7.2",
+                "lodash": "^4.17.20",
+                "minimatch": "^3.0.4"
+            },
+            "devDependencies": {
+                "@types/atom": "^1.40.5",
+                "@types/jasmine": "^3.6.2",
+                "@types/lodash": "^4.14.167",
+                "@types/minimatch": "^3.0.3",
+                "@types/node": "^14.14.19",
+                "build-commit": "0.1.1",
+                "cross-env": "^7.0.2",
+                "eslint": "^7.16.0",
+                "eslint-config-atomic": "^1.5.1",
+                "eslint-plugin-react": "^7.22.0",
+                "jasmine-fix": "^1.3.1",
+                "prettier": "^2",
+                "rollup": "^2.28.2",
+                "rollup-plugin-atomic": "^1.2.0",
+                "shx": "^0.3.2",
+                "typescript": "^4.1.3"
+            },
+            "package-deps": [
+                "linter-ui-default:2.0.1"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 1
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 4
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 5
+                },
+                "disabledProviders": {
+                    "title": "Disabled providers",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of disabled linter providers",
+                    "default": [],
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/3.2.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v3.2.3",
+            "sha": "68b8bd6808392e202c402363434c9ba2fc196811"
+        },
+        "3.2.2": {
+            "name": "linter",
+            "main": "./dist/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "3.2.2",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter",
+                "base linter"
+            ],
+            "private": true,
+            "scripts": {
+                "format": "prettier --write .",
+                "lint": "eslint .",
+                "lint:fix": "eslint . --fix && npm run format",
+                "test.only": "atom --test spec",
+                "test": "npm run tsc.build && npm run build && npm run test.only",
+                "clean": "shx rm -rf dist",
+                "tsc.dev": "npm run clean && cross-env NODE_ENV=development tsc --watch -p lib/tsconfig.json || echo done",
+                "tsc.build": "npm run clean && cross-env NODE_ENV=production tsc -p lib/tsconfig.json || echo done",
+                "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+                "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+                "build-commit": "npm run clean && build-commit -o dist",
+                "prepare": "npm run clean && npm run build",
+                "prepublishOnly": "npm run build-commit"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^6.0.0",
+                "atom-select-list": "^0.7.2",
+                "lodash": "^4.17.20",
+                "minimatch": "^3.0.4"
+            },
+            "devDependencies": {
+                "@types/atom": "^1.40.5",
+                "@types/jasmine": "^3.6.2",
+                "@types/lodash": "^4.14.167",
+                "@types/minimatch": "^3.0.3",
+                "@types/node": "^14.14.19",
+                "build-commit": "0.1.1",
+                "cross-env": "^7.0.2",
+                "eslint": "^7.16.0",
+                "eslint-config-atomic": "^1.5.1",
+                "eslint-plugin-react": "^7.22.0",
+                "jasmine-fix": "^1.3.1",
+                "prettier": "^2",
+                "rollup": "^2.28.2",
+                "rollup-plugin-atomic": "^1.2.0",
+                "shx": "^0.3.2",
+                "typescript": "^4.1.3"
+            },
+            "package-deps": [
+                "linter-ui-default:2.0.1"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 1
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 4
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 5
+                },
+                "disabledProviders": {
+                    "title": "Disabled providers",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of disabled linter providers",
+                    "default": [],
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/3.2.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v3.2.2",
+            "sha": "1b5d4fdbe6e13ae8326c5f9dcd2477188a74b439"
+        },
+        "3.2.1": {
+            "name": "linter",
+            "main": "./dist/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "3.2.1",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter",
+                "base linter"
+            ],
+            "private": true,
+            "scripts": {
+                "format": "prettier --write .",
+                "lint": "eslint .",
+                "lint:fix": "eslint . --fix && npm run format",
+                "test.only": "atom --test spec",
+                "test": "npm run tsc.build && npm run build && npm run test.only",
+                "clean": "shx rm -rf dist",
+                "tsc.dev": "npm run clean && cross-env NODE_ENV=development tsc --watch -p lib/tsconfig.json || echo done",
+                "tsc.build": "npm run clean && cross-env NODE_ENV=production tsc -p lib/tsconfig.json || echo done",
+                "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+                "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+                "build-commit": "npm run clean && build-commit -o dist",
+                "prepare": "npm run clean && npm run build",
+                "prepublishOnly": "npm run build-commit"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^6.0.0",
+                "atom-select-list": "^0.7.2",
+                "lodash": "^4.17.20",
+                "minimatch": "^3.0.4"
+            },
+            "devDependencies": {
+                "@types/atom": "^1.40.5",
+                "@types/jasmine": "^3.6.2",
+                "@types/lodash": "^4.14.167",
+                "@types/minimatch": "^3.0.3",
+                "@types/node": "^14.14.19",
+                "build-commit": "0.1.1",
+                "cross-env": "^7.0.2",
+                "eslint": "^7.16.0",
+                "eslint-config-atomic": "^1.5.1",
+                "eslint-plugin-react": "^7.22.0",
+                "jasmine-fix": "^1.3.1",
+                "prettier": "^2",
+                "rollup": "^2.28.2",
+                "rollup-plugin-atomic": "^1.2.0",
+                "shx": "^0.3.2",
+                "typescript": "^4.1.3"
+            },
+            "package-deps": [
+                "linter-ui-default:2.0.1"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 1
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 4
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 5
+                },
+                "disabledProviders": {
+                    "title": "Disabled providers",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of disabled linter providers",
+                    "default": [],
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/3.2.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v3.2.1",
+            "sha": "cbc53f45ea0925ef0a24d17bb125f28a666fc81a"
+        },
+        "3.2.0": {
+            "name": "linter",
+            "main": "./dist/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "3.2.0",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter",
+                "base linter"
+            ],
+            "private": true,
+            "scripts": {
+                "format": "prettier --write .",
+                "lint": "eslint .",
+                "lint:fix": "eslint . --fix && npm run format",
+                "test.only": "atom --test spec",
+                "test": "npm run tsc.build && npm run build && npm run test.only",
+                "clean": "shx rm -rf dist",
+                "tsc.dev": "npm run clean && cross-env NODE_ENV=development tsc --watch -p lib/tsconfig.json || echo done",
+                "tsc.build": "npm run clean && cross-env NODE_ENV=production tsc -p lib/tsconfig.json || echo done",
+                "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+                "build": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+                "build-commit": "npm run clean && build-commit -o dist",
+                "prepare": "npm run build",
+                "prepublishOnly": "npm run build-commit"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^6.0.0",
+                "atom-select-list": "^0.7.2",
+                "lodash": "^4.17.20",
+                "minimatch": "^3.0.4"
+            },
+            "devDependencies": {
+                "@types/atom": "^1.40.5",
+                "@types/jasmine": "^3.6.2",
+                "@types/lodash": "^4.14.167",
+                "@types/minimatch": "^3.0.3",
+                "@types/node": "^14.14.19",
+                "build-commit": "0.1.1",
+                "cross-env": "^7.0.2",
+                "eslint": "^7.16.0",
+                "eslint-config-atomic": "^1.5.1",
+                "eslint-plugin-react": "^7.22.0",
+                "jasmine-fix": "^1.3.1",
+                "prettier": "^2",
+                "rollup": "^2.28.2",
+                "rollup-plugin-atomic": "^1.2.0",
+                "shx": "^0.3.2",
+                "typescript": "^4.1.3"
+            },
+            "package-deps": [
+                "linter-ui-default:2.0.1"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 1
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 4
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 5
+                },
+                "disabledProviders": {
+                    "title": "Disabled providers",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of disabled linter providers",
+                    "default": [],
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/3.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v3.2.0",
+            "sha": "38490903e1d4c2782bceb90e6727025cb4103b4b"
+        },
+        "3.1.1": {
+            "name": "linter",
+            "main": "./dist/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "3.1.1",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter",
+                "base linter"
+            ],
+            "private": true,
+            "scripts": {
+                "test": "npm run build && apm test",
+                "lint": "(flow check) && (eslint . ) && (prettier --list-different lib/*.js)",
+                "lint:fix": "eslint . --fix && prettier --write lib/**/*.js",
+                "clean": "shx rm -rf dist",
+                "babel": "npm run clean && shx cp -r lib dist && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=false babel dist --out-dir dist",
+                "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+                "build": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+                "build-commit": "build-commit -o dist",
+                "prepare": "npm run build",
+                "prepublishOnly": "npm run build-commit"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^6.0.0",
+                "atom-select-list": "^0.7.2",
+                "lodash": "^4.17.20",
+                "minimatch": "^3.0.4"
+            },
+            "devDependencies": {
+                "eslint-config-steelbrain": "^7.0.0",
+                "flow-bin": "^0.123.0",
+                "jasmine-fix": "^1.3.1",
+                "@types/atom": "^1.40.4",
+                "rollup": "^2.28.2",
+                "rollup-plugin-atomic": "^1.2.0",
+                "shx": "^0.3.2",
+                "cross-env": "^7.0.2",
+                "@babel/cli": "7.11.6",
+                "@babel/core": "7.11.6",
+                "babel-preset-atomic": "^2.4.2",
+                "build-commit": "0.1.1"
+            },
+            "package-deps": [
+                "linter-ui-default:2.0.1"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 1
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 4
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 5
+                },
+                "disabledProviders": {
+                    "title": "Disabled providers",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of disabled linter providers",
+                    "default": [],
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/3.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v3.1.1",
+            "sha": "7767a8f5ee9ace8ee4b48a0f892a906097ddba7a"
+        },
+        "3.1.0": {
+            "name": "linter",
+            "main": "./dist/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "3.1.0",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter",
+                "base linter"
+            ],
+            "private": true,
+            "scripts": {
+                "test": "npm run build && apm test",
+                "lint": "(flow check) && (eslint . ) && (prettier --list-different lib/*.js)",
+                "lint:fix": "eslint . --fix && prettier --write lib/**/*.js",
+                "clean": "shx rm -rf dist",
+                "babel": "npm run clean && shx cp -r lib dist && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=false babel dist --out-dir dist",
+                "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+                "build": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+                "build-commit": "build-commit -o dist",
+                "prepare": "npm run build",
+                "prepublishOnly": "npm run build-commit"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^6.0.0",
+                "atom-select-list": "^0.7.2",
+                "lodash": "^4.17.20",
+                "minimatch": "^3.0.4"
+            },
+            "devDependencies": {
+                "eslint-config-steelbrain": "^7.0.0",
+                "flow-bin": "^0.123.0",
+                "jasmine-fix": "^1.3.1",
+                "@types/atom": "^1.40.4",
+                "rollup": "^2.28.2",
+                "rollup-plugin-atomic": "^1.2.0",
+                "shx": "^0.3.2",
+                "cross-env": "^7.0.2",
+                "@babel/cli": "7.11.6",
+                "@babel/core": "7.11.6",
+                "babel-preset-atomic": "^2.4.2",
+                "build-commit": "0.1.1"
+            },
+            "package-deps": [
+                "linter-ui-default:2.0.1"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 1
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 4
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 5
+                },
+                "disabledProviders": {
+                    "title": "Disabled providers",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of disabled linter providers",
+                    "default": [],
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/3.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v3.1.0",
+            "sha": "195f70aec7d6bddee52ac5881a5958a426802be9"
+        },
+        "3.0.0": {
+            "name": "linter",
+            "main": "./lib/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "3.0.0",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter",
+                "base linter"
+            ],
+            "private": true,
+            "scripts": {
+                "test": "apm test",
+                "lint": "(flow check) && (eslint . ) && (prettier --list-different lib/*.js)",
+                "lint:fix": "eslint . --fix && prettier --write lib/**/*.js"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^5.1.0",
+                "atom-select-list": "^0.7.2",
+                "lodash": "^4.17.15",
+                "minimatch": "^3.0.3"
+            },
+            "devDependencies": {
+                "eslint-config-steelbrain": "^7.0.0",
+                "flow-bin": "^0.123.0",
+                "jasmine-fix": "^1.3.1"
+            },
+            "package-deps": [
+                "linter-ui-default"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 1
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 4
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 5
+                },
+                "disabledProviders": {
+                    "title": "Disabled providers",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of disabled linter providers",
+                    "default": [],
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/3.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v3.0.0",
+            "sha": "1299b972abe9a094b08442ed6c41100d5228b04c"
+        },
+        "2.3.1": {
+            "name": "linter",
+            "main": "./lib/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "2.3.1",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter",
+                "base linter"
+            ],
+            "private": true,
+            "scripts": {
+                "test": "apm test",
+                "lint": "(flow check) && (eslint . ) && (prettier --list-different lib/*.js)"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^5.1.0",
+                "atom-select-list": "^0.7.2",
+                "lodash": "^4.17.15",
+                "minimatch": "^3.0.3"
+            },
+            "devDependencies": {
+                "eslint-config-steelbrain": "^7.0.0",
+                "flow-bin": "^0.102.0",
+                "jasmine-fix": "^1.3.1"
+            },
+            "package-deps": [
+                "linter-ui-default"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 1
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 4
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 5
+                },
+                "disabledProviders": {
+                    "title": "Disabled providers",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of disabled linter providers",
+                    "default": [],
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/2.3.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v2.3.1",
+            "sha": "f8b892826860e12fc7e12970e66da9c878ee2c57"
+        },
+        "2.3.0": {
+            "name": "linter",
+            "main": "./lib/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "2.3.0",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter",
+                "base linter"
+            ],
+            "private": true,
+            "scripts": {
+                "test": "apm test",
+                "lint": "(flow check) && (eslint . ) && (prettier --list-different lib/*.js)"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^5.0.0",
+                "atom-select-list": "^0.7.2",
+                "lodash": "^4.17.11",
+                "minimatch": "^3.0.3"
+            },
+            "devDependencies": {
+                "eslint-config-steelbrain": "^6.0.0",
+                "flow-bin": "^0.90.0",
+                "jasmine-fix": "^1.3.1"
+            },
+            "package-deps": [
+                "linter-ui-default"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 1
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 4
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 5
+                },
+                "disabledProviders": {
+                    "title": "Disabled providers",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of disabled linter providers",
+                    "default": [],
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/2.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v2.3.0",
+            "sha": "9a51575d1af9da2932d9db22d400b8924d0a49a4"
+        },
+        "2.2.0": {
+            "name": "linter",
+            "main": "./lib/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "2.2.0",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter"
+            ],
+            "private": true,
+            "scripts": {
+                "test": "(apm test) && (flow check) && (eslint . )"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinterLegacy",
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndieLegacy",
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.4.1",
+                "atom-select-list": "0.2.0",
+                "cool-trim": "^1.1.1",
+                "lodash.uniq": "^4.5.0",
+                "minimatch": "^3.0.3",
+                "sb-debounce": "^1.0.1",
+                "sb-fs": "^3.0.0"
+            },
+            "devDependencies": {
+                "eslint-config-steelbrain": "^3.0.0",
+                "flow-bin": "^0.46.0",
+                "jasmine-fix": "^1.0.0"
+            },
+            "package-deps": [
+                "linter-ui-default"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 1
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 4
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 5
+                },
+                "disabledProviders": {
+                    "title": "Disabled providers",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of disabled linter providers",
+                    "default": [],
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/2.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v2.2.0",
+            "sha": "6ec07e36c5548ae34dfa9b0b7d2dc5829fba0b57"
+        },
+        "2.1.4": {
+            "name": "linter",
+            "main": "./lib/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "2.1.4",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter"
+            ],
+            "private": true,
+            "scripts": {
+                "test": "(apm test) && (flow check) && (eslint . )"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinterLegacy",
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndieLegacy",
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.4.1",
+                "atom-select-list": "0.2.0",
+                "cool-trim": "^1.1.1",
+                "lodash.uniq": "^4.5.0",
+                "minimatch": "^3.0.3",
+                "sb-debounce": "^1.0.1",
+                "sb-fs": "^3.0.0"
+            },
+            "devDependencies": {
+                "eslint-config-steelbrain": "^3.0.0",
+                "flow-bin": "^0.44.0",
+                "jasmine-fix": "^1.0.0"
+            },
+            "package-deps": [
+                "linter-ui-default"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 1
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 4
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 5
+                },
+                "disabledProviders": {
+                    "title": "Disabled providers",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of disabled linter providers",
+                    "default": [],
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/2.1.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v2.1.4",
+            "sha": "2fe3fed33d55100303a3fb64182d4d531d03b36f"
+        },
+        "2.1.3": {
+            "name": "linter",
+            "main": "./lib/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "2.1.3",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter"
+            ],
+            "private": true,
+            "scripts": {
+                "test": "(apm test) && (flow check) && (eslint . )"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinterLegacy",
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndieLegacy",
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.4.1",
+                "atom-select-list": "0.1.0",
+                "cool-trim": "^1.1.1",
+                "lodash.uniq": "^4.5.0",
+                "minimatch": "^3.0.3",
+                "sb-debounce": "^1.0.1",
+                "sb-fs": "^3.0.0"
+            },
+            "devDependencies": {
+                "eslint-config-steelbrain": "^3.0.0",
+                "flow-bin": "^0.43.0",
+                "jasmine-fix": "^1.0.0"
+            },
+            "package-deps": [
+                "linter-ui-default"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 1
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 4
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 5
+                },
+                "disabledProviders": {
+                    "title": "Disabled providers",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of disabled linter providers",
+                    "default": [],
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/2.1.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v2.1.3",
+            "sha": "bd90702ee99dfebd2793edc85bcdf51345f6203c"
+        },
+        "2.1.2": {
+            "name": "linter",
+            "main": "./lib/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "2.1.2",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter"
+            ],
+            "private": true,
+            "scripts": {
+                "test": "(apm test) && (flow check) && (eslint . )"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinterLegacy",
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndieLegacy",
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.4.1",
+                "atom-select-list": "0.0.16",
+                "cool-trim": "^1.1.1",
+                "eslint-config-steelbrain": "^2.0.0",
+                "lodash.uniq": "^4.5.0",
+                "minimatch": "^3.0.3",
+                "sb-config-file": "^3.0.2",
+                "sb-debounce": "^1.0.1"
+            },
+            "devDependencies": {
+                "eslint-config-steelbrain": "^2.0.0",
+                "flow-bin": "^0.42.0",
+                "jasmine-fix": "^1.0.0"
+            },
+            "package-deps": [
+                "linter-ui-default"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 4
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 5
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/2.1.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v2.1.2",
+            "sha": "2fa24b9fc03cfe7ff205a182cffdb555299a0648"
+        },
+        "2.1.1": {
+            "name": "linter",
+            "main": "./lib/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "2.1.1",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter"
+            ],
+            "private": true,
+            "scripts": {
+                "test": "(apm test) && (flow check) && (eslint . )"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinterLegacy",
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndieLegacy",
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.4.1",
+                "atom-select-list": "0.0.16",
+                "cool-trim": "^1.1.1",
+                "eslint-config-steelbrain": "^2.0.0",
+                "lodash.uniq": "^4.5.0",
+                "minimatch": "^3.0.3",
+                "sb-debounce": "^1.0.1"
+            },
+            "devDependencies": {
+                "eslint-config-steelbrain": "^2.0.0",
+                "flow-bin": "^0.42.0",
+                "jasmine-fix": "^1.0.0"
+            },
+            "package-deps": [
+                "linter-ui-default"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 4
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 5
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/2.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v2.1.1",
+            "sha": "ba643244c6e851fc1a3b1ccad18fe4f4e54ccac5"
+        },
+        "2.1.0": {
+            "name": "linter",
+            "main": "./lib/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "2.1.0",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter"
+            ],
+            "private": true,
+            "scripts": {
+                "test": "(apm test) && (flow check) && (eslint . )"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinterLegacy",
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndieLegacy",
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.4.1",
+                "atom-select-list": "0.0.16",
+                "cool-trim": "^1.1.1",
+                "eslint-config-steelbrain": "^2.0.0",
+                "lodash.uniq": "^4.5.0",
+                "minimatch": "^3.0.3",
+                "sb-config-file": "^3.0.2",
+                "sb-debounce": "^1.0.1"
+            },
+            "devDependencies": {
+                "eslint-config-steelbrain": "^2.0.0",
+                "flow-bin": "^0.41.0",
+                "jasmine-fix": "^1.0.0"
+            },
+            "package-deps": [
+                "linter-ui-default"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 4
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 5
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/2.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v2.1.0",
+            "sha": "605fa0f14f99168e0b04776d48f1d54fc122c7cd"
+        },
+        "2.0.0": {
+            "name": "linter",
+            "main": "./lib/index.js",
+            "author": "steelbrain",
+            "readme": "./README.md",
+            "version": "2.0.0",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "keywords": [
+                "linter"
+            ],
+            "private": true,
+            "scripts": {
+                "test": "(apm test) && (flow check) && (eslint . )"
+            },
+            "engines": {
+                "atom": ">=1.14.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinterLegacy",
+                        "2.0.0": "consumeLinter"
+                    }
+                },
+                "linter-ui": {
+                    "versions": {
+                        "1.0.0": "consumeUI"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "provideIndie"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.4.1",
+                "atom-select-list": "0.0.16",
+                "cool-trim": "^1.1.1",
+                "eslint-config-steelbrain": "^2.0.0",
+                "lodash.uniq": "^4.5.0",
+                "minimatch": "^3.0.3",
+                "sb-config-file": "^3.0.2",
+                "sb-debounce": "^1.0.1"
+            },
+            "devDependencies": {
+                "eslint-config-steelbrain": "^2.0.0",
+                "flow-bin": "^0.41.0",
+                "jasmine-fix": "^1.0.0"
+            },
+            "package-deps": [
+                "linter-ui-default"
+            ],
+            "configSchema": {
+                "lintPreviewTabs": {
+                    "type": "boolean",
+                    "description": "Lint tabs while they are still in preview status",
+                    "default": true,
+                    "order": 2
+                },
+                "lintOnOpen": {
+                    "title": "Lint on Open",
+                    "description": "Lint files automatically when they are opened",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 3
+                },
+                "lintOnChange": {
+                    "title": "Lint on Change",
+                    "description": "Lint files while typing, without the need to save (only for supported providers)",
+                    "type": "boolean",
+                    "default": true,
+                    "order": 4
+                },
+                "lintOnChangeInterval": {
+                    "title": "Lint on Change Interval",
+                    "description": "Interval at which linting is done as you type (in ms)",
+                    "type": "integer",
+                    "default": 300,
+                    "order": 5
+                },
+                "ignoreGlob": {
+                    "title": "Ignore files matching this Glob",
+                    "type": "string",
+                    "default": "**/*.min.{js,css}",
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/2.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v2.0.0",
+            "sha": "d4467440c5d7871116427c3ae2178d31fbd61ccf"
+        },
+        "1.11.23": {
+            "name": "linter",
+            "main": "./lib/main",
+            "author": "steelbrain",
+            "version": "1.11.23",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/steelbrain/linter",
+            "license": "MIT",
+            "scripts": {
+                "lint": "coffeelint lib && eslint lib"
+            },
+            "engines": {
+                "atom": ">=1.13.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinter"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndie"
+                    }
+                },
+                "linter-plus-self": {
+                    "versions": {
+                        "0.1.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "interact.js": "^1.2.5",
+                "minimatch": "^3.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/1.11.23/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v1.11.23",
+            "sha": "1d0eb0bbc08145d42b795ab5b1a087dc8c037d78"
+        },
+        "1.11.22": {
+            "name": "linter",
+            "main": "./lib/main",
+            "author": "atom-community",
+            "version": "1.11.22",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/atom-community/linter",
+            "license": "MIT",
+            "scripts": {
+                "lint": "coffeelint lib && eslint lib"
+            },
+            "engines": {
+                "atom": ">=1.13.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinter"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndie"
+                    }
+                },
+                "linter-plus-self": {
+                    "versions": {
+                        "0.1.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "interact.js": "^1.2.5",
+                "minimatch": "^3.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/1.11.22/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v1.11.22",
+            "sha": "d8bc29833e1fdf148ee64a6477bfbbaabb683eb3"
+        },
+        "1.11.21": {
+            "name": "linter",
+            "main": "./lib/main",
+            "author": "atom-community",
+            "version": "1.11.21",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/atom-community/linter",
+            "license": "MIT",
+            "scripts": {
+                "lint": "coffeelint lib && eslint lib"
+            },
+            "engines": {
+                "atom": ">=1.13.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinter"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndie"
+                    }
+                },
+                "linter-plus-self": {
+                    "versions": {
+                        "0.1.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "interact.js": "^1.2.5",
+                "minimatch": "^3.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/1.11.21/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v1.11.21",
+            "sha": "d4ea5b2a48c674ca7c74a9b4e0e21881258ec43c"
+        },
+        "1.11.20": {
+            "name": "linter",
+            "main": "./lib/main",
+            "author": "atom-community",
+            "version": "1.11.20",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/atom-community/linter",
+            "license": "MIT",
+            "scripts": {
+                "lint": "coffeelint lib && eslint lib"
+            },
+            "engines": {
+                "atom": ">=1.13.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinter"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndie"
+                    }
+                },
+                "linter-plus-self": {
+                    "versions": {
+                        "0.1.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "interact.js": "^1.2.5",
+                "minimatch": "^3.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/1.11.20/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v1.11.20",
+            "sha": "9183a54195732cc16a93d97c2283a01759465ea7"
+        },
+        "1.11.19": {
+            "name": "linter",
+            "main": "./lib/main",
+            "author": "atom-community",
+            "version": "1.11.19",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/atom-community/linter",
+            "license": "MIT",
+            "scripts": {
+                "lint": "coffeelint lib && eslint lib"
+            },
+            "engines": {
+                "atom": ">=1.13.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinter"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndie"
+                    }
+                },
+                "linter-plus-self": {
+                    "versions": {
+                        "0.1.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "interact.js": "^1.2.5",
+                "minimatch": "^3.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/1.11.19/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v1.11.19",
+            "sha": "dc50d5666baca932c868f0db7f36dbb6978bccb0"
+        },
+        "1.11.18": {
+            "name": "linter",
+            "main": "./lib/main",
+            "author": "atom-community",
+            "version": "1.11.18",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/atom-community/linter",
+            "license": "MIT",
+            "scripts": {
+                "lint": "coffeelint lib && eslint lib"
+            },
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinter"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndie"
+                    }
+                },
+                "linter-plus-self": {
+                    "versions": {
+                        "0.1.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "interact.js": "^1.2.5",
+                "minimatch": "^3.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/1.11.18/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v1.11.18",
+            "sha": "bdf3d5f8bb900f339085739de07d16572eabbfbc"
+        },
+        "1.11.17": {
+            "name": "linter",
+            "main": "./lib/main",
+            "author": "atom-community",
+            "version": "1.11.17",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/atom-community/linter",
+            "license": "MIT",
+            "scripts": {
+                "lint": "coffeelint lib && eslint lib"
+            },
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinter"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndie"
+                    }
+                },
+                "linter-plus-self": {
+                    "versions": {
+                        "0.1.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "interact.js": "^1.2.5",
+                "minimatch": "^3.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/1.11.17/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v1.11.17",
+            "sha": "360d7dbea8e69eed4cdcf1b43799b4a1e5195013"
+        },
+        "1.11.16": {
+            "name": "linter",
+            "main": "./lib/main",
+            "author": "atom-community",
+            "version": "1.11.16",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/atom-community/linter",
+            "license": "MIT",
+            "scripts": {
+                "lint": "coffeelint lib && eslint lib"
+            },
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinter"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndie"
+                    }
+                },
+                "linter-plus-self": {
+                    "versions": {
+                        "0.1.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "interact.js": "^1.2.5",
+                "minimatch": "^3.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/1.11.16/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v1.11.16",
+            "sha": "d5cbf6beac983e008dbd068bf8c2a299c7bbbc86"
+        },
+        "1.11.15": {
+            "name": "linter",
+            "main": "./lib/main",
+            "author": "atom-community",
+            "version": "1.11.15",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/atom-community/linter",
+            "license": "MIT",
+            "scripts": {
+                "lint": "coffeelint lib && eslint lib"
+            },
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinter"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndie"
+                    }
+                },
+                "linter-plus-self": {
+                    "versions": {
+                        "0.1.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "interact.js": "^1.2.5",
+                "minimatch": "^3.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/1.11.15/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v1.11.15",
+            "sha": "27d3bb163c2d472472a7fca2a5daa072841a049a"
+        },
+        "1.11.14": {
+            "name": "linter",
+            "main": "./lib/main",
+            "author": "atom-community",
+            "version": "1.11.14",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/atom-community/linter",
+            "license": "MIT",
+            "scripts": {
+                "lint": "coffeelint lib && eslint lib"
+            },
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinter"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndie"
+                    }
+                },
+                "linter-plus-self": {
+                    "versions": {
+                        "0.1.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "interact.js": "^1.2.5",
+                "minimatch": "^3.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/1.11.14/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v1.11.14",
+            "sha": "4dfc5bbaf0e7f291c13539ccb67d0364b1f5eef2"
+        },
+        "1.11.13": {
+            "name": "linter",
+            "main": "./lib/main",
+            "author": "atom-community",
+            "version": "1.11.13",
+            "description": "A Base Linter with Cow Powers",
+            "repository": "https://github.com/atom-community/linter",
+            "license": "MIT",
+            "scripts": {
+                "lint": "coffeelint lib && eslint lib"
+            },
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "consumedServices": {
+                "linter": {
+                    "versions": {
+                        "^1.0.0": "consumeLinter"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "1.0.0": "provideIndie"
+                    }
+                },
+                "linter-plus-self": {
+                    "versions": {
+                        "0.1.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "interact.js": "^1.2.5",
+                "minimatch": "^3.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter/versions/1.11.13/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/steelbrain/linter/tarball/refs/tags/v1.11.13",
+            "sha": "1355cd8b7f0a9860dd6158e20acb2d8eeb577556"
+        }
+    },
+    "readme": "# Linter\n\n[![Slack Badge](https://img.shields.io/badge/chat-atom.io%20slack-blue.svg?style=flat-square)](http://atom-slack.herokuapp.com/)\n[![Build Status](https://img.shields.io/circleci/project/steelbrain/linter.svg?style=flat-square)](https://circleci.com/gh/steelbrain/linter)\n[![Plugin installs!](https://img.shields.io/apm/dm/linter.svg?style=flat-square)](https://atom.io/packages/linter)\n[![Package version!](https://img.shields.io/apm/v/linter.svg?style=flat-square)](https://atom.io/packages/linter)\n[![Dependencies!](https://img.shields.io/david/steelbrain/Linter.svg?style=flat-square)](https://david-dm.org/steelbrain/linter)\n[![OpenCollective](https://opencollective.com/linter/backers/badge.svg)](#backers)\n[![OpenCollective](https://opencollective.com/linter/sponsors/badge.svg)](#sponsors)\n\nLinter is a base linter provider for the hackable [Atom Editor](http://atom.io). Additionally, you need to install a specific linter for your language. You will find a full list on [atomlinter.github.io](http://atomlinter.github.io/).\n\nIt provides a top-level API to its consumer so that they can visualize errors and other types of messages with ease.\n\n![Preview](https://cloud.githubusercontent.com/assets/4278113/23879933/1ab17e2a-0872-11e7-803d-3fe0ccfc6790.gif)\n\n#### How to / Installation\n\nYou can install through the CLI by doing:\n\n```\n$ apm install linter\n```\n\nOr you can install from Settings view by searching for `Base Linter`, (this package might not show up when searching for `Linter`).\n\nLinter automatically installs `linter-ui-default`, which is required for the functionality of this package.\n\n#### API Documentation\n\nPlease navigate to [steelbrain.me/linter](http://steelbrain.me/linter/) for Linter v2 documentation.\n\n#### Contribute\n\nStick to imposed codestyle:\n\n- `$ npm i`\n- `$ npm lint`\n- `$ npm test`\n",
+    "metadata": {
+        "name": "linter",
+        "main": "./dist/index.js",
+        "author": "steelbrain",
+        "readme": "./README.md",
+        "version": "3.4.0",
+        "description": "A Base Linter with Cow Powers",
+        "repository": "https://github.com/steelbrain/linter",
+        "license": "MIT",
+        "keywords": [
+            "linter",
+            "base linter"
+        ],
+        "private": true,
+        "scripts": {
+            "format": "prettier --write .",
+            "test.format": "prettier . --check",
+            "lint": "eslint . --fix",
+            "test.lint": "eslint .",
+            "test.only": "atom --test spec",
+            "test": "npm run tsc.build && npm run build && npm run test.only",
+            "clean": "shx rm -rf dist",
+            "get.ui-types": "node ./scripts/get-ui-types.js",
+            "tsc.types": "(tsc -p ./lib/tsconfig.json --emitDeclarationOnly || echo done)",
+            "tsc.dev": "npm run clean && cross-env NODE_ENV=development tsc --watch -p lib/tsconfig.json || echo done",
+            "tsc.build": "npm run clean && cross-env NODE_ENV=production tsc -p lib/tsconfig.json || echo done",
+            "dev": "npm run clean && cross-env NODE_ENV=development cross-env BABEL_KEEP_MODULES=true rollup -c -w",
+            "build.bundle": "cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c",
+            "build": "npm run tsc.types && npm run build.bundle",
+            "build-commit": "npm run clean && build-commit -o dist",
+            "prepare": "npm run get.ui-types && npm run clean && npm run build",
+            "prepublishOnly": "npm run build-commit"
+        },
+        "engines": {
+            "atom": ">=1.14.0 <2.0.0"
+        },
+        "consumedServices": {
+            "linter": {
+                "versions": {
+                    "2.0.0": "consumeLinter"
+                }
+            },
+            "linter-ui": {
+                "versions": {
+                    "1.0.0": "consumeUI"
+                }
+            }
+        },
+        "providedServices": {
+            "linter-indie": {
+                "versions": {
+                    "2.0.0": "provideIndie"
+                }
+            }
+        },
+        "activationHooks": [
+            "core:loaded-shell-environment"
+        ],
+        "dependencies": {
+            "atom-package-deps": "^7.2.3",
+            "atom-select-list": "^0.8.1",
+            "lodash": "^4.17.21",
+            "minimatch": "^3.0.4"
+        },
+        "devDependencies": {
+            "@types/atom": "^1.40.10",
+            "@types/jasmine": "^3.7.7",
+            "@types/lodash": "^4.14.170",
+            "@types/minimatch": "^3.0.4",
+            "@types/node": "^15.12.2",
+            "@types/requestidlecallback": "^0.3.1",
+            "atom-ide-base": "^3.1.1",
+            "build-commit": "0.1.4",
+            "cross-env": "^7.0.3",
+            "eslint": "^7.28.0",
+            "eslint-config-atomic": "^1.16.1",
+            "fs-plus": "^3.1.1",
+            "gitly": "^2.1.1",
+            "jasmine-fix": "^1.3.1",
+            "prettier-config-atomic": "^2.0.5",
+            "rollup": "^2.52.1",
+            "rollup-plugin-atomic": "^2.3.2",
+            "shx": "^0.3.3",
+            "solid-js": "^0.26.5",
+            "temp": "^0.9.4",
+            "typescript": "^4.3.4"
+        },
+        "package-deps": [
+            {
+                "name": "linter-ui-default",
+                "minimumVersion": "3.3.1"
+            }
+        ],
+        "configSchema": {
+            "lintPreviewTabs": {
+                "type": "boolean",
+                "description": "Lint tabs while they are still in preview status",
+                "default": true,
+                "order": 1
+            },
+            "lintOnOpen": {
+                "title": "Lint on Open",
+                "description": "Lint files automatically when they are opened",
+                "type": "boolean",
+                "default": true,
+                "order": 2
+            },
+            "lintOnChange": {
+                "title": "Lint on Change",
+                "description": "Lint files while typing, without the need to save (only for supported providers)",
+                "type": "boolean",
+                "default": true,
+                "order": 3
+            },
+            "lintOnChangeInterval": {
+                "title": "Lint on Change Interval",
+                "description": "Interval at which linting is done as you type (in ms)",
+                "type": "integer",
+                "default": 300,
+                "order": 4
+            },
+            "ignoreGlob": {
+                "title": "Ignore files matching this Glob",
+                "type": "string",
+                "default": "**/*.min.{js,css}",
+                "order": 5
+            },
+            "disabledProviders": {
+                "title": "Disabled providers",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "description": "Names of disabled linter providers",
+                "default": [],
+                "order": 6
+            }
+        }
+    },
+    "created": 1658356503432,
+    "updated": 1658356503432,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

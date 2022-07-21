@@ -1,0 +1,2844 @@
+{
+    "name": "linter-perlcritic",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AtomLinter/atom-linter-perlcritic"
+    },
+    "downloads": 9297,
+    "stargazers_count": 10,
+    "releases": {
+        "latest": "2.3.1"
+    },
+    "versions": {
+        "2.3.1": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "2.3.1",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "configSchema": {
+                "executablePath": {
+                    "type": "string",
+                    "title": "Perlcritic Executable Path",
+                    "default": "perlcritic"
+                },
+                "level": {
+                    "type": "string",
+                    "title": "Perlcritic Level of warning",
+                    "description": "If set to auto this applies a mapping between the linter log levels and perlcritic severity. It's more colorful but may be set to constant values too.",
+                    "default": "auto",
+                    "enum": [
+                        "auto",
+                        "info",
+                        "warning",
+                        "error"
+                    ]
+                },
+                "commandlineOptions": {
+                    "type": "string",
+                    "title": "Additional Commandline options",
+                    "default": ""
+                },
+                "showSeverity": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the severity number of the violation."
+                },
+                "showExplanation": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the short explanation or PBP page reference of the violation."
+                },
+                "showPolicy": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show the policy that reported the violation."
+                },
+                "forceMinimumSeverity": {
+                    "type": "string",
+                    "default": "none",
+                    "description": "Force `perlcritic` to apply policies of a certain severity.",
+                    "enum": [
+                        {
+                            "value": "none",
+                            "description": "No forced severity."
+                        },
+                        {
+                            "value": "gentle",
+                            "description": "Gentle (>5)"
+                        },
+                        {
+                            "value": "stern",
+                            "description": "Stern (>4)"
+                        },
+                        {
+                            "value": "harsh",
+                            "description": "Harsh (>3)"
+                        },
+                        {
+                            "value": "cruel",
+                            "description": "Cruel (>2)"
+                        },
+                        {
+                            "value": "brutal",
+                            "description": "Brutal (>=1)"
+                        }
+                    ]
+                }
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "10.0.0",
+                "atom-package-deps": "6.0.0"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "devDependencies": {
+                "@commitlint/cli": "8.3.5",
+                "@commitlint/config-conventional": "8.3.4",
+                "@commitlint/travis-cli": "8.3.5",
+                "@semantic-release/apm-config": "8.0.0",
+                "husky": "4.2.5",
+                "semantic-release": "17.1.1",
+                "eslint": "7.3.1",
+                "eslint-config-airbnb-base": "14.2.0",
+                "eslint-plugin-import": "2.22.0",
+                "jasmine-fix": "1.3.1"
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    }
+                ]
+            },
+            "husky": {
+                "hooks": {
+                    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/2.3.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v2.3.1",
+            "sha": "6513ef960698fae60604412eba0adfc6ba4abacb"
+        },
+        "2.3.0": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "2.3.0",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "configSchema": {
+                "executablePath": {
+                    "type": "string",
+                    "title": "Perlcritic Executable Path",
+                    "default": "perlcritic"
+                },
+                "level": {
+                    "type": "string",
+                    "title": "Perlcritic Level of warning",
+                    "description": "If set to auto this applies a mapping between the linter log levels and perlcritic severity. It's more colorful but may be set to constant values too.",
+                    "default": "auto",
+                    "enum": [
+                        "auto",
+                        "info",
+                        "warning",
+                        "error"
+                    ]
+                },
+                "commandlineOptions": {
+                    "type": "string",
+                    "title": "Additional Commandline options",
+                    "default": ""
+                },
+                "showSeverity": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the severity number of the violation."
+                },
+                "showExplanation": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the short explanation or PBP page reference of the violation."
+                },
+                "showPolicy": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show the policy that reported the violation."
+                },
+                "forceMinimumSeverity": {
+                    "type": "string",
+                    "default": "none",
+                    "description": "Force `perlcritic` to apply policies of a certain severity.",
+                    "enum": [
+                        {
+                            "value": "none",
+                            "description": "No forced severity."
+                        },
+                        {
+                            "value": "gentle",
+                            "description": "Gentle (>5)"
+                        },
+                        {
+                            "value": "stern",
+                            "description": "Stern (>4)"
+                        },
+                        {
+                            "value": "harsh",
+                            "description": "Harsh (>3)"
+                        },
+                        {
+                            "value": "cruel",
+                            "description": "Cruel (>2)"
+                        },
+                        {
+                            "value": "brutal",
+                            "description": "Brutal (>=1)"
+                        }
+                    ]
+                }
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "10.0.0",
+                "atom-package-deps": "5.1.0"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "devDependencies": {
+                "@commitlint/cli": "8.3.5",
+                "@commitlint/config-conventional": "8.3.4",
+                "@commitlint/travis-cli": "8.3.5",
+                "@semantic-release/apm-config": "8.0.0",
+                "husky": "4.2.5",
+                "semantic-release": "17.1.1",
+                "eslint": "6.8.0",
+                "eslint-config-airbnb-base": "14.2.0",
+                "eslint-plugin-import": "2.22.0",
+                "jasmine-fix": "1.3.1"
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    }
+                ]
+            },
+            "husky": {
+                "hooks": {
+                    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/2.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v2.3.0",
+            "sha": "fb2442e5f757c9b8fa347c5f0fdd066f10c5eabb"
+        },
+        "2.2.3": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "2.2.3",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "configSchema": {
+                "executablePath": {
+                    "type": "string",
+                    "title": "Perlcritic Executable Path",
+                    "default": "perlcritic"
+                },
+                "level": {
+                    "type": "string",
+                    "title": "Perlcritic Level of warning",
+                    "description": "If set to auto this applies a mapping between the linter log levels and perlcritic severity. It's more colorful but may be set to constant values too.",
+                    "default": "auto",
+                    "enum": [
+                        "auto",
+                        "info",
+                        "warning",
+                        "error"
+                    ]
+                },
+                "commandlineOptions": {
+                    "type": "string",
+                    "title": "Additional Commandline options",
+                    "default": ""
+                },
+                "showSeverity": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the severity number of the violation."
+                },
+                "showExplanation": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the short explanation or PBP page reference of the violation."
+                },
+                "showPolicy": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show the policy that reported the violation."
+                },
+                "forceMinimumSeverity": {
+                    "type": "string",
+                    "default": "none",
+                    "description": "Force `perlcritic` to apply policies of a certain severity.",
+                    "enum": [
+                        {
+                            "value": "none",
+                            "description": "No forced severity."
+                        },
+                        {
+                            "value": "gentle",
+                            "description": "Gentle (>5)"
+                        },
+                        {
+                            "value": "stern",
+                            "description": "Stern (>4)"
+                        },
+                        {
+                            "value": "harsh",
+                            "description": "Harsh (>3)"
+                        },
+                        {
+                            "value": "cruel",
+                            "description": "Cruel (>2)"
+                        },
+                        {
+                            "value": "brutal",
+                            "description": "Brutal (>=1)"
+                        }
+                    ]
+                }
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "10.0.0",
+                "atom-package-deps": "5.1.0"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "devDependencies": {
+                "@commitlint/cli": "7.5.2",
+                "@commitlint/config-conventional": "7.5.0",
+                "@commitlint/travis-cli": "7.5.2",
+                "@semantic-release/apm-config": "6.0.1",
+                "husky": "1.3.1",
+                "semantic-release": "15.13.3",
+                "eslint": "5.16.0",
+                "eslint-config-airbnb-base": "13.1.0",
+                "eslint-plugin-import": "2.17.2",
+                "jasmine-fix": "1.3.1"
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    }
+                ]
+            },
+            "husky": {
+                "hooks": {
+                    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/2.2.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v2.2.3",
+            "sha": "813dbb33be588f91ad6440d690bdf23548f293d5"
+        },
+        "2.2.2": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "2.2.2",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "configSchema": {
+                "executablePath": {
+                    "type": "string",
+                    "title": "Perlcritic Executable Path",
+                    "default": "perlcritic"
+                },
+                "level": {
+                    "type": "string",
+                    "title": "Perlcritic Level of warning",
+                    "description": "If set to auto this applies a mapping between the linter log levels and perlcritic severity. It's more colorful but may be set to constant values too.",
+                    "default": "auto",
+                    "enum": [
+                        "auto",
+                        "info",
+                        "warning",
+                        "error"
+                    ]
+                },
+                "commandlineOptions": {
+                    "type": "string",
+                    "title": "Additional Commandline options",
+                    "default": ""
+                },
+                "showSeverity": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the severity number of the violation."
+                },
+                "showExplanation": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the short explanation or PBP page reference of the violation."
+                },
+                "showPolicy": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show the policy that reported the violation."
+                },
+                "forceMinimumSeverity": {
+                    "type": "string",
+                    "default": "none",
+                    "description": "Force `perlcritic` to apply policies of a certain severity.",
+                    "enum": [
+                        {
+                            "value": "none",
+                            "description": "No forced severity."
+                        },
+                        {
+                            "value": "gentle",
+                            "description": "Gentle (>5)"
+                        },
+                        {
+                            "value": "stern",
+                            "description": "Stern (>4)"
+                        },
+                        {
+                            "value": "harsh",
+                            "description": "Harsh (>3)"
+                        },
+                        {
+                            "value": "cruel",
+                            "description": "Cruel (>2)"
+                        },
+                        {
+                            "value": "brutal",
+                            "description": "Brutal (>=1)"
+                        }
+                    ]
+                }
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "10.0.0",
+                "atom-package-deps": "5.0.0"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "devDependencies": {
+                "@commitlint/cli": "7.3.2",
+                "@commitlint/config-conventional": "7.3.1",
+                "@commitlint/travis-cli": "7.3.2",
+                "@semantic-release/apm-config": "6.0.1",
+                "husky": "1.3.1",
+                "semantic-release": "15.13.3",
+                "eslint": "5.12.1",
+                "eslint-config-airbnb-base": "13.1.0",
+                "eslint-plugin-import": "2.14.0",
+                "jasmine-fix": "1.3.1"
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    }
+                ]
+            },
+            "husky": {
+                "hooks": {
+                    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/2.2.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v2.2.2",
+            "sha": "f379685c86c418542df7f4e2bf340110ef63e3fe"
+        },
+        "2.2.1": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "2.2.1",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "configSchema": {
+                "executablePath": {
+                    "type": "string",
+                    "title": "Perlcritic Executable Path",
+                    "default": "perlcritic"
+                },
+                "level": {
+                    "type": "string",
+                    "title": "Perlcritic Level of warning",
+                    "description": "If set to auto this applies a mapping between the linter log levels and perlcritic severity. It's more colorful but may be set to constant values too.",
+                    "default": "auto",
+                    "enum": [
+                        "auto",
+                        "info",
+                        "warning",
+                        "error"
+                    ]
+                },
+                "commandlineOptions": {
+                    "type": "string",
+                    "title": "Additional Commandline options",
+                    "default": ""
+                },
+                "showSeverity": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the severity number of the violation."
+                },
+                "showExplanation": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the short explanation or PBP page reference of the violation."
+                },
+                "showPolicy": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show the policy that reported the violation."
+                },
+                "forceMinimumSeverity": {
+                    "type": "string",
+                    "default": "none",
+                    "description": "Force `perlcritic` to apply policies of a certain severity.",
+                    "enum": [
+                        {
+                            "value": "none",
+                            "description": "No forced severity."
+                        },
+                        {
+                            "value": "gentle",
+                            "description": "Gentle (>5)"
+                        },
+                        {
+                            "value": "stern",
+                            "description": "Stern (>4)"
+                        },
+                        {
+                            "value": "harsh",
+                            "description": "Harsh (>3)"
+                        },
+                        {
+                            "value": "cruel",
+                            "description": "Cruel (>2)"
+                        },
+                        {
+                            "value": "brutal",
+                            "description": "Brutal (>=1)"
+                        }
+                    ]
+                }
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "10.0.0",
+                "atom-package-deps": "4.6.2"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "devDependencies": {
+                "@commitlint/cli": "7.2.1",
+                "@commitlint/config-conventional": "7.1.2",
+                "@commitlint/travis-cli": "7.2.1",
+                "@semantic-release/apm-config": "5.0.2",
+                "husky": "1.1.2",
+                "semantic-release": "15.9.17",
+                "eslint": "5.7.0",
+                "eslint-config-airbnb-base": "13.1.0",
+                "eslint-plugin-import": "2.14.0",
+                "jasmine-fix": "1.3.1"
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    }
+                ]
+            },
+            "husky": {
+                "hooks": {
+                    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/2.2.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v2.2.1",
+            "sha": "bae74bb69c4781795ae5baedd25d615be1fb4978"
+        },
+        "2.2.0": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "2.2.0",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "configSchema": {
+                "executablePath": {
+                    "type": "string",
+                    "title": "Perlcritic Executable Path",
+                    "default": "perlcritic"
+                },
+                "level": {
+                    "type": "string",
+                    "title": "Perlcritic Level of warning",
+                    "description": "If set to auto this applies a mapping between the linter log levels and perlcritic severity. It's more colorful but may be set to constant values too.",
+                    "default": "auto",
+                    "enum": [
+                        "auto",
+                        "info",
+                        "warning",
+                        "error"
+                    ]
+                },
+                "commandlineOptions": {
+                    "type": "string",
+                    "title": "Additional Commandline options",
+                    "default": ""
+                },
+                "showSeverity": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the severity number of the violation."
+                },
+                "showExplanation": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the short explanation or PBP page reference of the violation."
+                },
+                "showPolicy": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show the policy that reported the violation."
+                },
+                "forceMinimumSeverity": {
+                    "type": "string",
+                    "default": "none",
+                    "description": "Force `perlcritic` to apply policies of a certain severity.",
+                    "enum": [
+                        {
+                            "value": "none",
+                            "description": "No forced severity."
+                        },
+                        {
+                            "value": "gentle",
+                            "description": "Gentle (>5)"
+                        },
+                        {
+                            "value": "stern",
+                            "description": "Stern (>4)"
+                        },
+                        {
+                            "value": "harsh",
+                            "description": "Harsh (>3)"
+                        },
+                        {
+                            "value": "cruel",
+                            "description": "Cruel (>2)"
+                        },
+                        {
+                            "value": "brutal",
+                            "description": "Brutal (>=1)"
+                        }
+                    ]
+                }
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "10.0.0",
+                "atom-package-deps": "4.6.2"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "devDependencies": {
+                "@commitlint/cli": "7.2.1",
+                "@commitlint/config-conventional": "7.1.2",
+                "@commitlint/travis-cli": "7.2.1",
+                "@semantic-release/apm-config": "5.0.2",
+                "husky": "1.1.2",
+                "semantic-release": "15.9.17",
+                "eslint": "5.7.0",
+                "eslint-config-airbnb-base": "13.1.0",
+                "eslint-plugin-import": "2.14.0",
+                "jasmine-fix": "1.3.1"
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    }
+                ]
+            },
+            "husky": {
+                "hooks": {
+                    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/2.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v2.2.0",
+            "sha": "a95aa19b68c5bb806c08811ba05f4156f48327c5"
+        },
+        "2.1.1": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "2.1.1",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "configSchema": {
+                "executablePath": {
+                    "type": "string",
+                    "title": "Perlcritic Executable Path",
+                    "default": "perlcritic"
+                },
+                "level": {
+                    "type": "string",
+                    "title": "Perlcritic Level of warning",
+                    "default": "info",
+                    "enum": [
+                        "info",
+                        "warning",
+                        "error"
+                    ]
+                },
+                "commandlineOptions": {
+                    "type": "string",
+                    "title": "Additional Commandline options",
+                    "default": ""
+                },
+                "showSeverity": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the severity number of the violation."
+                },
+                "showExplanation": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the short explanation or PBP page reference of the violation."
+                },
+                "showPolicy": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show the policy that reported the violation."
+                },
+                "forceMinimumSeverity": {
+                    "type": "string",
+                    "default": "none",
+                    "description": "Force `perlcritic` to apply policies of a certain severity.",
+                    "enum": [
+                        {
+                            "value": "none",
+                            "description": "No forced severity."
+                        },
+                        {
+                            "value": "gentle",
+                            "description": "Gentle (>5)"
+                        },
+                        {
+                            "value": "stern",
+                            "description": "Stern (>4)"
+                        },
+                        {
+                            "value": "harsh",
+                            "description": "Harsh (>3)"
+                        },
+                        {
+                            "value": "cruel",
+                            "description": "Cruel (>2)"
+                        },
+                        {
+                            "value": "brutal",
+                            "description": "Brutal (>=1)"
+                        }
+                    ]
+                }
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "10.0.0",
+                "atom-package-deps": "4.6.2"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "devDependencies": {
+                "@commitlint/cli": "7.1.2",
+                "@commitlint/config-conventional": "7.1.2",
+                "@commitlint/travis-cli": "7.1.2",
+                "@semantic-release/apm-config": "5.0.2",
+                "husky": "1.0.1",
+                "semantic-release": "15.9.16",
+                "eslint": "5.6.0",
+                "eslint-config-airbnb-base": "13.1.0",
+                "eslint-plugin-import": "2.14.0",
+                "jasmine-fix": "1.3.1"
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    }
+                ]
+            },
+            "husky": {
+                "hooks": {
+                    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/2.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v2.1.1",
+            "sha": "7f99e28a708488fc208dae54bf95d37cdb9f52b7"
+        },
+        "2.1.0": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "2.1.0",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "configSchema": {
+                "executablePath": {
+                    "type": "string",
+                    "title": "Perlcritic Executable Path",
+                    "default": "perlcritic"
+                },
+                "level": {
+                    "type": "string",
+                    "title": "Perlcritic Level of warning",
+                    "default": "info",
+                    "enum": [
+                        "info",
+                        "warning",
+                        "error"
+                    ]
+                },
+                "commandlineOptions": {
+                    "type": "string",
+                    "title": "Additional Commandline options",
+                    "default": ""
+                },
+                "showSeverity": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the severity number of the violation."
+                },
+                "showExplanation": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the short explanation or PBP page reference of the violation."
+                },
+                "showPolicy": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show the policy that reported the violation."
+                },
+                "forceMinimumSeverity": {
+                    "type": "string",
+                    "default": "none",
+                    "description": "Force `perlcritic` to apply policies of a certain severity.",
+                    "enum": [
+                        {
+                            "value": "none",
+                            "description": "No forced severity."
+                        },
+                        {
+                            "value": "gentle",
+                            "description": "Gentle (>5)"
+                        },
+                        {
+                            "value": "stern",
+                            "description": "Stern (>4)"
+                        },
+                        {
+                            "value": "harsh",
+                            "description": "Harsh (>3)"
+                        },
+                        {
+                            "value": "cruel",
+                            "description": "Cruel (>2)"
+                        },
+                        {
+                            "value": "brutal",
+                            "description": "Brutal (>=1)"
+                        }
+                    ]
+                }
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^10.0.0",
+                "atom-package-deps": "^4.6.0"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "devDependencies": {
+                "eslint": "^4.6.0",
+                "eslint-config-airbnb-base": "^12.0.0",
+                "eslint-plugin-import": "^2.7.0",
+                "jasmine-fix": "^1.2.0"
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/2.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v2.1.0",
+            "sha": "add7d1ef9cbfc0a80eff7b9cc350de9c239960d1"
+        },
+        "2.0.0": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "2.0.0",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "configSchema": {
+                "executablePath": {
+                    "type": "string",
+                    "title": "Perlcritic Executable Path",
+                    "default": "perlcritic"
+                },
+                "level": {
+                    "type": "string",
+                    "title": "Perlcritic Level of warning",
+                    "default": "info",
+                    "enum": [
+                        "info",
+                        "warning",
+                        "error"
+                    ]
+                },
+                "commandlineOptions": {
+                    "type": "string",
+                    "title": "Additional Commandline options",
+                    "default": ""
+                }
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^10.0.0",
+                "atom-package-deps": "^4.6.0"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "devDependencies": {
+                "eslint": "^4.6.0",
+                "eslint-config-airbnb-base": "^12.0.0",
+                "eslint-plugin-import": "^2.7.0",
+                "jasmine-fix": "^1.2.0"
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/2.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v2.0.0",
+            "sha": "0495e60e7cbe8230e10122276efa293a419842d6"
+        },
+        "1.4.2": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "1.4.2",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "configSchema": {
+                "executablePath": {
+                    "type": "string",
+                    "title": "Perlcritic Executable Path",
+                    "default": "perlcritic"
+                },
+                "regex": {
+                    "type": "string",
+                    "title": "Perlcritic Verbose Regex",
+                    "default": "(:<text>.*) at line (:<line>\\d+), column (:<col>\\d+).\\s+(:<trace>.*\\.)\\s+\\(Severity: (:<severity>\\d+)\\)"
+                },
+                "level": {
+                    "type": "string",
+                    "title": "Perlcritic Level of warning",
+                    "default": "Info"
+                },
+                "commandlineOptions": {
+                    "type": "string",
+                    "title": "Additional Commandline options",
+                    "default": ""
+                }
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.7.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^10.0.0",
+                "atom-package-deps": "^4.0.1",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "devDependencies": {
+                "eslint": "^3.13.0",
+                "eslint-config-airbnb-base": "^11.0.1",
+                "eslint-plugin-import": "^2.2.0",
+                "jasmine-fix": "^1.2.0"
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/1.4.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v1.4.2",
+            "sha": "78f64ceb55c2ff239d42a02051143253d4fbf2ae"
+        },
+        "1.4.1": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "1.4.1",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^10.0.0",
+                "atom-package-deps": "^4.0.1",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "devDependencies": {
+                "eslint": "^3.13.0",
+                "eslint-config-airbnb-base": "^11.0.1",
+                "eslint-plugin-import": "^2.2.0"
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/1.4.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v1.4.1",
+            "sha": "9e01df4970bfa536bea499bd47419ec84a320bb8"
+        },
+        "1.4.0": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "1.4.0",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^9.0.0",
+                "atom-package-deps": "^4.0.1",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "devDependencies": {
+                "eslint": "^3.13.0",
+                "eslint-config-airbnb-base": "^11.0.1",
+                "eslint-plugin-import": "^2.2.0"
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/1.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v1.4.0",
+            "sha": "1da84dc621503ae8a00e8350dfb93e2a575a7efe"
+        },
+        "1.3.2": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "1.3.2",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^8.0.0",
+                "atom-package-deps": "^4.0.1",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "devDependencies": {
+                "eslint": "^3.9.1",
+                "eslint-config-airbnb-base": "^10.0.1",
+                "eslint-plugin-import": "^2.1.0"
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/1.3.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v1.3.2",
+            "sha": "11b780dba5fc9d6851951a7d7b006bb29733d532"
+        },
+        "1.3.1": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "1.3.1",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^8.0.0",
+                "atom-package-deps": "^4.0.1",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "devDependencies": {
+                "eslint": "^3.9.1",
+                "eslint-config-airbnb-base": "^10.0.1",
+                "eslint-plugin-import": "^2.1.0"
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/1.3.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v1.3.1",
+            "sha": "bb29252417bb953e0f43230c659afdbb36468052"
+        },
+        "1.3.0": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "1.3.0",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^8.0.0",
+                "atom-package-deps": "^4.0.1",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "devDependencies": {
+                "eslint": "^3.9.1",
+                "eslint-config-airbnb-base": "^10.0.1",
+                "eslint-plugin-import": "^2.1.0"
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/1.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v1.3.0",
+            "sha": "d8e880b00f29a328d15fe32a35742094c3b45157"
+        },
+        "1.2.3": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "1.2.3",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^8.0.0",
+                "atom-package-deps": "^4.0.1",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "eslint": "^3.6.0",
+                "eslint-config-airbnb-base": "^8.0.0",
+                "eslint-plugin-import": "^2.0.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "parser": "babel-eslint",
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/1.2.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v1.2.3",
+            "sha": "7b06aee2933c12ff0e17ff9aaa98e6d48cacb283"
+        },
+        "1.2.2": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "1.2.2",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^8.0.0",
+                "atom-package-deps": "^4.0.1",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.2.2",
+                "eslint-config-airbnb-base": "^7.0.1",
+                "eslint-plugin-import": "^1.12.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "parser": "babel-eslint",
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/1.2.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v1.2.2",
+            "sha": "74d9eb81c730a791043e9a8562b096d1cec1cff9"
+        },
+        "1.2.1": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "1.2.1",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^8.0.0",
+                "atom-package-deps": "^4.0.1",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.2.2",
+                "eslint-config-airbnb-base": "^7.0.1",
+                "eslint-plugin-import": "^1.12.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "parser": "babel-eslint",
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/1.2.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v1.2.1",
+            "sha": "e4d56b02808cc67f593c9274255f014b46eb1aac"
+        },
+        "1.2.0": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "1.2.0",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^8.0.0",
+                "atom-package-deps": "^4.0.1",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.2.2",
+                "eslint-config-airbnb-base": "^5.0.1",
+                "eslint-plugin-import": "^1.12.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "parser": "babel-eslint",
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/1.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v1.2.0",
+            "sha": "1a11dc20b22dbbc2a0e9046b5ba46bcdacaa5124"
+        },
+        "1.1.1": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "1.1.1",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^7.0.0",
+                "atom-package-deps": "^4.0.1",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.2.2",
+                "eslint-config-airbnb-base": "^5.0.1",
+                "eslint-plugin-import": "^1.12.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "parser": "babel-eslint",
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/1.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v1.1.1",
+            "sha": "05ec4e7359a34d55197b0c77f5d45791f5672b44"
+        },
+        "1.1.0": {
+            "name": "linter-perlcritic",
+            "main": "lib/init.js",
+            "version": "1.1.0",
+            "private": true,
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [
+                "perl",
+                "perlcritic",
+                "lint"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/AtomLinter/atom-linter-perlcritic.git"
+            },
+            "bugs": {
+                "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+            },
+            "scripts": {
+                "test": "apm test",
+                "lint": "eslint ."
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^7.0.0",
+                "atom-package-deps": "^4.0.1",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.2.2",
+                "eslint-config-airbnb-base": "^5.0.1",
+                "eslint-plugin-import": "^1.12.0"
+            },
+            "eslintConfig": {
+                "rules": {
+                    "global-require": "off",
+                    "import/no-extraneous-dependencies": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "parser": "babel-eslint",
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "es6": true,
+                    "node": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/1.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v1.1.0",
+            "sha": "bd817c1334d6c1f2a5319eb67a8e5d0cf8682e4f"
+        },
+        "1.0.0": {
+            "name": "linter-perlcritic",
+            "main": "./lib/init",
+            "version": "1.0.0",
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [],
+            "repository": "https://github.com/whity/atom-linter-perlcritic.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^3.1.0",
+                "atom-package-deps": "^2.1.3",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/1.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v1.0.0",
+            "sha": "4774b41d45b97790741ea58a65b38748cae0b8ef"
+        },
+        "0.3.3": {
+            "name": "linter-perlcritic",
+            "main": "./lib/init",
+            "version": "0.3.3",
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [],
+            "repository": "https://github.com/whity/atom-linter-perlcritic.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^3.1.0",
+                "atom-package-deps": "^2.1.3",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/0.3.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v0.3.3",
+            "sha": "5ab5ee5ed1a16a772e15c9b1964f7ddb58c3216d"
+        },
+        "0.3.2": {
+            "name": "linter-perlcritic",
+            "main": "./lib/init",
+            "version": "0.3.2",
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [],
+            "repository": "https://github.com/whity/atom-linter-perlcritic.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^3.1.0",
+                "atom-package-deps": "^2.1.3",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/0.3.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v0.3.2",
+            "sha": "0a06a50f1eca85aec0975f6127804ad5a34f0ca8"
+        },
+        "0.3.1": {
+            "name": "linter-perlcritic",
+            "main": "./lib/init",
+            "version": "0.3.1",
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [],
+            "repository": "https://github.com/whity/atom-linter-perlcritic.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^3.1.0",
+                "atom-package-deps": "^2.1.3",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/0.3.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v0.3.1",
+            "sha": "e1497a473de49d3797ab1190d234f351281f2e05"
+        },
+        "0.3.0": {
+            "name": "linter-perlcritic",
+            "main": "./lib/init",
+            "version": "0.3.0",
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [],
+            "repository": "https://github.com/whity/atom-linter-perlcritic.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^3.1.0",
+                "atom-package-deps": "^2.1.3",
+                "named-regexp": "^0.1.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/0.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v0.3.0",
+            "sha": "bcff4ab1f2a1147642a004ea675b50d5c49fb143"
+        },
+        "0.2.1": {
+            "name": "linter-perlcritic",
+            "main": "./lib/init",
+            "version": "0.2.1",
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [],
+            "repository": "https://github.com/whity/atom-linter-perlcritic.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^3.0.0",
+                "atom-package-deps": "^2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/0.2.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v0.2.1",
+            "sha": "10a151cd5caeea674c62133d1ad212ff56561a56"
+        },
+        "0.2.0": {
+            "name": "linter-perlcritic",
+            "main": "./lib/init",
+            "version": "0.2.0",
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [],
+            "repository": "https://github.com/whity/atom-linter-perlcritic.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "^3.0.0",
+                "atom-package-deps": "^2.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v0.2.0",
+            "sha": "16f44b7e0baa517bd90360490b7bb0636f183549"
+        },
+        "0.1.3": {
+            "name": "linter-perlcritic",
+            "main": "./lib/init",
+            "version": "0.1.3",
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [],
+            "repository": "https://github.com/whity/atom-linter-perlcritic.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-linter": "3.2.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/0.1.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v0.1.3",
+            "sha": "5be521dbdfff5a42d29e9b6868b69d16d703ec70"
+        },
+        "0.1.2": {
+            "name": "linter-perlcritic",
+            "linter-package": true,
+            "main": "./lib/init",
+            "version": "0.1.2",
+            "description": "Linter plugin for perl, using perlcritic",
+            "keywords": [],
+            "repository": "https://github.com/whity/atom-linter-perlcritic.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-perlcritic/versions/0.1.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/atom-linter-perlcritic/tarball/refs/tags/v0.1.2",
+            "sha": "f7658c1a70ade5dd57c206573f23ce8209fdb1ca"
+        }
+    },
+    "readme": "# linter-perlcritic package\n\nAtom linter plugin for Perl, using [perlcritic](https://metacpan.org/pod/Perl::Critic).\n",
+    "metadata": {
+        "name": "linter-perlcritic",
+        "main": "lib/init.js",
+        "version": "2.3.1",
+        "private": true,
+        "description": "Linter plugin for perl, using perlcritic",
+        "keywords": [
+            "perl",
+            "perlcritic",
+            "lint"
+        ],
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/AtomLinter/atom-linter-perlcritic.git"
+        },
+        "bugs": {
+            "url": "https://github.com/AtomLinter/atom-linter-perlcritic/issues"
+        },
+        "scripts": {
+            "test": "apm test",
+            "lint": "eslint ."
+        },
+        "configSchema": {
+            "executablePath": {
+                "type": "string",
+                "title": "Perlcritic Executable Path",
+                "default": "perlcritic"
+            },
+            "level": {
+                "type": "string",
+                "title": "Perlcritic Level of warning",
+                "description": "If set to auto this applies a mapping between the linter log levels and perlcritic severity. It's more colorful but may be set to constant values too.",
+                "default": "auto",
+                "enum": [
+                    "auto",
+                    "info",
+                    "warning",
+                    "error"
+                ]
+            },
+            "commandlineOptions": {
+                "type": "string",
+                "title": "Additional Commandline options",
+                "default": ""
+            },
+            "showSeverity": {
+                "type": "boolean",
+                "default": true,
+                "description": "Show the severity number of the violation."
+            },
+            "showExplanation": {
+                "type": "boolean",
+                "default": true,
+                "description": "Show the short explanation or PBP page reference of the violation."
+            },
+            "showPolicy": {
+                "type": "boolean",
+                "default": false,
+                "description": "Show the policy that reported the violation."
+            },
+            "forceMinimumSeverity": {
+                "type": "string",
+                "default": "none",
+                "description": "Force `perlcritic` to apply policies of a certain severity.",
+                "enum": [
+                    {
+                        "value": "none",
+                        "description": "No forced severity."
+                    },
+                    {
+                        "value": "gentle",
+                        "description": "Gentle (>5)"
+                    },
+                    {
+                        "value": "stern",
+                        "description": "Stern (>4)"
+                    },
+                    {
+                        "value": "harsh",
+                        "description": "Harsh (>3)"
+                    },
+                    {
+                        "value": "cruel",
+                        "description": "Cruel (>2)"
+                    },
+                    {
+                        "value": "brutal",
+                        "description": "Brutal (>=1)"
+                    }
+                ]
+            }
+        },
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.7.0 <2.0.0"
+        },
+        "providedServices": {
+            "linter": {
+                "versions": {
+                    "2.0.0": "provideLinter"
+                }
+            }
+        },
+        "dependencies": {
+            "atom-linter": "10.0.0",
+            "atom-package-deps": "6.0.0"
+        },
+        "package-deps": [
+            "linter:2.0.0"
+        ],
+        "devDependencies": {
+            "@commitlint/cli": "8.3.5",
+            "@commitlint/config-conventional": "8.3.4",
+            "@commitlint/travis-cli": "8.3.5",
+            "@semantic-release/apm-config": "8.0.0",
+            "husky": "4.2.5",
+            "semantic-release": "17.1.1",
+            "eslint": "7.3.1",
+            "eslint-config-airbnb-base": "14.2.0",
+            "eslint-plugin-import": "2.22.0",
+            "jasmine-fix": "1.3.1"
+        },
+        "eslintConfig": {
+            "extends": "airbnb-base",
+            "rules": {
+                "global-require": "off",
+                "import/no-extraneous-dependencies": "off",
+                "import/no-unresolved": [
+                    "error",
+                    {
+                        "ignore": [
+                            "atom"
+                        ]
+                    }
+                ]
+            },
+            "globals": {
+                "atom": true
+            },
+            "env": {
+                "node": true,
+                "browser": true
+            }
+        },
+        "release": {
+            "extends": "@semantic-release/apm-config"
+        },
+        "commitlint": {
+            "extends": [
+                "@commitlint/config-conventional"
+            ]
+        },
+        "renovate": {
+            "extends": [
+                "config:base"
+            ],
+            "packageRules": [
+                {
+                    "packagePatterns": [
+                        "^eslint"
+                    ],
+                    "groupName": "ESLint packages"
+                }
+            ]
+        },
+        "husky": {
+            "hooks": {
+                "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+            }
+        }
+    },
+    "created": 1658351286671,
+    "updated": 1658351286671,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

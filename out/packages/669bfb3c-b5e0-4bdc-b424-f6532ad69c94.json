@@ -1,0 +1,77 @@
+{
+    "name": "language-axe",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/axe-lang/language-axe"
+    },
+    "downloads": 43,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "0.2.0"
+    },
+    "versions": {
+        "0.2.0": {
+            "name": "language-axe",
+            "main": "./lib/language-axe",
+            "version": "0.2.0",
+            "description": "AXE is a scripting language used to easily extract information from a large pool of text using Regular Expressions.",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "language-axe:toggle"
+            },
+            "repository": "https://github.com/axe-lang/language-axe",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/language-axe/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/axe-lang/language-axe/tarball/refs/tags/v0.2.0",
+            "sha": "537765752fd37490ede22738c9d59c073029a5a0"
+        },
+        "0.1.0": {
+            "name": "language-axe",
+            "main": "./lib/language-axe",
+            "version": "0.1.0",
+            "description": "A short description of your package",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "language-axe:toggle"
+            },
+            "repository": "https://github.com/axe-lang/language-axe",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/language-axe/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/axe-lang/language-axe/tarball/refs/tags/v0.1.0",
+            "sha": "4996c291f2ea839aef8fc14340c9a13838de1483"
+        }
+    },
+    "readme": "# language-axe package\n\nAdds Syntax Highlighting for AXE Scripts.\n\nAXE is a scripting language used to easily extract information from a large pool\nof text using Regular Expressions.\n\nAXE language can be implemented on any platform or programming language that supports Regular Expressions.\n\nThe Language of the AXE Script is quite easy, not too complex, and consists mainly of the function calls below.\n\n| Function &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; | Description                                             |\n| ------------------------------| --------------------------------------------------------|\n| `AXE`                         | The function that gave the language its name, I takes 1 argument which is a RegEx pattern describing what should be removed/eliminated from the current pool of text.|\n| `CARVE`                       | This function takes 1 argument which is a RegEx pattern to match in the pool of string/current text buffer and discard the rest. |\n| `VERIFY`                      | This function takes 1 argument which is a RegEx pattern and verifies that the __WHOLE__ current value of the text buffer, matches the given pattern. This function will throw an exception if it fails, i.e If the pattern do not match. |\n| `CHECK`                       | This function takes 1 argument which is a RegEx pattern and checks that given pattaern can find at least a match in the current text buffer. This function will throw an exception if it fails, i.e If the pattern do not match. |\n| `PACK`                        | This function takes 1 argument, which is the key or field name to assign the value of the current text buffer to in its resulting object, __A call to this function resets the text buffer__ so you can `CARVE` or `AXE` something else in order to extract (call `PACK` again). |\n\nAXE Scripts are generally a means to an end, which is to process pools of text as many times as possible, and extract information from them into a key value pair variable. In PHP, you'll end up with an `stdClass` object whose fields are the ones you choose to extract.\n\n### Example AXE Script ###\n\nLet's assume we have the following piece of text to process.\n```\nGood Morning Sir,\nHere are the exam results for your son\n\nEnglish: A1\nMathematics: A1\nChemistry: B2\nPhysics: A1\nGeography: B3\nEconomics: B2\n```\nAnd you want to Extract Mathematics and Geography. You could use the AXE script below\n\n```axe\nCHECK(\"Mathematics:[A-F]{1}[1-9]?\")\nCHECK(\"Geography:[A-F]{1}[1-9]?:\")\n\nCARVE(\"Mathematics:[A-F]{1}[1-9]?\")\nAXE(\"Mathematics\");\nPACK(\"mathematics\");\n\nCARVE(\"Geography:[A-F]{1}[1-9]?\")\nAXE(\"Geography\");\nPACK(\"geography\")\n```\n\nWhen run with a PHP interpreter, you will have an stdClass object with the following structure.\n\n```php\nclass stdClass {\n  public $mathematics = 'A1';\n  public $geography = 'B3';\n}\n```\n",
+    "metadata": {
+        "name": "language-axe",
+        "main": "./lib/language-axe",
+        "version": "0.2.0",
+        "description": "AXE is a scripting language used to easily extract information from a large pool of text using Regular Expressions.",
+        "keywords": [],
+        "activationCommands": {
+            "atom-workspace": "language-axe:toggle"
+        },
+        "repository": "https://github.com/axe-lang/language-axe",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {}
+    },
+    "created": 1658345920805,
+    "updated": 1658345920805,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

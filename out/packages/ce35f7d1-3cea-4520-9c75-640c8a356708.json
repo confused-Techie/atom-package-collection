@@ -1,0 +1,77 @@
+{
+    "name": "f5-run-file",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/n-arms/f5-run-file"
+    },
+    "downloads": 1178,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "0.1.1"
+    },
+    "versions": {
+        "0.1.1": {
+            "name": "f5-run-file",
+            "main": "./lib/f5-run-file",
+            "version": "0.1.1",
+            "description": "Allow you to run files from inside the editor",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "f5-run-file:toggle"
+            },
+            "repository": "https://github.com/n-arms/f5-run-file",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/f5-run-file/versions/0.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/n-arms/f5-run-file/tarball/refs/tags/v0.1.1",
+            "sha": "a742873a32096df3562961359c2e7f7dbef2e40c"
+        },
+        "0.1.0": {
+            "name": "f5-run-file",
+            "main": "./lib/f5-run-file",
+            "version": "0.1.0",
+            "description": "A package to allow you to run files from inside the text editor",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "f5-run-file:toggle"
+            },
+            "repository": "https://github.com/n-arms/f5-run-file",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/f5-run-file/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/n-arms/f5-run-file/tarball/refs/tags/v0.1.0",
+            "sha": "4171057d858b3c08725d375bf24c0f2994511631"
+        }
+    },
+    "readme": "# f5-run-file package\nThis package is allows you to run files from inside the editor. It is designed to be extremely customizable and allow you to add new languages and commands to the system.\n\n## executing commands\n* You can open up an IO panel with ctrl-alt-a\n* You can run a series of commands determined by file type by hitting f5\n  * this can be customized in a number of ways\n\n## global set up\nInside of .atom/packages/f5-run-file/lib/config.json is a list of all the default file extensions and the commands to be run when a launch.json or launch.sh file is not found. By default the following languages are supported:\n* python3\n* c++11\n* c99\n* java\n* bash\n* golang\n\nTo add more languages, just add more file extensions to config.json, using the following syntax:\n\n```json\n\"<extension>\": {\n  \"commands\": [\n    \"<command 1>\",\n    \"<command 2>\",\n    \"...\",\n    \"<command n>\"\n  ]\n}\n```\n\nWhere each command follows the syntax:\n\n```json\n{\n  \"command\": \"<name of command>\",\n  \"args\": [\n    \"<argument 1>\",\n    \"<argument 2>\",\n    \"...\",\n    \"<argument n>\"\n  ],\n  \"stdin\": \"here is some input that is passed to stdin\"\n}\n```\n\n## local set up\nInstead of changing commands on a global scale, you can set up commands to be run for each project, irrespective of file type. There are two ways to do this: launch.json or launch.sh. Launch.sh is the preferred method.\n\n### launch.sh\nSimply create a shell script file called launch.sh in the project root. When f5 is hit it will be run (using bash command, so there is no need for a shebang or executable perms).\n\n### launch.json\nBefore you make use of this slower and more complex option, ask yourself why you are not using launch.sh.\n\nTo create a launch.json, use the same syntax for a series of commands in config.json:\n\n```json\n{\n  \"commands\": [\n    \"<command 1>\",\n    \"<command 2>\",\n    \"<command 3>\",\n    \"...\",\n    \"<command n>\"\n  ]\n}\n```\nReally, you should be using a launch.sh.\n\n\n## example\nconsider the following directory setup:\n```\nlearning-cpp\n├── main.cpp\n└── bin\n    └── a.out\n```\nTo set up a launch.sh that compiles main.cpp into a.out, and then runs it you would do:\n```shell\ng++ -o bin/a.out main.cpp\n./bin/a.out\n```\n\nand for a launch.json:\n\n```json\n{\n  \"commands\": [\n    {\n      \"command\": \"g++\",\n      \"args\": [\n        \"-o\",\n        \"bin/a.out\",\n        \"main.cpp\"\n      ]\n    },\n    {\n      \"command\": \"./bin/a.out\"\n    }\n  ]\n}\n```\n\nI think that makes it plain why launch.sh is the preferred method.\n\n## Licensing\nThis project uses the MIT license. For more info please see LICENSE.md\n",
+    "metadata": {
+        "name": "f5-run-file",
+        "main": "./lib/f5-run-file",
+        "version": "0.1.1",
+        "description": "Allow you to run files from inside the editor",
+        "keywords": [],
+        "activationCommands": {
+            "atom-workspace": "f5-run-file:toggle"
+        },
+        "repository": "https://github.com/n-arms/f5-run-file",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {}
+    },
+    "created": 1658340914204,
+    "updated": 1658340914204,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

@@ -1,0 +1,44 @@
+{
+    "name": "sub-atom",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mark-hahn/sub-atom"
+    },
+    "downloads": 490,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "1.0.0"
+    },
+    "versions": {
+        "1.0.0": {
+            "name": "sub-atom",
+            "main": "./lib/sub-atom",
+            "version": "1.0.0",
+            "description": "A replacement for Atom's CompositeDisposable for easy subscribing to DOM events.",
+            "repository": "https://github.com/mark-hahn/sub-atom",
+            "license": "MIT",
+            "dependencies": {
+                "jquery": "^2"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/sub-atom/versions/1.0.0/tarball"
+            }
+        }
+    },
+    "readme": "# sub-atom npm module for Atom packages\n\nA replacement (wrapper) for Atom's CompositeDisposable for easy subscribing to DOM events.\n\nThis NPM module is intended only for use in add-on packages for GitHub's Atom editor.  The sub-atom repo is at https://github.com/mark-hahn/sub-atom.  Feel free to ask questions at the Atom discussion group: https://discuss.atom.io/.\n\nSub-atom is a wrapper of of Atom's `CompositeDisposable` which is an Atom class that collects `Disposable` objects that enable disposing of event handlers.  `CompositeDisposable` has no provision for handling events on DOM elements.  The Atom docs say to do this for each DOM event subscription ...\n\n```coffeescript\n$(window).on 'focus', focusCallback\ndisposables.add new Disposable ->\n  $(window).off 'focus', focusCallback\n```\n\nThis is very boated code for what it does.  Sub-atom provides the class `SubAtom` which is 100% compatible with the Atom class `CompositeDisposable` but can also replace the code above with a single line.\n\nSub-atom also has a convenience feature that ties a disposable to an event.  When the event fires the disposable is automatically disposed.\n\n## Usage\n  \nTo install sub-atom simply use `npm install sub-atom`.  Then load and initialize the sub-atom module with ...\n\n```coffeescript\nSubAtom = require('sub-atom')\nsubs = new SubAtom\n```\n\n### Add A Disposable\n\nThe `subs` object has a function `add` that can be used exactly as `CompositeDisposable::add` is used.  An example ...\n\n```coffeescript\nsubs.add editor.onDidChange ->\n```\n\n### Create And Add A DOM Subscription\n\nThe same function `add` can create a DOM subscription and add a disposable for that subscription with this signature. This uses `jQuery::on` internally.\n\n```coffeescript\nsubs.add target, events, [selector], handler\n```\n\n**target:** A DOM element, jQuery object, or a selector.  This is wrapped by jQuery before attaching the subscription.   \n\n**events:** One or more space-separated event types and optional namespaces, such as \"click\" or \"keydown.myPlugin\". \n\n**selector:** A selector string to filter the descendants of the selected elements that trigger the event. If the selector is null or omitted, then only the target element can trigger the event.\n\n**handler:** A function to execute when the event is triggered. The value false is also allowed as a shorthand for a function that simply does return false.\n\n**Note:** `SubAtom::add` returns a jQuery object. You can get the native event with `event.originalEvent`.\n\n\n### Auto-Dispose On Event\n\nWhen you attach a subscription to an element, you need to dispose the subscription when the element is destroyed instead of waiting until the end when everything is disposed.  This is complex and often not handled properly.  Atom-sub makes this easy.\n\nThis is an example of the normal method to attach a click subscription to a paneView and dispose the subscription when the pane is destroyed ...\n\n```coffeescript\npaneSubs = new SubAtom\npaneSubs.add paneView, 'click', => @click pane\npaneSubs.add pane.onDidDestroy ->\n  paneSubs.dispose()\n  @subs.remove paneSubs\n@subs.add paneSubs\n```\n\nThis is the sub-atom version.  Notice that it replaces the six lines with one line and is more readable.\n\n```coffeescript\n@subs paneView, 'click', pane, 'onDidDestroy', => @click pane\n```\n\nThis feature is enabled by adding the tigger event to the add function as two arguments, the object and the name of the method on that object. The new signatures are ...\n\n```coffeescript\nsubs.add disposable, eventObject, eventName\nsubs.add target, events, [selector], eventObject, eventName, handler\n```\n\n### Clear, Remove, and Dispose functions\n\nThe atom-sub instance also supports the other functions that CompositeDisposable provides.  These calls are passed through directly to the internal wrapped CompositeDisposable.\n\nFor example, there is the function `dispose` that disposes all added events.  This is identical to the method `CompositeDisposable::dispose`. Use ...\n\n```coffeescript\nsubs.dispose()\n```\n\n\n## License\n\nSub-atom is copyright Mark Hahn with the MIT license.",
+    "metadata": {
+        "name": "sub-atom",
+        "main": "./lib/sub-atom",
+        "version": "1.0.0",
+        "description": "A replacement for Atom's CompositeDisposable for easy subscribing to DOM events.",
+        "repository": "https://github.com/mark-hahn/sub-atom",
+        "license": "MIT",
+        "dependencies": {
+            "jquery": "^2"
+        }
+    },
+    "created": 1658428322023,
+    "updated": 1658428322023,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

@@ -1,0 +1,510 @@
+{
+    "name": "open-in-app",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/aviatesk/atom-open-in-app"
+    },
+    "downloads": 2678,
+    "stargazers_count": 3,
+    "releases": {
+        "latest": "1.0.1"
+    },
+    "versions": {
+        "1.0.1": {
+            "name": "open-in-app",
+            "main": "./open-in-app",
+            "version": "1.0.1",
+            "description": "Open your file within any of your external application instantly",
+            "keywords": [
+                "open",
+                "file",
+                "application",
+                "browser",
+                "html"
+            ],
+            "repository": "https://github.com/aviatesk/atom-open-in-app",
+            "license": "MIT",
+            "configSchema": {
+                "defaultApplication": {
+                    "title": "Default Application",
+                    "default": "",
+                    "type": "string",
+                    "order": 1
+                },
+                "applicationBindings": {
+                    "title": "Application Bindings",
+                    "default": {},
+                    "type": "object",
+                    "order": 2
+                }
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "open": "^7.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/open-in-app/versions/1.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/aviatesk/atom-open-in-app/tarball/refs/tags/v1.0.1",
+            "sha": "4c302a94d5568dbe97c9f482749c7ffabf6b4b87"
+        },
+        "1.0.0": {
+            "name": "open-in-app",
+            "main": "./open-in-app",
+            "version": "1.0.0",
+            "description": "Open your file within any of your external application instantly",
+            "keywords": [
+                "open",
+                "file",
+                "application",
+                "browser",
+                "html"
+            ],
+            "repository": "https://github.com/aviatesk/atom-open-in-app",
+            "license": "MIT",
+            "configSchema": {
+                "defaultApplication": {
+                    "title": "Default Application",
+                    "default": "",
+                    "type": "string",
+                    "order": 1
+                },
+                "applicationBindings": {
+                    "title": "Application Bindings",
+                    "default": {},
+                    "type": "object",
+                    "order": 2
+                }
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "open": "^7.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/open-in-app/versions/1.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/aviatesk/atom-open-in-app/tarball/refs/tags/v1.0.0",
+            "sha": "56a39864ce7793bccd2df0ec9508e152e5a7da4a"
+        },
+        "0.2.0": {
+            "name": "open-in-app",
+            "main": "./out/main",
+            "version": "0.2.0",
+            "description": "Open your file within any of your external application instantly",
+            "keywords": [
+                "open",
+                "file",
+                "application",
+                "browser",
+                "html",
+                "typescript"
+            ],
+            "repository": "https://github.com/aviatesk/atom-open-in-app",
+            "license": "MIT",
+            "configSchema": {
+                "applicationBindings": {
+                    "title": "Application Bindings",
+                    "description": "Binds file extensions to any of your application. This field should be a valid JSON mapping from an extension to a path to an application.<br/>E.g.: `{ \".html\": \"C:/Program Files (x86)/Google/Chrome/Application/chrome.exe\" }` will be a valid setting to open every html file in Chrome on Windows.<br/>(**Note both keys and values need to be wrapped by _double_ quotations.**)",
+                    "default": "{}",
+                    "type": "string",
+                    "order": 1
+                },
+                "defaultApplication": {
+                    "title": "Default Application",
+                    "description": "Sets a default application in which files without any binding will be opened.\nIf you leave this field blank, then the files without application-binding should be opened in a _default_ application, which would be detected by your OS.<br/>E.g.: Setting this field like `C:/Users/USERNAME/AppData/Local/Programs/Microsoft VS Code/bin/code`(**_Without double quotations_**) would open every non-binded file in VS Code. (But you know, we, Atom lovers, should NOT do this _at any cost_ !)",
+                    "default": "",
+                    "type": "string",
+                    "order": 2
+                },
+                "advancedOpenFileExtensions": {
+                    "title": "File extensions opened when selected in Advanced-Open-File",
+                    "description": "Sets file extensions that you want to open in a bound application when selected in [Advanced-Open-File](https://atom.io/packages/advanced-open-file).<br/>E.g.: `[.html, .pdf]` would open HTML and PDF files in the bound applications when they are opened by Advanced-Open-File.",
+                    "default": [],
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "order": 3
+                }
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "open": "6.3.0"
+            },
+            "consumedServices": {
+                "advanced-open-file-events": {
+                    "versions": {
+                        "0.1.0": "consumeEventService"
+                    }
+                }
+            },
+            "scripts": {
+                "build": "tsc -p ./lib",
+                "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./spec",
+                "lint": "tslint --project ./lib && tslint --project ./spec",
+                "test": "npm run typecheck && npm run lint"
+            },
+            "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+            "devDependencies": {
+                "@types/atom": "1.36.1",
+                "@types/chai": "4.1.7",
+                "@types/mocha": "5.2.7",
+                "@types/open": "6.1.0",
+                "atom-ts-spec-runner": "1.1.1",
+                "chai": "4.2.0",
+                "tslint": "5.17.0",
+                "typescript": "3.5.2"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/open-in-app/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/aviatesk/atom-open-in-app/tarball/refs/tags/v0.2.0",
+            "sha": "17137ac91008c8df45a1f68db1937484b209d08a"
+        },
+        "0.1.4": {
+            "name": "open-in-app",
+            "main": "./out/main",
+            "version": "0.1.4",
+            "description": "Open your file within any of your external application instantly",
+            "keywords": [
+                "open",
+                "file",
+                "application",
+                "browser",
+                "html",
+                "typescript"
+            ],
+            "repository": "https://github.com/aviatesk/atom-open-in-app",
+            "license": "MIT",
+            "configSchema": {
+                "applicationBindings": {
+                    "default": "{}",
+                    "description": "Binds file extensions to any of your application. This field should be a valid JSON mapping from an extension to a path to an application.<br/>E.g., `{ \".html\": \"C:/Program Files (x86)/Google/Chrome/Application/chrome.exe\" }` will be a valid setting to open every html file in chrome on Windows.<br/>(**Note both keys and values need to be wrapped by _double_ quotations.**)",
+                    "order": 1,
+                    "title": "Application Bindings",
+                    "type": "string"
+                },
+                "defaultApplication": {
+                    "default": "",
+                    "description": "Sets a default application in which files without any binding will be opened.\nIf you leave this field blank, then the files without application-binding should be opened in a _default_ application, which would be detected by your OS.<br/>E.g., Setting this field like `C:/Users/USERNAME/AppData/Local/Programs/Microsoft VS Code/bin/code`(**_Without double quotations_**) would open every non-binded file in VS Code. (But you know, we should NOT do this _at any cost_ !)",
+                    "order": 2,
+                    "title": "Default Application",
+                    "type": "string"
+                }
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "open": "6.3.0"
+            },
+            "scripts": {
+                "build": "tsc -p ./lib",
+                "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./spec",
+                "lint": "tslint --project ./lib && tslint --project ./spec",
+                "test": "npm run typecheck && npm run lint"
+            },
+            "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+            "devDependencies": {
+                "@types/atom": "1.36.1",
+                "@types/chai": "4.1.7",
+                "@types/mocha": "5.2.7",
+                "@types/open": "6.1.0",
+                "atom-ts-spec-runner": "1.1.1",
+                "chai": "4.2.0",
+                "tslint": "5.17.0",
+                "typescript": "3.5.2"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/open-in-app/versions/0.1.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/aviatesk/atom-open-in-app/tarball/refs/tags/v0.1.4",
+            "sha": "ac21891156a2a30729a3a4c89685c4cb77bd3b92"
+        },
+        "0.1.3": {
+            "name": "open-in-app",
+            "main": "./out/main",
+            "version": "0.1.3",
+            "description": "Open your file in any of your external application instantly",
+            "keywords": [
+                "open",
+                "file",
+                "application",
+                "browser",
+                "html",
+                "typescript"
+            ],
+            "repository": "https://github.com/aviatesk/atom-open-in-app",
+            "license": "MIT",
+            "configSchema": {
+                "applicationBindings": {
+                    "default": "{}",
+                    "description": "Binds file extensions to any of your application. This field should be a valid JSON mapping from an extension to a path to an application.<br/>E.g., `{ \".html\": \"C:/Program Files (x86)/Google/Chrome/Application/chrome.exe\" }` will be a valid setting to open every html file in chrome on Windows.<br/>(**Note both keys and values need to be wrapped by _double_ quotations.**)",
+                    "order": 1,
+                    "title": "Application Bindings",
+                    "type": "string"
+                },
+                "defaultApplication": {
+                    "default": "",
+                    "description": "Sets a default application in which files without any binding will be opened.\nIf you leave this field blank, then the files without application-binding should be opened in a _default_ application, which would be detected by your OS.<br/>E.g., Setting this field like `C:/Users/USERNAME/AppData/Local/Programs/Microsoft VS Code/bin/code`(**_Without double quotations_**) would open every non-binded file in VS Code. (But you know, we should NOT do this _at any cost_ !)",
+                    "order": 2,
+                    "title": "Default Application",
+                    "type": "string"
+                }
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "open": "6.3.0"
+            },
+            "scripts": {
+                "build": "tsc -p ./lib",
+                "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./spec",
+                "lint": "tslint --project ./lib && tslint --project ./spec",
+                "test": "npm run typecheck && npm run lint"
+            },
+            "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+            "devDependencies": {
+                "@types/atom": "1.36.1",
+                "@types/chai": "4.1.7",
+                "@types/mocha": "5.2.7",
+                "@types/open": "6.1.0",
+                "atom-ts-spec-runner": "1.1.1",
+                "chai": "4.2.0",
+                "tslint": "5.17.0",
+                "typescript": "3.5.2"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/open-in-app/versions/0.1.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/aviatesk/atom-open-in-app/tarball/refs/tags/v0.1.3",
+            "sha": "a9f6f0079b119fc801b1d0de930fb2002d755395"
+        },
+        "0.1.2": {
+            "name": "open-in-app",
+            "main": "./out/main",
+            "version": "0.1.2",
+            "description": "Open your file in any of your external application instantly",
+            "keywords": [
+                "open",
+                "file",
+                "application",
+                "browser",
+                "html",
+                "typescript"
+            ],
+            "repository": "https://github.com/aviatesk/atom-open-in-app",
+            "license": "MIT",
+            "configSchema": {
+                "applicationBindings": {
+                    "default": "{}",
+                    "description": "Binds file extensions to any of your application. This field should be a valid JSON mapping from an extension to a path to an application.<br/>E.g., `{ \".html\": \"C:/Program Files (x86)/Google/Chrome/Application/chrome.exe\" }` will be a valid setting to open every html file in chrome on Windows.<br/>(**Note both keys and values need to be wrapped by _double_ quotations.**)",
+                    "order": 1,
+                    "title": "Application Bindings",
+                    "type": "string"
+                },
+                "defaultApplication": {
+                    "default": "",
+                    "description": "Sets a default application in which files without any binding will be opened.\nIf you leave this field blank, then the files without application-binding should be opened in a _default_ application, which would be detected by your OS.<br/>E.g., Setting this field like `C:/Users/USERNAME/AppData/Local/Programs/Microsoft VS Code/bin/code`(**_Without double quotations_**) would open every non-binded file in VS Code. (But you know, we should NOT do this _at any cost_ !)",
+                    "order": 2,
+                    "title": "Default Application",
+                    "type": "string"
+                }
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "open": "6.2.0"
+            },
+            "scripts": {
+                "build": "tsc -p ./lib",
+                "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./spec",
+                "lint": "tslint --project ./lib && tslint --project ./spec",
+                "test": "npm run typecheck && npm run lint"
+            },
+            "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+            "devDependencies": {
+                "@types/atom": "1.36.1",
+                "@types/chai": "4.1.7",
+                "@types/mocha": "5.2.6",
+                "@types/open": "6.1.0",
+                "atom-ts-spec-runner": "1.1.1",
+                "chai": "4.2.0",
+                "tslint": "5.16.0",
+                "typescript": "3.4.5"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/open-in-app/versions/0.1.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/aviatesk/atom-open-in-app/tarball/refs/tags/v0.1.2",
+            "sha": "1117c73321eba67d6804978bd78a99e54d12d1bb"
+        },
+        "0.1.1": {
+            "name": "open-in-app",
+            "main": "./out/main",
+            "version": "0.1.1",
+            "description": "Open your file in any of your external application instantly",
+            "keywords": [
+                "open",
+                "file",
+                "application",
+                "browser",
+                "html",
+                "typescript"
+            ],
+            "repository": "https://github.com/aviatesk/atom-open-in-app",
+            "license": "MIT",
+            "configSchema": {
+                "applicationBindings": {
+                    "default": "{}",
+                    "description": "Binds file extensions to any of your application. This field should be a valid JSON mapping from an extension to a path to an application.<br/>E.g., `{ \".html\": \"C:/Program Files (x86)/Google/Chrome/Application/chrome.exe\" }` will be a valid setting to open every html file in chrome on Windows.<br/>(**Note both keys and values need to be wrapped by _double_ quotations.**)",
+                    "order": 1,
+                    "title": "Application Bindings",
+                    "type": "string"
+                },
+                "defaultApplication": {
+                    "default": "",
+                    "description": "Sets a default application in which files without any binding will be opened.\nIf you leave this field blank, then the files without application-binding should be opened in a _default_ application, which would be detected by your OS.<br/>E.g., Setting this field like `C:/Users/USERNAME/AppData/Local/Programs/Microsoft VS Code/bin/code`(**_Without double quotations_**) would open every non-binded file in VS Code. (But you know, we should NOT do this _at any cost_ !)",
+                    "order": 2,
+                    "title": "Default Application",
+                    "type": "string"
+                }
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "open": "^6.1.0"
+            },
+            "scripts": {
+                "build": "tsc -p ./lib",
+                "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./spec",
+                "lint": "tslint --project ./lib && tslint --project ./spec",
+                "test": "npm run typecheck && npm run lint"
+            },
+            "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+            "devDependencies": {
+                "@types/atom": "^1.36.0",
+                "@types/chai": "^4.1.7",
+                "@types/mocha": "^5.2.6",
+                "@types/open": "^6.1.0",
+                "atom-ts-spec-runner": "^1.1.1",
+                "chai": "^4.2.0",
+                "tslint": "^5.16.0",
+                "typescript": "^3.4.3"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/open-in-app/versions/0.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/aviatesk/atom-open-in-app/tarball/refs/tags/v0.1.1",
+            "sha": "889e11564af3ce4170167997bbbf069ab7b544bb"
+        },
+        "0.1.0": {
+            "name": "open-in-app",
+            "main": "./out/main",
+            "version": "0.1.0",
+            "description": "Open your file in any of your external application instantly",
+            "keywords": [
+                "open",
+                "file",
+                "application",
+                "browser",
+                "html"
+            ],
+            "repository": "https://github.com/aviatesk/atom-open-in-app",
+            "license": "MIT",
+            "configSchema": {
+                "applicationBindings": {
+                    "default": "{}",
+                    "description": "Binds file extensions to any of your application. This field should be a valid JSON mapping from an extension to a path to an application.<br/>E.g., `{ \".html\": \"C:/Program Files (x86)/Google/Chrome/Application/chrome.exe\" }` will be a valid setting to open every html file in chrome on Windows.<br/>(**Note both keys and values need to be wrapped by _double_ quotations.**)",
+                    "order": 1,
+                    "title": "Application Bindings",
+                    "type": "string"
+                },
+                "defaultApplication": {
+                    "default": "",
+                    "description": "Sets a default application in which files without any binding will be opened.\nIf you leave this field blank, then the files without application-binding should be opened in a _default_ application, which would be detected by your OS.<br/>E.g., Setting this field like `C:/Users/USERNAME/AppData/Local/Programs/Microsoft VS Code/bin/code`(**_Without double quotations_**) would open every non-binded file in VS Code. (But you know, we should NOT do this _at any cost_ !)",
+                    "order": 2,
+                    "title": "Default Application",
+                    "type": "string"
+                }
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "open": "^6.1.0"
+            },
+            "scripts": {
+                "build": "tsc -p ./lib",
+                "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./spec",
+                "lint": "tslint --project ./lib && tslint --project ./spec",
+                "test": "npm run typecheck && npm run lint"
+            },
+            "atomTestRunner": "./node_modules/atom-ts-spec-runner/runner.js",
+            "devDependencies": {
+                "@types/atom": "^1.36.0",
+                "@types/chai": "^4.1.7",
+                "@types/mocha": "^5.2.6",
+                "@types/open": "^6.1.0",
+                "atom-ts-spec-runner": "^1.1.1",
+                "chai": "^4.2.0",
+                "tslint": "^5.16.0",
+                "typescript": "^3.4.3"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/open-in-app/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/aviatesk/atom-open-in-app/tarball/refs/tags/v0.1.0",
+            "sha": "8068ccd534a794b76c793cfa68f8eb818ba19509"
+        }
+    },
+    "readme": "# Atom Open-in-App\n\nThis very simple :atom: package allows you open any of your file instantly from Atom editor within _any_ application you want.\n\n![overview](https://github.com/aviatesk/atom-open-in-app/blob/master/assets/overview.gif?raw=true)\n\n\n## Features\n\n- Files can be opened both from text editor and tree view.\n- You can open files easily from context menu, instantly with key bindings.\n    * **Keyboard shortcut support is provided on `.tree-view` panel as well**.\n- **The bindings between file extension and application are configurable**: i.e. You can set a default application in which files gonna be opened, and also create additional file-extension to application mappings.\n\n\n## Usage\n\nYou can open any of your file from context menu:\n- Right-click text-editor or tree-view ⟶ Select `Open File in App` menu\n\nOr you can use keyboard shortcuts:\n- (with focusing text editor or tree-view) Just type <kbd>Ctrl-Shift-B</kbd>\n\n\n## Configuration\n\n#### Default application\n\n`defaultApplication`:\n- sets a default application in which files without any binding is going to be opened. If you leave this field blank, then files without application-binding will be opened in a \"default\" application, which is detected by your OS\n- should be a `String` of a path to the default application (default `\"\"`)\n- e.g.: `\"code\"` would open every non-bound file in VS Code. (But you know, we, :atom: lovers, should NOT do this at any cost 😜 !)\n\n#### File extension to application bindings:\n\n`applicationBindings`:\n- binds file extensions to any of your application\n- should be `Object` that maps `String` of a file extension to `String` of a path to an application (default `{}`)\n- e.g.: `{ \".html\": \"C:/\\\"Program Files (x86)\\\"/Google/Chrome/Application/chrome.exe\", \".txt\": \"notepad.exe\" }` will open every `.html` files in chrome and `.txt` files in notepad, in Windows OS\n\n#### Configuration example\n\n> ~/.atom/config.cson\n```coffee\n\"*\":\n  ...\n  \"open-in-app\":\n    applicationBindings: { \".py\": \"code\" } # edit Python in VSCode\n    defaultApplication: \"chrome\" # open files in Chrome by default\n  ...\n```\n\n## License\n\nThis package is under [MIT License](LICENSE.md).\n\n\n## Acknowledgements\n\nWhile development, I cited considerable amount of code from [Open in Browser Atom.io Package](https://github.com/magbicaleman/open-in-browser) created by [@magbicaleman](https://github.com/magbicaleman).\n\n\n## Author\n\n- **Shuhei Kadowaki** - *Undergraduate@Kyoto Univ.* - [aviatesk]\n\n\n<!-- Links -->\n\n[aviatesk]: https://github.com/aviatesk\n",
+    "metadata": {
+        "name": "open-in-app",
+        "main": "./open-in-app",
+        "version": "1.0.1",
+        "description": "Open your file within any of your external application instantly",
+        "keywords": [
+            "open",
+            "file",
+            "application",
+            "browser",
+            "html"
+        ],
+        "repository": "https://github.com/aviatesk/atom-open-in-app",
+        "license": "MIT",
+        "configSchema": {
+            "defaultApplication": {
+                "title": "Default Application",
+                "default": "",
+                "type": "string",
+                "order": 1
+            },
+            "applicationBindings": {
+                "title": "Application Bindings",
+                "default": {},
+                "type": "object",
+                "order": 2
+            }
+        },
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {
+            "open": "^7.0.0"
+        }
+    },
+    "created": 1658359884928,
+    "updated": 1658359884928,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

@@ -1,0 +1,1877 @@
+{
+    "name": "build-coffee",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-build-coffee"
+    },
+    "downloads": 2853,
+    "stargazers_count": 5,
+    "releases": {
+        "latest": "0.12.0"
+    },
+    "versions": {
+        "0.12.0": {
+            "name": "build-coffee",
+            "version": "0.12.0",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <1.56.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {},
+            "devDependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "@babel/core": "^7.14.6",
+                "@babel/eslint-parser": "^7.14.7",
+                "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+                "atom-package-deps": "^7.2.3",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "cross-env": "^7.0.3",
+                "esbuild": "^0.12.11",
+                "eslint": "^7.29.0",
+                "eslint-plugin-json": "^3.0.0",
+                "husky": ">=4 <5",
+                "lint-staged": "^11.0.0",
+                "log-symbols": "^5.0.0",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "which": "^2.0.2"
+            },
+            "scripts": {
+                "build": "node ./tools/build.mjs",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "volta": {
+                "node": "14.17.0",
+                "yarn": "1.22.10"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.12.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.12.0",
+            "sha": "c6b6427a619defce5f74a8372d999ab60236b905"
+        },
+        "0.11.0": {
+            "name": "build-coffee",
+            "version": "0.11.0",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {},
+            "devDependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "@babel/core": "^7.14.3",
+                "@babel/eslint-parser": "^7.14.3",
+                "@babel/plugin-proposal-optional-chaining": "^7.14.2",
+                "atom-package-deps": "^7.2.3",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "cross-env": "^7.0.3",
+                "esbuild": "^0.12.1",
+                "eslint": "^7.26.0",
+                "eslint-plugin-json": "^3.0.0",
+                "husky": ">=4 <5",
+                "lint-staged": "^11.0.0",
+                "log-symbols": "^5.0.0",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "which": "^2.0.2"
+            },
+            "scripts": {
+                "build": "node ./tools/build.mjs",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "volta": {
+                "node": "14.17.0",
+                "yarn": "1.22.10"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.11.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.11.0",
+            "sha": "682734c3d5e6acabdc20e54a78da9bccd344d7fa"
+        },
+        "0.10.1": {
+            "name": "build-coffee",
+            "version": "0.10.1",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "atom-package-deps": "^7.2.2",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "which": "^2.0.2"
+            },
+            "devDependencies": {
+                "@babel/core": "^7.13.16",
+                "@babel/eslint-parser": "^7.13.10",
+                "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+                "@rollup/plugin-babel": "^5.3.0",
+                "@rollup/plugin-commonjs": "^17.1.0",
+                "@rollup/plugin-json": "^4.1.0",
+                "@rollup/plugin-node-resolve": "^11.2.0",
+                "eslint": "^7.2.2",
+                "eslint-plugin-json": "^2.1.2",
+                "husky": ">=4 <5",
+                "lint-staged": "^10.5.4",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "rollup": "^2.42.0",
+                "rollup-plugin-terser": "^7.0.2"
+            },
+            "scripts": {
+                "build": "npm run clean && rollup --config",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "rollup --watch --config",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.10.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.10.1",
+            "sha": "f9c361db3416556a13f104971459d983d2942dba"
+        },
+        "0.10.0": {
+            "name": "build-coffee",
+            "version": "0.10.0",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "atom-package-deps": "^7.2.2",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "which": "^2.0.2"
+            },
+            "devDependencies": {
+                "@babel/core": "^7.13.16",
+                "@babel/eslint-parser": "^7.13.10",
+                "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+                "@rollup/plugin-babel": "^5.3.0",
+                "@rollup/plugin-commonjs": "^17.1.0",
+                "@rollup/plugin-json": "^4.1.0",
+                "@rollup/plugin-node-resolve": "^11.2.0",
+                "eslint": "^7.2.2",
+                "eslint-plugin-json": "^2.1.2",
+                "husky": ">=4 <5",
+                "lint-staged": "^10.5.4",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "rollup": "^2.42.0",
+                "rollup-plugin-terser": "^7.0.2"
+            },
+            "scripts": {
+                "build": "npm run clean && rollup --config",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "rollup --watch --config",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.10.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.10.0",
+            "sha": "0e955258c523a39f7df0c594799e7dd2bc1235dd"
+        },
+        "0.9.0": {
+            "name": "build-coffee",
+            "version": "0.9.0",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                {
+                    "name": "buildium"
+                }
+            ],
+            "dependencies": {
+                "atom-package-deps": "^7.2.2",
+                "atom-satisfy-dependencies": "^0.3.0"
+            },
+            "devDependencies": {
+                "@babel/eslint-parser": "^7.13.10",
+                "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+                "@rollup/plugin-babel": "^5.3.0",
+                "@rollup/plugin-commonjs": "^17.1.0",
+                "@rollup/plugin-json": "^4.1.0",
+                "@rollup/plugin-node-resolve": "^11.2.0",
+                "eslint": "^7.2.2",
+                "eslint-plugin-json": "^2.1.2",
+                "husky": ">=4 <5",
+                "lint-staged": "^10.5.4",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "rollup": "^2.42.0",
+                "rollup-plugin-terser": "^7.0.2"
+            },
+            "scripts": {
+                "build": "npm run clean && rollup --config",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "rollup --watch --config",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.9.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.9.0",
+            "sha": "6b44c98a855bc688b17a729e57031633f5aaa2e5"
+        },
+        "0.8.2": {
+            "name": "build-coffee",
+            "version": "0.8.2",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.2.3",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.19.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.1.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.1",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.8.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.8.2",
+            "sha": "b8755184ded158f7f0508b063a8d4fcced2617f5"
+        },
+        "0.8.1": {
+            "name": "build-coffee",
+            "version": "0.8.1",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.8.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.8.1",
+            "sha": "3a88470c0a8cd88d460f6884c8c133acfe414306"
+        },
+        "0.8.0": {
+            "name": "build-coffee",
+            "version": "0.8.0",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.8.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.8.0",
+            "sha": "b5b836b699412dc70c2220d73a8cf54babd3fc85"
+        },
+        "0.7.0": {
+            "name": "build-coffee",
+            "version": "0.7.0",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.7.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.7.0",
+            "sha": "81efb51a3a847119f151d0cc6e80586dd4f9a5a6"
+        },
+        "0.6.4": {
+            "name": "build-coffee",
+            "version": "0.6.4",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^2.1.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.6.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.6.4",
+            "sha": "cc19a7a7d9bc2ef693bc178ade2447171f2916b2"
+        },
+        "0.6.3": {
+            "name": "build-coffee",
+            "version": "0.6.3",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^2.1.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.6.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.6.3",
+            "sha": "e3ca0926845921ca4e2fc945f59e87066ddf62c8"
+        },
+        "0.6.2": {
+            "name": "build-coffee",
+            "version": "0.6.2",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.6.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.6.2",
+            "sha": "429747700da482d0d1361a8d28b70439cc5266a5"
+        },
+        "0.6.1": {
+            "name": "build-coffee",
+            "version": "0.6.1",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.6.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.6.1",
+            "sha": "681fe393c220fdeb2e63a3a04afdd10bf67f93da"
+        },
+        "0.6.0": {
+            "name": "build-coffee",
+            "version": "0.6.0",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.6.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.6.0",
+            "sha": "dc41c11a0fecca928e3229d4a4aab8454aa59310"
+        },
+        "0.5.9": {
+            "name": "build-coffee",
+            "version": "0.5.9",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.5.9/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.5.9",
+            "sha": "cbf1937bc83cef4c6ae115cba25dff990dcfc2ac"
+        },
+        "0.5.8": {
+            "name": "build-coffee",
+            "version": "0.5.8",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.5.8/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.5.8",
+            "sha": "eaedcd8358b32260224d6ab1b93a276b2800f71d"
+        },
+        "0.5.7": {
+            "name": "build-coffee",
+            "version": "0.5.7",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.6.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.5.7/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.5.7",
+            "sha": "c156d9cf3c6daa63c4cbde9b2f58579e5936ad8d"
+        },
+        "0.5.6": {
+            "name": "build-coffee",
+            "version": "0.5.6",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.5.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.5.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.5.6",
+            "sha": "981e33b7063bcd6eaef40f9e3a7e18d9a17d54d4"
+        },
+        "0.5.5": {
+            "name": "build-coffee",
+            "version": "0.5.5",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.2.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.3.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.5.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.5.5",
+            "sha": "f942a175a549fc5ffe3a618a53c7bd95e703892c"
+        },
+        "0.5.4": {
+            "name": "build-coffee",
+            "version": "0.5.4",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.2.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.3.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.5.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.5.4",
+            "sha": "b91ee0686d1303ea868b1a770d22cb1f5450e60e"
+        },
+        "0.5.3": {
+            "name": "build-coffee",
+            "version": "0.5.3",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.2.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.3.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.5.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.5.3",
+            "sha": "83a32f08492ab4fab0d600c0895f697be4fed77a"
+        },
+        "0.5.2": {
+            "name": "build-coffee",
+            "version": "0.5.2",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.0.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.0.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.2"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.5.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.5.2",
+            "sha": "7950bcf00b9bc1b03d68ee5e32bbcf6c2aa1f0c5"
+        },
+        "0.5.1": {
+            "name": "build-coffee",
+            "version": "0.5.1",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.0.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.0.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.2"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.5.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.5.1",
+            "sha": "3eb137149571e248f076e03382a1c3b1858562ef"
+        },
+        "0.5.0": {
+            "name": "build-coffee",
+            "version": "0.5.0",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.0.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.0.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.2"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.5.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.5.0",
+            "sha": "31bf485608d6982eaa3c6f197ae75f5862160834"
+        },
+        "0.4.0": {
+            "name": "build-coffee",
+            "version": "0.4.0",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffee",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.0.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.2"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.4.0",
+            "sha": "547d7f4b49858e13c36067d88c7e29248dee4d2c"
+        },
+        "0.3.5": {
+            "name": "build-coffee",
+            "version": "0.3.5",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffees",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.0.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.2"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.3.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.3.5",
+            "sha": "c1a4c8260ab262526cbbdce664061ae42b43223f"
+        },
+        "0.3.4": {
+            "name": "build-coffee",
+            "version": "0.3.4",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffees",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.0.4",
+                "eslint": "^2.10.2",
+                "eslint-config-atom-build": "^3.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-recess": "^1.2.0",
+                "jshint": "^2.9.2"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.3.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.3.4",
+            "sha": "cd1c6b1a7a601008557b2025325b0d2423467fd2"
+        },
+        "0.3.3": {
+            "name": "build-coffee",
+            "version": "0.3.3",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffees",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.0.4",
+                "eslint": "^2.10.2",
+                "eslint-config-atom-build": "^3.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-recess": "^1.2.0",
+                "jshint": "^2.9.2"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.3.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.3.3",
+            "sha": "d118d5180029da248058e2b0ee6b7ee04608cb3d"
+        },
+        "0.3.2": {
+            "name": "build-coffee",
+            "version": "0.3.2",
+            "description": "Atom Build provider for coffee, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffees",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "coffee",
+                "javascript",
+                "coffee"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.0.4",
+                "eslint": "^2.10.2",
+                "eslint-config-atom-build": "^3.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-recess": "^1.2.0",
+                "jshint": "^2.9.2"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.3.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-coffee/tarball/refs/tags/v0.3.2",
+            "sha": "eecb1542585e2c08f408199057e902b3f7a2f2df"
+        },
+        "0.3.1": {
+            "name": "build-coffeescript",
+            "version": "0.3.1",
+            "description": "Atom Build provider for CoffeeScript, compiles CoffeeScript",
+            "repository": "https://github.com/idleberg/atom-build-coffeescript",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "coffeescript",
+                "javascript",
+                "coffee"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles CoffeeScript",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.0.4",
+                "eslint": "^2.10.2",
+                "eslint-config-atom-build": "^3.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-recess": "^1.2.0",
+                "jshint": "^2.9.2"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-coffee/versions/0.3.1/tarball"
+            }
+        }
+    },
+    "readme": "# build-coffee\n\n[![apm](https://flat.badgen.net/apm/license/build-coffee)](https://atom.io/packages/build-coffee)\n[![apm](https://flat.badgen.net/apm/v/build-coffee)](https://atom.io/packages/build-coffee)\n[![apm](https://flat.badgen.net/apm/dl/build-coffee)](https://atom.io/packages/build-coffee)\n[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-build-coffee)](https://circleci.com/gh/idleberg/atom-build-coffee)\n[![David](https://flat.badgen.net/david/dev/idleberg/atom-build-coffee)](https://david-dm.org/idleberg/atom-build-coffee?type=dev)\n\n[Atom Build](https://atombuild.github.io/) provider for `coffee`, compiles CoffeeScript into JavaScript. Supports the [linter](https://atom.io/packages/linter) package for error highlighting.\n\n![Screenshot](https://raw.githubusercontent.com/idleberg/atom-build-coffee/master/screenshot.png)\n\n*See the linter in action*\n\n## Installation\n\n### apm\n\nInstall `build-coffee` from Atom's [Package Manager](http://flight-manual.atom.io/using-atom/sections/atom-packages/) or the command-line equivalent:\n\n`$ apm install build-coffee`\n\n### Using Git\n\nChange to your Atom packages directory:\n\n**Windows**\n\n```powershell\n# Powershell\n$ cd $Env:USERPROFILE\\.atom\\packages\n```\n\n```cmd\n:: Command Prompt\n$ cd %USERPROFILE%\\.atom\\packages\n```\n\n**Linux & macOS**\n\n```bash\n$ cd ~/.atom/packages/\n```\n\nClone repository as `build-coffee`:\n\n```bash\n$ git clone https://github.com/idleberg/atom-build-coffee build-coffee\n```\n\nInside the cloned directory, install Node dependencies:\n\n```bash\n$ yarn || npm install\n```\n\nYou should now be setup to build the package:\n\n```bash\n$ yarn build || npm run build\n```\n\n## Usage\n\n### Build\n\nBefore you can build, select an active target with your preferred build option.\n\nAvailable targets:\n\n* `CoffeeScript` — compile script (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>B</kbd>)\n* `CoffeeScript --map` — compile script and create a map (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Cmd</kbd>+<kbd>B</kbd>)\n* `CoffeeScript --bare` — compile script without the top-level function safety wrapper (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd>)\n* `CoffeeScript (user)` — compile script with arguments specified in the package settings\n\n### Shortcuts\n\nHere's a reminder of the default shortcuts you can use with this package:\n\n**Select active target**\n\n<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> or <kbd>F7</kbd>\n\n**Build script**\n\n<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>B</kbd> or <kbd>F9</kbd>\n\n**Jump to error**\n\n<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>G</kbd> or <kbd>F4</kbd>\n\n**Toggle build panel**\n\n<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>V</kbd> or <kbd>F8</kbd>\n\n## License\n\nThis work is licensed under the [The MIT License](LICENSE).\n",
+    "metadata": {
+        "name": "build-coffee",
+        "version": "0.12.0",
+        "description": "Atom Build provider for coffee, compiles CoffeeScript",
+        "repository": "https://github.com/idleberg/atom-build-coffee",
+        "license": "MIT",
+        "keywords": [
+            "buildprovider",
+            "compile",
+            "coffeescript",
+            "coffee",
+            "javascript",
+            "coffee",
+            "linter",
+            "lint"
+        ],
+        "main": "lib/provider.js",
+        "engines": {
+            "atom": ">=1.0.0 <1.56.0"
+        },
+        "activationHooks": [
+            "core:loaded-shell-environment"
+        ],
+        "providedServices": {
+            "builder": {
+                "description": "Compiles CoffeeScript",
+                "versions": {
+                    "2.0.0": "provideBuilder"
+                }
+            }
+        },
+        "package-deps": [
+            [
+                {
+                    "name": "buildium"
+                },
+                {
+                    "name": "build"
+                }
+            ]
+        ],
+        "dependencies": {},
+        "devDependencies": {
+            "@atxm/developer-console": "^0.5.0",
+            "@babel/core": "^7.14.6",
+            "@babel/eslint-parser": "^7.14.7",
+            "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+            "atom-package-deps": "^7.2.3",
+            "atom-satisfy-dependencies": "^0.3.0",
+            "cross-env": "^7.0.3",
+            "esbuild": "^0.12.11",
+            "eslint": "^7.29.0",
+            "eslint-plugin-json": "^3.0.0",
+            "husky": ">=4 <5",
+            "lint-staged": "^11.0.0",
+            "log-symbols": "^5.0.0",
+            "npm-run-all": "^4.1.5",
+            "remark-cli": "^9.0.0",
+            "rimraf": "^3.0.2",
+            "which": "^2.0.2"
+        },
+        "scripts": {
+            "build": "node ./tools/build.mjs",
+            "clean": "rimraf ./lib",
+            "dev": "npm run start",
+            "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+            "lint:js": "eslint ./src --ignore-path .gitignore",
+            "lint": "npm-run-all --parallel lint:*",
+            "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+            "test": "npm run lint"
+        },
+        "husky": {
+            "hooks": {
+                "pre-commit": "lint-staged"
+            }
+        },
+        "lint-staged": {
+            "*.js": "eslint --cache --fix"
+        },
+        "volta": {
+            "node": "14.17.0",
+            "yarn": "1.22.10"
+        }
+    },
+    "created": 1658336793837,
+    "updated": 1658336793837,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

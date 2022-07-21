@@ -1,0 +1,76 @@
+{
+    "name": "autocomplete-from-file",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mbroedl/atom-autocomplete-from-file"
+    },
+    "downloads": 422,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "0.1.0"
+    },
+    "versions": {
+        "0.1.0": {
+            "name": "autocomplete-from-file",
+            "main": "./lib/autocomplete-from-file",
+            "version": "0.1.0",
+            "description": "Adds contents of external files to autocomplete-plus suggestions",
+            "repository": "https://github.com/mbroedl/atom-autocomplete-from-file",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {
+                "papaparse": "^4.6.2",
+                "string-similarity": "^3.0.0"
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provide"
+                    }
+                }
+            },
+            "devDependencies": {
+                "eslint": "^5.9.0",
+                "eslint-config-google": "^0.11.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/autocomplete-from-file/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/mbroedl/atom-autocomplete-from-file/tarball/refs/tags/v0.1.0",
+            "sha": "befcaee75bbe5b74245d064a9224001667c0bdf1"
+        }
+    },
+    "readme": "# Create autocomplete+ suggestions from CSV files\n\nThis package adds contents of user-defined files to the autocomplete+ suggestions list.\n\n## Suggestions\n\nSuggestions are loaded from a user-defined csv-file (custom delimiters possible) with the column headers as indicated in bold:\n\n* **text** (required): the replacement text\n* **display**: main UI text for the suggestion\n* **left**: text to be shown left of the display text\n* **right**: text to be shown right of the display text\n* **className**: CCS class names\n* **icon**: the octicons icon to be used (without the _icon-_ prefix)\n* **description**: a description to be displayed on the bottom of the autocomplete box\n* **url**: the URL linking to further information; is only shown when description is given\n\nSee also the [autocomplete+ documentation](https://github.com/atom/autocomplete-plus/wiki/Provider-API#suggestions) on suggestions.\n\n## Configuration\n\nAll [autocomplete+ options](https://github.com/atom/autocomplete-plus/wiki/Provider-API#defining-a-provider) but `disableForSelector` and `onDidInsertSuggestion` can be  configured on a by file basis.\nThe GUI supports two files at the moment, but new files can easily added with new `provider`-entries in the `autocomplete-from-file` section in the `config.cson`.\nDefault values are applied to these as well.\n\nAll further settings are explained in the Settings panel;\nplease be aware that many settings provided for autocomplete+ will only apply after a restart, as I have not figured out yet how to reload a provider.\n\n## Examples\n\n```csv\ntext,icon,left,display\nBob goes home.,home,to home,Bob's Action\nAlice has the keys.,key,has keys,Alice's Action\n```\n\nIf the prefix `--[A-Za-z]*$` is matched `--Al` shows what is indicated in the screenshot, and would be replaced with `Alice has the keys.`\n\n![Bob-and-Alice example.](screenshot.png)\n\n**On a more serious note**, I use this to load a file with [pandoc-crossref](http://lierdakil.github.io/pandoc-crossref/) references.\nThe references are generated via a `grep -rnP ' {#' | sed -re ...` script from all files in a project directory, so I can easily access them.\nThe loaded csv-file looks similar to this:\n\n| text             | icon           | left             | display        | right           | class    |\n| ---------------- | -------------- | ---------------- | -------------- | --------------- | -------- |\n| sec:introduction | bookmark       | sec:introduction | Introduction   | introduction.md | header-1 |\n| tbl:example      | list-unordered | tbl:example      | Example table  | another_file.md | table    |\n| fig:example      | file-media     | fig:example      | Example Figure | third-file.md   | figure   |\n\nAnd these are the corresponding settings;\nthe match prefix triggers the completion only when a colon occurs after an `@` to distinguish them from literature references.\nThe first matching group until the `@` is retained when selecting an auto completion:\n\n```cson\nprovider1:\n  enabled: true\n  fileProvided: \"/path/to/file.csv\"\n  matchPrefix: \"((?:^|[ ;\\\\[])@)([\\\\w0-9_-]*:[\\\\w0-9_-]*)$\"\n  retainFirstCapture: true\n  numberOfSuggestions: 10\n  selector: \".text.md, .text.plain\"\n```\n",
+    "metadata": {
+        "name": "autocomplete-from-file",
+        "main": "./lib/autocomplete-from-file",
+        "version": "0.1.0",
+        "description": "Adds contents of external files to autocomplete-plus suggestions",
+        "repository": "https://github.com/mbroedl/atom-autocomplete-from-file",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=0.174.0 <2.0.0"
+        },
+        "dependencies": {
+            "papaparse": "^4.6.2",
+            "string-similarity": "^3.0.0"
+        },
+        "providedServices": {
+            "autocomplete.provider": {
+                "versions": {
+                    "2.0.0": "provide"
+                }
+            }
+        },
+        "devDependencies": {
+            "eslint": "^5.9.0",
+            "eslint-config-google": "^0.11.0"
+        }
+    },
+    "created": 1658335270681,
+    "updated": 1658335270681,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

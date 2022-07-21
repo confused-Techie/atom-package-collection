@@ -1,0 +1,1450 @@
+{
+    "name": "quick-highlight",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/t9md/atom-quick-highlight"
+    },
+    "downloads": 43076,
+    "stargazers_count": 59,
+    "releases": {
+        "latest": "0.13.0"
+    },
+    "versions": {
+        "0.13.0": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.13.0",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "configSchema": {
+                "decorate": {
+                    "order": 0,
+                    "type": "string",
+                    "default": "underline",
+                    "enum": [
+                        "underline",
+                        "box",
+                        "highlight"
+                    ],
+                    "description": "Decoation style for highlight"
+                },
+                "highlightSelection": {
+                    "order": 1,
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Highlight Selection"
+                },
+                "highlightSelectionMinimumLength": {
+                    "order": 2,
+                    "type": "integer",
+                    "default": 2,
+                    "minimum": 1,
+                    "description": "Minimum length of selection to be highlight"
+                },
+                "highlightSelectionExcludeScopes": {
+                    "order": 3,
+                    "default": [
+                        "vim-mode-plus.visual-mode.blockwise"
+                    ],
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "highlightSelectionDelay": {
+                    "order": 4,
+                    "type": "integer",
+                    "default": 100,
+                    "description": "Delay(ms) before start to highlight selection when selection changed"
+                },
+                "displayCountOnStatusBar": {
+                    "order": 5,
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show found count on StatusBar"
+                },
+                "countDisplayPosition": {
+                    "order": 6,
+                    "type": "string",
+                    "default": "Left",
+                    "enum": [
+                        "Left",
+                        "Right"
+                    ]
+                },
+                "countDisplayPriority": {
+                    "order": 7,
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Lower priority get closer position to the edges of the window"
+                },
+                "countDisplayStyles": {
+                    "order": 8,
+                    "type": "string",
+                    "default": "icon icon-location",
+                    "description": "Style class for count span element. See `styleguide:show`."
+                }
+            },
+            "providedServices": {
+                "quick-highlight": {
+                    "description": "quick-highlight events",
+                    "versions": {
+                        "1.0.0": "provideQuickHighlight"
+                    }
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                },
+                "vim-mode-plus": {
+                    "versions": {
+                        "^0.1.0": "consumeVim"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "devDependencies": {
+                "prettier": "^1.10.2",
+                "standard": "^10.0.3"
+            },
+            "scripts": {
+                "test": "apm test",
+                "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+                "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+                "lint": "standard lib/*.js lib/**/*.js spec/*.js"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures/*"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.13.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.13.0",
+            "sha": "cccbb19b462b7f6c8bcdb51b4b5ed0fd41e4711b"
+        },
+        "0.12.0": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.12.0",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "configSchema": {
+                "decorate": {
+                    "order": 0,
+                    "type": "string",
+                    "default": "underline",
+                    "enum": [
+                        "underline",
+                        "box",
+                        "highlight"
+                    ],
+                    "description": "Decoation style for highlight"
+                },
+                "highlightSelection": {
+                    "order": 1,
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Highlight Selection"
+                },
+                "highlightSelectionMinimumLength": {
+                    "order": 2,
+                    "type": "integer",
+                    "default": 2,
+                    "minimum": 1,
+                    "description": "Minimum length of selection to be highlight"
+                },
+                "highlightSelectionExcludeScopes": {
+                    "order": 3,
+                    "default": [
+                        "vim-mode-plus.visual-mode.blockwise"
+                    ],
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "highlightSelectionDelay": {
+                    "order": 4,
+                    "type": "integer",
+                    "default": 100,
+                    "description": "Delay(ms) before start to highlight selection when selection changed"
+                },
+                "displayCountOnStatusBar": {
+                    "order": 5,
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show found count on StatusBar"
+                },
+                "countDisplayPosition": {
+                    "order": 6,
+                    "type": "string",
+                    "default": "Left",
+                    "enum": [
+                        "Left",
+                        "Right"
+                    ]
+                },
+                "countDisplayPriority": {
+                    "order": 7,
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Lower priority get closer position to the edges of the window"
+                },
+                "countDisplayStyles": {
+                    "order": 8,
+                    "type": "string",
+                    "default": "badge icon icon-location",
+                    "description": "Style class for count span element. See `styleguide:show`."
+                }
+            },
+            "providedServices": {
+                "quick-highlight": {
+                    "description": "quick-highlight events",
+                    "versions": {
+                        "1.0.0": "provideQuickHighlight"
+                    }
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                },
+                "vim-mode-plus": {
+                    "versions": {
+                        "^0.1.0": "consumeVim"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "devDependencies": {},
+            "scripts": {
+                "test": "apm test",
+                "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+                "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.12.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.12.0",
+            "sha": "550022a16356b5ff28d0b339fd20632439d354dd"
+        },
+        "0.11.1": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.11.1",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "configSchema": {
+                "decorate": {
+                    "order": 0,
+                    "type": "string",
+                    "default": "underline",
+                    "enum": [
+                        "underline",
+                        "box",
+                        "highlight"
+                    ],
+                    "description": "Decoation style for highlight"
+                },
+                "highlightSelection": {
+                    "order": 1,
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Highlight Selection"
+                },
+                "highlightSelectionMinimumLength": {
+                    "order": 2,
+                    "type": "integer",
+                    "default": 2,
+                    "minimum": 1,
+                    "description": "Minimum length of selection to be highlight"
+                },
+                "highlightSelectionExcludeScopes": {
+                    "order": 3,
+                    "default": [
+                        "vim-mode-plus.visual-mode.blockwise"
+                    ],
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "highlightSelectionDelay": {
+                    "order": 4,
+                    "type": "integer",
+                    "default": 100,
+                    "description": "Delay(ms) before start to highlight selection when selection changed"
+                },
+                "displayCountOnStatusBar": {
+                    "order": 5,
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show found count on StatusBar"
+                },
+                "countDisplayPosition": {
+                    "order": 6,
+                    "type": "string",
+                    "default": "Left",
+                    "enum": [
+                        "Left",
+                        "Right"
+                    ]
+                },
+                "countDisplayPriority": {
+                    "order": 7,
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Lower priority get closer position to the edges of the window"
+                },
+                "countDisplayStyles": {
+                    "order": 8,
+                    "type": "string",
+                    "default": "badge icon icon-location",
+                    "description": "Style class for count span element. See `styleguide:show`."
+                }
+            },
+            "providedServices": {
+                "quick-highlight": {
+                    "description": "quick-highlight events",
+                    "versions": {
+                        "1.0.0": "provideQuickHighlight"
+                    }
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                },
+                "vim-mode-plus": {
+                    "versions": {
+                        "^0.1.0": "consumeVim"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "devDependencies": {},
+            "scripts": {
+                "test": "apm test",
+                "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+                "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.11.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.11.1",
+            "sha": "7c1e3ed407b44f03849c5697f61fa99ea88abaa4"
+        },
+        "0.11.0": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.11.0",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "configSchema": {
+                "decorate": {
+                    "order": 0,
+                    "type": "string",
+                    "default": "underline",
+                    "enum": [
+                        "underline",
+                        "box",
+                        "highlight"
+                    ],
+                    "description": "Decoation style for highlight"
+                },
+                "highlightSelection": {
+                    "order": 1,
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Highlight Selection"
+                },
+                "highlightSelectionMinimumLength": {
+                    "order": 2,
+                    "type": "integer",
+                    "default": 2,
+                    "minimum": 1,
+                    "description": "Minimum length of selection to be highlight"
+                },
+                "highlightSelectionExcludeScopes": {
+                    "order": 3,
+                    "default": [
+                        "vim-mode-plus.visual-mode.blockwise"
+                    ],
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "highlightSelectionDelay": {
+                    "order": 4,
+                    "type": "integer",
+                    "default": 100,
+                    "description": "Delay(ms) before start to highlight selection when selection changed"
+                },
+                "displayCountOnStatusBar": {
+                    "order": 5,
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show found count on StatusBar"
+                },
+                "countDisplayPosition": {
+                    "order": 6,
+                    "type": "string",
+                    "default": "Left",
+                    "enum": [
+                        "Left",
+                        "Right"
+                    ]
+                },
+                "countDisplayPriority": {
+                    "order": 7,
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Lower priority get closer position to the edges of the window"
+                },
+                "countDisplayStyles": {
+                    "order": 8,
+                    "type": "string",
+                    "default": "badge icon icon-location",
+                    "description": "Style class for count span element. See `styleguide:show`."
+                }
+            },
+            "providedServices": {
+                "quick-highlight": {
+                    "description": "quick-highlight events",
+                    "versions": {
+                        "1.0.0": "provideQuickHighlight"
+                    }
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                },
+                "vim-mode-plus": {
+                    "versions": {
+                        "^0.1.0": "consumeVim"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "devDependencies": {},
+            "scripts": {
+                "test": "apm test",
+                "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+                "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.11.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.11.0",
+            "sha": "e37145cba6f16c1190b9ba7902b30f80dd303a54"
+        },
+        "0.10.0": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.10.0",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "configSchema": {
+                "decorate": {
+                    "order": 0,
+                    "type": "string",
+                    "default": "underline",
+                    "enum": [
+                        "underline",
+                        "box",
+                        "highlight"
+                    ],
+                    "description": "Decoation style for highlight"
+                },
+                "highlightSelection": {
+                    "order": 1,
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Highlight Selection"
+                },
+                "highlightSelectionMinimumLength": {
+                    "order": 2,
+                    "type": "integer",
+                    "default": 2,
+                    "minimum": 1,
+                    "description": "Minimum length of selection to be highlight"
+                },
+                "highlightSelectionExcludeScopes": {
+                    "order": 3,
+                    "default": [
+                        "vim-mode-plus.visual-mode.blockwise"
+                    ],
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "highlightSelectionDelay": {
+                    "order": 4,
+                    "type": "integer",
+                    "default": 100,
+                    "description": "Delay(ms) before start to highlight selection when selection changed"
+                },
+                "displayCountOnStatusBar": {
+                    "order": 5,
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show found count on StatusBar"
+                },
+                "countDisplayPosition": {
+                    "order": 6,
+                    "type": "string",
+                    "default": "Left",
+                    "enum": [
+                        "Left",
+                        "Right"
+                    ]
+                },
+                "countDisplayPriority": {
+                    "order": 7,
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Lower priority get closer position to the edges of the window"
+                },
+                "countDisplayStyles": {
+                    "order": 8,
+                    "type": "string",
+                    "default": "badge icon icon-location",
+                    "description": "Style class for count span element. See `styleguide:show`."
+                }
+            },
+            "providedServices": {
+                "quick-highlight": {
+                    "description": "quick-highlight events",
+                    "versions": {
+                        "1.0.0": "provideQuickHighlight"
+                    }
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                },
+                "vim-mode-plus": {
+                    "versions": {
+                        "^0.1.0": "consumeVim"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.10.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.10.0",
+            "sha": "938d795bc6039bc67484a55a0b73beb18719743c"
+        },
+        "0.9.0": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.9.0",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "providedServices": {
+                "quick-highlight": {
+                    "description": "quick-highlight events",
+                    "versions": {
+                        "1.0.0": "provideQuickHighlight"
+                    }
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                },
+                "vim-mode-plus": {
+                    "versions": {
+                        "^0.1.0": "consumeVim"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.9.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.9.0",
+            "sha": "8c9652925057229fa11f00c0e116d57157850823"
+        },
+        "0.8.1": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.8.1",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "providedServices": {
+                "quick-highlight": {
+                    "description": "quick-highlight events",
+                    "versions": {
+                        "1.0.0": "provideQuickHighlight"
+                    }
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                },
+                "vim-mode-plus": {
+                    "versions": {
+                        "^0.1.0": "consumeVim"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.8.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.8.1",
+            "sha": "8e30c4eef34b74187a4da0b4c5f5566ea1285541"
+        },
+        "0.8.0": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.8.0",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "providedServices": {
+                "quick-highlight": {
+                    "description": "quick-highlight events",
+                    "versions": {
+                        "1.0.0": "provideQuickHighlight"
+                    }
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                },
+                "vim-mode-plus": {
+                    "versions": {
+                        "^0.1.0": "consumeVim"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.8.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.8.0",
+            "sha": "ac2bd9a0cfa2b786b4aa4466b3f7bb2b9d8bd71d"
+        },
+        "0.7.2": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.7.2",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                },
+                "vim-mode-plus": {
+                    "versions": {
+                        "^0.1.0": "consumeVim"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.7.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.7.2",
+            "sha": "d07a3adbe795bbc56badb3108455423ad82f899c"
+        },
+        "0.7.0": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.7.0",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                },
+                "vim-mode-plus": {
+                    "versions": {
+                        "^0.1.0": "consumeVim"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.7.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.7.0",
+            "sha": "82226f12c0ce7e29d5bcf84f4d904f8e6e7f97df"
+        },
+        "0.6.2": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.6.2",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": "^1.13.0-beta1"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                },
+                "vim-mode-plus": {
+                    "versions": {
+                        "^0.1.0": "consumeVim"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.6.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.6.2",
+            "sha": "feca0c85e6c46cd27272a2ffe865cd96767363ab"
+        },
+        "0.6.1": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.6.1",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.1.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                },
+                "vim-mode-plus": {
+                    "versions": {
+                        "^0.1.0": "consumeVim"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.6.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.6.1",
+            "sha": "726d0246f7f12bfe270bfaa7458340eeccbd1546"
+        },
+        "0.6.0": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.6.0",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.1.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                },
+                "vim-mode-plus": {
+                    "versions": {
+                        "^0.1.0": "consumeVim"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.6.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.6.0",
+            "sha": "bae398950e520813266c8078b9429134dd833e4b"
+        },
+        "0.5.0": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.5.0",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.1.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                },
+                "vim-mode-plus": {
+                    "versions": {
+                        "^0.1.0": "consumeVim"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.5.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.5.0",
+            "sha": "7e5c22fd9cbbd82248a5d896bdad84935079e0dc"
+        },
+        "0.4.0": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.4.0",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.1.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                },
+                "vim-mode-plus": {
+                    "versions": {
+                        "^0.1.0": "consumeVim"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.4.0",
+            "sha": "3be9687d540257b129816841c3fbbe056cb79a30"
+        },
+        "0.3.10": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.3.10",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.1.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.3.10/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.3.10",
+            "sha": "3077153ccdb02ab2ec0043a93e86e5e6f9f7b53a"
+        },
+        "0.3.9": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.3.9",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.1.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.3.9/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.3.9",
+            "sha": "1531b48ef1865986c17ccb59e0718e8c82c294c5"
+        },
+        "0.3.8": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.3.8",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.1.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.3.8/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.3.8",
+            "sha": "6794693688980107729e11d34835558b25b97881"
+        },
+        "0.3.7": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.3.7",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.1.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.3.7/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.3.7",
+            "sha": "5aa8fd967d9926e5034c9754f8a417abffd971b4"
+        },
+        "0.3.6": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.3.6",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.1.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.3.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.3.6",
+            "sha": "89d20a10a182280ef5c9e5e8340c9a85f77323a0"
+        },
+        "0.3.5": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.3.5",
+            "description": "Highlight text quickly.",
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.1.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.3.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.3.5",
+            "sha": "826d7f8dcdd1f0e55959da71dc36d7cf29a0e5ab"
+        },
+        "0.3.2": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.3.2",
+            "description": "Highlight text quickly.",
+            "activationCommands": {
+                "atom-text-editor": "quick-highlight:toggle"
+            },
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.3.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.3.2",
+            "sha": "32ce809b30434cc69677cdc5addcf82557a7b489"
+        },
+        "0.3.1": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.3.1",
+            "description": "Highlight text quickly.",
+            "activationCommands": {
+                "atom-text-editor": "quick-highlight:toggle"
+            },
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.3.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.3.1",
+            "sha": "b611f5c5948db2a253e22c270f5161641bd5bab9"
+        },
+        "0.3.0": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.3.0",
+            "description": "Highlight text quickly.",
+            "activationCommands": {
+                "atom-text-editor": "quick-highlight:toggle"
+            },
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.3.0",
+            "sha": "1c0c3c02e78c2d20035d91092ce6c45be7d091c0"
+        },
+        "0.2.2": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.2.2",
+            "description": "Highlight text quickly.",
+            "activationCommands": {
+                "atom-workspace": "quick-highlight:toggle"
+            },
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.2.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.2.2",
+            "sha": "be01892499bdfd5c7a1174ec29b831c2a0b52e83"
+        },
+        "0.1.9": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.1.9",
+            "description": "Highlight text quickly.",
+            "activationCommands": {
+                "atom-workspace": "quick-highlight:toggle"
+            },
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.1.9/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/t9md/atom-quick-highlight/tarball/refs/tags/v0.1.9",
+            "sha": "92d53ffc1b399a18cde51d3f9ed7ecf01792c291"
+        },
+        "0.1.8": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.1.8",
+            "description": "Highlight text quickly.",
+            "activationCommands": {
+                "atom-workspace": "quick-highlight:toggle"
+            },
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.1.8/tarball"
+            }
+        },
+        "0.1.7": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.1.7",
+            "description": "Highlight text quickly.",
+            "activationCommands": {
+                "atom-workspace": "quick-highlight:toggle"
+            },
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.1.7/tarball"
+            }
+        },
+        "0.1.6": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.1.6",
+            "description": "Highlight text quickly.",
+            "activationCommands": {
+                "atom-workspace": "quick-highlight:toggle"
+            },
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.1.6/tarball"
+            }
+        },
+        "0.1.5": {
+            "name": "quick-highlight",
+            "main": "./lib/main",
+            "version": "0.1.5",
+            "description": "Highlight text quickly.",
+            "activationCommands": {
+                "atom-workspace": "quick-highlight:toggle"
+            },
+            "repository": "https://github.com/t9md/atom-quick-highlight",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.174.0 <2.0.0"
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/quick-highlight/versions/0.1.5/tarball"
+            }
+        }
+    },
+    "readme": "# quick-highlight [![Build Status](https://travis-ci.org/t9md/atom-quick-highlight.svg?branch=master)](https://travis-ci.org/t9md/atom-quick-highlight)\n\n- Highlight selected and multiple persisting highlight across visible editor.\n![gif](https://raw.githubusercontent.com/t9md/t9md/f51b8e211e9ed8ed455053be52d5505da876b298/img/atom-quick-highlight.gif)\n\n- Show found count on StatusBar.\n![gif](https://raw.githubusercontent.com/t9md/t9md/a00e64b9dd85b851ad23c28e830f4a7d7dbe6dcf/img/atom-quick-highlight.png)\n\n# Commands\n\n- `quick-highlight:toggle` toggle highlight for selected or cursor word.\n- `quick-highlight:clear` clear all highlight.\n\nAnd following two operator for [vim-mode-plus](https://atom.io/packages/vim-mode-plus) user.\n- `vim-mode-plus-user:quick-highlight`: Operator to highlight by text-object or motion.\n- `vim-mode-plus-user:quick-highlight-word` Highlight cursor word, similar to `quick-highlight:toggle`, but well fit for vim's block cursor orientation. And `.` repeatable.\n\n# Keymap\n\nNo default keymap.\n\ne.g.\n* general\n```coffeescript\n'atom-workspace atom-text-editor:not([mini])':\n  'cmd-k m': 'quick-highlight:toggle'\n  'cmd-k M': 'quick-highlight:clear'\n```\n\n* vim-mode-plus user\n```coffeescript\n'atom-text-editor.vim-mode-plus.normal-mode, atom-text-editor.vim-mode-plus.visual-mode':\n  'space m': 'vim-mode-plus-user:quick-highlight-word'\n  'space M': 'quick-highlight:clear'\n  'g m': 'vim-mode-plus-user:quick-highlight'\n```\n\n## Modify highlight style\n\nYou can override style in you `style.less`.\nSee example below.\n\n```less\n@import \"syntax-variables\";\n\n// For selection color\n//=======================\natom-text-editor .quick-highlight.box-selection .region {\n  border-width: 1px;\n  background-color: transparent;\n  border-color: @syntax-text-color;\n}\n\n// Make underline manual highlight prioritized(come front) over other highlight\n//=======================\n// Mixin to set z-index of quick-highlight manual color\n.quick-highlight-z-index(@name, @value) {\n  .quick-highlight.@{name} .region {\n    z-index: @value;\n  }\n}\n\n// quick-highlight use 0 to 7 color\n//  for box style, use box-01 to box-07\n//  for highlight style, use highlight-01 to highlight-07\n.quick-highlight-z-index(underline-01, 1);\n.quick-highlight-z-index(underline-02, 1);\n.quick-highlight-z-index(underline-03, 1);\n.quick-highlight-z-index(underline-04, 1);\n.quick-highlight-z-index(underline-05, 1);\n.quick-highlight-z-index(underline-06, 1);\n.quick-highlight-z-index(underline-07, 1);\n```\n\n## vim-mode-plus operator\n\nYou can quick-highlight with combination of any motion, text-object.  \nSince it's operator, yes can repeat by `.`.\n\ne.g.\n- `g m i w`: highlight `inner-word`.\n- `g m i l`: highlight `inner-line`.\n- `g m i'`: highlight `inner-single-quote`.\n- `v 2 l g m`: highlight three visually selected character..\n\n# Display found count on StatusBar\n\nBy default, when you highlight new text by `quick-highlight:toggle`, found count is displayed on StatusBar.  \nYou can configure CSS class to use with `countDisplayStyles`.  \nSee. `styleguide:show` for available style classes.  \n\ne.g.\n- Default: `badge icon icon-location`\n- e.g. 2: `badge badge-error icon icon-bookmark`\n- e.g. 3: `badge badge-success icon icon-light-bulb`\n- e.g. 4: `btn btn-primary selected inline-block-tight`\n\n# TODO\n\n* [x] Improve default to dynamically change using [color-channel](http://lesscss.org/functions/#color-channel)?\n* [ ] Highlight with RegExp.\n",
+    "metadata": {
+        "name": "quick-highlight",
+        "main": "./lib/main",
+        "version": "0.13.0",
+        "description": "Highlight text quickly.",
+        "repository": "https://github.com/t9md/atom-quick-highlight",
+        "license": "MIT",
+        "engines": {
+            "atom": "^1.13.0-beta1"
+        },
+        "configSchema": {
+            "decorate": {
+                "order": 0,
+                "type": "string",
+                "default": "underline",
+                "enum": [
+                    "underline",
+                    "box",
+                    "highlight"
+                ],
+                "description": "Decoation style for highlight"
+            },
+            "highlightSelection": {
+                "order": 1,
+                "type": "boolean",
+                "default": true,
+                "title": "Highlight Selection"
+            },
+            "highlightSelectionMinimumLength": {
+                "order": 2,
+                "type": "integer",
+                "default": 2,
+                "minimum": 1,
+                "description": "Minimum length of selection to be highlight"
+            },
+            "highlightSelectionExcludeScopes": {
+                "order": 3,
+                "default": [
+                    "vim-mode-plus.visual-mode.blockwise"
+                ],
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "highlightSelectionDelay": {
+                "order": 4,
+                "type": "integer",
+                "default": 100,
+                "description": "Delay(ms) before start to highlight selection when selection changed"
+            },
+            "displayCountOnStatusBar": {
+                "order": 5,
+                "type": "boolean",
+                "default": true,
+                "description": "Show found count on StatusBar"
+            },
+            "countDisplayPosition": {
+                "order": 6,
+                "type": "string",
+                "default": "Left",
+                "enum": [
+                    "Left",
+                    "Right"
+                ]
+            },
+            "countDisplayPriority": {
+                "order": 7,
+                "type": "integer",
+                "default": 120,
+                "description": "Lower priority get closer position to the edges of the window"
+            },
+            "countDisplayStyles": {
+                "order": 8,
+                "type": "string",
+                "default": "icon icon-location",
+                "description": "Style class for count span element. See `styleguide:show`."
+            }
+        },
+        "providedServices": {
+            "quick-highlight": {
+                "description": "quick-highlight events",
+                "versions": {
+                    "1.0.0": "provideQuickHighlight"
+                }
+            }
+        },
+        "consumedServices": {
+            "status-bar": {
+                "versions": {
+                    "^1.0.0": "consumeStatusBar"
+                }
+            },
+            "vim-mode-plus": {
+                "versions": {
+                    "^0.1.0": "consumeVim"
+                }
+            }
+        },
+        "dependencies": {
+            "underscore-plus": "^1.6.6"
+        },
+        "devDependencies": {
+            "prettier": "^1.10.2",
+            "standard": "^10.0.3"
+        },
+        "scripts": {
+            "test": "apm test",
+            "watch": "fswatch -0 spec lib | xargs -0 -n1 -I{} apm test",
+            "prettier": "prettier --write --no-semi --print-width=120 --no-bracket-spacing --trailing-comma=es5 'lib/**/*.js' 'spec/*.js'",
+            "lint": "standard lib/*.js lib/**/*.js spec/*.js"
+        },
+        "standard": {
+            "env": {
+                "atomtest": true,
+                "browser": true,
+                "jasmine": true,
+                "node": true
+            },
+            "globals": [
+                "atom"
+            ],
+            "ignore": [
+                "spec/fixtures/*"
+            ]
+        }
+    },
+    "created": 1658361863725,
+    "updated": 1658361863725,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

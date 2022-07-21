@@ -1,0 +1,58 @@
+{
+    "name": "amd-navigator",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zboro/amd-navigator"
+    },
+    "downloads": 143,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "0.1.2"
+    },
+    "versions": {
+        "0.1.2": {
+            "name": "amd-navigator",
+            "main": "./index.coffee",
+            "version": "0.1.2",
+            "description": "Helps navigating through AMD modules",
+            "repository": "https://github.com/zboro/amd-navigator",
+            "activationCommands": {
+                "atom-text-editor": "amd-navigator:go-to-module"
+            },
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "symbols-view": "git+https://github.com/atom/symbols-view.git"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/amd-navigator/versions/0.1.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/zboro/amd-navigator/tarball/refs/tags/v0.1.2",
+            "sha": "73d22c04cf2cb261cef89a731b3ee0cc66f5d62a"
+        }
+    },
+    "readme": "# AMD navigator\n\nThis package adds single command for easy navigating in Javascript files (especially files using AMD syntax).\n\nClick into your code, select \"Go to module\" command (ctrl + alt + X) and this package will try to navigate you to definition of selected function or module.\n\nCurrently it is possible to select these locations in code:\n\n* **string with relative path** - .js file extension is assumed\n* **string with AMD module identifier** (e.g. \"app/myModule\") - package name needs to be found in packages config.\n\n\tPackages need to be defined in Atom config file:\n\t\t\"amd-navigator\":\n\t\t\tpackages:\n\t\t\t\tapp: \"src/app\"\n\n* **variable referencing AMD module** - e.g. any occurence of myModule variable in following example\n\t\tdefine([\n\t\t\t\"app/myModule\"\n\t\t], function(myModule) {\n\t\t\t//code\n\t\t\tmyModule.myFunction();\n\t\t});\n\n* **function or property of loaded AMD module** - e.g. \"myFunction\" from previous example. If function is selected, editor will try to scroll to that function. Function needs to be directly on module variable, \"myModule.something.myFunction()\" will not work.\n* **any usage of function defined in the same file** - this won't open any file, only scroll the current one.\n\nSearching for function declarations uses Atom's \"Symbols View\" package.\n\n### Known issues\n\nSoft wrap and code folding break opening modules when cursor is in string. (atom/atom#8685)\n",
+    "metadata": {
+        "name": "amd-navigator",
+        "main": "./index.coffee",
+        "version": "0.1.2",
+        "description": "Helps navigating through AMD modules",
+        "repository": "https://github.com/zboro/amd-navigator",
+        "activationCommands": {
+            "atom-text-editor": "amd-navigator:go-to-module"
+        },
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {
+            "symbols-view": "git+https://github.com/atom/symbols-view.git"
+        }
+    },
+    "created": 1658330960604,
+    "updated": 1658330960604,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

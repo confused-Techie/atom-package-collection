@@ -1,0 +1,1907 @@
+{
+    "name": "linter-phpmd",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AtomLinter/linter-phpmd"
+    },
+    "downloads": 67964,
+    "stargazers_count": 101,
+    "releases": {
+        "latest": "2.0.2"
+    },
+    "versions": {
+        "2.0.2": {
+            "name": "linter-phpmd",
+            "main": "./lib/main.js",
+            "private": true,
+            "version": "2.0.2",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/linter-phpmd.git"
+            },
+            "license": "MIT",
+            "keywords": [
+                "lint",
+                "linter",
+                "phpmd",
+                "php"
+            ],
+            "bugs": {
+                "url": "https://github.com/AtomLinter/linter-phpmd/issues"
+            },
+            "configSchema": {
+                "executablePath": {
+                    "type": "string",
+                    "default": "phpmd",
+                    "description": "Enter the path to your phpmd executable.",
+                    "order": 1
+                },
+                "autoExecutableSearch": {
+                    "title": "Search for executables",
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Automatically search for `vendor/bin/phpmd` executable. Overrides the exectuable defined above.",
+                    "order": 2
+                },
+                "rulesOrConfigFile": {
+                    "type": "array",
+                    "default": [
+                        "cleancode",
+                        "codesize",
+                        "controversial",
+                        "design",
+                        "naming",
+                        "unusedcode"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enter path to ruleset file or a predefined rulesets.",
+                    "order": 3
+                },
+                "disableWhenNoConfigFile": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Disable the linter when the default ruleset file is not found.",
+                    "order": 4
+                },
+                "autoConfigSearch": {
+                    "title": "Search for ruleset files",
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Automatically search for any `phpmd.xml`, `phpmd.xml.dist` or `phpmd.ruleset.xml` file to use as ruleset. Overrides custom ruleset(s) defined above.",
+                    "order": 5
+                },
+                "minimumPriority": {
+                    "type": "integer",
+                    "default": -1,
+                    "minimum": -1,
+                    "description": "Rule priority threshold; rules with lower priority than this will not be used.",
+                    "order": 6
+                },
+                "strictMode": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Also report those nodes with a @SuppressWarnings annotation.",
+                    "order": 7
+                }
+            },
+            "homepage": "https://github.com/AtomLinter/linter-phpmd#readme",
+            "dependencies": {
+                "atom-linter": "10.0.0",
+                "atom-package-deps": "5.1.0"
+            },
+            "engines": {
+                "atom": ">=1.4.0 <2.0.0"
+            },
+            "devDependencies": {
+                "@commitlint/cli": "7.5.2",
+                "@commitlint/config-conventional": "7.5.0",
+                "@commitlint/travis-cli": "7.5.2",
+                "@semantic-release/apm-config": "6.0.1",
+                "husky": "1.3.1",
+                "semantic-release": "15.13.3",
+                "eslint": "5.16.0",
+                "eslint-config-airbnb-base": "13.1.0",
+                "eslint-plugin-import": "2.17.2",
+                "jasmine-fix": "1.3.1"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "scripts": {
+                "lint": "eslint .",
+                "test": "apm test"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "husky": {
+                "hooks": {
+                    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+                }
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ],
+                "semanticCommits": true,
+                "rangeStrategy": "pin",
+                "packageRules": [
+                    {
+                        "packagePatterns": [
+                            "^eslint"
+                        ],
+                        "groupName": "ESLint packages"
+                    }
+                ]
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/2.0.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v2.0.2",
+            "sha": "8a92f668ef453b6ca4bdbdd24f59feae460f5e88"
+        },
+        "2.0.1": {
+            "name": "linter-phpmd",
+            "main": "./lib/main.js",
+            "private": true,
+            "version": "2.0.1",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/AtomLinter/linter-phpmd.git"
+            },
+            "license": "MIT",
+            "keywords": [
+                "lint",
+                "linter",
+                "phpmd",
+                "php"
+            ],
+            "bugs": {
+                "url": "https://github.com/AtomLinter/linter-phpmd/issues"
+            },
+            "configSchema": {
+                "executablePath": {
+                    "type": "string",
+                    "default": "phpmd",
+                    "description": "Enter the path to your phpmd executable.",
+                    "order": 1
+                },
+                "autoExecutableSearch": {
+                    "title": "Search for executables",
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Automatically search for `vendor/bin/phpmd` executable. Overrides the exectuable defined above.",
+                    "order": 2
+                },
+                "rulesOrConfigFile": {
+                    "type": "array",
+                    "default": [
+                        "cleancode",
+                        "codesize",
+                        "controversial",
+                        "design",
+                        "naming",
+                        "unusedcode"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enter path to ruleset file or a predefined rulesets.",
+                    "order": 3
+                },
+                "disableWhenNoConfigFile": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Disable the linter when the default ruleset file is not found.",
+                    "order": 4
+                },
+                "autoConfigSearch": {
+                    "title": "Search for ruleset files",
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Automatically search for any `phpmd.xml`, `phpmd.xml.dist` or `phpmd.ruleset.xml` file to use as ruleset. Overrides custom ruleset(s) defined above.",
+                    "order": 5
+                },
+                "minimumPriority": {
+                    "type": "integer",
+                    "default": -1,
+                    "minimum": -1,
+                    "description": "Rule priority threshold; rules with lower priority than this will not be used.",
+                    "order": 6
+                },
+                "strictMode": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Also report those nodes with a @SuppressWarnings annotation.",
+                    "order": 7
+                }
+            },
+            "homepage": "https://github.com/AtomLinter/linter-phpmd#readme",
+            "dependencies": {
+                "atom-linter": "^10.0.0",
+                "atom-package-deps": "^5.0.0"
+            },
+            "engines": {
+                "atom": ">=1.4.0 <2.0.0"
+            },
+            "devDependencies": {
+                "@commitlint/cli": "^6.1.3",
+                "@commitlint/config-conventional": "^6.1.3",
+                "@commitlint/travis-cli": "^6.1.3",
+                "@semantic-release/apm-config": "^2.0.1",
+                "husky": "^0.14.3",
+                "semantic-release": "^15.1.7",
+                "eslint": "^4.6.0",
+                "eslint-config-airbnb-base": "^12.0.0",
+                "eslint-plugin-import": "^2.7.0",
+                "jasmine-fix": "^1.3.0"
+            },
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "scripts": {
+                "commitmsg": "commitlint -e $GIT_PARAMS",
+                "lint": "eslint .",
+                "test": "apm test"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "release": {
+                "extends": "@semantic-release/apm-config"
+            },
+            "renovate": {
+                "extends": [
+                    "config:base"
+                ]
+            },
+            "commitlint": {
+                "extends": [
+                    "@commitlint/config-conventional"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/2.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v2.0.1",
+            "sha": "17e78428d848c57ee6b872c490c0b3ffcd4dd88e"
+        },
+        "2.0.0": {
+            "name": "linter-phpmd",
+            "main": "./lib/main.js",
+            "private": true,
+            "version": "2.0.0",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "keywords": [
+                "lint",
+                "linter",
+                "phpmd",
+                "php"
+            ],
+            "bugs": {
+                "url": "https://github.com/AtomLinter/linter-phpmd/issues"
+            },
+            "configSchema": {
+                "executablePath": {
+                    "type": "string",
+                    "default": "phpmd",
+                    "description": "Enter the path to your phpmd executable.",
+                    "order": 1
+                },
+                "autoExecutableSearch": {
+                    "title": "Search for executables",
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Automatically search for `vendor/bin/phpmd` executable. Overrides the exectuable defined above.",
+                    "order": 2
+                },
+                "rulesOrConfigFile": {
+                    "type": "array",
+                    "default": [
+                        "cleancode",
+                        "codesize",
+                        "controversial",
+                        "design",
+                        "naming",
+                        "unusedcode"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enter path to ruleset file or a predefined rulesets.",
+                    "order": 3
+                },
+                "disableWhenNoConfigFile": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Disable the linter when the default ruleset file is not found.",
+                    "order": 4
+                },
+                "autoConfigSearch": {
+                    "title": "Search for ruleset files",
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Automatically search for any `phpmd.xml`, `phpmd.xml.dist` or `phpmd.ruleset.xml` file to use as ruleset. Overrides custom ruleset(s) defined above.",
+                    "order": 5
+                },
+                "minimumPriority": {
+                    "type": "integer",
+                    "default": -1,
+                    "minimum": -1,
+                    "description": "Rule priority threshold; rules with lower priority than this will not be used.",
+                    "order": 6
+                },
+                "strictMode": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Also report those nodes with a @SuppressWarnings annotation.",
+                    "order": 7
+                }
+            },
+            "homepage": "https://github.com/AtomLinter/linter-phpmd#readme",
+            "dependencies": {
+                "atom-linter": "^10.0.0",
+                "atom-package-deps": "^4.0.1"
+            },
+            "engines": {
+                "atom": ">=1.4.0 <2.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^4.6.0",
+                "eslint-config-airbnb-base": "^12.0.0",
+                "eslint-plugin-import": "^2.7.0",
+                "jasmine-fix": "^1.3.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "scripts": {
+                "lint": "eslint .",
+                "test": "apm test"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "globals": {
+                    "atom": true
+                },
+                "env": {
+                    "node": true,
+                    "browser": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/2.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v2.0.0",
+            "sha": "f25148d23126333d9439f77ada7f86334ab3b698"
+        },
+        "1.5.3": {
+            "name": "linter-phpmd",
+            "main": "./lib/main.js",
+            "private": true,
+            "version": "1.5.3",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "keywords": [
+                "lint",
+                "linter",
+                "phpmd",
+                "php"
+            ],
+            "bugs": {
+                "url": "https://github.com/AtomLinter/linter-phpmd/issues"
+            },
+            "configSchema": {
+                "executablePath": {
+                    "type": "string",
+                    "title": "PHPMD Executable Path",
+                    "default": "phpmd",
+                    "order": 1
+                },
+                "rulesets": {
+                    "type": "string",
+                    "title": "PHPMD Rulesets",
+                    "default": "cleancode,codesize,controversial,design,naming,unusedcode",
+                    "description": "Comma separated list of rulesets to use in phpmd. You can also enter the name of your ruleset file (example: `ruleset.xml`) to load that from the current file's directory (or any of the parent directories)",
+                    "order": 2
+                }
+            },
+            "homepage": "https://github.com/AtomLinter/linter-phpmd#readme",
+            "dependencies": {
+                "atom-linter": "^9.0.0",
+                "atom-package-deps": "^4.0.1"
+            },
+            "engines": {
+                "atom": ">=1.4.0 <2.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^3.12.0",
+                "eslint-config-airbnb-base": "^11.0.0",
+                "eslint-plugin-import": "^2.2.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "scripts": {
+                "lint": "eslint .",
+                "test": "apm test"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "env": {
+                    "node": true
+                },
+                "globals": {
+                    "atom": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/1.5.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v1.5.3",
+            "sha": "64e182dfeb741c4c6200301e56d782faa8df0de0"
+        },
+        "1.5.2": {
+            "name": "linter-phpmd",
+            "main": "./lib/main.js",
+            "private": true,
+            "version": "1.5.2",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "keywords": [
+                "lint",
+                "linter",
+                "phpmd",
+                "php"
+            ],
+            "bugs": {
+                "url": "https://github.com/AtomLinter/linter-phpmd/issues"
+            },
+            "configSchema": {
+                "executablePath": {
+                    "type": "string",
+                    "title": "PHPMD Executable Path",
+                    "default": "phpmd",
+                    "order": 1
+                },
+                "rulesets": {
+                    "type": "string",
+                    "title": "PHPMD Rulesets",
+                    "default": "cleancode,codesize,controversial,design,naming,unusedcode",
+                    "description": "Comma separated list of rulesets to use in phpmd. You can also enter the name of your ruleset file (example: `ruleset.xml`) to load that from the current file's directory (or any of the parent directories)",
+                    "order": 2
+                }
+            },
+            "homepage": "https://github.com/AtomLinter/linter-phpmd#readme",
+            "dependencies": {
+                "atom-linter": "^8.0.0",
+                "atom-package-deps": "^4.0.1"
+            },
+            "engines": {
+                "atom": ">=1.4.0 <2.0.0"
+            },
+            "devDependencies": {
+                "eslint": "^3.6.0",
+                "eslint-config-airbnb-base": "^8.0.0",
+                "eslint-plugin-import": "^1.16.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "scripts": {
+                "lint": "eslint .",
+                "test": "apm test"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "rules": {
+                    "global-require": "off",
+                    "import/no-unresolved": [
+                        "error",
+                        {
+                            "ignore": [
+                                "atom"
+                            ]
+                        }
+                    ]
+                },
+                "env": {
+                    "node": true
+                },
+                "globals": {
+                    "atom": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/1.5.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v1.5.2",
+            "sha": "2dc1af9fcced452537abc6ea2fbe54a34981ca57"
+        },
+        "1.5.1": {
+            "name": "linter-phpmd",
+            "main": "./lib/main.coffee",
+            "private": true,
+            "version": "1.5.1",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "keywords": [
+                "lint",
+                "linter",
+                "phpmd",
+                "php"
+            ],
+            "bugs": {
+                "url": "https://github.com/AtomLinter/linter-phpmd/issues"
+            },
+            "homepage": "https://github.com/AtomLinter/linter-phpmd#readme",
+            "dependencies": {
+                "atom-linter": "^8.0.0",
+                "atom-package-deps": "^4.0.1"
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "devDependencies": {
+                "coffeelint": "^1.14.1",
+                "eslint": "^3.5.0",
+                "eslint-config-airbnb-base": "^7.0.0",
+                "eslint-plugin-import": "^1.14.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "scripts": {
+                "lint": "coffeelint lib && eslint spec",
+                "test": "apm test"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                }
+            },
+            "coffeelintConfig": {
+                "arrow_spacing": {
+                    "level": "error"
+                },
+                "braces_spacing": {
+                    "level": "error",
+                    "spaces": 0,
+                    "empty_object_spaces": 0
+                },
+                "camel_case_classes": {
+                    "level": "error"
+                },
+                "coffeescript_error": {
+                    "level": "error"
+                },
+                "colon_assignment_spacing": {
+                    "level": "error",
+                    "spacing": {
+                        "left": 0,
+                        "right": 1
+                    }
+                },
+                "cyclomatic_complexity": {
+                    "value": 10,
+                    "level": "ignore"
+                },
+                "duplicate_key": {
+                    "level": "error"
+                },
+                "empty_constructor_needs_parens": {
+                    "level": "ignore"
+                },
+                "ensure_comprehensions": {
+                    "level": "warn"
+                },
+                "eol_last": {
+                    "level": "ignore"
+                },
+                "indentation": {
+                    "value": 2,
+                    "level": "error"
+                },
+                "line_endings": {
+                    "level": "ignore",
+                    "value": "unix"
+                },
+                "max_line_length": {
+                    "value": 120,
+                    "level": "warn",
+                    "limitComments": true
+                },
+                "missing_fat_arrows": {
+                    "level": "ignore",
+                    "is_strict": false
+                },
+                "newlines_after_classes": {
+                    "value": 3,
+                    "level": "ignore"
+                },
+                "no_backticks": {
+                    "level": "error"
+                },
+                "no_debugger": {
+                    "level": "error",
+                    "console": false
+                },
+                "no_empty_functions": {
+                    "level": "ignore"
+                },
+                "no_empty_param_list": {
+                    "level": "error"
+                },
+                "no_implicit_braces": {
+                    "level": "ignore",
+                    "strict": true
+                },
+                "no_implicit_parens": {
+                    "strict": true,
+                    "level": "ignore"
+                },
+                "no_interpolation_in_single_quotes": {
+                    "level": "error"
+                },
+                "no_nested_string_interpolation": {
+                    "level": "warn"
+                },
+                "no_plusplus": {
+                    "level": "ignore"
+                },
+                "no_private_function_fat_arrows": {
+                    "level": "warn"
+                },
+                "no_stand_alone_at": {
+                    "level": "error"
+                },
+                "no_tabs": {
+                    "level": "error"
+                },
+                "no_this": {
+                    "level": "ignore"
+                },
+                "no_throwing_strings": {
+                    "level": "error"
+                },
+                "no_trailing_semicolons": {
+                    "level": "error"
+                },
+                "no_trailing_whitespace": {
+                    "level": "error",
+                    "allowed_in_comments": false,
+                    "allowed_in_empty_lines": true
+                },
+                "no_unnecessary_double_quotes": {
+                    "level": "error"
+                },
+                "no_unnecessary_fat_arrows": {
+                    "level": "warn"
+                },
+                "non_empty_constructor_needs_parens": {
+                    "level": "ignore"
+                },
+                "prefer_english_operator": {
+                    "level": "error",
+                    "doubleNotLevel": "ignore"
+                },
+                "space_operators": {
+                    "level": "ignore"
+                },
+                "spacing_after_comma": {
+                    "level": "error"
+                },
+                "transform_messes_up_line_numbers": {
+                    "level": "warn"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/1.5.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v1.5.1",
+            "sha": "675397a22663a12698c3fab9a07566fba4a37ea6"
+        },
+        "1.5.0": {
+            "name": "linter-phpmd",
+            "main": "./lib/main.coffee",
+            "private": true,
+            "version": "1.5.0",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "keywords": [
+                "lint",
+                "linter",
+                "phpmd",
+                "php"
+            ],
+            "bugs": {
+                "url": "https://github.com/AtomLinter/linter-phpmd/issues"
+            },
+            "homepage": "https://github.com/AtomLinter/linter-phpmd#readme",
+            "dependencies": {
+                "atom-linter": "^4.5.1",
+                "atom-package-deps": "^4.0.1"
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "devDependencies": {
+                "coffeelint": "^1.14.1",
+                "eslint": "^2.9.0",
+                "eslint-config-airbnb-base": "^3.0.0",
+                "eslint-plugin-import": "^1.7.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "scripts": {
+                "lint": "coffeelint lib && eslint spec",
+                "test": "apm test"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "eslintConfig": {
+                "extends": "airbnb-base",
+                "globals": {
+                    "atom": true
+                }
+            },
+            "coffeelintConfig": {
+                "arrow_spacing": {
+                    "level": "error"
+                },
+                "braces_spacing": {
+                    "level": "error",
+                    "spaces": 0,
+                    "empty_object_spaces": 0
+                },
+                "camel_case_classes": {
+                    "level": "error"
+                },
+                "coffeescript_error": {
+                    "level": "error"
+                },
+                "colon_assignment_spacing": {
+                    "level": "error",
+                    "spacing": {
+                        "left": 0,
+                        "right": 1
+                    }
+                },
+                "cyclomatic_complexity": {
+                    "value": 10,
+                    "level": "ignore"
+                },
+                "duplicate_key": {
+                    "level": "error"
+                },
+                "empty_constructor_needs_parens": {
+                    "level": "ignore"
+                },
+                "ensure_comprehensions": {
+                    "level": "warn"
+                },
+                "eol_last": {
+                    "level": "ignore"
+                },
+                "indentation": {
+                    "value": 2,
+                    "level": "error"
+                },
+                "line_endings": {
+                    "level": "ignore",
+                    "value": "unix"
+                },
+                "max_line_length": {
+                    "value": 120,
+                    "level": "warn",
+                    "limitComments": true
+                },
+                "missing_fat_arrows": {
+                    "level": "ignore",
+                    "is_strict": false
+                },
+                "newlines_after_classes": {
+                    "value": 3,
+                    "level": "ignore"
+                },
+                "no_backticks": {
+                    "level": "error"
+                },
+                "no_debugger": {
+                    "level": "error",
+                    "console": false
+                },
+                "no_empty_functions": {
+                    "level": "ignore"
+                },
+                "no_empty_param_list": {
+                    "level": "error"
+                },
+                "no_implicit_braces": {
+                    "level": "ignore",
+                    "strict": true
+                },
+                "no_implicit_parens": {
+                    "strict": true,
+                    "level": "ignore"
+                },
+                "no_interpolation_in_single_quotes": {
+                    "level": "error"
+                },
+                "no_nested_string_interpolation": {
+                    "level": "warn"
+                },
+                "no_plusplus": {
+                    "level": "ignore"
+                },
+                "no_private_function_fat_arrows": {
+                    "level": "warn"
+                },
+                "no_stand_alone_at": {
+                    "level": "error"
+                },
+                "no_tabs": {
+                    "level": "error"
+                },
+                "no_this": {
+                    "level": "ignore"
+                },
+                "no_throwing_strings": {
+                    "level": "error"
+                },
+                "no_trailing_semicolons": {
+                    "level": "error"
+                },
+                "no_trailing_whitespace": {
+                    "level": "error",
+                    "allowed_in_comments": false,
+                    "allowed_in_empty_lines": true
+                },
+                "no_unnecessary_double_quotes": {
+                    "level": "error"
+                },
+                "no_unnecessary_fat_arrows": {
+                    "level": "warn"
+                },
+                "non_empty_constructor_needs_parens": {
+                    "level": "ignore"
+                },
+                "prefer_english_operator": {
+                    "level": "error",
+                    "doubleNotLevel": "ignore"
+                },
+                "space_operators": {
+                    "level": "ignore"
+                },
+                "spacing_after_comma": {
+                    "level": "error"
+                },
+                "transform_messes_up_line_numbers": {
+                    "level": "warn"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/1.5.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v1.5.0",
+            "sha": "77fbadac5e48e550a7540a786830e776fe14c9c0"
+        },
+        "1.4.1": {
+            "name": "linter-phpmd",
+            "main": "./lib/main",
+            "version": "1.4.1",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "dependencies": {
+                "atom-linter": "^4.3.4",
+                "atom-package-deps": "^3.0.7"
+            },
+            "devDependencies": {
+                "coffeelint": "^1.14.1",
+                "eslint": "^1.10.3",
+                "eslint-config-airbnb": "^4.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "scripts": {
+                "lint": "./node_modules/.bin/coffeelint lib"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "eslintConfig": {
+                "extends": "airbnb/base",
+                "globals": {
+                    "atom": true,
+                    "waitsForPromise": true
+                },
+                "env": {
+                    "jasmine": true
+                }
+            },
+            "coffeelintConfig": {
+                "arrow_spacing": {
+                    "level": "error"
+                },
+                "braces_spacing": {
+                    "level": "error",
+                    "spaces": 0,
+                    "empty_object_spaces": 0
+                },
+                "camel_case_classes": {
+                    "level": "error"
+                },
+                "coffeescript_error": {
+                    "level": "error"
+                },
+                "colon_assignment_spacing": {
+                    "level": "error",
+                    "spacing": {
+                        "left": 0,
+                        "right": 1
+                    }
+                },
+                "cyclomatic_complexity": {
+                    "value": 10,
+                    "level": "ignore"
+                },
+                "duplicate_key": {
+                    "level": "error"
+                },
+                "empty_constructor_needs_parens": {
+                    "level": "ignore"
+                },
+                "ensure_comprehensions": {
+                    "level": "warn"
+                },
+                "eol_last": {
+                    "level": "ignore"
+                },
+                "indentation": {
+                    "value": 2,
+                    "level": "error"
+                },
+                "line_endings": {
+                    "level": "ignore",
+                    "value": "unix"
+                },
+                "max_line_length": {
+                    "value": 120,
+                    "level": "warn",
+                    "limitComments": true
+                },
+                "missing_fat_arrows": {
+                    "level": "ignore",
+                    "is_strict": false
+                },
+                "newlines_after_classes": {
+                    "value": 3,
+                    "level": "ignore"
+                },
+                "no_backticks": {
+                    "level": "error"
+                },
+                "no_debugger": {
+                    "level": "error",
+                    "console": false
+                },
+                "no_empty_functions": {
+                    "level": "ignore"
+                },
+                "no_empty_param_list": {
+                    "level": "error"
+                },
+                "no_implicit_braces": {
+                    "level": "ignore",
+                    "strict": true
+                },
+                "no_implicit_parens": {
+                    "strict": true,
+                    "level": "ignore"
+                },
+                "no_interpolation_in_single_quotes": {
+                    "level": "error"
+                },
+                "no_nested_string_interpolation": {
+                    "level": "warn"
+                },
+                "no_plusplus": {
+                    "level": "ignore"
+                },
+                "no_private_function_fat_arrows": {
+                    "level": "warn"
+                },
+                "no_stand_alone_at": {
+                    "level": "error"
+                },
+                "no_tabs": {
+                    "level": "error"
+                },
+                "no_this": {
+                    "level": "ignore"
+                },
+                "no_throwing_strings": {
+                    "level": "error"
+                },
+                "no_trailing_semicolons": {
+                    "level": "error"
+                },
+                "no_trailing_whitespace": {
+                    "level": "error",
+                    "allowed_in_comments": false,
+                    "allowed_in_empty_lines": true
+                },
+                "no_unnecessary_double_quotes": {
+                    "level": "error"
+                },
+                "no_unnecessary_fat_arrows": {
+                    "level": "warn"
+                },
+                "non_empty_constructor_needs_parens": {
+                    "level": "ignore"
+                },
+                "prefer_english_operator": {
+                    "level": "error",
+                    "doubleNotLevel": "ignore"
+                },
+                "space_operators": {
+                    "level": "ignore"
+                },
+                "spacing_after_comma": {
+                    "level": "error"
+                },
+                "transform_messes_up_line_numbers": {
+                    "level": "warn"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/1.4.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v1.4.1",
+            "sha": "b616a1cc6e9376ed8da0b93bf18fed402394fecf"
+        },
+        "1.4.0": {
+            "name": "linter-phpmd",
+            "main": "./lib/main",
+            "version": "1.4.0",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "dependencies": {
+                "atom-linter": "^4.3.4",
+                "atom-package-deps": "^3.0.7"
+            },
+            "devDependencies": {
+                "coffeelint": "^1.14.1",
+                "eslint": "^1.10.3",
+                "eslint-config-airbnb": "^4.0.0"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "scripts": {
+                "lint": "./node_modules/.bin/coffeelint lib"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "eslintConfig": {
+                "extends": "airbnb/base",
+                "globals": {
+                    "atom": true,
+                    "waitsForPromise": true
+                },
+                "env": {
+                    "jasmine": true
+                }
+            },
+            "coffeelintConfig": {
+                "arrow_spacing": {
+                    "level": "error"
+                },
+                "braces_spacing": {
+                    "level": "error",
+                    "spaces": 0,
+                    "empty_object_spaces": 0
+                },
+                "camel_case_classes": {
+                    "level": "error"
+                },
+                "coffeescript_error": {
+                    "level": "error"
+                },
+                "colon_assignment_spacing": {
+                    "level": "error",
+                    "spacing": {
+                        "left": 0,
+                        "right": 1
+                    }
+                },
+                "cyclomatic_complexity": {
+                    "value": 10,
+                    "level": "ignore"
+                },
+                "duplicate_key": {
+                    "level": "error"
+                },
+                "empty_constructor_needs_parens": {
+                    "level": "ignore"
+                },
+                "ensure_comprehensions": {
+                    "level": "warn"
+                },
+                "eol_last": {
+                    "level": "ignore"
+                },
+                "indentation": {
+                    "value": 2,
+                    "level": "error"
+                },
+                "line_endings": {
+                    "level": "ignore",
+                    "value": "unix"
+                },
+                "max_line_length": {
+                    "value": 120,
+                    "level": "warn",
+                    "limitComments": true
+                },
+                "missing_fat_arrows": {
+                    "level": "ignore",
+                    "is_strict": false
+                },
+                "newlines_after_classes": {
+                    "value": 3,
+                    "level": "ignore"
+                },
+                "no_backticks": {
+                    "level": "error"
+                },
+                "no_debugger": {
+                    "level": "error",
+                    "console": false
+                },
+                "no_empty_functions": {
+                    "level": "ignore"
+                },
+                "no_empty_param_list": {
+                    "level": "error"
+                },
+                "no_implicit_braces": {
+                    "level": "ignore",
+                    "strict": true
+                },
+                "no_implicit_parens": {
+                    "strict": true,
+                    "level": "ignore"
+                },
+                "no_interpolation_in_single_quotes": {
+                    "level": "error"
+                },
+                "no_nested_string_interpolation": {
+                    "level": "warn"
+                },
+                "no_plusplus": {
+                    "level": "ignore"
+                },
+                "no_private_function_fat_arrows": {
+                    "level": "warn"
+                },
+                "no_stand_alone_at": {
+                    "level": "error"
+                },
+                "no_tabs": {
+                    "level": "error"
+                },
+                "no_this": {
+                    "level": "ignore"
+                },
+                "no_throwing_strings": {
+                    "level": "error"
+                },
+                "no_trailing_semicolons": {
+                    "level": "error"
+                },
+                "no_trailing_whitespace": {
+                    "level": "error",
+                    "allowed_in_comments": false,
+                    "allowed_in_empty_lines": true
+                },
+                "no_unnecessary_double_quotes": {
+                    "level": "error"
+                },
+                "no_unnecessary_fat_arrows": {
+                    "level": "warn"
+                },
+                "non_empty_constructor_needs_parens": {
+                    "level": "ignore"
+                },
+                "prefer_english_operator": {
+                    "level": "error",
+                    "doubleNotLevel": "ignore"
+                },
+                "space_operators": {
+                    "level": "ignore"
+                },
+                "spacing_after_comma": {
+                    "level": "error"
+                },
+                "transform_messes_up_line_numbers": {
+                    "level": "warn"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/1.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v1.4.0",
+            "sha": "addbca413a27ce359d333a9869468e1ab3e20037"
+        },
+        "1.3.2": {
+            "name": "linter-phpmd",
+            "main": "./lib/main",
+            "version": "1.3.2",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "dependencies": {
+                "atom-linter": "^3.2.1",
+                "atom-package-deps": "^2.0.5"
+            },
+            "devDependencies": {
+                "coffeelint": "^1.12.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "scripts": {
+                "lint": "./node_modules/.bin/coffeelint lib"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/1.3.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v1.3.2",
+            "sha": "e1887f9ae75c734d58738ac5422c3f038b648539"
+        },
+        "1.3.1": {
+            "name": "linter-phpmd",
+            "main": "./lib/main",
+            "version": "1.3.1",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "dependencies": {
+                "atom-linter": "^3.2.1",
+                "atom-package-deps": "^2.0.5"
+            },
+            "devDependencies": {
+                "coffeelint": "^1.12.1"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "scripts": {
+                "lint": "./node_modules/.bin/coffeelint lib"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/1.3.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v1.3.1",
+            "sha": "b46fc79804d7b9bb4b495f134606564a75883bf5"
+        },
+        "1.3.0": {
+            "name": "linter-phpmd",
+            "main": "./lib/main",
+            "version": "1.3.0",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "dependencies": {
+                "atom-linter": "^3.2.1",
+                "atom-package-deps": "^2.0.5"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/1.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v1.3.0",
+            "sha": "07ef302702919cb8a299e8a0a567e47389adfd26"
+        },
+        "1.2.1": {
+            "name": "linter-phpmd",
+            "main": "./lib/main",
+            "version": "1.2.1",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "dependencies": {
+                "atom-linter": "^3.0.0",
+                "atom-package-deps": "^2.0.5"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/1.2.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v1.2.1",
+            "sha": "bd990f1c181e85f7bc9160f8ab23cf437a960c65"
+        },
+        "1.2.0": {
+            "name": "linter-phpmd",
+            "main": "./lib/main",
+            "version": "1.2.0",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "dependencies": {
+                "atom-linter": "^3.0.0",
+                "atom-package-deps": "^2.0.5"
+            },
+            "package-deps": [
+                "linter"
+            ],
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/1.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v1.2.0",
+            "sha": "985f7df17e76cb2196a8c85ed967a0500f6303c1"
+        },
+        "1.0.0": {
+            "name": "linter-phpmd",
+            "main": "./lib/main",
+            "version": "1.0.0",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "dependencies": {
+                "atom-linter": "^2.0.1"
+            },
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "1.0.0": "provideLinter"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/1.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v1.0.0",
+            "sha": "b1d36289af226f65b3d5c29db004727bcfd4eb67"
+        },
+        "0.0.11": {
+            "name": "linter-phpmd",
+            "main": "./lib/init",
+            "linter-package": true,
+            "version": "0.0.11",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/0.0.11/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v0.0.11",
+            "sha": "f1c6a421ecb3f473a528da0bf107b38162ef7b0a"
+        },
+        "0.0.10": {
+            "name": "linter-phpmd",
+            "main": "./lib/init",
+            "linter-package": true,
+            "activationEvents": [],
+            "version": "0.0.10",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/0.0.10/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v0.0.10",
+            "sha": "b9e9228211cecb1ce80d9c35ad024a9c57f50b62"
+        },
+        "0.0.9": {
+            "name": "linter-phpmd",
+            "main": "./lib/init",
+            "linter-package": true,
+            "activationEvents": [],
+            "version": "0.0.9",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/0.0.9/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v0.0.9",
+            "sha": "779a704ec3e96aca760159d13c2b6ce5185e6ca4"
+        },
+        "0.0.8": {
+            "name": "linter-phpmd",
+            "main": "./lib/init",
+            "linter-package": true,
+            "activationEvents": [],
+            "version": "0.0.8",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/0.0.8/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v0.0.8",
+            "sha": "64a1dd4b1a42f6615689aaf101b33be299cfc092"
+        },
+        "0.0.7": {
+            "name": "linter-phpmd",
+            "main": "./lib/init",
+            "linter-package": true,
+            "activationEvents": [],
+            "version": "0.0.7",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/0.0.7/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v0.0.7",
+            "sha": "96ceb6fb4b125ec9a77d215463d9bd545b946244"
+        },
+        "0.0.6": {
+            "name": "linter-phpmd",
+            "main": "./lib/init",
+            "linter-package": true,
+            "version": "0.0.6",
+            "description": "Lint PHP on the fly, using phpmd",
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/0.0.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v0.0.6",
+            "sha": "7c1526ec5f79f9f9d30488e8e267c04bae37debc"
+        },
+        "0.0.5": {
+            "name": "linter-phpmd",
+            "main": "./lib/init",
+            "linter-package": true,
+            "version": "0.0.5",
+            "description": "Linter plugin for PHP, using phpmd",
+            "activationEvents": [
+                "linter-phpmd:toggle"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/0.0.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v0.0.5",
+            "sha": "7e2a98e31c9c02af248e59b2c554f444eae36c7d"
+        },
+        "0.0.4": {
+            "name": "linter-phpmd",
+            "main": "./lib/init",
+            "linter-package": true,
+            "version": "0.0.4",
+            "description": "Linter plugin for PHP, using phpmd",
+            "activationEvents": [
+                "linter-phpmd:toggle"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/0.0.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v0.0.4",
+            "sha": "dbff2bf317e8aab111b2e6810dbc1a66fa26c35e"
+        },
+        "0.0.3": {
+            "name": "linter-phpmd",
+            "main": "./lib/init",
+            "linter-package": true,
+            "version": "0.0.3",
+            "description": "Linter plugin for PHP, using phpmd",
+            "activationEvents": [
+                "linter-phpmd:toggle"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/0.0.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v0.0.3",
+            "sha": "b905ae2e7fc205ec33bc40cce73cf5ade3ee54ee"
+        },
+        "0.0.2": {
+            "name": "linter-phpmd",
+            "main": "./lib/init",
+            "linter-package": true,
+            "version": "0.0.2",
+            "description": "A short description of your package",
+            "activationEvents": [
+                "linter-phpmd:toggle"
+            ],
+            "repository": "https://github.com/AtomLinter/linter-phpmd",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-phpmd/versions/0.0.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/AtomLinter/linter-phpmd/tarball/refs/tags/v0.0.2",
+            "sha": "ade404fedf93ea44cd6babc99ce0f35b66c7b5ae"
+        }
+    },
+    "readme": "linter-phpmd\n=========================\n[![Build Status](https://travis-ci.org/AtomLinter/linter-phpmd.svg)](https://travis-ci.org/AtomLinter/linter-phpmd)\n[![Dependency Status](https://david-dm.org/AtomLinter/linter-phpmd.svg)](https://david-dm.org/AtomLinter/linter-phpmd)\n[![apm](https://img.shields.io/apm/v/linter-phpmd.svg)](https://atom.io/packages/linter-phpmd)\n[![apm](https://img.shields.io/apm/dm/linter-phpmd.svg)](https://atom.io/packages/linter-phpmd)\n\nThis linter plugin for [Linter](https://github.com/AtomLinter/Linter) provides\nan interface to [phpmd](http://phpmd.org/documentation/index.html). It will be\nused with files that have the \"PHP\" syntax or PHP embedded within HTML. A list\nof the rules checked and their definitions can be found here:\nhttp://phpmd.org/rules/index.html\n\n## Installation\n### `phpmd` installation\nBefore installing this plugin, you must ensure that `phpmd` is installed on your\nsystem. For detailed instructions see [phpmd.org](http://phpmd.org/download/index.html),\nthe simplified steps are:\n\n0. Install [php](http://php.net).\n0. Install [Composer](https://getcomposer.org/download/).\n0. Install `phpmd` by typing the following in a terminal:\n```ShellSession\ncomposer global require phpmd/phpmd\n```\n\nAfter verifying that `phpmd` works from your terminal, proceed to install the linter-phpmd plugin.\n\n### Plugin installation\n```ShellSession\n$ apm install linter-phpmd\n```\n",
+    "metadata": {
+        "name": "linter-phpmd",
+        "main": "./lib/main.js",
+        "private": true,
+        "version": "2.0.2",
+        "description": "Lint PHP on the fly, using phpmd",
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/AtomLinter/linter-phpmd.git"
+        },
+        "license": "MIT",
+        "keywords": [
+            "lint",
+            "linter",
+            "phpmd",
+            "php"
+        ],
+        "bugs": {
+            "url": "https://github.com/AtomLinter/linter-phpmd/issues"
+        },
+        "configSchema": {
+            "executablePath": {
+                "type": "string",
+                "default": "phpmd",
+                "description": "Enter the path to your phpmd executable.",
+                "order": 1
+            },
+            "autoExecutableSearch": {
+                "title": "Search for executables",
+                "type": "boolean",
+                "default": true,
+                "description": "Automatically search for `vendor/bin/phpmd` executable. Overrides the exectuable defined above.",
+                "order": 2
+            },
+            "rulesOrConfigFile": {
+                "type": "array",
+                "default": [
+                    "cleancode",
+                    "codesize",
+                    "controversial",
+                    "design",
+                    "naming",
+                    "unusedcode"
+                ],
+                "items": {
+                    "type": "string"
+                },
+                "description": "Enter path to ruleset file or a predefined rulesets.",
+                "order": 3
+            },
+            "disableWhenNoConfigFile": {
+                "type": "boolean",
+                "default": false,
+                "description": "Disable the linter when the default ruleset file is not found.",
+                "order": 4
+            },
+            "autoConfigSearch": {
+                "title": "Search for ruleset files",
+                "type": "boolean",
+                "default": true,
+                "description": "Automatically search for any `phpmd.xml`, `phpmd.xml.dist` or `phpmd.ruleset.xml` file to use as ruleset. Overrides custom ruleset(s) defined above.",
+                "order": 5
+            },
+            "minimumPriority": {
+                "type": "integer",
+                "default": -1,
+                "minimum": -1,
+                "description": "Rule priority threshold; rules with lower priority than this will not be used.",
+                "order": 6
+            },
+            "strictMode": {
+                "type": "boolean",
+                "default": false,
+                "description": "Also report those nodes with a @SuppressWarnings annotation.",
+                "order": 7
+            }
+        },
+        "homepage": "https://github.com/AtomLinter/linter-phpmd#readme",
+        "dependencies": {
+            "atom-linter": "10.0.0",
+            "atom-package-deps": "5.1.0"
+        },
+        "engines": {
+            "atom": ">=1.4.0 <2.0.0"
+        },
+        "devDependencies": {
+            "@commitlint/cli": "7.5.2",
+            "@commitlint/config-conventional": "7.5.0",
+            "@commitlint/travis-cli": "7.5.2",
+            "@semantic-release/apm-config": "6.0.1",
+            "husky": "1.3.1",
+            "semantic-release": "15.13.3",
+            "eslint": "5.16.0",
+            "eslint-config-airbnb-base": "13.1.0",
+            "eslint-plugin-import": "2.17.2",
+            "jasmine-fix": "1.3.1"
+        },
+        "package-deps": [
+            "linter:2.0.0"
+        ],
+        "scripts": {
+            "lint": "eslint .",
+            "test": "apm test"
+        },
+        "providedServices": {
+            "linter": {
+                "versions": {
+                    "2.0.0": "provideLinter"
+                }
+            }
+        },
+        "eslintConfig": {
+            "extends": "airbnb-base",
+            "rules": {
+                "global-require": "off",
+                "import/no-unresolved": [
+                    "error",
+                    {
+                        "ignore": [
+                            "atom"
+                        ]
+                    }
+                ]
+            },
+            "globals": {
+                "atom": true
+            },
+            "env": {
+                "node": true,
+                "browser": true
+            }
+        },
+        "husky": {
+            "hooks": {
+                "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+            }
+        },
+        "release": {
+            "extends": "@semantic-release/apm-config"
+        },
+        "renovate": {
+            "extends": [
+                "config:base"
+            ],
+            "semanticCommits": true,
+            "rangeStrategy": "pin",
+            "packageRules": [
+                {
+                    "packagePatterns": [
+                        "^eslint"
+                    ],
+                    "groupName": "ESLint packages"
+                }
+            ]
+        },
+        "commitlint": {
+            "extends": [
+                "@commitlint/config-conventional"
+            ]
+        }
+    },
+    "created": 1658356170964,
+    "updated": 1658356170964,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

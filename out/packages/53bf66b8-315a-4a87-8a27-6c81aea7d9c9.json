@@ -1,0 +1,119 @@
+{
+    "name": "gp-atom",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/steveatkin/gp-atom-package"
+    },
+    "downloads": 134,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "0.2.0"
+    },
+    "versions": {
+        "0.2.0": {
+            "name": "gp-atom",
+            "main": "./lib/gp-atom",
+            "version": "0.2.0",
+            "description": "Connect to the Globalization Pipeline service on Bluemix",
+            "keywords": [
+                "IBM",
+                "Globalization",
+                "Bluemix",
+                "Translation"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/steveatkin/gp-atom-package"
+            },
+            "license": "Apache-2.0",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "g11n-pipeline": "^1.2.0",
+                "properties-parser": "^0.3.1",
+                "esprima": "^2.7.2",
+                "po2json": "^0.4.2",
+                "atom-space-pen-views": "^2.2.0",
+                "atom-message-panel": "^1.2.7",
+                "@aki77/atom-input-dialog": "^0.1.3",
+                "mktmpdir": "^0.1.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/gp-atom/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/IBM-Cloud/gp-atom-package/tarball/refs/tags/v0.2.0",
+            "sha": "432bd8aa714687c9a453824769880dc5fa12a4c6"
+        },
+        "0.1.0": {
+            "name": "gp-atom",
+            "main": "./lib/gp-atom",
+            "version": "0.1.0",
+            "description": "Connect to the Globalization Pipeline service on Bluemix",
+            "keywords": [
+                "IBM",
+                "Globalization",
+                "Bluemix",
+                "Translation"
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/steveatkin/gp-atom-package"
+            },
+            "license": "Apache-2.0",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "g11n-pipeline": "^1.2.0",
+                "properties-parser": "^0.3.1",
+                "esprima": "^2.7.2",
+                "po2json": "^0.4.2",
+                "atom-space-pen-views": "^2.2.0",
+                "atom-message-panel": "^1.2.7",
+                "@aki77/atom-input-dialog": "^0.1.3",
+                "mktmpdir": "^0.1.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/gp-atom/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/IBM-Cloud/gp-atom-package/tarball/refs/tags/v0.1.0",
+            "sha": "606762074c77ca6fe422e7e6b55f09b4b0991ebf"
+        }
+    },
+    "readme": "# gp-atom package\n\nThis extension enables you to quickly create, upload, download, and delete translation bundles in the Globalization Pipeline service on IBM Bluemix.\nIf you are unfamiliar with IBM Bluemix and the Globalization Pipeline service checkout these links:\n\n+ [Bluemix](https://bluemix.net)\n- [Globalization Pipeline](https://console.ng.bluemix.net/docs/services/GlobalizationPipeline/index.html)\n\n## Features\n\nYou can create a new bundle right from the editor without having to use the Globalization Pipeline service's dashboard.\n\n![create bundle](https://cdn.rawgit.com/steveatkin/gp-atom-package/master/images/create_bundle.png?raw=true)\n\nYou can upload your content from the editor and the extension will automatically get all your available bundles.\n\n![upload bundle](https://cdn.rawgit.com/steveatkin/gp-atom-package/master/images/upload_bundle.png?raw=true)\n\nYou can download your bundles from the editor and then select the language that you want.\n\n![download bundle](https://cdn.rawgit.com/steveatkin/gp-atom-package/master/images/download_bundle.png?raw=true)\n\n## Install\n\nYou can install the Globalization Pipeline extension by searching for `gp-atom` in Settings > Install > Packages. Or install it directly using the command:\n\n```shell\napm install gp-atom\n```\n\n## Requirements\n\nYou must first [create an instance of the Globalization Pipeline service on Bluemix](https://github.com/IBM-Bluemix/gp-common#quick-start-guide) before you can use this extension to work with translation bundles.\n\n## Extension Settings\n\nTo use the package copy over your VCAP credential settings for the Globalization Pipeline service and fill in the appropriate fields.\n\nThis package contributes the following settings:\n\n* `userId`: The Globalization Pipeleine service userId\n* `password`: The Globalization Piepeline service password\n* `instanceId`: The Globalization Pipeline service instanceId\n* `url`: The Globalization Pipeline service url end point\n* `sourceLanguage`: The source language of the content that you will upload to the service, e.g. *en*, must be a valid BCP 47 language code. By default this value is set to *en*\n* `targetLanguages`: An array of target lanaguges that your bundle will be translated into, e.g., *es, fr*, must be valid BCP 47 language codes\n\n## Usage\n\nFrom Packages select Globalization Pipeline you should see the following commands:\n\n+ Globalization Pipeline - Create Bundle\n+ Globalization Pipeline - Delete Bundle\n+ Globalization Pipeline - Download Bundle\n+ Globalization Pipeline - Upload Source Bundle\n\nWhen you use these commands a connection will automatically be made to the Globalization Pipeline service on IBM Bluemix to complete your requested action.\nWhen you upload your source bundle content the extension will automatically detect the file format and will perform any necessary transformation for you.\nCurrently only Java properties, JSON, Gettext POT, and i18n AMD resource bundles are supported. To upload bundle content make sure the content is being displayed in the active\nedit screen and then invoke the extension.\n\n## Accessing bundles\n\nThe best way to access the bundles from your application is to use one of the Globalization Pipeline's programming language SDKs.\nMany programming languages such as: Java, Node.js, Angular, and Python are supported. You can find a complete list of the SDKs [here](https://github.com/IBM-Bluemix/gp-common)\nYou can also download a bundle in json format.\n\n## License\n\nApache 2.0. See [LICENSE.txt](LICENSE.txt)\n\n> Licensed under the Apache License, Version 2.0 (the \"License\");\n> you may not use this file except in compliance with the License.\n> You may obtain a copy of the License at\n>\n> http://www.apache.org/licenses/LICENSE-2.0\n>\n> Unless required by applicable law or agreed to in writing, software\n> distributed under the License is distributed on an \"AS IS\" BASIS,\n> WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n> See the License for the specific language governing permissions and\n> limitations under the License.\n",
+    "metadata": {
+        "name": "gp-atom",
+        "main": "./lib/gp-atom",
+        "version": "0.2.0",
+        "description": "Connect to the Globalization Pipeline service on Bluemix",
+        "keywords": [
+            "IBM",
+            "Globalization",
+            "Bluemix",
+            "Translation"
+        ],
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/steveatkin/gp-atom-package"
+        },
+        "license": "Apache-2.0",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {
+            "g11n-pipeline": "^1.2.0",
+            "properties-parser": "^0.3.1",
+            "esprima": "^2.7.2",
+            "po2json": "^0.4.2",
+            "atom-space-pen-views": "^2.2.0",
+            "atom-message-panel": "^1.2.7",
+            "@aki77/atom-input-dialog": "^0.1.3",
+            "mktmpdir": "^0.1.1"
+        }
+    },
+    "created": 1658342770957,
+    "updated": 1658342770957,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

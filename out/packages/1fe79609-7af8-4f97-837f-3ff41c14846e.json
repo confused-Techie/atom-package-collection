@@ -1,0 +1,303 @@
+{
+    "name": "zotero-picker",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/oztalha/zotero-picker"
+    },
+    "downloads": 3530,
+    "stargazers_count": 5,
+    "releases": {
+        "latest": "2.0.2"
+    },
+    "versions": {
+        "2.0.2": {
+            "_args": [
+                [
+                    {
+                        "raw": "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+                        "scope": null,
+                        "escapedName": null,
+                        "name": null,
+                        "rawSpec": "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+                        "spec": "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+                        "type": "local"
+                    },
+                    "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/apm-install-dir-118721-39544-1l1ujsx.kqwwl2qpvi"
+                ]
+            ],
+            "_from": "../d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+            "_id": "zotero-picker@1.5.0",
+            "_inCache": true,
+            "_location": "/zotero-picker",
+            "_phantomChildren": {},
+            "_requested": {
+                "raw": "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+                "scope": null,
+                "escapedName": null,
+                "name": null,
+                "rawSpec": "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+                "spec": "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+                "type": "local"
+            },
+            "_requiredBy": [
+                "#USER"
+            ],
+            "_resolved": "file:../d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+            "_shasum": "b61c1140e3cc26a3180b57460669e420c95c0f3b",
+            "_shrinkwrap": null,
+            "_spec": "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+            "_where": "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/apm-install-dir-118721-39544-1l1ujsx.kqwwl2qpvi",
+            "activationCommands": {
+                "atom-workspace": "zotero-picker:toggle"
+            },
+            "bugs": {
+                "url": "https://github.com/oztalha/zotero-picker/issues"
+            },
+            "dependencies": {
+                "request-promise": "^4.2.4",
+                "request": "^2.88.0"
+            },
+            "description": "Invokes Zotero visual picker and inserts citation(s)",
+            "devDependencies": {},
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "homepage": "https://github.com/oztalha/zotero-picker#readme",
+            "keywords": [],
+            "license": "MIT",
+            "main": "./lib/zotero-picker",
+            "name": "zotero-picker",
+            "optionalDependencies": {},
+            "readme": "# zotero-picker package\n\n\n## Why\n\nTo facilitate citation insertion for those who write in markdown and use Zotero.\n\nNow you can write your research papers in markdown,\nand insert your citations using [Zotero picker plugin](https://atom.io/packages/zotero-picker) for Atom.\n\n## What\n\n- Invokes the Zotero visual picker (with `alt+z` hotkey).\n- Inserts the citations key(s) by preceding (each) with an `@` character.\nIf multiple items are cited via the picker, a `;` inserted in between,\nas [suggested](http://pandoc.org/MANUAL.html#citations) by Pandoc:\n```Citations go inside square brackets and are separated by semicolons.```\n- Zotero picker does not put the square brackets because it is much easier to add a bracket pair (single key stroke in Atom) than removing them (as sometimes [intended](http://pandoc.org/MANUAL.html#citations)).\n\n![A screenshot of the package](https://raw.githubusercontent.com/oztalha/zotero-picker/master/zotero-picker.gif)\n\nNote: Zotero-picker just inserts the citation keys, not the bibliography. Read the next section to learn how to get your bibliography into your output file.\n\n## How\n\nFirst, [Better Bibtex](https://github.com/retorquere/zotero-better-bibtex) plugin should be installed to create citation keys and better be configured to auto-export your `bib` file(s).\nYou can configure Better Bibtex plugin so that it auto-exports your Zotero library as a `bib` file every time you make a change on it:\n\n![Auto-export Configuration](https://raw.githubusercontent.com/oztalha/zotero-picker/master/auto-export.png)\n\nThen you can insert your citation keys using `Zotero-picker` (Zotero standalone should be running in the background). Note that it does not insert the bibliography itself; [Pandoc](http://pandoc.org) will do that for you once you have your `markdown` (i.e. `input.md`) and `bibliography` (i.e. `mybib.bib`) files ready.\nYou can create your output (in the form of `pdf`, `html`, `latex` or even `docx`) from `md` using `pandoc` with a simple command then:\n\n    pandoc input.md --bibliography=mybib.bib -o output.pdf\n\nNote: In case you need it, you can see the citation key values of your items in Zotero Info pane (these values are auto-generated by [Better Bib(La)TeX for Zotero](https://github.com/retorquere/zotero-better-bibtex)):\n\n![Citation key field in Zotero](https://raw.githubusercontent.com/oztalha/zotero-picker/master/citation_key.png)\n",
+            "readmeFilename": "README.md",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/oztalha/zotero-picker.git"
+            },
+            "version": "2.0.2",
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/zotero-picker/versions/2.0.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/oztalha/zotero-picker/tarball/refs/tags/v2.0.2",
+            "sha": "3ebc74fb78d0ff586c3772525992080f96b6c337"
+        },
+        "1.5.0": {
+            "name": "zotero-picker",
+            "main": "./lib/zotero-picker",
+            "version": "1.5.0",
+            "description": "Invokes Zotero visual picker and inserts citation(s)",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "zotero-picker:toggle"
+            },
+            "repository": "https://github.com/oztalha/zotero-picker",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/zotero-picker/versions/1.5.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/oztalha/zotero-picker/tarball/refs/tags/v1.5.0",
+            "sha": "82eb7196c1ea63a25231cf18e9f9e49dfb80d490"
+        },
+        "1.4.0": {
+            "name": "zotero-picker",
+            "main": "./lib/zotero-picker",
+            "version": "1.4.0",
+            "description": "Invokes Zotero visual picker and inserts citation(s)",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "zotero-picker:toggle"
+            },
+            "repository": "https://github.com/oztalha/zotero-picker",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/zotero-picker/versions/1.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/oztalha/zotero-picker/tarball/refs/tags/v1.4.0",
+            "sha": "cb66f1f26772d683c0890fda89b7cc99ca15ce92"
+        },
+        "1.3.0": {
+            "name": "zotero-picker",
+            "main": "./lib/zotero-picker",
+            "version": "1.3.0",
+            "description": "Invokes Zotero visual picker and inserts citation(s)",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "zotero-picker:toggle"
+            },
+            "repository": "https://github.com/oztalha/zotero-picker",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/zotero-picker/versions/1.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/oztalha/zotero-picker/tarball/refs/tags/v1.3.0",
+            "sha": "d0e1b10c75a94e9e5908e9cdf2ff63f089a39ae3"
+        },
+        "1.2.0": {
+            "name": "zotero-picker",
+            "main": "./lib/zotero-picker",
+            "version": "1.2.0",
+            "description": "Invokes Zotero visual picker and inserts citation(s)",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "zotero-picker:toggle"
+            },
+            "repository": "https://github.com/oztalha/zotero-picker",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/zotero-picker/versions/1.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/oztalha/zotero-picker/tarball/refs/tags/v1.2.0",
+            "sha": "51232836def904fc1e998244788eadaa7615f78e"
+        },
+        "1.1.0": {
+            "name": "zotero-picker",
+            "main": "./lib/zotero-picker",
+            "version": "1.1.0",
+            "description": "Invokes Zotero visual picker and inserts citation(s)",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "zotero-picker:toggle"
+            },
+            "repository": "https://github.com/oztalha/zotero-picker",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/zotero-picker/versions/1.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/oztalha/zotero-picker/tarball/refs/tags/v1.1.0",
+            "sha": "4c07f611d08e742ae832f9968a2ad13258a9c087"
+        },
+        "1.0.0": {
+            "name": "zotero-picker",
+            "main": "./lib/zotero-picker",
+            "version": "1.0.0",
+            "description": "Invokes Zotero visual picker and inserts citation(s)",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "zotero-picker:toggle"
+            },
+            "repository": "https://github.com/oztalha/zotero-picker",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/zotero-picker/versions/1.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/oztalha/zotero-picker/tarball/refs/tags/v1.0.0",
+            "sha": "347b369f87727b0b41ba2fb20d017cf3d5c4ca67"
+        },
+        "0.1.0": {
+            "name": "zotero-picker",
+            "main": "./lib/zotero-picker",
+            "version": "0.1.0",
+            "description": "Calls Zotero visual picker and inserts citation(s)",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "zotero-picker:toggle"
+            },
+            "repository": "https://github.com/oztalha/zotero-picker",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/zotero-picker/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/oztalha/zotero-picker/tarball/refs/tags/v0.1.0",
+            "sha": "91885da95c90faf1cd2b163bc07c9fdaf413c8d2"
+        }
+    },
+    "readme": "# zotero-picker package\n\n\n## Why\n\nTo facilitate citation insertion for those who write in markdown and use Zotero.\n\nNow you can write your research papers in markdown,\nand insert your citations using [Zotero picker plugin](https://atom.io/packages/zotero-picker) for Atom.\n\n## What\n\n- Invokes the Zotero visual picker (with `alt+z` hotkey).\n- Inserts the citations key(s) by preceding (each) with an `@` character.\nIf multiple items are cited via the picker, a `;` inserted in between,\nas [suggested](http://pandoc.org/MANUAL.html#citations) by Pandoc:\n```Citations go inside square brackets and are separated by semicolons.```\n- Zotero picker does not put the square brackets because it is much easier to add a bracket pair (single key stroke in Atom) than removing them (as sometimes [intended](http://pandoc.org/MANUAL.html#citations)).\n\n![A screenshot of the package](https://raw.githubusercontent.com/oztalha/zotero-picker/master/zotero-picker.gif)\n\nNote: Zotero-picker just inserts the citation keys, not the bibliography. Read the next section to learn how to get your bibliography into your output file.\n\n## How\n\nFirst, [Better Bibtex](https://github.com/retorquere/zotero-better-bibtex) plugin should be installed to create citation keys and better be configured to auto-export your `bib` file(s).\nYou can configure Better Bibtex plugin so that it auto-exports your Zotero library as a `bib` file every time you make a change on it:\n\n![Auto-export Configuration](https://raw.githubusercontent.com/oztalha/zotero-picker/master/auto-export.png)\n\nThen you can insert your citation keys using `Zotero-picker` (Zotero standalone should be running in the background). Note that it does not insert the bibliography itself; [Pandoc](http://pandoc.org) will do that for you once you have your `markdown` (i.e. `input.md`) and `bibliography` (i.e. `mybib.bib`) files ready.\nYou can create your output (in the form of `pdf`, `html`, `latex` or even `docx`) from `md` using `pandoc` with a simple command then:\n\n    pandoc input.md --bibliography=mybib.bib -o output.pdf\n\nNote: In case you need it, you can see the citation key values of your items in Zotero Info pane (these values are auto-generated by [Better Bib(La)TeX for Zotero](https://github.com/retorquere/zotero-better-bibtex)):\n\n![Citation key field in Zotero](https://raw.githubusercontent.com/oztalha/zotero-picker/master/citation_key.png)\n",
+    "metadata": {
+        "_args": [
+            [
+                {
+                    "raw": "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+                    "scope": null,
+                    "escapedName": null,
+                    "name": null,
+                    "rawSpec": "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+                    "spec": "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+                    "type": "local"
+                },
+                "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/apm-install-dir-118721-39544-1l1ujsx.kqwwl2qpvi"
+            ]
+        ],
+        "_from": "../d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+        "_id": "zotero-picker@1.5.0",
+        "_inCache": true,
+        "_location": "/zotero-picker",
+        "_phantomChildren": {},
+        "_requested": {
+            "raw": "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+            "scope": null,
+            "escapedName": null,
+            "name": null,
+            "rawSpec": "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+            "spec": "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+            "type": "local"
+        },
+        "_requiredBy": [
+            "#USER"
+        ],
+        "_resolved": "file:../d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+        "_shasum": "b61c1140e3cc26a3180b57460669e420c95c0f3b",
+        "_shrinkwrap": null,
+        "_spec": "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/d-118721-39544-fcov5.pu93rz4cxr/package.tgz",
+        "_where": "/private/var/folders/jm/39pnfk7s7475tv5dlbz86_780000gn/T/apm-install-dir-118721-39544-1l1ujsx.kqwwl2qpvi",
+        "activationCommands": {
+            "atom-workspace": "zotero-picker:toggle"
+        },
+        "bugs": {
+            "url": "https://github.com/oztalha/zotero-picker/issues"
+        },
+        "dependencies": {
+            "request-promise": "^4.2.4",
+            "request": "^2.88.0"
+        },
+        "description": "Invokes Zotero visual picker and inserts citation(s)",
+        "devDependencies": {},
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "homepage": "https://github.com/oztalha/zotero-picker#readme",
+        "keywords": [],
+        "license": "MIT",
+        "main": "./lib/zotero-picker",
+        "name": "zotero-picker",
+        "optionalDependencies": {},
+        "readme": "# zotero-picker package\n\n\n## Why\n\nTo facilitate citation insertion for those who write in markdown and use Zotero.\n\nNow you can write your research papers in markdown,\nand insert your citations using [Zotero picker plugin](https://atom.io/packages/zotero-picker) for Atom.\n\n## What\n\n- Invokes the Zotero visual picker (with `alt+z` hotkey).\n- Inserts the citations key(s) by preceding (each) with an `@` character.\nIf multiple items are cited via the picker, a `;` inserted in between,\nas [suggested](http://pandoc.org/MANUAL.html#citations) by Pandoc:\n```Citations go inside square brackets and are separated by semicolons.```\n- Zotero picker does not put the square brackets because it is much easier to add a bracket pair (single key stroke in Atom) than removing them (as sometimes [intended](http://pandoc.org/MANUAL.html#citations)).\n\n![A screenshot of the package](https://raw.githubusercontent.com/oztalha/zotero-picker/master/zotero-picker.gif)\n\nNote: Zotero-picker just inserts the citation keys, not the bibliography. Read the next section to learn how to get your bibliography into your output file.\n\n## How\n\nFirst, [Better Bibtex](https://github.com/retorquere/zotero-better-bibtex) plugin should be installed to create citation keys and better be configured to auto-export your `bib` file(s).\nYou can configure Better Bibtex plugin so that it auto-exports your Zotero library as a `bib` file every time you make a change on it:\n\n![Auto-export Configuration](https://raw.githubusercontent.com/oztalha/zotero-picker/master/auto-export.png)\n\nThen you can insert your citation keys using `Zotero-picker` (Zotero standalone should be running in the background). Note that it does not insert the bibliography itself; [Pandoc](http://pandoc.org) will do that for you once you have your `markdown` (i.e. `input.md`) and `bibliography` (i.e. `mybib.bib`) files ready.\nYou can create your output (in the form of `pdf`, `html`, `latex` or even `docx`) from `md` using `pandoc` with a simple command then:\n\n    pandoc input.md --bibliography=mybib.bib -o output.pdf\n\nNote: In case you need it, you can see the citation key values of your items in Zotero Info pane (these values are auto-generated by [Better Bib(La)TeX for Zotero](https://github.com/retorquere/zotero-better-bibtex)):\n\n![Citation key field in Zotero](https://raw.githubusercontent.com/oztalha/zotero-picker/master/citation_key.png)\n",
+        "readmeFilename": "README.md",
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/oztalha/zotero-picker.git"
+        },
+        "version": "2.0.2"
+    },
+    "created": 1658432256517,
+    "updated": 1658432256517,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

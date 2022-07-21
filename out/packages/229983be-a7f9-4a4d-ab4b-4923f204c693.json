@@ -1,0 +1,1391 @@
+{
+    "name": "pure-ui",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/matthewlucock/pure-atom"
+    },
+    "downloads": 2719,
+    "stargazers_count": 3,
+    "releases": {
+        "latest": "1.0.4"
+    },
+    "versions": {
+        "1.0.4": {
+            "name": "pure-ui",
+            "theme": "ui",
+            "version": "1.0.4",
+            "description": "🏞️🌆🌈 The ultimate minimalist Atom theme",
+            "keywords": [
+                "minimalist",
+                "customizable",
+                "image",
+                "dark",
+                "light",
+                "ui",
+                "pure",
+                "min",
+                "theme",
+                "minimalism",
+                "background image",
+                "customisable",
+                "customization",
+                "customisation",
+                "image",
+                "black",
+                "white",
+                "dynamic",
+                "adaptive",
+                "ultimate",
+                "ultra",
+                "smart",
+                "intelligent",
+                "adapt",
+                "powerful",
+                "elegant",
+                "gorgeous",
+                "beautiful",
+                "ultra-minimalist",
+                "ultra-customizable",
+                "ultra-customisable",
+                "background",
+                "intuitive",
+                "customizable background",
+                "customisable background"
+            ],
+            "repository": "https://github.com/matthewlucock/pure-atom",
+            "author": {
+                "name": "Matt Lucock",
+                "email": "hello@lucock.com",
+                "url": "https://lucock.com"
+            },
+            "license": "ISC",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "main": "scripts/index",
+            "scripts": {
+                "lint": "standard \"scripts/**/*.js\" --global atom | snazzy && standard \"build/**/*.js\" \"styles/**/*.js\" | snazzy"
+            },
+            "configSchema": {
+                "general": {
+                    "type": "object",
+                    "title": "General settings",
+                    "properties": {
+                        "background": {
+                            "type": "string",
+                            "title": "Background",
+                            "enum": [
+                                "Image",
+                                "Solid color"
+                            ],
+                            "description": "Customize your background image when the image background is selected with the \"Pure: Background images\" command in the command palette, or Packages > Pure > Background images.",
+                            "default": "Image",
+                            "order": 1
+                        },
+                        "fontFamily": {
+                            "type": "string",
+                            "title": "Font family",
+                            "default": "Open Sans, system-ui",
+                            "order": 2
+                        },
+                        "baseFontSize": {
+                            "type": "integer",
+                            "title": "Base font size (px)",
+                            "default": 15,
+                            "minimum": 1,
+                            "order": 3
+                        },
+                        "statusBarFontSize": {
+                            "type": "string",
+                            "title": "Status bar font size",
+                            "default": ".9rem",
+                            "order": 4
+                        },
+                        "scrollbarWidth": {
+                            "type": "string",
+                            "title": "Scrollbar width",
+                            "default": ".6rem",
+                            "order": 5
+                        },
+                        "settingsDelay": {
+                            "type": "boolean",
+                            "title": "Delay when changing some settings",
+                            "description": "Factor in a small, artificial delay when changing some settings. This can make changing some settings feel less responsive, but helps prevent awkward mishaps.",
+                            "default": true,
+                            "order": 6
+                        }
+                    }
+                },
+                "imageBackground": {
+                    "type": "object",
+                    "title": "Image background",
+                    "properties": {
+                        "workspaceAlpha": {
+                            "type": "number",
+                            "title": "Overlay alpha",
+                            "description": "The alpha channel of the dark overlay of the background image.",
+                            "default": 0.85,
+                            "minimum": 0,
+                            "maximum": 1,
+                            "order": 1
+                        },
+                        "accent": {
+                            "type": "color",
+                            "title": "Accent",
+                            "default": "white",
+                            "order": 2
+                        },
+                        "accentAlpha": {
+                            "type": "number",
+                            "title": "Accent alpha",
+                            "default": 0.1,
+                            "minimum": 0,
+                            "maximum": 1,
+                            "order": 3
+                        },
+                        "selectNewImagesFrom": {
+                            "type": "string",
+                            "title": "Select new images from",
+                            "description": "The images to choose from when automatically selecting a new image. If you don't have any custom images, Pure will use the default images instead.",
+                            "enum": [
+                                "Custom images",
+                                "Default images",
+                                "Both"
+                            ],
+                            "default": "Custom images",
+                            "order": 4
+                        },
+                        "selectNewImageOnLaunch": {
+                            "type": "boolean",
+                            "title": "Select a new image on launch",
+                            "default": true,
+                            "order": 5
+                        },
+                        "slideshow": {
+                            "type": "boolean",
+                            "title": "Select a new image periodically",
+                            "default": true,
+                            "order": 6
+                        },
+                        "slideshowDuration": {
+                            "type": "string",
+                            "title": "Select a new image every",
+                            "enum": [
+                                "30 minutes",
+                                "1 hour",
+                                "2 hours",
+                                "4 hours",
+                                "6 hours"
+                            ],
+                            "default": "1 hour",
+                            "order": 7
+                        },
+                        "animate": {
+                            "type": "boolean",
+                            "title": "Animate background",
+                            "default": true,
+                            "order": 8
+                        },
+                        "performanceWarning": {
+                            "type": "boolean",
+                            "title": "Warn of potential performance issues",
+                            "description": "Using custom images of large file sizes may cause performance issues.",
+                            "default": true,
+                            "order": 9
+                        }
+                    }
+                },
+                "solidBackground": {
+                    "type": "object",
+                    "title": "Solid color background",
+                    "properties": {
+                        "workspaceColor": {
+                            "type": "color",
+                            "title": "Background",
+                            "default": "black",
+                            "order": 1
+                        },
+                        "accent": {
+                            "type": "color",
+                            "title": "Accent",
+                            "default": "rgb(51, 51, 51)",
+                            "order": 2
+                        },
+                        "adjustAccentAutomatically": {
+                            "type": "boolean",
+                            "title": "Adjust accent automatically",
+                            "description": "Automatically pick a new accent color when you change your background color.",
+                            "default": true,
+                            "order": 3
+                        }
+                    }
+                }
+            },
+            "dependencies": {
+                "color": "^3.1.0",
+                "delay": "^4.1.0",
+                "docrel": "^1.6.0",
+                "fs-extra": "^7.0.0",
+                "mem": "^4.0.0",
+                "random-item": "^1.0.0"
+            },
+            "devDependencies": {
+                "snazzy": "^8.0.0",
+                "standard": "^12.0.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/pure-ui/versions/1.0.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/matthewlucock/pure-atom/tarball/refs/tags/v1.0.4",
+            "sha": "476871a940bbfa4d89a32a9c4968dd7360b665fe"
+        },
+        "1.0.3": {
+            "name": "pure-ui",
+            "theme": "ui",
+            "version": "1.0.3",
+            "description": "🏞️🌆🌈 The ultimate minimalist Atom theme",
+            "keywords": [
+                "minimalist",
+                "customizable",
+                "image",
+                "dark",
+                "light",
+                "ui",
+                "pure",
+                "min",
+                "theme",
+                "minimalism",
+                "background image",
+                "customisable",
+                "customization",
+                "customisation",
+                "image",
+                "black",
+                "white",
+                "dynamic",
+                "adaptive",
+                "ultimate",
+                "ultra",
+                "smart",
+                "intelligent",
+                "adapt",
+                "powerful",
+                "elegant",
+                "gorgeous",
+                "beautiful",
+                "ultra-minimalist",
+                "ultra-customizable",
+                "ultra-customisable",
+                "background",
+                "intuitive",
+                "customizable background",
+                "customisable background"
+            ],
+            "repository": "https://github.com/matthewlucock/pure-atom",
+            "author": {
+                "name": "Matt Lucock",
+                "email": "hello@lucock.com",
+                "url": "https://lucock.com"
+            },
+            "license": "ISC",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "main": "scripts/index",
+            "scripts": {
+                "lint": "standard \"scripts/**/*.js\" --global atom | snazzy && standard \"build/**/*.js\" \"styles/**/*.js\" | snazzy"
+            },
+            "configSchema": {
+                "general": {
+                    "type": "object",
+                    "title": "General settings",
+                    "properties": {
+                        "background": {
+                            "type": "string",
+                            "title": "Background",
+                            "enum": [
+                                "Image",
+                                "Solid color"
+                            ],
+                            "description": "Customize your background image when the image background is selected with the \"Pure: Background images\" command in the command palette, or Packages > Pure > Background images.",
+                            "default": "Image",
+                            "order": 1
+                        },
+                        "fontFamily": {
+                            "type": "string",
+                            "title": "Font family",
+                            "default": "Open Sans, system-ui",
+                            "order": 2
+                        },
+                        "baseFontSize": {
+                            "type": "integer",
+                            "title": "Base font size (px)",
+                            "default": 15,
+                            "minimum": 1,
+                            "order": 3
+                        },
+                        "statusBarFontSize": {
+                            "type": "string",
+                            "title": "Status bar font size",
+                            "default": ".9rem",
+                            "order": 4
+                        },
+                        "scrollbarWidth": {
+                            "type": "string",
+                            "title": "Scrollbar width",
+                            "default": ".6rem",
+                            "order": 5
+                        },
+                        "settingsDelay": {
+                            "type": "boolean",
+                            "title": "Delay when changing some settings",
+                            "description": "Factor in a small, artificial delay when changing some settings. This can make changing some settings feel less responsive, but helps prevent awkward mishaps.",
+                            "default": true,
+                            "order": 6
+                        }
+                    }
+                },
+                "imageBackground": {
+                    "type": "object",
+                    "title": "Image background",
+                    "properties": {
+                        "workspaceAlpha": {
+                            "type": "number",
+                            "title": "Overlay alpha",
+                            "description": "The alpha channel of the dark overlay of the background image.",
+                            "default": 0.85,
+                            "minimum": 0,
+                            "maximum": 1,
+                            "order": 1
+                        },
+                        "accent": {
+                            "type": "color",
+                            "title": "Accent",
+                            "default": "white",
+                            "order": 2
+                        },
+                        "accentAlpha": {
+                            "type": "number",
+                            "title": "Accent alpha",
+                            "default": 0.1,
+                            "minimum": 0,
+                            "maximum": 1,
+                            "order": 3
+                        },
+                        "selectNewImagesFrom": {
+                            "type": "string",
+                            "title": "Select new images from",
+                            "description": "The images to choose from when automatically selecting a new image. If you don't have any custom images, Pure will use the default images instead.",
+                            "enum": [
+                                "Custom images",
+                                "Default images",
+                                "Both"
+                            ],
+                            "default": "Custom images",
+                            "order": 4
+                        },
+                        "selectNewImageOnLaunch": {
+                            "type": "boolean",
+                            "title": "Select a new image on launch",
+                            "default": true,
+                            "order": 5
+                        },
+                        "slideshow": {
+                            "type": "boolean",
+                            "title": "Select a new image periodically",
+                            "default": true,
+                            "order": 6
+                        },
+                        "slideshowDuration": {
+                            "type": "string",
+                            "title": "Select a new image every",
+                            "enum": [
+                                "30 minutes",
+                                "1 hour",
+                                "2 hours",
+                                "4 hours",
+                                "6 hours"
+                            ],
+                            "default": "1 hour",
+                            "order": 7
+                        },
+                        "animate": {
+                            "type": "boolean",
+                            "title": "Animate background",
+                            "default": true,
+                            "order": 8
+                        },
+                        "performanceWarning": {
+                            "type": "boolean",
+                            "title": "Warn of potential performance issues",
+                            "description": "Using custom images of large file sizes may cause performance issues.",
+                            "default": true,
+                            "order": 9
+                        }
+                    }
+                },
+                "solidBackground": {
+                    "type": "object",
+                    "title": "Solid color background",
+                    "properties": {
+                        "workspaceColor": {
+                            "type": "color",
+                            "title": "Background",
+                            "default": "black",
+                            "order": 1
+                        },
+                        "accent": {
+                            "type": "color",
+                            "title": "Accent",
+                            "default": "rgb(51, 51, 51)",
+                            "order": 2
+                        },
+                        "adjustAccentAutomatically": {
+                            "type": "boolean",
+                            "title": "Adjust accent automatically",
+                            "description": "Automatically pick a new accent color when you change your background color.",
+                            "default": true,
+                            "order": 3
+                        }
+                    }
+                }
+            },
+            "dependencies": {
+                "color": "^3.1.0",
+                "delay": "^4.1.0",
+                "docrel": "^1.6.0",
+                "fs-extra": "^7.0.0",
+                "mem": "^4.0.0",
+                "random-item": "^1.0.0"
+            },
+            "devDependencies": {
+                "snazzy": "^8.0.0",
+                "standard": "^12.0.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/pure-ui/versions/1.0.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/matthewlucock/pure-atom/tarball/refs/tags/v1.0.3",
+            "sha": "38d44022d34c74f0f74c780b585766b2f07a59ac"
+        },
+        "1.0.2": {
+            "name": "pure-ui",
+            "theme": "ui",
+            "version": "1.0.2",
+            "description": "🏞️🌆🌈 The ultimate minimalist Atom theme",
+            "keywords": [
+                "ui",
+                "pure",
+                "min",
+                "theme",
+                "minimalist",
+                "minimalism",
+                "image",
+                "background image",
+                "customizable",
+                "customisable",
+                "customization",
+                "customisation",
+                "image",
+                "background image",
+                "dark",
+                "light",
+                "black",
+                "white",
+                "dynamic",
+                "adaptive",
+                "ultimate",
+                "ultra",
+                "smart",
+                "intelligent",
+                "adapt",
+                "powerful",
+                "elegant",
+                "gorgeous",
+                "beautiful",
+                "ultra-minimalist",
+                "ultra-customizable",
+                "ultra-customisable",
+                "background",
+                "intuitive",
+                "customizable background",
+                "customisable background"
+            ],
+            "repository": "https://github.com/matthewlucock/pure-atom",
+            "author": {
+                "name": "Matt Lucock",
+                "email": "hello@lucock.com",
+                "url": "https://lucock.com"
+            },
+            "license": "ISC",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "main": "scripts/index",
+            "scripts": {
+                "lint": "standard \"scripts/**/*.js\" --global atom | snazzy && standard \"build/**/*.js\" \"styles/**/*.js\" | snazzy"
+            },
+            "configSchema": {
+                "general": {
+                    "type": "object",
+                    "title": "General settings",
+                    "properties": {
+                        "background": {
+                            "type": "string",
+                            "title": "Background",
+                            "enum": [
+                                "Image",
+                                "Solid color"
+                            ],
+                            "description": "Customize your background image when the image background is selected with the \"Pure: Background images\" command in the command palette, or Packages > Pure > Background images.",
+                            "default": "Image",
+                            "order": 1
+                        },
+                        "fontFamily": {
+                            "type": "string",
+                            "title": "Font family",
+                            "default": "Open Sans, system-ui",
+                            "order": 2
+                        },
+                        "baseFontSize": {
+                            "type": "integer",
+                            "title": "Base font size (px)",
+                            "default": 15,
+                            "minimum": 1,
+                            "order": 3
+                        },
+                        "statusBarFontSize": {
+                            "type": "string",
+                            "title": "Status bar font size",
+                            "default": ".9rem",
+                            "order": 4
+                        },
+                        "scrollbarWidth": {
+                            "type": "string",
+                            "title": "Scrollbar width",
+                            "default": ".6rem",
+                            "order": 5
+                        },
+                        "settingsDelay": {
+                            "type": "boolean",
+                            "title": "Delay when changing some settings",
+                            "description": "Factor in a small, artificial delay when changing some settings. This can make changing some settings feel less responsive, but helps prevent awkward mishaps.",
+                            "default": true,
+                            "order": 6
+                        }
+                    }
+                },
+                "imageBackground": {
+                    "type": "object",
+                    "title": "Image background",
+                    "properties": {
+                        "workspaceAlpha": {
+                            "type": "number",
+                            "title": "Overlay alpha",
+                            "description": "The alpha channel of the dark overlay of the background image.",
+                            "default": 0.85,
+                            "minimum": 0,
+                            "maximum": 1,
+                            "order": 1
+                        },
+                        "accent": {
+                            "type": "color",
+                            "title": "Accent",
+                            "default": "white",
+                            "order": 2
+                        },
+                        "accentAlpha": {
+                            "type": "number",
+                            "title": "Accent alpha",
+                            "default": 0.1,
+                            "minimum": 0,
+                            "maximum": 1,
+                            "order": 3
+                        },
+                        "selectNewImagesFrom": {
+                            "type": "string",
+                            "title": "Select new images from",
+                            "description": "The images to choose from when automatically selecting a new image. If you don't have any custom images, Pure will use the default images instead.",
+                            "enum": [
+                                "Custom images",
+                                "Default images",
+                                "Both"
+                            ],
+                            "default": "Custom images",
+                            "order": 4
+                        },
+                        "selectNewImageOnLaunch": {
+                            "type": "boolean",
+                            "title": "Select a new image on launch",
+                            "default": true,
+                            "order": 5
+                        },
+                        "slideshow": {
+                            "type": "boolean",
+                            "title": "Select a new image periodically",
+                            "default": true,
+                            "order": 6
+                        },
+                        "slideshowDuration": {
+                            "type": "string",
+                            "title": "Select a new image every",
+                            "enum": [
+                                "30 minutes",
+                                "1 hour",
+                                "2 hours",
+                                "4 hours",
+                                "6 hours"
+                            ],
+                            "default": "1 hour",
+                            "order": 7
+                        },
+                        "animate": {
+                            "type": "boolean",
+                            "title": "Animate background",
+                            "default": true,
+                            "order": 8
+                        },
+                        "performanceWarning": {
+                            "type": "boolean",
+                            "title": "Warn of potential performance issues",
+                            "description": "Using custom images of large file sizes may cause performance issues.",
+                            "default": true,
+                            "order": 9
+                        }
+                    }
+                },
+                "solidBackground": {
+                    "type": "object",
+                    "title": "Solid color background",
+                    "properties": {
+                        "workspaceColor": {
+                            "type": "color",
+                            "title": "Background",
+                            "default": "black",
+                            "order": 1
+                        },
+                        "accent": {
+                            "type": "color",
+                            "title": "Accent",
+                            "default": "rgb(51, 51, 51)",
+                            "order": 2
+                        },
+                        "adjustAccentAutomatically": {
+                            "type": "boolean",
+                            "title": "Adjust accent automatically",
+                            "description": "Automatically pick a new accent color when you change your background color.",
+                            "default": true,
+                            "order": 3
+                        }
+                    }
+                }
+            },
+            "dependencies": {
+                "color": "^3.1.0",
+                "delay": "^4.1.0",
+                "docrel": "^1.6.0",
+                "fs-extra": "^7.0.0",
+                "mem": "^4.0.0",
+                "random-item": "^1.0.0"
+            },
+            "devDependencies": {
+                "snazzy": "^8.0.0",
+                "standard": "^12.0.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/pure-ui/versions/1.0.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/matthewlucock/pure-atom/tarball/refs/tags/v1.0.2",
+            "sha": "4ba23c553be377d37da69c224d49778865449dd4"
+        },
+        "1.0.1": {
+            "name": "pure-ui",
+            "theme": "ui",
+            "version": "1.0.1",
+            "description": "🏞️🌆🌈 The ultimate minimalist Atom theme",
+            "keywords": [
+                "ui",
+                "pure",
+                "min",
+                "theme",
+                "minimalist",
+                "minimalism",
+                "image",
+                "background image",
+                "customizable",
+                "customisable",
+                "customization",
+                "customisation",
+                "image",
+                "background image",
+                "dark",
+                "light",
+                "black",
+                "white",
+                "dynamic",
+                "adaptive",
+                "ultimate",
+                "ultra",
+                "smart",
+                "intelligent",
+                "adapt",
+                "powerful",
+                "elegant",
+                "gorgeous",
+                "beautiful",
+                "ultra-minimalist",
+                "ultra-customizable",
+                "ultra-customisable",
+                "background",
+                "intuitive",
+                "customizable background",
+                "customisable background"
+            ],
+            "repository": "https://github.com/matthewlucock/pure-atom",
+            "author": {
+                "name": "Matt Lucock",
+                "email": "hello@lucock.com",
+                "url": "https://lucock.com"
+            },
+            "license": "ISC",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "main": "scripts/index",
+            "scripts": {
+                "lint": "standard \"scripts/**/*.js\" --global atom | snazzy && standard \"build/**/*.js\" \"styles/**/*.js\" | snazzy"
+            },
+            "configSchema": {
+                "general": {
+                    "type": "object",
+                    "title": "General settings",
+                    "properties": {
+                        "background": {
+                            "type": "string",
+                            "title": "Background",
+                            "enum": [
+                                "Image",
+                                "Solid color"
+                            ],
+                            "description": "Customize your background image when the image background is selected with the \"Pure: Background images\" command in the command palette, or Packages > Pure > Background images.",
+                            "default": "Image",
+                            "order": 1
+                        },
+                        "fontFamily": {
+                            "type": "string",
+                            "title": "Font family",
+                            "default": "Open Sans, system-ui",
+                            "order": 2
+                        },
+                        "baseFontSize": {
+                            "type": "integer",
+                            "title": "Base font size (px)",
+                            "default": 15,
+                            "minimum": 1,
+                            "order": 3
+                        },
+                        "statusBarFontSize": {
+                            "type": "string",
+                            "title": "Status bar font size",
+                            "default": ".9rem",
+                            "order": 4
+                        },
+                        "scrollbarWidth": {
+                            "type": "string",
+                            "title": "Scrollbar width",
+                            "default": ".6rem",
+                            "order": 5
+                        },
+                        "settingsDelay": {
+                            "type": "boolean",
+                            "title": "Delay when changing some settings",
+                            "description": "Factor in a small, artificial delay when changing some settings. This can make changing some settings feel less responsive, but helps prevent awkward mishaps.",
+                            "default": true,
+                            "order": 6
+                        }
+                    }
+                },
+                "imageBackground": {
+                    "type": "object",
+                    "title": "Image background",
+                    "properties": {
+                        "workspaceAlpha": {
+                            "type": "number",
+                            "title": "Overlay alpha",
+                            "description": "The alpha channel of the dark overlay of the background image.",
+                            "default": 0.85,
+                            "minimum": 0,
+                            "maximum": 1,
+                            "order": 1
+                        },
+                        "accent": {
+                            "type": "color",
+                            "title": "Accent",
+                            "default": "white",
+                            "order": 2
+                        },
+                        "accentAlpha": {
+                            "type": "number",
+                            "title": "Accent alpha",
+                            "default": 0.1,
+                            "minimum": 0,
+                            "maximum": 1,
+                            "order": 3
+                        },
+                        "selectNewImagesFrom": {
+                            "type": "string",
+                            "title": "Select new images from",
+                            "description": "The images to choose from when automatically selecting a new image. If you don't have any custom images, Pure will use the default images instead.",
+                            "enum": [
+                                "Custom images",
+                                "Default images",
+                                "Both"
+                            ],
+                            "default": "Custom images",
+                            "order": 4
+                        },
+                        "selectNewImageOnLaunch": {
+                            "type": "boolean",
+                            "title": "Select a new image on launch",
+                            "default": true,
+                            "order": 5
+                        },
+                        "slideshow": {
+                            "type": "boolean",
+                            "title": "Select a new image periodically",
+                            "default": true,
+                            "order": 6
+                        },
+                        "slideshowDuration": {
+                            "type": "string",
+                            "title": "Select a new image every",
+                            "enum": [
+                                "30 minutes",
+                                "1 hour",
+                                "2 hours",
+                                "4 hours",
+                                "6 hours"
+                            ],
+                            "default": "1 hour",
+                            "order": 7
+                        },
+                        "animate": {
+                            "type": "boolean",
+                            "title": "Animate background",
+                            "default": true,
+                            "order": 8
+                        },
+                        "performanceWarning": {
+                            "type": "boolean",
+                            "title": "Warn of potential performance issues",
+                            "description": "Using custom images of large file sizes may cause performance issues.",
+                            "default": true,
+                            "order": 9
+                        }
+                    }
+                },
+                "solidBackground": {
+                    "type": "object",
+                    "title": "Solid color background",
+                    "properties": {
+                        "workspaceColor": {
+                            "type": "color",
+                            "title": "Background",
+                            "default": "black",
+                            "order": 1
+                        },
+                        "accent": {
+                            "type": "color",
+                            "title": "Accent",
+                            "default": "rgb(51, 51, 51)",
+                            "order": 2
+                        },
+                        "adjustAccentAutomatically": {
+                            "type": "boolean",
+                            "title": "Adjust accent automatically",
+                            "description": "Automatically pick a new accent color when you change your background color.",
+                            "default": true,
+                            "order": 3
+                        }
+                    }
+                }
+            },
+            "dependencies": {
+                "color": "^3.1.0",
+                "delay": "^4.1.0",
+                "docrel": "^1.6.0",
+                "fs-extra": "^7.0.0",
+                "mem": "^4.0.0",
+                "random-item": "^1.0.0"
+            },
+            "devDependencies": {
+                "snazzy": "^8.0.0",
+                "standard": "^12.0.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/pure-ui/versions/1.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/matthewlucock/pure-atom/tarball/refs/tags/v1.0.1",
+            "sha": "9dfe9be72f794feb5ebb6fe5f63fb5fe98b499c3"
+        },
+        "1.0.0": {
+            "name": "pure-ui",
+            "theme": "ui",
+            "version": "1.0.0",
+            "description": "🏞️🌆🌈 The ultimate minimalist Atom theme",
+            "keywords": [
+                "ui",
+                "pure",
+                "min",
+                "theme",
+                "minimalist",
+                "minimalism",
+                "image",
+                "background image",
+                "customizable",
+                "customisable",
+                "customization",
+                "customisation",
+                "image",
+                "background image",
+                "dark",
+                "light",
+                "black",
+                "white",
+                "dynamic",
+                "adaptive",
+                "ultimate",
+                "ultra",
+                "smart",
+                "intelligent",
+                "adapt",
+                "powerful",
+                "elegant",
+                "gorgeous",
+                "beautiful",
+                "ultra-minimalist",
+                "ultra-customizable",
+                "ultra-customisable",
+                "background",
+                "intuitive",
+                "customizable background",
+                "customisable background"
+            ],
+            "repository": "https://github.com/matthewlucock/pure-atom",
+            "author": {
+                "name": "Matt Lucock",
+                "email": "hello@lucock.com",
+                "url": "https://lucock.com"
+            },
+            "license": "ISC",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "main": "scripts/index",
+            "scripts": {
+                "lint": "standard \"scripts/**/*.js\" --global atom | snazzy && standard \"build/**/*.js\" \"styles/**/*.js\" | snazzy"
+            },
+            "configSchema": {
+                "general": {
+                    "type": "object",
+                    "title": "General settings",
+                    "properties": {
+                        "background": {
+                            "type": "string",
+                            "title": "Background",
+                            "enum": [
+                                "Image",
+                                "Solid color"
+                            ],
+                            "description": "Customize your background image when the image background is selected with the \"Pure: Background images\" command in the command palette, or Packages > Pure > Background images.",
+                            "default": "Image",
+                            "order": 1
+                        },
+                        "fontFamily": {
+                            "type": "string",
+                            "title": "Font family",
+                            "default": "Open Sans, system-ui",
+                            "order": 2
+                        },
+                        "baseFontSize": {
+                            "type": "integer",
+                            "title": "Base font size (px)",
+                            "default": 15,
+                            "minimum": 1,
+                            "order": 3
+                        },
+                        "statusBarFontSize": {
+                            "type": "string",
+                            "title": "Status bar font size",
+                            "default": ".9rem",
+                            "order": 4
+                        },
+                        "scrollbarWidth": {
+                            "type": "string",
+                            "title": "Scrollbar width",
+                            "default": ".6rem",
+                            "order": 5
+                        },
+                        "settingsDelay": {
+                            "type": "boolean",
+                            "title": "Delay when changing some settings",
+                            "description": "Factor in a small, artificial delay when changing some settings. This can make changing some settings feel less responsive, but helps prevent awkward mishaps.",
+                            "default": true,
+                            "order": 6
+                        }
+                    }
+                },
+                "imageBackground": {
+                    "type": "object",
+                    "title": "Image background",
+                    "properties": {
+                        "workspaceAlpha": {
+                            "type": "number",
+                            "title": "Overlay alpha",
+                            "description": "The alpha channel of the dark overlay of the background image.",
+                            "default": 0.85,
+                            "minimum": 0,
+                            "maximum": 1,
+                            "order": 1
+                        },
+                        "accent": {
+                            "type": "color",
+                            "title": "Accent",
+                            "default": "white",
+                            "order": 2
+                        },
+                        "accentAlpha": {
+                            "type": "number",
+                            "title": "Accent alpha",
+                            "default": 0.1,
+                            "minimum": 0,
+                            "maximum": 1,
+                            "order": 3
+                        },
+                        "selectNewImagesFrom": {
+                            "type": "string",
+                            "title": "Select new images from",
+                            "description": "The images to choose from when automatically selecting a new image. If you don't have any custom images, Pure will use the default images instead.",
+                            "enum": [
+                                "Custom images",
+                                "Default images",
+                                "Both"
+                            ],
+                            "default": "Custom images",
+                            "order": 4
+                        },
+                        "selectNewImageOnLaunch": {
+                            "type": "boolean",
+                            "title": "Select a new image on launch",
+                            "default": true,
+                            "order": 5
+                        },
+                        "slideshow": {
+                            "type": "boolean",
+                            "title": "Select a new image periodically",
+                            "default": true,
+                            "order": 6
+                        },
+                        "slideshowDuration": {
+                            "type": "string",
+                            "title": "Select a new image every",
+                            "enum": [
+                                "30 minutes",
+                                "1 hour",
+                                "2 hours",
+                                "4 hours",
+                                "6 hours"
+                            ],
+                            "default": "1 hour",
+                            "order": 7
+                        },
+                        "animate": {
+                            "type": "boolean",
+                            "title": "Animate background",
+                            "default": true,
+                            "order": 8
+                        },
+                        "performanceWarning": {
+                            "type": "boolean",
+                            "title": "Warn of potential performance issues",
+                            "description": "Using custom images of large file sizes may cause performance issues.",
+                            "default": true,
+                            "order": 9
+                        }
+                    }
+                },
+                "solidBackground": {
+                    "type": "object",
+                    "title": "Solid color background",
+                    "properties": {
+                        "workspaceColor": {
+                            "type": "color",
+                            "title": "Background",
+                            "default": "black",
+                            "order": 1
+                        },
+                        "accent": {
+                            "type": "color",
+                            "title": "Accent",
+                            "default": "rgb(51, 51, 51)",
+                            "order": 2
+                        },
+                        "adjustAccentAutomatically": {
+                            "type": "boolean",
+                            "title": "Adjust accent automatically",
+                            "description": "Automatically pick a new accent color when you change your background color.",
+                            "default": true,
+                            "order": 3
+                        }
+                    }
+                }
+            },
+            "dependencies": {
+                "color": "^3.1.0",
+                "delay": "^4.1.0",
+                "docrel": "^1.6.0",
+                "fs-extra": "^7.0.0",
+                "mem": "^4.0.0",
+                "random-item": "^1.0.0"
+            },
+            "devDependencies": {
+                "snazzy": "^8.0.0",
+                "standard": "^12.0.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/pure-ui/versions/1.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/matthewlucock/pure-atom/tarball/refs/tags/v1.0.0",
+            "sha": "170c25a674730dd20705c94c891f71e483d83abf"
+        }
+    },
+    "readme": "<div align=\"center\"><img src=\"https://matthewlucock.github.io/pure-atom/pure.svg\" width=\"450\" alt=\"Pure\"></div>\n<br>\n<div align=\"center\"><img src=\"https://matthewlucock.github.io/pure-atom/go.png\" width=\"800\"></div>\n<br>\n\nThere are lots of minimalist Atom themes out there. Pure takes these themes and extrapolates them to their inevitable conclusion, and it's not messing around.\n\nPure is a radical new take on the editor theme. It embodies an ultra-minimalist, ultra-customisable approach unlike anything you've seen before.\n\nPure is ready for prime-time, but there's bound to be issues that need addressing, and I definitely wouldn't call it finished. If you spot something wrong or you have ideas, feel free to create an issue on GitHub.\n\nInstall Pure in Atom's settings or run `apm i pure-ui`.\n\n## The run-down\n\n- 👀 **Ultra-minimalist. Like, really ultra-minimalist** — Pure completely strips Atom back to reveal its elegant, gorgeous heart. It's just you and your code. This in Atom in its purest form.\n- ⚡ **Ultra-customisable** — Pure re-engineers Atom to be user-customisable like never before, letting you define the entire look and feel of the editor, and letting the editor intelligently adapt to your changes.\n- 🏞️🌄🌆 **Introducing background images** — For the first time, Pure is a gorgeous image theme for everyone, with powerful and elegant features unlike anything you've seen before. This is not a gimmick; it's the real deal. This is the ultimate image theme you never knew you wanted. If you're reading this and you're thinking \"wait, what?\", see the [corresponding section](#wait-what).\n- ⚫⚪🌈 **The ultimate dark or light theme, or anything in between** — Pure isn't just images; it's also a killer dark theme. It's also a killer light theme. In fact, you can make it literally any colour you want. Of course, with great power comes great responsibility (please don't make Atom hot pink).\n- 💪 **Customisation, now with superpowers** — Pure can completely customise itself on-the-fly without reloading itself like other themes do, allowing it to intelligently adapt to changes as you make them with zero latency and incredible elegance. It needs to be seen to be believed.\n- 🎨 **BYO syntax theme** — Bring your favourite syntax theme, and Pure will seamlessly integrate it with the rest of the editor.\n\n## More screenshots\n\n<div align=\"center\"><img src=\"https://matthewlucock.github.io/pure-atom/bootstrap.png\" width=\"800\"></div>\n<br>\n<div align=\"center\"><img src=\"https://matthewlucock.github.io/pure-atom/django.png\" width=\"800\"></div>\n<br>\n<div align=\"center\"><img src=\"https://matthewlucock.github.io/pure-atom/react.png\" width=\"800\"></div>\n\n## Wait, what?\n\nI know, right? I thought background images were crazy at first too.\n\nThe march towards minimalism, in my view, has often resulted in interfaces that feel cold; inhuman; Brutalist, even. This is particularly bad for our editors, which are places that we spend extended periods of time in, and which we often use for difficult or stressful tasks. I wanted to make my editor feel warm, inviting, and like it was truly made for humans. I wanted to want to spend time in it, and I wanted to truly enjoy using it. Background images in Pure humanise the text editor in a way that I could not have imagined.\n\nBut why are we not all writing code with background images already? I see a few reasons.\n\n- Background images don't make sense without an interface fundamentally designed for them.\n- If you're going to have a background image, it doesn't just need to be an awesome image; it needs to not distract you; it needs to not get in the way. It needs to complement and enhance your work, without obstructing it.\n- What if you just don't like the background image of your theme very much? What if you want to change it?\n\nTraditional image themes feel rough and often don't succeed in any of these areas, but Pure is different. It's the theme that I wanted to use every day; it didn't exist, so I made it myself. I made it for me, and I have gone to great lengths to get this right.\n\n- The theme's extreme minimalism is a perfect match for background images, allowing them to envelop the editor, and to truly define it's appearance like they were always meant to.\n- The theme provides a set of default images built-in to the theme that have been meticulously curated to look beautiful without distracting you or obstructing your work.\n- The theme provides powerful features for customising the background image, including an elegant interface for selecting the image and for adding your own images.\n\nYou don't have to have a background image if you don't want to; Pure is also a great dark theme, or light theme, or hot pink theme. In fact, I never intended to have background images when I first started developing the theme, but at some point I was curious to see what it would look like with a background image, and I can never go back. In some ways, I see background images as the ultimate evolution of the minimalist text editor.\n\n## Customising Pure\n\nPure lets you customise the font, font size, and scrollbar width. The theme has two background modes: image and solid colour.\n\n### Image backgrounds\n\nPure's background image selection interface can be accessed through \"Pure: Background images\" in the command palette, or through Packages > Pure > Background images.\n\n<div align=\"center\"><img src=\"https://matthewlucock.github.io/pure-atom/background-image-customization.png\" width=\"600\"></div>\n<br>\n\nPure provides a curated set of default images, and you can easily add your own. It also provides a slideshow-type feature that can be customised in the settings.\n\nBy default, the theme imposes a translucent black overlay on top of the background. How translucent it is can be customised in the settings, and you may wish to make it more or less translucent depending on preference or the background image you're using.\n\nWhen using a background image, the theme uses a translucent accent colour throughout the interface. The colour and its translucency can be customised in the settings.\n\n### Solid colour backgrounds\n\nWhen using a solid colour background, you can set a simple but elegant dichromatic colour scheme. By default, the theme will adapt the accent colour to the background colour that you select.\n\n## More screenshots\n\n<div align=\"center\"><img src=\"https://matthewlucock.github.io/pure-atom/brew.png\" width=\"800\"></div>\n<br>\n<div align=\"center\"><img src=\"https://matthewlucock.github.io/pure-atom/vscode.png\" width=\"800\"></div>\n<br>\n<div align=\"center\"><img src=\"https://matthewlucock.github.io/pure-atom/about.png\" width=\"800\"></div>\n\n## Credits\n\nPure was built with all the love in the world by [@matthewlucock](https://twitter.com/matthewlucock).\n",
+    "metadata": {
+        "name": "pure-ui",
+        "theme": "ui",
+        "version": "1.0.4",
+        "description": "🏞️🌆🌈 The ultimate minimalist Atom theme",
+        "keywords": [
+            "minimalist",
+            "customizable",
+            "image",
+            "dark",
+            "light",
+            "ui",
+            "pure",
+            "min",
+            "theme",
+            "minimalism",
+            "background image",
+            "customisable",
+            "customization",
+            "customisation",
+            "image",
+            "black",
+            "white",
+            "dynamic",
+            "adaptive",
+            "ultimate",
+            "ultra",
+            "smart",
+            "intelligent",
+            "adapt",
+            "powerful",
+            "elegant",
+            "gorgeous",
+            "beautiful",
+            "ultra-minimalist",
+            "ultra-customizable",
+            "ultra-customisable",
+            "background",
+            "intuitive",
+            "customizable background",
+            "customisable background"
+        ],
+        "repository": "https://github.com/matthewlucock/pure-atom",
+        "author": {
+            "name": "Matt Lucock",
+            "email": "hello@lucock.com",
+            "url": "https://lucock.com"
+        },
+        "license": "ISC",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "main": "scripts/index",
+        "scripts": {
+            "lint": "standard \"scripts/**/*.js\" --global atom | snazzy && standard \"build/**/*.js\" \"styles/**/*.js\" | snazzy"
+        },
+        "configSchema": {
+            "general": {
+                "type": "object",
+                "title": "General settings",
+                "properties": {
+                    "background": {
+                        "type": "string",
+                        "title": "Background",
+                        "enum": [
+                            "Image",
+                            "Solid color"
+                        ],
+                        "description": "Customize your background image when the image background is selected with the \"Pure: Background images\" command in the command palette, or Packages > Pure > Background images.",
+                        "default": "Image",
+                        "order": 1
+                    },
+                    "fontFamily": {
+                        "type": "string",
+                        "title": "Font family",
+                        "default": "Open Sans, system-ui",
+                        "order": 2
+                    },
+                    "baseFontSize": {
+                        "type": "integer",
+                        "title": "Base font size (px)",
+                        "default": 15,
+                        "minimum": 1,
+                        "order": 3
+                    },
+                    "statusBarFontSize": {
+                        "type": "string",
+                        "title": "Status bar font size",
+                        "default": ".9rem",
+                        "order": 4
+                    },
+                    "scrollbarWidth": {
+                        "type": "string",
+                        "title": "Scrollbar width",
+                        "default": ".6rem",
+                        "order": 5
+                    },
+                    "settingsDelay": {
+                        "type": "boolean",
+                        "title": "Delay when changing some settings",
+                        "description": "Factor in a small, artificial delay when changing some settings. This can make changing some settings feel less responsive, but helps prevent awkward mishaps.",
+                        "default": true,
+                        "order": 6
+                    }
+                }
+            },
+            "imageBackground": {
+                "type": "object",
+                "title": "Image background",
+                "properties": {
+                    "workspaceAlpha": {
+                        "type": "number",
+                        "title": "Overlay alpha",
+                        "description": "The alpha channel of the dark overlay of the background image.",
+                        "default": 0.85,
+                        "minimum": 0,
+                        "maximum": 1,
+                        "order": 1
+                    },
+                    "accent": {
+                        "type": "color",
+                        "title": "Accent",
+                        "default": "white",
+                        "order": 2
+                    },
+                    "accentAlpha": {
+                        "type": "number",
+                        "title": "Accent alpha",
+                        "default": 0.1,
+                        "minimum": 0,
+                        "maximum": 1,
+                        "order": 3
+                    },
+                    "selectNewImagesFrom": {
+                        "type": "string",
+                        "title": "Select new images from",
+                        "description": "The images to choose from when automatically selecting a new image. If you don't have any custom images, Pure will use the default images instead.",
+                        "enum": [
+                            "Custom images",
+                            "Default images",
+                            "Both"
+                        ],
+                        "default": "Custom images",
+                        "order": 4
+                    },
+                    "selectNewImageOnLaunch": {
+                        "type": "boolean",
+                        "title": "Select a new image on launch",
+                        "default": true,
+                        "order": 5
+                    },
+                    "slideshow": {
+                        "type": "boolean",
+                        "title": "Select a new image periodically",
+                        "default": true,
+                        "order": 6
+                    },
+                    "slideshowDuration": {
+                        "type": "string",
+                        "title": "Select a new image every",
+                        "enum": [
+                            "30 minutes",
+                            "1 hour",
+                            "2 hours",
+                            "4 hours",
+                            "6 hours"
+                        ],
+                        "default": "1 hour",
+                        "order": 7
+                    },
+                    "animate": {
+                        "type": "boolean",
+                        "title": "Animate background",
+                        "default": true,
+                        "order": 8
+                    },
+                    "performanceWarning": {
+                        "type": "boolean",
+                        "title": "Warn of potential performance issues",
+                        "description": "Using custom images of large file sizes may cause performance issues.",
+                        "default": true,
+                        "order": 9
+                    }
+                }
+            },
+            "solidBackground": {
+                "type": "object",
+                "title": "Solid color background",
+                "properties": {
+                    "workspaceColor": {
+                        "type": "color",
+                        "title": "Background",
+                        "default": "black",
+                        "order": 1
+                    },
+                    "accent": {
+                        "type": "color",
+                        "title": "Accent",
+                        "default": "rgb(51, 51, 51)",
+                        "order": 2
+                    },
+                    "adjustAccentAutomatically": {
+                        "type": "boolean",
+                        "title": "Adjust accent automatically",
+                        "description": "Automatically pick a new accent color when you change your background color.",
+                        "default": true,
+                        "order": 3
+                    }
+                }
+            }
+        },
+        "dependencies": {
+            "color": "^3.1.0",
+            "delay": "^4.1.0",
+            "docrel": "^1.6.0",
+            "fs-extra": "^7.0.0",
+            "mem": "^4.0.0",
+            "random-item": "^1.0.0"
+        },
+        "devDependencies": {
+            "snazzy": "^8.0.0",
+            "standard": "^12.0.1"
+        }
+    },
+    "created": 1658361598641,
+    "updated": 1658361598641,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

@@ -1,0 +1,134 @@
+{
+    "name": "reindent",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kbrose/atom-reindent"
+    },
+    "downloads": 13531,
+    "stargazers_count": 7,
+    "releases": {
+        "latest": "1.5.0"
+    },
+    "versions": {
+        "1.5.0": {
+            "name": "reindent",
+            "main": "./lib/main",
+            "version": "1.5.0",
+            "description": "Quickly re-indent your code!",
+            "keywords": [
+                "indent",
+                "autoindent",
+                "reindent"
+            ],
+            "activationCommands": {
+                "atom-text-editor": "reindent:reindent"
+            },
+            "repository": "https://github.com/kbrose/atom-reindent",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/reindent/versions/1.5.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kbrose/atom-reindent/tarball/refs/tags/v1.5.0",
+            "sha": "4d2a2cae760ae43e784cbdbe5a70f5d8ab82dd2f"
+        },
+        "1.4.0": {
+            "name": "reindent",
+            "main": "./lib/main",
+            "version": "1.4.0",
+            "description": "Quickly re-indent your code!",
+            "keywords": [
+                "indent",
+                "autoindent",
+                "reindent"
+            ],
+            "activationCommands": {
+                "atom-text-editor": "reindent:reindent"
+            },
+            "repository": "https://github.com/kbrose/atom-reindent",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/reindent/versions/1.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kbrose/atom-reindent/tarball/refs/tags/v1.4.0",
+            "sha": "90ef0a09d78523f4c2fd23fda12d79e12f05d7aa"
+        },
+        "1.1.0": {
+            "name": "reindent",
+            "main": "./lib/main",
+            "version": "1.1.0",
+            "description": "Quickly re-indent your code!",
+            "keywords": [
+                "indent",
+                "autoindent",
+                "reindent"
+            ],
+            "activationCommands": {
+                "atom-text-editor": "reindent:reindent"
+            },
+            "repository": "https://github.com/kbrose/atom-reindent",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/reindent/versions/1.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kbrose/atom-reindent/tarball/refs/tags/v1.1.0",
+            "sha": "5f1b0160f477a9d7c1c8463baa860049cc954293"
+        },
+        "1.0.1": {
+            "name": "reindent",
+            "main": "./lib/main",
+            "version": "1.0.1",
+            "description": "Quickly re-indent your code!",
+            "keywords": [
+                "indent",
+                "autoindent",
+                "reindent"
+            ],
+            "activationCommands": {
+                "atom-text-editor": "reindent:reindent"
+            },
+            "repository": "https://github.com/kbrose/atom-reindent",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/reindent/versions/1.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/kbrose/atom-reindent/tarball/refs/tags/v1.0.1",
+            "sha": "e44e83fd0879bca569943eaf63f6a6520772ea89"
+        }
+    },
+    "readme": "# reindent\n\nQuickly re-indent your code!\n\n![demo.gif](https://raw.githubusercontent.com/kbrose/atom-reindent/master/resources/demo.gif)\n\n<sub><sup>(You will also need the [`python-indent`](https://atom.io/packages/python-indent) package to achieve this exact behavior with Python files.)</sup></sub>\n\nChange the length of that variable name with impunity! Update your soft indentation length! Fix your co-workers mess! Fix *your* mess!\n\n## Usage\n\nHighlight the lines of code you want to re-indent, and activate the re-indent command either through the command palette (`ctrl-shift-p`) or by using the keybinding `ctrl-shift-r`.\n\n## How?\n\nThis package:\n\n* expands your selection to include full lines,\n* splits the selected text along the file's newline (or `\\n` if the file's newline character is unknown),\n* *deletes that text*,\n* re-inserts the text one line at a time with all preceding and trailing whitespace removed, running the command `editor:newline` after each line is inserted to automatically set the indentation level for the next line.\n\nThis package relies on Atom's built-in auto-indentation which is usually derived from a language package. *If the language package doesn't do a good job of indenting your code, then this package will not either.* In particular, languages with white-space based syntax (e.g. Python and Make) might have trouble.\n\nThe editor will take the first line of your selection as the base indentation level. Consider the code below:\n\n```\nfor x in y:\n print(x)\n```\n\nIf you highlight only the second line (`print(x)`) and reindent, then nothing will happen. You have to include the line `for x in y:` in your selection.\n\n# How to publish\n\nI am by no means a master of the `apm` tool, so this I'm putting down the process for publishing.\n\n0. Make changes, merge into master etc.\n1. `git checkout master`\n2. `git pull`\n3. Edit the CHANGELOG, putting a line in for the new version.\n4. `git add CHANGELOG.md; git commit -m \"updating changelog\"; git push`\n5. If you're feeling paranoid, wait for CI to finish running on that push to master.\n6. `apm publish [major | minor | patch | build]` **Note that this will automatically update package.json with the new version number!**\n\n\n----------\n\n![](https://travis-ci.org/kbrose/atom-reindent.svg?branch=master)\n\nhttps://github.com/kbrose/atom-reindent\n",
+    "metadata": {
+        "name": "reindent",
+        "main": "./lib/main",
+        "version": "1.5.0",
+        "description": "Quickly re-indent your code!",
+        "keywords": [
+            "indent",
+            "autoindent",
+            "reindent"
+        ],
+        "activationCommands": {
+            "atom-text-editor": "reindent:reindent"
+        },
+        "repository": "https://github.com/kbrose/atom-reindent",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        }
+    },
+    "created": 1658362562671,
+    "updated": 1658362562671,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

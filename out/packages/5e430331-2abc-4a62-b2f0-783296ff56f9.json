@@ -1,0 +1,143 @@
+{
+    "name": "oniguruma",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/atom/node-oniguruma"
+    },
+    "downloads": 438,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "7.2.2"
+    },
+    "versions": {
+        "7.2.2": {
+            "main": "./src/oniguruma.js",
+            "name": "oniguruma",
+            "description": "oniguruma regular expression library",
+            "version": "7.2.2",
+            "licenses": [
+                {
+                    "type": "MIT",
+                    "url": "http://github.com/atom/node-oniguruma/raw/master/LICENSE.md"
+                }
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/atom/node-oniguruma.git"
+            },
+            "bugs": {
+                "url": "https://github.com/atom/node-oniguruma/issues"
+            },
+            "homepage": "http://atom.github.io/node-oniguruma",
+            "keywords": [
+                "regex",
+                "regexp",
+                "re",
+                "regular expression",
+                "async"
+            ],
+            "devDependencies": {
+                "async": "~2.6.2",
+                "jasmine-focused": "~1.0.7"
+            },
+            "dependencies": {
+                "nan": "^2.14.0"
+            },
+            "scripts": {
+                "test": "jasmine-focused --captureExceptions spec/",
+                "benchmark": "benchmark/benchmark.coffee"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/oniguruma/versions/7.2.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/node-oniguruma/tarball/refs/tags/v7.2.2",
+            "sha": "eba5efc24594ebc29b9d96bd5360b3897231b050"
+        },
+        "7.2.1": {
+            "main": "./src/oniguruma.js",
+            "name": "oniguruma",
+            "description": "oniguruma regular expression library",
+            "version": "7.2.1",
+            "licenses": [
+                {
+                    "type": "MIT",
+                    "url": "http://github.com/atom/node-oniguruma/raw/master/LICENSE.md"
+                }
+            ],
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/atom/node-oniguruma.git"
+            },
+            "bugs": {
+                "url": "https://github.com/atom/node-oniguruma/issues"
+            },
+            "homepage": "http://atom.github.io/node-oniguruma",
+            "keywords": [
+                "regex",
+                "regexp",
+                "re",
+                "regular expression",
+                "async"
+            ],
+            "devDependencies": {
+                "async": "~2.6.2",
+                "jasmine-focused": "~1.0.7"
+            },
+            "dependencies": {
+                "nan": "^2.14.0"
+            },
+            "scripts": {
+                "test": "jasmine-focused --captureExceptions spec/",
+                "benchmark": "benchmark/benchmark.coffee"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/oniguruma/versions/7.2.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/node-oniguruma/tarball/refs/tags/v7.2.1",
+            "sha": "1fc1f1cf47a30d7cd2ec5c007b20ae0cf34b36a9"
+        }
+    },
+    "readme": "# Oniguruma Node module\n[![macOS Build Status](https://travis-ci.org/atom/node-oniguruma.svg?branch=master)](https://travis-ci.org/atom/node-oniguruma)\n[![Windows Build Status](https://ci.appveyor.com/api/projects/status/s9twhi451ef2butr/branch/master?svg=true)](https://ci.appveyor.com/project/Atom/node-oniguruma/branch/master)\n[![Dependency Status](https://david-dm.org/atom/node-oniguruma.svg)](https://david-dm.org/atom/node-oniguruma)\n\nNative Node bindings to the Oniguruma regular expressions library.\n\nRead all about Oniguruma regular expressions [here](https://github.com/kkos/oniguruma/blob/master/doc/RE).\n\nVersion 2.0 of this library added an asynchronous API, the old synchronous\nmethods have been renamed to have a `Sync` suffix.\n\n## Installing\n\n```sh\nnpm install oniguruma\n```\n\n## Building\n  * Clone the repository\n  * Run `npm install`\n  * Run `npm test` to run the specs\n\n## Using\n\n```coffeescript\n{OnigRegExp, OnigScanner} = require 'oniguruma'\n```\n\n### OnigScanner(patterns)\n\nCreate a new scanner with the given patterns.\n\n`patterns` - An array of string patterns.\n\n### OnigScanner::findNextMatch(string, startPosition, callback)\n\nFind the next match from a given position.\n\n`string` - The string to search.\n\n`startPosition` - The optional position to start at, defaults to `0`.\n\n`callback` - The `(error, match)` function to call when done, `match` will\nnull when there is no match.\n\n#### Example\n\n```coffeescript\nscanner = new OnigScanner(['c', 'a(b)?'])\nscanner.findNextMatch 'abc', (error, match) ->\n  console.log match\n  {\n    index: 1,  # Index of the best pattern match\n    captureIndices: [\n      {index: 0, start: 0, end: 2, length: 2},  # Entire match\n      {index: 1, start: 1, end: 2, length: 1}   # Match of first capture group\n    ]\n  }\n```\n\n### OnigScanner::findNextMatchSync(string, startPosition)\n\nSynchronously find the next match from a given position.\n\n`string` - The string to search.\n\n`startPosition` - The optional position to start at, defaults to `0`.\n\nReturns an object containing details about the match or `null` if no match.\n\n#### Example\n\n```coffeescript\nscanner = new OnigScanner(['c', 'a(b)?'])\nmatch = scanner.findNextMatchSync('abc')\nconsole.log match\n{\n  index: 1,  # Index of the best pattern match\n  captureIndices: [\n    {index: 0, start: 0, end: 2, length: 2},  # Entire match\n    {index: 1, start: 1, end: 2, length: 1}   # Match of first capture group\n  ]\n}\n```\n\n### OnigRegExp(pattern)\n\nCreate a new regex with the given pattern.\n\n`pattern` - A string pattern.\n\n### OnigRegExp::search(string, startPosition, callback)\n\nSearch the string for a match starting at the given position.\n\n`string` - The string to search.\n\n`startPosition` - The optional position to start the search at, defaults to `0`.\n\n`callback` - The `(error, match)` function to call when done, `match` will be\nnull if no matches were found. `match` will be an array of objects for each\nmatched group on a successful search.\n\n#### Example\n\n```coffeescript\nregex = new OnigRegExp('a([b-d])c')\nregex.search '!abcdef', (error, match) ->\n  console.log match\n  [\n    {index: 0, start: 1, end: 4, match: 'abc', length: 3}, # Entire match\n    {index: 1, start: 2, end: 3, match: 'b', length: 1}    # Match of first capture group\n  ]\n```\n\n### OnigRegExp::searchSync(string, startPosition)\n\nSynchronously search the string for a match starting at the given position.\n\n`string` - The string to search.\n\n`startPosition` - The optional position to start the search at, defaults to `0`.\n\nReturns an array of objects for each matched group or `null` if no match was\nfound.\n\n#### Example\n\n```coffeescript\nregex = new OnigRegExp('a([b-d])c')\nmatch = regex.searchSync('!abcdef')\nconsole.log match\n[\n  {index: 0, start: 1, end: 4, match: 'abc', length: 3}, # Entire match\n  {index: 1, start: 2, end: 3, match: 'b', length: 1}    # Match of first capture group\n]\n```\n\n### OnigRegExp::test(string, callback)\n\nTest if this regular expression matches the given string.\n\n`string` - The string to test against.\n\n`callback` - The `(error, matches)` function to call when done, `matches` will\nbe `true` if at least one match is found, `false` otherwise.\n\n#### Example\n\n```coffeescript\nregex = new OnigRegExp('a([b-d])c')\nregex.test 'abcdef', (error, matches) ->\n  console.log matches # true\n```\n\n### OnigRegExp::testSync(string)\n\nSynchronously test if this regular expression matches the given string.\n\n`string` - The string to test against.\n\nReturns `true` if at least one match, `false` otherwise.\n\n#### Example\n\n```coffeescript\nregex = new OnigRegExp('a([b-d])c')\nmatches = regex.testSync('abcdef')\nconsole.log matches # true\n```\n",
+    "metadata": {
+        "main": "./src/oniguruma.js",
+        "name": "oniguruma",
+        "description": "oniguruma regular expression library",
+        "version": "7.2.2",
+        "licenses": [
+            {
+                "type": "MIT",
+                "url": "http://github.com/atom/node-oniguruma/raw/master/LICENSE.md"
+            }
+        ],
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/atom/node-oniguruma.git"
+        },
+        "bugs": {
+            "url": "https://github.com/atom/node-oniguruma/issues"
+        },
+        "homepage": "http://atom.github.io/node-oniguruma",
+        "keywords": [
+            "regex",
+            "regexp",
+            "re",
+            "regular expression",
+            "async"
+        ],
+        "devDependencies": {
+            "async": "~2.6.2",
+            "jasmine-focused": "~1.0.7"
+        },
+        "dependencies": {
+            "nan": "^2.14.0"
+        },
+        "scripts": {
+            "test": "jasmine-focused --captureExceptions spec/",
+            "benchmark": "benchmark/benchmark.coffee"
+        }
+    },
+    "created": 1658359801901,
+    "updated": 1658359801901,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

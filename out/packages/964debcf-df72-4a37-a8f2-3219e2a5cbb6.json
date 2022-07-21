@@ -1,0 +1,98 @@
+{
+    "name": "arpeggio",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dtinth/atom-arpeggio"
+    },
+    "downloads": 408,
+    "stargazers_count": 12,
+    "releases": {
+        "latest": "1.1.2"
+    },
+    "versions": {
+        "1.1.2": {
+            "name": "arpeggio",
+            "main": "./lib/arpeggio",
+            "version": "1.1.2",
+            "description": "Define chords (simultaneously pressed keys) for speedy typing.",
+            "keywords": [],
+            "activationCommands": {},
+            "repository": "https://github.com/dtinth/atom-arpeggio",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/arpeggio/versions/1.1.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dtinth/atom-arpeggio/tarball/refs/tags/v1.1.2",
+            "sha": "8dd91c89822af43e9cfb709cd0f67d6aeca5dba0"
+        },
+        "1.1.1": {
+            "name": "arpeggio",
+            "main": "./lib/arpeggio",
+            "version": "1.1.1",
+            "description": "Define chords (simultaneously pressed keys) for speedy typing.",
+            "keywords": [],
+            "activationCommands": {},
+            "repository": "https://github.com/dtinth/atom-arpeggio",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/arpeggio/versions/1.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dtinth/atom-arpeggio/tarball/refs/tags/v1.1.1",
+            "sha": "c20c9bc3af06fe69bf1658ee075c45da3f9ef378"
+        },
+        "1.0.1": {
+            "name": "arpeggio",
+            "main": "./lib/arpeggio",
+            "version": "1.0.1",
+            "description": "Define chords (simultaneously pressed keys) for speedy typing.",
+            "keywords": [],
+            "activationCommands": {},
+            "repository": "https://github.com/dtinth/atom-arpeggio",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "underscore-plus": "^1.6.6"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/arpeggio/versions/1.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/dtinth/atom-arpeggio/tarball/refs/tags/v1.0.1",
+            "sha": "56c52ec7239185c0cc7eb99ba66049a935f76ff9"
+        }
+    },
+    "readme": "# arpeggio\n\n__Define chords (simultaneously pressed keys) for speedy typing!__ [__Video demo__](https://www.youtube.com/watch?v=Bn0Z0vqBTmQ).\n\nThis plugin is heavily inspired by [kana/vim-arpeggio](https://github.com/kana/vim-arpeggio).\n\n## Usage\n\nPut the chord definitions in the `arpeggio.chords` section of your `config.cson`:\n\n```cson\n\"*\":\n  arpeggio:\n    chords:\n      fun: 'function'\n```\n\nNow, whenever you press <kbd>f</kbd>, <kbd>u</kbd>, <kbd>n</kbd> at the same time, you type the word __function__.\n\n\n### Running a command\n\n```cson\n      sd:\n        command: \"editor:delete-to-beginning-of-word\"\n      kl:\n        command: \"editor:delete-to-beginning-of-word\"\n```\n\nIf you press the chord <kbd>sd</kbd> or <kbd>kl</kbd>, it will remove the last typed word.\nI use it when I want to delete a lot of text without moving my hands away from the home row.\n\n\n### Inserting a snippet\n\n```cson\n      con:\n        snippet: 'console.log($1)'\n```\n\nIf you press the chord <kbd>con</kbd>, then `console.log()` will be typed,\nwith the cursor between the parentheses.\n\n__Note:__ The snippets package must be activated in order for this feature to work.\n\n\n## Use Cases\n\n### Quickly type some hard-to-type unicode characters\n\n```cson\n      kaw: \"川\"\n      kuc: \"口\"\n      del: \"∆\"\n      pri: \"ʹ\"\n```\n\nThis allows you to type code like this very easily:\n\n```js\nvar ∆x = xʹ - x\n```\n\n\n### For quickly typing common words\n\n```cson\n      the: \"the\"\n```\n\nIf you press <kbd>t</kbd>, <kbd>h</kbd>, <kbd>e</kbd> at the same time,\nyou will always get the word __the__, no matter in which order you pressed these keys.\n\n\n### Quickly insert a brackets block\n\n```cson\n      \"{}\":\n        snippet: '''\n          {\n            $1\n          }\n        '''\n```\n\nIf you press <kbd>{</kbd> and <kbd>}</kbd> at the same time,\nyou will get an empty curly braces block, with the cursor positioned at the `$1` placeholder.\n\n\n### Share your chords [in the wiki!](https://github.com/dtinth/atom-arpeggio/wiki)\n\n\n## Configuration Reference\n\n```cson\n\"*\":\n  arpeggio:\n    chords:\n      <trigger>: <expansion>\n```\n\n- The `trigger` is a string of keys that is used to trigger.\n- The `expansion` is an expansion object or a string for simple text expansion.\n\n\n### Expansion Object\n\nAn expansion is a text with the following keys:\n\n| Key | Type | Description |\n| --- | ---- | ----------- |\n| `text` | Action | The text to expand to. |\n| `snippet` | Action | The snippet source to expand to. |\n| `command` | Action | The command to invoke. |\n| `timeout` | Option | The timeout in milliseconds. The keys in this particular chord must be pressed successively within the specified timeout in order for the chord to be triggered. This is useful when the chord is often accidentally triggered during normal typing. |\n",
+    "metadata": {
+        "name": "arpeggio",
+        "main": "./lib/arpeggio",
+        "version": "1.1.2",
+        "description": "Define chords (simultaneously pressed keys) for speedy typing.",
+        "keywords": [],
+        "activationCommands": {},
+        "repository": "https://github.com/dtinth/atom-arpeggio",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {
+            "underscore-plus": "^1.6.6"
+        }
+    },
+    "created": 1658331324095,
+    "updated": 1658331324095,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

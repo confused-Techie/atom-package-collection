@@ -1,0 +1,3493 @@
+{
+    "name": "php-ide-serenata",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Gert-dev/php-ide-serenata"
+    },
+    "downloads": 135403,
+    "stargazers_count": 92,
+    "releases": {
+        "latest": "5.4.1"
+    },
+    "versions": {
+        "5.4.1": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "5.4.1",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "autocomplete.provider": {
+                    "versions": {
+                        "4.0.0": "provideAutocomplete"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                }
+            },
+            "consumedServices": {
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.9.9",
+                "atom-package-deps": "^5.0",
+                "atom-space-pen-views": "^2.2",
+                "download": "^7.1",
+                "mkdirp": "^0.5.5"
+            },
+            "package-deps": [
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "devDependencies": {
+                "eslint": "^6.8.0"
+            },
+            "configSchema": {
+                "core": {
+                    "type": "object",
+                    "order": 1,
+                    "properties": {
+                        "phpExecutionType": {
+                            "title": "PHP execution type",
+                            "description": "How to start PHP, which is needed to start the server in turn. \n \n 'Use PHP on the host' uses a PHP binary installed on your local machine. 'Use PHP container via Docker' requires Docker and uses a PHP container to start the server with. Using PolicyKit allows Linux users that are not part of the Docker group to enter their password via an authentication dialog to temporarily escalate privileges so the Docker daemon can be invoked once to start the server. \n \n You can use the php-ide-serenata:test-configuration command to test your setup. \n \n When using containers, project paths open in Atom are automatically mounted into the container at the same path. If you want to specify more exotic paths for Serenata to index in your project file, you have to ensure these are mounted in the container as well. \n \n Requires a restart after changing. \n \n",
+                            "type": "string",
+                            "default": "host",
+                            "order": 1,
+                            "enum": [
+                                {
+                                    "value": "host",
+                                    "description": "Use PHP on the host"
+                                },
+                                {
+                                    "value": "docker",
+                                    "description": "Use a PHP container via Docker (experimental)"
+                                },
+                                {
+                                    "value": "docker-polkit",
+                                    "description": "Use a PHP container via Docker, using PolicyKit for privilege escalation (experimental, Linux only)"
+                                },
+                                {
+                                    "value": "podman",
+                                    "description": "Use a PHP container via Podman, avoiding privilege escalation entirely (experimental, Linux only)"
+                                }
+                            ]
+                        },
+                        "phpCommand": {
+                            "title": "PHP command",
+                            "description": "The path to your PHP binary (e.g. /usr/bin/php, php, ...). Only applies if you've selected \"Use PHP on the host\" above. \n \n Requires a restart after changing.",
+                            "type": "string",
+                            "default": "php",
+                            "order": 2
+                        },
+                        "memoryLimit": {
+                            "title": "Memory limit (in MB)",
+                            "description": "The memory limit to set for the PHP process. The PHP process uses the available memory for in-memory caching as well, so it should not be too low. On the other hand, it shouldn't be growing very large, so setting it to -1 is probably a bad idea as an infinite loop bug might take down your system. The default should suit most projects, from small to large. \n \n Requires a restart after changing.",
+                            "type": "integer",
+                            "default": 2048,
+                            "order": 3
+                        },
+                        "additionalDockerVolumes": {
+                            "title": "Additional Docker volumes",
+                            "description": "Additional paths to mount as Docker volumes. Only applies when using Docker to run the server. Separate these using comma's, where each item follows the format \"src:dest\" as the Docker -v flag uses. \n \n Requires a restart after changing.",
+                            "type": "array",
+                            "default": [],
+                            "order": 4,
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "refactoring": {
+                    "type": "object",
+                    "order": 3,
+                    "properties": {
+                        "enable": {
+                            "title": "Enable",
+                            "description": "When enabled, refactoring actions will be available via the intentions package.",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 1
+                        }
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/5.4.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v5.4.1",
+            "sha": "b45d9fb317d0a8997f5c16915d4bdbe9808a919d"
+        },
+        "5.4.0": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "5.4.0",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "autocomplete.provider": {
+                    "versions": {
+                        "4.0.0": "provideAutocomplete"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                }
+            },
+            "consumedServices": {
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-languageclient": "^0.9.9",
+                "atom-package-deps": "^5.0",
+                "atom-space-pen-views": "^2.2",
+                "download": "^7.1",
+                "mkdirp": "^0.5.5"
+            },
+            "package-deps": [
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "devDependencies": {
+                "eslint": "^6.8.0"
+            },
+            "configSchema": {
+                "core": {
+                    "type": "object",
+                    "order": 1,
+                    "properties": {
+                        "phpExecutionType": {
+                            "title": "PHP execution type",
+                            "description": "How to start PHP, which is needed to start the server in turn. \n \n 'Use PHP on the host' uses a PHP binary installed on your local machine. 'Use PHP container via Docker' requires Docker and uses a PHP container to start the server with. Using PolicyKit allows Linux users that are not part of the Docker group to enter their password via an authentication dialog to temporarily escalate privileges so the Docker daemon can be invoked once to start the server. \n \n You can use the php-ide-serenata:test-configuration command to test your setup. \n \n When using containers, project paths open in Atom are automatically mounted into the container at the same path. If you want to specify more exotic paths for Serenata to index in your project file, you have to ensure these are mounted in the container as well. \n \n Requires a restart after changing. \n \n",
+                            "type": "string",
+                            "default": "host",
+                            "order": 1,
+                            "enum": [
+                                {
+                                    "value": "host",
+                                    "description": "Use PHP on the host"
+                                },
+                                {
+                                    "value": "docker",
+                                    "description": "Use a PHP container via Docker (experimental)"
+                                },
+                                {
+                                    "value": "docker-polkit",
+                                    "description": "Use a PHP container via Docker, using PolicyKit for privilege escalation (experimental, Linux only)"
+                                },
+                                {
+                                    "value": "podman",
+                                    "description": "Use a PHP container via Podman, avoiding privilege escalation entirely (experimental, Linux only)"
+                                }
+                            ]
+                        },
+                        "phpCommand": {
+                            "title": "PHP command",
+                            "description": "The path to your PHP binary (e.g. /usr/bin/php, php, ...). Only applies if you've selected \"Use PHP on the host\" above. \n \n Requires a restart after changing.",
+                            "type": "string",
+                            "default": "php",
+                            "order": 2
+                        },
+                        "memoryLimit": {
+                            "title": "Memory limit (in MB)",
+                            "description": "The memory limit to set for the PHP process. The PHP process uses the available memory for in-memory caching as well, so it should not be too low. On the other hand, it shouldn't be growing very large, so setting it to -1 is probably a bad idea as an infinite loop bug might take down your system. The default should suit most projects, from small to large. \n \n Requires a restart after changing.",
+                            "type": "integer",
+                            "default": 2048,
+                            "order": 3
+                        },
+                        "additionalDockerVolumes": {
+                            "title": "Additional Docker volumes",
+                            "description": "Additional paths to mount as Docker volumes. Only applies when using Docker to run the server. Separate these using comma's, where each item follows the format \"src:dest\" as the Docker -v flag uses. \n \n Requires a restart after changing.",
+                            "type": "array",
+                            "default": [],
+                            "order": 4,
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "refactoring": {
+                    "type": "object",
+                    "order": 3,
+                    "properties": {
+                        "enable": {
+                            "title": "Enable",
+                            "description": "When enabled, refactoring actions will be available via the intentions package.",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 1
+                        }
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/5.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v5.4.0",
+            "sha": "62ff83c53e9e390551ef566164a72936c59702f6"
+        },
+        "5.3.0": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "5.3.0",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "autocomplete.provider": {
+                    "versions": {
+                        "4.0.0": "provideAutocomplete"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                }
+            },
+            "consumedServices": {
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^5.0",
+                "mkdirp": "^0.5",
+                "download": "^7.1",
+                "atom-languageclient": "^0.9.9",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "devDependencies": {
+                "eslint": "^6.8.0"
+            },
+            "configSchema": {
+                "core": {
+                    "type": "object",
+                    "order": 1,
+                    "properties": {
+                        "phpExecutionType": {
+                            "title": "PHP execution type",
+                            "description": "How to start PHP, which is needed to start the server in turn. \n \n 'Use PHP on the host' uses a PHP binary installed on your local machine. 'Use PHP container via Docker' requires Docker and uses a PHP container to start the server with. Using PolicyKit allows Linux users that are not part of the Docker group to enter their password via an authentication dialog to temporarily escalate privileges so the Docker daemon can be invoked once to start the server. \n \n You can use the php-ide-serenata:test-configuration command to test your setup. \n \n When using containers, project paths open in Atom are automatically mounted into the container at the same path. If you want to specify more exotic paths for Serenata to index in your project file, you have to ensure these are mounted in the container as well. \n \n Requires a restart after changing. \n \n",
+                            "type": "string",
+                            "default": "host",
+                            "order": 1,
+                            "enum": [
+                                {
+                                    "value": "host",
+                                    "description": "Use PHP on the host"
+                                },
+                                {
+                                    "value": "docker",
+                                    "description": "Use a PHP container via Docker (experimental)"
+                                },
+                                {
+                                    "value": "docker-polkit",
+                                    "description": "Use a PHP container via Docker, using PolicyKit for privilege escalation (experimental, Linux only)"
+                                },
+                                {
+                                    "value": "podman",
+                                    "description": "Use a PHP container via Podman, avoiding privilege escalation entirely (experimental, Linux only)"
+                                }
+                            ]
+                        },
+                        "phpCommand": {
+                            "title": "PHP command",
+                            "description": "The path to your PHP binary (e.g. /usr/bin/php, php, ...). Only applies if you've selected \"Use PHP on the host\" above. \n \n Requires a restart after changing.",
+                            "type": "string",
+                            "default": "php",
+                            "order": 2
+                        },
+                        "memoryLimit": {
+                            "title": "Memory limit (in MB)",
+                            "description": "The memory limit to set for the PHP process. The PHP process uses the available memory for in-memory caching as well, so it should not be too low. On the other hand, it shouldn't be growing very large, so setting it to -1 is probably a bad idea as an infinite loop bug might take down your system. The default should suit most projects, from small to large. \n \n Requires a restart after changing.",
+                            "type": "integer",
+                            "default": 2048,
+                            "order": 3
+                        },
+                        "additionalDockerVolumes": {
+                            "title": "Additional Docker volumes",
+                            "description": "Additional paths to mount as Docker volumes. Only applies when using Docker to run the server. Separate these using comma's, where each item follows the format \"src:dest\" as the Docker -v flag uses. \n \n Requires a restart after changing.",
+                            "type": "array",
+                            "default": [],
+                            "order": 4,
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "refactoring": {
+                    "type": "object",
+                    "order": 3,
+                    "properties": {
+                        "enable": {
+                            "title": "Enable",
+                            "description": "When enabled, refactoring actions will be available via the intentions package.",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 1
+                        }
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/5.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v5.3.0",
+            "sha": "258e3ec34823eeed12a1258e34a12846af367ec0"
+        },
+        "5.2.0": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "5.2.0",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "autocomplete.provider": {
+                    "versions": {
+                        "4.0.0": "provideAutocomplete"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                }
+            },
+            "consumedServices": {
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^5.0",
+                "mkdirp": "^0.5",
+                "download": "^7.1",
+                "atom-languageclient": "^0.9.9",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "devDependencies": {
+                "eslint": "^6.3"
+            },
+            "configSchema": {
+                "core": {
+                    "type": "object",
+                    "order": 1,
+                    "properties": {
+                        "phpExecutionType": {
+                            "title": "PHP execution type",
+                            "description": "How to start PHP, which is needed to start the server in turn. \n \n 'Use PHP on the host' uses a PHP binary installed on your local machine. 'Use PHP container via Docker' requires Docker and uses a PHP container to start the server with. Using PolicyKit allows Linux users that are not part of the Docker group to enter their password via an authentication dialog to temporarily escalate privileges so the Docker daemon can be invoked once to start the server. \n \n You can use the php-ide-serenata:test-configuration command to test your setup. \n \n When using containers, project paths open in Atom are automatically mounted into the container at the same path. If you want to specify more exotic paths for Serenata to index in your project file, you have to ensure these are mounted in the container as well. \n \n Requires a restart after changing. \n \n",
+                            "type": "string",
+                            "default": "host",
+                            "order": 1,
+                            "enum": [
+                                {
+                                    "value": "host",
+                                    "description": "Use PHP on the host"
+                                },
+                                {
+                                    "value": "docker",
+                                    "description": "Use a PHP container via Docker (experimental)"
+                                },
+                                {
+                                    "value": "docker-polkit",
+                                    "description": "Use a PHP container via Docker, using PolicyKit for privilege escalation (experimental, Linux only)"
+                                },
+                                {
+                                    "value": "podman",
+                                    "description": "Use a PHP container via Podman, avoiding privilege escalation entirely (experimental, Linux only)"
+                                }
+                            ]
+                        },
+                        "phpCommand": {
+                            "title": "PHP command",
+                            "description": "The path to your PHP binary (e.g. /usr/bin/php, php, ...). Only applies if you've selected \"Use PHP on the host\" above. \n \n Requires a restart after changing.",
+                            "type": "string",
+                            "default": "php",
+                            "order": 2
+                        },
+                        "memoryLimit": {
+                            "title": "Memory limit (in MB)",
+                            "description": "The memory limit to set for the PHP process. The PHP process uses the available memory for in-memory caching as well, so it should not be too low. On the other hand, it shouldn't be growing very large, so setting it to -1 is probably a bad idea as an infinite loop bug might take down your system. The default should suit most projects, from small to large. \n \n Requires a restart after changing.",
+                            "type": "integer",
+                            "default": 2048,
+                            "order": 3
+                        },
+                        "additionalDockerVolumes": {
+                            "title": "Additional Docker volumes",
+                            "description": "Additional paths to mount as Docker volumes. Only applies when using Docker to run the server. Separate these using comma's, where each item follows the format \"src:dest\" as the Docker -v flag uses. \n \n Requires a restart after changing.",
+                            "type": "array",
+                            "default": [],
+                            "order": 4,
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "refactoring": {
+                    "type": "object",
+                    "order": 3,
+                    "properties": {
+                        "enable": {
+                            "title": "Enable",
+                            "description": "When enabled, refactoring actions will be available via the intentions package.",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 1
+                        }
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/5.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v5.2.0",
+            "sha": "f0d5d52ceb193c4f803c0a561eaa54ea7f4c75e3"
+        },
+        "5.1.0": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "5.1.0",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "autocomplete.provider": {
+                    "versions": {
+                        "4.0.0": "provideAutocomplete"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                }
+            },
+            "consumedServices": {
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^5.0",
+                "mkdirp": "^0.5",
+                "download": "^7.1",
+                "atom-languageclient": "^0.9.9",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "devDependencies": {
+                "eslint": "^6.3"
+            },
+            "configSchema": {
+                "core": {
+                    "type": "object",
+                    "order": 1,
+                    "properties": {
+                        "phpExecutionType": {
+                            "title": "PHP execution type",
+                            "description": "How to start PHP, which is needed to start the server in turn. \n \n 'Use PHP on the host' uses a PHP binary installed on your local machine. 'Use PHP container via Docker' requires Docker and uses a PHP container to start the server with. Using PolicyKit allows Linux users that are not part of the Docker group to enter their password via an authentication dialog to temporarily escalate privileges so the Docker daemon can be invoked once to start the server. \n \n You can use the php-ide-serenata:test-configuration command to test your setup. \n \n When using containers, project paths open in Atom are automatically mounted into the container at the same path. If you want to specify more exotic paths for Serenata to index in your project file, you have to ensure these are mounted in the container as well. \n \n Requires a restart after changing. \n \n",
+                            "type": "string",
+                            "default": "host",
+                            "order": 1,
+                            "enum": [
+                                {
+                                    "value": "host",
+                                    "description": "Use PHP on the host"
+                                },
+                                {
+                                    "value": "docker",
+                                    "description": "Use a PHP container via Docker (experimental)"
+                                },
+                                {
+                                    "value": "docker-polkit",
+                                    "description": "Use a PHP container via Docker, using PolicyKit for privilege escalation (experimental, Linux only)"
+                                },
+                                {
+                                    "value": "podman",
+                                    "description": "Use a PHP container via Podman, avoiding privilege escalation entirely (experimental, Linux only)"
+                                }
+                            ]
+                        },
+                        "phpCommand": {
+                            "title": "PHP command",
+                            "description": "The path to your PHP binary (e.g. /usr/bin/php, php, ...). Only applies if you've selected \"Use PHP on the host\" above. \n \n Requires a restart after changing.",
+                            "type": "string",
+                            "default": "php",
+                            "order": 2
+                        },
+                        "memoryLimit": {
+                            "title": "Memory limit (in MB)",
+                            "description": "The memory limit to set for the PHP process. The PHP process uses the available memory for in-memory caching as well, so it should not be too low. On the other hand, it shouldn't be growing very large, so setting it to -1 is probably a bad idea as an infinite loop bug might take down your system. The default should suit most projects, from small to large. \n \n Requires a restart after changing.",
+                            "type": "integer",
+                            "default": 2048,
+                            "order": 3
+                        },
+                        "additionalDockerVolumes": {
+                            "title": "Additional Docker volumes",
+                            "description": "Additional paths to mount as Docker volumes. Only applies when using Docker to run the server. Separate these using comma's, where each item follows the format \"src:dest\" as the Docker -v flag uses. \n \n Requires a restart after changing.",
+                            "type": "array",
+                            "default": [],
+                            "order": 4,
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "refactoring": {
+                    "type": "object",
+                    "order": 3,
+                    "properties": {
+                        "enable": {
+                            "title": "Enable",
+                            "description": "When enabled, refactoring actions will be available via the intentions package.",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 1
+                        }
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/5.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v5.1.0",
+            "sha": "480e56017e26c16acefc4495f572e32141fd7007"
+        },
+        "5.0.2": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "5.0.2",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "autocomplete.provider": {
+                    "versions": {
+                        "4.0.0": "provideAutocomplete"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                }
+            },
+            "consumedServices": {
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^5.0",
+                "mkdirp": "^0.5",
+                "download": "^7.1",
+                "atom-languageclient": "^0.9.9",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "devDependencies": {
+                "eslint": "^6.3"
+            },
+            "configSchema": {
+                "core": {
+                    "type": "object",
+                    "order": 1,
+                    "properties": {
+                        "phpExecutionType": {
+                            "title": "PHP execution type",
+                            "description": "How to start PHP, which is needed to start the server in turn. \n \n 'Use PHP on the host' uses a PHP binary installed on your local machine. 'Use PHP container via Docker' requires Docker and uses a PHP container to start the server with. Using PolicyKit allows Linux users that are not part of the Docker group to enter their password via an authentication dialog to temporarily escalate privileges so the Docker daemon can be invoked once to start the server. \n \n You can use the php-ide-serenata:test-configuration command to test your setup. \n \n When using containers, project paths open in Atom are automatically mounted into the container at the same path. If you want to specify more exotic paths for Serenata to index in your project file, you have to ensure these are mounted in the container as well. \n \n Requires a restart after changing. \n \n",
+                            "type": "string",
+                            "default": "host",
+                            "order": 1,
+                            "enum": [
+                                {
+                                    "value": "host",
+                                    "description": "Use PHP on the host"
+                                },
+                                {
+                                    "value": "docker",
+                                    "description": "Use a PHP container via Docker (experimental)"
+                                },
+                                {
+                                    "value": "docker-polkit",
+                                    "description": "Use a PHP container via Docker, using PolicyKit for privilege escalation (experimental, Linux only)"
+                                },
+                                {
+                                    "value": "podman",
+                                    "description": "Use a PHP container via Podman, avoiding privilege escalation entirely (experimental, Linux only)"
+                                }
+                            ]
+                        },
+                        "phpCommand": {
+                            "title": "PHP command",
+                            "description": "The path to your PHP binary (e.g. /usr/bin/php, php, ...). Only applies if you've selected \"Use PHP on the host\" above. \n \n Requires a restart after changing.",
+                            "type": "string",
+                            "default": "php",
+                            "order": 2
+                        },
+                        "memoryLimit": {
+                            "title": "Memory limit (in MB)",
+                            "description": "The memory limit to set for the PHP process. The PHP process uses the available memory for in-memory caching as well, so it should not be too low. On the other hand, it shouldn't be growing very large, so setting it to -1 is probably a bad idea as an infinite loop bug might take down your system. The default should suit most projects, from small to large. \n \n Requires a restart after changing.",
+                            "type": "integer",
+                            "default": 2048,
+                            "order": 3
+                        },
+                        "additionalDockerVolumes": {
+                            "title": "Additional Docker volumes",
+                            "description": "Additional paths to mount as Docker volumes. Only applies when using Docker to run the server. Separate these using comma's, where each item follows the format \"src:dest\" as the Docker -v flag uses. \n \n Requires a restart after changing.",
+                            "type": "array",
+                            "default": [],
+                            "order": 4,
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "refactoring": {
+                    "type": "object",
+                    "order": 3,
+                    "properties": {
+                        "enable": {
+                            "title": "Enable",
+                            "description": "When enabled, refactoring actions will be available via the intentions package.",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 1
+                        }
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/5.0.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v5.0.2",
+            "sha": "0c9a2ee74253dec05b1bdcbc7ce43f659607518a"
+        },
+        "5.0.1": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "5.0.1",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "autocomplete.provider": {
+                    "versions": {
+                        "4.0.0": "provideAutocomplete"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                }
+            },
+            "consumedServices": {
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^5.0",
+                "mkdirp": "^0.5",
+                "download": "^7.1",
+                "atom-languageclient": "github:atom/atom-languageclient#3d92c060e0a1b9558a392f5fba674dc707b4528e",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "devDependencies": {
+                "eslint": "^6.3"
+            },
+            "configSchema": {
+                "core": {
+                    "type": "object",
+                    "order": 1,
+                    "properties": {
+                        "phpExecutionType": {
+                            "title": "PHP execution type",
+                            "description": "How to start PHP, which is needed to start the server in turn. \n \n 'Use PHP on the host' uses a PHP binary installed on your local machine. 'Use PHP container via Docker' requires Docker and uses a PHP container to start the server with. Using PolicyKit allows Linux users that are not part of the Docker group to enter their password via an authentication dialog to temporarily escalate privileges so the Docker daemon can be invoked once to start the server. \n \n You can use the php-ide-serenata:test-configuration command to test your setup. \n \n When using containers, project paths open in Atom are automatically mounted into the container at the same path. If you want to specify more exotic paths for Serenata to index in your project file, you have to ensure these are mounted in the container as well. \n \n Requires a restart after changing. \n \n",
+                            "type": "string",
+                            "default": "host",
+                            "order": 1,
+                            "enum": [
+                                {
+                                    "value": "host",
+                                    "description": "Use PHP on the host"
+                                },
+                                {
+                                    "value": "docker",
+                                    "description": "Use a PHP container via Docker (experimental)"
+                                },
+                                {
+                                    "value": "docker-polkit",
+                                    "description": "Use a PHP container via Docker, using PolicyKit for privilege escalation (experimental, Linux only)"
+                                },
+                                {
+                                    "value": "podman",
+                                    "description": "Use a PHP container via Podman, avoiding privilege escalation entirely (experimental, Linux only)"
+                                }
+                            ]
+                        },
+                        "phpCommand": {
+                            "title": "PHP command",
+                            "description": "The path to your PHP binary (e.g. /usr/bin/php, php, ...). Only applies if you've selected \"Use PHP on the host\" above. \n \n Requires a restart after changing.",
+                            "type": "string",
+                            "default": "php",
+                            "order": 2
+                        },
+                        "memoryLimit": {
+                            "title": "Memory limit (in MB)",
+                            "description": "The memory limit to set for the PHP process. The PHP process uses the available memory for in-memory caching as well, so it should not be too low. On the other hand, it shouldn't be growing very large, so setting it to -1 is probably a bad idea as an infinite loop bug might take down your system. The default should suit most projects, from small to large. \n \n Requires a restart after changing.",
+                            "type": "integer",
+                            "default": 2048,
+                            "order": 3
+                        },
+                        "additionalDockerVolumes": {
+                            "title": "Additional Docker volumes",
+                            "description": "Additional paths to mount as Docker volumes. Only applies when using Docker to run the server. Separate these using comma's, where each item follows the format \"src:dest\" as the Docker -v flag uses. \n \n Requires a restart after changing.",
+                            "type": "array",
+                            "default": [],
+                            "order": 4,
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "refactoring": {
+                    "type": "object",
+                    "order": 3,
+                    "properties": {
+                        "enable": {
+                            "title": "Enable",
+                            "description": "When enabled, refactoring actions will be available via the intentions package.",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 1
+                        }
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/5.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v5.0.1",
+            "sha": "ab0b84edd1c78479fdac4b0a1726953bd64ce2a1"
+        },
+        "5.0.0": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "5.0.0",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "autocomplete.provider": {
+                    "versions": {
+                        "4.0.0": "provideAutocomplete"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                }
+            },
+            "consumedServices": {
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                },
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignal"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelp"
+                    }
+                },
+                "console": {
+                    "versions": {
+                        "0.1.0": "consumeConsole"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^5.0",
+                "mkdirp": "^0.5",
+                "download": "^7.1",
+                "atom-languageclient": "github:atom/atom-languageclient#3d92c060e0a1b9558a392f5fba674dc707b4528e",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "devDependencies": {
+                "eslint": "^6.3"
+            },
+            "configSchema": {
+                "core": {
+                    "type": "object",
+                    "order": 1,
+                    "properties": {
+                        "phpExecutionType": {
+                            "title": "PHP execution type",
+                            "description": "How to start PHP, which is needed to start the server in turn. \n \n 'Use PHP on the host' uses a PHP binary installed on your local machine. 'Use PHP container via Docker' requires Docker and uses a PHP container to start the server with. Using PolicyKit allows Linux users that are not part of the Docker group to enter their password via an authentication dialog to temporarily escalate privileges so the Docker daemon can be invoked once to start the server. \n \n You can use the php-ide-serenata:test-configuration command to test your setup. \n \n When using containers, project paths open in Atom are automatically mounted into the container at the same path. If you want to specify more exotic paths for Serenata to index in your project file, you have to ensure these are mounted in the container as well. \n \n Requires a restart after changing. \n \n",
+                            "type": "string",
+                            "default": "host",
+                            "order": 1,
+                            "enum": [
+                                {
+                                    "value": "host",
+                                    "description": "Use PHP on the host"
+                                },
+                                {
+                                    "value": "docker",
+                                    "description": "Use a PHP container via Docker (experimental)"
+                                },
+                                {
+                                    "value": "docker-polkit",
+                                    "description": "Use a PHP container via Docker, using PolicyKit for privilege escalation (experimental, Linux only)"
+                                },
+                                {
+                                    "value": "podman",
+                                    "description": "Use a PHP container via Podman, avoiding privilege escalation entirely (experimental, Linux only)"
+                                }
+                            ]
+                        },
+                        "phpCommand": {
+                            "title": "PHP command",
+                            "description": "The path to your PHP binary (e.g. /usr/bin/php, php, ...). Only applies if you've selected \"Use PHP on the host\" above. \n \n Requires a restart after changing.",
+                            "type": "string",
+                            "default": "php",
+                            "order": 2
+                        },
+                        "memoryLimit": {
+                            "title": "Memory limit (in MB)",
+                            "description": "The memory limit to set for the PHP process. The PHP process uses the available memory for in-memory caching as well, so it should not be too low. On the other hand, it shouldn't be growing very large, so setting it to -1 is probably a bad idea as an infinite loop bug might take down your system. The default should suit most projects, from small to large. \n \n Requires a restart after changing.",
+                            "type": "integer",
+                            "default": 2048,
+                            "order": 3
+                        },
+                        "additionalDockerVolumes": {
+                            "title": "Additional Docker volumes",
+                            "description": "Additional paths to mount as Docker volumes. Only applies when using Docker to run the server. Separate these using comma's, where each item follows the format \"src:dest\" as the Docker -v flag uses. \n \n Requires a restart after changing.",
+                            "type": "array",
+                            "default": [],
+                            "order": 4,
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "refactoring": {
+                    "type": "object",
+                    "order": 3,
+                    "properties": {
+                        "enable": {
+                            "title": "Enable",
+                            "description": "When enabled, refactoring actions will be available via the intentions package.",
+                            "type": "boolean",
+                            "default": true,
+                            "order": 1
+                        }
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/5.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v5.0.0",
+            "sha": "b8332e30cf0cd59d2ae70577653116365b149e0b"
+        },
+        "4.5.3": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "4.5.3",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "getOutlineProvider"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                },
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.6",
+                "event-kit": "^2.4",
+                "md5": "^2.2",
+                "sanitize-filename": "^1.6",
+                "rimraf": "^2.6",
+                "mkdirp": "^0.5",
+                "download": "^7.0",
+                "atom-languageclient": "^0.8",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "devDependencies": {
+                "eslint": "^4.19.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/4.5.3/tarball"
+            }
+        },
+        "4.5.2": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "4.5.2",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "getOutlineProvider"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                },
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.6",
+                "event-kit": "^2.4",
+                "md5": "^2.2",
+                "sanitize-filename": "^1.6",
+                "rimraf": "^2.6",
+                "mkdirp": "^0.5",
+                "download": "^7.0",
+                "atom-languageclient": "^0.8",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "devDependencies": {
+                "eslint": "^4.19.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/4.5.2/tarball"
+            }
+        },
+        "4.5.1": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "4.5.1",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "getOutlineProvider"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                },
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.6",
+                "event-kit": "^2.4",
+                "md5": "^2.2",
+                "sanitize-filename": "^1.6",
+                "rimraf": "^2.6",
+                "mkdirp": "^0.5",
+                "download": "^7.0",
+                "atom-languageclient": "^0.8",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "devDependencies": {
+                "eslint": "^4.19.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/4.5.1/tarball"
+            }
+        },
+        "4.5.0": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "4.5.0",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "getOutlineProvider"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                },
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.6",
+                "event-kit": "^2.4",
+                "md5": "^2.2",
+                "sanitize-filename": "^1.6",
+                "rimraf": "^2.6",
+                "mkdirp": "^0.5",
+                "download": "^7.0",
+                "atom-languageclient": "^0.8",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "devDependencies": {
+                "eslint": "^4.19.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/4.5.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v4.5.0",
+            "sha": "e22b6b9c5a8bfce7fa1e6ab004095227a6ed0930"
+        },
+        "4.4.0": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "4.4.0",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "getOutlineProvider"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                },
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.6",
+                "event-kit": "^2.4",
+                "md5": "^2.2",
+                "sanitize-filename": "^1.6",
+                "rimraf": "^2.6",
+                "mkdirp": "^0.5",
+                "download": "^7.0",
+                "atom-languageclient": "^0.8",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "devDependencies": {
+                "eslint": "^4.19.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/4.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v4.4.0",
+            "sha": "c7be390690b97d5423f5b7cb8f05769c7faf7a81"
+        },
+        "4.3.0": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "4.3.0",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                },
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.6",
+                "event-kit": "^2.4",
+                "md5": "^2.2",
+                "sanitize-filename": "^1.6",
+                "rimraf": "^2.6",
+                "mkdirp": "^0.5",
+                "download": "^7.0",
+                "atom-languageclient": "^0.8",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "devDependencies": {
+                "eslint": "^4.19.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/4.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v4.3.0",
+            "sha": "60c582e9ed24f6ca6c77c9a609edd6d96510de8b"
+        },
+        "4.2.0": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "4.2.0",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                },
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.6",
+                "event-kit": "^2.4",
+                "md5": "^2.2",
+                "sanitize-filename": "^1.6",
+                "rimraf": "^2.6",
+                "mkdirp": "^0.5",
+                "download": "^7.0",
+                "atom-languageclient": "^0.8",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "devDependencies": {
+                "eslint": "^4.19.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/4.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v4.2.0",
+            "sha": "05779829408a830ccd9eee7c9f15d3df70c91305"
+        },
+        "4.1.3": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "4.1.3",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                },
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.6",
+                "event-kit": "^2.4",
+                "md5": "^2.2",
+                "sanitize-filename": "^1.6",
+                "rimraf": "^2.6",
+                "mkdirp": "^0.5",
+                "download": "^7.0",
+                "atom-languageclient": "^0.8",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/4.1.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v4.1.3",
+            "sha": "27bfe2359982882c919d4e9a378de3f8b5333d27"
+        },
+        "4.1.2": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "4.1.2",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                },
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.6",
+                "event-kit": "^2.4",
+                "md5": "^2.2",
+                "sanitize-filename": "^1.6",
+                "rimraf": "^2.6",
+                "mkdirp": "^0.5",
+                "download": "^7.0",
+                "atom-languageclient": "^0.8",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/4.1.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v4.1.2",
+            "sha": "5c46586008c7b266ff2afd8fbd1a6892f12b6934"
+        },
+        "4.1.1": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "4.1.1",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                },
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.6",
+                "event-kit": "^2.4",
+                "md5": "^2.2",
+                "sanitize-filename": "^1.6",
+                "rimraf": "^2.6",
+                "mkdirp": "^0.5",
+                "download": "^7.0",
+                "atom-languageclient": "^0.8",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/4.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v4.1.1",
+            "sha": "fbda92153039d2db6f8bf708300a4698dc74acf7"
+        },
+        "4.1.0": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "4.1.0",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://serenata.gitlab.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                },
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.6",
+                "event-kit": "^2.4",
+                "md5": "^2.2",
+                "sanitize-filename": "^1.6",
+                "rimraf": "^2.6",
+                "mkdirp": "^0.5",
+                "download": "^7.0",
+                "atom-languageclient": "^0.8",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/4.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v4.1.0",
+            "sha": "920dc8e964525038c589e6a9a0672473f4af7c23"
+        },
+        "4.0.3": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "4.0.3",
+            "description": "PHP language support for Atom-IDE via the Serenata server",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://php-integrator.github.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                },
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.6",
+                "event-kit": "^2.4",
+                "md5": "^2.2",
+                "sanitize-filename": "^1.6",
+                "rimraf": "^2.6",
+                "download": "^7.0",
+                "atom-languageclient": "^0.8",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/4.0.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v4.0.3",
+            "sha": "123c3c9f2e895fdd8a9c5ac30a687b0a2903faa7"
+        },
+        "4.0.2": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "4.0.2",
+            "description": "Atom IDE package that integrates the Serenata server to provide PHP code assistance",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://php-integrator.github.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                },
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.6",
+                "event-kit": "^2.4",
+                "md5": "^2.2",
+                "sanitize-filename": "^1.6",
+                "rimraf": "^2.6",
+                "download": "^7.0",
+                "atom-languageclient": "^0.8",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/4.0.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v4.0.2",
+            "sha": "472adf8cd1f3ccd6adb47318ce47fde9415ce9ea"
+        },
+        "4.0.1": {
+            "name": "php-ide-serenata",
+            "main": "./lib/Main",
+            "version": "4.0.1",
+            "description": "Indexes PHP code and exposes services to query it (required for other php-integrator-* packages).",
+            "repository": "https://github.com/Gert-dev/php-ide-serenata",
+            "homepage": "https://php-integrator.github.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.26.0 <2.0.0"
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "provideIntentions"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                },
+                "snippets": {
+                    "versions": {
+                        "0.1.0": "setSnippetManager"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "^4.6",
+                "event-kit": "^2.4",
+                "md5": "^2.2",
+                "sanitize-filename": "^1.6",
+                "rimraf": "^2.6",
+                "download": "^7.0",
+                "atom-languageclient": "^0.8",
+                "atom-space-pen-views": "^2.2"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui",
+                "intentions"
+            ],
+            "keywords": [
+                "serenata",
+                "php",
+                "ide",
+                "integration",
+                "autocompletion",
+                "refactoring",
+                "docblock",
+                "generator"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/4.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v4.0.1",
+            "sha": "72004a061102b7984f2a5a7ce840805b7c6e2274"
+        },
+        "3.5.0": {
+            "name": "php-integrator-base",
+            "main": "./lib/Main",
+            "version": "3.5.0",
+            "description": "Indexes PHP code and exposes services to query it (required for other php-integrator-* packages).",
+            "repository": "php-integrator/atom-base",
+            "homepage": "https://php-integrator.github.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.21.0 <2.0.0"
+            },
+            "providedServices": {
+                "php-integrator.service": {
+                    "versions": {
+                        "3.2.0": "getServiceInstance"
+                    }
+                },
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "~4.5.0",
+                "event-kit": "~2.0.0",
+                "md5": "~2.0.0",
+                "sanitize-filename": "~1.6.1",
+                "rimraf": "~2.5.4",
+                "download": "~5.0.2",
+                "atom-languageclient": "^0.6.4"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui"
+            ],
+            "keywords": [
+                "php",
+                "service",
+                "integrator",
+                "integration",
+                "php-integrator"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/3.5.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v3.5.0",
+            "sha": "4af6ba3562efe45fb9e8a32ab8afa3a113d79085"
+        },
+        "3.4.0": {
+            "name": "php-integrator-base",
+            "main": "./lib/Main",
+            "version": "3.4.0",
+            "description": "Indexes PHP code and exposes services to query it (required for other php-integrator-* packages).",
+            "repository": "php-integrator/atom-base",
+            "homepage": "https://php-integrator.github.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.21.0 <2.0.0"
+            },
+            "providedServices": {
+                "php-integrator.service": {
+                    "versions": {
+                        "3.2.0": "getServiceInstance"
+                    }
+                },
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "~4.5.0",
+                "event-kit": "~2.0.0",
+                "md5": "~2.0.0",
+                "sanitize-filename": "~1.6.1",
+                "rimraf": "~2.5.4",
+                "download": "~5.0.2",
+                "atom-languageclient": "^0.6.4"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui"
+            ],
+            "keywords": [
+                "php",
+                "service",
+                "integrator",
+                "integration",
+                "php-integrator"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/3.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v3.4.0",
+            "sha": "8130ce02cb215b881436ee8b1f0c807896434607"
+        },
+        "3.3.0": {
+            "name": "php-integrator-base",
+            "main": "./lib/Main",
+            "version": "3.3.0",
+            "description": "Indexes PHP code and exposes services to query it (required for other php-integrator-* packages).",
+            "repository": "php-integrator/atom-base",
+            "homepage": "https://php-integrator.github.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.21.0 <2.0.0"
+            },
+            "providedServices": {
+                "php-integrator.service": {
+                    "versions": {
+                        "3.2.0": "getServiceInstance"
+                    }
+                },
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "~4.5.0",
+                "event-kit": "~2.0.0",
+                "md5": "~2.0.0",
+                "sanitize-filename": "~1.6.1",
+                "rimraf": "~2.5.4",
+                "download": "~5.0.2",
+                "atom-languageclient": "^0.6.4"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui"
+            ],
+            "keywords": [
+                "php",
+                "service",
+                "integrator",
+                "integration",
+                "php-integrator"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/3.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v3.3.0",
+            "sha": "ee389650531bd36690046851f6685ca070aa5da0"
+        },
+        "3.2.1": {
+            "name": "php-integrator-base",
+            "main": "./lib/Main",
+            "version": "3.2.1",
+            "description": "Indexes PHP code and exposes services to query it (required for other php-integrator-* packages).",
+            "repository": "php-integrator/atom-base",
+            "homepage": "https://php-integrator.github.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.21.0 <2.0.0"
+            },
+            "providedServices": {
+                "php-integrator.service": {
+                    "versions": {
+                        "3.2.0": "getServiceInstance"
+                    }
+                },
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "~4.5.0",
+                "event-kit": "~2.0.0",
+                "md5": "~2.0.0",
+                "sanitize-filename": "~1.6.1",
+                "rimraf": "~2.5.4",
+                "download": "~5.0.2",
+                "atom-languageclient": "^0.6.4"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui"
+            ],
+            "keywords": [
+                "php",
+                "service",
+                "integrator",
+                "integration",
+                "php-integrator"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/3.2.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v3.2.1",
+            "sha": "0ec1af73da1edff3efc0ba88d13edded59ac9d81"
+        },
+        "3.2.0": {
+            "name": "php-integrator-base",
+            "main": "./lib/Main",
+            "version": "3.2.0",
+            "description": "Indexes PHP code and exposes services to query it (required for other php-integrator-* packages).",
+            "repository": "php-integrator/atom-base",
+            "homepage": "https://php-integrator.github.io/",
+            "license": "GPL-3.0-or-later",
+            "engines": {
+                "atom": ">=1.21.0 <2.0.0"
+            },
+            "providedServices": {
+                "php-integrator.service": {
+                    "versions": {
+                        "3.2.0": "getServiceInstance"
+                    }
+                },
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                },
+                "atom-ide-busy-signal": {
+                    "versions": {
+                        "0.1.0": "consumeBusySignalService"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatipService"
+                    }
+                },
+                "signature-help": {
+                    "versions": {
+                        "0.1.0": "consumeSignatureHelpService"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "~4.5.0",
+                "event-kit": "~2.0.0",
+                "md5": "~2.0.0",
+                "sanitize-filename": "~1.6.1",
+                "rimraf": "~2.5.4",
+                "download": "~5.0.2",
+                "atom-languageclient": "^0.6.4"
+            },
+            "package-deps": [
+                "project-manager",
+                "atom-ide-ui"
+            ],
+            "keywords": [
+                "php",
+                "service",
+                "integrator",
+                "integration",
+                "php-integrator"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/3.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v3.2.0",
+            "sha": "006a58311ba19dfefe821a988f700fc4b07c5bd1"
+        },
+        "3.1.0": {
+            "name": "php-integrator-base",
+            "main": "./lib/Main",
+            "version": "3.1.0",
+            "description": "Indexes PHP code and exposes services to query it (required for other php-integrator-* packages).",
+            "repository": "php-integrator/atom-base",
+            "license": "GPL-3.0",
+            "engines": {
+                "atom": ">=1.21.0 <2.0.0"
+            },
+            "providedServices": {
+                "php-integrator.service": {
+                    "versions": {
+                        "3.1.0": "getServiceInstance"
+                    }
+                },
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "getIntentionProviders"
+                    }
+                },
+                "hyperclick.provider": {
+                    "versions": {
+                        "0.0.0": "getHyperclickProvider"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "setStatusBarService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "~4.5.0",
+                "event-kit": "~2.0.0",
+                "md5": "~2.0.0",
+                "sanitize-filename": "~1.6.1",
+                "rimraf": "~2.5.4",
+                "download": "~5.0.2",
+                "marked": "~0.3.6",
+                "atom-languageclient": "^0.6.4"
+            },
+            "package-deps": [
+                "project-manager",
+                "intentions",
+                "atom-ide-ui"
+            ],
+            "keywords": [
+                "php",
+                "service",
+                "integrator",
+                "integration",
+                "php-integrator"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/3.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v3.1.0",
+            "sha": "ca8d974c25e4ca2396b90619a72c3e8cef5015cb"
+        },
+        "3.0.1": {
+            "name": "php-integrator-base",
+            "main": "./lib/Main",
+            "version": "3.0.1",
+            "description": "Indexes PHP code and exposes services to query it (required for other php-integrator-* packages).",
+            "repository": "php-integrator/atom-base",
+            "license": "GPL-3.0",
+            "engines": {
+                "atom": ">=1.17.0 <2.0.0"
+            },
+            "providedServices": {
+                "php-integrator.service": {
+                    "versions": {
+                        "3.0.0": "getServiceInstance"
+                    }
+                },
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "getIntentionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "setStatusBarService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "~4.5.0",
+                "event-kit": "~2.0.0",
+                "md5": "~2.0.0",
+                "sanitize-filename": "~1.6.1",
+                "rimraf": "~2.5.4",
+                "download": "~5.0.2",
+                "marked": "~0.3.6"
+            },
+            "package-deps": [
+                "project-manager",
+                "intentions",
+                "linter"
+            ],
+            "keywords": [
+                "php",
+                "service",
+                "integrator",
+                "integration",
+                "php-integrator"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/3.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v3.0.1",
+            "sha": "bae4b98f66d7ff7602444d29e533669d7383aae8"
+        },
+        "3.0.0": {
+            "name": "php-integrator-base",
+            "main": "./lib/Main",
+            "version": "3.0.0",
+            "description": "Indexes PHP code and exposes services to query it (required for other php-integrator-* packages).",
+            "repository": "php-integrator/atom-base",
+            "license": "GPL-3.0",
+            "engines": {
+                "atom": ">=1.17.0 <2.0.0"
+            },
+            "providedServices": {
+                "php-integrator.service": {
+                    "versions": {
+                        "3.0.0": "getServiceInstance"
+                    }
+                },
+                "autocomplete.provider": {
+                    "versions": {
+                        "3.0.0": "getAutocompletionProviderServices"
+                    }
+                },
+                "intentions:list": {
+                    "versions": {
+                        "1.0.0": "getIntentionProviders"
+                    }
+                }
+            },
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "setLinterIndieService"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "setStatusBarService"
+                    }
+                },
+                "project-manager": {
+                    "versions": {
+                        "^3.1.0": "setProjectManagerService"
+                    }
+                }
+            },
+            "dependencies": {
+                "atom-package-deps": "~4.5.0",
+                "event-kit": "~2.0.0",
+                "md5": "~2.0.0",
+                "sanitize-filename": "~1.6.1",
+                "rimraf": "~2.5.4",
+                "download": "~5.0.2",
+                "marked": "~0.3.6"
+            },
+            "package-deps": [
+                "project-manager",
+                "intentions",
+                "linter"
+            ],
+            "keywords": [
+                "php",
+                "service",
+                "integrator",
+                "integration",
+                "php-integrator"
+            ],
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/php-ide-serenata/versions/3.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Gert-dev/php-ide-serenata/tarball/refs/tags/v3.0.0",
+            "sha": "c70deee39dd76d05420bcb83224d73fc04b1fbce"
+        }
+    },
+    "readme": "<p align=\"center\">\n<img src=\"https://serenata.gitlab.io/images/logo.png\" alt=\"Serenata logo\"</img>\n</p>\n\n# php-ide-serenata\nIntegrates [Serenata](https://serenata.gitlab.io/) into Atom, providing autocompletion, code navigation, refactoring, signature help, linting and code lenses for PHP.\n\n![T](https://serenata.gitlab.io/images/autocompletion.png)\n\nSee also [the website](https://serenata.gitlab.io/) on [how to set it up](https://serenata.gitlab.io/#what-do-i-need) and more screenshots.\n\n_This package is an alternative to and conflicts with the [ide-php](https://atom.io/packages/ide-php) package._\n\n![GPLv3 Logo](http://gplv3.fsf.org/gplv3-127x51.png)\n",
+    "metadata": {
+        "name": "php-ide-serenata",
+        "main": "./lib/Main",
+        "version": "5.4.1",
+        "description": "PHP language support for Atom-IDE via the Serenata server",
+        "repository": "https://github.com/Gert-dev/php-ide-serenata",
+        "homepage": "https://serenata.gitlab.io/",
+        "license": "GPL-3.0-or-later",
+        "engines": {
+            "atom": ">=1.26.0 <2.0.0"
+        },
+        "providedServices": {
+            "intentions:list": {
+                "versions": {
+                    "1.0.0": "provideIntentions"
+                }
+            },
+            "definitions": {
+                "versions": {
+                    "0.1.0": "provideDefinitions"
+                }
+            },
+            "autocomplete.provider": {
+                "versions": {
+                    "4.0.0": "provideAutocomplete"
+                }
+            },
+            "outline-view": {
+                "versions": {
+                    "0.1.0": "provideOutlines"
+                }
+            },
+            "code-highlight": {
+                "versions": {
+                    "0.1.0": "provideCodeHighlight"
+                }
+            }
+        },
+        "consumedServices": {
+            "snippets": {
+                "versions": {
+                    "0.1.0": "setSnippetManager"
+                }
+            },
+            "linter-indie": {
+                "versions": {
+                    "2.0.0": "consumeLinterV2"
+                }
+            },
+            "atom-ide-busy-signal": {
+                "versions": {
+                    "0.1.0": "consumeBusySignal"
+                }
+            },
+            "datatip": {
+                "versions": {
+                    "0.1.0": "consumeDatatip"
+                }
+            },
+            "signature-help": {
+                "versions": {
+                    "0.1.0": "consumeSignatureHelp"
+                }
+            },
+            "console": {
+                "versions": {
+                    "0.1.0": "consumeConsole"
+                }
+            }
+        },
+        "dependencies": {
+            "atom-languageclient": "^0.9.9",
+            "atom-package-deps": "^5.0",
+            "atom-space-pen-views": "^2.2",
+            "download": "^7.1",
+            "mkdirp": "^0.5.5"
+        },
+        "package-deps": [
+            "atom-ide-ui",
+            "intentions"
+        ],
+        "keywords": [
+            "serenata",
+            "php",
+            "ide",
+            "integration",
+            "autocompletion",
+            "refactoring",
+            "docblock",
+            "generator"
+        ],
+        "devDependencies": {
+            "eslint": "^6.8.0"
+        },
+        "configSchema": {
+            "core": {
+                "type": "object",
+                "order": 1,
+                "properties": {
+                    "phpExecutionType": {
+                        "title": "PHP execution type",
+                        "description": "How to start PHP, which is needed to start the server in turn. \n \n 'Use PHP on the host' uses a PHP binary installed on your local machine. 'Use PHP container via Docker' requires Docker and uses a PHP container to start the server with. Using PolicyKit allows Linux users that are not part of the Docker group to enter their password via an authentication dialog to temporarily escalate privileges so the Docker daemon can be invoked once to start the server. \n \n You can use the php-ide-serenata:test-configuration command to test your setup. \n \n When using containers, project paths open in Atom are automatically mounted into the container at the same path. If you want to specify more exotic paths for Serenata to index in your project file, you have to ensure these are mounted in the container as well. \n \n Requires a restart after changing. \n \n",
+                        "type": "string",
+                        "default": "host",
+                        "order": 1,
+                        "enum": [
+                            {
+                                "value": "host",
+                                "description": "Use PHP on the host"
+                            },
+                            {
+                                "value": "docker",
+                                "description": "Use a PHP container via Docker (experimental)"
+                            },
+                            {
+                                "value": "docker-polkit",
+                                "description": "Use a PHP container via Docker, using PolicyKit for privilege escalation (experimental, Linux only)"
+                            },
+                            {
+                                "value": "podman",
+                                "description": "Use a PHP container via Podman, avoiding privilege escalation entirely (experimental, Linux only)"
+                            }
+                        ]
+                    },
+                    "phpCommand": {
+                        "title": "PHP command",
+                        "description": "The path to your PHP binary (e.g. /usr/bin/php, php, ...). Only applies if you've selected \"Use PHP on the host\" above. \n \n Requires a restart after changing.",
+                        "type": "string",
+                        "default": "php",
+                        "order": 2
+                    },
+                    "memoryLimit": {
+                        "title": "Memory limit (in MB)",
+                        "description": "The memory limit to set for the PHP process. The PHP process uses the available memory for in-memory caching as well, so it should not be too low. On the other hand, it shouldn't be growing very large, so setting it to -1 is probably a bad idea as an infinite loop bug might take down your system. The default should suit most projects, from small to large. \n \n Requires a restart after changing.",
+                        "type": "integer",
+                        "default": 2048,
+                        "order": 3
+                    },
+                    "additionalDockerVolumes": {
+                        "title": "Additional Docker volumes",
+                        "description": "Additional paths to mount as Docker volumes. Only applies when using Docker to run the server. Separate these using comma's, where each item follows the format \"src:dest\" as the Docker -v flag uses. \n \n Requires a restart after changing.",
+                        "type": "array",
+                        "default": [],
+                        "order": 4,
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "refactoring": {
+                "type": "object",
+                "order": 3,
+                "properties": {
+                    "enable": {
+                        "title": "Enable",
+                        "description": "When enabled, refactoring actions will be available via the intentions package.",
+                        "type": "boolean",
+                        "default": true,
+                        "order": 1
+                    }
+                }
+            }
+        }
+    },
+    "created": 1658360738715,
+    "updated": 1658360738715,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

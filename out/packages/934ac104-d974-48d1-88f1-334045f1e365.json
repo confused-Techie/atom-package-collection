@@ -1,0 +1,1813 @@
+{
+    "name": "grammar-check",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sirenard/atom-grammar-check"
+    },
+    "downloads": 318,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "0.3.1"
+    },
+    "versions": {
+        "0.3.1": {
+            "name": "grammar-check",
+            "main": "./lib/main",
+            "version": "0.3.1",
+            "description": "A multilingual grammar checker that dynamically highlights mistakes and proposes a correction",
+            "author": "Renard Simon",
+            "keywords": [
+                "spellchecker",
+                "grammar",
+                "orthographic"
+            ],
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "repository": "https://github.com/sirenard/atom-grammar-check",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "gingerbread": ">=0.6.x",
+                "async-mutex": ">=0.3.x"
+            },
+            "configSchema": {
+                "usedCorrecter": {
+                    "type": "string",
+                    "default": "ginger",
+                    "description": "Choose which corrector must be used",
+                    "order": 1,
+                    "enum": [
+                        {
+                            "value": "languagetool",
+                            "description": "languagetool"
+                        },
+                        {
+                            "value": "ginger",
+                            "description": "ginger"
+                        }
+                    ]
+                },
+                "language": {
+                    "type": "string",
+                    "default": "auto",
+                    "description": "Choose which language languagetool will use use",
+                    "order": 2,
+                    "enum": [
+                        {
+                            "value": "auto",
+                            "description": "auto"
+                        },
+                        {
+                            "value": "ar",
+                            "description": "Arabic"
+                        },
+                        {
+                            "value": "ast-ES",
+                            "description": "Asturian"
+                        },
+                        {
+                            "value": "be-BY",
+                            "description": "Belarusian"
+                        },
+                        {
+                            "value": "br-FR",
+                            "description": "Breton"
+                        },
+                        {
+                            "value": "ca-ES",
+                            "description": "Catalan"
+                        },
+                        {
+                            "value": "ca-ES-valencia",
+                            "description": "Catalan (Valencian)"
+                        },
+                        {
+                            "value": "zh-CN",
+                            "description": "Chinese"
+                        },
+                        {
+                            "value": "da-DK",
+                            "description": "Danish"
+                        },
+                        {
+                            "value": "nl",
+                            "description": "Dutch"
+                        },
+                        {
+                            "value": "nl-BE",
+                            "description": "Dutch (Belgium)"
+                        },
+                        {
+                            "value": "en",
+                            "description": "English"
+                        },
+                        {
+                            "value": "en-AU",
+                            "description": "English (Australian)"
+                        },
+                        {
+                            "value": "en-CA",
+                            "description": "English (Canadian)"
+                        },
+                        {
+                            "value": "en-GB",
+                            "description": "English (GB)"
+                        },
+                        {
+                            "value": "en-NZ",
+                            "description": "English (New Zealand)"
+                        },
+                        {
+                            "value": "en-ZA",
+                            "description": "English (South African)"
+                        },
+                        {
+                            "value": "en-US",
+                            "description": "English (US)"
+                        },
+                        {
+                            "value": "eo",
+                            "description": "Esperanto"
+                        },
+                        {
+                            "value": "fr",
+                            "description": "French"
+                        },
+                        {
+                            "value": "gl-ES",
+                            "description": "Galician"
+                        },
+                        {
+                            "value": "de",
+                            "description": "German"
+                        },
+                        {
+                            "value": "de-AT",
+                            "description": "German (Austria)"
+                        },
+                        {
+                            "value": "de-DE",
+                            "description": "German (Germany)"
+                        },
+                        {
+                            "value": "de-CH",
+                            "description": "German (Swiss)"
+                        },
+                        {
+                            "value": "el-GR",
+                            "description": "Greek"
+                        },
+                        {
+                            "value": "ga-IE",
+                            "description": "Irish"
+                        },
+                        {
+                            "value": "it",
+                            "description": "Italian"
+                        },
+                        {
+                            "value": "ja-JP",
+                            "description": "Japanese"
+                        },
+                        {
+                            "value": "km-KH",
+                            "description": "Khmer"
+                        },
+                        {
+                            "value": "nb",
+                            "description": "Norwegian (Bokmål)"
+                        },
+                        {
+                            "value": "fa",
+                            "description": "Persian"
+                        },
+                        {
+                            "value": "pl-PL",
+                            "description": "Polish"
+                        },
+                        {
+                            "value": "pt",
+                            "description": "Portuguese"
+                        },
+                        {
+                            "value": "pt-AO",
+                            "description": "Portuguese (Angola preAO)"
+                        },
+                        {
+                            "value": "pt-BR",
+                            "description": "Portuguese (Brazil)"
+                        },
+                        {
+                            "value": "pt-MZ",
+                            "description": "Portuguese (Moçambique preAO)"
+                        },
+                        {
+                            "value": "pt-PT",
+                            "description": "Portuguese (Portugal)"
+                        },
+                        {
+                            "value": "ro-RO",
+                            "description": "Romanian"
+                        },
+                        {
+                            "value": "ru-RU",
+                            "description": "Russian"
+                        },
+                        {
+                            "value": "de-DE-x-simple-language",
+                            "description": "Simple German"
+                        },
+                        {
+                            "value": "sk-SK",
+                            "description": "Slovak"
+                        },
+                        {
+                            "value": "sl-SI",
+                            "description": "Slovenian"
+                        },
+                        {
+                            "value": "es",
+                            "description": "Spanish"
+                        },
+                        {
+                            "value": "es-AR",
+                            "description": "Spanish (voseo)"
+                        },
+                        {
+                            "value": "sv",
+                            "description": "Swedish"
+                        },
+                        {
+                            "value": "tl-PH",
+                            "description": "Tagalog"
+                        },
+                        {
+                            "value": "ta-IN",
+                            "description": "Tamil"
+                        },
+                        {
+                            "value": "uk-UA",
+                            "description": "Ukrainian"
+                        }
+                    ]
+                },
+                "languagetoolUrl": {
+                    "type": "string",
+                    "default": "http://localhost:8081",
+                    "description": "URL of the language tool server. It's better to have a local language tool server ([see here](https://dev.languagetool.org/http-server.html)) due to the big amount of requests",
+                    "order": 3
+                },
+                "excludedScopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "meta.reference.latex",
+                        "string.other.math.tex",
+                        "variable.parameter.*",
+                        "keyword.*",
+                        "support.*",
+                        "meta.function.environment.*",
+                        "punctuation.*",
+                        "markup.raw.verbatim.latex"
+                    ],
+                    "description": "List of sub-scopes that will be ignored. The scopes will be parsed as regular expressions.",
+                    "order": 4
+                },
+                "includedScopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "text.tex.latex",
+                        ".*comment.*"
+                    ],
+                    "description": "List of sub-scopes that are allowed to be checked. The scopes will be parsed as regular expressions.",
+                    "order": 5
+                },
+                "languageToolStartServerCommand": {
+                    "type": "string",
+                    "default": "java -cp ./LanguageTool-5.5/languagetool-server.jar org.languagetool.server.HTTPServer --port 8081",
+                    "description": "If a local server is used, this command will be executed at startup to start the server more information on local server [here](https://dev.languagetool.org/http-server.html).",
+                    "order": 6
+                },
+                "languageToolStopServerCommand": {
+                    "type": "string",
+                    "default": "myCommand=\"java -cp ./LanguageTool-5.5/languagetool-server.jar org.languagetool.server.HTTPServer --port 8081\";ps -ax | grep \"$myCommand\" | while read -r line; do kill $(echo $line | cut -d ' ' -f1) 2> /dev/null; done",
+                    "description": "If a local server is used, this command will be executed when the package is deactivated. The default value works on linux, you just have to change on the first instruction the variable `myCommand` and set it with the command that you execute to start the server. The command looks for the process and kill it ",
+                    "order": 7
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/grammar-check/versions/0.3.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/sirenard/atom-grammar-check/tarball/refs/tags/v0.3.1",
+            "sha": "bda44b4bfd102df6da9902c747b5fe37319400c9"
+        },
+        "0.3.0": {
+            "name": "grammar-check",
+            "main": "./lib/main",
+            "version": "0.3.0",
+            "description": "A multilingual grammar checker that dynamically highlights mistakes and proposes a correction",
+            "author": "Renard Simon",
+            "keywords": [
+                "spellchecker",
+                "grammar",
+                "orthographic"
+            ],
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "repository": "https://github.com/sirenard/atom-grammar-check",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "gingerbread": ">=0.6.x",
+                "async-mutex": ">=0.3.x"
+            },
+            "configSchema": {
+                "usedCorrecter": {
+                    "type": "string",
+                    "default": "ginger",
+                    "description": "Choose which corrector must be used",
+                    "order": 1,
+                    "enum": [
+                        {
+                            "value": "languagetool",
+                            "description": "languagetool"
+                        },
+                        {
+                            "value": "ginger",
+                            "description": "ginger"
+                        }
+                    ]
+                },
+                "language": {
+                    "type": "string",
+                    "default": "auto",
+                    "description": "Choose which language languagetool will use use",
+                    "order": 2,
+                    "enum": [
+                        {
+                            "value": "auto",
+                            "description": "auto"
+                        },
+                        {
+                            "value": "ar",
+                            "description": "Arabic"
+                        },
+                        {
+                            "value": "ast-ES",
+                            "description": "Asturian"
+                        },
+                        {
+                            "value": "be-BY",
+                            "description": "Belarusian"
+                        },
+                        {
+                            "value": "br-FR",
+                            "description": "Breton"
+                        },
+                        {
+                            "value": "ca-ES",
+                            "description": "Catalan"
+                        },
+                        {
+                            "value": "ca-ES-valencia",
+                            "description": "Catalan (Valencian)"
+                        },
+                        {
+                            "value": "zh-CN",
+                            "description": "Chinese"
+                        },
+                        {
+                            "value": "da-DK",
+                            "description": "Danish"
+                        },
+                        {
+                            "value": "nl",
+                            "description": "Dutch"
+                        },
+                        {
+                            "value": "nl-BE",
+                            "description": "Dutch (Belgium)"
+                        },
+                        {
+                            "value": "en",
+                            "description": "English"
+                        },
+                        {
+                            "value": "en-AU",
+                            "description": "English (Australian)"
+                        },
+                        {
+                            "value": "en-CA",
+                            "description": "English (Canadian)"
+                        },
+                        {
+                            "value": "en-GB",
+                            "description": "English (GB)"
+                        },
+                        {
+                            "value": "en-NZ",
+                            "description": "English (New Zealand)"
+                        },
+                        {
+                            "value": "en-ZA",
+                            "description": "English (South African)"
+                        },
+                        {
+                            "value": "en-US",
+                            "description": "English (US)"
+                        },
+                        {
+                            "value": "eo",
+                            "description": "Esperanto"
+                        },
+                        {
+                            "value": "fr",
+                            "description": "French"
+                        },
+                        {
+                            "value": "gl-ES",
+                            "description": "Galician"
+                        },
+                        {
+                            "value": "de",
+                            "description": "German"
+                        },
+                        {
+                            "value": "de-AT",
+                            "description": "German (Austria)"
+                        },
+                        {
+                            "value": "de-DE",
+                            "description": "German (Germany)"
+                        },
+                        {
+                            "value": "de-CH",
+                            "description": "German (Swiss)"
+                        },
+                        {
+                            "value": "el-GR",
+                            "description": "Greek"
+                        },
+                        {
+                            "value": "ga-IE",
+                            "description": "Irish"
+                        },
+                        {
+                            "value": "it",
+                            "description": "Italian"
+                        },
+                        {
+                            "value": "ja-JP",
+                            "description": "Japanese"
+                        },
+                        {
+                            "value": "km-KH",
+                            "description": "Khmer"
+                        },
+                        {
+                            "value": "nb",
+                            "description": "Norwegian (Bokmål)"
+                        },
+                        {
+                            "value": "fa",
+                            "description": "Persian"
+                        },
+                        {
+                            "value": "pl-PL",
+                            "description": "Polish"
+                        },
+                        {
+                            "value": "pt",
+                            "description": "Portuguese"
+                        },
+                        {
+                            "value": "pt-AO",
+                            "description": "Portuguese (Angola preAO)"
+                        },
+                        {
+                            "value": "pt-BR",
+                            "description": "Portuguese (Brazil)"
+                        },
+                        {
+                            "value": "pt-MZ",
+                            "description": "Portuguese (Moçambique preAO)"
+                        },
+                        {
+                            "value": "pt-PT",
+                            "description": "Portuguese (Portugal)"
+                        },
+                        {
+                            "value": "ro-RO",
+                            "description": "Romanian"
+                        },
+                        {
+                            "value": "ru-RU",
+                            "description": "Russian"
+                        },
+                        {
+                            "value": "de-DE-x-simple-language",
+                            "description": "Simple German"
+                        },
+                        {
+                            "value": "sk-SK",
+                            "description": "Slovak"
+                        },
+                        {
+                            "value": "sl-SI",
+                            "description": "Slovenian"
+                        },
+                        {
+                            "value": "es",
+                            "description": "Spanish"
+                        },
+                        {
+                            "value": "es-AR",
+                            "description": "Spanish (voseo)"
+                        },
+                        {
+                            "value": "sv",
+                            "description": "Swedish"
+                        },
+                        {
+                            "value": "tl-PH",
+                            "description": "Tagalog"
+                        },
+                        {
+                            "value": "ta-IN",
+                            "description": "Tamil"
+                        },
+                        {
+                            "value": "uk-UA",
+                            "description": "Ukrainian"
+                        }
+                    ]
+                },
+                "languagetoolUrl": {
+                    "type": "string",
+                    "default": "http://localhost:8081",
+                    "description": "URL of the language tool server. It's better to have a local language tool server ([see here](https://dev.languagetool.org/http-server.html)) due to the big amount of requests",
+                    "order": 3
+                },
+                "excludedScopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "meta.reference.latex",
+                        "string.other.math.tex",
+                        "variable.parameter.*",
+                        "keyword.*",
+                        "support.*",
+                        "meta.function.environment.*",
+                        "punctuation.*",
+                        "markup.raw.verbatim.latex"
+                    ],
+                    "description": "List of sub-scopes that will be ignored. The scopes will be parsed as regular expressions.",
+                    "order": 4
+                },
+                "includedScopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "text.tex.latex",
+                        ".*comment.*"
+                    ],
+                    "description": "List of sub-scopes that are allowed to be checked. The scopes will be parsed as regular expressions.",
+                    "order": 5
+                },
+                "languageToolStartServerCommand": {
+                    "type": "string",
+                    "default": "java -cp ./LanguageTool-5.5/languagetool-server.jar org.languagetool.server.HTTPServer --port 8081",
+                    "description": "If a local server is used, this command will be executed at startup to start the server more information on local server [here](https://dev.languagetool.org/http-server.html).",
+                    "order": 6
+                },
+                "languageToolStopServerCommand": {
+                    "type": "string",
+                    "default": "myCommand=\"java -cp ./LanguageTool-5.5/languagetool-server.jar org.languagetool.server.HTTPServer --port 8081\";ps -ax | grep \"$myCommand\" | while read -r line; do kill $(echo $line | cut -d ' ' -f1) 2> /dev/null; done",
+                    "description": "If a local server is used, this command will be executed when the package is deactivated. The default value works on linux, you just have to change on the first instruction the variable `myCommand` and set it with the command that you execute to start the server. The command looks for the process and kill it ",
+                    "order": 7
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/grammar-check/versions/0.3.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/sirenard/atom-grammar-check/tarball/refs/tags/v0.3.0",
+            "sha": "f6400564c34aadd54973f2f0fe5900065562d4b4"
+        },
+        "0.2.3": {
+            "name": "grammar-check",
+            "main": "./lib/main",
+            "version": "0.2.3",
+            "description": "A multilingual grammar checker that dynamically highlights mistakes and proposes a correction",
+            "author": "Renard Simon",
+            "keywords": [
+                "spellchecker",
+                "grammar",
+                "orthographic"
+            ],
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "repository": "https://github.com/sirenard/atom-grammar-check",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "gingerbread": ">=0.6.x",
+                "async-mutex": ">=0.3.x"
+            },
+            "configSchema": {
+                "usedCorrecter": {
+                    "type": "string",
+                    "default": "ginger",
+                    "description": "Choose which corrector must be used",
+                    "order": 1,
+                    "enum": [
+                        {
+                            "value": "languagetool",
+                            "description": "languagetool"
+                        },
+                        {
+                            "value": "ginger",
+                            "description": "ginger"
+                        }
+                    ]
+                },
+                "language": {
+                    "type": "string",
+                    "default": "auto",
+                    "description": "Choose which language languagetool will use use",
+                    "order": 2,
+                    "enum": [
+                        {
+                            "value": "auto",
+                            "description": "auto"
+                        },
+                        {
+                            "value": "ar",
+                            "description": "Arabic"
+                        },
+                        {
+                            "value": "ast-ES",
+                            "description": "Asturian"
+                        },
+                        {
+                            "value": "be-BY",
+                            "description": "Belarusian"
+                        },
+                        {
+                            "value": "br-FR",
+                            "description": "Breton"
+                        },
+                        {
+                            "value": "ca-ES",
+                            "description": "Catalan"
+                        },
+                        {
+                            "value": "ca-ES-valencia",
+                            "description": "Catalan (Valencian)"
+                        },
+                        {
+                            "value": "zh-CN",
+                            "description": "Chinese"
+                        },
+                        {
+                            "value": "da-DK",
+                            "description": "Danish"
+                        },
+                        {
+                            "value": "nl",
+                            "description": "Dutch"
+                        },
+                        {
+                            "value": "nl-BE",
+                            "description": "Dutch (Belgium)"
+                        },
+                        {
+                            "value": "en",
+                            "description": "English"
+                        },
+                        {
+                            "value": "en-AU",
+                            "description": "English (Australian)"
+                        },
+                        {
+                            "value": "en-CA",
+                            "description": "English (Canadian)"
+                        },
+                        {
+                            "value": "en-GB",
+                            "description": "English (GB)"
+                        },
+                        {
+                            "value": "en-NZ",
+                            "description": "English (New Zealand)"
+                        },
+                        {
+                            "value": "en-ZA",
+                            "description": "English (South African)"
+                        },
+                        {
+                            "value": "en-US",
+                            "description": "English (US)"
+                        },
+                        {
+                            "value": "eo",
+                            "description": "Esperanto"
+                        },
+                        {
+                            "value": "fr",
+                            "description": "French"
+                        },
+                        {
+                            "value": "gl-ES",
+                            "description": "Galician"
+                        },
+                        {
+                            "value": "de",
+                            "description": "German"
+                        },
+                        {
+                            "value": "de-AT",
+                            "description": "German (Austria)"
+                        },
+                        {
+                            "value": "de-DE",
+                            "description": "German (Germany)"
+                        },
+                        {
+                            "value": "de-CH",
+                            "description": "German (Swiss)"
+                        },
+                        {
+                            "value": "el-GR",
+                            "description": "Greek"
+                        },
+                        {
+                            "value": "ga-IE",
+                            "description": "Irish"
+                        },
+                        {
+                            "value": "it",
+                            "description": "Italian"
+                        },
+                        {
+                            "value": "ja-JP",
+                            "description": "Japanese"
+                        },
+                        {
+                            "value": "km-KH",
+                            "description": "Khmer"
+                        },
+                        {
+                            "value": "nb",
+                            "description": "Norwegian (Bokmål)"
+                        },
+                        {
+                            "value": "fa",
+                            "description": "Persian"
+                        },
+                        {
+                            "value": "pl-PL",
+                            "description": "Polish"
+                        },
+                        {
+                            "value": "pt",
+                            "description": "Portuguese"
+                        },
+                        {
+                            "value": "pt-AO",
+                            "description": "Portuguese (Angola preAO)"
+                        },
+                        {
+                            "value": "pt-BR",
+                            "description": "Portuguese (Brazil)"
+                        },
+                        {
+                            "value": "pt-MZ",
+                            "description": "Portuguese (Moçambique preAO)"
+                        },
+                        {
+                            "value": "pt-PT",
+                            "description": "Portuguese (Portugal)"
+                        },
+                        {
+                            "value": "ro-RO",
+                            "description": "Romanian"
+                        },
+                        {
+                            "value": "ru-RU",
+                            "description": "Russian"
+                        },
+                        {
+                            "value": "de-DE-x-simple-language",
+                            "description": "Simple German"
+                        },
+                        {
+                            "value": "sk-SK",
+                            "description": "Slovak"
+                        },
+                        {
+                            "value": "sl-SI",
+                            "description": "Slovenian"
+                        },
+                        {
+                            "value": "es",
+                            "description": "Spanish"
+                        },
+                        {
+                            "value": "es-AR",
+                            "description": "Spanish (voseo)"
+                        },
+                        {
+                            "value": "sv",
+                            "description": "Swedish"
+                        },
+                        {
+                            "value": "tl-PH",
+                            "description": "Tagalog"
+                        },
+                        {
+                            "value": "ta-IN",
+                            "description": "Tamil"
+                        },
+                        {
+                            "value": "uk-UA",
+                            "description": "Ukrainian"
+                        }
+                    ]
+                },
+                "languagetoolUrl": {
+                    "type": "string",
+                    "default": "http://localhost:8081",
+                    "description": "URL of the language tool server. It's better to have a local language tool server ([see here](https://dev.languagetool.org/http-server.html)) due to the big amount of requests",
+                    "order": 3
+                },
+                "excludedScopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "support.functort.functiion.tex",
+                        "support.function.general.tex",
+                        "meta.preamble.latex",
+                        "meta.function",
+                        "support.type.function.latex",
+                        "comment.line.percentage.tex",
+                        "storage.type.function.latex",
+                        "suppon.latex",
+                        "string.other.math.tex",
+                        "string.other.math.block.environment.latex",
+                        "variable.parameter.function.latex",
+                        "constant.other.reference.latex",
+                        "punctuation"
+                    ],
+                    "description": "List of sub-scopes that will be ignored. Specify the most detailed scope to avoid ignoring otherwise relevant text. The scopes will be parsed as regular expressions. See [the README](https://github.com/atom/spell-check#spell-check-package-) for more information on finding the correct scope for a specific language.",
+                    "order": 4
+                },
+                "languageToolStartServerCommand": {
+                    "type": "string",
+                    "default": "java -cp ./LanguageTool-5.5/languagetool-server.jar org.languagetool.server.HTTPServer --port 8081",
+                    "description": "If a local server is used, this command will be executed at startup to start the server more information on local server [here](https://dev.languagetool.org/http-server.html).",
+                    "order": 5
+                },
+                "languageToolStopServerCommand": {
+                    "type": "string",
+                    "default": "myCommand=\"java -cp ./LanguageTool-5.5/languagetool-server.jar org.languagetool.server.HTTPServer --port 8081\";ps -ax | grep \"$myCommand\" | while read -r line; do kill $(echo $line | cut -d ' ' -f1) 2> /dev/null; done",
+                    "description": "If a local server is used, this command will be executed when the package is deactivated. The default value works on linux, you just have to change on the first instruction the variable `myCommand` and set it with the command that you execute to start the server. The command looks for the process and kill it ",
+                    "order": 6
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/grammar-check/versions/0.2.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/sirenard/atom-grammar-check/tarball/refs/tags/v0.2.3",
+            "sha": "c5eb37688587b237c0382d1cd08d7aaaa366de58"
+        },
+        "0.2.1": {
+            "name": "grammar-check",
+            "main": "./lib/main",
+            "version": "0.2.1",
+            "description": "A multilingual grammar checker that dynamically highlights mistakes and proposes a correction",
+            "author": "Renard Simon",
+            "keywords": [
+                "spellchecker",
+                "grammar",
+                "orthographic"
+            ],
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "repository": "https://github.com/sirenard/atom-grammar-check",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "gingerbread": ">=0.6.x",
+                "async-mutex": ">=0.3.x"
+            },
+            "configSchema": {
+                "usedCorrecter": {
+                    "type": "string",
+                    "default": "ginger",
+                    "description": "Choose which corrector must be used",
+                    "order": 1,
+                    "enum": [
+                        {
+                            "value": "languagetool",
+                            "description": "languagetool"
+                        },
+                        {
+                            "value": "ginger",
+                            "description": "ginger"
+                        }
+                    ]
+                },
+                "language": {
+                    "type": "string",
+                    "default": "auto",
+                    "description": "Choose which language languagetool will use use",
+                    "order": 2,
+                    "enum": [
+                        {
+                            "value": "auto",
+                            "description": "auto"
+                        },
+                        {
+                            "value": "ar",
+                            "description": "Arabic"
+                        },
+                        {
+                            "value": "ast-ES",
+                            "description": "Asturian"
+                        },
+                        {
+                            "value": "be-BY",
+                            "description": "Belarusian"
+                        },
+                        {
+                            "value": "br-FR",
+                            "description": "Breton"
+                        },
+                        {
+                            "value": "ca-ES",
+                            "description": "Catalan"
+                        },
+                        {
+                            "value": "ca-ES-valencia",
+                            "description": "Catalan (Valencian)"
+                        },
+                        {
+                            "value": "zh-CN",
+                            "description": "Chinese"
+                        },
+                        {
+                            "value": "da-DK",
+                            "description": "Danish"
+                        },
+                        {
+                            "value": "nl",
+                            "description": "Dutch"
+                        },
+                        {
+                            "value": "nl-BE",
+                            "description": "Dutch (Belgium)"
+                        },
+                        {
+                            "value": "en",
+                            "description": "English"
+                        },
+                        {
+                            "value": "en-AU",
+                            "description": "English (Australian)"
+                        },
+                        {
+                            "value": "en-CA",
+                            "description": "English (Canadian)"
+                        },
+                        {
+                            "value": "en-GB",
+                            "description": "English (GB)"
+                        },
+                        {
+                            "value": "en-NZ",
+                            "description": "English (New Zealand)"
+                        },
+                        {
+                            "value": "en-ZA",
+                            "description": "English (South African)"
+                        },
+                        {
+                            "value": "en-US",
+                            "description": "English (US)"
+                        },
+                        {
+                            "value": "eo",
+                            "description": "Esperanto"
+                        },
+                        {
+                            "value": "fr",
+                            "description": "French"
+                        },
+                        {
+                            "value": "gl-ES",
+                            "description": "Galician"
+                        },
+                        {
+                            "value": "de",
+                            "description": "German"
+                        },
+                        {
+                            "value": "de-AT",
+                            "description": "German (Austria)"
+                        },
+                        {
+                            "value": "de-DE",
+                            "description": "German (Germany)"
+                        },
+                        {
+                            "value": "de-CH",
+                            "description": "German (Swiss)"
+                        },
+                        {
+                            "value": "el-GR",
+                            "description": "Greek"
+                        },
+                        {
+                            "value": "ga-IE",
+                            "description": "Irish"
+                        },
+                        {
+                            "value": "it",
+                            "description": "Italian"
+                        },
+                        {
+                            "value": "ja-JP",
+                            "description": "Japanese"
+                        },
+                        {
+                            "value": "km-KH",
+                            "description": "Khmer"
+                        },
+                        {
+                            "value": "nb",
+                            "description": "Norwegian (Bokmål)"
+                        },
+                        {
+                            "value": "fa",
+                            "description": "Persian"
+                        },
+                        {
+                            "value": "pl-PL",
+                            "description": "Polish"
+                        },
+                        {
+                            "value": "pt",
+                            "description": "Portuguese"
+                        },
+                        {
+                            "value": "pt-AO",
+                            "description": "Portuguese (Angola preAO)"
+                        },
+                        {
+                            "value": "pt-BR",
+                            "description": "Portuguese (Brazil)"
+                        },
+                        {
+                            "value": "pt-MZ",
+                            "description": "Portuguese (Moçambique preAO)"
+                        },
+                        {
+                            "value": "pt-PT",
+                            "description": "Portuguese (Portugal)"
+                        },
+                        {
+                            "value": "ro-RO",
+                            "description": "Romanian"
+                        },
+                        {
+                            "value": "ru-RU",
+                            "description": "Russian"
+                        },
+                        {
+                            "value": "de-DE-x-simple-language",
+                            "description": "Simple German"
+                        },
+                        {
+                            "value": "sk-SK",
+                            "description": "Slovak"
+                        },
+                        {
+                            "value": "sl-SI",
+                            "description": "Slovenian"
+                        },
+                        {
+                            "value": "es",
+                            "description": "Spanish"
+                        },
+                        {
+                            "value": "es-AR",
+                            "description": "Spanish (voseo)"
+                        },
+                        {
+                            "value": "sv",
+                            "description": "Swedish"
+                        },
+                        {
+                            "value": "tl-PH",
+                            "description": "Tagalog"
+                        },
+                        {
+                            "value": "ta-IN",
+                            "description": "Tamil"
+                        },
+                        {
+                            "value": "uk-UA",
+                            "description": "Ukrainian"
+                        }
+                    ]
+                },
+                "languagetoolUrl": {
+                    "type": "string",
+                    "default": "http://localhost:8081",
+                    "description": "URL of the language tool server. It's better to have a local language tool server ([see here](https://dev.languagetool.org/http-server.html)) due to the big amount of requests",
+                    "order": 3
+                },
+                "excludedScopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "support.functort.functiion.tex",
+                        "meta.preamble.latex",
+                        "support.type.function.latex",
+                        "comment.line.percentage.tex",
+                        "storage.type.function.latex",
+                        "suppon.latex",
+                        "string.other.math.tex",
+                        "string.other.math.block.environment.latex",
+                        "variable.parameter.function.latex",
+                        "constant.other.reference.latex",
+                        "punctuation"
+                    ],
+                    "description": "List of sub-scopes that will be ignored. Specify the most detailed scope to avoid ignoring otherwise relevant text. The scopes will be parsed as regular expressions. See [the README](https://github.com/atom/spell-check#spell-check-package-) for more information on finding the correct scope for a specific language.",
+                    "order": 4
+                },
+                "languageToolStartServerCommand": {
+                    "type": "string",
+                    "default": "java -cp languagetool-server.jar org.languagetool.server.HTTPServer --port 8081",
+                    "description": "If a local server is used, this command will be executed at startup to start the server more information on local server [here](https://dev.languagetool.org/http-server.html).",
+                    "order": 5
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/grammar-check/versions/0.2.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/sirenard/atom-grammar-check/tarball/refs/tags/v0.2.1",
+            "sha": "5b043ad8d73369387c0f0338c48ad5efe7cb3332"
+        },
+        "0.2.0": {
+            "name": "grammar-check",
+            "main": "./lib/main",
+            "version": "0.2.0",
+            "description": "A multilingual grammar checker that dynamically highlights mistakes and proposes a correction",
+            "keywords": [],
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "repository": "https://github.com/sirenard/atom-grammar-check",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "gingerbread": ">=0.6.x",
+                "async-mutex": ">=0.3.x"
+            },
+            "configSchema": {
+                "usedCorrecter": {
+                    "type": "string",
+                    "default": "ginger",
+                    "description": "Choose which corrector must be used",
+                    "order": 1,
+                    "enum": [
+                        {
+                            "value": "languagetool",
+                            "description": "languagetool"
+                        },
+                        {
+                            "value": "ginger",
+                            "description": "ginger"
+                        }
+                    ]
+                },
+                "language": {
+                    "type": "string",
+                    "default": "auto",
+                    "description": "Choose which language languagetool will use use",
+                    "order": 2,
+                    "enum": [
+                        {
+                            "value": "auto",
+                            "description": "auto"
+                        },
+                        {
+                            "value": "ar",
+                            "description": "Arabic"
+                        },
+                        {
+                            "value": "ast-ES",
+                            "description": "Asturian"
+                        },
+                        {
+                            "value": "be-BY",
+                            "description": "Belarusian"
+                        },
+                        {
+                            "value": "br-FR",
+                            "description": "Breton"
+                        },
+                        {
+                            "value": "ca-ES",
+                            "description": "Catalan"
+                        },
+                        {
+                            "value": "ca-ES-valencia",
+                            "description": "Catalan (Valencian)"
+                        },
+                        {
+                            "value": "zh-CN",
+                            "description": "Chinese"
+                        },
+                        {
+                            "value": "da-DK",
+                            "description": "Danish"
+                        },
+                        {
+                            "value": "nl",
+                            "description": "Dutch"
+                        },
+                        {
+                            "value": "nl-BE",
+                            "description": "Dutch (Belgium)"
+                        },
+                        {
+                            "value": "en",
+                            "description": "English"
+                        },
+                        {
+                            "value": "en-AU",
+                            "description": "English (Australian)"
+                        },
+                        {
+                            "value": "en-CA",
+                            "description": "English (Canadian)"
+                        },
+                        {
+                            "value": "en-GB",
+                            "description": "English (GB)"
+                        },
+                        {
+                            "value": "en-NZ",
+                            "description": "English (New Zealand)"
+                        },
+                        {
+                            "value": "en-ZA",
+                            "description": "English (South African)"
+                        },
+                        {
+                            "value": "en-US",
+                            "description": "English (US)"
+                        },
+                        {
+                            "value": "eo",
+                            "description": "Esperanto"
+                        },
+                        {
+                            "value": "fr",
+                            "description": "French"
+                        },
+                        {
+                            "value": "gl-ES",
+                            "description": "Galician"
+                        },
+                        {
+                            "value": "de",
+                            "description": "German"
+                        },
+                        {
+                            "value": "de-AT",
+                            "description": "German (Austria)"
+                        },
+                        {
+                            "value": "de-DE",
+                            "description": "German (Germany)"
+                        },
+                        {
+                            "value": "de-CH",
+                            "description": "German (Swiss)"
+                        },
+                        {
+                            "value": "el-GR",
+                            "description": "Greek"
+                        },
+                        {
+                            "value": "ga-IE",
+                            "description": "Irish"
+                        },
+                        {
+                            "value": "it",
+                            "description": "Italian"
+                        },
+                        {
+                            "value": "ja-JP",
+                            "description": "Japanese"
+                        },
+                        {
+                            "value": "km-KH",
+                            "description": "Khmer"
+                        },
+                        {
+                            "value": "nb",
+                            "description": "Norwegian (Bokmål)"
+                        },
+                        {
+                            "value": "fa",
+                            "description": "Persian"
+                        },
+                        {
+                            "value": "pl-PL",
+                            "description": "Polish"
+                        },
+                        {
+                            "value": "pt",
+                            "description": "Portuguese"
+                        },
+                        {
+                            "value": "pt-AO",
+                            "description": "Portuguese (Angola preAO)"
+                        },
+                        {
+                            "value": "pt-BR",
+                            "description": "Portuguese (Brazil)"
+                        },
+                        {
+                            "value": "pt-MZ",
+                            "description": "Portuguese (Moçambique preAO)"
+                        },
+                        {
+                            "value": "pt-PT",
+                            "description": "Portuguese (Portugal)"
+                        },
+                        {
+                            "value": "ro-RO",
+                            "description": "Romanian"
+                        },
+                        {
+                            "value": "ru-RU",
+                            "description": "Russian"
+                        },
+                        {
+                            "value": "de-DE-x-simple-language",
+                            "description": "Simple German"
+                        },
+                        {
+                            "value": "sk-SK",
+                            "description": "Slovak"
+                        },
+                        {
+                            "value": "sl-SI",
+                            "description": "Slovenian"
+                        },
+                        {
+                            "value": "es",
+                            "description": "Spanish"
+                        },
+                        {
+                            "value": "es-AR",
+                            "description": "Spanish (voseo)"
+                        },
+                        {
+                            "value": "sv",
+                            "description": "Swedish"
+                        },
+                        {
+                            "value": "tl-PH",
+                            "description": "Tagalog"
+                        },
+                        {
+                            "value": "ta-IN",
+                            "description": "Tamil"
+                        },
+                        {
+                            "value": "uk-UA",
+                            "description": "Ukrainian"
+                        }
+                    ]
+                },
+                "languagetoolUrl": {
+                    "type": "string",
+                    "default": "http://localhost:8081",
+                    "description": "URL of the language tool server. It's better to have a local language tool server ([see here](https://dev.languagetool.org/http-server.html)) due to the big amount of requests",
+                    "order": 3
+                },
+                "excludedScopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "support.functort.functiion.tex",
+                        "meta.preamble.latex",
+                        "support.type.function.latex",
+                        "comment.line.percentage.tex",
+                        "storage.type.function.latex",
+                        "suppon.latex",
+                        "string.other.math.tex",
+                        "string.other.math.block.environment.latex",
+                        "variable.parameter.function.latex",
+                        "constant.other.reference.latex",
+                        "punctuation"
+                    ],
+                    "description": "List of sub-scopes that will be ignored. Specify the most detailed scope to avoid ignoring otherwise relevant text. The scopes will be parsed as regular expressions. See [the README](https://github.com/atom/spell-check#spell-check-package-) for more information on finding the correct scope for a specific language.",
+                    "order": 4
+                },
+                "languageToolStartServerCommand": {
+                    "type": "string",
+                    "default": "java -cp languagetool-server.jar org.languagetool.server.HTTPServer --port 8081",
+                    "description": "If a local server is used, this command will be executed at startup to start the server more information on local server [here](https://dev.languagetool.org/http-server.html).",
+                    "order": 5
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/grammar-check/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/sirenard/atom-grammar-check/tarball/refs/tags/v0.2.0",
+            "sha": "1e23b88d4614f1db525df4d75d6c33ba2276fc00"
+        },
+        "0.1.0": {
+            "name": "grammar-check",
+            "main": "./lib/main",
+            "version": "0.1.0",
+            "description": "An english grammar checker that dynamically highlights mistakes and proposes a correction",
+            "keywords": [],
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "repository": "https://github.com/sirenard/atom-grammar-check",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "gingerbread": ">=0.6.x",
+                "async-mutex": ">=0.3.x"
+            },
+            "configSchema": {
+                "excludedScopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "support.functort.functiion.tex",
+                        "meta.preamble.latex",
+                        "support.type.function.latex",
+                        "comment.line.percentage.tex",
+                        "storage.type.function.latex",
+                        "suppon.latex",
+                        "string.other.math.tex",
+                        "string.other.math.block.environment.latex",
+                        "variable.parameter.function.latex",
+                        "constant.other.reference.latex",
+                        "punctuation"
+                    ],
+                    "description": "List of sub-scopes that will be ignored. Specify the most detailed scope to avoid ignoring otherwise relevant text. The scopes will be parsed as regular expressions. See [the README](https://github.com/atom/spell-check#spell-check-package-) for more information on finding the correct scope for a specific language.",
+                    "order": 2
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/grammar-check/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/sirenard/atom-grammar-check/tarball/refs/tags/v0.1.0",
+            "sha": "15369741135235a93e4806bae275214fe00ee4e6"
+        }
+    },
+    "readme": "# atom-grammar-check\n\nThis atom plugin highlights the syntax and spell mistakes in your editor.\n\n![Small illustration](ressources/demo.png)\n\n## Features:\n\n* Highlight mistakes\n* Suggest replacing text\n* Highlight only text in specific scopes (see [here](#scopes))\n* By default,  highlight correctly latex files and comments in other languages\n\n## LaTeX\n\nIt's advised to separate different blocks (paragraph, section, ...) with new lines to reduce the number of mistakes not \nhighlighted. \n\n## Correcter modules\n\nThere is 2 modules implemented:\n\n1. **ginger** that work online (using gingerbread library)\n2. **languagetool** that can work online and offline and support more than 20 languages. Due to the big amount of\n   requests, it's recommended to have a local server.\n\n## Languagetool support\n\nIf you use a local languagetool server (see [here](https://dev.languagetool.org/http-server.html) to install your own),\nyou can give in option a command line that will be executed when the package is activated to try to start the server.\n\nYou can add in package option *Language Tool Stop Server Command* a command that shut down the server when the package is disabled.\n\n## Scopes\n\nIn the parameters, there are 2 fields (*Excluded Scopes* and *Included Scopes*)for the scopes' management. Both are list\nof atom scopes and will be use as regex. To be highlighted, a text must be matched by at least one regex in the \n*Included Scopes* list and none of the *Excluded Scopes* list.\n\nBy default, the package is configured to highlight correctly latex files and comments in other languages.\n\n## ToDO:\n\n* Optimization?\n* On/Off toggle\n",
+    "metadata": {
+        "name": "grammar-check",
+        "main": "./lib/main",
+        "version": "0.3.1",
+        "description": "A multilingual grammar checker that dynamically highlights mistakes and proposes a correction",
+        "author": "Renard Simon",
+        "keywords": [
+            "spellchecker",
+            "grammar",
+            "orthographic"
+        ],
+        "activationHooks": [
+            "core:loaded-shell-environment"
+        ],
+        "repository": "https://github.com/sirenard/atom-grammar-check",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {
+            "gingerbread": ">=0.6.x",
+            "async-mutex": ">=0.3.x"
+        },
+        "configSchema": {
+            "usedCorrecter": {
+                "type": "string",
+                "default": "ginger",
+                "description": "Choose which corrector must be used",
+                "order": 1,
+                "enum": [
+                    {
+                        "value": "languagetool",
+                        "description": "languagetool"
+                    },
+                    {
+                        "value": "ginger",
+                        "description": "ginger"
+                    }
+                ]
+            },
+            "language": {
+                "type": "string",
+                "default": "auto",
+                "description": "Choose which language languagetool will use use",
+                "order": 2,
+                "enum": [
+                    {
+                        "value": "auto",
+                        "description": "auto"
+                    },
+                    {
+                        "value": "ar",
+                        "description": "Arabic"
+                    },
+                    {
+                        "value": "ast-ES",
+                        "description": "Asturian"
+                    },
+                    {
+                        "value": "be-BY",
+                        "description": "Belarusian"
+                    },
+                    {
+                        "value": "br-FR",
+                        "description": "Breton"
+                    },
+                    {
+                        "value": "ca-ES",
+                        "description": "Catalan"
+                    },
+                    {
+                        "value": "ca-ES-valencia",
+                        "description": "Catalan (Valencian)"
+                    },
+                    {
+                        "value": "zh-CN",
+                        "description": "Chinese"
+                    },
+                    {
+                        "value": "da-DK",
+                        "description": "Danish"
+                    },
+                    {
+                        "value": "nl",
+                        "description": "Dutch"
+                    },
+                    {
+                        "value": "nl-BE",
+                        "description": "Dutch (Belgium)"
+                    },
+                    {
+                        "value": "en",
+                        "description": "English"
+                    },
+                    {
+                        "value": "en-AU",
+                        "description": "English (Australian)"
+                    },
+                    {
+                        "value": "en-CA",
+                        "description": "English (Canadian)"
+                    },
+                    {
+                        "value": "en-GB",
+                        "description": "English (GB)"
+                    },
+                    {
+                        "value": "en-NZ",
+                        "description": "English (New Zealand)"
+                    },
+                    {
+                        "value": "en-ZA",
+                        "description": "English (South African)"
+                    },
+                    {
+                        "value": "en-US",
+                        "description": "English (US)"
+                    },
+                    {
+                        "value": "eo",
+                        "description": "Esperanto"
+                    },
+                    {
+                        "value": "fr",
+                        "description": "French"
+                    },
+                    {
+                        "value": "gl-ES",
+                        "description": "Galician"
+                    },
+                    {
+                        "value": "de",
+                        "description": "German"
+                    },
+                    {
+                        "value": "de-AT",
+                        "description": "German (Austria)"
+                    },
+                    {
+                        "value": "de-DE",
+                        "description": "German (Germany)"
+                    },
+                    {
+                        "value": "de-CH",
+                        "description": "German (Swiss)"
+                    },
+                    {
+                        "value": "el-GR",
+                        "description": "Greek"
+                    },
+                    {
+                        "value": "ga-IE",
+                        "description": "Irish"
+                    },
+                    {
+                        "value": "it",
+                        "description": "Italian"
+                    },
+                    {
+                        "value": "ja-JP",
+                        "description": "Japanese"
+                    },
+                    {
+                        "value": "km-KH",
+                        "description": "Khmer"
+                    },
+                    {
+                        "value": "nb",
+                        "description": "Norwegian (Bokmål)"
+                    },
+                    {
+                        "value": "fa",
+                        "description": "Persian"
+                    },
+                    {
+                        "value": "pl-PL",
+                        "description": "Polish"
+                    },
+                    {
+                        "value": "pt",
+                        "description": "Portuguese"
+                    },
+                    {
+                        "value": "pt-AO",
+                        "description": "Portuguese (Angola preAO)"
+                    },
+                    {
+                        "value": "pt-BR",
+                        "description": "Portuguese (Brazil)"
+                    },
+                    {
+                        "value": "pt-MZ",
+                        "description": "Portuguese (Moçambique preAO)"
+                    },
+                    {
+                        "value": "pt-PT",
+                        "description": "Portuguese (Portugal)"
+                    },
+                    {
+                        "value": "ro-RO",
+                        "description": "Romanian"
+                    },
+                    {
+                        "value": "ru-RU",
+                        "description": "Russian"
+                    },
+                    {
+                        "value": "de-DE-x-simple-language",
+                        "description": "Simple German"
+                    },
+                    {
+                        "value": "sk-SK",
+                        "description": "Slovak"
+                    },
+                    {
+                        "value": "sl-SI",
+                        "description": "Slovenian"
+                    },
+                    {
+                        "value": "es",
+                        "description": "Spanish"
+                    },
+                    {
+                        "value": "es-AR",
+                        "description": "Spanish (voseo)"
+                    },
+                    {
+                        "value": "sv",
+                        "description": "Swedish"
+                    },
+                    {
+                        "value": "tl-PH",
+                        "description": "Tagalog"
+                    },
+                    {
+                        "value": "ta-IN",
+                        "description": "Tamil"
+                    },
+                    {
+                        "value": "uk-UA",
+                        "description": "Ukrainian"
+                    }
+                ]
+            },
+            "languagetoolUrl": {
+                "type": "string",
+                "default": "http://localhost:8081",
+                "description": "URL of the language tool server. It's better to have a local language tool server ([see here](https://dev.languagetool.org/http-server.html)) due to the big amount of requests",
+                "order": 3
+            },
+            "excludedScopes": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "default": [
+                    "meta.reference.latex",
+                    "string.other.math.tex",
+                    "variable.parameter.*",
+                    "keyword.*",
+                    "support.*",
+                    "meta.function.environment.*",
+                    "punctuation.*",
+                    "markup.raw.verbatim.latex"
+                ],
+                "description": "List of sub-scopes that will be ignored. The scopes will be parsed as regular expressions.",
+                "order": 4
+            },
+            "includedScopes": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "default": [
+                    "text.tex.latex",
+                    ".*comment.*"
+                ],
+                "description": "List of sub-scopes that are allowed to be checked. The scopes will be parsed as regular expressions.",
+                "order": 5
+            },
+            "languageToolStartServerCommand": {
+                "type": "string",
+                "default": "java -cp ./LanguageTool-5.5/languagetool-server.jar org.languagetool.server.HTTPServer --port 8081",
+                "description": "If a local server is used, this command will be executed at startup to start the server more information on local server [here](https://dev.languagetool.org/http-server.html).",
+                "order": 6
+            },
+            "languageToolStopServerCommand": {
+                "type": "string",
+                "default": "myCommand=\"java -cp ./LanguageTool-5.5/languagetool-server.jar org.languagetool.server.HTTPServer --port 8081\";ps -ax | grep \"$myCommand\" | while read -r line; do kill $(echo $line | cut -d ' ' -f1) 2> /dev/null; done",
+                "description": "If a local server is used, this command will be executed when the package is deactivated. The default value works on linux, you just have to change on the first instruction the variable `myCommand` and set it with the command that you execute to start the server. The command looks for the process and kill it ",
+                "order": 7
+            }
+        }
+    },
+    "created": 1658342804169,
+    "updated": 1658342804169,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

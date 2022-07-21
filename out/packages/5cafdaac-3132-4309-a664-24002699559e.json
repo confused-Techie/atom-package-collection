@@ -1,0 +1,48 @@
+{
+    "name": "a-package-loader",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zren/atom-a-package-loader"
+    },
+    "downloads": 551,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "1.0.0"
+    },
+    "versions": {
+        "1.0.0": {
+            "name": "a-package-loader",
+            "main": "./lib/main",
+            "version": "1.0.0",
+            "description": "A short description of your package",
+            "repository": "https://github.com/zren/atom-a-package-loader",
+            "license": "MIT",
+            "engines": {
+                "atom": ">0.50.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/a-package-loader/versions/1.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Zren/atom-a-package-loader/tarball/refs/tags/v1.0.0",
+            "sha": "832f189d4a08a1c5cb0734d8095eb4fef1886370"
+        }
+    },
+    "readme": "# A Package Loader\n\nA simple package loader to attempt to load slow packages in the background.\n\n## Settings\n\n* `automaticallyAddSlowLoadingPackages` Turn on/off automatically adding packages that take over longer than `slowLoadingPackageThreshold` milliseconds to load.\n* `delayBeforeStarting` The delay in milliseconds before beginning to load slow packages after this package is loaded.\n* `delayBetweenPackages` The delay in milliseconds between loading each slow package. This prevents freezing the UI during load.\n* `ignorePackageNames` A list of packages that will never be considered slow loading, and thus are always loaded before the window is shown.\n* `deferredLoadingPackageNames` A list of packages that will be loaded in the background. This is automatically populated if `automaticallyAddSlowLoadingPackages` is true.\n* `slowLoadingPackageThreshold` Maximum time in milliseconds a package can take before being considered slow.\n\n## How It Works\n\nThis package works by attempting to be the first package to load (which is why it starts with \"a\"). We can then insert dummy packages into the package manager to skip loading the real package. This is due to this check [`return pack if pack = @getLoadedPackage(name)`](https://github.com/atom/atom/blob/v0.106.0/src/package-manager.coffee#L152) in `packageManager.loadPackage()`.\n\nWe then do a fixed delay `setTimeout(..., 1500)` instead of a `atom.getCurrentWindow()` + `atom.getCurrentWindow().isLoading()` can take up to 100ms. This value can be changed in the config.\n\nAfter loading a package, we then wait a bit (default: `25ms`) in order for the UI loop to iterate. This prevents the UI from completely freezing. The UI might freeze if a single package takes forever.\n\nOnce completely loaded, we sweep the package load+activation times to see if they are considered slow (default: `loadTime + activationTime > 30ms`).\n\n## TODO\n\n* If a slow loading package errors, reattempt loading it again at the end.\n",
+    "metadata": {
+        "name": "a-package-loader",
+        "main": "./lib/main",
+        "version": "1.0.0",
+        "description": "A short description of your package",
+        "repository": "https://github.com/zren/atom-a-package-loader",
+        "license": "MIT",
+        "engines": {
+            "atom": ">0.50.0"
+        },
+        "dependencies": {}
+    },
+    "created": 1658330480751,
+    "updated": 1658330480751,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

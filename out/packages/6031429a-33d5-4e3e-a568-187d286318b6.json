@@ -1,0 +1,2722 @@
+{
+    "name": "tabs",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/atom/tabs"
+    },
+    "downloads": 400326,
+    "stargazers_count": 52,
+    "releases": {
+        "latest": "0.110.2"
+    },
+    "versions": {
+        "0.110.2": {
+            "name": "tabs",
+            "version": "0.110.2",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": ">=1.17.0"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": [
+                        "boolean",
+                        "string"
+                    ],
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                },
+                "displayMruTabList": {
+                    "type": "boolean",
+                    "title": "Display MRU Tab Switching List",
+                    "default": true,
+                    "description": "When MRU Tab Switching is enabled, display the most-recently-used tab list."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "**/fixtures/*.js"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.110.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.110.2",
+            "sha": "76535053c55808adf350d54e305e977fb415e3da"
+        },
+        "0.110.1": {
+            "name": "tabs",
+            "version": "0.110.1",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": ">=1.17.0"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": [
+                        "boolean",
+                        "string"
+                    ],
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                },
+                "displayMruTabList": {
+                    "type": "boolean",
+                    "title": "Display MRU Tab Switching List",
+                    "default": true,
+                    "description": "When MRU Tab Switching is enabled, display the most-recently-used tab list."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "**/fixtures/*.js"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.110.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.110.1",
+            "sha": "76b8313602f43be9ec543b7180aa16a1119e75e5"
+        },
+        "0.110.0": {
+            "name": "tabs",
+            "version": "0.110.0",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": ">=1.17.0"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": [
+                        "boolean",
+                        "string"
+                    ],
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                },
+                "displayMruTabList": {
+                    "type": "boolean",
+                    "title": "Display MRU Tab Switching List",
+                    "default": true,
+                    "description": "When MRU Tab Switching is enabled, display the most-recently-used tab list."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "**/fixtures/*.js"
+                ]
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.110.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.110.0",
+            "sha": "9a9f69a36f2222b8a19c8599c70dc145cf8524b5"
+        },
+        "0.109.2": {
+            "name": "tabs",
+            "version": "0.109.2",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                },
+                "displayMruTabList": {
+                    "type": "boolean",
+                    "title": "Display MRU Tab Switching List",
+                    "default": true,
+                    "description": "When MRU Tab Switching is enabled, display the most-recently-used tab list."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.109.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.109.2",
+            "sha": "9a199eb37e029083a432e8fb7ddaf271e1655d04"
+        },
+        "0.109.1": {
+            "name": "tabs",
+            "version": "0.109.1",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                },
+                "displayMruTabList": {
+                    "type": "boolean",
+                    "title": "Display MRU Tab Switching List",
+                    "default": true,
+                    "description": "When MRU Tab Switching is enabled, display the most-recently-used tab list."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.109.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.109.1",
+            "sha": "a80fd865356c2f4788532bed437f3932e864d6cf"
+        },
+        "0.109.0": {
+            "name": "tabs",
+            "version": "0.109.0",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                },
+                "displayMruTabList": {
+                    "type": "boolean",
+                    "title": "Display MRU Tab Switching List",
+                    "default": true,
+                    "description": "When MRU Tab Switching is enabled, display the most-recently-used tab list."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.109.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.109.0",
+            "sha": "a869c9c6bebb5a3560515180aa1988b70a2817b7"
+        },
+        "0.108.0": {
+            "name": "tabs",
+            "version": "0.108.0",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                },
+                "displayMruTabList": {
+                    "type": "boolean",
+                    "title": "Display MRU Tab Switching List",
+                    "default": true,
+                    "description": "When MRU Tab Switching is enabled, display the most-recently-used tab list."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.108.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.108.0",
+            "sha": "d2f963e08df4f58e4aebf1885c88f8eab246ea60"
+        },
+        "0.107.4": {
+            "name": "tabs",
+            "version": "0.107.4",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.107.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.107.4",
+            "sha": "8abe88773c0f9dc27e636161650e08894b121040"
+        },
+        "0.107.3": {
+            "name": "tabs",
+            "version": "0.107.3",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.107.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.107.3",
+            "sha": "76fda4a4fdb9139b341199c444b33eedb1390e23"
+        },
+        "0.107.2": {
+            "name": "tabs",
+            "version": "0.107.2",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.107.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.107.2",
+            "sha": "633c52167bd95806936c993ced926810ad6a7b22"
+        },
+        "0.107.1": {
+            "name": "tabs",
+            "version": "0.107.1",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.107.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.107.1",
+            "sha": "2decc68282c50ee0db70a5da3ce3f3755635d7c1"
+        },
+        "0.107.0": {
+            "name": "tabs",
+            "version": "0.107.0",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.107.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.107.0",
+            "sha": "305fdc4db1bd3ac44922b31bc16b7c23b925c4fd"
+        },
+        "0.106.2": {
+            "name": "tabs",
+            "version": "0.106.2",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.106.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.106.2",
+            "sha": "ce1d92e0abb669155caa178bb71166b9f16f329a"
+        },
+        "0.106.1": {
+            "name": "tabs",
+            "version": "0.106.1",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.106.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.106.1",
+            "sha": "6a94ea3730274fb8744e25f9e4c3aa1cd71721c1"
+        },
+        "0.106.0": {
+            "name": "tabs",
+            "version": "0.106.0",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.106.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.106.0",
+            "sha": "d4f3d91153a8a92fb10be76e1607ea90a5e290fc"
+        },
+        "0.105.5": {
+            "name": "tabs",
+            "version": "0.105.5",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.105.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.105.5",
+            "sha": "fcd14eb5509ce3590cb0163c0e5697514679b5d5"
+        },
+        "0.105.4": {
+            "name": "tabs",
+            "version": "0.105.4",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.105.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.105.4",
+            "sha": "0fb0ca9649b738289ce82347d46291983710f14b"
+        },
+        "0.105.3": {
+            "name": "tabs",
+            "version": "0.105.3",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.105.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.105.3",
+            "sha": "398597dcaadd1e04f755f842a4eb89c29a123683"
+        },
+        "0.105.2": {
+            "name": "tabs",
+            "version": "0.105.2",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.105.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.105.2",
+            "sha": "5d15e74b49ba74cd4b1cddcef6be3a0ac9a6cae4"
+        },
+        "0.105.1": {
+            "name": "tabs",
+            "version": "0.105.1",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.105.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.105.1",
+            "sha": "2e4e247d8f4375546b218fbae636f2b7995c8fd4"
+        },
+        "0.105.0": {
+            "name": "tabs",
+            "version": "0.105.0",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.105.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.105.0",
+            "sha": "3caa941048bd2fced50cd0bc460830369d1d74ba"
+        },
+        "0.104.7": {
+            "name": "tabs",
+            "version": "0.104.7",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.104.7/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.104.7",
+            "sha": "f9c618d1136caed0d2943397bf512daf1a1d7ebb"
+        },
+        "0.104.6": {
+            "name": "tabs",
+            "version": "0.104.6",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.104.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.104.6",
+            "sha": "dd00b961e6e240f91cba83793a43b0f9a6f87367"
+        },
+        "0.104.5": {
+            "name": "tabs",
+            "version": "0.104.5",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.104.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.104.5",
+            "sha": "a470c3da018d5c22797be4e5c4ff831dd37ad0e0"
+        },
+        "0.104.4": {
+            "name": "tabs",
+            "version": "0.104.4",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.104.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.104.4",
+            "sha": "a5afefd5e0fb04f1f7080f6ac20279c6103d86f1"
+        },
+        "0.104.3": {
+            "name": "tabs",
+            "version": "0.104.3",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^3.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.104.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.104.3",
+            "sha": "181ba4b54e65f972489c9f5e2a45d70630cfe826"
+        },
+        "0.104.2": {
+            "name": "tabs",
+            "version": "0.104.2",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^2.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.104.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.104.2",
+            "sha": "25cd308eab5df0479428b8c5626c22e49401532a"
+        },
+        "0.104.1": {
+            "name": "tabs",
+            "version": "0.104.1",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^2.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.104.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.104.1",
+            "sha": "4c94444616f0ea6f851f62fd825c9c114669e988"
+        },
+        "0.104.0": {
+            "name": "tabs",
+            "version": "0.104.0",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "fs-plus": "^2.0.0",
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                },
+                "enableMruTabSwitching": {
+                    "type": "boolean",
+                    "title": "Enable MRU Tab Switching",
+                    "default": true,
+                    "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+                }
+            },
+            "devDependencies": {
+                "coffeelint": "^1.9.7",
+                "babel-cli": "6.5.1",
+                "babel-eslint": "5.0.0-beta10",
+                "babel-preset-es2015": "6.5.0",
+                "babel-preset-stage-0": "6.5.0",
+                "babel-register": "6.5.2",
+                "eslint": "2.2.0",
+                "eslint-config-standard": "5.1.0",
+                "eslint-plugin-promise": "1.0.8",
+                "eslint-plugin-standard": "1.3.1"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.104.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.104.0",
+            "sha": "a796fbb18c945e06d5a8ba784a0f1058274ab985"
+        },
+        "0.103.1": {
+            "name": "tabs",
+            "version": "0.103.1",
+            "main": "./lib/main",
+            "description": "Display a selectable tab for each editor open.",
+            "license": "MIT",
+            "repository": "https://github.com/atom/tabs",
+            "engines": {
+                "atom": "*"
+            },
+            "dependencies": {
+                "temp": "~0.8.1",
+                "underscore-plus": "1.x"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "showIcons": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+                },
+                "alwaysShowTabBar": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show the tab bar even when only one tab is open."
+                },
+                "tabScrolling": {
+                    "type": "any",
+                    "enum": [
+                        true,
+                        false,
+                        "platform"
+                    ],
+                    "default": "platform",
+                    "description": "Jump to next or previous tab by scrolling on the tab bar."
+                },
+                "tabScrollingThreshold": {
+                    "type": "integer",
+                    "default": 120,
+                    "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+                },
+                "enableVcsColoring": {
+                    "type": "boolean",
+                    "title": "Enable VCS Coloring",
+                    "default": false,
+                    "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+                },
+                "addNewTabsAtEnd": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+                }
+            },
+            "devDependencies": {
+                "atom-space-pen-views": "^2.0.0",
+                "coffeelint": "^1.9.7"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/tabs/versions/0.103.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/tabs/tarball/refs/tags/v0.103.1",
+            "sha": "a070d817c0b2c376497a0ccb9b4c8071805fa9c1"
+        }
+    },
+    "readme": "# Tabs package\n[![OS X Build Status](https://travis-ci.org/atom/tabs.svg?branch=master)](https://travis-ci.org/atom/tabs) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/nf4hdmuk4i9xkfmb/branch/master?svg=true)](https://ci.appveyor.com/project/Atom/tabs/branch/master) [![Dependency Status](https://david-dm.org/atom/tabs.svg)](https://david-dm.org/atom/tabs)\n\nDisplay selectable tabs above the editor.\n\n![](https://cloud.githubusercontent.com/assets/18362/10862852/c6de2de0-800d-11e5-8158-284f30aaf5d2.png)\n\n## API\n\nTabs can display icons next to file names. These icons are customizable by installing a package that provides an `atom.file-icons` service.\n\nThe `atom.file-icons` service must provide the following methods:\n\n* `iconClassForPath(path)` - Returns a CSS class name to add to the tab view\n",
+    "metadata": {
+        "name": "tabs",
+        "version": "0.110.2",
+        "main": "./lib/main",
+        "description": "Display a selectable tab for each editor open.",
+        "license": "MIT",
+        "repository": "https://github.com/atom/tabs",
+        "engines": {
+            "atom": ">=1.17.0"
+        },
+        "dependencies": {
+            "fs-plus": "^3.0.0",
+            "temp": "~0.8.1",
+            "underscore-plus": "1.x"
+        },
+        "consumedServices": {
+            "atom.file-icons": {
+                "versions": {
+                    "1.0.0": "consumeFileIcons"
+                }
+            },
+            "file-icons.element-icons": {
+                "versions": {
+                    "1.0.0": "consumeElementIcons"
+                }
+            }
+        },
+        "configSchema": {
+            "showIcons": {
+                "type": "boolean",
+                "default": true,
+                "description": "Show icons in tabs for panes which define an icon, such as the Settings and Project Find Results."
+            },
+            "alwaysShowTabBar": {
+                "type": "boolean",
+                "default": true,
+                "description": "Show the tab bar even when only one tab is open."
+            },
+            "tabScrolling": {
+                "type": [
+                    "boolean",
+                    "string"
+                ],
+                "enum": [
+                    true,
+                    false,
+                    "platform"
+                ],
+                "default": "platform",
+                "description": "Jump to next or previous tab by scrolling on the tab bar."
+            },
+            "tabScrollingThreshold": {
+                "type": "integer",
+                "default": 120,
+                "description": "Threshold for switching to the next/previous tab when the `Tab Scrolling` config setting is enabled. Higher numbers mean that a longer scroll is needed to jump to the next/previous tab."
+            },
+            "enableVcsColoring": {
+                "type": "boolean",
+                "title": "Enable VCS Coloring",
+                "default": false,
+                "description": "Color file names in tabs based on VCS status, similar to how file names are colored in the tree view."
+            },
+            "addNewTabsAtEnd": {
+                "type": "boolean",
+                "default": false,
+                "description": "Add new tabs at the end of the tab bar, rather than after active tab."
+            },
+            "enableMruTabSwitching": {
+                "type": "boolean",
+                "title": "Enable MRU Tab Switching",
+                "default": true,
+                "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
+            },
+            "displayMruTabList": {
+                "type": "boolean",
+                "title": "Display MRU Tab Switching List",
+                "default": true,
+                "description": "When MRU Tab Switching is enabled, display the most-recently-used tab list."
+            }
+        },
+        "devDependencies": {
+            "coffeelint": "^1.9.7",
+            "standard": "^10.0.3"
+        },
+        "standard": {
+            "env": {
+                "atomtest": true,
+                "browser": true,
+                "jasmine": true,
+                "node": true
+            },
+            "globals": [
+                "atom"
+            ],
+            "ignore": [
+                "**/fixtures/*.js"
+            ]
+        }
+    },
+    "created": 1658428851051,
+    "updated": 1658428851051,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

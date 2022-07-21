@@ -1,0 +1,263 @@
+{
+    "name": "ide-erlang",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Juliusan/ide-erlang"
+    },
+    "downloads": 684,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "0.1.1"
+    },
+    "versions": {
+        "0.1.1": {
+            "name": "ide-erlang",
+            "main": "./lib/main",
+            "version": "0.1.1",
+            "description": "Erlang LSP client for Atom using atom-languageclient",
+            "keywords": [
+                "erlang",
+                "atom-ide",
+                "autocomplete",
+                "languageserver",
+                "language-server-protocol",
+                "language-client"
+            ],
+            "activationCommands": {
+                "atom-workspace": "ide-erlang:toggle"
+            },
+            "repository": "https://github.com/Juliusan/ide-erlang.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-languageclient": "0.9.9",
+                "decompress": "^4.2.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-erlang/versions/0.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Juliusan/ide-erlang/tarball/refs/tags/v0.1.1",
+            "sha": "2e6ae53c4be862d557357ba2f993375c7cdc442b"
+        },
+        "0.1.0": {
+            "name": "ide-erlang",
+            "main": "./lib/main",
+            "version": "0.1.0",
+            "description": "Erlang LSP client for Atom using atom-languageclient",
+            "keywords": [
+                "erlang",
+                "atom-ide",
+                "autocomplete",
+                "languageserver",
+                "language-server-protocol",
+                "language-client"
+            ],
+            "activationCommands": {
+                "atom-workspace": "ide-erlang:toggle"
+            },
+            "repository": "https://github.com/Juliusan/ide-erlang.git",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-languageclient": "0.9.9",
+                "decompress": "^4.2.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "consumedServices": {
+                "linter-indie": {
+                    "versions": {
+                        "2.0.0": "consumeLinterV2"
+                    }
+                },
+                "datatip": {
+                    "versions": {
+                        "0.1.0": "consumeDatatip"
+                    }
+                },
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "providedServices": {
+                "autocomplete.provider": {
+                    "versions": {
+                        "2.0.0": "provideAutocomplete"
+                    }
+                },
+                "code-format.range": {
+                    "versions": {
+                        "0.1.0": "provideCodeFormat"
+                    }
+                },
+                "code-highlight": {
+                    "versions": {
+                        "0.1.0": "provideCodeHighlight"
+                    }
+                },
+                "definitions": {
+                    "versions": {
+                        "0.1.0": "provideDefinitions"
+                    }
+                },
+                "find-references": {
+                    "versions": {
+                        "0.1.0": "provideFindReferences"
+                    }
+                },
+                "outline-view": {
+                    "versions": {
+                        "0.1.0": "provideOutlines"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/ide-erlang/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Juliusan/ide-erlang/tarball/refs/tags/v0.1.0",
+            "sha": "aba700b578d47c7b6051f86cb82b0492900e1b25"
+        }
+    },
+    "readme": "# ide-erlang package\n\nProvides support of Erlang language for Atom IDE, using `atom-languageclient`\nand `erlang_ls` LSP server.\n\n**Currently in development.**\n\nKnown and somewhat tested functions:\n* `erlang_ls` can be downloaded and compiled. It is not downloaded, if it was\n  downloaded earlier.\n* `erlang_ls` is started. Communication through `stdio` only. Debug log is\n  written to `.cache/erlang_ls` in Linux.\n* `Goto declaration` works for functions (even in other files).\n* Functions, that have specs get them displayed as a tooltip.\n\nTODO list:\n* Make documentation (source) of dependencies available for `erlang_ls`.\n* Check the loading time. Currently the package almost freezes the computer for\n  several seconds while the sources are being analysed. Maybe it is because of\n  Atom dev environment? Can standard Erlang modules be indexed once and not every\n  time Atom is started?\n* Check all the functions `erlang_ls` and Atom IDE can provide.\n* Maybe add some configuration possibilities.\n\nKnown bugs:\n* Sometimes when downloading server the following error appears:\n  ```\n    Error: unexpected end of file\n  ```\n  The following text appears in console:\n  ```\n    Uncaught (in promise) Error: unexpected end of file\n        at Zlib.zlibOnError [as onerror] (zlib.js:166)\n  ```\n  It appears that the extraction is attempted before download is complete. However\n  as far as I can see, the promises are handled correctly and debugging confirms\n  it. If such situation occurs, server loading should be restarted.\n\n# References\n\nThis package is based on [`atom-languageclient`](https://github.com/atom/atom-languageclient).<br>\nIt uses Language Server Protocol and [`erlang_ls` server](https://github.com/erlang-ls/erlang_ls)\nto provide its functionality.<br>\nThe source code of [`ide-java` package](https://github.com/atom/ide-java) was used\nheavily to develop this package.\n\n# Disclaimer\n\nI am not a very good JavaScript programmer. I am not familiar with Atom. And\nthis is the first plug-in (package) I've ever written. So I will be very\ngrateful for every constructive criticism and help with this project. I believe\nthat Erlang is a fantastic language and it should be supported by Atom. I want\nto use Atom to develop my Erlang projects. Please, help me.\n\nThis work was inspired by a wonderful talk by `erlang_ls` author Roberto Aloi,\ncalled [\"Boost your productivity with the Erlang Language Server\"](https://youtu.be/8FibGzqygo0),\nin [Code BEAM V](https://codesync.global/conferences/code-beam-sto/) conference\non 11th September, 2020.\n\n<!--![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)-->\n",
+    "metadata": {
+        "name": "ide-erlang",
+        "main": "./lib/main",
+        "version": "0.1.1",
+        "description": "Erlang LSP client for Atom using atom-languageclient",
+        "keywords": [
+            "erlang",
+            "atom-ide",
+            "autocomplete",
+            "languageserver",
+            "language-server-protocol",
+            "language-client"
+        ],
+        "activationCommands": {
+            "atom-workspace": "ide-erlang:toggle"
+        },
+        "repository": "https://github.com/Juliusan/ide-erlang.git",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {
+            "atom-languageclient": "0.9.9",
+            "decompress": "^4.2.0"
+        },
+        "activationHooks": [
+            "core:loaded-shell-environment"
+        ],
+        "consumedServices": {
+            "linter-indie": {
+                "versions": {
+                    "2.0.0": "consumeLinterV2"
+                }
+            },
+            "datatip": {
+                "versions": {
+                    "0.1.0": "consumeDatatip"
+                }
+            },
+            "status-bar": {
+                "versions": {
+                    "^1.0.0": "consumeStatusBar"
+                }
+            }
+        },
+        "providedServices": {
+            "autocomplete.provider": {
+                "versions": {
+                    "2.0.0": "provideAutocomplete"
+                }
+            },
+            "code-format.range": {
+                "versions": {
+                    "0.1.0": "provideCodeFormat"
+                }
+            },
+            "code-highlight": {
+                "versions": {
+                    "0.1.0": "provideCodeHighlight"
+                }
+            },
+            "definitions": {
+                "versions": {
+                    "0.1.0": "provideDefinitions"
+                }
+            },
+            "find-references": {
+                "versions": {
+                    "0.1.0": "provideFindReferences"
+                }
+            },
+            "outline-view": {
+                "versions": {
+                    "0.1.0": "provideOutlines"
+                }
+            }
+        }
+    },
+    "created": 1658343889783,
+    "updated": 1658343889783,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

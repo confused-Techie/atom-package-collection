@@ -1,0 +1,1922 @@
+{
+    "name": "build-bridlensis",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-build-bridlensis"
+    },
+    "downloads": 209,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "0.17.0"
+    },
+    "versions": {
+        "0.17.0": {
+            "name": "build-bridlensis",
+            "version": "0.17.0",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.56.0 <2.0.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {},
+            "devDependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "@babel/core": "^7.14.6",
+                "@babel/eslint-parser": "^7.14.7",
+                "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+                "atom-package-deps": "^7.2.3",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "cross-env": "^7.0.3",
+                "esbuild": "^0.12.15",
+                "eslint": "^7.31.0",
+                "eslint-plugin-json": "^3.0.0",
+                "husky": ">=4 <5",
+                "lint-staged": "^11.0.1",
+                "log-symbols": "^5.0.0",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "which": "^2.0.2"
+            },
+            "scripts": {
+                "build": "node ./tools/build.mjs",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "volta": {
+                "node": "14.17.0",
+                "yarn": "1.22.10"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.17.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.17.0",
+            "sha": "9f13c15283788a7d6e89456ce0dd0b16cd7946de"
+        },
+        "0.16.0": {
+            "name": "build-bridlensis",
+            "version": "0.16.0",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <1.56.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {},
+            "devDependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "@babel/core": "^7.14.6",
+                "@babel/eslint-parser": "^7.14.7",
+                "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+                "atom-package-deps": "^7.2.3",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "cross-env": "^7.0.3",
+                "esbuild": "^0.12.11",
+                "eslint": "^7.29.0",
+                "eslint-plugin-json": "^3.0.0",
+                "husky": ">=4 <5",
+                "lint-staged": "^11.0.0",
+                "log-symbols": "^5.0.0",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "which": "^2.0.2"
+            },
+            "scripts": {
+                "build": "node ./tools/build.mjs",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "volta": {
+                "node": "14.17.0",
+                "yarn": "1.22.10"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.16.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.16.0",
+            "sha": "9488fc4ef6e7407952caf03dc566dca6c3627516"
+        },
+        "0.15.0": {
+            "name": "build-bridlensis",
+            "version": "0.15.0",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {},
+            "devDependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "@babel/core": "^7.14.3",
+                "@babel/eslint-parser": "^7.14.3",
+                "@babel/plugin-proposal-optional-chaining": "^7.14.2",
+                "atom-package-deps": "^7.2.3",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "cross-env": "^7.0.3",
+                "esbuild": "^0.12.1",
+                "eslint": "^7.26.0",
+                "eslint-plugin-json": "^3.0.0",
+                "husky": ">=4 <5",
+                "lint-staged": "^11.0.0",
+                "log-symbols": "^5.0.0",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "which": "^2.0.2"
+            },
+            "scripts": {
+                "build": "node ./tools/build.mjs",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "volta": {
+                "node": "14.17.0",
+                "yarn": "1.22.10"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.15.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.15.0",
+            "sha": "442032d3adbcdb2d2f2260a2c995a818ddd2847a"
+        },
+        "0.14.1": {
+            "name": "build-bridlensis",
+            "version": "0.14.1",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "atom-package-deps": "^7.2.2",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "which": "^2.0.2"
+            },
+            "devDependencies": {
+                "@babel/core": "^7.13.16",
+                "@babel/eslint-parser": "^7.13.10",
+                "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+                "@rollup/plugin-babel": "^5.3.0",
+                "@rollup/plugin-commonjs": "^17.1.0",
+                "@rollup/plugin-json": "^4.1.0",
+                "@rollup/plugin-node-resolve": "^11.2.0",
+                "eslint": "^7.2.2",
+                "eslint-plugin-json": "^2.1.2",
+                "husky": ">=4 <5",
+                "lint-staged": "^10.5.4",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "rollup": "^2.42.0",
+                "rollup-plugin-terser": "^7.0.2"
+            },
+            "scripts": {
+                "build": "npm run clean && rollup --config",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "rollup --watch --config",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.14.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.14.1",
+            "sha": "467abb3ef5aaaa43983fe5cec508fe7a56d0d690"
+        },
+        "0.14.0": {
+            "name": "build-bridlensis",
+            "version": "0.14.0",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "atom-package-deps": "^7.2.2",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "which": "^2.0.2"
+            },
+            "devDependencies": {
+                "@babel/core": "^7.13.16",
+                "@babel/eslint-parser": "^7.13.10",
+                "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+                "@rollup/plugin-babel": "^5.3.0",
+                "@rollup/plugin-commonjs": "^17.1.0",
+                "@rollup/plugin-json": "^4.1.0",
+                "@rollup/plugin-node-resolve": "^11.2.0",
+                "eslint": "^7.2.2",
+                "eslint-plugin-json": "^2.1.2",
+                "husky": ">=4 <5",
+                "lint-staged": "^10.5.4",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "rollup": "^2.42.0",
+                "rollup-plugin-terser": "^7.0.2"
+            },
+            "scripts": {
+                "build": "npm run clean && rollup --config",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "rollup --watch --config",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.14.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.14.0",
+            "sha": "a584913f4b6a366516466f67112c58446ee45694"
+        },
+        "0.13.1": {
+            "name": "build-bridlensis",
+            "version": "0.13.1",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                {
+                    "name": "buildium"
+                }
+            ],
+            "dependencies": {
+                "atom-package-deps": "^7.2.2",
+                "atom-satisfy-dependencies": "^0.3.0"
+            },
+            "devDependencies": {
+                "@babel/eslint-parser": "^7.13.10",
+                "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+                "@rollup/plugin-babel": "^5.3.0",
+                "@rollup/plugin-commonjs": "^17.1.0",
+                "@rollup/plugin-json": "^4.1.0",
+                "@rollup/plugin-node-resolve": "^11.2.0",
+                "eslint": "^7.2.2",
+                "eslint-plugin-json": "^2.1.2",
+                "husky": ">=4 <5",
+                "lint-staged": "^10.5.4",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "rollup": "^2.42.0",
+                "rollup-plugin-terser": "^7.0.2"
+            },
+            "scripts": {
+                "build": "npm run clean && rollup --config",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "rollup --watch --config",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.13.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.13.1",
+            "sha": "eb0cbf351c1113d37e441f20b845d0a5de0cca66"
+        },
+        "0.13.0": {
+            "name": "build-bridlensis",
+            "version": "0.13.0",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                {
+                    "name": "buildium"
+                }
+            ],
+            "dependencies": {
+                "atom-package-deps": "^7.2.2",
+                "atom-satisfy-dependencies": "^0.3.0"
+            },
+            "devDependencies": {
+                "@babel/eslint-parser": "^7.13.10",
+                "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+                "@rollup/plugin-babel": "^5.3.0",
+                "@rollup/plugin-commonjs": "^17.1.0",
+                "@rollup/plugin-json": "^4.1.0",
+                "@rollup/plugin-node-resolve": "^11.2.0",
+                "eslint": "^7.2.2",
+                "eslint-plugin-json": "^2.1.2",
+                "husky": ">=4 <5",
+                "lint-staged": "^10.5.4",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "rollup": "^2.42.0",
+                "rollup-plugin-terser": "^7.0.2"
+            },
+            "scripts": {
+                "build": "npm run clean && rollup --config",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "rollup --watch --config",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.13.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.13.0",
+            "sha": "3fc556ef884d33c05d65d83ef8480917d238b6e5"
+        },
+        "0.12.0": {
+            "name": "build-bridlensis",
+            "version": "0.12.0",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.6.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^8.0.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.1.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^4.0.0",
+                "jshint": "^2.9.5"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.12.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.12.0",
+            "sha": "9c1e0791a210898cb35e83baba6295865b13b378"
+        },
+        "0.11.4": {
+            "name": "build-bridlensis",
+            "version": "0.11.4",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.6.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.2.3",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.19.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.1.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.1",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.11.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.11.4",
+            "sha": "86bf8036486c0aec7386f1db64395ccf58eb417b"
+        },
+        "0.11.3": {
+            "name": "build-bridlensis",
+            "version": "0.11.3",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.6.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.2.3",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.19.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.1.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.1",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.11.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.11.3",
+            "sha": "6bef5ed19ed969f4266a1ef231c96e0af8f3549e"
+        },
+        "0.11.2": {
+            "name": "build-bridlensis",
+            "version": "0.11.2",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.6.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.2.2",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.19.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.1.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.11.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.11.2",
+            "sha": "8fb08da5f47fc24d3fc751afa32589ebedb06bd9"
+        },
+        "0.11.1": {
+            "name": "build-bridlensis",
+            "version": "0.11.1",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.11.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.11.1",
+            "sha": "ab235b533b205a9d10c59da9a22b9478e1ceb27f"
+        },
+        "0.11.0": {
+            "name": "build-bridlensis",
+            "version": "0.11.0",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.11.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.11.0",
+            "sha": "1f150c3f2d206bd3893d489bbea31ac3c8615d4b"
+        },
+        "0.10.3": {
+            "name": "build-bridlensis",
+            "version": "0.10.3",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.10.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.10.3",
+            "sha": "363d297913d11d2c819bdcf129853414ede3feb5"
+        },
+        "0.10.2": {
+            "name": "build-bridlensis",
+            "version": "0.10.2",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.10.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.10.2",
+            "sha": "9138222115bed87ffb7e2f9da15a430cd009280c"
+        },
+        "0.10.1": {
+            "name": "build-bridlensis",
+            "version": "0.10.1",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.10.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.10.1",
+            "sha": "ef4d34bd510935d794d8fb4642b5a6e8b2d06762"
+        },
+        "0.10.0": {
+            "name": "build-bridlensis",
+            "version": "0.10.0",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.10.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.10.0",
+            "sha": "7639b25adffe298d7fac877d11873ca4e5ce7ec9"
+        },
+        "0.9.1": {
+            "name": "build-bridlensis",
+            "version": "0.9.1",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.9.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.9.1",
+            "sha": "52e12c308b641e52680b5f0b75a57466f8669225"
+        },
+        "0.9.0": {
+            "name": "build-bridlensis",
+            "version": "0.9.0",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.9.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.9.0",
+            "sha": "9d584000a4cff35b9f3b2807118d27780dd3f88c"
+        },
+        "0.8.3": {
+            "name": "build-bridlensis",
+            "version": "0.8.3",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^2.1.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.8.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.8.3",
+            "sha": "e14fa33d95f5c67238f0a1ca8986a066850cebe5"
+        },
+        "0.8.2": {
+            "name": "build-bridlensis",
+            "version": "0.8.2",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^2.1.0",
+                "jshint": "^2.9.4"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.8.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.8.2",
+            "sha": "cf4f3997fbe722a863af809e4c3b8942836ca9f9"
+        },
+        "0.8.1": {
+            "name": "build-bridlensis",
+            "version": "0.8.1",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.8.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.8.1",
+            "sha": "cab526855db29ada1ca9a4c8a22e2a96d4b34e36"
+        },
+        "0.8.0": {
+            "name": "build-bridlensis",
+            "version": "0.8.0",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.8.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.8.0",
+            "sha": "05dfa457447b395ca335c06e847f0efecb53758b"
+        },
+        "0.7.0": {
+            "name": "build-bridlensis",
+            "version": "0.7.0",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "build",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.7.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.7.0",
+            "sha": "93ffea34c45e6559b6e8893b3940435a97750a64"
+        },
+        "0.6.0": {
+            "name": "build-bridlensis",
+            "version": "0.6.0",
+            "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "build",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.6.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.6.0",
+            "sha": "8579a68220f6c2b4570c934d9132ce7624338d67"
+        },
+        "0.5.8": {
+            "name": "build-bridlensis",
+            "version": "0.5.8",
+            "description": "Atom Build provider for BridleNSIS, translates BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "build",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.5.8/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.5.8",
+            "sha": "ae2a5dcab1d4e434778070752dd31a74e70dc984"
+        },
+        "0.5.7": {
+            "name": "build-bridlensis",
+            "version": "0.5.7",
+            "description": "Atom Build provider for BridleNSIS, translates BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "build",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.6.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.5.7/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.5.7",
+            "sha": "72ffac1c8ce2fe7b0b211130a41ac218f1abe08f"
+        },
+        "0.5.6": {
+            "name": "build-bridlensis",
+            "version": "0.5.6",
+            "description": "Atom Build provider for BridleNSIS, translates BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "build",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.2.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.3.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.5.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.5.6",
+            "sha": "6ea5bf180e20ce35f848beeb3cefe9222b6cb24d"
+        },
+        "0.5.5": {
+            "name": "build-bridlensis",
+            "version": "0.5.5",
+            "description": "Atom Build provider for BridleNSIS, translates BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "build",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.2.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.3.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.5.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.5.5",
+            "sha": "303da9afe516019e206a2c4d1a9c266f924d159f"
+        },
+        "0.5.4": {
+            "name": "build-bridlensis",
+            "version": "0.5.4",
+            "description": "Atom Build provider for BridleNSIS, translates BridleNSIS into NSIS",
+            "repository": "https://github.com/idleberg/atom-build-bridlensis",
+            "license": "MIT OR GPL-2.0",
+            "keywords": [
+                "build",
+                "compile",
+                "nsis",
+                "bridlensis",
+                "windows",
+                "installer"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles BridleNSIS scripts",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.2.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.3.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-bridlensis/versions/0.5.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-bridlensis/tarball/refs/tags/v0.5.4",
+            "sha": "87054bb6540a71d686133bc283be172ce2e18f00"
+        }
+    },
+    "readme": "# build-bridlensis\n\n[![apm](https://flat.badgen.net/apm/license/build-bridlensis)](https://atom.io/packages/build-bridlensis)\n[![apm](https://flat.badgen.net/apm/v/build-bridlensis)](https://atom.io/packages/build-bridlensis)\n[![apm](https://flat.badgen.net/apm/dl/build-bridlensis)](https://atom.io/packages/build-bridlensis)\n[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-build-bridlensis)](https://circleci.com/gh/idleberg/atom-build-bridlensis)\n[![David](https://flat.badgen.net/david/dev/idleberg/atom-build-bridlensis)](https://david-dm.org/idleberg/atom-build-bridlensis?type=dev)\n\n[Atom Build](https://atombuild.github.io/) for [BridleNSIS](https://github.com/henrikor2/bridlensis), transpiles BridleNSIS into NSIS\n\n## Installation\n\n### apm\n\nInstall `build-bridlensis` from Atom's [Package Manager](http://flight-manual.atom.io/using-atom/sections/atom-packages/) or the command-line equivalent:\n\n`$ apm install build-bridlensis`\n\n### Using Git\n\nChange to your Atom packages directory:\n\n**Windows**\n\n```powershell\n# Powershell\n$ cd $Env:USERPROFILE\\.atom\\packages\n```\n\n```cmd\n:: Command Prompt\n$ cd %USERPROFILE%\\.atom\\packages\n```\n\n**Linux & macOS**\n\n```bash\n$ cd ~/.atom/packages/\n```\n\nClone repository as `build-bridlensis`:\n\n```bash\n$ git clone https://github.com/idleberg/atom-build-bridlensis build-bridlensis\n```\n\nInside the cloned directory, install Node dependencies:\n\n```bash\n$ yarn || npm install\n```\n\nYou should now be setup to build the package:\n\n```bash\n$ yarn build || npm run build\n```\n\n## Configuration\n\nMake sure to specify the path to your `BridleNSIS.jar` in the package settings.\n\n**Example**:\n\n```cson\n\"build-bridlensis\":\n    pathToJar: \"%PROGRAMFILES(X86)%\\\\BridleNSIS\\\\BridleNSIS-0.4.1.jar\"\n```\n\n## Usage\n\nBefore you can build, select an active target with your preferred build option.\n\nAvailable targets:\n\n* `BridleNSIS` – transpile script\n\n### Shortcuts\n\nHere's a reminder of the default shortcuts you can use with this package:\n\n**Choose target**\n\n<kbd>Super</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> or <kbd>F7</kbd>\n\n**Toggle build panel**\n\n<kbd>Super</kbd>+<kbd>Alt</kbd>+<kbd>V</kbd> or <kbd>F8</kbd>\n\n**Build script**\n\n<kbd>Super</kbd>+<kbd>Alt</kbd>+<kbd>B</kbd> or <kbd>F9</kbd>\n\n## License\n\nThis work is dual-licensed under [The MIT License](https://opensource.org/licenses/MIT) and the [GNU General Public License, version 2.0](https://opensource.org/licenses/GPL-2.0)\n",
+    "metadata": {
+        "name": "build-bridlensis",
+        "version": "0.17.0",
+        "description": "Atom Build provider for BridleNSIS, transpiles BridleNSIS into NSIS",
+        "repository": "https://github.com/idleberg/atom-build-bridlensis",
+        "license": "MIT OR GPL-2.0",
+        "keywords": [
+            "buildprovider",
+            "compile",
+            "nsis",
+            "bridlensis",
+            "windows",
+            "installer"
+        ],
+        "main": "lib/provider.js",
+        "engines": {
+            "atom": ">=1.56.0 <2.0.0"
+        },
+        "activationHooks": [
+            "core:loaded-shell-environment"
+        ],
+        "providedServices": {
+            "builder": {
+                "description": "Compiles BridleNSIS scripts",
+                "versions": {
+                    "2.0.0": "provideBuilder"
+                }
+            }
+        },
+        "package-deps": [
+            [
+                {
+                    "name": "buildium"
+                },
+                {
+                    "name": "build"
+                }
+            ]
+        ],
+        "dependencies": {},
+        "devDependencies": {
+            "@atxm/developer-console": "^0.5.0",
+            "@babel/core": "^7.14.6",
+            "@babel/eslint-parser": "^7.14.7",
+            "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+            "atom-package-deps": "^7.2.3",
+            "atom-satisfy-dependencies": "^0.3.0",
+            "cross-env": "^7.0.3",
+            "esbuild": "^0.12.15",
+            "eslint": "^7.31.0",
+            "eslint-plugin-json": "^3.0.0",
+            "husky": ">=4 <5",
+            "lint-staged": "^11.0.1",
+            "log-symbols": "^5.0.0",
+            "npm-run-all": "^4.1.5",
+            "remark-cli": "^9.0.0",
+            "rimraf": "^3.0.2",
+            "which": "^2.0.2"
+        },
+        "scripts": {
+            "build": "node ./tools/build.mjs",
+            "clean": "rimraf ./lib",
+            "dev": "npm run start",
+            "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+            "lint:js": "eslint ./src --ignore-path .gitignore",
+            "lint": "npm-run-all --parallel lint:*",
+            "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+            "test": "npm run lint"
+        },
+        "husky": {
+            "hooks": {
+                "pre-commit": "lint-staged"
+            }
+        },
+        "lint-staged": {
+            "*.js": "eslint --cache --fix"
+        },
+        "volta": {
+            "node": "14.17.0",
+            "yarn": "1.22.10"
+        }
+    },
+    "created": 1658336769164,
+    "updated": 1658336769164,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

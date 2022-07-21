@@ -1,0 +1,85 @@
+{
+    "name": "react-component-generator",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Eldwick/atom-react-component-generator"
+    },
+    "downloads": 129,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "0.2.0"
+    },
+    "versions": {
+        "0.2.0": {
+            "name": "react-component-generator",
+            "main": "./lib/react-component-generator",
+            "version": "0.2.0",
+            "description": "Given an object literal as a config, generate the corresponding directories and files with template code.",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "react-component-generator:generate"
+            },
+            "repository": "https://github.com/Eldwick/atom-react-component-generator",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "loophole": "^1.1.0",
+                "babel-plugin-transform-object-rest-spread": "^6.23.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/react-component-generator/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Eldwick/atom-react-component-generator/tarball/refs/tags/v0.2.0",
+            "sha": "ef55b118e1266f6c8192d6423ffffa256b20370b"
+        },
+        "0.1.0": {
+            "name": "react-component-generator",
+            "main": "./lib/react-component-generator",
+            "version": "0.1.0",
+            "description": "Given an object literal as a config, generate the corresponding directories and files with template code.",
+            "keywords": [],
+            "activationCommands": {
+                "atom-workspace": "react-component-generator:generate"
+            },
+            "repository": "https://github.com/Eldwick/atom-react-component-generator",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "loophole": "^1.1.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/react-component-generator/versions/0.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/Eldwick/atom-react-component-generator/tarball/refs/tags/v0.1.0",
+            "sha": "0e72df30b7b9e0597559ff7df0ba6b3749b8fafd"
+        }
+    },
+    "readme": "React Component Generator [![Build Status](https://travis-ci.org/Eldwick/atom-react-component-generator.svg?branch=master)](https://travis-ci.org/Eldwick/atom-react-component-generator)\n====================================================================================================================================================================\nEasily generate react components and their the corresponding directories and files using configs created from snippets.\n\n## Installation\n\nhttps://atom.io/packages/react-component-generator\n\nor\n\n```\n$ cd ~/.atom/packages\n$ git clone git@github.com:Eldwick/atom-react-component-generator.git\n$ cd atom-react-component-generator\n$ apm install\n$ apm link\n```\n\n## Config structure:\n\n* name [String]   \n    * Name of React Component. Will be used for file name and directory name if applicable\n* type [String]\n    * (default) 'smart'/'s' uses the `class Component extends React.Component {` syntax\n    * 'dumb'/'d' uses the `const Component = (props) => {` syntax\n* isCollection [bool]\n    * not applicable for root level component\n    * creates a `render[NameOfComponent]s` method on it's parent\n* subcomponents [Array<Config>]\n    * imports all subcomponents into parent file\n    * if supplied will create a directory for the Parent and export itself using an `index.js `file\n\n## Snippets\n\n* Use `grc` then `Tab` to generate a template config object.\n\n## Keyboard Shortcuts\n\n* '⌘-⌥-^-g' : Use selected config object to generate file.\n\n## Sample config: (run from store_app/components/example)\n\n```\n{\n  name: 'GrandParent',\n  subcomponents: [{\n    name: 'Parent',\n    subcomponents: [{\n      name: 'Child',\n      type: 'd'\n    }, {\n      name: 'PartOfCollection',\n      isCollection: true,\n      type: 'd'\n    }]\n  }]\n}\n```\n\n## Sample directory output:\n\n```\n- GrandParent\n  - GrandParent.module.js.jsx\n  - index.js\n  - Parent\n    - Parent.module.js.jsx\n    - Child.module.js.jsx\n    - PartOfCollection.module.js.jsx\n    - index.js\n```\n\n## Sample Generated Code\n\n### GrandParent/GrandParent.module.js.jsx\n\n```\nimport Parent from '/example/GrandParent/Parent'\n\nclass GrandParent extends React.PureComponent {\n  static propTypes = {\n\n  }\n\n  render() {\n    return (\n      <div>GrandParent</div>\n    )\n  }\n}\n\nexport default GrandParent\n```\n\n### GrandParent/index.js\n\n```\nimport GrandParent from '/example/GrandParent/GrandParent'\n\nexport default GrandParent\n```\n\n### GrandParent/parent/parent.module.js.jsx\n\n```\nimport Child from '/example/GrandParent/Parent/Child'\nimport PartOfCollection from '/example/GrandParent/Parent/PartOfCollection'\n\nclass Parent extends React.PureComponent {\n  static propTypes = {\n\n  }\n\n  renderPartOfCollections() {\n    return COLLECTION.map(ELEMENT => <PartOfCollection />)\n  }\n\n  render() {\n    return (\n      <div>Parent</div>\n    )\n  }\n}\n\nexport default Parent\n```\n\n### GrandParent/parent/Child.module.js.jsx\n\n```\nconst Child = (props) => {\n  return (\n    <div>Child</div>\n  )\n}\n\nChild.propTypes = {\n\n}\n\nexport default Child\n```\n\n### GrandParent/parent/PartofCollection.module.js.jsx\n\n```\nconst PartOfCollection = (props) => {\n  return (\n    <div>PartOfCollection</div>\n  )\n}\n\nPartOfCollection.propTypes = {\n\n}\n\nexport default PartOfCollection\n```\n\n### GrandParent/parent/index.js\n\n```\nimport Parent from '/example/GrandParent/Parent/Parent'\n\nexport default Parent\n```\n\n˚\n",
+    "metadata": {
+        "name": "react-component-generator",
+        "main": "./lib/react-component-generator",
+        "version": "0.2.0",
+        "description": "Given an object literal as a config, generate the corresponding directories and files with template code.",
+        "keywords": [],
+        "activationCommands": {
+            "atom-workspace": "react-component-generator:generate"
+        },
+        "repository": "https://github.com/Eldwick/atom-react-component-generator",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {
+            "loophole": "^1.1.0",
+            "babel-plugin-transform-object-rest-spread": "^6.23.0"
+        }
+    },
+    "created": 1658362274248,
+    "updated": 1658362274248,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

@@ -1,0 +1,134 @@
+{
+    "name": "syncing-cloud",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alessandrio/syncing-cloud"
+    },
+    "downloads": 228,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "1.0.2"
+    },
+    "versions": {
+        "1.0.2": {
+            "author": "Alessandrio",
+            "bugs": {
+                "url": "https://github.com/alessandrio/syncing-cloud/issues"
+            },
+            "configSchema": {
+                "syncing": {
+                    "default": "https://[url]",
+                    "description": "It is necessary to add a file on your server and puth the URL here. This file will do the synchronization. <a href='https://github.com/alessandrio/syncing-cloud' class='syncing-github'>Read how to do it</a>",
+                    "title": "URL of the file on your cloud server.",
+                    "type": "string"
+                }
+            },
+            "description": "Synchronize the edition of your file (if it does not exist it will be created) directly to your server without the need for an ftp or similar user, as you do locally and without third parties.",
+            "engines": {
+                "atom": ">=1.21.0 <2.0.0"
+            },
+            "keywords": [
+                "change",
+                "cloud",
+                "copy",
+                "directory",
+                "edit",
+                "file",
+                "ftp",
+                "hosting",
+                "improve",
+                "manage",
+                "move",
+                "server",
+                "sftp",
+                "sync",
+                "syncing",
+                "upload",
+                "uploader"
+            ],
+            "license": "Apache 2.0",
+            "main": "./lib/syncing.js",
+            "name": "syncing-cloud",
+            "packageDependencies": {
+                "settings-view": "0.232.5",
+                "status-bar": "1.1.0"
+            },
+            "providedServices": {
+                "status-bar": {
+                    "description": "A container for indicators at the bottom of the workspace",
+                    "versions": {
+                        "0.58.0": "legacyProvideStatusBar",
+                        "1.1.0": "provideStatusBar"
+                    }
+                }
+            },
+            "repository": "https://github.com/alessandrio/syncing-cloud",
+            "version": "1.0.2",
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/syncing-cloud/versions/1.0.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/alessandrio/syncing-cloud/tarball/refs/tags/v1.0.2",
+            "sha": "c649abd832b6454718d877a8e9df59833bdd2741"
+        }
+    },
+    "readme": "###### syncing\n\nSynchronize the edition of your document (if it does not exist it will be created) directly to your server without the need for an ftp or similar user, as you do locally and without third parties.\n\n## Getting Started\n\nAfter installing the extension in the editor, it is important to add a file inside the server in which we will synchronize the files.\n\n### Prerequisites\n\n - inside any folder of our directory in the server we will create a file with the name `[index?].[py,php]`\n - in which we will add the following code:\n ###### PYTHON2.5+\n ```python\n #!/usr/bin/python\n import cgi\n import json\n print \"Content-type: text/html\\n\"\n form = cgi.FieldStorage()\n todict = json.loads(form.getvalue('file'))\n try:\n   with open(todict['way'], 'w') as file:\n     file.write(todict['datable'])\n     print(\"1\")\n except IOError as e:\n     print(\"0\")\n```\n###### PHP7+\n```php\n  $str = file_get_contents($_FILES[\"file\"][\"tmp_name\"]);\n  $tojson = json_decode(rtrim($str, \"\\0\"));\n  echo (file_put_contents($tojson->way, $tojson->datable) !== false) ? 1 : 0;\n ```\n - copy the final url of the created file e.g. (`https://[mywebsite.cloud]/up/`) and put it in the extension settings in the editor.\n![dir](https://github.com/alessandrio/syncing-cloud/raw/master/ss/atom/backend.png?raw=true)\n\n### Settings\n\n![settings](https://github.com/alessandrio/syncing-cloud/raw/master/ss/atom/cloudpath.png?raw=true)\n - write the path of the folder on the server with which it will be synchronized e.g. (`/home/[cloudserver]/public_html/`), the file name will automatically be taken from the editor.\n\n### Run\n\n - the extension will be shown by pressing the cloud button located in the status bar of the editor.\n![statusbar](https://github.com/alessandrio/syncing-cloud/raw/master/ss/atom/statusbar.png?raw=true)\n - once configured the extension it is time to press the button for the function.\n![button](https://github.com/alessandrio/syncing-cloud/raw/master/ss/atom/button.png?raw=true)\n - when it turns blue it's time for excitement :)\n![synced](https://github.com/alessandrio/syncing-cloud/raw/master/ss/atom/synced.png?raw=true)\n\n## screenshot\n\n![syncing screenshoot](https://github.com/alessandrio/syncing-cloud/raw/master/ss/atom-screenshot.png?raw=true)\n\n## Contribution\n - [Issues](https://github.com/alessandrio/syncing-cloud/issues) & Pull Request.\n\n## Mentions\n - Iconfinder\n   - [synchronize_icon](https://www.iconfinder.com/icons/4265043/cloud_refresh_reload_sync_synchronize_icon)\n\n## License\n\nThis project is licensed under the Apache License - see the [LICENSE](https://github.com/alessandrio/syncing-cloud/blob/master/LICENSE) file for details.\n ```\n by: Alessandrio >> s1dg78hg4df85h1\n ```\n",
+    "metadata": {
+        "author": "Alessandrio",
+        "bugs": {
+            "url": "https://github.com/alessandrio/syncing-cloud/issues"
+        },
+        "configSchema": {
+            "syncing": {
+                "default": "https://[url]",
+                "description": "It is necessary to add a file on your server and puth the URL here. This file will do the synchronization. <a href='https://github.com/alessandrio/syncing-cloud' class='syncing-github'>Read how to do it</a>",
+                "title": "URL of the file on your cloud server.",
+                "type": "string"
+            }
+        },
+        "description": "Synchronize the edition of your file (if it does not exist it will be created) directly to your server without the need for an ftp or similar user, as you do locally and without third parties.",
+        "engines": {
+            "atom": ">=1.21.0 <2.0.0"
+        },
+        "keywords": [
+            "change",
+            "cloud",
+            "copy",
+            "directory",
+            "edit",
+            "file",
+            "ftp",
+            "hosting",
+            "improve",
+            "manage",
+            "move",
+            "server",
+            "sftp",
+            "sync",
+            "syncing",
+            "upload",
+            "uploader"
+        ],
+        "license": "Apache 2.0",
+        "main": "./lib/syncing.js",
+        "name": "syncing-cloud",
+        "packageDependencies": {
+            "settings-view": "0.232.5",
+            "status-bar": "1.1.0"
+        },
+        "providedServices": {
+            "status-bar": {
+                "description": "A container for indicators at the bottom of the workspace",
+                "versions": {
+                    "0.58.0": "legacyProvideStatusBar",
+                    "1.1.0": "provideStatusBar"
+                }
+            }
+        },
+        "repository": "https://github.com/alessandrio/syncing-cloud",
+        "version": "1.0.2"
+    },
+    "created": 1658428652769,
+    "updated": 1658428652769,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

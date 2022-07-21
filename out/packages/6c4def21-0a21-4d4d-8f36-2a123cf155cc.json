@@ -1,0 +1,122 @@
+{
+    "name": "build-systems",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/klorenz/atom-build-systems"
+    },
+    "downloads": 999,
+    "stargazers_count": 3,
+    "releases": {
+        "latest": "0.5.0"
+    },
+    "versions": {
+        "0.5.0": {
+            "name": "build-systems",
+            "main": "./lib/main",
+            "version": "0.5.0",
+            "description": "Make build targets available as atom commands",
+            "activationEvents": [],
+            "repository": "https://github.com/klorenz/atom-build-systems",
+            "license": "MIT",
+            "author": "Kay-Uwe (Kiwi) Lorenz <kiwi@franka.dyndns.org> (http://quelltexter.org)",
+            "engines": {
+                "atom": ">=0.50.0"
+            },
+            "dependencies": {
+                "atom-syntax-tools": ">=0.1.0",
+                "season": "^2.0.0",
+                "temp": "~0.8.0",
+                "underscore": "~1.6.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-systems/versions/0.5.0/tarball"
+            }
+        },
+        "0.4.0": {
+            "name": "build-systems",
+            "main": "./lib/main",
+            "version": "0.4.0",
+            "description": "Make build targets available as atom commands",
+            "activationEvents": [],
+            "repository": "https://github.com/klorenz/atom-build-systems",
+            "license": "MIT",
+            "author": "Kay-Uwe (Kiwi) Lorenz <kiwi@franka.dyndns.org> (http://quelltexter.org)",
+            "engines": {
+                "atom": ">=0.50.0"
+            },
+            "dependencies": {
+                "underscore": "~1.6.0",
+                "atom-syntax-tools": ">=0.1.0",
+                "temp": "~0.8.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-systems/versions/0.4.0/tarball"
+            }
+        },
+        "0.3.0": {
+            "name": "build-systems",
+            "main": "./lib/main",
+            "version": "0.3.0",
+            "description": "Make build targets available as atom commands",
+            "activationEvents": [],
+            "repository": "https://github.com/klorenz/atom-build-systems",
+            "license": "MIT",
+            "author": "Kay-Uwe (Kiwi) Lorenz <kiwi@franka.dyndns.org> (http://quelltexter.org)",
+            "engines": {
+                "atom": ">=0.50.0"
+            },
+            "dependencies": {
+                "underscore": "~1.6.0",
+                "atom-syntax-tools": ">=0.1.0",
+                "temp": "~0.8.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-systems/versions/0.3.0/tarball"
+            }
+        },
+        "0.2.0": {
+            "name": "build-systems",
+            "main": "./lib/main",
+            "version": "0.2.0",
+            "description": "Make build targets available as atom commands",
+            "activationEvents": [],
+            "repository": "https://github.com/klorenz/atom-build-systems",
+            "license": "MIT",
+            "author": "Kay-Uwe (Kiwi) Lorenz <kiwi@franka.dyndns.org> (http://quelltexter.org)",
+            "engines": {
+                "atom": ">=0.50.0"
+            },
+            "dependencies": {
+                "underscore": "~1.6.0",
+                "atom-syntax-tools": ">=0.1.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-systems/versions/0.2.0/tarball"
+            }
+        }
+    },
+    "readme": "Build System\n============\n\nThis package enables you to call cake, make, apm, npm commands from command\npalette.  \n\nIf you have a Cakefile with targets \"foo\" and \"bar\", you will find\n\"Build: Cake Foo\" and \"Build: Cake Bar\" commands.  Commands are changed\ndynamically, if you add a task to that file, it will be added to command palette.\n\nAfter a build has finished, you can cycle through build results using `F4` for\nnext result and `shift-f4` for previous result.  Hit ENTER to open file and jump\nto specified location.\n\n**This is under development**\n\nExtending\n---------\n\nBuild-Systems searches all packages folders for a subfolder `build-systems/`.\nIf it exists, files from there are read and interpreted as build systems, if\nsuitable.  For now only \"*.coffee\" is fully supported.  \"*.cson\" and \"*.json\"\nand \"*.sublime-build\" are planned.\n\nHere `build-systems/cake.coffee` as an example:\n\n```coffee\nmodule.exports = (builder) ->\n  {BuildSystemProvider} = builder\n\n  class Cake extends BuildSystemProvider\n    buildTool: \"cake\"\n    buildFiles: \"Cakefile\"\n\n    getCommands: ->\n      @buildFile =>\n        @getLines (line) ->\n          if /^cake/.test line\n            [cmd, desc] = line.replace(/^cake\\s+/, '').split(/\\s*#\\s*/, 1)\n            name = cmd.replace(/\\W/, '-').replace(/--+/, '-')\n            commands[name] = cmd.split /\\s+/\n```\n\n\nHistory\n-------\n\nThis package is forked from https://github.com/noseglid/atom-build.  In the\nfirst place I wanted to contribute, but then I realized, that I rewrote almost\neverything and there was only little left from original package, so I decided\nto create an own package.\n\nTODO\n----\n\n- review specs to get them work\n- add more specs\n- connect to travis CI\n- Implement full Sublime-Like Build System\n  - file_regex\n  - line_regex\n  - syntax\n  - variants\n  - name the selector-specific build system \"Build: Run\" and make it default\n    build system, if hitting ctrl+alt+b\n- add more build systems\n- support more npm and apm commands\n- add keyboard shortcut to stop build (ESC, if in Build Output, else via\n  command palette)\n",
+    "metadata": {
+        "name": "build-systems",
+        "main": "./lib/main",
+        "version": "0.5.0",
+        "description": "Make build targets available as atom commands",
+        "activationEvents": [],
+        "repository": "https://github.com/klorenz/atom-build-systems",
+        "license": "MIT",
+        "author": "Kay-Uwe (Kiwi) Lorenz <kiwi@franka.dyndns.org> (http://quelltexter.org)",
+        "engines": {
+            "atom": ">=0.50.0"
+        },
+        "dependencies": {
+            "atom-syntax-tools": ">=0.1.0",
+            "season": "^2.0.0",
+            "temp": "~0.8.0",
+            "underscore": "~1.6.0"
+        }
+    },
+    "created": 1658336974176,
+    "updated": 1658336974176,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

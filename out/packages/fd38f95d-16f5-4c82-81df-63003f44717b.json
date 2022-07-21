@@ -1,0 +1,182 @@
+{
+    "name": "linter-glslify",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fand/linter-glslify"
+    },
+    "downloads": 2811,
+    "stargazers_count": 0,
+    "releases": {
+        "latest": "1.0.0"
+    },
+    "versions": {
+        "1.0.0": {
+            "name": "linter-glslify",
+            "description": "Linter for GLSL shaders, powered with glslify",
+            "version": "1.0.0",
+            "author": "fand <fand.gmork@gmail.com> (https://gmork.in/)",
+            "bugs": "https://github.com/fand/linter-glslify/issues",
+            "dependencies": {
+                "atom-message-panel": "1.3.0",
+                "atom-package-deps": "5.1.0",
+                "convert-source-map": "^1.6.0",
+                "execa": "^1.0.0",
+                "glslang-validator-prebuilt": "0.0.2",
+                "glslify-lite": "0.0.7",
+                "source-map": "^0.8.0-beta.0",
+                "temp-write": "^4.0.0",
+                "which": "1.3.1"
+            },
+            "devDependencies": {
+                "@types/atom": "^1.36.1",
+                "@types/convert-source-map": "^1.5.1",
+                "@types/execa": "^0.9.0",
+                "@types/node": "^12.6.8",
+                "@types/source-map": "^0.5.7",
+                "@types/which": "^1.3.1",
+                "@typescript-eslint/eslint-plugin": "^1.12.0",
+                "@typescript-eslint/parser": "^1.12.0",
+                "eslint": "^6.0.1",
+                "eslint-config-prettier": "^6.0.0",
+                "eslint-plugin-jest": "^22.10.0",
+                "eslint-plugin-prettier": "^3.1.0",
+                "glsl-noise": "^0.0.0",
+                "husky": "^3.0.0",
+                "jasmine-fix": "1.3.1",
+                "lint-staged": "^9.2.0",
+                "prettier": "^1.18.2",
+                "standard-version": "^6.0.1",
+                "typescript": "^3.5.3"
+            },
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "homepage": "https://github.com/fand/linter-glslify",
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "keywords": [
+                "Atom",
+                "GLSL",
+                "Lint",
+                "glslify",
+                "sourcemaps"
+            ],
+            "license": "MIT",
+            "lint-staged": {
+                "*.{js,ts,json,md}": [
+                    "prettier --write",
+                    "git add"
+                ]
+            },
+            "main": "./lib/linter-glslify",
+            "package-deps": [
+                "linter:2.0.0"
+            ],
+            "providedServices": {
+                "linter": {
+                    "versions": {
+                        "2.0.0": "provideLinter"
+                    }
+                }
+            },
+            "repository": "https://github.com/fand/linter-glslify",
+            "scripts": {
+                "build": "tsc -d",
+                "lint": "eslint src/**/*.ts",
+                "test": "apm test"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/linter-glslify/versions/1.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/fand/linter-glslify/tarball/refs/tags/v1.0.0",
+            "sha": "f31692c2d7060b18f31b50aa859ba0da815acea7"
+        }
+    },
+    "readme": "# linter-glslify\n\n**💫GLSL linter for Atom, supporting glslify!💫**\n\n[![TravisCI build status](https://travis-ci.org/fand/linter-glslify.svg?branch=master)](http://travis-ci.org/fand/linter-glslify) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/lg3s6wu09b7bd5aq/branch/master?svg=true)](https://ci.appveyor.com/project/fand/linter-glslify)\n\nlinter-glslify is a GLSL linter for Atom,\nIt also supports glslify-powered shaders using source maps.\n\n## Why?\n\n-   [glslify](https://github.com/glslify/glslify) is very useful for GLSL development\n-   But it breaks linter-glsl\n    -   glslify doesn't output source maps\n    -   So error positions are corrupted when the shader uses glslify😞\n-   I tried to send PRs to support source maps to glslify, but it was so hard because of its architecture\n-   So I created glslify-lite and linter-glslify\n    -   [glslify-lite](https://github.com/fand/glslify-lite) is a tiny version of glslify, but supports source maps!\n-   linter-glslify bundles shaders with glslify-lite before linting\n-   it shows correct error positions using source maps!!😻\n\n## Install\n\n```sh\n$ apm install linter-glslify\n```\n\n## Supported Filename formats\n\n| Vertex     | Fragment   | Geometry   | Tessellation Control | Tessellation Evaluation | Compute    |\n| ---------- | ---------- | ---------- | -------------------- | ----------------------- | ---------- |\n| `.vert`    | `.frag`    | `.geom`    | `.tesc`              | `.tese`                 | `.comp`    |\n| `.vs.glsl` | `.fs.glsl` | `.gs.glsl` | `.tc.glsl`           | `.te.glsl`              | `.cs.glsl` |\n| `_vs.glsl` | `_fs.glsl` | `_gs.glsl` | `_tc.glsl`           | `_te.glsl`              | `_cs.glsl` |\n| `.vs`      | `.fs`      | `.gs`      | `.tc`                | `.te`                   | `.cs`      |\n| `.v.glsl`  | `.f.glsl`  | `.g.glsl`  |                      |                         |            |\n| `_v.glsl`  | `_f.glsl`  | `_g.glsl`  |                      |                         |            |\n| `.vsh`     | `.fsh`     | `.gsh`     |                      |                         |            |\n|            | `.glsl`    |            |                      |                         |            |\n\n## Acknowledgements\n\nThis package was forked from [linter-glsl](https://github.com/AtomLinter/linter-glsl/).\n\n## LICENSE\n\nMIT\n",
+    "metadata": {
+        "name": "linter-glslify",
+        "description": "Linter for GLSL shaders, powered with glslify",
+        "version": "1.0.0",
+        "author": "fand <fand.gmork@gmail.com> (https://gmork.in/)",
+        "bugs": "https://github.com/fand/linter-glslify/issues",
+        "dependencies": {
+            "atom-message-panel": "1.3.0",
+            "atom-package-deps": "5.1.0",
+            "convert-source-map": "^1.6.0",
+            "execa": "^1.0.0",
+            "glslang-validator-prebuilt": "0.0.2",
+            "glslify-lite": "0.0.7",
+            "source-map": "^0.8.0-beta.0",
+            "temp-write": "^4.0.0",
+            "which": "1.3.1"
+        },
+        "devDependencies": {
+            "@types/atom": "^1.36.1",
+            "@types/convert-source-map": "^1.5.1",
+            "@types/execa": "^0.9.0",
+            "@types/node": "^12.6.8",
+            "@types/source-map": "^0.5.7",
+            "@types/which": "^1.3.1",
+            "@typescript-eslint/eslint-plugin": "^1.12.0",
+            "@typescript-eslint/parser": "^1.12.0",
+            "eslint": "^6.0.1",
+            "eslint-config-prettier": "^6.0.0",
+            "eslint-plugin-jest": "^22.10.0",
+            "eslint-plugin-prettier": "^3.1.0",
+            "glsl-noise": "^0.0.0",
+            "husky": "^3.0.0",
+            "jasmine-fix": "1.3.1",
+            "lint-staged": "^9.2.0",
+            "prettier": "^1.18.2",
+            "standard-version": "^6.0.1",
+            "typescript": "^3.5.3"
+        },
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "homepage": "https://github.com/fand/linter-glslify",
+        "husky": {
+            "hooks": {
+                "pre-commit": "lint-staged"
+            }
+        },
+        "keywords": [
+            "Atom",
+            "GLSL",
+            "Lint",
+            "glslify",
+            "sourcemaps"
+        ],
+        "license": "MIT",
+        "lint-staged": {
+            "*.{js,ts,json,md}": [
+                "prettier --write",
+                "git add"
+            ]
+        },
+        "main": "./lib/linter-glslify",
+        "package-deps": [
+            "linter:2.0.0"
+        ],
+        "providedServices": {
+            "linter": {
+                "versions": {
+                    "2.0.0": "provideLinter"
+                }
+            }
+        },
+        "repository": "https://github.com/fand/linter-glslify",
+        "scripts": {
+            "build": "tsc -d",
+            "lint": "eslint src/**/*.ts",
+            "test": "apm test"
+        }
+    },
+    "created": 1658351024341,
+    "updated": 1658351024341,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

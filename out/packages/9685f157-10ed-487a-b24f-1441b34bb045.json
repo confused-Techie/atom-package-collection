@@ -1,0 +1,940 @@
+{
+    "name": "chronometer",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rodrigopmatias/atom-chronometer"
+    },
+    "downloads": 661,
+    "stargazers_count": 4,
+    "releases": {
+        "latest": "1.2.0"
+    },
+    "versions": {
+        "1.2.0": {
+            "configSchema": {
+                "autoStart": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Auto init the chronometer for mensue time.",
+                    "title": "Auto init chronomter"
+                },
+                "autoPausePeriod": {
+                    "type": "integer",
+                    "default": 20,
+                    "minimum": 15,
+                    "maximum": 900,
+                    "description": "Auto pause period, in seconds, for avaliable need pause chronomter, limits 15 and 900 seconds.",
+                    "title": "Auto pause period"
+                },
+                "locale": {
+                    "type": "string",
+                    "default": "en-us",
+                    "description": "Locale for currency representation",
+                    "title": "Locale"
+                },
+                "hourValue": {
+                    "type": "number",
+                    "default": 10,
+                    "minimum": 0,
+                    "description": "Value of work time, 0.00 for free work",
+                    "title": "Value of work time"
+                },
+                "fractionDigits": {
+                    "type": "number",
+                    "default": 2,
+                    "minimum": 1,
+                    "maximum": 6,
+                    "description": "Number of fraction digits",
+                    "title": "Fraction digits"
+                },
+                "currencySymbol": {
+                    "type": "string",
+                    "default": "USD",
+                    "description": "The symbol of currency.",
+                    "title": "Currency Symbol"
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "atomTranspilers": [
+                {
+                    "glob": "**/*.js",
+                    "transpiler": "atom-babel6-transpiler",
+                    "options": {
+                        "babel": {
+                            "presets": [
+                                [
+                                    "env",
+                                    {
+                                        "targets": {
+                                            "browsers": [
+                                                "chrome >= 58"
+                                            ]
+                                        }
+                                    }
+                                ],
+                                "es2015",
+                                "react"
+                            ],
+                            "babelrc": false
+                        }
+                    }
+                }
+            ],
+            "dependencies": {
+                "atom-babel6-transpiler": "^1.1.3",
+                "atom-space-pen-views": "^2.0.3",
+                "babel-preset-env": "^1.7.0",
+                "babel-preset-es2015": "^6.24.1",
+                "babel-preset-react": "^6.24.1",
+                "react": "^16.4.0",
+                "reactdom": "^2.0.0"
+            },
+            "description": "This tool aid mensure time working in editor atom, you can use this for billing.",
+            "devDependencies": {
+                "eslint-config-airbnb": "^16.1.0",
+                "eslint-plugin-import": "^2.12.0",
+                "eslint-plugin-jsx-a11y": "^6.0.3",
+                "eslint-plugin-react": "^7.8.2"
+            },
+            "engines": {
+                "atom-space-pen-views": "^2.0.3"
+            },
+            "homepage": "https://github.com/rodrigopmatias/atom-chronometer#readme",
+            "keywords": [
+                "productivity",
+                "chronometer",
+                "codetime",
+                "billing"
+            ],
+            "scripts": {
+                "linter": "eslint lib/"
+            },
+            "license": "MIT",
+            "main": "./lib/index",
+            "name": "chronometer",
+            "optionalDependencies": {},
+            "readme": "# chronometer package\n\nA short description of your package.\n\n![Demostration](https://raw.githubusercontent.com/rodrigopmatias/atom-chronometer/master/demo.gif)\n",
+            "readmeFilename": "README.md",
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/rodrigopmatias/atom-chronometer.git"
+            },
+            "version": "1.2.0",
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/chronometer/versions/1.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/rodrigopmatias/atom-chronometer/tarball/refs/tags/v1.2.0",
+            "sha": "b7463c7b30499c0b66ce9a194cd59defd42b9cac"
+        },
+        "1.1.0": {
+            "configSchema": {
+                "autoStart": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Auto init the chronometer for mensue time.",
+                    "title": "Auto init chronomter"
+                },
+                "autoPausePeriod": {
+                    "type": "integer",
+                    "default": 20,
+                    "minimum": 15,
+                    "maximum": 900,
+                    "description": "Auto pause period, in seconds, for avaliable need pause chronomter, limits 15 and 900 seconds.",
+                    "title": "Auto pause period"
+                },
+                "locale": {
+                    "type": "string",
+                    "default": "en-us",
+                    "description": "Locale for currency representation",
+                    "title": "Locale"
+                },
+                "hourValue": {
+                    "type": "number",
+                    "default": 10,
+                    "minimum": 0,
+                    "description": "Value of work time, 0.00 for free work",
+                    "title": "Value of work time"
+                },
+                "fractionDigits": {
+                    "type": "number",
+                    "default": 2,
+                    "minimum": 1,
+                    "maximum": 6,
+                    "description": "Number of fraction digits",
+                    "title": "Fraction digits"
+                },
+                "currencySimbol": {
+                    "type": "string",
+                    "default": "USD",
+                    "description": "The simbol of currency.",
+                    "title": "Currency Simbol"
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "atomTranspilers": [
+                {
+                    "glob": "**/*.js",
+                    "transpiler": "atom-babel6-transpiler",
+                    "options": {
+                        "babel": {
+                            "presets": [
+                                [
+                                    "env",
+                                    {
+                                        "targets": {
+                                            "browsers": [
+                                                "chrome >= 58"
+                                            ]
+                                        }
+                                    }
+                                ],
+                                "es2015",
+                                "react"
+                            ],
+                            "babelrc": false
+                        }
+                    }
+                }
+            ],
+            "dependencies": {
+                "atom-babel6-transpiler": "^1.1.3",
+                "atom-space-pen-views": "^2.0.3",
+                "babel-preset-env": "^1.7.0",
+                "babel-preset-es2015": "^6.24.1",
+                "babel-preset-react": "^6.24.1",
+                "react": "^16.4.0",
+                "reactdom": "^2.0.0"
+            },
+            "description": "This tool aid mensure time working in editor atom, you can use this for billing.",
+            "devDependencies": {
+                "eslint-config-airbnb": "^16.1.0",
+                "eslint-plugin-import": "^2.12.0",
+                "eslint-plugin-jsx-a11y": "^6.0.3",
+                "eslint-plugin-react": "^7.8.2"
+            },
+            "engines": {
+                "atom-space-pen-views": "^2.0.3"
+            },
+            "homepage": "https://github.com/rodrigopmatias/atom-chronometer#readme",
+            "keywords": [
+                "productivity",
+                "chronometer",
+                "codetime",
+                "billing"
+            ],
+            "scripts": {
+                "linter": "eslint lib/"
+            },
+            "license": "MIT",
+            "main": "./lib/index",
+            "name": "chronometer",
+            "optionalDependencies": {},
+            "readme": "# chronometer package\n\nA short description of your package.\n\n![Demostration](https://raw.githubusercontent.com/rodrigopmatias/atom-chronometer/master/demo.gif)\n",
+            "readmeFilename": "README.md",
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/rodrigopmatias/atom-chronometer.git"
+            },
+            "version": "1.1.0",
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/chronometer/versions/1.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/rodrigopmatias/atom-chronometer/tarball/refs/tags/v1.1.0",
+            "sha": "3b20331e4255db75542f51b00a9ed175d2d2ffa1"
+        },
+        "1.0.1": {
+            "configSchema": {
+                "autoStart": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Auto init the chronometer for mensue time.",
+                    "title": "Auto init chronomter"
+                },
+                "autoPausePeriod": {
+                    "type": "integer",
+                    "default": 20,
+                    "minimum": 15,
+                    "maximum": 900,
+                    "description": "Auto pause period, in seconds, for avaliable need pause chronomter, limits 15 and 900 seconds.",
+                    "title": "Auto pause period"
+                },
+                "locale": {
+                    "type": "string",
+                    "default": "en-us",
+                    "description": "Locale for currency representation",
+                    "title": "Locale"
+                },
+                "hourValue": {
+                    "type": "number",
+                    "default": 10,
+                    "minimum": 0,
+                    "description": "Value of work time, 0.00 for free work",
+                    "title": "Value of work time"
+                },
+                "currencySimbol": {
+                    "type": "string",
+                    "default": "USD",
+                    "description": "The simbol of currency.",
+                    "title": "Currency Simbol"
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dependencies": {},
+            "description": "This tool aid mensure time working in editor atom, you can use this for billing.",
+            "devDependencies": {},
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "homepage": "https://github.com/rodrigopmatias/atom-chronometer#readme",
+            "keywords": [
+                "productivity",
+                "chronometer",
+                "codetime",
+                "billing"
+            ],
+            "license": "MIT",
+            "main": "./lib/main",
+            "name": "chronometer",
+            "optionalDependencies": {},
+            "readme": "# chronometer package\n\nA short description of your package.\n\n![Demostration](https://raw.githubusercontent.com/rodrigopmatias/atom-chronometer/master/demo.gif)\n",
+            "readmeFilename": "README.md",
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/rodrigopmatias/atom-chronometer.git"
+            },
+            "version": "1.0.1",
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/chronometer/versions/1.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/rodrigopmatias/atom-chronometer/tarball/refs/tags/v1.0.1",
+            "sha": "c388496045ded79f125944f79a8d4d96c27f5279"
+        },
+        "1.0.0": {
+            "configSchema": {
+                "autoStart": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Auto init the chronometer for mensue time.",
+                    "title": "Auto init chronomter"
+                },
+                "autoPausePeriod": {
+                    "type": "integer",
+                    "default": 20,
+                    "minimum": 15,
+                    "maximum": 900,
+                    "description": "Auto pause period, in seconds, for avaliable need pause chronomter, limits 15 and 900 seconds.",
+                    "title": "Auto pause period"
+                },
+                "locale": {
+                    "type": "string",
+                    "default": "en-us",
+                    "description": "Locale for currency representation",
+                    "title": "Locale"
+                },
+                "hourValue": {
+                    "type": "number",
+                    "default": 10,
+                    "minimum": 0,
+                    "description": "Value of work time, 0.00 for free work",
+                    "title": "Value of work time"
+                },
+                "currencySimbol": {
+                    "type": "string",
+                    "default": "USD",
+                    "description": "The simbol of currency.",
+                    "title": "Currency Simbol"
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "dependencies": {},
+            "description": "This tool aid mensure time working in editor atom, you can use this for billing.",
+            "devDependencies": {},
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "homepage": "https://github.com/rodrigopmatias/atom-chronometer#readme",
+            "keywords": [
+                "productivity",
+                "chronometer",
+                "codetime",
+                "billing"
+            ],
+            "license": "MIT",
+            "main": "./lib/main",
+            "name": "chronometer",
+            "optionalDependencies": {},
+            "readme": "# chronometer package\n\nA short description of your package.\n\n![Demostration](https://raw.githubusercontent.com/rodrigopmatias/atom-chronometer/master/demo.gif)\n",
+            "readmeFilename": "README.md",
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/rodrigopmatias/atom-chronometer.git"
+            },
+            "version": "1.0.0",
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/chronometer/versions/1.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/rodrigopmatias/atom-chronometer/tarball/refs/tags/v1.0.0",
+            "sha": "53d83efa8219f71e7194ba82bbf117781e6f77d3"
+        },
+        "0.2.3": {
+            "name": "chronometer",
+            "main": "./lib/main",
+            "version": "0.2.3",
+            "description": "This tool aid mensure time working in editor atom, you can use this for billing.",
+            "keywords": [
+                "productivity",
+                "chronometer",
+                "codetime",
+                "billing"
+            ],
+            "configSchema": {
+                "autoStart": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Auto init the chronometer for mensue time.",
+                    "title": "Auto init chronomter"
+                },
+                "autoPausePeriod": {
+                    "type": "integer",
+                    "default": 20,
+                    "minimum": 15,
+                    "maximum": 900,
+                    "description": "Auto pause period, in seconds, for avaliable need pause chronomter, limits 15 and 900 seconds.",
+                    "title": "Auto pause period"
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "repository": "https://github.com/rodrigopmatias/atom-chronometer",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/chronometer/versions/0.2.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/rodrigopmatias/atom-chronometer/tarball/refs/tags/0.2.3",
+            "sha": "0ae89c4c2617ff30bbf759eb7395953d9cac87e9"
+        },
+        "0.2.2": {
+            "name": "chronometer",
+            "main": "./lib/main",
+            "version": "0.2.2",
+            "description": "This tool aid mensure time working in editor atom, you can use this for billing.",
+            "keywords": [
+                "productivity",
+                "chronometer",
+                "codetime",
+                "billing"
+            ],
+            "configSchema": {
+                "autoStart": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Auto init the chronometer for mensue time.",
+                    "title": "Auto init chronomter"
+                },
+                "autoPausePeriod": {
+                    "type": "integer",
+                    "default": 20,
+                    "minimum": 15,
+                    "maximum": 900,
+                    "description": "Auto pause period, in seconds, for avaliable need pause chronomter, limits 15 and 900 seconds.",
+                    "title": "Auto pause period"
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "repository": "https://github.com/rodrigopmatias/atom-chronometer",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/chronometer/versions/0.2.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/rodrigopmatias/atom-chronometer/tarball/refs/tags/0.2.2",
+            "sha": "483f7a7fd2038fb3446645ec6e9d9d56167d4559"
+        },
+        "0.2.0": {
+            "name": "chronometer",
+            "main": "./lib/main",
+            "version": "0.2.0",
+            "description": "This tool aid mensure time working in editor atom, you can use this for billing.",
+            "keywords": [
+                "productivity",
+                "chronometer",
+                "codetime",
+                "billing"
+            ],
+            "configSchema": {
+                "autoStart": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Auto init the chronometer for mensue time.",
+                    "title": "Auto init chronomter"
+                },
+                "autoPausePeriod": {
+                    "type": "integer",
+                    "default": 20,
+                    "minimum": 15,
+                    "maximum": 900,
+                    "description": "Auto pause period, in seconds, for avaliable need pause chronomter, limits 15 and 900 seconds.",
+                    "title": "Auto pause period"
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "repository": "https://github.com/rodrigopmatias/atom-chronometer",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/chronometer/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/rodrigopmatias/atom-chronometer/tarball/refs/tags/0.2.0",
+            "sha": "be03cad3205338b086d42a9ee57f7cbcc7993274"
+        },
+        "0.1.7": {
+            "name": "chronometer",
+            "main": "./lib/main",
+            "version": "0.1.7",
+            "description": "This tool aid mensure time working in editor atom, you can use this for billing.",
+            "keywords": [
+                "productivity",
+                "chronometer",
+                "codetime",
+                "billing"
+            ],
+            "configSchema": {
+                "autoStart": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Auto init the chronometer for mensue time.",
+                    "title": "Auto init chronomter"
+                },
+                "autoPausePeriod": {
+                    "type": "integer",
+                    "default": 20,
+                    "minimum": 15,
+                    "maximum": 900,
+                    "description": "Auto pause period, in seconds, for avaliable need pause chronomter, limits 15 and 900 seconds.",
+                    "title": "Auto pause period"
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "repository": "https://github.com/rodrigopmatias/atom-chronometer",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/chronometer/versions/0.1.7/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/rodrigopmatias/atom-chronometer/tarball/refs/tags/0.1.7",
+            "sha": "87b1dbbc32a8bbc1ad5118a8ec9172b84c776de1"
+        },
+        "0.1.6": {
+            "name": "chronometer",
+            "main": "./lib/main",
+            "version": "0.1.6",
+            "description": "This tool aid mensure time working in editor atom, you can use this for billing.",
+            "keywords": [
+                "productivity",
+                "chronometer",
+                "codetime",
+                "billing"
+            ],
+            "configSchema": {
+                "autoStart": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Auto init the chronometer for mensue time.",
+                    "title": "Auto init chronomter"
+                },
+                "autoPausePeriod": {
+                    "type": "integer",
+                    "default": 20,
+                    "minimum": 15,
+                    "maximum": 900,
+                    "description": "Auto pause period, in seconds, for avaliable need pause chronomter, limits 15 and 900 seconds.",
+                    "title": "Auto pause period"
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "repository": "https://github.com/rodrigopmatias/atom-chronometer",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/chronometer/versions/0.1.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/rodrigopmatias/atom-chronometer/tarball/refs/tags/0.1.6",
+            "sha": "623100712526900341454df16b0193866603def3"
+        },
+        "0.1.5": {
+            "name": "chronometer",
+            "main": "./lib/main",
+            "version": "0.1.5",
+            "description": "This tool aid mensure time working in editor atom, you can use this for billing.",
+            "keywords": [
+                "productivity",
+                "chronometer",
+                "codetime",
+                "billing"
+            ],
+            "configSchema": {
+                "autoStart": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Auto init the chronometer for mensue time.",
+                    "title": "Auto init chronomter"
+                },
+                "autoPausePeriod": {
+                    "type": "integer",
+                    "default": 20,
+                    "minimum": 15,
+                    "maximum": 900,
+                    "description": "Auto pause period, in seconds, for avaliable need pause chronomter, limits 15 and 900 seconds.",
+                    "title": "Auto pause period"
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "repository": "https://github.com/rodrigopmatias/atom-chronometer",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/chronometer/versions/0.1.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/rodrigopmatias/atom-chronometer/tarball/refs/tags/0.1.5",
+            "sha": "2d1a28c5791a8a06d7018683cf52c8febe774002"
+        },
+        "0.1.4": {
+            "name": "chronometer",
+            "main": "./lib/main",
+            "version": "0.1.4",
+            "description": "This tool aid mensure time working in editor atom, you can use this for billing.",
+            "keywords": [
+                "productivity",
+                "chronometer",
+                "codetime",
+                "billing"
+            ],
+            "configSchema": {
+                "autoStart": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Auto init the chronometer for mensue time.",
+                    "title": "Auto init chronomter"
+                },
+                "autoPausePeriod": {
+                    "type": "integer",
+                    "default": 20,
+                    "minimum": 15,
+                    "maximum": 900,
+                    "description": "Auto pause period, in seconds, for avaliable need pause chronomter, limits 15 and 900 seconds.",
+                    "title": "Auto pause period"
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "repository": "https://github.com/rodrigopmatias/atom-chronometer",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/chronometer/versions/0.1.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/rodrigopmatias/atom-chronometer/tarball/refs/tags/0.1.4",
+            "sha": "1ddcf5822acdbc557ec2c08531dbc48cbd0f51ef"
+        },
+        "0.1.3": {
+            "name": "chronometer",
+            "main": "./lib/main",
+            "version": "0.1.3",
+            "description": "This tool aid mensure time working in editor atom, you can use this for billing.",
+            "keywords": [
+                "productivity",
+                "chronometer",
+                "codetime",
+                "billing"
+            ],
+            "configSchema": {
+                "autoStart": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Auto init the chronometer for mensue time.",
+                    "title": "Auto init chronomter"
+                },
+                "autoPausePeriod": {
+                    "type": "integer",
+                    "default": 20,
+                    "minimum": 15,
+                    "maximum": 900,
+                    "description": "Auto pause period, in seconds, for avaliable need pause chronomter, limits 15 and 900 seconds.",
+                    "title": "Auto pause period"
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "repository": "https://github.com/rodrigopmatias/atom-chronometer",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/chronometer/versions/0.1.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/rodrigopmatias/atom-chronometer/tarball/refs/tags/0.1.3",
+            "sha": "1fc4a2e792c9750a938ba68b70e4d5d27b83ca32"
+        },
+        "0.1.2": {
+            "name": "chronometer",
+            "main": "./lib/main",
+            "version": "0.1.2",
+            "description": "This tool aid mensure time working in editor atom, you can use this for billing.",
+            "keywords": [
+                "productivity",
+                "chronometer",
+                "codetime",
+                "billing"
+            ],
+            "configSchema": {
+                "autoStart": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Auto init the chronometer for mensue time.",
+                    "title": "Auto init chronomter"
+                },
+                "autoPausePeriod": {
+                    "type": "integer",
+                    "default": 20,
+                    "minimum": 15,
+                    "maximum": 900,
+                    "description": "Auto pause period, in seconds, for avaliable need pause chronomter, limits 15 and 900 seconds.",
+                    "title": "Auto pause period"
+                }
+            },
+            "consumedServices": {
+                "status-bar": {
+                    "versions": {
+                        "^1.0.0": "consumeStatusBar"
+                    }
+                }
+            },
+            "repository": "https://github.com/rodrigopmatias/atom-chronometer",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/chronometer/versions/0.1.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/rodrigopmatias/atom-chronometer/tarball/refs/tags/0.1.2",
+            "sha": "c4c420ccd476cdd82c36611cc3dde1b706f65dae"
+        }
+    },
+    "readme": "# Chronometer\n\nThe Chronometer project was created to help developers measure the time worked, so the plugin keeps track of the changes in the editor buffers, if the buffers go unchanged for a long time, this time can be configured, it pauses the timer so that it does not be counted overtime.\n\nIt is very simple, and easy to pass unnoticed, see the figure below:\n\n![Atom with chronometer working](images/window-of-work.png?raw=true)\n\nNow with more detail in the bottom bar:\n\n![Detail of chronometer working](images/chronometer-working-with-value.png?raw=true)\n\nThe chronometer still has several settings such as the possibility to inform the value of an hour of your work, so that it can estimate how much time was invested in each session of code. See the figure below:\n\n![Settings](images/chronometer-configuration.png?raw=true)\n\nIn addition to the global settings, in each project we can also have a <code> .chronometer.json</code> configuration file where we can make private definitions for the project in question, see:\n\n<pre><code class=\"json\">{\n  \"currencySymbol\": \"BTC\",\n  \"hourValue\": 0.0012,\n  \"locale\": \"en-us\",\n  \"fractionDigits\": 6\n}</code></pre>\n",
+    "metadata": {
+        "configSchema": {
+            "autoStart": {
+                "type": "boolean",
+                "default": true,
+                "description": "Auto init the chronometer for mensue time.",
+                "title": "Auto init chronomter"
+            },
+            "autoPausePeriod": {
+                "type": "integer",
+                "default": 20,
+                "minimum": 15,
+                "maximum": 900,
+                "description": "Auto pause period, in seconds, for avaliable need pause chronomter, limits 15 and 900 seconds.",
+                "title": "Auto pause period"
+            },
+            "locale": {
+                "type": "string",
+                "default": "en-us",
+                "description": "Locale for currency representation",
+                "title": "Locale"
+            },
+            "hourValue": {
+                "type": "number",
+                "default": 10,
+                "minimum": 0,
+                "description": "Value of work time, 0.00 for free work",
+                "title": "Value of work time"
+            },
+            "fractionDigits": {
+                "type": "number",
+                "default": 2,
+                "minimum": 1,
+                "maximum": 6,
+                "description": "Number of fraction digits",
+                "title": "Fraction digits"
+            },
+            "currencySymbol": {
+                "type": "string",
+                "default": "USD",
+                "description": "The symbol of currency.",
+                "title": "Currency Symbol"
+            }
+        },
+        "consumedServices": {
+            "status-bar": {
+                "versions": {
+                    "^1.0.0": "consumeStatusBar"
+                }
+            }
+        },
+        "atomTranspilers": [
+            {
+                "glob": "**/*.js",
+                "transpiler": "atom-babel6-transpiler",
+                "options": {
+                    "babel": {
+                        "presets": [
+                            [
+                                "env",
+                                {
+                                    "targets": {
+                                        "browsers": [
+                                            "chrome >= 58"
+                                        ]
+                                    }
+                                }
+                            ],
+                            "es2015",
+                            "react"
+                        ],
+                        "babelrc": false
+                    }
+                }
+            }
+        ],
+        "dependencies": {
+            "atom-babel6-transpiler": "^1.1.3",
+            "atom-space-pen-views": "^2.0.3",
+            "babel-preset-env": "^1.7.0",
+            "babel-preset-es2015": "^6.24.1",
+            "babel-preset-react": "^6.24.1",
+            "react": "^16.4.0",
+            "reactdom": "^2.0.0"
+        },
+        "description": "This tool aid mensure time working in editor atom, you can use this for billing.",
+        "devDependencies": {
+            "eslint-config-airbnb": "^16.1.0",
+            "eslint-plugin-import": "^2.12.0",
+            "eslint-plugin-jsx-a11y": "^6.0.3",
+            "eslint-plugin-react": "^7.8.2"
+        },
+        "engines": {
+            "atom-space-pen-views": "^2.0.3"
+        },
+        "homepage": "https://github.com/rodrigopmatias/atom-chronometer#readme",
+        "keywords": [
+            "productivity",
+            "chronometer",
+            "codetime",
+            "billing"
+        ],
+        "scripts": {
+            "linter": "eslint lib/"
+        },
+        "license": "MIT",
+        "main": "./lib/index",
+        "name": "chronometer",
+        "optionalDependencies": {},
+        "readme": "# chronometer package\n\nA short description of your package.\n\n![Demostration](https://raw.githubusercontent.com/rodrigopmatias/atom-chronometer/master/demo.gif)\n",
+        "readmeFilename": "README.md",
+        "repository": {
+            "type": "git",
+            "url": "git+https://github.com/rodrigopmatias/atom-chronometer.git"
+        },
+        "version": "1.2.0"
+    },
+    "created": 1658337460562,
+    "updated": 1658337460562,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

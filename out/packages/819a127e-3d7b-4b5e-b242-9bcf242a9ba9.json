@@ -1,0 +1,56 @@
+{
+    "name": "advanced-custom-fields-snippets",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/smilledge/acf-atom-snippets"
+    },
+    "downloads": 768,
+    "stargazers_count": 2,
+    "releases": {
+        "latest": "1.1.0"
+    },
+    "versions": {
+        "1.1.0": {
+            "name": "advanced-custom-fields-snippets",
+            "version": "1.1.0",
+            "description": "Wordpress Advanced Custom Fields snippets for Atom",
+            "author": {
+                "name": "Sam Milledge",
+                "email": "sam@sammilledge.com",
+                "url": "http://sammilledge.com"
+            },
+            "repository": "https://github.com/smilledge/acf-atom-snippets",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=0.169.0"
+            },
+            "dependencies": {},
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/advanced-custom-fields-snippets/versions/1.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/smilledge/acf-atom-snippets/tarball/refs/tags/v1.1.0",
+            "sha": "abce02f9d989ccf37176320a9da865a29dbfda6f"
+        }
+    },
+    "readme": "Atom Snippets for Wordpress ACF (Advanced Custom Fields)\n=====\n\nThis is an Atom port of my [Sublime ACF snippets](https://github.com/smilledge/acf-sublime-snippets) package. Most of the fields are the same, however the `:` separator has been changed to `-` in the Atom version.\n\n# Install\n\nClone this repo into your Atom packages folder and restart Atom.\n\n## Mac\n\n`git clone https://github.com/smilledge/acf-atom-snippets.git /Users/$(whoami)/.atom/packages/advanced-custom-fields-snippets`\n\n# Snippets\n\n## Basic Fields and conditionals\n\n`field` / `field-sub` / `field-option` / `field-a` / `field-h1` / `field-p`\n\nGet a field, sub-field or options field by it's name.\n\n```\n<?php if (get_field('field_name')) : ?>\n    <?php the_field('field_name'); ?>\n<?php endif; ?>\n```\n\n`field-if` / `field-elseif`\n\nIf statements using the value of an ACF field.\n\n```\n<?php if (get_field('field_name')) : ?>\n<?php else : ?>\n<?php endif; ?>\n```\n\n## Date field\n\nGet the value of a date field and format the date string.\n\n```\n<?php if (get_field('field_name')) :\n    $date = DateTime::createFromFormat('Ymd', get_field('field_name')); ?>\n    <?php echo $date->format('d-m-Y'); ?>\n<?php endif; ?>\n```\n\n## Image and file field\n\n`field-image`\n\nDisplay image field with a return value set to URL.\n\n```\n<?php if (get_field('field_name')) : ?>\n    <img src=\"<?php the_field('field_name'); ?>\" alt=\"<?php the_field(''); ?>\">\n<?php endif; ?>\n```\n\n`field-image-id`\n\nDisplay image field with a return value set to ID.\n\n```\n<?php\n    if (get_field('field_name')) {\n        $attachment_id = get_field('field_name');\n        wp_get_attachment_image($attachment_id, 'full');\n    }\n?>\n```\n\n`field-image-object`\n\nDisplay image field with a return value set to object.\n\n```\n<?php if (get_field('field_name')) :\n    $image = get_field('field_name'); ?>\n    <!-- Full size image -->\n    <img src=\"<?php echo $image['url']; ?>\" alt=\"<?php echo $image['alt']; ?>\"/>\n    <!-- Thumbnail image -->\n    <img src=\"<?php echo $image['sizes']['thumbnail']; ?>\" alt=\"<?php echo $image['alt']; ?>\"/>\n<?php endif; ?>\n```\n\n`field-file`\n\nDisplay file field with a return value set to URL.\n\n```\n<?php if (get_field('field_name')) : ?>\n    <a href=\"<?php the_field('field_name'); ?>\" >Download File</a>\n<?php endif; ?>\n```\n\n`field-file-id`\n\nDisplay file field with a return value set to ID.\n\n```\n<?php if (get_field('field_name')) :\n    $attachment_id = get_field('field_name');\n    $url = wp_get_attachment_url($attachment_id);\n    $title = get_the_title($attachment_id); ?>\n    <a href=\"<?php echo $url; ?>\" ><?php echo $title; ?></a>\n<?php endif; ?>\n```\n\n`field-file-object`\n\nDisplay file field with a return value set to object.\n\n```\n<?php if (get_field('field_name')) :\n    $file = get_field('field_name'); ?>\n    <a href=\"<?php echo $file['url']; ?>\"><?php echo $file['title']; ?></a>\n<?php endif; ?>\n```\n\n## Relationship field\n\n`field-relationship`\n\nGet a relationship field and loop over all returned posts.\n\n```\n<?php $posts = get_field('field_name'); ?>\n<?php if ($posts): ?>\n    <ul>\n        <?php foreach ($posts as $post) :\n            setup_postdata($post); ?>\n            <li>\n                <a href=\"<?php the_permalink(); ?>\"><?php the_title(); ?></a>\n            </li>\n        <?php endforeach; wp_reset_postdata(); ?>\n    </ul>\n<?php endif; ?>\n```\n\n`field-post`\n\nGet a post relationship field.\n\n```\n<?php $post = get_field('field_name');\n    if ($post) : setup_postdata($post); ?>\n    <a href=\"<?php the_permalink(); ?>\"><?php the_title(); ?></a>\n<?php wp_reset_postdata(); endif; ?>\n```\n\n## Location field\n\n`field-location`\n\nGet the street address from a location field.\n\n```\n<?php if (get_field('field_name')) :\n    $location = get_field('field_name'); ?>\n    <?php echo $location['address']; ?>\n<?php endif; ?>\n```\n\n`field-location-staticmap`\n\nGet a location field and convert it to a static Google Map.\n\n```\n<?php if (get_field('field_name')) :\n    $location = get_field('field_name');\n    $coordinates = isset($location['coordinates']) ? $location['coordinates'] : $location; ?>\n    <img src=\"http://maps.google.com/maps/api/staticmap?markers=<?php echo $coordinates; ?>&size=500x300&sensor=false\" alt=\"\">\n<?php endif; ?>\n```\n\n`field-location-map`\n\nGet a location field and convert it to an interactive Google Map. Also adds a marker to the location. The CSS is used to prevent rendering issues with map controls caused by most responsive CSS grids.\n\n```\n<?php if (get_field('field_name')) :\n    $location = get_field('field_name');\n    $coordinates = isset($location['coordinates']) ? $location['coordinates'] : $location; ?>\n\n    <span src=\"https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false\"></span>\n    <span>\n        google.maps.event.addDomListener(window, 'load', function() {\n            var map = new google.maps.Map(document.getElementById('map-canvas'), {\n                zoom: 16,\n                center: new google.maps.LatLng(<?php echo $coordinates; ?>),\n                mapTypeId: google.maps.MapTypeId.ROADMAP,\n                scrollwheel: false\n            });\n            new google.maps.Marker({\n                    position: new google.maps.LatLng(<?php echo $coordinates; ?>),\n                    map: map\n            });\n        });\n    </span>\n\n    <style>\n        #map-canvas img {\n            max-width: inherit;\n        }\n    </style>\n\n    <div id=\"map-canvas\" style=\"width:500px;height:300px;\"></div>\n<?php endif; ?>\n```\n\n## Repeater field\n\n`field-repeater`\n\nGet and loop over a repeater field.\n\n```\n<?php if (have_rows('field_name')) : ?>\n    <?php while(have_rows('field_name')) : the_row(); ?>\n        <?php the_sub_field('sub_field_name'); ?>\n    <?php endwhile; ?>\n<?php endif; ?>\n```\n\n`field-repeater-grid`\n\nLoop over a repeater filed and seperate results into rows. The second tabstop is the row length.\n\n```\n<?php if (get_field('field_name')) : ?>\n    <div class=\"items\">\n        <?php foreach (array_chunk(get_field('field_name'), 2) as $row): ?>\n            <div class=\"row\">\n                <?php foreach ($row as $item): ?>\n                    <div class=\"item\">\n                        <?php echo $item['field_name']; ?>\n                    </div>\n                <?php endforeach; ?>\n            </div>\n        <?php endforeach; ?>\n    </div>\n<?php endif; ?>\n```\n\n## Gravity Forms Field\n\n`field-form`\n\nDisplay a gravity form. The parameters for gravity_form() are outlined in the [Gravity Forms documentation](http://www.gravityhelp.com/documentation/page/Embedding_A_Form#Function_Call).\n\n```\n<?php if (get_field('field_name')) {\n    $form = get_field('field_name');\n    gravity_form_enqueue_scripts($form->id, true);\n    gravity_form($form->id, display_title, display_description, false, field_values, enable_ajax, 1);\n} ?>\n```\n\n## Query posts\n\n`field-query`\n\nQuery a post type on a field value and loop over posts.\n\n```\n<?php\n    $args = array(\n        'post_type' => 'post',\n        'post_status' => 'publish',\n        'posts_per_page' => 10,\n        'meta_key' => 'field_name',\n        'meta_value' => 'field_value'\n    );\n    $query = new WP_Query($args);\n?>\n<?php if($query->have_posts()) : ?>\n    <ul>\n        <?php while ($query->have_posts()) :\n            $query->the_post(); ?>\n            <li>\n                <a href=\"<?php the_permalink(); ?>\"><?php the_title(); ?></a>\n            </li>\n        <?php endwhile; ?>\n    </ul>\n<?php endif; ?>\n<?php wp_reset_query(); ?>\n```\n\n## Misc\n\n`field-dump`\n\n`var_dump` the field contents wrapped in `<pre>` tags. Useful for deubbing.\n\n```\n<pre>\n    <?php\n        var_dump(get_field('field_name'));\n        die();\n    ?>\n</pre>\n```\n",
+    "metadata": {
+        "name": "advanced-custom-fields-snippets",
+        "version": "1.1.0",
+        "description": "Wordpress Advanced Custom Fields snippets for Atom",
+        "author": {
+            "name": "Sam Milledge",
+            "email": "sam@sammilledge.com",
+            "url": "http://sammilledge.com"
+        },
+        "repository": "https://github.com/smilledge/acf-atom-snippets",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=0.169.0"
+        },
+        "dependencies": {}
+    },
+    "created": 1658330659092,
+    "updated": 1658330659092,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

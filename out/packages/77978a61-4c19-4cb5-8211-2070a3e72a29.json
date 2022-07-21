@@ -1,0 +1,3064 @@
+{
+    "name": "fuzzy-finder",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/atom/fuzzy-finder"
+    },
+    "downloads": 414838,
+    "stargazers_count": 64,
+    "releases": {
+        "latest": "1.14.3"
+    },
+    "versions": {
+        "1.14.3": {
+            "name": "fuzzy-finder",
+            "version": "1.14.3",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^1.1.2",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "9.0.3",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "fast",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"fast\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the substantially faster `ripgrep` crawler."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.14.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.14.3",
+            "sha": "470978ca231ce17ab4ca664661b0b748c58d3230"
+        },
+        "1.14.2": {
+            "name": "fuzzy-finder",
+            "version": "1.14.2",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^1.1.2",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "fast",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"fast\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the substantially faster `ripgrep` crawler."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.14.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.14.2",
+            "sha": "7874a979d428b878bfc792fbd9197ecb24139f85"
+        },
+        "1.14.1": {
+            "name": "fuzzy-finder",
+            "version": "1.14.1",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^1.1.1",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "fast",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"fast\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the substantially faster `ripgrep` crawler."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.14.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.14.1",
+            "sha": "369fd61b0187d9ab87d54c5ecadfc4d9839487d1"
+        },
+        "1.14.0": {
+            "name": "fuzzy-finder",
+            "version": "1.14.0",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^1.1.0",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "fast",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"fast\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the substantially faster `ripgrep` crawler."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.14.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.14.0",
+            "sha": "18d22263bddba515c2aeb538cbab87aeff6550b3"
+        },
+        "1.13.9": {
+            "name": "fuzzy-finder",
+            "version": "1.13.9",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^1.0.3",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "fast",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"fast\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use the substantially faster `ripgrep` crawler."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.13.9/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.13.9",
+            "sha": "f9f75e34f00db6e74fe4eb07b0b892a6ae5dd84d"
+        },
+        "1.13.8": {
+            "name": "fuzzy-finder",
+            "version": "1.13.8",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^1.0.3",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "alternate",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"alternate\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use the experimental `ripgrep` crawler. This will substantially speed up the indexing process on large projects."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.13.8/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.13.8",
+            "sha": "3ab96099d0f913b85007952d546247c77ac3ff05"
+        },
+        "1.13.7": {
+            "name": "fuzzy-finder",
+            "version": "1.13.7",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^1.0.3",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "alternate",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"alternate\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use the experimental `ripgrep` crawler. This will substantially speed up the indexing process on large projects."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.13.7/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.13.7",
+            "sha": "f8e0cb14aa5fa43e6d477f1656b80646a2ff935b"
+        },
+        "1.13.6": {
+            "name": "fuzzy-finder",
+            "version": "1.13.6",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^1.0.3",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "alternate",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"alternate\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use the experimental `ripgrep` crawler. This will substantially speed up the indexing process on large projects."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.13.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.13.6",
+            "sha": "8953bff61f323d846d3a8061d066794f26a20028"
+        },
+        "1.13.5": {
+            "name": "fuzzy-finder",
+            "version": "1.13.5",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^1.0.3",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "alternate",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"alternate\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use the experimental `ripgrep` crawler. This will substantially speed up the indexing process on large projects."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.13.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.13.5",
+            "sha": "fdb6f4a5bf3e0869f2ee7ea08f08e8ae23cad4c6"
+        },
+        "1.13.4": {
+            "name": "fuzzy-finder",
+            "version": "1.13.4",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^1.0.3",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "alternate",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"alternate\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use the experimental `ripgrep` crawler. This will substantially speed up the indexing process on large projects."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.13.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.13.4",
+            "sha": "b56cd42d2027e0ba448fa55a0b0b107a22bb4c03"
+        },
+        "1.13.3": {
+            "name": "fuzzy-finder",
+            "version": "1.13.3",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^1.0.1",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "alternate",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"alternate\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use the experimental `ripgrep` crawler. This will substantially speed up the indexing process on large projects."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.13.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.13.3",
+            "sha": "824f3bc4a0049baa734302528b9aea151b6cfde9"
+        },
+        "1.13.2": {
+            "name": "fuzzy-finder",
+            "version": "1.13.2",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^1.0.1",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "alternate",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"alternate\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use the experimental `ripgrep` crawler. This will substantially speed up the indexing process on large projects."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.13.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.13.2",
+            "sha": "80bd15b74231717e2efefa33dcd8df9475903bce"
+        },
+        "1.13.1": {
+            "name": "fuzzy-finder",
+            "version": "1.13.1",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^0.7.0",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "alternate",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"alternate\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use the experimental `ripgrep` crawler. This will substantially speed up the indexing process on large projects."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.13.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.13.1",
+            "sha": "9363c70af0e8c0cf1d1f8e4a28c4fc46c1b7aabf"
+        },
+        "1.13.0": {
+            "name": "fuzzy-finder",
+            "version": "1.13.0",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^0.7.0",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "alternate",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"alternate\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use the experimental `ripgrep` crawler. This will substantially speed up the indexing process on large projects."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.13.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.13.0",
+            "sha": "ad820ef06930a26f2308aa819052b05a3e530797"
+        },
+        "1.12.1": {
+            "name": "fuzzy-finder",
+            "version": "1.12.1",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^0.7.0",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "alternate",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"alternate\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use the experimental `ripgrep` crawler. This will substantially speed up the indexing process on large projects."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.12.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.12.1",
+            "sha": "48eb7c0ed2c5b1b43a58daf7107d59dfd92c1370"
+        },
+        "1.12.0": {
+            "name": "fuzzy-finder",
+            "version": "1.12.0",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^0.7.0",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "alternate",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"alternate\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use the experimental `ripgrep` crawler. This will substantially speed up the indexing process on large projects."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.12.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.12.0",
+            "sha": "9972314d23275d3da9a34e47bcf6d3ac84bf9cd2"
+        },
+        "1.11.0": {
+            "name": "fuzzy-finder",
+            "version": "1.11.0",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "@atom/fuzzy-native": "^0.7.0",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.7.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "scoringSystem": {
+                    "type": "string",
+                    "default": "alternate",
+                    "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"alternate\"",
+                    "enum": [
+                        "standard",
+                        "alternate",
+                        "fast"
+                    ]
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use the experimental `ripgrep` crawler. This will substantially speed up the indexing process on large projects."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.11.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.11.0",
+            "sha": "64f651a91a55e56a0c390593ecd292a27e1e45c9"
+        },
+        "1.10.2": {
+            "name": "fuzzy-finder",
+            "version": "1.10.2",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.0.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                },
+                "metrics-reporter": {
+                    "versions": {
+                        "^1.1.0": "consumeMetricsReporter"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "useAlternateScoring": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use an alternative scoring approach which prefers run of consecutive characters, acronyms and start of words. (Experimental)"
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use the experimental `ripgrep` crawler. This will substantially speed up the indexing process on large projects."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.10.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.10.2",
+            "sha": "76023a656c3d7f8a500ef716818363b30d80875d"
+        },
+        "1.10.1": {
+            "name": "fuzzy-finder",
+            "version": "1.10.1",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.0.0",
+                "vscode-ripgrep": "^1.2.5",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "sinon": "1.17.4",
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "useAlternateScoring": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use an alternative scoring approach which prefers run of consecutive characters, acronyms and start of words. (Experimental)"
+                },
+                "useRipGrep": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use the experimental `ripgrep` crawler. This will substantially speed up the indexing process on large projects."
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.10.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.10.1",
+            "sha": "294703066ebd79f32fae00a5d0ecd137696a0102"
+        },
+        "1.9.2": {
+            "name": "fuzzy-finder",
+            "version": "1.9.2",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.0.0",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "useAlternateScoring": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use an alternative scoring approach which prefers run of consecutive characters, acronyms and start of words. (Experimental)"
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.9.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.9.2",
+            "sha": "af2868555f6cfbcccb6f53d61972990fc3103667"
+        },
+        "1.9.1": {
+            "name": "fuzzy-finder",
+            "version": "1.9.1",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.0.0",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "useAlternateScoring": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use an alternative scoring approach which prefers run of consecutive characters, acronyms and start of words. (Experimental)"
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.9.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.9.1",
+            "sha": "b060d81a49dd9ba389ad33dd96fdff337422eace"
+        },
+        "1.9.0": {
+            "name": "fuzzy-finder",
+            "version": "1.9.0",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.0.0",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "useAlternateScoring": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use an alternative scoring approach which prefers run of consecutive characters, acronyms and start of words. (Experimental)"
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.9.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.9.0",
+            "sha": "94b91a7fb2a5d9f9eaf6d2d17e71eb5420c9acf3"
+        },
+        "1.8.2": {
+            "name": "fuzzy-finder",
+            "version": "1.8.2",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.0.0",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "useAlternateScoring": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use an alternative scoring approach which prefers run of consecutive characters, acronyms and start of words. (Experimental)"
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.8.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.8.2",
+            "sha": "f096a3e1faea35573d1619e410496031e9cccce4"
+        },
+        "1.8.1": {
+            "name": "fuzzy-finder",
+            "version": "1.8.1",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.0.0",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "useAlternateScoring": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use an alternative scoring approach which prefers run of consecutive characters, acronyms and start of words. (Experimental)"
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.8.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.8.1",
+            "sha": "de626d65c805528840b7c21a57f3cd094a2d2a88"
+        },
+        "1.8.0": {
+            "name": "fuzzy-finder",
+            "version": "1.8.0",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.0.0",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "standard": "^10.0.3"
+            },
+            "standard": {
+                "env": {
+                    "atomtest": true,
+                    "browser": true,
+                    "jasmine": true,
+                    "node": true
+                },
+                "globals": [
+                    "atom"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "teletype": {
+                    "versions": {
+                        "0.0.1": "consumeTeletype"
+                    }
+                },
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "useAlternateScoring": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use an alternative scoring approach which prefers run of consecutive characters, acronyms and start of words. (Experimental)"
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.8.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.8.0",
+            "sha": "842551984144ff957e8d95c89a0189ac7011d075"
+        },
+        "1.7.6": {
+            "name": "fuzzy-finder",
+            "version": "1.7.6",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.6.0",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.0.0",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "standard": "*"
+            },
+            "standard": {
+                "globals": [
+                    "atom",
+                    "emit"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "useAlternateScoring": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use an alternative scoring approach which prefers run of consecutive characters, acronyms and start of words. (Experimental)"
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.7.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.7.6",
+            "sha": "bbb800c102bd4b64010d21120c6c825db662bc69"
+        },
+        "1.7.5": {
+            "name": "fuzzy-finder",
+            "version": "1.7.5",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.4.1",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.0.0",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "standard": "*"
+            },
+            "standard": {
+                "globals": [
+                    "atom",
+                    "emit"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "useAlternateScoring": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use an alternative scoring approach which prefers run of consecutive characters, acronyms and start of words. (Experimental)"
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.7.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.7.5",
+            "sha": "ab54628d71815b02576f350d298684058824ed10"
+        },
+        "1.7.4": {
+            "name": "fuzzy-finder",
+            "version": "1.7.4",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.7.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.4.1",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.0.0",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "standard": "*"
+            },
+            "standard": {
+                "globals": [
+                    "atom",
+                    "emit"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "useAlternateScoring": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use an alternative scoring approach which prefers run of consecutive characters, acronyms and start of words. (Experimental)"
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.7.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.7.4",
+            "sha": "952dbdef11e65d9ddef2e723a02be0194776bf50"
+        },
+        "1.7.3": {
+            "name": "fuzzy-finder",
+            "version": "1.7.3",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.1.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.4.1",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.0.0",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "standard": "*"
+            },
+            "standard": {
+                "globals": [
+                    "atom",
+                    "emit"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "useAlternateScoring": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use an alternative scoring approach which prefers run of consecutive characters, acronyms and start of words. (Experimental)"
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.7.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom/fuzzy-finder/tarball/refs/tags/v1.7.3",
+            "sha": "96d4e0c628f52ec91eadac1ec7666cf63a14d7d3"
+        },
+        "1.7.2": {
+            "name": "fuzzy-finder",
+            "version": "1.7.2",
+            "main": "./lib/main",
+            "description": "Open an editor to a file in the project with `cmd-t`.",
+            "repository": "https://github.com/atom/fuzzy-finder",
+            "license": "MIT",
+            "dependencies": {
+                "async": "0.2.6",
+                "atom-select-list": "^0.1.0",
+                "fs-plus": "^3.0.0",
+                "fuzzaldrin": "^2.0",
+                "fuzzaldrin-plus": "^0.4.1",
+                "humanize-plus": "~1.8.2",
+                "minimatch": "~3.0.3",
+                "temp": "~0.8.1",
+                "underscore-plus": "^1.0.0",
+                "wrench": "^1.5"
+            },
+            "devDependencies": {
+                "standard": "*"
+            },
+            "standard": {
+                "globals": [
+                    "atom",
+                    "emit"
+                ],
+                "ignore": [
+                    "spec/fixtures"
+                ]
+            },
+            "engines": {
+                "atom": "*"
+            },
+            "consumedServices": {
+                "atom.file-icons": {
+                    "versions": {
+                        "1.0.0": "consumeFileIcons"
+                    }
+                },
+                "file-icons.element-icons": {
+                    "versions": {
+                        "1.0.0": "consumeElementIcons"
+                    }
+                }
+            },
+            "configSchema": {
+                "ignoredNames": {
+                    "type": "array",
+                    "default": [],
+                    "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+                },
+                "searchAllPanes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+                },
+                "preserveLastSearch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+                },
+                "useAlternateScoring": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use an alternative scoring approach which prefers run of consecutive characters, acronyms and start of words. (Experimental)"
+                },
+                "prefillFromSelection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Prefills search query with selected in current editor text"
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/fuzzy-finder/versions/1.7.2/tarball"
+            }
+        }
+    },
+    "readme": "# Fuzzy Finder package\n[![OS X Build Status](https://travis-ci.org/atom/fuzzy-finder.svg?branch=master)](https://travis-ci.org/atom/fuzzy-finder) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/b4b2dg5n9r1wdqad/branch/master?svg=true)](https://ci.appveyor.com/project/Atom/fuzzy-finder/branch/master) [![Dependency Status](https://david-dm.org/atom/fuzzy-finder.svg)](https://david-dm.org/atom/fuzzy-finder)\n\nQuickly find and open files using <kbd>cmd-t</kbd>.\n\n  * <kbd>cmd-t</kbd> or <kbd>cmd-p</kbd> to open the file finder\n  * <kbd>cmd-b</kbd> to open the list of open buffers\n  * <kbd>cmd-shift-b</kbd> to open the list of Git modified and untracked files\n\nWhen opening a file, you can control the behavior.\n\n  * <kbd>enter</kbd> defaults to opening the selected file without leaving the current pane\n  * <kbd>shift-enter</kbd> defaults to switching to another pane if the file is already open there\n  * <kbd>cmd-k</kbd> <kbd>right</kbd> (or any other directional arrow) will open the highlighted file in a new pane on the side indicated by the arrow\n  * Adding `:<line number>` to the end of your search will go directly to the line number you specify, or the last line if the number is larger\n\nTurning on the \"Search All Panes\" setting reverses the behavior of <kbd>enter</kbd> and <kbd>shift-enter</kbd> so <kbd>enter</kbd> opens the file in any pane and <kbd>shift-enter</kbd> creates a new tab in the current pane.\n\nThis package uses both the `core.ignoredNames` and `fuzzy-finder.ignoredNames` config settings to filter out files and folders that will not be shown. Both of those config settings are interpreted as arrays of [minimatch](https://github.com/isaacs/minimatch) glob patterns.\n\nThis package also will also not show Git ignored files when the `core.excludeVcsIgnoredPaths` is enabled.\n\n![](https://f.cloud.github.com/assets/671378/2241456/100db6b8-9cd3-11e3-9b3a-569c6b50cc60.png)\n",
+    "metadata": {
+        "name": "fuzzy-finder",
+        "version": "1.14.3",
+        "main": "./lib/main",
+        "description": "Open an editor to a file in the project with `cmd-t`.",
+        "repository": "https://github.com/atom/fuzzy-finder",
+        "license": "MIT",
+        "dependencies": {
+            "async": "0.2.6",
+            "atom-select-list": "^0.7.0",
+            "fs-plus": "^3.0.0",
+            "fuzzaldrin": "^2.0",
+            "fuzzaldrin-plus": "^0.6.0",
+            "@atom/fuzzy-native": "^1.1.2",
+            "humanize-plus": "~1.8.2",
+            "minimatch": "~3.0.3",
+            "temp": "~0.8.1",
+            "underscore-plus": "^1.7.0",
+            "vscode-ripgrep": "^1.2.5",
+            "wrench": "^1.5"
+        },
+        "devDependencies": {
+            "sinon": "9.0.3",
+            "standard": "^10.0.3"
+        },
+        "standard": {
+            "env": {
+                "atomtest": true,
+                "browser": true,
+                "jasmine": true,
+                "node": true
+            },
+            "globals": [
+                "atom"
+            ],
+            "ignore": [
+                "spec/fixtures"
+            ]
+        },
+        "engines": {
+            "atom": "*"
+        },
+        "consumedServices": {
+            "teletype": {
+                "versions": {
+                    "0.0.1": "consumeTeletype"
+                }
+            },
+            "atom.file-icons": {
+                "versions": {
+                    "1.0.0": "consumeFileIcons"
+                }
+            },
+            "file-icons.element-icons": {
+                "versions": {
+                    "1.0.0": "consumeElementIcons"
+                }
+            },
+            "metrics-reporter": {
+                "versions": {
+                    "^1.1.0": "consumeMetricsReporter"
+                }
+            }
+        },
+        "configSchema": {
+            "ignoredNames": {
+                "type": "array",
+                "default": [],
+                "description": "List of string glob patterns. Files and directories matching these patterns will be ignored. This list is merged with the list defined by the core `Ignored Names` config setting. Example: `.git, ._*, Thumbs.db`."
+            },
+            "searchAllPanes": {
+                "type": "boolean",
+                "default": false,
+                "description": "Search all panes when opening files. If disabled, only the active pane is searched. Holding `shift` inverts this setting."
+            },
+            "preserveLastSearch": {
+                "type": "boolean",
+                "default": false,
+                "description": "Remember the typed query when closing the fuzzy finder and use that as the starting query next time the fuzzy finder is opened."
+            },
+            "scoringSystem": {
+                "type": "string",
+                "default": "fast",
+                "description": "Scoring system to use. \"standard\" is the system used by other modals in Atom. \"alternate\" is an improved scoring system. \"fast\" is a much faster system, specially suitable for large projects. Default: \"fast\"",
+                "enum": [
+                    "standard",
+                    "alternate",
+                    "fast"
+                ]
+            },
+            "useRipGrep": {
+                "type": "boolean",
+                "default": true,
+                "description": "Use the substantially faster `ripgrep` crawler."
+            },
+            "prefillFromSelection": {
+                "type": "boolean",
+                "default": false,
+                "description": "Prefills search query with selected in current editor text"
+            }
+        }
+    },
+    "created": 1658341913024,
+    "updated": 1658341913024,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

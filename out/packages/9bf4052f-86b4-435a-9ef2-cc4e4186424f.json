@@ -1,0 +1,1937 @@
+{
+    "name": "build-sass",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/idleberg/atom-build-sass"
+    },
+    "downloads": 10587,
+    "stargazers_count": 8,
+    "releases": {
+        "latest": "0.16.0"
+    },
+    "versions": {
+        "0.16.0": {
+            "name": "build-sass",
+            "version": "0.16.0",
+            "description": "Atom Build provider for sass, compiles SCSS (and Sass)",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.56.0 <2.0.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {},
+            "devDependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "@babel/core": "^7.14.6",
+                "@babel/eslint-parser": "^7.14.7",
+                "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+                "atom-package-deps": "^7.2.3",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "cross-env": "^7.0.3",
+                "esbuild": "^0.12.15",
+                "eslint": "^7.31.0",
+                "eslint-plugin-json": "^3.0.0",
+                "husky": ">=4 <5",
+                "lint-staged": "^11.0.1",
+                "log-symbols": "^5.0.0",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "which": "^2.0.2"
+            },
+            "scripts": {
+                "build": "node ./tools/build.mjs",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "volta": {
+                "node": "14.17.0",
+                "yarn": "1.22.10"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.16.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.16.0",
+            "sha": "6149ca17f27e8348ce42e57befc7c262e66ac003"
+        },
+        "0.15.0": {
+            "name": "build-sass",
+            "version": "0.15.0",
+            "description": "Atom Build provider for sass, compiles SCSS (and Sass)",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <1.56.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {},
+            "devDependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "@babel/core": "^7.14.6",
+                "@babel/eslint-parser": "^7.14.7",
+                "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+                "atom-package-deps": "^7.2.3",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "cross-env": "^7.0.3",
+                "esbuild": "^0.12.11",
+                "eslint": "^7.29.0",
+                "eslint-plugin-json": "^3.0.0",
+                "husky": ">=4 <5",
+                "lint-staged": "^11.0.0",
+                "log-symbols": "^5.0.0",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "which": "^2.0.2"
+            },
+            "scripts": {
+                "build": "node ./tools/build.mjs",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "volta": {
+                "node": "14.17.0",
+                "yarn": "1.22.10"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.15.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.15.0",
+            "sha": "245bdba90bc85bd8d99255c7d549e4ae7031c7ae"
+        },
+        "0.14.0": {
+            "name": "build-sass",
+            "version": "0.14.0",
+            "description": "Atom Build provider for sass, compiles SCSS (and Sass)",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {},
+            "devDependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "@babel/core": "^7.14.3",
+                "@babel/eslint-parser": "^7.14.3",
+                "@babel/plugin-proposal-optional-chaining": "^7.14.2",
+                "atom-package-deps": "^7.2.3",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "cross-env": "^7.0.3",
+                "esbuild": "^0.12.1",
+                "eslint": "^7.26.0",
+                "eslint-plugin-json": "^3.0.0",
+                "husky": ">=4 <5",
+                "lint-staged": "^11.0.0",
+                "log-symbols": "^5.0.0",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "which": "^2.0.2"
+            },
+            "scripts": {
+                "build": "node ./tools/build.mjs",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "volta": {
+                "node": "14.17.0",
+                "yarn": "1.22.10"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.14.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.14.0",
+            "sha": "5dd11371041e170a56172faa530aa4ce44370517"
+        },
+        "0.13.1": {
+            "name": "build-sass",
+            "version": "0.13.1",
+            "description": "Atom Build provider for sass, compiles SCSS (and Sass)",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "atom-package-deps": "^7.2.2",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "which": "^2.0.2"
+            },
+            "devDependencies": {
+                "@babel/core": "^7.13.16",
+                "@babel/eslint-parser": "^7.13.10",
+                "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+                "@rollup/plugin-babel": "^5.3.0",
+                "@rollup/plugin-commonjs": "^17.1.0",
+                "@rollup/plugin-json": "^4.1.0",
+                "@rollup/plugin-node-resolve": "^11.2.0",
+                "eslint": "^7.2.2",
+                "eslint-plugin-json": "^2.1.2",
+                "husky": ">=4 <5",
+                "lint-staged": "^10.5.4",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "rollup": "^2.42.0",
+                "rollup-plugin-terser": "^7.0.2"
+            },
+            "scripts": {
+                "build": "npm run clean && rollup --config",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "rollup --watch --config",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.13.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.13.1",
+            "sha": "785335fddc3fb8b6416250c000c8d3e1904e444a"
+        },
+        "0.13.0": {
+            "name": "build-sass",
+            "version": "0.13.0",
+            "description": "Atom Build provider for sass, compiles SCSS (and Sass)",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                [
+                    {
+                        "name": "buildium"
+                    },
+                    {
+                        "name": "build"
+                    }
+                ]
+            ],
+            "dependencies": {
+                "@atxm/developer-console": "^0.5.0",
+                "atom-package-deps": "^7.2.2",
+                "atom-satisfy-dependencies": "^0.3.0",
+                "which": "^2.0.2"
+            },
+            "devDependencies": {
+                "@babel/core": "^7.13.16",
+                "@babel/eslint-parser": "^7.13.10",
+                "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+                "@rollup/plugin-babel": "^5.3.0",
+                "@rollup/plugin-commonjs": "^17.1.0",
+                "@rollup/plugin-json": "^4.1.0",
+                "@rollup/plugin-node-resolve": "^11.2.0",
+                "eslint": "^7.2.2",
+                "eslint-plugin-json": "^2.1.2",
+                "husky": ">=4 <5",
+                "lint-staged": "^10.5.4",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "rollup": "^2.42.0",
+                "rollup-plugin-terser": "^7.0.2"
+            },
+            "scripts": {
+                "build": "npm run clean && rollup --config",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "rollup --watch --config",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.13.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.13.0",
+            "sha": "ff98859ad2e97841a1acbb4c803bee2a38280313"
+        },
+        "0.12.0": {
+            "name": "build-sass",
+            "version": "0.12.0",
+            "description": "Atom Build provider for sass, compiles SCSS (and Sass)",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                {
+                    "name": "buildium"
+                }
+            ],
+            "dependencies": {
+                "atom-package-deps": "^7.2.2",
+                "atom-satisfy-dependencies": "^0.3.0"
+            },
+            "devDependencies": {
+                "@babel/eslint-parser": "^7.13.10",
+                "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+                "@rollup/plugin-babel": "^5.3.0",
+                "@rollup/plugin-commonjs": "^17.1.0",
+                "@rollup/plugin-json": "^4.1.0",
+                "@rollup/plugin-node-resolve": "^11.2.0",
+                "eslint": "^7.2.2",
+                "eslint-plugin-json": "^2.1.2",
+                "husky": ">=4 <5",
+                "lint-staged": "^10.5.4",
+                "npm-run-all": "^4.1.5",
+                "remark-cli": "^9.0.0",
+                "rimraf": "^3.0.2",
+                "rollup": "^2.42.0",
+                "rollup-plugin-terser": "^7.0.2"
+            },
+            "scripts": {
+                "build": "npm run clean && rollup --config",
+                "clean": "rimraf ./lib",
+                "dev": "npm run start",
+                "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+                "lint:js": "eslint ./src --ignore-path .gitignore",
+                "lint": "npm-run-all --parallel lint:*",
+                "start": "rollup --watch --config",
+                "test": "npm run lint"
+            },
+            "husky": {
+                "hooks": {
+                    "pre-commit": "lint-staged"
+                }
+            },
+            "lint-staged": {
+                "*.js": "eslint --cache --fix"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.12.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.12.0",
+            "sha": "5c55f35cabe6afefe101fc85841b092c9dd8bf56"
+        },
+        "0.11.0": {
+            "name": "build-sass",
+            "version": "0.11.0",
+            "description": "Atom Build provider for sass, compiles SCSS (and Sass)",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.2.3",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.19.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.1.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.1",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.11.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.11.0",
+            "sha": "b832e90463e441f53a91e847b1239b117966f8fc"
+        },
+        "0.10.2": {
+            "name": "build-sass",
+            "version": "0.10.2",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.2.3",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.19.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.1.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.1",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.10.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.10.2",
+            "sha": "1e455b63918acbf0c7f3d20ba272e53677e540e5"
+        },
+        "0.10.1": {
+            "name": "build-sass",
+            "version": "0.10.1",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.10.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.10.1",
+            "sha": "2efb0bf9f4274c22965dc4a91046fa86a0d00522"
+        },
+        "0.10.0": {
+            "name": "build-sass",
+            "version": "0.10.0",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.10.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.10.0",
+            "sha": "07c7aef1a0245224f3b5066996c50f96fcac4a9a"
+        },
+        "0.9.0": {
+            "name": "build-sass",
+            "version": "0.9.0",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^3.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.9.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.9.0",
+            "sha": "ceffc52d6bc6e90ea122cbbfd0a0e3fc3c85f056"
+        },
+        "0.8.1": {
+            "name": "build-sass",
+            "version": "0.8.1",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^2.1.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.8.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.8.1",
+            "sha": "6ec2e8764bed089f5b8ff45606af589f6b1b9a01"
+        },
+        "0.8.0": {
+            "name": "build-sass",
+            "version": "0.8.0",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1",
+                "globby": "^6.1.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.1.1",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.13.1",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.4",
+                "gulp-jsonlint": "^1.2.0",
+                "gulp-lesshint": "^2.1.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.8.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.8.0",
+            "sha": "a520bb2bd813ed3143b5a62e87b9cdabab2d5404"
+        },
+        "0.7.3": {
+            "name": "build-sass",
+            "version": "0.7.3",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1",
+                "globby": "^6.1.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.7.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.7.3",
+            "sha": "6ec5bf9aab6dc6dac3cc306a0beb307afc572c26"
+        },
+        "0.7.2": {
+            "name": "build-sass",
+            "version": "0.7.2",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "buildprovider",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1",
+                "globby": "^6.1.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.7.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.7.2",
+            "sha": "a865f6a72d461fd98abb7fa91e662a615349d1aa"
+        },
+        "0.7.1": {
+            "name": "build-sass",
+            "version": "0.7.1",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "build-provider",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1",
+                "globby": "^6.1.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.7.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.7.1",
+            "sha": "8d3683b759d1da639d3572570a22e71f77f9f637"
+        },
+        "0.7.0": {
+            "name": "build-sass",
+            "version": "0.7.0",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1",
+                "globby": "^6.1.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "github:gulpjs/gulp#4.0",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^3.0.0",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.7.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.7.0",
+            "sha": "213954e4e627d3b6f7ed3517232ea5a7cc37c3e0"
+        },
+        "0.6.0": {
+            "name": "build-sass",
+            "version": "0.6.0",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1",
+                "globby": "^6.1.0"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.6.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.6.0",
+            "sha": "ad61b873f25bdf068991ab9ee91b44b3ec36498d"
+        },
+        "0.5.4": {
+            "name": "build-sass",
+            "version": "0.5.4",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.5.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.5.4",
+            "sha": "2153907c84066e344f619be018d47af20e56a8f1"
+        },
+        "0.5.3": {
+            "name": "build-sass",
+            "version": "0.5.3",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.5.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.5.3",
+            "sha": "da4430137ad7608019a9657d5d0ce2bb9b92de62"
+        },
+        "0.5.2": {
+            "name": "build-sass",
+            "version": "0.5.2",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.5.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.5.2",
+            "sha": "85a7facfc0cd727d9269139d2bfc516d4fa380bd"
+        },
+        "0.5.1": {
+            "name": "build-sass",
+            "version": "0.5.1",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.5.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.5.1",
+            "sha": "24ceb679b246bf5dbddfbcec69591fc56491a753"
+        },
+        "0.5.0": {
+            "name": "build-sass",
+            "version": "0.5.0",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.5.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.5.0",
+            "sha": "1cfbaf331f24359c6804f0c5e7b863cf2f59f612"
+        },
+        "0.4.4": {
+            "name": "build-sass",
+            "version": "0.4.4",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.4.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.4.4",
+            "sha": "8590d9771dd90b7fabaac90e60936bad2763436e"
+        },
+        "0.4.3": {
+            "name": "build-sass",
+            "version": "0.4.3",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^7.0.0",
+                "coffeelint-stylish": "^0.1.2",
+                "eslint": "^3.7.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.4.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.4.3",
+            "sha": "5a91ca37bf1c0627fedcb8eed19bdbe57de8f8d9"
+        },
+        "0.4.2": {
+            "name": "build-sass",
+            "version": "0.4.2",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.6.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.4.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.4.2",
+            "sha": "c2c958899fa22fd8f5b172850e4d0d41050bfab5"
+        },
+        "0.4.1": {
+            "name": "build-sass",
+            "version": "0.4.1",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.5.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.4.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.4.1",
+            "sha": "c2aa552390a507e63e9fb8cabf8173e95a538198"
+        },
+        "0.4.0": {
+            "name": "build-sass",
+            "version": "0.4.0",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.5.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.4.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.4.0",
+            "sha": "aa75bc9108c72b3837c583b8d73ddf2908de8a73"
+        },
+        "0.3.7": {
+            "name": "build-sass",
+            "version": "0.3.7",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.5.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.3.7/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.3.7",
+            "sha": "ea17a9eac62127558486a169ad4e0fb98df2d1af"
+        },
+        "0.3.6": {
+            "name": "build-sass",
+            "version": "0.3.6",
+            "description": "Atom Build provider for sass, compiles Sass/SCSS",
+            "repository": "https://github.com/idleberg/atom-build-sass",
+            "license": "MIT",
+            "keywords": [
+                "build",
+                "compile",
+                "sass",
+                "scss",
+                "css",
+                "linter",
+                "lint"
+            ],
+            "main": "lib/provider.js",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "providedServices": {
+                "builder": {
+                    "description": "Compiles Sass/SCSS",
+                    "versions": {
+                        "2.0.0": "provideBuilder"
+                    }
+                }
+            },
+            "package-deps": [
+                "build"
+            ],
+            "dependencies": {
+                "atom-package-deps": "^4.3.1"
+            },
+            "devDependencies": {
+                "babel-eslint": "^6.1.2",
+                "eslint": "^3.5.0",
+                "eslint-config-atom-build": "^4.0.0",
+                "gulp": "^3.9.1",
+                "gulp-coffeelint": "^0.6.0",
+                "gulp-debug": "^2.1.2",
+                "gulp-jshint": "^2.0.1",
+                "gulp-jsonlint": "^1.1.2",
+                "gulp-lesshint": "^2.0.0",
+                "jshint": "^2.9.3"
+            },
+            "scripts": {
+                "test": "gulp lint"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/build-sass/versions/0.3.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/idleberg/atom-build-sass/tarball/refs/tags/v0.3.6",
+            "sha": "21e34dfd95cc93d2c0ae42c00ecb097fb18fd7c3"
+        }
+    },
+    "readme": "# build-sass\n\n[![apm](https://flat.badgen.net/apm/license/build-sass)](https://atom.io/packages/build-sass)\n[![apm](https://flat.badgen.net/apm/v/build-sass)](https://atom.io/packages/build-sass)\n[![apm](https://flat.badgen.net/apm/dl/build-sass)](https://atom.io/packages/build-sass)\n[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-build-sass)](https://circleci.com/gh/idleberg/atom-build-sass)\n[![David](https://flat.badgen.net/david/dev/idleberg/atom-build-sass)](https://david-dm.org/idleberg/atom-build-sass?type=dev)\n\n[Atom Build](https://atombuild.github.io/) provider for `sass`, compiles SCSS (and Sass) into CSS. Supports the [linter](https://atom.io/packages/linter) package for error highlighting.\n\nIf you prefer LibSass, take note of the separate [build-sassc](https://atom.io/packages/build-sassc) package. When in doubt, consult the [Sass Compatibility](http://sass-compatibility.github.io/) chart.\n\n![Screenshot](https://raw.githubusercontent.com/idleberg/atom-build-sass/master/screenshot.png)\n\n*See the linter in action*\n\n## Installation\n\n### apm\n\nInstall `build-sass` from Atom's [Package Manager](http://flight-manual.atom.io/using-atom/sections/atom-packages/) or the command-line equivalent:\n\n`$ apm install build-sass`\n\n### Using Git\n\nChange to your Atom packages directory:\n\n**Windows**\n\n```powershell\n# Powershell\n$ cd $Env:USERPROFILE\\.atom\\packages\n```\n\n```cmd\n:: Command Prompt\n$ cd %USERPROFILE%\\.atom\\packages\n```\n\n**Linux & macOS**\n\n```bash\n$ cd ~/.atom/packages/\n```\n\nClone repository as `build-sass`:\n\n```bash\n$ git clone https://github.com/idleberg/atom-build-sass build-sass\n```\n\nInside the cloned directory, install Node dependencies:\n\n```bash\n$ yarn || npm install\n```\n\nYou should now be setup to build the package:\n\n```bash\n$ yarn build || npm run build\n```\n\n## Usage\n\n### Build\n\nBefore you can build, select an active target with your preferred build option.\n\nAvailable targets:\n\n* `SCSS [compact|compressed|expanded|user]`\n* `Watch SCSS [compact|compressed|expanded]`\n* `Sass [compact|compressed|expanded|user]`\n* `Watch Sass [compact|compressed|expanded]`\n\n### Shortcuts\n\nHere's a reminder of the default shortcuts you can use with this package:\n\n**Select active target**\n\n<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> or <kbd>F7</kbd>\n\n**Build script**\n\n<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>B</kbd> or <kbd>F9</kbd>\n\n**Jump to error**\n\n<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>G</kbd> or <kbd>F4</kbd>\n\n**Toggle build panel**\n\n<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>V</kbd> or <kbd>F8</kbd>\n\n## License\n\nThis work is licensed under the [The MIT License](LICENSE).\n",
+    "metadata": {
+        "name": "build-sass",
+        "version": "0.16.0",
+        "description": "Atom Build provider for sass, compiles SCSS (and Sass)",
+        "repository": "https://github.com/idleberg/atom-build-sass",
+        "license": "MIT",
+        "keywords": [
+            "buildprovider",
+            "compile",
+            "sass",
+            "scss",
+            "css",
+            "linter",
+            "lint"
+        ],
+        "main": "lib/provider.js",
+        "engines": {
+            "atom": ">=1.56.0 <2.0.0"
+        },
+        "activationHooks": [
+            "core:loaded-shell-environment"
+        ],
+        "providedServices": {
+            "builder": {
+                "description": "Compiles Sass/SCSS",
+                "versions": {
+                    "2.0.0": "provideBuilder"
+                }
+            }
+        },
+        "package-deps": [
+            [
+                {
+                    "name": "buildium"
+                },
+                {
+                    "name": "build"
+                }
+            ]
+        ],
+        "dependencies": {},
+        "devDependencies": {
+            "@atxm/developer-console": "^0.5.0",
+            "@babel/core": "^7.14.6",
+            "@babel/eslint-parser": "^7.14.7",
+            "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+            "atom-package-deps": "^7.2.3",
+            "atom-satisfy-dependencies": "^0.3.0",
+            "cross-env": "^7.0.3",
+            "esbuild": "^0.12.15",
+            "eslint": "^7.31.0",
+            "eslint-plugin-json": "^3.0.0",
+            "husky": ">=4 <5",
+            "lint-staged": "^11.0.1",
+            "log-symbols": "^5.0.0",
+            "npm-run-all": "^4.1.5",
+            "remark-cli": "^9.0.0",
+            "rimraf": "^3.0.2",
+            "which": "^2.0.2"
+        },
+        "scripts": {
+            "build": "node ./tools/build.mjs",
+            "clean": "rimraf ./lib",
+            "dev": "npm run start",
+            "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+            "lint:js": "eslint ./src --ignore-path .gitignore",
+            "lint": "npm-run-all --parallel lint:*",
+            "start": "cross-env ESBUILD_WATCH=true node ./tools/build.mjs",
+            "test": "npm run lint"
+        },
+        "husky": {
+            "hooks": {
+                "pre-commit": "lint-staged"
+            }
+        },
+        "lint-staged": {
+            "*.js": "eslint --cache --fix"
+        },
+        "volta": {
+            "node": "14.17.0",
+            "yarn": "1.22.10"
+        }
+    },
+    "created": 1658336951965,
+    "updated": 1658336951965,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

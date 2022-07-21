@@ -1,0 +1,1365 @@
+{
+    "name": "atomic-terminal",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/atom-community/terminal"
+    },
+    "downloads": 3354,
+    "stargazers_count": 6,
+    "releases": {
+        "latest": "1.1.7"
+    },
+    "versions": {
+        "1.1.7": {
+            "name": "atomic-terminal",
+            "title": "Atom Terminal",
+            "main": "./dist/terminal.js",
+            "repository": "https://github.com/atom-community/terminal",
+            "bugs": {
+                "url": "https://github.com/atom-community/terminal/issues/new/choose"
+            },
+            "version": "1.1.7",
+            "description": "The xterm based terminal for Atom",
+            "keywords": [
+                "terminal",
+                "xterm",
+                "term",
+                "console",
+                "shell",
+                "emulator",
+                "pty",
+                "tty",
+                "comspec",
+                "command-line",
+                "bash",
+                "sh",
+                "powershell",
+                "cmd"
+            ],
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "atomTestRunner": "./spec/custom-runner",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.52 <2.0.0",
+                "electron": ">=6.x"
+            },
+            "providedServices": {
+                "platformioIDETerminal": {
+                    "description": "Run commands and open terminals.",
+                    "versions": {
+                        "1.1.0": "providePlatformIOIDEService"
+                    }
+                },
+                "terminal": {
+                    "description": "Change the terminal.",
+                    "versions": {
+                        "1.0.0": "provideTerminalService"
+                    }
+                }
+            },
+            "consumedServices": {
+                "tool-bar": {
+                    "versions": {
+                        "^0 || ^1": "consumeToolBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "fs-extra": "^10.0.0",
+                "node-pty-prebuilt-multiarch": "^0.10.0",
+                "uuid": "^8.3.2",
+                "which": "^2.0.2",
+                "xterm": "4.13.0",
+                "xterm-addon-fit": "0.5.0",
+                "xterm-addon-ligatures": "^0.5.1",
+                "xterm-addon-web-links": "0.4.0",
+                "xterm-addon-webgl": "0.11.1"
+            },
+            "devDependencies": {
+                "@types/atom": "1.40.11",
+                "@types/fs-extra": "^9.0.12",
+                "@types/jasmine": "^3.8.1",
+                "@types/node": "^16.3.3",
+                "@types/resize-observer-browser": "^0.1.6",
+                "@types/uuid": "^8.3.1",
+                "@types/which": "^2.0.1",
+                "atom-jasmine3-test-runner": "^5.2.7",
+                "build-commit": "0.1.4",
+                "cross-env": "7.0.3",
+                "eslint-config-atomic": "^1.16.2",
+                "parcel": "2.0.0-nightly.776",
+                "prettier-config-atomic": "^2.0.5",
+                "shx": "0.3.3",
+                "temp": "^0.9.4",
+                "terser-config-atomic": "^0.1.1",
+                "typescript": "^4.3.5"
+            },
+            "scripts": {
+                "format": "prettier --write .",
+                "test.format": "prettier . --check",
+                "lint": "eslint . --fix",
+                "test.lint": "eslint .",
+                "test": "atom --test spec",
+                "integration.test": "npm run build && atom --test ./spec/terminal-spec.js",
+                "clean": "shx rm -rf dist ./.parcel-cache",
+                "build.tsc": "tsc -p src/tsconfig.json",
+                "dev": "tsc --watch -p src/tsconfig.json",
+                "build": "cross-env NODE_ENV=production parcel build --target main ./src/terminal.ts",
+                "build-commit": "npm run clean && build-commit -o dist",
+                "prepare": "npm run build"
+            },
+            "prettier": "prettier-config-atomic",
+            "deserializers": {
+                "TerminalModel": "deserializeTerminalModel"
+            },
+            "targets": {
+                "main": {
+                    "context": "electron-renderer",
+                    "includeNodeModules": {
+                        "atom": false,
+                        "electron": false,
+                        "node-pty-prebuilt-multiarch": false
+                    },
+                    "isLibrary": true,
+                    "optimize": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atomic-terminal/versions/1.1.7/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom-community/terminal/tarball/refs/tags/v1.1.7",
+            "sha": "84a3eae84d17e8280fc1a7cce46b09731febf096"
+        },
+        "1.1.6": {
+            "name": "atomic-terminal",
+            "title": "Atom Terminal",
+            "main": "./dist/terminal.js",
+            "repository": "https://github.com/atom-community/terminal",
+            "bugs": {
+                "url": "https://github.com/atom-community/terminal/issues/new/choose"
+            },
+            "version": "1.1.6",
+            "description": "The xterm based terminal for Atom",
+            "keywords": [
+                "terminal",
+                "xterm",
+                "term",
+                "console",
+                "shell",
+                "emulator",
+                "pty",
+                "tty",
+                "comspec",
+                "command-line",
+                "bash",
+                "sh",
+                "powershell",
+                "cmd"
+            ],
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "atomTestRunner": "./spec/custom-runner",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.50.0 <2.0.0"
+            },
+            "providedServices": {
+                "platformioIDETerminal": {
+                    "description": "Run commands and open terminals.",
+                    "versions": {
+                        "1.1.0": "providePlatformIOIDEService"
+                    }
+                },
+                "terminal": {
+                    "description": "Change the terminal.",
+                    "versions": {
+                        "1.0.0": "provideTerminalService"
+                    }
+                }
+            },
+            "consumedServices": {
+                "tool-bar": {
+                    "versions": {
+                        "^0 || ^1": "consumeToolBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "fs-extra": "^10.0.0",
+                "node-pty-prebuilt-multiarch": "^0.10.0",
+                "uuid": "^8.3.2",
+                "which": "^2.0.2",
+                "xterm": "4.13.0",
+                "xterm-addon-fit": "0.5.0",
+                "xterm-addon-ligatures": "^0.5.1",
+                "xterm-addon-web-links": "0.4.0",
+                "xterm-addon-webgl": "0.11.1"
+            },
+            "devDependencies": {
+                "@types/atom": "1.40.11",
+                "@types/fs-extra": "^9.0.12",
+                "@types/jasmine": "^3.8.1",
+                "@types/node": "^16.3.1",
+                "@types/resize-observer-browser": "^0.1.6",
+                "@types/uuid": "^8.3.1",
+                "@types/which": "^2.0.1",
+                "atom-jasmine3-test-runner": "^5.2.7",
+                "build-commit": "0.1.4",
+                "cross-env": "7.0.3",
+                "eslint-config-atomic": "^1.16.1",
+                "parcel": "^2.0.0-beta.2",
+                "prettier-config-atomic": "^2.0.5",
+                "shx": "0.3.3",
+                "temp": "^0.9.4",
+                "typescript": "^4.3.5"
+            },
+            "scripts": {
+                "format": "prettier --write .",
+                "test.format": "prettier . --check",
+                "lint": "eslint . --fix",
+                "test.lint": "eslint .",
+                "test": "atom --test spec",
+                "integration.test": "npm run build && atom --test ./spec/terminal-spec.js",
+                "clean": "shx rm -rf dist ~/.parcel-cache",
+                "build.tsc": "tsc -p src/tsconfig.json",
+                "dev": "tsc --watch -p src/tsconfig.json",
+                "build": "cross-env NODE_ENV=production parcel build --target main ./src/terminal.ts --no-scope-hoist",
+                "build-commit": "build-commit -o dist",
+                "prepare": "npm run build"
+            },
+            "prettier": "prettier-config-atomic",
+            "deserializers": {
+                "TerminalModel": "deserializeTerminalModel"
+            },
+            "targets": {
+                "main": {
+                    "context": "electron-renderer",
+                    "engines": {
+                        "electron": ">=6.x"
+                    },
+                    "includeNodeModules": {
+                        "atom": false,
+                        "electron": false,
+                        "node-pty-prebuilt-multiarch": false
+                    },
+                    "isLibrary": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atomic-terminal/versions/1.1.6/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom-community/terminal/tarball/refs/tags/v1.1.6",
+            "sha": "367ac8735f4432e3f4a0103315789ab97fae1ca3"
+        },
+        "1.1.5": {
+            "name": "atomic-terminal",
+            "title": "Atom Terminal",
+            "main": "./dist/terminal.js",
+            "repository": "https://github.com/atom-community/terminal",
+            "bugs": {
+                "url": "https://github.com/atom-community/terminal/issues/new/choose"
+            },
+            "version": "1.1.5",
+            "description": "The xterm based terminal for Atom",
+            "keywords": [
+                "terminal",
+                "xterm",
+                "term",
+                "console",
+                "shell",
+                "emulator",
+                "pty",
+                "tty",
+                "comspec",
+                "command-line",
+                "bash",
+                "sh",
+                "powershell",
+                "cmd"
+            ],
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "atomTestRunner": "./spec/custom-runner",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.50.0 <2.0.0"
+            },
+            "providedServices": {
+                "platformioIDETerminal": {
+                    "description": "Run commands and open terminals.",
+                    "versions": {
+                        "1.1.0": "providePlatformIOIDEService"
+                    }
+                },
+                "terminal": {
+                    "description": "Change the terminal.",
+                    "versions": {
+                        "1.0.0": "provideTerminalService"
+                    }
+                }
+            },
+            "consumedServices": {
+                "tool-bar": {
+                    "versions": {
+                        "^0 || ^1": "consumeToolBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "fs-extra": "^10.0.0",
+                "node-pty-prebuilt-multiarch": "^0.10.0",
+                "uuid": "^8.3.2",
+                "which": "^2.0.2",
+                "xterm": "4.13.0",
+                "xterm-addon-fit": "0.5.0",
+                "xterm-addon-ligatures": "^0.5.1",
+                "xterm-addon-web-links": "0.4.0",
+                "xterm-addon-webgl": "0.11.1"
+            },
+            "devDependencies": {
+                "@types/atom": "1.40.11",
+                "@types/fs-extra": "^9.0.12",
+                "@types/jasmine": "^3.8.1",
+                "@types/node": "^16.3.1",
+                "@types/resize-observer-browser": "^0.1.6",
+                "@types/uuid": "^8.3.1",
+                "@types/which": "^2.0.1",
+                "atom-jasmine3-test-runner": "^5.2.7",
+                "build-commit": "0.1.4",
+                "cross-env": "7.0.3",
+                "eslint-config-atomic": "^1.16.1",
+                "parcel": "^2.0.0-beta.2",
+                "prettier-config-atomic": "^2.0.5",
+                "shx": "0.3.3",
+                "temp": "^0.9.4",
+                "typescript": "^4.3.5"
+            },
+            "scripts": {
+                "format": "prettier --write .",
+                "test.format": "prettier . --check",
+                "lint": "eslint . --fix",
+                "test.lint": "eslint .",
+                "test": "atom --test spec",
+                "integration.test": "npm run build && atom --test ./spec/terminal-spec.js",
+                "clean": "shx rm -rf dist ~/.parcel-cache",
+                "build.tsc": "tsc -p src/tsconfig.json",
+                "dev": "tsc --watch -p src/tsconfig.json",
+                "build": "cross-env NODE_ENV=production parcel build --target main ./src/terminal.ts --no-scope-hoist",
+                "build-commit": "build-commit -o dist",
+                "prepare": "npm run build"
+            },
+            "prettier": "prettier-config-atomic",
+            "deserializers": {
+                "TerminalModel": "deserializeTerminalModel"
+            },
+            "targets": {
+                "main": {
+                    "context": "electron-renderer",
+                    "engines": {
+                        "electron": ">=6.x"
+                    },
+                    "includeNodeModules": {
+                        "atom": false,
+                        "electron": false,
+                        "node-pty-prebuilt-multiarch": false
+                    },
+                    "isLibrary": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atomic-terminal/versions/1.1.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom-community/terminal/tarball/refs/tags/v1.1.5",
+            "sha": "bf80a425d22bbaa8183940d5e40ea0a26b3321d6"
+        },
+        "1.1.4": {
+            "name": "atomic-terminal",
+            "title": "Atom Terminal",
+            "main": "./dist/terminal.js",
+            "repository": "https://github.com/atom-community/terminal",
+            "bugs": {
+                "url": "https://github.com/atom-community/terminal/issues/new/choose"
+            },
+            "version": "1.1.4",
+            "description": "The xterm based terminal for Atom",
+            "keywords": [
+                "terminal",
+                "xterm",
+                "term",
+                "console",
+                "shell",
+                "emulator",
+                "pty",
+                "tty",
+                "comspec",
+                "command-line",
+                "bash",
+                "sh",
+                "powershell",
+                "cmd"
+            ],
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "atomTestRunner": "./spec/custom-runner",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.50.0 <2.0.0"
+            },
+            "providedServices": {
+                "platformioIDETerminal": {
+                    "description": "Run commands and open terminals.",
+                    "versions": {
+                        "1.1.0": "providePlatformIOIDEService"
+                    }
+                },
+                "terminal": {
+                    "description": "Change the terminal.",
+                    "versions": {
+                        "1.0.0": "provideTerminalService"
+                    }
+                }
+            },
+            "consumedServices": {
+                "tool-bar": {
+                    "versions": {
+                        "^0 || ^1": "consumeToolBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "fs-extra": "^10.0.0",
+                "node-pty-prebuilt-multiarch": "^0.10.0",
+                "uuid": "^8.3.2",
+                "which": "^2.0.2",
+                "xterm": "4.13.0",
+                "xterm-addon-fit": "0.5.0",
+                "xterm-addon-ligatures": "^0.5.0",
+                "xterm-addon-web-links": "0.4.0",
+                "xterm-addon-webgl": "0.11.1"
+            },
+            "devDependencies": {
+                "@types/atom": "1.40.10",
+                "@types/fs-extra": "^9.0.11",
+                "@types/jasmine": "^3.7.7",
+                "@types/node": "^15.12.2",
+                "@types/resize-observer-browser": "^0.1.5",
+                "@types/uuid": "^8.3.0",
+                "@types/which": "^2.0.0",
+                "atom-jasmine3-test-runner": "^5.2.6",
+                "build-commit": "0.1.4",
+                "cross-env": "7.0.3",
+                "eslint-config-atomic": "^1.15.3",
+                "parcel": "^2.0.0-beta.2",
+                "prettier-config-atomic": "^2.0.5",
+                "shx": "0.3.3",
+                "temp": "^0.9.4",
+                "typescript": "^4.3.2"
+            },
+            "scripts": {
+                "format": "prettier --write .",
+                "test.format": "prettier . --check",
+                "lint": "eslint . --fix",
+                "test.lint": "eslint .",
+                "test": "atom --test spec",
+                "integration.test": "npm run build && atom --test ./spec/terminal-spec.js",
+                "clean": "shx rm -rf dist ~/.parcel-cache",
+                "build.tsc": "tsc -p src/tsconfig.json",
+                "dev": "tsc --watch -p src/tsconfig.json",
+                "build": "cross-env NODE_ENV=production parcel build --target main ./src/terminal.ts --no-scope-hoist",
+                "build-commit": "build-commit -o dist",
+                "prepare": "npm run build"
+            },
+            "prettier": "prettier-config-atomic",
+            "deserializers": {
+                "TerminalModel": "deserializeTerminalModel"
+            },
+            "targets": {
+                "main": {
+                    "context": "electron-renderer",
+                    "engines": {
+                        "electron": ">=6.x"
+                    },
+                    "includeNodeModules": {
+                        "atom": false,
+                        "electron": false,
+                        "node-pty-prebuilt-multiarch": false
+                    },
+                    "isLibrary": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atomic-terminal/versions/1.1.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom-community/terminal/tarball/refs/tags/v1.1.4",
+            "sha": "8f8554ffbb4d428550553b063c3d52c2705b1a04"
+        },
+        "1.1.3": {
+            "name": "atomic-terminal",
+            "title": "Atom Terminal",
+            "main": "./dist/terminal.js",
+            "repository": "https://github.com/atom-community/terminal",
+            "bugs": {
+                "url": "https://github.com/atom-community/terminal/issues/new/choose"
+            },
+            "version": "1.1.3",
+            "description": "The xterm based terminal for Atom",
+            "keywords": [
+                "terminal",
+                "xterm",
+                "term",
+                "console",
+                "shell",
+                "emulator",
+                "pty",
+                "tty",
+                "comspec",
+                "command-line",
+                "bash",
+                "sh",
+                "powershell",
+                "cmd"
+            ],
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "atomTestRunner": "./spec/custom-runner",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.50.0 <2.0.0"
+            },
+            "providedServices": {
+                "platformioIDETerminal": {
+                    "description": "Run commands and open terminals.",
+                    "versions": {
+                        "1.1.0": "providePlatformIOIDEService"
+                    }
+                },
+                "terminal": {
+                    "description": "Change the terminal.",
+                    "versions": {
+                        "1.0.0": "provideTerminalService"
+                    }
+                }
+            },
+            "consumedServices": {
+                "tool-bar": {
+                    "versions": {
+                        "^0 || ^1": "consumeToolBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "fs-extra": "^10.0.0",
+                "node-pty-prebuilt-multiarch": "^0.10.0",
+                "uuid": "^8.3.2",
+                "which": "^2.0.2",
+                "xterm": "4.12.0",
+                "xterm-addon-fit": "0.5.0",
+                "xterm-addon-ligatures": "^0.5.0",
+                "xterm-addon-web-links": "0.4.0",
+                "xterm-addon-webgl": "0.11.1"
+            },
+            "devDependencies": {
+                "@types/atom": "1.40.10",
+                "@types/fs-extra": "^9.0.11",
+                "@types/jasmine": "^3.7.2",
+                "@types/node": "^15.0.3",
+                "@types/resize-observer-browser": "^0.1.5",
+                "@types/uuid": "^8.3.0",
+                "@types/which": "^2.0.0",
+                "atom-jasmine3-test-runner": "^5.2.4",
+                "build-commit": "0.1.4",
+                "cross-env": "7.0.3",
+                "eslint-config-atomic": "^1.14.4",
+                "parcel": "^2.0.0-beta.2",
+                "prettier-config-atomic": "^2.0.5",
+                "shx": "0.3.3",
+                "temp": "^0.9.4",
+                "typescript": "^4.2.4"
+            },
+            "scripts": {
+                "format": "prettier --write .",
+                "test.format": "prettier . --check",
+                "lint": "eslint . --fix",
+                "test.lint": "eslint .",
+                "test": "atom --test spec",
+                "integration.test": "npm run build && atom --test ./spec/terminal-spec.js",
+                "clean": "shx rm -rf dist ~/.parcel-cache",
+                "build.tsc": "tsc -p src/tsconfig.json",
+                "dev": "tsc --watch -p src/tsconfig.json",
+                "build": "cross-env NODE_ENV=production parcel build --target main ./src/terminal.ts --no-scope-hoist",
+                "build-commit": "build-commit -o dist",
+                "prepare": "npm run build"
+            },
+            "prettier": "prettier-config-atomic",
+            "deserializers": {
+                "TerminalModel": "deserializeTerminalModel"
+            },
+            "targets": {
+                "main": {
+                    "context": "electron-renderer",
+                    "engines": {
+                        "electron": ">=6.x"
+                    },
+                    "includeNodeModules": {
+                        "atom": false,
+                        "electron": false,
+                        "node-pty-prebuilt-multiarch": false
+                    },
+                    "isLibrary": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atomic-terminal/versions/1.1.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom-community/terminal/tarball/refs/tags/v1.1.3",
+            "sha": "07fed15f32455ecd23c68b02807fe125287394e5"
+        },
+        "1.1.2": {
+            "name": "atomic-terminal",
+            "title": "Atom Terminal",
+            "main": "./dist/terminal.js",
+            "repository": "https://github.com/atom-community/terminal",
+            "bugs": {
+                "url": "https://github.com/atom-community/terminal/issues/new/choose"
+            },
+            "version": "1.1.2",
+            "description": "The xterm based terminal for Atom",
+            "keywords": [
+                "terminal",
+                "xterm",
+                "term",
+                "console",
+                "shell",
+                "emulator",
+                "pty",
+                "tty",
+                "comspec",
+                "command-line",
+                "bash",
+                "sh",
+                "powershell",
+                "cmd"
+            ],
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "atomTestRunner": "./spec/custom-runner",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.50.0 <2.0.0"
+            },
+            "providedServices": {
+                "platformioIDETerminal": {
+                    "description": "Run commands and open terminals.",
+                    "versions": {
+                        "1.1.0": "providePlatformIOIDEService"
+                    }
+                },
+                "terminal": {
+                    "description": "Change the terminal.",
+                    "versions": {
+                        "1.0.0": "provideTerminalService"
+                    }
+                }
+            },
+            "consumedServices": {
+                "tool-bar": {
+                    "versions": {
+                        "^0 || ^1": "consumeToolBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "fs-extra": "^9.1.0",
+                "node-pty-prebuilt-multiarch": "^0.10.0",
+                "uuid": "^8.3.2",
+                "which": "^2.0.2",
+                "xterm": "4.11.0",
+                "xterm-addon-fit": "0.5.0",
+                "xterm-addon-ligatures": "^0.4.0",
+                "xterm-addon-web-links": "0.4.0",
+                "xterm-addon-webgl": "0.10.0"
+            },
+            "devDependencies": {
+                "@types/atom": "1.40.10",
+                "@types/fs-extra": "^9.0.11",
+                "@types/jasmine": "^3.6.10",
+                "@types/node": "^15.0.1",
+                "@types/resize-observer-browser": "^0.1.5",
+                "@types/uuid": "^8.3.0",
+                "@types/which": "^2.0.0",
+                "atom-jasmine3-test-runner": "^5.2.3",
+                "build-commit": "0.1.4",
+                "cross-env": "7.0.3",
+                "eslint-config-atomic": "^1.14.2",
+                "parcel": "^2.0.0-nightly.653",
+                "prettier-config-atomic": "^2.0.2",
+                "shx": "0.3.3",
+                "temp": "^0.9.4",
+                "typescript": "^4.2.4"
+            },
+            "scripts": {
+                "format": "prettier --write .",
+                "test.format": "prettier . --check",
+                "lint": "eslint . --fix",
+                "test.lint": "eslint .",
+                "test": "atom --test spec",
+                "integration.test": "npm run build && atom --test ./spec/terminal-spec.js",
+                "clean": "shx rm -rf dist ~/.parcel-cache",
+                "build.tsc": "tsc -p src/tsconfig.json",
+                "dev": "tsc --watch -p src/tsconfig.json",
+                "build": "cross-env NODE_ENV=production parcel build --target main ./src/terminal.ts --no-scope-hoist",
+                "build-commit": "build-commit -o dist",
+                "prepare": "npm run build"
+            },
+            "prettier": "prettier-config-atomic",
+            "deserializers": {
+                "TerminalModel": "deserializeTerminalModel"
+            },
+            "targets": {
+                "main": {
+                    "context": "electron-renderer",
+                    "engines": {
+                        "electron": ">=6.x"
+                    },
+                    "includeNodeModules": {
+                        "atom": false,
+                        "electron": false,
+                        "node-pty-prebuilt-multiarch": false
+                    },
+                    "isLibrary": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atomic-terminal/versions/1.1.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom-community/terminal/tarball/refs/tags/v1.1.2",
+            "sha": "b8d17fe075b3fc443b004eff62a2b7fb08db1e88"
+        },
+        "1.1.1": {
+            "name": "atomic-terminal",
+            "title": "Atom Terminal",
+            "main": "./dist/terminal.js",
+            "repository": "https://github.com/atom-community/terminal",
+            "bugs": {
+                "url": "https://github.com/atom-community/terminal/issues/new/choose"
+            },
+            "version": "1.1.1",
+            "description": "The xterm based terminal for Atom",
+            "keywords": [
+                "terminal",
+                "xterm",
+                "term",
+                "console",
+                "shell",
+                "emulator",
+                "pty",
+                "tty",
+                "comspec",
+                "command-line",
+                "bash",
+                "sh",
+                "powershell",
+                "cmd"
+            ],
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "atomTestRunner": "./spec/custom-runner",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.50.0 <2.0.0"
+            },
+            "providedServices": {
+                "platformioIDETerminal": {
+                    "description": "Run commands and open terminals.",
+                    "versions": {
+                        "1.1.0": "providePlatformIOIDEService"
+                    }
+                },
+                "terminal": {
+                    "description": "Change the terminal.",
+                    "versions": {
+                        "1.0.0": "provideTerminalService"
+                    }
+                }
+            },
+            "consumedServices": {
+                "tool-bar": {
+                    "versions": {
+                        "^0 || ^1": "consumeToolBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "fs-extra": "^9.1.0",
+                "node-pty-prebuilt-multiarch": "^0.10.0",
+                "uuid": "^8.3.2",
+                "which": "^2.0.2",
+                "xterm": "4.11.0",
+                "xterm-addon-fit": "0.5.0",
+                "xterm-addon-ligatures": "^0.4.0",
+                "xterm-addon-web-links": "0.4.0",
+                "xterm-addon-webgl": "0.10.0"
+            },
+            "devDependencies": {
+                "@types/atom": "1.40.10",
+                "@types/fs-extra": "^9.0.11",
+                "@types/jasmine": "^3.6.10",
+                "@types/node": "^15.0.1",
+                "@types/resize-observer-browser": "^0.1.5",
+                "@types/uuid": "^8.3.0",
+                "@types/which": "^2.0.0",
+                "atom-jasmine3-test-runner": "^5.2.3",
+                "build-commit": "0.1.4",
+                "cross-env": "7.0.3",
+                "eslint-config-atomic": "^1.14.2",
+                "parcel": "^2.0.0-nightly.653",
+                "prettier-config-atomic": "^2.0.2",
+                "shx": "0.3.3",
+                "temp": "^0.9.4",
+                "typescript": "^4.2.4"
+            },
+            "scripts": {
+                "format": "prettier --write .",
+                "test.format": "prettier . --check",
+                "lint": "eslint . --fix",
+                "test.lint": "eslint .",
+                "test": "atom --test spec",
+                "integration.test": "npm run build && atom --test ./spec/terminal-spec.js",
+                "clean": "shx rm -rf dist ~/.parcel-cache",
+                "build.tsc": "tsc -p src/tsconfig.json",
+                "dev": "tsc --watch -p src/tsconfig.json",
+                "build": "cross-env NODE_ENV=production parcel build --target main ./src/terminal.ts --no-scope-hoist",
+                "build-commit": "build-commit -o dist",
+                "prepare": "npm run build"
+            },
+            "prettier": "prettier-config-atomic",
+            "deserializers": {
+                "TerminalModel": "deserializeTerminalModel"
+            },
+            "targets": {
+                "main": {
+                    "context": "electron-renderer",
+                    "engines": {
+                        "electron": ">=6.x"
+                    },
+                    "includeNodeModules": {
+                        "atom": false,
+                        "electron": false,
+                        "node-pty-prebuilt-multiarch": false
+                    },
+                    "isLibrary": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atomic-terminal/versions/1.1.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom-community/terminal/tarball/refs/tags/v1.1.1",
+            "sha": "d85939d3ce59b4899d3103befa5920f100a9e988"
+        },
+        "1.1.0": {
+            "name": "atomic-terminal",
+            "title": "Atom Terminal",
+            "main": "./dist/terminal.js",
+            "repository": "https://github.com/atom-community/terminal",
+            "bugs": {
+                "url": "https://github.com/atom-community/terminal/issues/new/choose"
+            },
+            "version": "1.1.0",
+            "description": "The xterm based terminal for Atom",
+            "keywords": [
+                "terminal",
+                "xterm",
+                "term",
+                "console",
+                "shell",
+                "emulator",
+                "pty",
+                "tty",
+                "comspec",
+                "command-line",
+                "bash",
+                "sh",
+                "powershell",
+                "cmd"
+            ],
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "atomTestRunner": "./spec/custom-runner",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.50.0 <2.0.0"
+            },
+            "providedServices": {
+                "platformioIDETerminal": {
+                    "description": "Run commands and open terminals.",
+                    "versions": {
+                        "1.1.0": "providePlatformIOIDEService"
+                    }
+                },
+                "terminal": {
+                    "description": "Change the terminal.",
+                    "versions": {
+                        "1.0.0": "provideTerminalService"
+                    }
+                }
+            },
+            "consumedServices": {
+                "tool-bar": {
+                    "versions": {
+                        "^0 || ^1": "consumeToolBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "fs-extra": "^9.1.0",
+                "node-pty-prebuilt-multiarch": "^0.10.0",
+                "uuid": "^8.3.2",
+                "whatwg-url": "^8.5.0",
+                "which": "^2.0.2",
+                "xterm": "4.11.0",
+                "xterm-addon-fit": "0.5.0",
+                "xterm-addon-ligatures": "^0.4.0",
+                "xterm-addon-web-links": "0.4.0",
+                "xterm-addon-webgl": "0.10.0"
+            },
+            "devDependencies": {
+                "@types/atom": "1.40.10",
+                "@types/fs-extra": "^9.0.11",
+                "@types/jasmine": "^3.6.10",
+                "@types/node": "^15.0.1",
+                "@types/resize-observer-browser": "^0.1.5",
+                "@types/uuid": "^8.3.0",
+                "@types/whatwg-url": "^8.2.0",
+                "@types/which": "^2.0.0",
+                "atom-jasmine3-test-runner": "^5.2.3",
+                "build-commit": "0.1.4",
+                "cross-env": "7.0.3",
+                "eslint-config-atomic": "^1.14.2",
+                "parcel": "^2.0.0-nightly.646",
+                "prettier-config-atomic": "^2.0.2",
+                "shx": "0.3.3",
+                "temp": "^0.9.4",
+                "typescript": "^4.2.4"
+            },
+            "scripts": {
+                "format": "prettier --write .",
+                "test.format": "prettier . --check",
+                "lint": "eslint . --fix",
+                "test.lint": "eslint .",
+                "test": "atom --test spec",
+                "integration.test": "npm run build && atom --test ./spec/terminal-spec.js",
+                "clean": "shx rm -rf dist",
+                "tsc": "tsc -p src/tsconfig.json",
+                "dev:tsc": "tsc --watch -p src/tsconfig.json",
+                "dev": "cross-env NODE_ENV=development parcel build --target main ./src/terminal.ts --watch --no-scope-hoist",
+                "build": "cross-env NODE_ENV=production parcel build --target main ./src/terminal.ts --no-scope-hoist",
+                "build-commit": "build-commit -o dist",
+                "prepare": "npm run build"
+            },
+            "prettier": "prettier-config-atomic",
+            "deserializers": {
+                "TerminalModel": "deserializeTerminalModel"
+            },
+            "targets": {
+                "main": {
+                    "context": "electron-renderer",
+                    "engines": {
+                        "electron": ">=6.x"
+                    },
+                    "includeNodeModules": {
+                        "atom": false,
+                        "electron": false,
+                        "node-pty-prebuilt-multiarch": false
+                    },
+                    "isLibrary": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atomic-terminal/versions/1.1.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom-community/terminal/tarball/refs/tags/v1.1.0",
+            "sha": "8a9e85a33322f03dc8586f1b8228c44629184bd2"
+        },
+        "1.0.1": {
+            "name": "atomic-terminal",
+            "title": "Atom Terminal",
+            "main": "./dist/terminal.js",
+            "repository": "https://github.com/atom-community/terminal",
+            "bugs": {
+                "url": "https://github.com/atom-community/terminal/issues/new/choose"
+            },
+            "version": "1.0.1",
+            "description": "The xterm based terminal for Atom",
+            "keywords": [
+                "terminal",
+                "xterm",
+                "term",
+                "console",
+                "shell",
+                "emulator",
+                "pty",
+                "tty",
+                "comspec",
+                "command-line",
+                "bash",
+                "sh",
+                "powershell",
+                "cmd"
+            ],
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "atomTestRunner": "./spec/custom-runner",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.50.0 <2.0.0"
+            },
+            "providedServices": {
+                "platformioIDETerminal": {
+                    "description": "Run commands and open terminals.",
+                    "versions": {
+                        "1.1.0": "providePlatformIOIDEService"
+                    }
+                },
+                "terminal": {
+                    "description": "Change the terminal.",
+                    "versions": {
+                        "1.0.0": "provideTerminalService"
+                    }
+                }
+            },
+            "consumedServices": {
+                "tool-bar": {
+                    "versions": {
+                        "^0 || ^1": "consumeToolBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "fs-extra": "^9.1.0",
+                "node-pty-prebuilt-multiarch": "^0.10.0",
+                "uuid": "^8.3.2",
+                "whatwg-url": "^8.5.0",
+                "which": "^2.0.2",
+                "xterm": "4.11.0",
+                "xterm-addon-fit": "0.5.0",
+                "xterm-addon-ligatures": "^0.4.0",
+                "xterm-addon-web-links": "0.4.0",
+                "xterm-addon-webgl": "0.10.0"
+            },
+            "devDependencies": {
+                "@types/atom": "1.40.10",
+                "@types/fs-extra": "^9.0.11",
+                "@types/jasmine": "^3.6.10",
+                "@types/node": "^15.0.1",
+                "@types/resize-observer-browser": "^0.1.5",
+                "@types/uuid": "^8.3.0",
+                "@types/whatwg-url": "^8.2.0",
+                "@types/which": "^2.0.0",
+                "atom-jasmine3-test-runner": "^5.2.3",
+                "build-commit": "0.1.4",
+                "cross-env": "7.0.3",
+                "eslint-config-atomic": "^1.14.2",
+                "parcel": "^2.0.0-nightly.646",
+                "prettier-config-atomic": "^2.0.2",
+                "shx": "0.3.3",
+                "temp": "^0.9.4",
+                "typescript": "^4.2.4"
+            },
+            "scripts": {
+                "format": "prettier --write .",
+                "test.format": "prettier . --check",
+                "lint": "eslint . --fix",
+                "test.lint": "eslint .",
+                "test": "atom --test spec",
+                "integration.test": "npm run build && atom --test ./spec/terminal-spec.js",
+                "clean": "shx rm -rf dist",
+                "tsc": "tsc -p src/tsconfig.json",
+                "dev:tsc": "tsc --watch -p src/tsconfig.json",
+                "dev": "cross-env NODE_ENV=development parcel build --target main ./src/terminal.ts --watch --no-scope-hoist",
+                "build": "cross-env NODE_ENV=production parcel build --target main ./src/terminal.ts --no-scope-hoist",
+                "build-commit": "build-commit -o dist",
+                "prepare": "npm run build"
+            },
+            "prettier": "prettier-config-atomic",
+            "deserializers": {
+                "TerminalModel": "deserializeTerminalModel"
+            },
+            "targets": {
+                "main": {
+                    "context": "electron-renderer",
+                    "engines": {
+                        "electron": ">=6.x"
+                    },
+                    "includeNodeModules": {
+                        "atom": false,
+                        "electron": false,
+                        "node-pty-prebuilt-multiarch": false
+                    },
+                    "isLibrary": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atomic-terminal/versions/1.0.1/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom-community/terminal/tarball/refs/tags/v1.0.1",
+            "sha": "7079fb6898e8bde6daf01e7b0bbb359d4ad8e0a6"
+        },
+        "1.0.0": {
+            "name": "atomic-terminal",
+            "title": "Atom Terminal",
+            "main": "./dist/terminal.js",
+            "repository": "https://github.com/atom-ide-community/terminal",
+            "bugs": {
+                "url": "https://github.com/atom-ide-community/terminal/issues/new/choose"
+            },
+            "version": "1.0.0",
+            "description": "The xterm based terminal for Atom",
+            "keywords": [
+                "terminal",
+                "xterm",
+                "term",
+                "console",
+                "shell",
+                "emulator",
+                "pty",
+                "tty",
+                "comspec",
+                "command-line",
+                "bash",
+                "sh",
+                "powershell",
+                "cmd"
+            ],
+            "activationHooks": [
+                "core:loaded-shell-environment"
+            ],
+            "atomTestRunner": "./spec/custom-runner",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.50.0 <2.0.0"
+            },
+            "providedServices": {
+                "platformioIDETerminal": {
+                    "description": "Run commands and open terminals.",
+                    "versions": {
+                        "1.1.0": "providePlatformIOIDEService"
+                    }
+                },
+                "terminal": {
+                    "description": "Change the terminal.",
+                    "versions": {
+                        "1.0.0": "provideTerminalService"
+                    }
+                }
+            },
+            "consumedServices": {
+                "tool-bar": {
+                    "versions": {
+                        "^0 || ^1": "consumeToolBar"
+                    }
+                }
+            },
+            "dependencies": {
+                "fs-extra": "^9.1.0",
+                "node-pty-prebuilt-multiarch": "^0.10.0",
+                "uuid": "^8.3.2",
+                "whatwg-url": "^8.5.0",
+                "which": "^2.0.2",
+                "xterm": "4.11.0",
+                "xterm-addon-fit": "0.5.0",
+                "xterm-addon-ligatures": "^0.4.0",
+                "xterm-addon-web-links": "0.4.0",
+                "xterm-addon-webgl": "0.10.0"
+            },
+            "devDependencies": {
+                "@types/atom": "1.40.10",
+                "@types/fs-extra": "^9.0.11",
+                "@types/jasmine": "^3.6.10",
+                "@types/node": "^15.0.1",
+                "@types/resize-observer-browser": "^0.1.5",
+                "@types/uuid": "^8.3.0",
+                "@types/whatwg-url": "^8.2.0",
+                "@types/which": "^2.0.0",
+                "atom-jasmine3-test-runner": "^5.2.3",
+                "build-commit": "0.1.4",
+                "cross-env": "7.0.3",
+                "eslint-config-atomic": "^1.14.2",
+                "parcel": "^2.0.0-nightly.646",
+                "prettier-config-atomic": "^2.0.2",
+                "shx": "0.3.3",
+                "temp": "^0.9.4",
+                "typescript": "^4.2.4"
+            },
+            "scripts": {
+                "format": "prettier --write .",
+                "test.format": "prettier . --check",
+                "lint": "eslint . --fix",
+                "test.lint": "eslint .",
+                "test": "atom --test spec",
+                "integration.test": "npm run build && atom --test ./spec/terminal-spec.js",
+                "clean": "shx rm -rf dist",
+                "tsc": "tsc -p src/tsconfig.json",
+                "dev:tsc": "tsc --watch -p src/tsconfig.json",
+                "dev": "cross-env NODE_ENV=development parcel build --target main ./src/terminal.ts --watch --no-scope-hoist",
+                "build": "cross-env NODE_ENV=production parcel build --target main ./src/terminal.ts --no-scope-hoist",
+                "build-commit": "build-commit -o dist",
+                "prepare": "npm run build"
+            },
+            "prettier": "prettier-config-atomic",
+            "deserializers": {
+                "TerminalModel": "deserializeTerminalModel"
+            },
+            "targets": {
+                "main": {
+                    "context": "electron-renderer",
+                    "engines": {
+                        "electron": ">=6.x"
+                    },
+                    "includeNodeModules": {
+                        "atom": false,
+                        "electron": false,
+                        "node-pty-prebuilt-multiarch": false
+                    },
+                    "isLibrary": true
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/atomic-terminal/versions/1.0.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/atom-community/terminal/tarball/refs/tags/v1.0.0",
+            "sha": "c321c1a3f4e9cae76373c72b64140845d139ab74"
+        }
+    },
+    "readme": "# Terminal\n\n## Demo\n\n![Terminal demo](https://cdn.statically.io/gh/bus-stop/x-terminal/master/resources/x-terminal-demo.gif)\n\n## Theme variables\n\nThe following theme variables are available to change the colors of the standard theme:\n\n```less\n@app-background-color: #000000;\n@text-color: #ffffff;\n@background-color-selected: #4d4d4d;\n@text-color-highlight: #ffffff;\n@terminal-color-black: #2e3436;\n@terminal-color-red: #cc0000;\n@terminal-color-green: #4e9a06;\n@terminal-color-yellow: #c4a000;\n@terminal-color-blue: #3465a4;\n@terminal-color-magenta: #75507b;\n@terminal-color-cyan: #06989a;\n@terminal-color-white: #d3d7cf;\n@terminal-color-bright-black: #555753;\n@terminal-color-bright-red: #ef2929;\n@terminal-color-bright-green: #8ae234;\n@terminal-color-bright-yellow: #fce94f;\n@terminal-color-bright-blue: #729fcf;\n@terminal-color-bright-magenta: #ad7fa8;\n@terminal-color-bright-cyan: #34e2e2;\n@terminal-color-bright-white: #eeeeec;\n```\n\n## Active Terminal\n\nThe active terminal is the terminal that will be used when sending commands to\nthe terminal.\n\nThe active terminal will always have an astrix (`*`) in front of the title.\nBy default when a terminal is hidden it becomes inactive and the last used\nvisible terminal will become active. If there are no visible terminals none are\nactive.\n\nThe `Allow Hidden Terminal To Stay Active` setting will change the\ndefault behavior and keep a terminal that is hidden active until another\nterminal is focused.\n\n## Services\n\nFor plugin writers, the `terminal` package supports two services, `terminal` and `platformioIDETerminal`, which\ncan be used to easily open terminals. These methods are provided using Atom's [services](http://flight-manual.atom.io/behind-atom/sections/interacting-with-other-packages-via-services/)\nAPI.\n\nTo use a service, add a consumer method to consume the service, or\nrather a JavaScript object that provides methods to open terminals and run commands.\n\n### 'terminal' service v1.0.0\n\nThe `terminal` service provides an [object](https://github.com/atom-community/terminal/blob/29b0751250cb9262fb609db8cae87d87fb383c64/src/terminal.js#L291) with `updateProcessEnv`, `run`, `getTerminalViews`, and `open` methods.\n\nAs an example on how to use the provided `run()` method, your\n`package.json` should have the following.\n\n```json\n{\n  \"consumedServices\": {\n    \"terminal\": {\n      \"versions\": {\n        \"^1.1.0\": \"consumePlatformioIDETerminalService\"\n      }\n    }\n  }\n}\n```\n\nYour package's main module should then define a `consumePlatformioIDETerminalService`\nmethod, for example.\n\n```js\nimport { Disposable } from \"atom\"\n\nexport default {\n  terminalService: null,\n\n  consumePlatformioIDETerminalService(terminalService) {\n    this.terminalService = terminalService\n    return new Disposable(() => {\n      this.terminalService = null\n    })\n  },\n\n  // . . .\n}\n```\n\nOnce the service is consumed, use the `run()` method that is provided\nby the service, for example.\n\n```js\n// Launch `somecommand --foo --bar --baz` in a terminal.\nthis.terminalService.run([\"somecommand --foo --bar --baz\"])\n```\n\n# Development\n\nWant to help develop terminal? Here's how to quickly get setup.\n\nFirst use the [apm](https://github.com/atom/apm) command to clone the\n[terminal repo](https://github.com/atom-community/terminal).\n\n```sh\napm develop terminal\n```\n\nThis should clone the terminal package into the `$HOME/github/terminal`\ndirectory. Go into this directory and install its dependencies.\n\n```sh\ncd $HOME/github/terminal\nnpm install\n```\n\nYou shouldn't need to rebuild any [node-pty](https://github.com/Tyriar/node-pty)\nsince they are pre-compiled, however in the event they aren't available,\nyou can rebuild them with:\n\n```sh\napm rebuild\n```\n\nFinally, open this directory in Atom's dev mode and hack away.\n\n```sh\natom --dev\n```\n\nThere's a test suite available for automated testing of the terminal package.\nSimply go to `View > Developer > Run Package Specs` in Atom's main menu or\nuse the hotkey. You can run the full test suite (which includes running lint\ntools) via command-line by running `npm run test` inside the terminal\ndirectory.\n\nVarious lint tools are being used to keep the code \"beautified\". To run only\nthe lint tools, simply run `npm run lint`.\n\n## Pull Requests\n\nWhenever you're ready to submit a pull request, be sure to submit it\nagainst a fork of the main [terminal repo](https://github.com/atom-community/terminal)\nmaster branch that you'll own. Fork the repo using Github and make note of the\nnew `git` URL. Set this new git URL as the URL for the `origin` remote in your\nalready cloned git repo is follows.\n\n```sh\ngit remote set-url origin ${NEW_GIT_URL}\n```\n\nEnsure your new changes passes the test suite by running `npm run test`.\nAfterwards, push your changes to your repo and then use Github to submit a new\npull request.\n\n## [xterm.js](https://github.com/xtermjs/xterm.js)\n\nThe terminals that users interact with in this package is made possible with\nmajor help from the [xterm.js](https://github.com/xtermjs/xterm.js) library. As\nsuch, often times it's necessary to make changes to xterm.js in order to fix\nsome bug or implement new features.\n\nIf you want to work on xterm.js for the benefit of a bug fix or feature to be\nsupported in terminal, here's how you can quickly get setup.\n\nFirst make a fork of [xterm.js](https://github.com/xtermjs/xterm.js). Next,\nclone your newly created fork as follows.\n\n```sh\ngit clone ${YOUR_XTERMJS_FORK} ${HOME}/github/xterm.js\n```\n\nGo into your newly cloned repo for xterm.js.\n\n```sh\ncd ${HOME}/github/xterm.js\n```\n\nInstall all needed dependencies.\n\n```sh\nnpm install\n```\n\nBuild xterm.js.\n\n```sh\nnpm run build\n```\n\nEnsure the test suite passes.\n\n```sh\nnpm run test\nnpm run lint\n```\n\nAdd a global link for xterm.js to your system.\n\n```sh\nnpm link\n```\n\nInside your terminal directory, link against the global `xterm` link.\n\n```sh\ncd ${HOME}/github/terminal\nnpm link xterm\n```\n\nFinally, perform a rebuild with the [apm](https://github.com/atom/apm) program\ninside the terminal directory.\n\n```sh\napm rebuild\n```\n\nYou're all set for developing xterm.js. Hack away in your xterm.js directory,\nrun `npm run build`, then reload your Atom window to see the changes to your\nterminals.\n\n# Credits and Legal\n\nClick for copyright and license info about this package.\n\n[![LICENSE and © INFO](https://img.shields.io/badge/©%20&%20LICENSE-MIT-blue.svg?longCache=true&=flat-square)](LICENSE)\n\n# Feedback\n\nNeed to submit a bug report? Have a new feature you want to see implemented in\n_terminal_? Please feel free to submit them through the appropriate\n[issue template](https://github.com/atom-community/terminal/issues/new/choose).\n\nFor bug reports, please provide images or demos showing your issues if you can.\n",
+    "metadata": {
+        "name": "atomic-terminal",
+        "title": "Atom Terminal",
+        "main": "./dist/terminal.js",
+        "repository": "https://github.com/atom-community/terminal",
+        "bugs": {
+            "url": "https://github.com/atom-community/terminal/issues/new/choose"
+        },
+        "version": "1.1.7",
+        "description": "The xterm based terminal for Atom",
+        "keywords": [
+            "terminal",
+            "xterm",
+            "term",
+            "console",
+            "shell",
+            "emulator",
+            "pty",
+            "tty",
+            "comspec",
+            "command-line",
+            "bash",
+            "sh",
+            "powershell",
+            "cmd"
+        ],
+        "activationHooks": [
+            "core:loaded-shell-environment"
+        ],
+        "atomTestRunner": "./spec/custom-runner",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.52 <2.0.0",
+            "electron": ">=6.x"
+        },
+        "providedServices": {
+            "platformioIDETerminal": {
+                "description": "Run commands and open terminals.",
+                "versions": {
+                    "1.1.0": "providePlatformIOIDEService"
+                }
+            },
+            "terminal": {
+                "description": "Change the terminal.",
+                "versions": {
+                    "1.0.0": "provideTerminalService"
+                }
+            }
+        },
+        "consumedServices": {
+            "tool-bar": {
+                "versions": {
+                    "^0 || ^1": "consumeToolBar"
+                }
+            }
+        },
+        "dependencies": {
+            "fs-extra": "^10.0.0",
+            "node-pty-prebuilt-multiarch": "^0.10.0",
+            "uuid": "^8.3.2",
+            "which": "^2.0.2",
+            "xterm": "4.13.0",
+            "xterm-addon-fit": "0.5.0",
+            "xterm-addon-ligatures": "^0.5.1",
+            "xterm-addon-web-links": "0.4.0",
+            "xterm-addon-webgl": "0.11.1"
+        },
+        "devDependencies": {
+            "@types/atom": "1.40.11",
+            "@types/fs-extra": "^9.0.12",
+            "@types/jasmine": "^3.8.1",
+            "@types/node": "^16.3.3",
+            "@types/resize-observer-browser": "^0.1.6",
+            "@types/uuid": "^8.3.1",
+            "@types/which": "^2.0.1",
+            "atom-jasmine3-test-runner": "^5.2.7",
+            "build-commit": "0.1.4",
+            "cross-env": "7.0.3",
+            "eslint-config-atomic": "^1.16.2",
+            "parcel": "2.0.0-nightly.776",
+            "prettier-config-atomic": "^2.0.5",
+            "shx": "0.3.3",
+            "temp": "^0.9.4",
+            "terser-config-atomic": "^0.1.1",
+            "typescript": "^4.3.5"
+        },
+        "scripts": {
+            "format": "prettier --write .",
+            "test.format": "prettier . --check",
+            "lint": "eslint . --fix",
+            "test.lint": "eslint .",
+            "test": "atom --test spec",
+            "integration.test": "npm run build && atom --test ./spec/terminal-spec.js",
+            "clean": "shx rm -rf dist ./.parcel-cache",
+            "build.tsc": "tsc -p src/tsconfig.json",
+            "dev": "tsc --watch -p src/tsconfig.json",
+            "build": "cross-env NODE_ENV=production parcel build --target main ./src/terminal.ts",
+            "build-commit": "npm run clean && build-commit -o dist",
+            "prepare": "npm run build"
+        },
+        "prettier": "prettier-config-atomic",
+        "deserializers": {
+            "TerminalModel": "deserializeTerminalModel"
+        },
+        "targets": {
+            "main": {
+                "context": "electron-renderer",
+                "includeNodeModules": {
+                    "atom": false,
+                    "electron": false,
+                    "node-pty-prebuilt-multiarch": false
+                },
+                "isLibrary": true,
+                "optimize": true
+            }
+        }
+    },
+    "created": 1658334858269,
+    "updated": 1658334858269,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

@@ -1,0 +1,114 @@
+{
+    "name": "hyperlink-helper",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/savetheclocktower/hyperlink-helper"
+    },
+    "downloads": 1514,
+    "stargazers_count": 1,
+    "releases": {
+        "latest": "0.0.5"
+    },
+    "versions": {
+        "0.0.5": {
+            "name": "hyperlink-helper",
+            "main": "./lib/main",
+            "version": "0.0.5",
+            "description": "Wraps selected text in a hyperlink using a URL copied to the clipboard.",
+            "keywords": [],
+            "activationCommands": {
+                "atom-text-editor": "hyperlink-helper:insert"
+            },
+            "repository": "https://github.com/savetheclocktower/hyperlink-helper",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/hyperlink-helper/versions/0.0.5/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/savetheclocktower/hyperlink-helper/tarball/refs/tags/v0.0.5",
+            "sha": "a0f231d756ae4ce1cd60086d77af3e3602927f69"
+        },
+        "0.0.4": {
+            "name": "hyperlink-helper",
+            "main": "./lib/main",
+            "version": "0.0.4",
+            "description": "Wraps selected text in a hyperlink using a URL copied to the clipboard.",
+            "keywords": [],
+            "activationCommands": {
+                "atom-text-editor": "hyperlink-helper:insert"
+            },
+            "repository": "https://github.com/savetheclocktower/hyperlink-helper",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/hyperlink-helper/versions/0.0.4/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/savetheclocktower/hyperlink-helper/tarball/refs/tags/v0.0.4",
+            "sha": "a6d963aa1a6ea5dda3ee42f7450b877211e7c4fa"
+        },
+        "0.0.3": {
+            "name": "hyperlink-helper",
+            "main": "./lib/main",
+            "version": "0.0.3",
+            "description": "Wraps selected text in a hyperlink using a URL copied to the clipboard.",
+            "keywords": [],
+            "activationCommands": {
+                "atom-text-editor": "hyperlink-helper:insert"
+            },
+            "repository": "https://github.com/savetheclocktower/hyperlink-helper",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/hyperlink-helper/versions/0.0.3/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/savetheclocktower/hyperlink-helper/tarball/refs/tags/v0.0.3",
+            "sha": "9feeb4c777665e56d0e3ae6dd927f097173dc957"
+        },
+        "0.0.2": {
+            "name": "hyperlink-helper",
+            "main": "./lib/main",
+            "version": "0.0.2",
+            "description": "Wraps selected text in a hyperlink using a URL copied to the clipboard.",
+            "keywords": [],
+            "activationCommands": {
+                "atom-text-editor": "hyperlink-helper:insert"
+            },
+            "repository": "https://github.com/savetheclocktower/hyperlink-helper",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/hyperlink-helper/versions/0.0.2/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/savetheclocktower/hyperlink-helper/tarball/refs/tags/v0.0.2",
+            "sha": "c077650fdea3dab06a097097a48a23a961d77dad"
+        }
+    },
+    "readme": "# Hyperlink Helper\n\nAn [Atom](https://atom.io) package for wrapping selected text in a hyperlink. The URL for the hyperlink comes from your clipboard.\n\nInspired by the [similar bundle for TextMate](https://github.com/textmate/hyperlink-helper.tmbundle).\n\n![demo](https://user-images.githubusercontent.com/3450/33003641-997ee3e4-cd81-11e7-8a84-96e71be21404.gif)\n\n## Usage\n\nIn a supported language, highlight the text you want to use as the anchor text, and invoke the **Hyperlink Helper: Insert** command (by default mapped to <kbd>Ctrl-Alt-L</kbd>, or <kbd>Ctrl-Opt-L</kbd> on OS X).\n\nIf your clipboard holds a piece of text that could plausibly be a URL, it'll be used as the `href` for the link. The hyperlink will get inserted as a snippet, and the URL will be highlighted in case you need to type in something. Pressing <kbd>Tab</kbd> will move the cursor to the end of the hyperlink.\n\n### Supported formats\n\nHTML and Markdown are supported out of the box. The package makes an intelligent guess as to which format to use: if the language scope is `source.gfm` or contains the string `markdown`, it'll use the Markdown anchor syntax. Otherwise it'll assume HTML.\n\n### Defining custom formats\n\nIf you need to write in a markup language that uses a different syntax for anchors (Textile, BBCode, JIRA, whatever), you can use [scoped settings](http://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/) to tell Hyperlink Helper about that format.\n\nTo illustrate, here's the built-in format string for HTML:\n\n```\n<a href=\"{{url}}\">{{text}}</a>\n```\n\nNothing fancy is going on here. Any occurrence of `{{text}}` in the string will be replaced with the anchor text. Any occurrence of `{{url}}` will be replaced with the URL.\n\nHere's what a format string for Textile would look like:\n\n```\n\"{{text}}\":{{url}}\n```\n\nAnd to define it in Textile files, you'd add this to your `config.cson`:\n\n```cson\n\".text.html.textile\":\n  \"hyperlink-helper\":\n    format: \"\\\"{{text}}\\\":{{url}}\"\n```\n\nIn other words, the command will use any `hyperlink-helper.format` config value it finds for the specific scope. This will supersede the \"guessing\" behavior [described above](#supported-formats), so you **should not** set this key globally in your `config.cson`. Even defining the key for a broad scope selector like `.text` or `.source` is probably not wise.\n\n### Commands\n\nCommand                | Description\n-----------------------|--------------\n`hyperlink-helper:insert` | Inserts an anchor tag using the selected text as the anchor text and the clipboard contents as the URL.\n\n### Keybindings\n\nCommand            | Linux  | OS X  | Windows\n-------------------|--------|-------|----------\n`hyperlink-helper` | <kbd>Ctrl-Alt-L</kbd> | <kbd>Ctrl-Opt-L</kbd> | <kbd>Ctrl-Alt-L</kbd>\n\nCustom keybindings can be added by referencing the above commands.  To learn more, visit the [Using Atom: Basic Customization](https://atom.io/docs/latest/using-atom-basic-customization#customizing-key-bindings) or [Behind Atom: Keymaps In-Depth](https://atom.io/docs/latest/behind-atom-keymaps-in-depth) sections in the flight manual.\n\n## TODO\n\n* Possibly add more formats to the built-in guessing if it turns out I've underestimated the popularity of, say, Textile.\n* Insert a modified snippet if the selection is empty so that the anchor text gets its own tab stop.\n\n## License\n\n[MIT License](http://opensource.org/licenses/MIT) - see the [LICENSE](https://github.com/savetheclocktower/hyperlink-helper/blob/master/LICENSE.md) for more details.\n",
+    "metadata": {
+        "name": "hyperlink-helper",
+        "main": "./lib/main",
+        "version": "0.0.5",
+        "description": "Wraps selected text in a hyperlink using a URL copied to the clipboard.",
+        "keywords": [],
+        "activationCommands": {
+            "atom-text-editor": "hyperlink-helper:insert"
+        },
+        "repository": "https://github.com/savetheclocktower/hyperlink-helper",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        }
+    },
+    "created": 1658343748865,
+    "updated": 1658343748865,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}

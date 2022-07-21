@@ -1,0 +1,96 @@
+{
+    "name": "colorguide",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/morbius1st/colorguide"
+    },
+    "downloads": 2601,
+    "stargazers_count": 3,
+    "releases": {
+        "latest": "0.2.0"
+    },
+    "versions": {
+        "0.2.0": {
+            "name": "colorguide",
+            "main": "./lib/colorguide",
+            "version": "0.2.0",
+            "description": "A colorguide to the current UI & Syntax colors",
+            "keywords": [
+                "theme colors",
+                "colors",
+                "syntax colors",
+                "ui colors"
+            ],
+            "activationCommands": {
+                "atom-workspace": "colorguide:show"
+            },
+            "repository": "https://github.com/morbius1st/colorguide",
+            "license": "MIT",
+            "engines": {
+                "atom": ">=1.0.0 <2.0.0"
+            },
+            "dependencies": {
+                "atom-space-pen-views": "^2.0.0",
+                "underscore-plus": "^1.0.0",
+                "jquery": "^2.1.4",
+                "fs-plus": "^2.8.2",
+                "path": "^0.12.7",
+                "mathjs": "^1.5.0",
+                "tool-bar": "^1.0.0"
+            },
+            "consumedServices": {
+                "themeVariables": {
+                    "versions": {
+                        ">=0.0.0": "consumeThemeVars"
+                    }
+                }
+            },
+            "dist": {
+                "tarball": "https://www.atom.io/api/packages/colorguide/versions/0.2.0/tarball"
+            },
+            "tarball_url": "https://api.github.com/repos/morbius1st/colorguide/tarball/refs/tags/v0.2.0",
+            "sha": "21cf83f8c3eb0c0438c3ab8b4db79bde70ba04f0"
+        }
+    },
+    "readme": "# colorguide package\n\nA package to display a guide of the colors used by UI and Syntax themes\n\n![Sceenshot](https://cloud.githubusercontent.com/assets/17919240/17274519/e8c376fa-5699-11e6-9f21-aab794e32a23.png?raw=true)\n\n![Sceenshot](https://cloud.githubusercontent.com/assets/17919240/17274538/e64c6db8-569a-11e6-817a-0246ff104287.png?raw=true)\n\n## Notes\n\nFirstly, please forgive me if I do anything wrong - this package is full of firsts - I've not written HTML / CSS / Less / Coffee before and, of course, not written a package for Atom before.\n\nColorguide will display the \"final\" values of the **custom** colors and **custom** color variables used by a theme - UI and Syntax.  \n\nUnfortunately, in order to do this, I must add files into the theme and modify one file.  This is nesessary in order to obtain the actual values assigned to each variable.\n\n## Invocation\n<kbd>ctrl-alt-o<kbd>\n\n## Configuration\n\nColorguide comes with configuration files for several of the popular themes:\n- UI: Atom Material, Isotope, Nucleus Dark, and Seti\n- Syntax: Atom Material, Atom Monokai, Fizzy, Gl-dark, Monokai, and Seti\n\nColorguide will display the colors values of Atom's required / Official UI and Syntax Variables even if the colorguide configuration files are not added to a theme.\n\nI did not make configuration files for Atom's the out-of-the-box themes because:\n- they do not exist in the packages folder\n- they have only a few custom colors and color variables\n\n### Configure A theme\n\nThis is an example of how to configure the seti-ui theme:\n\n- copy the folder `colorguide/examples/seti-ui/lib/colorguide` into `seti-ui/lib/colorguide`\n- copy the folder `colorguide/examples/seti-ui/styles/colorguide` into `seti-ui/styles/colorguide`\n- add the two import statement into `ui-variables.less` per the file `colorguide/examples/seti-ui/styles/add to ui-variables.less.txt`\n- restart or reload Atom - and, of course, make sure that `seti-ui` is the ui theme\n\n### Color Bar Modifications\n\n![Sceenshot](https://cloud.githubusercontent.com/assets/17919240/17276989/d02f093a-56ec-11e6-9fa8-8ab3e7a6a2ec.png?raw=true)\n\nThe background color of the four color bars are set by default to:\n- Top:          #ffffff    (<span style=\"background-color:#ffffff; color:black\">white</span>)\n- Middle-top:    #808080 (<span style=\"background-color:#808080; color:white\">gray</span>)\n- Middle-bottom: #000000 (<span style=\"background-color:black; color:white\">black</span>)\n- Bottom: the editor background color.\n\nThe first three background colors can be changed individually for each variable.  In the `.coffee` files, modify a `new cgVarColor()` object definition to include additional parameter(s):\n\n```javascript\nnew cgVarColor(idx, group, category, name, desc, 'top color', 'mid-top color', 'mid-bottom color')\n```\n\nFor example, to change the background color of the top color bar for `text-color-success` shown above, modify the line in the file\n`colorguide/lib/cg-variables-ui-required.coffee` like this:\n\n```javascript\nnew cgVarColor(0.060, g.GRPur1.key, c.CATur1.key, 'text-color-success', 'General Text Color - Success (Green)', '#000080')\n```\n\nWhich produces:\n\n![Sceenshot](https://cloud.githubusercontent.com/assets/17919240/17277240/c1a633c4-56f2-11e6-92e5-169c3d8eca44.png?raw=true)\n\n## For New themes\n\nThis is not very complex but will take too long to explain.  There are template configuration files in the examples folder:\n- `examples/--syntax`  - for syntax themes\n- `examples/--ui`      - for ui themes\n\nBasically, copy the folders into the correct folder for the theme (make the `lib` folder if needed) and edit them.  There are notes in the template files that help understand how to edit them.  The important thing to remember is that there must be a 1 to 1 correspondence between the class definitions in the `less` file and the matching `coffee` file.\n\n## Future Enhancements\n\nDepending on interest, I may add a search function that will help find where a variable is located in the charts.\n",
+    "metadata": {
+        "name": "colorguide",
+        "main": "./lib/colorguide",
+        "version": "0.2.0",
+        "description": "A colorguide to the current UI & Syntax colors",
+        "keywords": [
+            "theme colors",
+            "colors",
+            "syntax colors",
+            "ui colors"
+        ],
+        "activationCommands": {
+            "atom-workspace": "colorguide:show"
+        },
+        "repository": "https://github.com/morbius1st/colorguide",
+        "license": "MIT",
+        "engines": {
+            "atom": ">=1.0.0 <2.0.0"
+        },
+        "dependencies": {
+            "atom-space-pen-views": "^2.0.0",
+            "underscore-plus": "^1.0.0",
+            "jquery": "^2.1.4",
+            "fs-plus": "^2.8.2",
+            "path": "^0.12.7",
+            "mathjs": "^1.5.0",
+            "tool-bar": "^1.0.0"
+        },
+        "consumedServices": {
+            "themeVariables": {
+                "versions": {
+                    ">=0.0.0": "consumeThemeVars"
+                }
+            }
+        }
+    },
+    "created": 1658338129924,
+    "updated": 1658338129924,
+    "star_gazers": [],
+    "creation_method": "Migrated from Atom.io"
+}
